@@ -1,0 +1,138 @@
+
+
+.. _sphx_glr_examples_01-simple:
+
+Simple examples to start
+---------------------------
+
+This section contains several very simple examples that illustrate 
+the basics feature of fedoo, like how to create simple meshes, 
+apply basics boundary conditions and get the results.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="3 points bending of an I-Shape beam">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_I_shape_beam_bending_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_I_shape_beam_bending.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3 points bending of an I-Shape beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple example of a plate with hole in tension with 2D plane stress assumption.">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_Plate_with_hole_in_tension_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_Plate_with_hole_in_tension.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">2D plate with hole in tension</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Define and solve user equation">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_poison_eq_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_poison_eq.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Define and solve user equation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple canteleaver beam example using different kind of elements">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simpleBeamElementExample_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_simpleBeamElementExample.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Beam Element Canteleaver Beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Canteleaver Beam using 3D hexahedral elements">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simple_cantilever_beam_3D_model_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Canteleaver Beam using 3D hexahedral elements</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="3D Canteleaver Beam with geometric nonlinearities">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simple_cantilever_beam_3D_model_nlgeom_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model_nlgeom.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3D Canteleaver Beam with geometric nonlinearities</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/01-simple/I_shape_beam_bending
+   /examples/01-simple/Plate_with_hole_in_tension
+   /examples/01-simple/poison_eq
+   /examples/01-simple/simpleBeamElementExample
+   /examples/01-simple/simple_cantilever_beam_3D_model
+   /examples/01-simple/simple_cantilever_beam_3D_model_nlgeom
+

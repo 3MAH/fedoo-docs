@@ -1,0 +1,69 @@
+﻿fedoo.constraint.Pressure
+=========================
+
+.. currentmodule:: fedoo.constraint
+
+.. autoclass:: Pressure
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         Pressure.assemble_global_mat
+         Pressure.compute_elementary_operators
+         Pressure.convert_data
+         Pressure.copy
+         Pressure.create
+         Pressure.delete_global_mat
+         Pressure.delete_memory
+         Pressure.from_elements
+         Pressure.from_nodes
+         Pressure.get_all
+         Pressure.get_change_of_basis_mat
+         Pressure.get_element_results
+         Pressure.get_global_matrix
+         Pressure.get_global_vector
+         Pressure.get_gp_results
+         Pressure.get_grad_disp
+         Pressure.get_int_forces
+         Pressure.get_node_results
+         Pressure.get_strain
+         Pressure.initialize
+         Pressure.integrate_field
+         Pressure.reset
+         Pressure.set_disp
+         Pressure.set_start
+         Pressure.sum
+         Pressure.to_start
+         Pressure.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         Pressure.n_gauss_points
+         Pressure.name
+         Pressure.space
+         Pressure.state_variables
+         Pressure.sv
+         Pressure.current
+         Pressure.associated_assembly_sum
+  
+  

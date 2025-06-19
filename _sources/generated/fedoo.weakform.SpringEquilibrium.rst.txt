@@ -1,0 +1,48 @@
+﻿fedoo.weakform.SpringEquilibrium
+================================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: SpringEquilibrium
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         SpringEquilibrium.get_all
+         SpringEquilibrium.get_weak_equation
+         SpringEquilibrium.initialize
+         SpringEquilibrium.nvar
+         SpringEquilibrium.reset
+         SpringEquilibrium.set_start
+         SpringEquilibrium.sum
+         SpringEquilibrium.to_start
+         SpringEquilibrium.update
+         SpringEquilibrium.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         SpringEquilibrium.name
+         SpringEquilibrium.space
+         SpringEquilibrium.nlgeom
+  
+  

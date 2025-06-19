@@ -1,0 +1,49 @@
+﻿fedoo.weakform.HourglassStiffness
+=================================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: HourglassStiffness
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         HourglassStiffness.get_all
+         HourglassStiffness.get_p_wave_modulus
+         HourglassStiffness.get_weak_equation
+         HourglassStiffness.initialize
+         HourglassStiffness.nvar
+         HourglassStiffness.reset
+         HourglassStiffness.set_start
+         HourglassStiffness.sum
+         HourglassStiffness.to_start
+         HourglassStiffness.update
+         HourglassStiffness.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         HourglassStiffness.name
+         HourglassStiffness.space
+         HourglassStiffness.nlgeom
+  
+  

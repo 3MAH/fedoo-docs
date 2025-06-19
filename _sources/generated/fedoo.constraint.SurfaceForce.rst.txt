@@ -1,0 +1,69 @@
+﻿fedoo.constraint.SurfaceForce
+=============================
+
+.. currentmodule:: fedoo.constraint
+
+.. autoclass:: SurfaceForce
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         SurfaceForce.assemble_global_mat
+         SurfaceForce.compute_elementary_operators
+         SurfaceForce.convert_data
+         SurfaceForce.copy
+         SurfaceForce.create
+         SurfaceForce.delete_global_mat
+         SurfaceForce.delete_memory
+         SurfaceForce.from_elements
+         SurfaceForce.from_nodes
+         SurfaceForce.get_all
+         SurfaceForce.get_change_of_basis_mat
+         SurfaceForce.get_element_results
+         SurfaceForce.get_global_matrix
+         SurfaceForce.get_global_vector
+         SurfaceForce.get_gp_results
+         SurfaceForce.get_grad_disp
+         SurfaceForce.get_int_forces
+         SurfaceForce.get_node_results
+         SurfaceForce.get_strain
+         SurfaceForce.initialize
+         SurfaceForce.integrate_field
+         SurfaceForce.reset
+         SurfaceForce.set_disp
+         SurfaceForce.set_start
+         SurfaceForce.sum
+         SurfaceForce.to_start
+         SurfaceForce.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         SurfaceForce.n_gauss_points
+         SurfaceForce.name
+         SurfaceForce.space
+         SurfaceForce.state_variables
+         SurfaceForce.sv
+         SurfaceForce.current
+         SurfaceForce.associated_assembly_sum
+  
+  

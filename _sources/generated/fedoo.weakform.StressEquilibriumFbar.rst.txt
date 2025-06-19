@@ -1,0 +1,51 @@
+﻿fedoo.weakform.StressEquilibriumFbar
+====================================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: StressEquilibriumFbar
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         StressEquilibriumFbar.get_all
+         StressEquilibriumFbar.get_weak_equation
+         StressEquilibriumFbar.initialize
+         StressEquilibriumFbar.nvar
+         StressEquilibriumFbar.reset
+         StressEquilibriumFbar.set_start
+         StressEquilibriumFbar.sum
+         StressEquilibriumFbar.to_start
+         StressEquilibriumFbar.update
+         StressEquilibriumFbar.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         StressEquilibriumFbar.corate
+         StressEquilibriumFbar.fbar
+         StressEquilibriumFbar.geometric_stiffness
+         StressEquilibriumFbar.name
+         StressEquilibriumFbar.space
+         StressEquilibriumFbar.nlgeom
+  
+  

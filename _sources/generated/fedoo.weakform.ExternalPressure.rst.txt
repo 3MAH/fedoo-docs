@@ -1,0 +1,48 @@
+﻿fedoo.weakform.ExternalPressure
+===============================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: ExternalPressure
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         ExternalPressure.get_all
+         ExternalPressure.get_weak_equation
+         ExternalPressure.initialize
+         ExternalPressure.nvar
+         ExternalPressure.reset
+         ExternalPressure.set_start
+         ExternalPressure.sum
+         ExternalPressure.to_start
+         ExternalPressure.update
+         ExternalPressure.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         ExternalPressure.name
+         ExternalPressure.space
+         ExternalPressure.nlgeom
+  
+  

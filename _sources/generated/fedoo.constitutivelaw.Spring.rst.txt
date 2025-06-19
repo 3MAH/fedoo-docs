@@ -1,0 +1,45 @@
+﻿fedoo.constitutivelaw.Spring
+============================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: Spring
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         Spring.get_K
+         Spring.get_all
+         Spring.get_tangent_matrix
+         Spring.initialize
+         Spring.local2global_K
+         Spring.reset
+         Spring.set_start
+         Spring.to_start
+         Spring.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         Spring.name
+  
+  

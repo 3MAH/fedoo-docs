@@ -1,0 +1,52 @@
+
+:orphan:
+
+.. _sphx_glr_examples_01-simple_sg_execution_times:
+
+
+Computation times
+=================
+**00:04.772** total execution time for 6 files **from examples/01-simple**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model_nlgeom.py` (``simple_cantilever_beam_3D_model_nlgeom.py``)
+     - 00:02.376
+     - 0.0
+   * - :ref:`sphx_glr_examples_01-simple_I_shape_beam_bending.py` (``I_shape_beam_bending.py``)
+     - 00:00.904
+     - 0.0
+   * - :ref:`sphx_glr_examples_01-simple_Plate_with_hole_in_tension.py` (``Plate_with_hole_in_tension.py``)
+     - 00:00.768
+     - 0.0
+   * - :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model.py` (``simple_cantilever_beam_3D_model.py``)
+     - 00:00.451
+     - 0.0
+   * - :ref:`sphx_glr_examples_01-simple_poison_eq.py` (``poison_eq.py``)
+     - 00:00.261
+     - 0.0
+   * - :ref:`sphx_glr_examples_01-simple_simpleBeamElementExample.py` (``simpleBeamElementExample.py``)
+     - 00:00.013
+     - 0.0

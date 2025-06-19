@@ -1,0 +1,67 @@
+﻿fedoo.constraint.DistributedForce
+=================================
+
+.. currentmodule:: fedoo.constraint
+
+.. autoclass:: DistributedForce
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         DistributedForce.assemble_global_mat
+         DistributedForce.compute_elementary_operators
+         DistributedForce.convert_data
+         DistributedForce.copy
+         DistributedForce.create
+         DistributedForce.delete_global_mat
+         DistributedForce.delete_memory
+         DistributedForce.get_all
+         DistributedForce.get_change_of_basis_mat
+         DistributedForce.get_element_results
+         DistributedForce.get_global_matrix
+         DistributedForce.get_global_vector
+         DistributedForce.get_gp_results
+         DistributedForce.get_grad_disp
+         DistributedForce.get_int_forces
+         DistributedForce.get_node_results
+         DistributedForce.get_strain
+         DistributedForce.initialize
+         DistributedForce.integrate_field
+         DistributedForce.reset
+         DistributedForce.set_disp
+         DistributedForce.set_start
+         DistributedForce.sum
+         DistributedForce.to_start
+         DistributedForce.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         DistributedForce.n_gauss_points
+         DistributedForce.name
+         DistributedForce.space
+         DistributedForce.state_variables
+         DistributedForce.sv
+         DistributedForce.current
+         DistributedForce.associated_assembly_sum
+  
+  

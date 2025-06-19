@@ -1,0 +1,62 @@
+﻿fedoo.constraint.Contact
+========================
+
+.. currentmodule:: fedoo.constraint
+
+.. autoclass:: Contact
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         Contact.assemble_global_mat
+         Contact.contact_search
+         Contact.delete_global_mat
+         Contact.get_all
+         Contact.get_global_matrix
+         Contact.get_global_vector
+         Contact.global_search
+         Contact.initialize
+         Contact.reset
+         Contact.run_normal_law
+         Contact.set_disp
+         Contact.set_start
+         Contact.to_start
+         Contact.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         Contact.name
+         Contact.space
+         Contact.eps_a
+         Contact.eps_n
+         Contact.max_dist
+         Contact.clearance
+         Contact.tol
+         Contact.contact_search_once
+         Contact.limit_soft_contact
+         Contact.sv
+         Contact.normal_law
+         Contact.current
+         Contact.associated_assembly_sum
+  
+  

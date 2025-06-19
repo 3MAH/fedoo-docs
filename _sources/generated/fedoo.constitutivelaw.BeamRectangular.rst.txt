@@ -1,0 +1,50 @@
+﻿fedoo.constitutivelaw.BeamRectangular
+=====================================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: BeamRectangular
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamRectangular.get_all
+         BeamRectangular.get_beam_rigidity
+         BeamRectangular.initialize
+         BeamRectangular.reset
+         BeamRectangular.set_start
+         BeamRectangular.to_start
+         BeamRectangular.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamRectangular.name
+         BeamRectangular.a
+         BeamRectangular.b
+         BeamRectangular.A
+         BeamRectangular.Jx
+         BeamRectangular.Iyy
+         BeamRectangular.Izz
+         BeamRectangular.k
+  
+  

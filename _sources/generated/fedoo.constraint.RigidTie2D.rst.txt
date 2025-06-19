@@ -1,0 +1,40 @@
+﻿fedoo.constraint.RigidTie2D
+===========================
+
+.. currentmodule:: fedoo.constraint
+
+.. autoclass:: RigidTie2D
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         RigidTie2D.generate
+         RigidTie2D.get_all
+         RigidTie2D.initialize
+         RigidTie2D.str_condensed
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         RigidTie2D.name
+  
+  

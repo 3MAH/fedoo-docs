@@ -1,0 +1,48 @@
+﻿fedoo.constitutivelaw.CohesiveLaw
+=================================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: CohesiveLaw
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         CohesiveLaw.get_K
+         CohesiveLaw.get_all
+         CohesiveLaw.get_tangent_matrix
+         CohesiveLaw.initialize
+         CohesiveLaw.local2global_K
+         CohesiveLaw.reset
+         CohesiveLaw.set_damage
+         CohesiveLaw.set_start
+         CohesiveLaw.to_start
+         CohesiveLaw.update
+         CohesiveLaw.update_damage
+         CohesiveLaw.update_irreversible_damage
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         CohesiveLaw.name
+  
+  

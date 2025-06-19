@@ -1,0 +1,245 @@
+:orphan:
+
+Examples
+==================
+
+Below are examples illustrating fedoo's main features. 
+These examples are desgined to serve as tutorials. 
+In that sense, an effort is made to keep the scripts simple and executable with 
+a low computational cost. The meshes, tolerances and time increment used are coarse 
+and the result obtained may not be accurate. 
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Simple examples to start
+---------------------------
+
+This section contains several very simple examples that illustrate 
+the basics feature of fedoo, like how to create simple meshes, 
+apply basics boundary conditions and get the results.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="3 points bending of an I-Shape beam">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_I_shape_beam_bending_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_I_shape_beam_bending.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3 points bending of an I-Shape beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple example of a plate with hole in tension with 2D plane stress assumption.">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_Plate_with_hole_in_tension_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_Plate_with_hole_in_tension.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">2D plate with hole in tension</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Define and solve user equation">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_poison_eq_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_poison_eq.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Define and solve user equation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple canteleaver beam example using different kind of elements">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simpleBeamElementExample_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_simpleBeamElementExample.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Beam Element Canteleaver Beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Canteleaver Beam using 3D hexahedral elements">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simple_cantilever_beam_3D_model_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Canteleaver Beam using 3D hexahedral elements</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="3D Canteleaver Beam with geometric nonlinearities">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simple_cantilever_beam_3D_model_nlgeom_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model_nlgeom.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3D Canteleaver Beam with geometric nonlinearities</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Apply constraints
+-------------------------------
+
+This section illustrates on some examples the advanced constraints
+that can be applied in fedoo. 
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="2D periodic boundary condition">
+
+.. only:: html
+
+  .. image:: /examples/02-constraints/images/thumb/sphx_glr_Periodic_BC_2D_Plate_with_hole_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_02-constraints_Periodic_BC_2D_Plate_with_hole.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">2D periodic boundary condition</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Contact bewteen a disk and a rectangle">
+
+.. only:: html
+
+  .. image:: /examples/02-constraints/images/thumb/sphx_glr_disk_rectangle_contact_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_02-constraints_disk_rectangle_contact.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Contact bewteen a disk and a rectangle</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Rigid tie constraint">
+
+.. only:: html
+
+  .. image:: /examples/02-constraints/images/thumb/sphx_glr_rigid_tie_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_02-constraints_rigid_tie.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid tie constraint</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /examples/01-simple/index.rst
+   /examples/02-constraints/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: examples_python.zip </examples/examples_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: examples_jupyter.zip </examples/examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_
