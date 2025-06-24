@@ -2671,25 +2671,29 @@
 <dt class="sig sig-object py" id="fedoo.constraint.RigidTie">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RigidTie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_cd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_cd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Rigid</span> <span class="pre">Tie'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.RigidTie" title="Link to this definition"></a></dt>
 <dd><p>Boundary conditions class that eliminate dof assuming a rigid body tie between nodes</p>
-<p>Create an object that defines a rigid tie coupling between some nodes using several multi-points constraints.
-Some constraint drivers (cd) dof  are used to define rigid body displacement and rotation.
-The center of rotation is assumed to be at the position of the first node given in the constraint driver nodes (node_cd[0])
-The dof associated to a contraint driver is difined by the node indice (defined in node_cd)
-and the associated variable (defined in var_vd) with the following order:
+<p>Create an object that defines a rigid tie coupling between some nodes using
+several multi-points constraints. Some constraint drivers (cd) dof  are
+used to define rigid body displacement and rotation. The center of rotation
+is assumed to be at the position of the first node given in the constraint
+driver nodes (node_cd[0]). The dof associated to a contraint driver is
+difined by the node indice (defined in node_cd) and the associated variable
+(defined in var_vd) with the following order:
 [DispX, DispY, DispZ, RotX, RotY, RotZ] where:</p>
 <ul class="simple">
 <li><p>DispX, DispY and DispZ are the displacement of the reference node of the
 rigid group (reference node = node_cd[0])</p></li>
-<li><p>RotX, RotY and RotZ are the rigid rotation around the 3 axes with the reference node
-being the center of rotation. The rotation axis are attached to the solid.</p></li>
+<li><p>RotX, RotY and RotZ are the rigid rotation around the 3 axes with the
+reference node being the center of rotation. The rotation axis are
+attached to the solid.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>list_nodes</strong> (<em>list</em><em> (</em><em>int</em><em>) or </em><em>1d np.array</em>) – list of nodes that will be eliminated considering a rigid body tie.</p></li>
-<li><p><strong>node_cd</strong> (<em>list</em><em> of </em><em>int</em>) – Nodes used as constraint drivers for each rigid displacement and rotation.
-The associated dof used as contraint drivers are defined in var_cd.
-len(node_cd) should be 6 because 6 constraint driver dof are required.</p></li>
+<li><p><strong>node_cd</strong> (<em>list</em><em> of </em><em>int</em>) – Nodes used as constraint drivers for each rigid displacement and
+rotation. The associated dof used as contraint drivers are defined in
+var_cd. len(node_cd) should be 6 because 6 constraint driver dof are
+required.</p></li>
 <li><p><strong>var_cd</strong> (<em>list</em><em> of </em><em>str.</em>) – Variables used as constraint drivers.
 The len of the list should be the same as node_cd (ie 6).</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the created boundary condition. The default is “Rigid Tie”.</p></li>
@@ -2701,16 +2705,19 @@ The len of the list should be the same as node_cd (ie 6).</p></li>
 <p>A convention needs to be defined the orders of rotations.
 The convention used in this class is: First rotation around X, then
 rotation around Y’ (Y’ being the new Y afte r rotation around X)
-and finaly the rotation arould Z” (Z” beging the new Z after the 2 first rotations).</p>
-<p>We can note that this convention can also be interpreted using global axis not attached to the solid
-by applying first the rotation around Z, then the rotation around Y and finally, the rotation around X.</p>
+and finaly the rotation arould Z” (Z” beging the new Z after the 2 first
+rotations).</p>
+<p>We can note that this convention can also be interpreted using global axis
+not attached to the solid by applying first the rotation around Z, then the
+rotation around Y and finally, the rotation around X.</p>
 <p class="rubric">Notes</p>
 <ul class="simple">
 <li><p>The node given in list_nodes are eliminated from the system (slave nodes)
 and can’t be used in another mpc.</p></li>
-<li><p>The rigid coupling is highly non-linear and the multi-point constraints are
-modified at each iteration.</p></li>
-<li><p>Once created the RigidTie object needs to be associated to the problem using the Problem.add method.</p></li>
+<li><p>The rigid coupling is highly non-linear and the multi-point constraints
+are modified at each iteration.</p></li>
+<li><p>Once created the RigidTie object needs to be associated to the problem
+using the Problem.add method.</p></li>
 </ul>
 <p class="rubric">Example</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
