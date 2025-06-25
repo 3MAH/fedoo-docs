@@ -52,7 +52,7 @@ The problems parameters
     nu = 0.37
     radius = 20  # mm
     thickness = 0.45  # mm
-    pressure = 10 # MPa
+    pressure = 10  # MPa
 
 
 
@@ -132,7 +132,7 @@ minimal or maximal z value (sphere extremity along the z axis.
 
 
     boundaries = mesh.find_elements(
-        f'Z>{mesh.bounding_box.zmax-3} or Z<{mesh.bounding_box.zmin+3}'
+        f"Z>{mesh.bounding_box.zmax-3} or Z<{mesh.bounding_box.zmin+3}"
     )
 
 
@@ -199,14 +199,12 @@ normal vector (0 is the mean plane). The strains and stresses components are
 defined in the element local coordinate system
 (mesh.get_element_local_frame()).
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-87
+.. GENERATED FROM PYTHON SOURCE LINES 79-85
 
 .. code-block:: Python
 
 
-    res = pb.get_results(
-        solid_assembly, ["Disp", "Rot", "Stress", "Strain"], position=1
-    )
+    res = pb.get_results(solid_assembly, ["Disp", "Rot", "Stress", "Strain"], position=1)
     pl = pv.Plotter()
     res.plot("Stress", component="XX", data_type="Node", plotter=pl)
     pl.view_isometric()
@@ -226,7 +224,7 @@ defined in the element local coordinate system
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.397 seconds)
+   **Total running time of the script:** (0 minutes 0.408 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_spherical_shell_compression.py:

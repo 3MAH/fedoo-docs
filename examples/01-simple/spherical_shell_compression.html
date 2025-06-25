@@ -2685,7 +2685,7 @@ to download the full example code.</p>
 <span class="n">nu</span> <span class="o">=</span> <span class="mf">0.37</span>
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># mm</span>
 <span class="n">thickness</span> <span class="o">=</span> <span class="mf">0.45</span>  <span class="c1"># mm</span>
-<span class="n">pressure</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># MPa</span>
+<span class="n">pressure</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># MPa</span>
 </pre></div>
 </div>
 <p>Create a simple sphere mesh using pyvista.</p>
@@ -2709,7 +2709,7 @@ The mesh.find_elements method is used with an arbitrary exression.
 Here we select all elements whose z coordinates are less that 3mm from
 minimal or maximal z value (sphere extremity along the z axis.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">boundaries</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;Z&gt;</span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">zmax</span><span class="o">-</span><span class="mi">3</span><span class="si">}</span><span class="s1"> or Z&lt;</span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">zmin</span><span class="o">+</span><span class="mi">3</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="sa">f</span><span class="s2">&quot;Z&gt;</span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">zmax</span><span class="o">-</span><span class="mi">3</span><span class="si">}</span><span class="s2"> or Z&lt;</span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">zmin</span><span class="o">+</span><span class="mi">3</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2740,16 +2740,14 @@ position = 1 is set for the surface along the positif direction of the
 normal vector (0 is the mean plane). The strains and stresses components are
 defined in the element local coordinate system
 (mesh.get_element_local_frame()).</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span>
-    <span class="n">solid_assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="s2">&quot;Rot&quot;</span><span class="p">,</span> <span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;Strain&quot;</span><span class="p">],</span> <span class="n">position</span><span class="o">=</span><span class="mi">1</span>
-<span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="s2">&quot;Rot&quot;</span><span class="p">,</span> <span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;Strain&quot;</span><span class="p">],</span> <span class="n">position</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
 <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">&quot;XX&quot;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">view_isometric</span><span class="p">()</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.397 seconds)</p>
+<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.408 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-spherical-shell-compression-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/bbbbe72a68b7ca22134fff70ab3d1b26/spherical_shell_compression.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">spherical_shell_compression.ipynb</span></code></a></p>
