@@ -2675,61 +2675,72 @@ to download the full example code.</p>
 <section class="sphx-glr-example-title" id="compression-of-a-ping-pong-ball">
 <span id="sphx-glr-examples-01-simple-spherical-shell-compression-py"></span><h1>Compression of a ping pong ball<a class="headerlink" href="#compression-of-a-ping-pong-ball" title="Link to this heading"></a></h1>
 <p>Example that show how to use plate elements with a pressure load.</p>
-<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="c1"># The problems parameters</span>
-<span class="n">E</span> <span class="o">=</span> <span class="mf">2e3</span>  <span class="c1"># MPa</span>
+</pre></div>
+</div>
+<p>The problems parameters</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="mf">2e3</span>  <span class="c1"># MPa</span>
 <span class="n">nu</span> <span class="o">=</span> <span class="mf">0.37</span>
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># mm</span>
 <span class="n">thickness</span> <span class="o">=</span> <span class="mf">0.45</span>  <span class="c1"># mm</span>
 <span class="n">pressure</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># MPa</span>
-
-<span class="c1"># For plate elements, we define a 3D modeling space</span>
-<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;3D&quot;</span><span class="p">)</span>
-
-<span class="c1"># Load a simple mesh for a sphere using pyvista.</span>
-<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">from_pyvista</span><span class="p">(</span><span class="n">pv</span><span class="o">.</span><span class="n">Sphere</span><span class="p">(</span><span class="n">radius</span><span class="p">))</span>
-
-<span class="c1"># Define a linear isotropic material and an homogeneous shell section</span>
-<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Material&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create a simple sphere mesh using pyvista.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">from_pyvista</span><span class="p">(</span><span class="n">pv</span><span class="o">.</span><span class="n">Sphere</span><span class="p">(</span><span class="n">radius</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Define a linear isotropic material and an homogeneous shell section</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Material&quot;</span><span class="p">)</span>
 <span class="n">shell_section</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ShellHomogeneous</span><span class="p">(</span><span class="s2">&quot;Material&quot;</span><span class="p">,</span> <span class="n">thickness</span><span class="p">)</span>
-
-<span class="c1"># Define the weakform and associated assembly for plate model</span>
+</pre></div>
+</div>
+<p>Define the weakform and associated assembly for plate model
+For plate elements, we first need to create a 3D modeling space</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;3D&quot;</span><span class="p">)</span>
 <span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">PlateEquilibrium</span><span class="p">(</span><span class="n">shell_section</span><span class="p">)</span>
 <span class="n">solid_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
-
-<span class="c1"># Select mesh elements where we will apply the pressure.</span>
-<span class="c1"># The mesh.find_elements method is used with an arbitrary exression.</span>
-<span class="c1"># Here we select all elements whose z coordinates are less that 3mm from</span>
-<span class="c1"># minimal or maximal z value (sphere extremity along the z axis.</span>
-<span class="n">boundaries</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span>
+</pre></div>
+</div>
+<p>Select mesh elements where we will apply the pressure.
+The mesh.find_elements method is used with an arbitrary exression.
+Here we select all elements whose z coordinates are less that 3mm from
+minimal or maximal z value (sphere extremity along the z axis.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">boundaries</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span>
     <span class="sa">f</span><span class="s1">&#39;Z&gt;</span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">zmax</span><span class="o">-</span><span class="mi">3</span><span class="si">}</span><span class="s1"> or Z&lt;</span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">zmin</span><span class="o">+</span><span class="mi">3</span><span class="si">}</span><span class="s1">&#39;</span>
 <span class="p">)</span>
-
-<span class="c1"># Now we build the pressure assembly by extracted the surface mesh.</span>
-<span class="c1"># The pressure assembly is added to the global assembly</span>
-<span class="n">pressure_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="p">(</span>
+</pre></div>
+</div>
+<p>Now we build the pressure assembly by extracting the surface mesh.
+The pressure assembly is then added to the solid_assembly to form
+the global assembly.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pressure_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="p">(</span>
     <span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="n">boundaries</span><span class="p">),</span>
     <span class="n">pressure</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">assembly</span> <span class="o">=</span> <span class="n">solid_assembly</span> <span class="o">+</span> <span class="n">pressure_assembly</span>
-
-<span class="c1"># Define a linear analysis and solve the problem/</span>
-<span class="c1"># Remark: here we don&#39;t need to add other boundary conditions. The rigid body</span>
-<span class="c1"># displacements and rotations of the sphere hasn&#39;t been constrained but the</span>
-<span class="c1"># solver find a solution that is unique in terms of strain and stress (but not</span>
-<span class="c1"># for displacements or rotations)</span>
-<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Define a linear analysis and solve the problem.</p>
+<dl class="simple">
+<dt>..notes::</dt><dd><p>Here we don’t need to add other boundary conditions. The rigid body
+displacements and rotations of the sphere aren’t constrained but the solver
+find a solution that is unique in terms of strain and stress (but not
+for displacements or rotations)</p>
+</dd>
+</dl>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
-
-<span class="c1"># Extract the results:</span>
-<span class="c1"># position = 1 is set for the surface along the positif direction of the</span>
-<span class="c1"># normal vector (0 is the mean plane). The strains and stresses components are</span>
-<span class="c1"># defined in the element local coordinate system</span>
-<span class="c1"># (mesh.get_element_local_frame()).</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span>
+</pre></div>
+</div>
+<p>Extract the results:
+position = 1 is set for the surface along the positif direction of the
+normal vector (0 is the mean plane). The strains and stresses components are
+defined in the element local coordinate system
+(mesh.get_element_local_frame()).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span>
     <span class="n">solid_assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="s2">&quot;Rot&quot;</span><span class="p">,</span> <span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;Strain&quot;</span><span class="p">],</span> <span class="n">position</span><span class="o">=</span><span class="mi">1</span>
 <span class="p">)</span>
 <span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
@@ -2738,7 +2749,7 @@ to download the full example code.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.394 seconds)</p>
+<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.397 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-spherical-shell-compression-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/bbbbe72a68b7ca22134fff70ab3d1b26/spherical_shell_compression.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">spherical_shell_compression.ipynb</span></code></a></p>

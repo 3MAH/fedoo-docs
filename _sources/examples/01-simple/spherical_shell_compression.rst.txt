@@ -23,7 +23,194 @@ Compression of a ping pong ball
 
 Example that show how to use plate elements with a pressure load.
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-69
+.. GENERATED FROM PYTHON SOURCE LINES 7-12
+
+.. code-block:: Python
+
+
+    import fedoo as fd
+    import pyvista as pv
+    import numpy as np
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 13-14
+
+The problems parameters
+
+.. GENERATED FROM PYTHON SOURCE LINES 14-21
+
+.. code-block:: Python
+
+
+    E = 2e3  # MPa
+    nu = 0.37
+    radius = 20  # mm
+    thickness = 0.45  # mm
+    pressure = 10 # MPa
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 22-23
+
+Create a simple sphere mesh using pyvista.
+
+.. GENERATED FROM PYTHON SOURCE LINES 23-26
+
+.. code-block:: Python
+
+
+    mesh = fd.Mesh.from_pyvista(pv.Sphere(radius))
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 27-28
+
+Define a linear isotropic material and an homogeneous shell section
+
+.. GENERATED FROM PYTHON SOURCE LINES 28-32
+
+.. code-block:: Python
+
+
+    material = fd.constitutivelaw.ElasticIsotrop(E, nu, name="Material")
+    shell_section = fd.constitutivelaw.ShellHomogeneous("Material", thickness)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 33-35
+
+Define the weakform and associated assembly for plate model
+For plate elements, we first need to create a 3D modeling space
+
+.. GENERATED FROM PYTHON SOURCE LINES 35-40
+
+.. code-block:: Python
+
+
+    fd.ModelingSpace("3D")
+    wf = fd.weakform.PlateEquilibrium(shell_section)
+    solid_assembly = fd.Assembly.create(wf, mesh)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 41-45
+
+Select mesh elements where we will apply the pressure.
+The mesh.find_elements method is used with an arbitrary exression.
+Here we select all elements whose z coordinates are less that 3mm from
+minimal or maximal z value (sphere extremity along the z axis.
+
+.. GENERATED FROM PYTHON SOURCE LINES 45-50
+
+.. code-block:: Python
+
+
+    boundaries = mesh.find_elements(
+        f'Z>{mesh.bounding_box.zmax-3} or Z<{mesh.bounding_box.zmin+3}'
+    )
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 51-54
+
+Now we build the pressure assembly by extracting the surface mesh.
+The pressure assembly is then added to the solid_assembly to form
+the global assembly.
+
+.. GENERATED FROM PYTHON SOURCE LINES 54-61
+
+.. code-block:: Python
+
+
+    pressure_assembly = fd.constraint.Pressure(
+        mesh.extract_elements(boundaries),
+        pressure,
+    )
+    assembly = solid_assembly + pressure_assembly
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 62-69
+
+Define a linear analysis and solve the problem.
+
+..notes::
+  Here we don't need to add other boundary conditions. The rigid body
+  displacements and rotations of the sphere aren't constrained but the solver
+  find a solution that is unique in terms of strain and stress (but not
+  for displacements or rotations)
+
+.. GENERATED FROM PYTHON SOURCE LINES 69-73
+
+.. code-block:: Python
+
+
+    pb = fd.problem.Linear(assembly)
+    pb.solve()
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 74-79
+
+Extract the results:
+position = 1 is set for the surface along the positif direction of the
+normal vector (0 is the mean plane). The strains and stresses components are
+defined in the element local coordinate system
+(mesh.get_element_local_frame()).
+
+.. GENERATED FROM PYTHON SOURCE LINES 79-87
+
+.. code-block:: Python
+
+
+    res = pb.get_results(
+        solid_assembly, ["Disp", "Rot", "Stress", "Strain"], position=1
+    )
+    pl = pv.Plotter()
+    res.plot("Stress", component="XX", data_type="Node", plotter=pl)
+    pl.view_isometric()
+    pl.show()
 
 
 
@@ -36,75 +223,10 @@ Example that show how to use plate elements with a pressure load.
 
 
 
-.. code-block:: Python
-
-
-    import fedoo as fd
-    import pyvista as pv
-    import numpy as np
-
-    # The problems parameters
-    E = 2e3  # MPa
-    nu = 0.37
-    radius = 20  # mm
-    thickness = 0.45  # mm
-    pressure = 10 # MPa
-
-    # For plate elements, we define a 3D modeling space
-    fd.ModelingSpace("3D")
-
-    # Load a simple mesh for a sphere using pyvista.
-    mesh = fd.Mesh.from_pyvista(pv.Sphere(radius))
-
-    # Define a linear isotropic material and an homogeneous shell section
-    material = fd.constitutivelaw.ElasticIsotrop(E, nu, name="Material")
-    shell_section = fd.constitutivelaw.ShellHomogeneous("Material", thickness)
-
-    # Define the weakform and associated assembly for plate model
-    wf = fd.weakform.PlateEquilibrium(shell_section)
-    solid_assembly = fd.Assembly.create(wf, mesh)
-
-    # Select mesh elements where we will apply the pressure.
-    # The mesh.find_elements method is used with an arbitrary exression.
-    # Here we select all elements whose z coordinates are less that 3mm from
-    # minimal or maximal z value (sphere extremity along the z axis.
-    boundaries = mesh.find_elements(
-        f'Z>{mesh.bounding_box.zmax-3} or Z<{mesh.bounding_box.zmin+3}'
-    )
-
-    # Now we build the pressure assembly by extracted the surface mesh.
-    # The pressure assembly is added to the global assembly
-    pressure_assembly = fd.constraint.Pressure(
-        mesh.extract_elements(boundaries),
-        pressure,
-    )
-    assembly = solid_assembly + pressure_assembly
-
-    # Define a linear analysis and solve the problem/
-    # Remark: here we don't need to add other boundary conditions. The rigid body
-    # displacements and rotations of the sphere hasn't been constrained but the
-    # solver find a solution that is unique in terms of strain and stress (but not
-    # for displacements or rotations)
-    pb = fd.problem.Linear(assembly)
-    pb.solve()
-
-    # Extract the results:
-    # position = 1 is set for the surface along the positif direction of the
-    # normal vector (0 is the mean plane). The strains and stresses components are
-    # defined in the element local coordinate system
-    # (mesh.get_element_local_frame()).
-    res = pb.get_results(
-        solid_assembly, ["Disp", "Rot", "Stress", "Strain"], position=1
-    )
-    pl = pv.Plotter()
-    res.plot("Stress", component="XX", data_type="Node", plotter=pl)
-    pl.view_isometric()
-    pl.show()
-
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.394 seconds)
+   **Total running time of the script:** (0 minutes 0.397 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_spherical_shell_compression.py:
