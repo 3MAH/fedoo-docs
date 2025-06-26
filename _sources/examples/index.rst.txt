@@ -211,6 +211,23 @@ that can be applied in fedoo.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrate the use the pressure constraint for the simulation of a pipe under internal pressure and external pressure. The problem is treated in 2D with plane strain assumption.">
+
+.. only:: html
+
+  .. image:: /examples/02-constraints/images/thumb/sphx_glr_pressurized_pipe_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_02-constraints_pressurized_pipe.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pressure constraint</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Rigid tie constraint">
 
 .. only:: html

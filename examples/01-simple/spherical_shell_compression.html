@@ -2625,6 +2625,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../02-constraints/Periodic_BC_2D_Plate_with_hole.html">2D periodic boundary condition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../02-constraints/Periodic_BC_2D_Plate_with_hole.html#add-periodic-constraint">Add periodic constraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../02-constraints/disk_rectangle_contact.html">Contact bewteen a disk and a rectangle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../02-constraints/pressurized_pipe.html">Pressure constraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../02-constraints/rigid_tie.html">Rigid tie constraint</a></li>
 </ul>
 </li>
@@ -2724,6 +2725,13 @@ the global assembly.</p>
 </pre></div>
 </div>
 <p>Define a linear analysis and solve the problem.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here we don’t need to add other boundary conditions. The rigid body
+displacements and rotations of the sphere aren’t constrained but the solver
+find a solution that is unique in terms of strain and stress (but not
+for displacements or rotations)</p>
+</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 </pre></div>
@@ -2740,7 +2748,7 @@ defined in the element local coordinate system
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.400 seconds)</p>
+<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.381 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-spherical-shell-compression-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/bbbbe72a68b7ca22134fff70ab3d1b26/spherical_shell_compression.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">spherical_shell_compression.ipynb</span></code></a></p>
