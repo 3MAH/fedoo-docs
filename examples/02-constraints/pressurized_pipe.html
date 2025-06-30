@@ -2634,6 +2634,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../03-advanced/index.html">Advanced problems</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../03-advanced/tube_compression.html">Compression of a tube using 2D axisymmetric model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../03-advanced/tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
 </ul>
 </li>
 </ul>
@@ -2715,16 +2716,16 @@ the <code class="xref py py-meth docutils literal notranslate"><span class="pre"
 <p>Alternatively, we can use the
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.contraint.Pressure.from_elements()</span></code> constructor from a set of
 element to extract the external surface.</p>
-<dl class="simple">
-<dt>..warning::</dt><dd><p>The from_nodes and from_elements constructor can’t be used to apply a
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The from_nodes and from_elements constructor can’t be used to apply a
 pressure over a shell structure because, as the shell mesh is a surface
 mesh, these constructors will extract linear mesh of the boundaries.
 To apply the mesh over a shell geometry, the
 <code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.contraint.Pressure</span></code> constructor needs to be called.
 See the example
 <span class="xref std std-ref">sphx_glr_examples_01_simple_spherical_shell_compression.py</span></p>
-</dd>
-</dl>
+</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ext_pressure</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="o">.</span><span class="n">from_nodes</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">ext_nodes</span><span class="p">,</span> <span class="n">external_pressure</span><span class="p">)</span>
 <span class="n">int_pressure</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="o">.</span><span class="n">from_nodes</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">int_nodes</span><span class="p">,</span> <span class="n">internal_pressure</span><span class="p">)</span>
 </pre></div>
@@ -2737,7 +2738,7 @@ The 3 assemblies are sumed.</p>
 <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="s2">&quot;Stress&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_pressurized_pipe_001.png" srcset="../../_images/sphx_glr_pressurized_pipe_001.png" alt="pressurized pipe" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.279 seconds)</p>
+<img src="../../_images/sphx_glr_pressurized_pipe_001.png" srcset="../../_images/sphx_glr_pressurized_pipe_001.png" alt="pressurized pipe" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.267 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-constraints-pressurized-pipe-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/8e0150a40ce16f2eaf4dee581380da9d/pressurized_pipe.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">pressurized_pipe.ipynb</span></code></a></p>
