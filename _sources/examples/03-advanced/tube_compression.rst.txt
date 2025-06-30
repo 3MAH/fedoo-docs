@@ -170,7 +170,7 @@ files to save at each iteration are defined.
 .. GENERATED FROM PYTHON SOURCE LINES 89-91
 
 Plot with pyvista:
-- The 2D plot of :math:`\sigma_zz`
+- The 2D plot of :math:`\sigma_{zz}`
 
 .. GENERATED FROM PYTHON SOURCE LINES 91-95
 
@@ -200,13 +200,12 @@ Plot with pyvista:
 - An animated gif of the equivalent plasticity :math:`p`, with 3D
   reconstruction using the :func:`fedoo.post_processing.axi_to_3d` function.
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-125
+.. GENERATED FROM PYTHON SOURCE LINES 98-124
 
 .. code-block:: Python
 
-
     clim = res.get_all_frame_lim("P")[2]
-    pl = pv.Plotter(window_size=[600, 800], off_screen=True)
+    pl = pv.Plotter(window_size=[400, 600], off_screen=True)
     pl.open_gif("tube_compression.gif", fps=20)
     for i in range(res.n_iter):
         res.load(i)
@@ -246,44 +245,54 @@ Plot with pyvista:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-129
+.. GENERATED FROM PYTHON SOURCE LINES 125-128
 
 - An example of how to do a realistic plot using the vtk physical based
   renderic availbale through pyvista. This example generate a mp4 movie
   and will not been rendered with sphinx-gallery.
 
-.. GENERATED FROM PYTHON SOURCE LINES 129-157
+.. GENERATED FROM PYTHON SOURCE LINES 128-158
 
 .. code-block:: Python
 
 
-    # pl = pv.Plotter(window_size=[600, 800])
-    # cubemap = pv.examples.download_sky_box_cube_map()
-    # pl.add_actor(cubemap.to_skybox())
-    # pl.set_environment_texture(cubemap)
-    # pl.open_movie("tube_compression.mp4", quality=6)
-    # for i in range(res.n_iter):
-    #     res.load(i)
-    #     fd.post_processing.axi_to_3d(res, 41).plot(
-    #         show_edges=False,
-    #         metallic=0.9,
-    #         pbr=True,
-    #         roughness=0.4,
-    #         azimuth=0,
-    #         elevation=-70,
-    #         diffuse=0.8,
-    #         color="orange",
-    #         clim=clim,
-    #         show_scalar_bar=False,
-    #         plotter=pl,
-    #         name="mymesh",
-    #     )
+    pl = pv.Plotter(window_size=[608, 800], off_screen=True)
+    cubemap = pv.examples.download_sky_box_cube_map()
+    pl.add_actor(cubemap.to_skybox())
+    pl.set_environment_texture(cubemap)
+    pl.open_movie("tube_compression.mp4", quality=6)
+    pl.show(auto_close=False)  # only necessary for an off-screen movie
 
-    #     pl.hide_axes()
-    #     pl.write_frame()
-    #     pl.remove_actor("mymesh")
+    for i in range(res.n_iter):
+        res.load(i)
+        fd.post_processing.axi_to_3d(res, 41).plot(
+            show_edges=False,
+            metallic=0.9,
+            pbr=True,
+            roughness=0.4,
+            azimuth=0,
+            elevation=-70,
+            diffuse=0.8,
+            color="orange",
+            # clim=clim,
+            show_scalar_bar=False,
+            plotter=pl,
+            name="mymesh",
+        )
 
-    # pl.close()
+        pl.hide_axes()
+        pl.write_frame()
+        pl.remove_actor("mymesh")
+
+    pl.close()
+
+
+
+
+.. image-sg:: /examples/03-advanced/images/sphx_glr_tube_compression_003.png
+   :alt: tube compression
+   :srcset: /examples/03-advanced/images/sphx_glr_tube_compression_003.png
+   :class: sphx-glr-single-img
 
 
 
@@ -294,7 +303,7 @@ Plot with pyvista:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 5.810 seconds)
+   **Total running time of the script:** (7 minutes 58.049 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_tube_compression.py:

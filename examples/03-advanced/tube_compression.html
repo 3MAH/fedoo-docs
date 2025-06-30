@@ -13,6 +13,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
@@ -20,6 +21,7 @@
       <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
       <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -2765,7 +2767,7 @@ files to save at each iteration are defined.</p>
 </pre></div>
 </div>
 <p>Plot with pyvista:
-- The 2D plot of <span class="math notranslate nohighlight">\(\sigma_zz\)</span></p>
+- The 2D plot of <span class="math notranslate nohighlight">\(\sigma_{zz}\)</span></p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">&quot;ZZ&quot;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2774,7 +2776,7 @@ files to save at each iteration are defined.</p>
 reconstruction using the <code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.post_processing.axi_to_3d()</span></code> function.</p></li>
 </ul>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">clim</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">get_all_frame_lim</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="p">[</span><span class="mi">600</span><span class="p">,</span> <span class="mi">800</span><span class="p">],</span> <span class="n">off_screen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">600</span><span class="p">],</span> <span class="n">off_screen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">open_gif</span><span class="p">(</span><span class="s2">&quot;tube_compression.gif&quot;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">n_iter</span><span class="p">):</span>
     <span class="n">res</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -2805,36 +2807,38 @@ reconstruction using the <code class="xref py py-func docutils literal notransla
 renderic availbale through pyvista. This example generate a mp4 movie
 and will not been rendered with sphinx-gallery.</p></li>
 </ul>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pl = pv.Plotter(window_size=[600, 800])</span>
-<span class="c1"># cubemap = pv.examples.download_sky_box_cube_map()</span>
-<span class="c1"># pl.add_actor(cubemap.to_skybox())</span>
-<span class="c1"># pl.set_environment_texture(cubemap)</span>
-<span class="c1"># pl.open_movie(&quot;tube_compression.mp4&quot;, quality=6)</span>
-<span class="c1"># for i in range(res.n_iter):</span>
-<span class="c1">#     res.load(i)</span>
-<span class="c1">#     fd.post_processing.axi_to_3d(res, 41).plot(</span>
-<span class="c1">#         show_edges=False,</span>
-<span class="c1">#         metallic=0.9,</span>
-<span class="c1">#         pbr=True,</span>
-<span class="c1">#         roughness=0.4,</span>
-<span class="c1">#         azimuth=0,</span>
-<span class="c1">#         elevation=-70,</span>
-<span class="c1">#         diffuse=0.8,</span>
-<span class="c1">#         color=&quot;orange&quot;,</span>
-<span class="c1">#         clim=clim,</span>
-<span class="c1">#         show_scalar_bar=False,</span>
-<span class="c1">#         plotter=pl,</span>
-<span class="c1">#         name=&quot;mymesh&quot;,</span>
-<span class="c1">#     )</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="p">[</span><span class="mi">608</span><span class="p">,</span> <span class="mi">800</span><span class="p">],</span> <span class="n">off_screen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cubemap</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">download_sky_box_cube_map</span><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">add_actor</span><span class="p">(</span><span class="n">cubemap</span><span class="o">.</span><span class="n">to_skybox</span><span class="p">())</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">set_environment_texture</span><span class="p">(</span><span class="n">cubemap</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">open_movie</span><span class="p">(</span><span class="s2">&quot;tube_compression.mp4&quot;</span><span class="p">,</span> <span class="n">quality</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">auto_close</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># only necessary for an off-screen movie</span>
 
-<span class="c1">#     pl.hide_axes()</span>
-<span class="c1">#     pl.write_frame()</span>
-<span class="c1">#     pl.remove_actor(&quot;mymesh&quot;)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">n_iter</span><span class="p">):</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">post_processing</span><span class="o">.</span><span class="n">axi_to_3d</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="mi">41</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">show_edges</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">metallic</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+        <span class="n">pbr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">roughness</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+        <span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">elevation</span><span class="o">=-</span><span class="mi">70</span><span class="p">,</span>
+        <span class="n">diffuse</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+        <span class="c1"># clim=clim,</span>
+        <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mymesh&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
 
-<span class="c1"># pl.close()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">hide_axes</span><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">write_frame</span><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">remove_actor</span><span class="p">(</span><span class="s2">&quot;mymesh&quot;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 5.810 seconds)</p>
+<img src="../../_images/sphx_glr_tube_compression_003.png" srcset="../../_images/sphx_glr_tube_compression_003.png" alt="tube compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (7 minutes 58.049 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-tube-compression-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/b2331f10973c6a609241146ff9537cf9/tube_compression.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">tube_compression.ipynb</span></code></a></p>
