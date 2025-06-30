@@ -38,7 +38,7 @@ in 2D with plane strain assumption.
     radius = 200
     thickness = 20
 
-    fd.ModelingSpace('2D')  # plane strain assumption
+    fd.ModelingSpace("2D")  # plane strain assumption
     mesh = fd.mesh.hollow_disk_mesh(radius, thickness, nr=5, nt=41)
 
     material = fd.constitutivelaw.ElasticIsotrop(200e3, 0.3)
@@ -84,7 +84,7 @@ Alternatively, we can use the
 :py:meth:`fedoo.contraint.Pressure.from_elements` constructor from a set of
 element to extract the external surface.
 
-..warnings::
+..warning::
   The from_nodes and from_elements constructor can't be used to apply a
   pressure over a shell structure because, as the shell mesh is a surface
   mesh, these constructors will extract linear mesh of the boundaries.
@@ -93,18 +93,14 @@ element to extract the external surface.
   See the example
   :ref:`sphx_glr_examples_01_simple_spherical_shell_compression.py`
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-60
+.. GENERATED FROM PYTHON SOURCE LINES 51-56
 
 .. code-block:: Python
 
 
 
-    ext_pressure = fd.constraint.Pressure.from_nodes(
-        mesh, ext_nodes, external_pressure
-    )
-    int_pressure = fd.constraint.Pressure.from_nodes(
-        mesh, int_nodes, internal_pressure
-    )
+    ext_pressure = fd.constraint.Pressure.from_nodes(mesh, ext_nodes, external_pressure)
+    int_pressure = fd.constraint.Pressure.from_nodes(mesh, int_nodes, internal_pressure)
 
 
 
@@ -113,12 +109,12 @@ element to extract the external surface.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-63
+.. GENERATED FROM PYTHON SOURCE LINES 57-59
 
 Define a problem from the solid and pressure assemblies
 The 3 assemblies are sumed.
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-68
+.. GENERATED FROM PYTHON SOURCE LINES 59-64
 
 .. code-block:: Python
 
@@ -127,6 +123,7 @@ The 3 assemblies are sumed.
     pb.solve()
 
     pb.get_results(solid_assembly, "Stress").plot("Stress", "pressure", "Node")
+
 
 
 
@@ -140,9 +137,11 @@ The 3 assemblies are sumed.
 
 
 
+
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.245 seconds)
+   **Total running time of the script:** (0 minutes 0.284 seconds)
 
 
 .. _sphx_glr_download_examples_02-constraints_pressurized_pipe.py:

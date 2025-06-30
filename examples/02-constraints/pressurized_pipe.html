@@ -2605,7 +2605,8 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#simple-examples-to-start">Simple examples to start</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html#apply-constraints">Apply constraints</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#apply-constraints">Apply constraints</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#advanced-problems">Advanced problems</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../01-simple/index.html">Simple examples to start</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../01-simple/I_shape_beam_bending.html">3 points bending of an I-Shape beam</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../01-simple/I_shape_beam_bending.html#geometry-and-mesh">Geometry and Mesh</a></li>
@@ -2627,6 +2628,10 @@
 <li class="toctree-l4"><a class="reference internal" href="disk_rectangle_contact.html">Contact bewteen a disk and a rectangle</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Pressure constraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="rigid_tie.html">Rigid tie constraint</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../03-advanced/index.html">Advanced problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../03-advanced/tube_compression.html">Compression of a tube using 2D axisymmetric model</a></li>
 </ul>
 </li>
 </ul>
@@ -2686,7 +2691,7 @@ in 2D with plane strain assumption.</p>
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="n">thickness</span> <span class="o">=</span> <span class="mi">20</span>
 
-<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s1">&#39;2D&#39;</span><span class="p">)</span>  <span class="c1"># plane strain assumption</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;2D&quot;</span><span class="p">)</span>  <span class="c1"># plane strain assumption</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hollow_disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="n">thickness</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">41</span><span class="p">)</span>
 
 <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">200e3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
@@ -2709,7 +2714,7 @@ the <code class="xref py py-meth docutils literal notranslate"><span class="pre"
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.contraint.Pressure.from_elements()</span></code> constructor from a set of
 element to extract the external surface.</p>
 <dl class="simple">
-<dt>..warnings::</dt><dd><p>The from_nodes and from_elements constructor can’t be used to apply a
+<dt>..warning::</dt><dd><p>The from_nodes and from_elements constructor can’t be used to apply a
 pressure over a shell structure because, as the shell mesh is a surface
 mesh, these constructors will extract linear mesh of the boundaries.
 To apply the mesh over a shell geometry, the
@@ -2718,12 +2723,8 @@ See the example
 <span class="xref std std-ref">sphx_glr_examples_01_simple_spherical_shell_compression.py</span></p>
 </dd>
 </dl>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ext_pressure</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="o">.</span><span class="n">from_nodes</span><span class="p">(</span>
-    <span class="n">mesh</span><span class="p">,</span> <span class="n">ext_nodes</span><span class="p">,</span> <span class="n">external_pressure</span>
-<span class="p">)</span>
-<span class="n">int_pressure</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="o">.</span><span class="n">from_nodes</span><span class="p">(</span>
-    <span class="n">mesh</span><span class="p">,</span> <span class="n">int_nodes</span><span class="p">,</span> <span class="n">internal_pressure</span>
-<span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ext_pressure</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="o">.</span><span class="n">from_nodes</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">ext_nodes</span><span class="p">,</span> <span class="n">external_pressure</span><span class="p">)</span>
+<span class="n">int_pressure</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="o">.</span><span class="n">from_nodes</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">int_nodes</span><span class="p">,</span> <span class="n">internal_pressure</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Define a problem from the solid and pressure assemblies
@@ -2734,7 +2735,7 @@ The 3 assemblies are sumed.</p>
 <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="s2">&quot;Stress&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_pressurized_pipe_001.png" srcset="../../_images/sphx_glr_pressurized_pipe_001.png" alt="pressurized pipe" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.245 seconds)</p>
+<img src="../../_images/sphx_glr_pressurized_pipe_001.png" srcset="../../_images/sphx_glr_pressurized_pipe_001.png" alt="pressurized pipe" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.284 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-constraints-pressurized-pipe-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/8e0150a40ce16f2eaf4dee581380da9d/pressurized_pipe.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">pressurized_pipe.ipynb</span></code></a></p>
