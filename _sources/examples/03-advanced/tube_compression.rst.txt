@@ -25,11 +25,12 @@ This model uses self-contact, elasto-plastic material law with finite strain
 assumption in a 2D axisymetric modeling space.
 The full 3D result is ploted during the post processing phase.
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-15
+.. GENERATED FROM PYTHON SOURCE LINES 9-16
 
 .. code-block:: Python
 
 
+    # sphinx_gallery_thumbnail_number = 3
     import fedoo as fd
     import numpy as np
     import pyvista as pv
@@ -42,11 +43,11 @@ The full 3D result is ploted during the post processing phase.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-17
+.. GENERATED FROM PYTHON SOURCE LINES 17-18
 
 The tube in the 2D axisymmetric space is modeled by a rectangle.
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-21
+.. GENERATED FROM PYTHON SOURCE LINES 18-22
 
 .. code-block:: Python
 
@@ -61,7 +62,7 @@ The tube in the 2D axisymmetric space is modeled by a rectangle.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-34
+.. GENERATED FROM PYTHON SOURCE LINES 23-35
 
 The elasto-plastic constitutive law "EPICP" from the Simcoon library is used.
 This law assume an isotropic hardening modeled with a power-law:
@@ -76,7 +77,7 @@ where
   - :math:`k` is the strain hardening constant,
   - :math:`m` is the strain hardening exponent.
 
-.. GENERATED FROM PYTHON SOURCE LINES 34-43
+.. GENERATED FROM PYTHON SOURCE LINES 35-44
 
 .. code-block:: Python
 
@@ -96,13 +97,13 @@ where
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-47
+.. GENERATED FROM PYTHON SOURCE LINES 45-48
 
 We build two assemblies for:
   - the mechanical static equilibrium
   - the self contact
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-60
+.. GENERATED FROM PYTHON SOURCE LINES 48-61
 
 .. code-block:: Python
 
@@ -126,7 +127,7 @@ We build two assemblies for:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-66
+.. GENERATED FROM PYTHON SOURCE LINES 62-67
 
 We define a non linear problem including geometrical non linearities with the
 updated lagrangian method (NLGEOM = 'UL') which is the default method in
@@ -134,7 +135,7 @@ fedoo (equivalent to NLGEOM = True).
 Some parameters of the newton-raphson algorithm are changed and the output
 files to save at each iteration are defined.
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-88
+.. GENERATED FROM PYTHON SOURCE LINES 67-89
 
 .. code-block:: Python
 
@@ -167,7 +168,7 @@ files to save at each iteration are defined.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 89-94
+.. GENERATED FROM PYTHON SOURCE LINES 90-95
 
 Plot with pyvista
 ~~~~~~~~~~~~~~~~~
@@ -175,7 +176,7 @@ A simple 3D plot of the :math:`\sigma_{zz}` field which coorespond to the
 :math:`\sigma_{\theta \theta}` component since the axisymmetric model work in
 cylindrical coordinates.
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-97
+.. GENERATED FROM PYTHON SOURCE LINES 95-98
 
 .. code-block:: Python
 
@@ -197,7 +198,7 @@ cylindrical coordinates.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-107
+.. GENERATED FROM PYTHON SOURCE LINES 99-108
 
 Write an animated gif of the equivalent plasticity :math:`p`, with full 3D
 reconstruction using :func:`fedoo.post_processing.axi_to_3d`.
@@ -209,7 +210,7 @@ reconstruction using :func:`fedoo.post_processing.axi_to_3d`.
   For instance, the 'XX' component of 'Stress' is the radial stress whereas
   the 'X' component of displacement is the true 3d displacement along x.
 
-.. GENERATED FROM PYTHON SOURCE LINES 107-134
+.. GENERATED FROM PYTHON SOURCE LINES 108-135
 
 .. code-block:: Python
 
@@ -255,12 +256,12 @@ reconstruction using :func:`fedoo.post_processing.axi_to_3d`.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 135-137
+.. GENERATED FROM PYTHON SOURCE LINES 136-138
 
 An example of how to do a realistic plot using the vtk physical based
 renderic availbale through pyvista.
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-155
+.. GENERATED FROM PYTHON SOURCE LINES 138-156
 
 .. code-block:: Python
 
@@ -268,13 +269,13 @@ renderic availbale through pyvista.
     pl = pv.Plotter(window_size=[608, 800])
     res.load(62)
     fd.post_processing.axi_to_3d(res, 41).plot(
-        'Disp',
-        'Z',
+        "Disp",
+        "Z",
         show_edges=False,
         pbr=True,
         metallic=1,
         roughness=0.5,
-        diffuse=1.,
+        diffuse=1.0,
         azimuth=0,
         elevation=-70,
         show_scalar_bar=False,
@@ -297,13 +298,13 @@ renderic availbale through pyvista.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 156-159
+.. GENERATED FROM PYTHON SOURCE LINES 157-160
 
 This example generate a relastic mp4 movie of the 3d deformation of the
 cylinder. It is commented because it is not possible to render the mp4 movie
 with sphinx-gallery.
 
-.. GENERATED FROM PYTHON SOURCE LINES 159-189
+.. GENERATED FROM PYTHON SOURCE LINES 160-190
 
 .. code-block:: Python
 
@@ -347,7 +348,7 @@ with sphinx-gallery.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 55.246 seconds)
+   **Total running time of the script:** (0 minutes 55.026 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_tube_compression.py:

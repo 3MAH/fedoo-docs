@@ -2688,6 +2688,8 @@ efficient way.
 However, the stored data may cause errors if the mesh is modified. In this case, the data should be recomputed,
 but it is not done by default. In this case, deleting the memory should
 resolve the problem.</p>
+<p>Note: it the MeshChange argument is set to True when creating the Assembly object, the
+memory will be recomputed by default, which may cause a decrease in assembling performances</p>
 </dd></dl>
 
 </section>
