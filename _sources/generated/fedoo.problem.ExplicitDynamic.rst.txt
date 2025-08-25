@@ -28,6 +28,7 @@
          ExplicitDynamic.SetMassMatrix
          ExplicitDynamic.SetRayleighDamping
          ExplicitDynamic.SetStiffnessMatrix
+         ExplicitDynamic.add_global_dof
          ExplicitDynamic.add_output
          ExplicitDynamic.apply_boundary_conditions
          ExplicitDynamic.get_A
@@ -48,6 +49,7 @@
          ExplicitDynamic.set_A
          ExplicitDynamic.set_B
          ExplicitDynamic.set_D
+         ExplicitDynamic.set_X
          ExplicitDynamic.set_active
          ExplicitDynamic.set_dof_solution
          ExplicitDynamic.set_solver
@@ -68,7 +70,10 @@
          
       
          ExplicitDynamic.active
+         ExplicitDynamic.global_dof
          ExplicitDynamic.n_dof
+         ExplicitDynamic.n_global_dof
+         ExplicitDynamic.n_node_dof
          ExplicitDynamic.name
          ExplicitDynamic.results
          ExplicitDynamic.solver

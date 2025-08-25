@@ -76,6 +76,15 @@ Create a simple sphere mesh using pyvista.
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/runner/work/fedoo/fedoo/examples/01-simple/spherical_shell_compression.py:24: PyVistaDeprecationWarning: 
+    spherical_shell_compression.py:24: Argument 'radius' must be passed as a keyword argument to function 'Sphere'.
+    From version 0.50, passing this as a positional argument will result in a TypeError.
+      mesh = fd.Mesh.from_pyvista(pv.Sphere(radius))
+
 
 
 
@@ -227,7 +236,7 @@ defined in the element local coordinate system
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.415 seconds)
+   **Total running time of the script:** (0 minutes 0.398 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_spherical_shell_compression.py:

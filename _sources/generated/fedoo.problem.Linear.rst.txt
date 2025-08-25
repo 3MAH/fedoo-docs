@@ -21,6 +21,7 @@
       
          Linear.GetElasticEnergy
          Linear.GetNodalElasticEnergy
+         Linear.add_global_dof
          Linear.add_output
          Linear.apply_boundary_conditions
          Linear.change_assembly
@@ -42,6 +43,7 @@
          Linear.set_A
          Linear.set_B
          Linear.set_D
+         Linear.set_X
          Linear.set_active
          Linear.set_dof_solution
          Linear.set_solver
@@ -62,7 +64,10 @@
       
          Linear.active
          Linear.assembly
+         Linear.global_dof
          Linear.n_dof
+         Linear.n_global_dof
+         Linear.n_node_dof
          Linear.name
          Linear.results
          Linear.solver

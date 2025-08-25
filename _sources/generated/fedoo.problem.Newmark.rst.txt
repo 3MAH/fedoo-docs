@@ -28,6 +28,7 @@
          Newmark.SetInitialDisplacement
          Newmark.SetInitialVelocity
          Newmark.SetRayleighDamping
+         Newmark.add_global_dof
          Newmark.add_output
          Newmark.apply_boundary_conditions
          Newmark.get_A
@@ -51,6 +52,7 @@
          Newmark.set_A
          Newmark.set_B
          Newmark.set_D
+         Newmark.set_X
          Newmark.set_active
          Newmark.set_dof_solution
          Newmark.set_solver
@@ -71,7 +73,10 @@
          
       
          Newmark.active
+         Newmark.global_dof
          Newmark.n_dof
+         Newmark.n_global_dof
+         Newmark.n_node_dof
          Newmark.name
          Newmark.results
          Newmark.solver

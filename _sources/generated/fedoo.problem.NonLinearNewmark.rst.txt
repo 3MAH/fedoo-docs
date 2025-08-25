@@ -26,6 +26,7 @@
          NonLinearNewmark.SetInitialDisplacement
          NonLinearNewmark.SetInitialVelocity
          NonLinearNewmark.SetRayleighDamping
+         NonLinearNewmark.add_global_dof
          NonLinearNewmark.add_output
          NonLinearNewmark.apply_boundary_conditions
          NonLinearNewmark.change_assembly
@@ -53,6 +54,7 @@
          NonLinearNewmark.set_A
          NonLinearNewmark.set_B
          NonLinearNewmark.set_D
+         NonLinearNewmark.set_X
          NonLinearNewmark.set_active
          NonLinearNewmark.set_dof_solution
          NonLinearNewmark.set_nr_criterion
@@ -79,8 +81,11 @@
       
          NonLinearNewmark.active
          NonLinearNewmark.assembly
+         NonLinearNewmark.global_dof
          NonLinearNewmark.n_dof
+         NonLinearNewmark.n_global_dof
          NonLinearNewmark.n_iter
+         NonLinearNewmark.n_node_dof
          NonLinearNewmark.name
          NonLinearNewmark.results
          NonLinearNewmark.solver

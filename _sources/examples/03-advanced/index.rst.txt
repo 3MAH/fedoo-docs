@@ -16,6 +16,23 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="The periodic mesh of the Gyriod has been generated with microgen. This example show how to define periodic boundary conditions and to load the structure with prescribed strain in local coordinate system. After that, the mean stress and mean strain results are extracted in local and global coordinate system.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_3D_periodic_BC_off_axis_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_03-advanced_3D_periodic_BC_off_axis.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tensile test on a Gyroid unit cell with periodic boundary condition</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="This model uses self-contact, elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase.">
 
 .. only:: html
@@ -41,5 +58,6 @@ This section show some advanced capabilities of fedoo.
 .. toctree::
    :hidden:
 
+   /examples/03-advanced/3D_periodic_BC_off_axis
    /examples/03-advanced/tube_compression
 

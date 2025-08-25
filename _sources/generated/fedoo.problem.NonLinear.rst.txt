@@ -21,6 +21,7 @@
       
          NonLinear.NewtonRaphsonError
          NonLinear.NewtonRaphsonIncrement
+         NonLinear.add_global_dof
          NonLinear.add_output
          NonLinear.apply_boundary_conditions
          NonLinear.change_assembly
@@ -46,6 +47,7 @@
          NonLinear.set_A
          NonLinear.set_B
          NonLinear.set_D
+         NonLinear.set_X
          NonLinear.set_active
          NonLinear.set_dof_solution
          NonLinear.set_nr_criterion
@@ -72,8 +74,11 @@
       
          NonLinear.active
          NonLinear.assembly
+         NonLinear.global_dof
          NonLinear.n_dof
+         NonLinear.n_global_dof
          NonLinear.n_iter
+         NonLinear.n_node_dof
          NonLinear.name
          NonLinear.results
          NonLinear.solver

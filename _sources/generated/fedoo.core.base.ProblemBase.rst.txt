@@ -19,6 +19,7 @@
          :toctree:
          
       
+         ProblemBase.add_global_dof
          ProblemBase.get_active
          ProblemBase.get_all
          ProblemBase.make_active
@@ -37,6 +38,8 @@
          
       
          ProblemBase.active
+         ProblemBase.global_dof
+         ProblemBase.n_global_dof
          ProblemBase.name
          ProblemBase.solver
          ProblemBase.space

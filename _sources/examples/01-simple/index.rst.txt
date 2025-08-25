@@ -53,6 +53,23 @@ apply basics boundary conditions and get the results.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Beam Lattice Structure using beam model with geometric nonlinearities">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_lattice_beam_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_01-simple_lattice_beam.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Beam Lattice Structure using beam model with geometric nonlinearities</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Define and solve user equation">
 
 .. only:: html
@@ -148,6 +165,7 @@ apply basics boundary conditions and get the results.
 
    /examples/01-simple/I_shape_beam_bending
    /examples/01-simple/Plate_with_hole_in_tension
+   /examples/01-simple/lattice_beam
    /examples/01-simple/poison_eq
    /examples/01-simple/simpleBeamElementExample
    /examples/01-simple/simple_cantilever_beam_3D_model
