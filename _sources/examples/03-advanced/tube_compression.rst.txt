@@ -169,8 +169,8 @@ files to save at each iteration are defined.
 
  .. code-block:: none
 
-    /home/runner/work/fedoo/fedoo/fedoo/core/mesh.py:990: PyVistaDeprecationWarning: 
-    ../../fedoo/core/mesh.py:990: Argument 'binary' must be passed as a keyword argument to function 'DataObject.save'.
+    /home/runner/work/fedoo/fedoo/fedoo/core/mesh.py:970: PyVistaDeprecationWarning: 
+    ../../fedoo/core/mesh.py:970: Argument 'binary' must be passed as a keyword argument to function 'DataObject.save'.
     From version 0.50, passing this as a positional argument will result in a TypeError.
       self.to_pyvista().save(filename, binary)
 
@@ -357,7 +357,7 @@ with sphinx-gallery.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 54.514 seconds)
+   **Total running time of the script:** (0 minutes 55.945 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_tube_compression.py:

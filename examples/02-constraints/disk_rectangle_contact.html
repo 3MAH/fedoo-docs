@@ -79,7 +79,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.add_internal_nodes.html">fedoo.Mesh.add_internal_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.add_node_set.html">fedoo.Mesh.add_node_set</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.add_nodes.html">fedoo.Mesh.add_nodes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.add_virtual_nodes.html">fedoo.Mesh.add_virtual_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.as_2d.html">fedoo.Mesh.as_2d</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.as_3d.html">fedoo.Mesh.as_3d</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.convert_data.html">fedoo.Mesh.convert_data</a></li>
@@ -119,10 +118,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.n_elements.html">fedoo.Mesh.n_elements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.n_elm_nodes.html">fedoo.Mesh.n_elm_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.n_nodes.html">fedoo.Mesh.n_nodes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.n_physical_nodes.html">fedoo.Mesh.n_physical_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.name.html">fedoo.Mesh.name</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.ndim.html">fedoo.Mesh.ndim</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.physical_nodes.html">fedoo.Mesh.physical_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.nodes.html">fedoo.Mesh.nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.elements.html">fedoo.Mesh.elements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.elm_type.html">fedoo.Mesh.elm_type</a></li>
@@ -2800,8 +2797,8 @@ to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="contact-bewteen-a-disk-and-a-rectangle">
 <span id="sphx-glr-examples-02-constraints-disk-rectangle-contact-py"></span><h1>Contact bewteen a disk and a rectangle<a class="headerlink" href="#contact-bewteen-a-disk-and-a-rectangle" title="Link to this heading"></a></h1>
-<img src="../../_images/sphx_glr_disk_rectangle_contact_001.png" srcset="../../_images/sphx_glr_disk_rectangle_contact_001.png" alt="disk rectangle contact" class = "sphx-glr-single-img"/><img src="../../_images/sphx_glr_disk_rectangle_contact_002.png" srcset="../../_images/sphx_glr_disk_rectangle_contact_002.png" alt="disk rectangle contact" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/fedoo/fedoo/fedoo/core/mesh.py:990: PyVistaDeprecationWarning:
-../../fedoo/core/mesh.py:990: Argument &#39;binary&#39; must be passed as a keyword argument to function &#39;DataObject.save&#39;.
+<img src="../../_images/sphx_glr_disk_rectangle_contact_001.png" srcset="../../_images/sphx_glr_disk_rectangle_contact_001.png" alt="disk rectangle contact" class = "sphx-glr-single-img"/><img src="../../_images/sphx_glr_disk_rectangle_contact_002.png" srcset="../../_images/sphx_glr_disk_rectangle_contact_002.png" alt="disk rectangle contact" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/fedoo/fedoo/fedoo/core/mesh.py:970: PyVistaDeprecationWarning:
+../../fedoo/core/mesh.py:970: Argument &#39;binary&#39; must be passed as a keyword argument to function &#39;DataObject.save&#39;.
 From version 0.50, passing this as a positional argument will result in a TypeError.
   self.to_pyvista().save(filename, binary)
 Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00326
@@ -2981,7 +2978,7 @@ Iter 32 - Time: 1.00000 - dt 0.12207 - NR iter: 1 - Err: 0.00000
 <span class="c1"># #or results.plot_history(&#39;Stress&#39;, 12)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.515 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.647 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-constraints-disk-rectangle-contact-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/28b68c70e830110f02039ed8129e4235/disk_rectangle_contact.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">disk_rectangle_contact.ipynb</span></code></a></p>

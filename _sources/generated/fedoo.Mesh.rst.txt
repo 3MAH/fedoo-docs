@@ -23,7 +23,6 @@
          Mesh.add_internal_nodes
          Mesh.add_node_set
          Mesh.add_nodes
-         Mesh.add_virtual_nodes
          Mesh.as_2d
          Mesh.as_3d
          Mesh.convert_data
@@ -75,10 +74,8 @@
          Mesh.n_elements
          Mesh.n_elm_nodes
          Mesh.n_nodes
-         Mesh.n_physical_nodes
          Mesh.name
          Mesh.ndim
-         Mesh.physical_nodes
          Mesh.nodes
          Mesh.elements
          Mesh.elm_type
