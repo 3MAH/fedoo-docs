@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tensile test on a Gyroid unit cell with periodic boundary condition &mdash; fedoo  documentation</title>
+  <title>Off-axis tensile test on a Gyroid unit cell with periodic boundary condition &mdash; fedoo  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
@@ -2746,7 +2746,7 @@
 </ul>
 </li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">Advanced problems</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Tensile test on a Gyroid unit cell with periodic boundary condition</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tube_compression.html">Compression of a tube using 2D axisymmetric model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
 </ul>
@@ -2780,7 +2780,7 @@
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
           <li class="breadcrumb-item"><a href="index.html">Advanced problems</a></li>
-      <li class="breadcrumb-item active">Tensile test on a Gyroid unit cell with periodic boundary condition</li>
+      <li class="breadcrumb-item active">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/examples/03-advanced/3D_periodic_BC_off_axis.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -2795,18 +2795,18 @@
 <p><a class="reference internal" href="#sphx-glr-download-examples-03-advanced-3d-periodic-bc-off-axis-py"><span class="std std-ref">Go to the end</span></a>
 to download the full example code.</p>
 </div>
-<section class="sphx-glr-example-title" id="tensile-test-on-a-gyroid-unit-cell-with-periodic-boundary-condition">
-<span id="sphx-glr-examples-03-advanced-3d-periodic-bc-off-axis-py"></span><h1>Tensile test on a Gyroid unit cell with periodic boundary condition<a class="headerlink" href="#tensile-test-on-a-gyroid-unit-cell-with-periodic-boundary-condition" title="Link to this heading"></a></h1>
+<section class="sphx-glr-example-title" id="off-axis-tensile-test-on-a-gyroid-unit-cell-with-periodic-boundary-condition">
+<span id="sphx-glr-examples-03-advanced-3d-periodic-bc-off-axis-py"></span><h1>Off-axis tensile test on a Gyroid unit cell with periodic boundary condition<a class="headerlink" href="#off-axis-tensile-test-on-a-gyroid-unit-cell-with-periodic-boundary-condition" title="Link to this heading"></a></h1>
 <p>The periodic mesh of the Gyriod has been generated with microgen.
 This example show how to define periodic boundary conditions and
 to load the structure with prescribed strain in local coordinate system.
-After that, the mean stress and mean strain results are extracted in local and global
-coordinate system.</p>
+After that, the mean stress and mean strain results are extracted in local and
+global coordinate system.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span>
 
-<span class="c1"># --------------- Pre-Treatment --------------------------------------------------------</span>
+<span class="c1"># --------------- Pre-Treatment -----------------------------------------------</span>
 
 <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;3D&quot;</span><span class="p">)</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;../../util/meshes/gyroid_per.vtk&quot;</span><span class="p">)</span>
@@ -2839,8 +2839,9 @@ coordinate system.</p>
 <span class="c1"># off axis traction along the local x axis = &#39;1&#39;</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="s2">&quot;E_11&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># Warning: the global strain are eliminated from the problem and are no more applicable</span>
-<span class="c1"># for BC. For instance: pb.bc.add(&quot;Dirichlet&quot;, &quot;E_xx&quot;, 1) will have no effect.</span>
+<span class="c1"># Warning: the global strain are eliminated from the problem and are no more</span>
+<span class="c1"># applicable for BC. For instance: pb.bc.add(&quot;Dirichlet&quot;, &quot;E_xx&quot;, 1) will have</span>
+<span class="c1"># no effect.</span>
 
 
 <span class="c1"># --------------- Solve -----------------------------------------------------</span>
@@ -2966,7 +2967,7 @@ Stress tensor using integration:
  [-4.645e-04  3.360e-04  4.221e-04]]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.046 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 7.865 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-3d-periodic-bc-off-axis-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/843981659eacdc34289da3fc54525360/3D_periodic_BC_off_axis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">3D_periodic_BC_off_axis.ipynb</span></code></a></p>

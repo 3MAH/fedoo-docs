@@ -18,16 +18,16 @@
 .. _sphx_glr_examples_03-advanced_3D_periodic_BC_off_axis.py:
 
 
-Tensile test on a Gyroid unit cell with periodic boundary condition
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Off-axis tensile test on a Gyroid unit cell with periodic boundary condition
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The periodic mesh of the Gyriod has been generated with microgen.
 This example show how to define periodic boundary conditions and
 to load the structure with prescribed strain in local coordinate system.
-After that, the mean stress and mean strain results are extracted in local and global
-coordinate system.
+After that, the mean stress and mean strain results are extracted in local and
+global coordinate system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-56
+.. GENERATED FROM PYTHON SOURCE LINES 11-57
 
 .. code-block:: Python
 
@@ -36,7 +36,7 @@ coordinate system.
     import numpy as np
     from scipy.spatial.transform import Rotation
 
-    # --------------- Pre-Treatment --------------------------------------------------------
+    # --------------- Pre-Treatment -----------------------------------------------
 
     fd.ModelingSpace("3D")
     mesh = fd.Mesh.read("../../util/meshes/gyroid_per.vtk")
@@ -69,8 +69,9 @@ coordinate system.
     # off axis traction along the local x axis = '1'
     pb.bc.add("Dirichlet", "E_11", 1)
 
-    # Warning: the global strain are eliminated from the problem and are no more applicable
-    # for BC. For instance: pb.bc.add("Dirichlet", "E_xx", 1) will have no effect.
+    # Warning: the global strain are eliminated from the problem and are no more
+    # applicable for BC. For instance: pb.bc.add("Dirichlet", "E_xx", 1) will have
+    # no effect.
 
 
     # --------------- Solve -----------------------------------------------------
@@ -83,11 +84,11 @@ coordinate system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-58
+.. GENERATED FROM PYTHON SOURCE LINES 58-59
 
 print the macroscopic strain tensor and stress tensor
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-145
+.. GENERATED FROM PYTHON SOURCE LINES 59-146
 
 .. code-block:: Python
 
@@ -231,7 +232,7 @@ print the macroscopic strain tensor and stress tensor
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.046 seconds)
+   **Total running time of the script:** (0 minutes 7.865 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_3D_periodic_BC_off_axis.py:
