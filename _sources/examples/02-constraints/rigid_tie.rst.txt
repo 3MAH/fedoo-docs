@@ -41,10 +41,6 @@ rotation is imposed on the top face.
 
  .. code-block:: none
 
-    /home/runner/work/fedoo/fedoo/fedoo/core/mesh.py:970: PyVistaDeprecationWarning: 
-    ../../fedoo/core/mesh.py:970: Argument 'binary' must be passed as a keyword argument to function 'DataObject.save'.
-    From version 0.50, passing this as a positional argument will result in a TypeError.
-      self.to_pyvista().save(filename, binary)
     Iter 1 - Time: 0.20000 - dt 0.20000 - NR iter: 2 - Err: 0.00996
     Iter 2 - Time: 0.40000 - dt 0.20000 - NR iter: 2 - Err: 0.00976
     Iter 3 - Time: 0.60000 - dt 0.20000 - NR iter: 3 - Err: 0.00469
@@ -112,7 +108,7 @@ rotation is imposed on the top face.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.515 seconds)
+   **Total running time of the script:** (0 minutes 0.527 seconds)
 
 
 .. _sphx_glr_download_examples_02-constraints_rigid_tie.py:
