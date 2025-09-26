@@ -2796,7 +2796,75 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.core.mesh.Mesh"><span class="pre">Mesh</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'node'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.DataSet" title="Link to this definition"></a></dt>
 <dd><p>Object to store, save, load and plot data associated to a mesh.</p>
 <p>DataSet have a multiframe version <a class="reference internal" href="fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MultiFrameDataSet</span></code></a> that
-is a class that encapsulate several DataSet mainly usefull for time dependent data.</p>
+is a class that encapsulate several DataSet mainly usefull for time
+dependent data.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fedoo.DataSet.mesh">
+<span class="sig-name descname"><span class="pre">mesh</span></span><a class="headerlink" href="#fedoo.DataSet.mesh" title="Link to this definition"></a></dt>
+<dd><p>Mesh object associated to the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fd.Mesh</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fedoo.DataSet.node_data">
+<span class="sig-name descname"><span class="pre">node_data</span></span><a class="headerlink" href="#fedoo.DataSet.node_data" title="Link to this definition"></a></dt>
+<dd><p>Dictionnary of data fields defined at mesh nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fedoo.DataSet.element_data">
+<span class="sig-name descname"><span class="pre">element_data</span></span><a class="headerlink" href="#fedoo.DataSet.element_data" title="Link to this definition"></a></dt>
+<dd><p>Dictionnary of data fields defined at mesh elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fedoo.DataSet.gausspoint_data">
+<span class="sig-name descname"><span class="pre">gausspoint_data</span></span><a class="headerlink" href="#fedoo.DataSet.gausspoint_data" title="Link to this definition"></a></dt>
+<dd><p>Dictionnary of data fields defined at gauss points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fedoo.DataSet.res.scalar_data">
+<span class="sig-prename descclassname"><span class="pre">res.</span></span><span class="sig-name descname"><span class="pre">scalar_data</span></span><a class="headerlink" href="#fedoo.DataSet.res.scalar_data" title="Link to this definition"></a></dt>
+<dd><p>Dictionnary of scalar data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Data in the node_data, element_data or gauspoint_data dictionarries
+should be provided as 1D or 2D NumPy arrays, where the last
+dimension matches the number of nodes, elements or integration
+points in the associated mesh, respectively.</p>
+<p>For gausspoint_data, the number of Gauss points per element is assumed
+to be constant and is inferred from the array’s shape.</p>
+<p>If 2D NumPy arrays are provided, or 1D for scalar data,
+the first dimension corresponds to the data components.</p>
+<p>To access data, it is recommended to use the
+<a class="reference internal" href="fedoo.DataSet.get_data.html#fedoo.DataSet.get_data" title="fedoo.DataSet.get_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.DataSet.get_data()</span></code></a> method as it supports automatic
+conversion between different data types.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -2820,7 +2888,7 @@ is a class that encapsulate several DataSet mainly usefull for time dependent da
 <td><p>Update the DataSet object including all the node, element and gausspoint data from antoher DataSet object data_set.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.get_data.html#fedoo.DataSet.get_data" title="fedoo.DataSet.get_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.get_data</span></code></a>(field[, component, ...])</p></td>
-<td><p></p></td>
+<td><p>Retrieve data from the DataSet for a given field.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.load.html#fedoo.DataSet.load" title="fedoo.DataSet.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.load</span></code></a>(data[, load_mesh, iteration])</p></td>
 <td><p>Load data from a data object.</p></td>

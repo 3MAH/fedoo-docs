@@ -2795,7 +2795,38 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.MultiFrameDataSet.get_data">
 <span class="sig-prename descclassname"><span class="pre">MultiFrameDataSet.</span></span><span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MultiFrameDataSet.get_data" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Retrieve data from the DataSet for a given field.</p>
+<p>This method is equivalent to the <cite>DataSet.__getitem__</cite> magic method.
+One may prefer to use the shorthand syntax:
+<cite>dataset[field, component, data_type]</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>field</strong> (<em>str</em>) – Name of the data field to retrieve.</p></li>
+<li><p><strong>component</strong> (<em>int</em><em>, </em><em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Index or label of the component to extract if the data is
+multi-dimensional.
+If None, all components are returned.</p></li>
+<li><p><strong>data_type</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Desired data type to convert to. Can be one of ‘Node’, ‘Element’,
+or ‘GaussPoint’.
+If None, the original data type is preserved.</p></li>
+<li><p><strong>return_data_type</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, the method returns a tuple <cite>(data, data_type)</cite>
+where <cite>data_type</cite> is the type of the returned data. If False, only
+the data is returned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – The requested data, possibly converted to the specified type.</p></li>
+<li><p><strong>data_type</strong> (<em>str, optional</em>) – Returned only if <cite>return_data_type</cite> is True.
+Indicates the type of the returned data.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method supports automatic conversion between node, element,
+and Gauss point data types when applicable.</p>
+</dd></dl>
 
 </section>
 
