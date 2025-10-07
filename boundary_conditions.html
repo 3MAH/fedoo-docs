@@ -2975,10 +2975,11 @@ the problem in the “<em>bc</em>” attribute of the problem instance.</p>
 </table>
 <section id="dirichlet-and-neumann-boundary-conditions">
 <h3>Dirichlet and Neumann Boundary conditions<a class="headerlink" href="#dirichlet-and-neumann-boundary-conditions" title="Link to this heading"></a></h3>
-<p>The usual boundary conditions are associated with the
-<a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html#fedoo.core.BoundaryCondition" title="fedoo.core.BoundaryCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.BoundaryCondition</span></code></a> Object. The recommanded way to
-apply some boundary conditions is to use the method <a class="reference internal" href="generated/fedoo.ListBC.add.html#fedoo.ListBC.add" title="fedoo.ListBC.add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ListBC.add()</span></code></a>,
-directly from problem attribute <a class="reference internal" href="generated/fedoo.Problem.bc.html#fedoo.Problem.bc" title="fedoo.Problem.bc"><code class="xref py py-attr docutils literal notranslate"><span class="pre">fedoo.Problem.bc</span></code></a>.</p>
+<p>The recommanded way to apply some boundary conditions is to use the method
+<a class="reference internal" href="generated/fedoo.ListBC.add.html#fedoo.ListBC.add" title="fedoo.ListBC.add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ListBC.add()</span></code></a>, directly from problem attribute
+<a class="reference internal" href="generated/fedoo.Problem.bc.html#fedoo.Problem.bc" title="fedoo.Problem.bc"><code class="xref py py-attr docutils literal notranslate"><span class="pre">fedoo.Problem.bc</span></code></a>.
+This method build a <a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html#fedoo.core.BoundaryCondition" title="fedoo.core.BoundaryCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.BoundaryCondition</span></code></a> object and add it to
+the problem boundary conditions.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html#fedoo.core.BoundaryCondition" title="fedoo.core.BoundaryCondition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.core.BoundaryCondition</span></code></a>(bc_type, ...[, ...])</p></td>
