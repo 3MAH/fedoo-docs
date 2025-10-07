@@ -2961,7 +2961,7 @@ The added global dof are:</p>
 <li><p>For “small_strain” the linearized strain tensor components are introduced. The
 following global variables are therefore accessible:
 ‘E_xx’, ‘E_yy’, ‘E_zz’, ‘E_xy’, ‘E_xz’, ‘E_yz’ in 3d (only the in-plane
-component in 2d)
+component in 2d).
 The whole component can also be extracted using the vector name ‘MeanStrain.’</p></li>
 <li><p>For “finite_strain”, the displacement gradient is utilized:
 ‘DU_xx’, ‘DU_xy’, ‘DU_xz’, ‘DU_yx’, ‘DU_yy’, ‘DU_yz’, ‘DU_zx’, ‘DU_zy’, ‘DU_zz’
@@ -3002,12 +3002,18 @@ either a a periodic mesh, either</p></li>
 <li><p>The periodic nodes are automatically detected using the given tolerance (tol).</p></li>
 <li><p>The nodes of the Xp (x=xmax), Yp (y=ymax) and Zp (z=zmax) faces are
 eliminated from the system (slave nodes) and can’t be used in another mpc.</p></li>
+<li><p>For “small_strain” periodicity, the shear strain components are expressed
+with the Voigt notation which uses shear angles rather than the corresponding
+strain tensor terms—these differ by a factor of 2. This behavior can be changed
+by setting the shear_coef attribute to 1 (see example below).</p></li>
 </ul>
 <p class="rubric">Example</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">()</span>
 <span class="n">bc_periodic</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="n">periodicity_type</span> <span class="o">=</span> <span class="s1">&#39;small_strain&#39;</span><span class="p">)</span>
+<span class="n">bc_periodic</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="n">periodicity_type</span><span class="o">=</span><span class="s2">&quot;small_strain&quot;</span><span class="p">)</span>
+<span class="n">bc_periodic</span><span class="o">.</span><span class="n">shear_coef</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># use strain tensor shear terms instead of angles</span>
 </pre></div>
 </div>
 <dl class="py method">
