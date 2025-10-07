@@ -1,0 +1,69 @@
+﻿fedoo.Problem
+=============
+
+.. currentmodule:: fedoo
+
+.. autoclass:: Problem
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         Problem.add_global_dof
+         Problem.add_output
+         Problem.apply_boundary_conditions
+         Problem.get_A
+         Problem.get_B
+         Problem.get_D
+         Problem.get_X
+         Problem.get_active
+         Problem.get_all
+         Problem.get_dof_solution
+         Problem.get_ext_forces
+         Problem.get_results
+         Problem.init_bc_start_value
+         Problem.make_active
+         Problem.save_results
+         Problem.set_A
+         Problem.set_B
+         Problem.set_D
+         Problem.set_X
+         Problem.set_active
+         Problem.set_dof_solution
+         Problem.set_solver
+         Problem.solve
+         Problem.update_boundary_conditions
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         Problem.active
+         Problem.global_dof
+         Problem.n_dof
+         Problem.n_global_dof
+         Problem.n_node_dof
+         Problem.name
+         Problem.results
+         Problem.solver
+         Problem.space
+         Problem.bc
+  
+  
