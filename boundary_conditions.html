@@ -25,7 +25,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="fedoo.MPC" href="generated/fedoo.MPC.html" />
+    <link rel="next" title="fedoo.ListBC" href="generated/fedoo.ListBC.html" />
     <link rel="prev" title="fedoo.core.base.ProblemBase.bc" href="generated/fedoo.core.base.ProblemBase.bc.html" /> 
 </head>
 
@@ -2446,13 +2446,27 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Boundary conditions and constraints</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basic-boundary-conditions">Basic boundary conditions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#fedoo.ListBC"><code class="docutils literal notranslate"><span class="pre">ListBC</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#fedoo.ListBC.add"><code class="docutils literal notranslate"><span class="pre">ListBC.add()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#fedoo.ListBC.mpc"><code class="docutils literal notranslate"><span class="pre">ListBC.mpc()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#fedoo.ListBC.str_condensed"><code class="docutils literal notranslate"><span class="pre">ListBC.str_condensed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.ListBC.html">fedoo.ListBC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.html#fedoo.ListBC"><code class="docutils literal notranslate"><span class="pre">ListBC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.__getitem__.html">fedoo.ListBC.__getitem__</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.__len__.html">fedoo.ListBC.__len__</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.add.html">fedoo.ListBC.add</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.append.html">fedoo.ListBC.append</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.extend.html">fedoo.ListBC.extend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.generate.html">fedoo.ListBC.generate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.get_all.html">fedoo.ListBC.get_all</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.initialize.html">fedoo.ListBC.initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.list_all.html">fedoo.ListBC.list_all</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.mpc.html">fedoo.ListBC.mpc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.remove.html">fedoo.ListBC.remove</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.str_condensed.html">fedoo.ListBC.str_condensed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.ListBC.name.html">fedoo.ListBC.name</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#dirichlet-and-neumann-boundary-conditions">Dirichlet and Neumann Boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dirichlet-and-neumann-boundary-conditions">Dirichlet and Neumann Boundary conditions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html">fedoo.core.BoundaryCondition</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#multi-point-constraints">Multi Point Constraints</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.MPC.html">fedoo.MPC</a></li>
 </ul>
@@ -2808,54 +2822,27 @@ more general that simple boundary conditions.</p></li>
 </div></blockquote>
 <p>Each time a problem is created, a list of boundary conditions is associated to
 the problem in the “<em>bc</em>” attribute of the problem instance.</p>
-<p>problem.bc is then a <a class="reference internal" href="#fedoo.ListBC" title="fedoo.ListBC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.ListBC</span></code></a> Object.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="fedoo.ListBC">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ListBC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.ListBC" title="Link to this definition"></a></dt>
-<dd><p>Class that define a list of ordered elementary boundary conditions (the bc are applied in the list order).
-Derived from the python list object</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="fedoo.ListBC.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.ListBC.add" title="Link to this definition"></a></dt>
-<dd><p>Add a boundary condition to the ListBC object, and then to the associated problem
-if there is one.</p>
-<p>Three possible uses:</p>
-<ul>
-<li><p>ListBC.add(bc), where bc is any BC object.</p>
-<p>Add the object bc at the end of the list. (equivalent to ListBC.append(bc))</p>
-</li>
-<li><p>ListBC.add(bc_type, node_set, variable, value, time_func=None, start_value=None, name=””):</p>
-<p>Define some standard boundary conditions (Dirichlet of Neumann BC), using
-the BoundaryCondition.create staticmethod, and add it at the end of the list.</p>
-<p>Same agruments as the <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.BoundaryCondition.create()</span></code> static method.</p>
-</li>
-<li><p>ListBC.add(bc_type, variable, value, time_func=None, start_value=None, name=””):</p>
-<p>If a variable contains only one dof, the node_set parameter can be skiped.</p>
-</li>
-</ul>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="fedoo.ListBC.mpc">
-<span class="sig-name descname"><span class="pre">mpc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.ListBC.mpc" title="Link to this definition"></a></dt>
-<dd><p>Add a linear multi-point constraint to the list of boundary conditions.</p>
-<p>This method is equivalent to use the method add with a MPC object:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">MPC</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>The arguments are the same as the <a class="reference internal" href="generated/fedoo.MPC.html#fedoo.MPC" title="fedoo.MPC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MPC</span></code></a> constructor.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="fedoo.ListBC.str_condensed">
-<span class="sig-name descname"><span class="pre">str_condensed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.ListBC.str_condensed" title="Link to this definition"></a></dt>
-<dd><p>Return a condensed one line str describing the object</p>
-</dd></dl>
-
-</dd></dl>
-
+<p>problem.bc is then a <a class="reference internal" href="generated/fedoo.ListBC.html#fedoo.ListBC" title="fedoo.ListBC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.ListBC</span></code></a> Object.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.ListBC.html#fedoo.ListBC" title="fedoo.ListBC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.ListBC</span></code></a>([l, name])</p></td>
+<td><p>Class that define a list of ordered elementary boundary conditions (the bc are applied in the list order).</p></td>
+</tr>
+</tbody>
+</table>
 <section id="dirichlet-and-neumann-boundary-conditions">
 <h3>Dirichlet and Neumann Boundary conditions<a class="headerlink" href="#dirichlet-and-neumann-boundary-conditions" title="Link to this heading"></a></h3>
+<p>The usual boundary conditions are associated with the
+<a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html#fedoo.core.BoundaryCondition" title="fedoo.core.BoundaryCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.BoundaryCondition</span></code></a> Object. The recommanded way to
+apply some boundary conditions is to use the method <a class="reference internal" href="generated/fedoo.ListBC.add.html#fedoo.ListBC.add" title="fedoo.ListBC.add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ListBC.add()</span></code></a>,
+directly from problem attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">fedoo.Problem.bc</span></code>.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html#fedoo.core.BoundaryCondition" title="fedoo.core.BoundaryCondition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.core.BoundaryCondition</span></code></a>(bc_type, ...[, ...])</p></td>
+<td><p>Classe de condition limite</p></td>
+</tr>
+</tbody>
+</table>
 <p>Here are some examples to add some Dirichlet or Neumann Boundary conditions
 for a given problem  <em>pb</em>:</p>
 <p>Displacement along the X axis blocked (=0) for the nodes 0, 1 and 8</p>
@@ -3068,7 +3055,7 @@ assembly with <a class="reference internal" href="Assembly.html#fedoo.Assembly.s
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="generated/fedoo.core.base.ProblemBase.bc.html" class="btn btn-neutral float-left" title="fedoo.core.base.ProblemBase.bc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="generated/fedoo.MPC.html" class="btn btn-neutral float-right" title="fedoo.MPC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="generated/fedoo.ListBC.html" class="btn btn-neutral float-right" title="fedoo.ListBC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

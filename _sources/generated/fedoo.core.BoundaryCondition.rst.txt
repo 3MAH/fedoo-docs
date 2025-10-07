@@ -1,0 +1,44 @@
+﻿fedoo.core.BoundaryCondition
+============================
+
+.. currentmodule:: fedoo.core
+
+.. autoclass:: BoundaryCondition
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         BoundaryCondition.change_value
+         BoundaryCondition.create
+         BoundaryCondition.generate
+         BoundaryCondition.get_all
+         BoundaryCondition.get_true_value
+         BoundaryCondition.get_value
+         BoundaryCondition.initialize
+         BoundaryCondition.str_condensed
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         BoundaryCondition.name
+  
+  

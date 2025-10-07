@@ -1,0 +1,48 @@
+﻿fedoo.ListBC
+============
+
+.. currentmodule:: fedoo
+
+.. autoclass:: ListBC
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         ListBC.__getitem__
+         ListBC.__len__
+         ListBC.add
+         ListBC.append
+         ListBC.extend
+         ListBC.generate
+         ListBC.get_all
+         ListBC.initialize
+         ListBC.list_all
+         ListBC.mpc
+         ListBC.remove
+         ListBC.str_condensed
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         ListBC.name
+  
+  
