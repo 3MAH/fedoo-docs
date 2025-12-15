@@ -81,6 +81,7 @@
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.add_nodes.html">fedoo.Mesh.add_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.as_2d.html">fedoo.Mesh.as_2d</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.as_3d.html">fedoo.Mesh.as_3d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.as_ndim.html">fedoo.Mesh.as_ndim</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.convert_data.html">fedoo.Mesh.convert_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.copy.html">fedoo.Mesh.copy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.data_to_gausspoint.html">fedoo.Mesh.data_to_gausspoint</a></li>
@@ -125,6 +126,7 @@
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.elm_type.html">fedoo.Mesh.elm_type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.node_sets.html">fedoo.Mesh.node_sets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.element_sets.html">fedoo.Mesh.element_sets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.Mesh.local_frame.html">fedoo.Mesh.local_frame</a></li>
 </ul>
 </li>
 </ul>
@@ -206,6 +208,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.mesh.line_mesh_cylindric.html#fedoo.mesh.line_mesh_cylindric"><code class="docutils literal notranslate"><span class="pre">line_mesh_cylindric()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.circle_mesh.html">fedoo.mesh.circle_mesh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.mesh.circle_mesh.html#fedoo.mesh.circle_mesh"><code class="docutils literal notranslate"><span class="pre">circle_mesh()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a><ul>
@@ -3045,7 +3051,7 @@ The mesh is not included and may be saved beside in a vtk file.</p></li>
 <p>Then, we can catch the Stress, Displacement and Strain fields using:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="s2">&quot;Strain&quot;</span><span class="p">])</span>
 <span class="c1"># plot the sigma_xx averaged at nodes</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">&#39;XX&#39;</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">&#39;XX&#39;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;Node&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="_images/example_plot_dataset.png" src="_images/example_plot_dataset.png" />
@@ -3063,7 +3069,7 @@ time interval (here the results are saved on a file).</p>
 <span class="n">pb_nl</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">interval_output</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
 
 <span class="c1"># plot the sigma_xx averaged at nodes at the last increment</span>
-<span class="n">results_nl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">&#39;XX&#39;</span><span class="p">)</span>
+<span class="n">results_nl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">&#39;XX&#39;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;Node&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="_images/example_plot_dataset_nl.png" src="_images/example_plot_dataset_nl.png" />
@@ -3159,7 +3165,9 @@ movie using the pyvista library.</p>
 <a class="reference internal" href="#very-simple-problem"><span class="std std-ref">problem</span></a> defined above. The idea is to use a
 scale_factor applied to the displacement (using the <em>scale</em> argument) and to
 the stress field (modifiying the results data).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="s1">&#39;Disp&#39;</span><span class="p">],</span> <span class="s1">&#39;Node&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="s1">&#39;Disp&#39;</span><span class="p">],</span> <span class="s1">&#39;Node&#39;</span><span class="p">)</span>
 <span class="n">stress</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;Stress&#39;</span><span class="p">]</span>
 <span class="n">clim</span> <span class="o">=</span> <span class="p">[</span><span class="n">stress</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">stress</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>  <span class="c1"># 3 -&gt; xy in voigt notation</span>
 
@@ -3195,6 +3203,7 @@ For instance,
 we can plot the stress results after the example
 <a class="reference internal" href="simple_examples.html#example-plate-with-hole"><span class="std std-ref">Plate with hole in tension</span></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+
 <span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="c1"># or using the backgroundplotter:</span>
 <span class="c1"># from pyvistaqt import BackgroundPlotter</span>

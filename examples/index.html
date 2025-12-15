@@ -82,6 +82,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.add_nodes.html">fedoo.Mesh.add_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.as_2d.html">fedoo.Mesh.as_2d</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.as_3d.html">fedoo.Mesh.as_3d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.as_ndim.html">fedoo.Mesh.as_ndim</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.convert_data.html">fedoo.Mesh.convert_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.copy.html">fedoo.Mesh.copy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.data_to_gausspoint.html">fedoo.Mesh.data_to_gausspoint</a></li>
@@ -126,6 +127,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.elm_type.html">fedoo.Mesh.elm_type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.node_sets.html">fedoo.Mesh.node_sets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.element_sets.html">fedoo.Mesh.element_sets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.local_frame.html">fedoo.Mesh.local_frame</a></li>
 </ul>
 </li>
 </ul>
@@ -207,6 +209,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../generated/fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.mesh.line_mesh_cylindric.html#fedoo.mesh.line_mesh_cylindric"><code class="docutils literal notranslate"><span class="pre">line_mesh_cylindric()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../generated/fedoo.mesh.circle_mesh.html">fedoo.mesh.circle_mesh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.mesh.circle_mesh.html#fedoo.mesh.circle_mesh"><code class="docutils literal notranslate"><span class="pre">circle_mesh()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../generated/fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a><ul>
@@ -2959,28 +2965,28 @@ and the result obtained may not be accurate.</p>
 the basics feature of fedoo, like how to create simple meshes,
 apply basics boundary conditions and get the results.</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="3 points bending of an I-Shape beam"><img alt="" src="../_images/sphx_glr_I_shape_beam_bending_thumb.png" />
-<p><a class="reference internal" href="01-simple/I_shape_beam_bending.html#sphx-glr-examples-01-simple-i-shape-beam-bending-py"><span class="std std-ref">3 points bending of an I-Shape beam</span></a></p>
+<p><a class="reference internal" href="01-simple/I_shape_beam_bending.html"><span class="doc">3 points bending of an I-Shape beam</span></a></p>
   <div class="sphx-glr-thumbnail-title">3 points bending of an I-Shape beam</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Simple example of a plate with hole in tension with 2D plane stress assumption."><img alt="" src="../_images/sphx_glr_Plate_with_hole_in_tension_thumb.png" />
-<p><a class="reference internal" href="01-simple/Plate_with_hole_in_tension.html#sphx-glr-examples-01-simple-plate-with-hole-in-tension-py"><span class="std std-ref">2D plate with hole in tension</span></a></p>
+<p><a class="reference internal" href="01-simple/Plate_with_hole_in_tension.html"><span class="doc">2D plate with hole in tension</span></a></p>
   <div class="sphx-glr-thumbnail-title">2D plate with hole in tension</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Beam Lattice Structure using beam model with geometric nonlinearities"><img alt="" src="../_images/sphx_glr_lattice_beam_thumb.png" />
-<p><a class="reference internal" href="01-simple/lattice_beam.html#sphx-glr-examples-01-simple-lattice-beam-py"><span class="std std-ref">Beam Lattice Structure using beam model with geometric nonlinearities</span></a></p>
+<p><a class="reference internal" href="01-simple/lattice_beam.html"><span class="doc">Beam Lattice Structure using beam model with geometric nonlinearities</span></a></p>
   <div class="sphx-glr-thumbnail-title">Beam Lattice Structure using beam model with geometric nonlinearities</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Define and solve user equation"><img alt="" src="../_images/sphx_glr_poison_eq_thumb.png" />
-<p><a class="reference internal" href="01-simple/poison_eq.html#sphx-glr-examples-01-simple-poison-eq-py"><span class="std std-ref">Define and solve user equation</span></a></p>
+<p><a class="reference internal" href="01-simple/poison_eq.html"><span class="doc">Define and solve user equation</span></a></p>
   <div class="sphx-glr-thumbnail-title">Define and solve user equation</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Simple canteleaver beam example using different kind of elements"><img alt="" src="../_images/sphx_glr_simpleBeamElementExample_thumb.png" />
-<p><a class="reference internal" href="01-simple/simpleBeamElementExample.html#sphx-glr-examples-01-simple-simplebeamelementexample-py"><span class="std std-ref">Beam Element Canteleaver Beam</span></a></p>
+<p><a class="reference internal" href="01-simple/simpleBeamElementExample.html"><span class="doc">Beam Element Canteleaver Beam</span></a></p>
   <div class="sphx-glr-thumbnail-title">Beam Element Canteleaver Beam</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Canteleaver Beam using 3D hexahedral elements"><img alt="" src="../_images/sphx_glr_simple_cantilever_beam_3D_model_thumb.png" />
-<p><a class="reference internal" href="01-simple/simple_cantilever_beam_3D_model.html#sphx-glr-examples-01-simple-simple-cantilever-beam-3d-model-py"><span class="std std-ref">Canteleaver Beam using 3D hexahedral elements</span></a></p>
+<p><a class="reference internal" href="01-simple/simple_cantilever_beam_3D_model.html"><span class="doc">Canteleaver Beam using 3D hexahedral elements</span></a></p>
   <div class="sphx-glr-thumbnail-title">Canteleaver Beam using 3D hexahedral elements</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="3D Canteleaver Beam with geometric nonlinearities"><img alt="" src="../_images/sphx_glr_simple_cantilever_beam_3D_model_nlgeom_thumb.png" />
-<p><a class="reference internal" href="01-simple/simple_cantilever_beam_3D_model_nlgeom.html#sphx-glr-examples-01-simple-simple-cantilever-beam-3d-model-nlgeom-py"><span class="std std-ref">3D Canteleaver Beam with geometric nonlinearities</span></a></p>
+<p><a class="reference internal" href="01-simple/simple_cantilever_beam_3D_model_nlgeom.html"><span class="doc">3D Canteleaver Beam with geometric nonlinearities</span></a></p>
   <div class="sphx-glr-thumbnail-title">3D Canteleaver Beam with geometric nonlinearities</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Example that show how to use plate elements with a pressure load."><img alt="" src="../_images/sphx_glr_spherical_shell_compression_thumb.png" />
-<p><a class="reference internal" href="01-simple/spherical_shell_compression.html#sphx-glr-examples-01-simple-spherical-shell-compression-py"><span class="std std-ref">Compression of a ping pong ball</span></a></p>
+<p><a class="reference internal" href="01-simple/spherical_shell_compression.html"><span class="doc">Compression of a ping pong ball</span></a></p>
   <div class="sphx-glr-thumbnail-title">Compression of a ping pong ball</div>
 </div></div></section>
 <section id="apply-constraints">
@@ -2988,26 +2994,26 @@ apply basics boundary conditions and get the results.</p>
 <p>This section illustrates on some examples the advanced constraints
 that can be applied in fedoo.</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="2D periodic boundary condition"><img alt="" src="../_images/sphx_glr_Periodic_BC_2D_Plate_with_hole_thumb.png" />
-<p><a class="reference internal" href="02-constraints/Periodic_BC_2D_Plate_with_hole.html#sphx-glr-examples-02-constraints-periodic-bc-2d-plate-with-hole-py"><span class="std std-ref">2D periodic boundary condition</span></a></p>
+<p><a class="reference internal" href="02-constraints/Periodic_BC_2D_Plate_with_hole.html"><span class="doc">2D periodic boundary condition</span></a></p>
   <div class="sphx-glr-thumbnail-title">2D periodic boundary condition</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Contact bewteen a disk and a rectangle"><img alt="" src="../_images/sphx_glr_disk_rectangle_contact_thumb.png" />
-<p><a class="reference internal" href="02-constraints/disk_rectangle_contact.html#sphx-glr-examples-02-constraints-disk-rectangle-contact-py"><span class="std std-ref">Contact bewteen a disk and a rectangle</span></a></p>
+<p><a class="reference internal" href="02-constraints/disk_rectangle_contact.html"><span class="doc">Contact bewteen a disk and a rectangle</span></a></p>
   <div class="sphx-glr-thumbnail-title">Contact bewteen a disk and a rectangle</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrate the use the pressure constraint for the simulation of a pipe under internal pressure and external pressure. The problem is treated in 2D with plane strain assumption."><img alt="" src="../_images/sphx_glr_pressurized_pipe_thumb.png" />
-<p><a class="reference internal" href="02-constraints/pressurized_pipe.html#sphx-glr-examples-02-constraints-pressurized-pipe-py"><span class="std std-ref">Pressure constraint</span></a></p>
+<p><a class="reference internal" href="02-constraints/pressurized_pipe.html"><span class="doc">Pressure constraint</span></a></p>
   <div class="sphx-glr-thumbnail-title">Pressure constraint</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Rigid tie constraint"><img alt="" src="../_images/sphx_glr_rigid_tie_thumb.png" />
-<p><a class="reference internal" href="02-constraints/rigid_tie.html#sphx-glr-examples-02-constraints-rigid-tie-py"><span class="std std-ref">Rigid tie constraint</span></a></p>
+<p><a class="reference internal" href="02-constraints/rigid_tie.html"><span class="doc">Rigid tie constraint</span></a></p>
   <div class="sphx-glr-thumbnail-title">Rigid tie constraint</div>
 </div></div></section>
 <section id="advanced-problems">
 <h2>Advanced problems<a class="headerlink" href="#advanced-problems" title="Link to this heading"></a></h2>
 <p>This section show some advanced capabilities of fedoo.</p>
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="The periodic mesh of the Gyriod has been generated with microgen. This example show how to define periodic boundary conditions and to load the structure with prescribed strain in local coordinate system. After that, the mean stress and mean strain results are extracted in local and global coordinate system."><img alt="" src="../_images/sphx_glr_3D_periodic_BC_off_axis_thumb.png" />
-<p><a class="reference internal" href="03-advanced/3D_periodic_BC_off_axis.html#sphx-glr-examples-03-advanced-3d-periodic-bc-off-axis-py"><span class="std std-ref">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</span></a></p>
+<p><a class="reference internal" href="03-advanced/3D_periodic_BC_off_axis.html"><span class="doc">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</span></a></p>
   <div class="sphx-glr-thumbnail-title">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This model uses self-contact, elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase."><img alt="" src="../_images/sphx_glr_tube_compression_thumb.png" />
-<p><a class="reference internal" href="03-advanced/tube_compression.html#sphx-glr-examples-03-advanced-tube-compression-py"><span class="std std-ref">Compression of a tube using 2D axisymmetric model</span></a></p>
+<p><a class="reference internal" href="03-advanced/tube_compression.html"><span class="doc">Compression of a tube using 2D axisymmetric model</span></a></p>
   <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model</div>
 </div></div><div class="toctree-wrapper compound">
 </div>

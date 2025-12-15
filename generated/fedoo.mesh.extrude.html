@@ -81,6 +81,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.add_nodes.html">fedoo.Mesh.add_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.as_2d.html">fedoo.Mesh.as_2d</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.as_3d.html">fedoo.Mesh.as_3d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.as_ndim.html">fedoo.Mesh.as_ndim</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.convert_data.html">fedoo.Mesh.convert_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.copy.html">fedoo.Mesh.copy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.data_to_gausspoint.html">fedoo.Mesh.data_to_gausspoint</a></li>
@@ -125,6 +126,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.elm_type.html">fedoo.Mesh.elm_type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.node_sets.html">fedoo.Mesh.node_sets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.element_sets.html">fedoo.Mesh.element_sets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.local_frame.html">fedoo.Mesh.local_frame</a></li>
 </ul>
 </li>
 </ul>
@@ -206,6 +208,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.mesh.line_mesh_cylindric.html#fedoo.mesh.line_mesh_cylindric"><code class="docutils literal notranslate"><span class="pre">line_mesh_cylindric()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.circle_mesh.html">fedoo.mesh.circle_mesh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.mesh.circle_mesh.html#fedoo.mesh.circle_mesh"><code class="docutils literal notranslate"><span class="pre">circle_mesh()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a><ul>
@@ -2950,7 +2956,7 @@
 <h1>fedoo.mesh.extrude<a class="headerlink" href="#fedoo-mesh-extrude" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="fedoo.mesh.extrude">
-<span class="sig-name descname"><span class="pre">extrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrude_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.mesh.extrude" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">extrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrude_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.mesh.extrude" title="Link to this definition"></a></dt>
 <dd><p>Build a volume or surface mesh from the extrusion of a surface or wire mesh.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

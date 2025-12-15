@@ -21,6 +21,7 @@
       
          DataSet.__getitem__
          DataSet.add_data
+         DataSet.field_names
          DataSet.get_data
          DataSet.load
          DataSet.load_dict

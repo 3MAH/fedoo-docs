@@ -25,6 +25,7 @@
          Mesh.add_nodes
          Mesh.as_2d
          Mesh.as_3d
+         Mesh.as_ndim
          Mesh.convert_data
          Mesh.copy
          Mesh.data_to_gausspoint
@@ -81,5 +82,6 @@
          Mesh.elm_type
          Mesh.node_sets
          Mesh.element_sets
+         Mesh.local_frame
   
   

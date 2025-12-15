@@ -81,6 +81,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.add_nodes.html">fedoo.Mesh.add_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.as_2d.html">fedoo.Mesh.as_2d</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.as_3d.html">fedoo.Mesh.as_3d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.as_ndim.html">fedoo.Mesh.as_ndim</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.convert_data.html">fedoo.Mesh.convert_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.copy.html">fedoo.Mesh.copy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.data_to_gausspoint.html">fedoo.Mesh.data_to_gausspoint</a></li>
@@ -125,6 +126,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.elm_type.html">fedoo.Mesh.elm_type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.node_sets.html">fedoo.Mesh.node_sets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.element_sets.html">fedoo.Mesh.element_sets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.local_frame.html">fedoo.Mesh.local_frame</a></li>
 </ul>
 </li>
 </ul>
@@ -206,6 +208,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.mesh.line_mesh_cylindric.html#fedoo.mesh.line_mesh_cylindric"><code class="docutils literal notranslate"><span class="pre">line_mesh_cylindric()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.circle_mesh.html">fedoo.mesh.circle_mesh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.mesh.circle_mesh.html#fedoo.mesh.circle_mesh"><code class="docutils literal notranslate"><span class="pre">circle_mesh()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a><ul>
@@ -3011,100 +3017,103 @@ using ndim = nodes.shape[1]</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.as_3d.html#fedoo.Mesh.as_3d" title="fedoo.Mesh.as_3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.as_3d</span></code></a>([inplace])</p></td>
 <td><p>Return a view of the current mesh in 3D.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.convert_data.html#fedoo.Mesh.convert_data" title="fedoo.Mesh.convert_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.convert_data</span></code></a>(data[, convert_from, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.as_ndim.html#fedoo.Mesh.as_ndim" title="fedoo.Mesh.as_ndim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.as_ndim</span></code></a>(ndim[, inplace])</p></td>
+<td><p>Change the number of dimensions of the mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.convert_data.html#fedoo.Mesh.convert_data" title="fedoo.Mesh.convert_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.convert_data</span></code></a>(data[, convert_from, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.copy.html#fedoo.Mesh.copy" title="fedoo.Mesh.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.copy</span></code></a>([name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.copy.html#fedoo.Mesh.copy" title="fedoo.Mesh.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.copy</span></code></a>([name])</p></td>
 <td><p>Make a copy of the mesh.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.data_to_gausspoint.html#fedoo.Mesh.data_to_gausspoint" title="fedoo.Mesh.data_to_gausspoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.data_to_gausspoint</span></code></a>(data[, n_elm_gp])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.data_to_gausspoint.html#fedoo.Mesh.data_to_gausspoint" title="fedoo.Mesh.data_to_gausspoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.data_to_gausspoint</span></code></a>(data[, n_elm_gp])</p></td>
 <td><p>Convert a field array (node values or element values) to gauss points.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.deepcopy.html#fedoo.Mesh.deepcopy" title="fedoo.Mesh.deepcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.deepcopy</span></code></a>([name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.deepcopy.html#fedoo.Mesh.deepcopy" title="fedoo.Mesh.deepcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.deepcopy</span></code></a>([name])</p></td>
 <td><p>Make a deep copy of the mesh.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.determine_data_type.html#fedoo.Mesh.determine_data_type" title="fedoo.Mesh.determine_data_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.determine_data_type</span></code></a>(data[, n_elm_gp])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.determine_data_type.html#fedoo.Mesh.determine_data_type" title="fedoo.Mesh.determine_data_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.determine_data_type</span></code></a>(data[, n_elm_gp])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.extract_elements.html#fedoo.Mesh.extract_elements" title="fedoo.Mesh.extract_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.extract_elements</span></code></a>(element_set[, name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.extract_elements.html#fedoo.Mesh.extract_elements" title="fedoo.Mesh.extract_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.extract_elements</span></code></a>(element_set[, name])</p></td>
 <td><p>Return a new mesh from the set of elements defined by element_set</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.find_coincident_nodes.html#fedoo.Mesh.find_coincident_nodes" title="fedoo.Mesh.find_coincident_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.find_coincident_nodes</span></code></a>([tol])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.find_coincident_nodes.html#fedoo.Mesh.find_coincident_nodes" title="fedoo.Mesh.find_coincident_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.find_coincident_nodes</span></code></a>([tol])</p></td>
 <td><p>Find some nodes with the same position considering a tolerance given by the argument tol.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.find_elements.html#fedoo.Mesh.find_elements" title="fedoo.Mesh.find_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.find_elements</span></code></a>(selection_criterion[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.find_elements.html#fedoo.Mesh.find_elements" title="fedoo.Mesh.find_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.find_elements</span></code></a>(selection_criterion[, ...])</p></td>
 <td><p>Return a list of elements from a given selection criterion</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.find_isolated_nodes.html#fedoo.Mesh.find_isolated_nodes" title="fedoo.Mesh.find_isolated_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.find_isolated_nodes</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.find_isolated_nodes.html#fedoo.Mesh.find_isolated_nodes" title="fedoo.Mesh.find_isolated_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.find_isolated_nodes</span></code></a>()</p></td>
 <td><p>Return the nodes that are not associated with any element.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.find_nodes.html#fedoo.Mesh.find_nodes" title="fedoo.Mesh.find_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.find_nodes</span></code></a>(selection_criterion[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.find_nodes.html#fedoo.Mesh.find_nodes" title="fedoo.Mesh.find_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.find_nodes</span></code></a>(selection_criterion[, ...])</p></td>
 <td><p>Return a list of nodes from a given selection criterion</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.from_pyvista.html#fedoo.Mesh.from_pyvista" title="fedoo.Mesh.from_pyvista"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.from_pyvista</span></code></a>(pvmesh[, name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.from_pyvista.html#fedoo.Mesh.from_pyvista" title="fedoo.Mesh.from_pyvista"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.from_pyvista</span></code></a>(pvmesh[, name])</p></td>
 <td><p>Build a Mesh from a pyvista UnstructuredGrid or PolyData mesh.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.gausspoint_coordinates.html#fedoo.Mesh.gausspoint_coordinates" title="fedoo.Mesh.gausspoint_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.gausspoint_coordinates</span></code></a>([n_elm_gp])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.gausspoint_coordinates.html#fedoo.Mesh.gausspoint_coordinates" title="fedoo.Mesh.gausspoint_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.gausspoint_coordinates</span></code></a>([n_elm_gp])</p></td>
 <td><p>Return the coordinates of the integration points</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.get_all.html#fedoo.Mesh.get_all" title="fedoo.Mesh.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_all</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.get_all.html#fedoo.Mesh.get_all" title="fedoo.Mesh.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_all</span></code></a>()</p></td>
 <td><p>Return a dict with all the known Mesh (with a name).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.get_element_local_frame.html#fedoo.Mesh.get_element_local_frame" title="fedoo.Mesh.get_element_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_element_local_frame</span></code></a>([n_elm_gp])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.get_element_local_frame.html#fedoo.Mesh.get_element_local_frame" title="fedoo.Mesh.get_element_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_element_local_frame</span></code></a>([n_elm_gp])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.get_element_volumes.html#fedoo.Mesh.get_element_volumes" title="fedoo.Mesh.get_element_volumes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_element_volumes</span></code></a>([n_elm_gp])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.get_element_volumes.html#fedoo.Mesh.get_element_volumes" title="fedoo.Mesh.get_element_volumes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_element_volumes</span></code></a>([n_elm_gp])</p></td>
 <td><p>Compute the volume of each element (or surface for 2D meshes).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.get_elements_from_nodes.html#fedoo.Mesh.get_elements_from_nodes" title="fedoo.Mesh.get_elements_from_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_elements_from_nodes</span></code></a>(node_set[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.get_elements_from_nodes.html#fedoo.Mesh.get_elements_from_nodes" title="fedoo.Mesh.get_elements_from_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_elements_from_nodes</span></code></a>(node_set[, ...])</p></td>
 <td><p>Return a list of elements that are build with the nodes given in node_set</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.get_volume.html#fedoo.Mesh.get_volume" title="fedoo.Mesh.get_volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_volume</span></code></a>([n_elm_gp])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.get_volume.html#fedoo.Mesh.get_volume" title="fedoo.Mesh.get_volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_volume</span></code></a>([n_elm_gp])</p></td>
 <td><p>Compute the total volume of the mesh (or surface for 2D meshes).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.init_interpolation.html#fedoo.Mesh.init_interpolation" title="fedoo.Mesh.init_interpolation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.init_interpolation</span></code></a>([n_elm_gp])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.init_interpolation.html#fedoo.Mesh.init_interpolation" title="fedoo.Mesh.init_interpolation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.init_interpolation</span></code></a>([n_elm_gp])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.integrate_field.html#fedoo.Mesh.integrate_field" title="fedoo.Mesh.integrate_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.integrate_field</span></code></a>(field[, type_field, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.integrate_field.html#fedoo.Mesh.integrate_field" title="fedoo.Mesh.integrate_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.integrate_field</span></code></a>(field[, type_field, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.is_periodic.html#fedoo.Mesh.is_periodic" title="fedoo.Mesh.is_periodic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.is_periodic</span></code></a>([tol, dim])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.is_periodic.html#fedoo.Mesh.is_periodic" title="fedoo.Mesh.is_periodic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.is_periodic</span></code></a>([tol, dim])</p></td>
 <td><p>Test if the mesh is periodic (have nodes at the same positions on adjacent faces)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.merge_nodes.html#fedoo.Mesh.merge_nodes" title="fedoo.Mesh.merge_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.merge_nodes</span></code></a>(node_couples)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.merge_nodes.html#fedoo.Mesh.merge_nodes" title="fedoo.Mesh.merge_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.merge_nodes</span></code></a>(node_couples)</p></td>
 <td><p>Merge some nodes The total number and the id of nodes are modified</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.nearest_node.html#fedoo.Mesh.nearest_node" title="fedoo.Mesh.nearest_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.nearest_node</span></code></a>(X)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.nearest_node.html#fedoo.Mesh.nearest_node" title="fedoo.Mesh.nearest_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.nearest_node</span></code></a>(X)</p></td>
 <td><p>Return the index of the nearst node from the given position X</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.plot.html#fedoo.Mesh.plot" title="fedoo.Mesh.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.plot</span></code></a>([show_edges])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.plot.html#fedoo.Mesh.plot" title="fedoo.Mesh.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.plot</span></code></a>([show_edges])</p></td>
 <td><p>Simple plot function using pyvista.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.plot_normals.html#fedoo.Mesh.plot_normals" title="fedoo.Mesh.plot_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.plot_normals</span></code></a>([mag, show_mesh])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.plot_normals.html#fedoo.Mesh.plot_normals" title="fedoo.Mesh.plot_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.plot_normals</span></code></a>([mag, show_mesh])</p></td>
 <td><p>Simple functions to plot the normals of a surface Mesh.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.read.html#fedoo.Mesh.read" title="fedoo.Mesh.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.read</span></code></a>(filename[, name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.read.html#fedoo.Mesh.read" title="fedoo.Mesh.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.read</span></code></a>(filename[, name])</p></td>
 <td><p>Build a Mesh from a file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.remove_isolated_nodes.html#fedoo.Mesh.remove_isolated_nodes" title="fedoo.Mesh.remove_isolated_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.remove_isolated_nodes</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.remove_isolated_nodes.html#fedoo.Mesh.remove_isolated_nodes" title="fedoo.Mesh.remove_isolated_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.remove_isolated_nodes</span></code></a>()</p></td>
 <td><p>Remove the nodes that are not associated with any element.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.remove_nodes.html#fedoo.Mesh.remove_nodes" title="fedoo.Mesh.remove_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.remove_nodes</span></code></a>(index_nodes)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.remove_nodes.html#fedoo.Mesh.remove_nodes" title="fedoo.Mesh.remove_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.remove_nodes</span></code></a>(index_nodes)</p></td>
 <td><p>Remove some nodes and associated element.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.reset_interpolation.html#fedoo.Mesh.reset_interpolation" title="fedoo.Mesh.reset_interpolation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.reset_interpolation</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.reset_interpolation.html#fedoo.Mesh.reset_interpolation" title="fedoo.Mesh.reset_interpolation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.reset_interpolation</span></code></a>()</p></td>
 <td><p>Remove all the saved data related to field interpolation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.save.html#fedoo.Mesh.save" title="fedoo.Mesh.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.save</span></code></a>(filename[, binary])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.save.html#fedoo.Mesh.save" title="fedoo.Mesh.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.save</span></code></a>(filename[, binary])</p></td>
 <td><p>Save the mesh object to file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.stack.html#fedoo.Mesh.stack" title="fedoo.Mesh.stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.stack</span></code></a>(mesh1, mesh2[, name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.stack.html#fedoo.Mesh.stack" title="fedoo.Mesh.stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.stack</span></code></a>(mesh1, mesh2[, name])</p></td>
 <td><p>Add two mesh together to make a new mesh.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.to_pyvista.html#fedoo.Mesh.to_pyvista" title="fedoo.Mesh.to_pyvista"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.to_pyvista</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.to_pyvista.html#fedoo.Mesh.to_pyvista" title="fedoo.Mesh.to_pyvista"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.to_pyvista</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.translate.html#fedoo.Mesh.translate" title="fedoo.Mesh.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.translate</span></code></a>(disp)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.translate.html#fedoo.Mesh.translate" title="fedoo.Mesh.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.translate</span></code></a>(disp)</p></td>
 <td><p>Translate the mesh using the given displacement vector The disp vector should be on the form [u, v, w]</p></td>
 </tr>
 </tbody>
@@ -3142,10 +3151,13 @@ using ndim = nodes.shape[1]</p></li>
 <td><p>Type of the element (str).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.node_sets.html#fedoo.Mesh.node_sets" title="fedoo.Mesh.node_sets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.node_sets</span></code></a></p></td>
-<td><p>Dict containing node sets associated to the mesh</p></td>
+<td><p>Dict containing node sets associated to the mesh.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.Mesh.element_sets.html#fedoo.Mesh.element_sets" title="fedoo.Mesh.element_sets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.element_sets</span></code></a></p></td>
-<td><p>Dict containing element sets associated to the mesh</p></td>
+<td><p>Dict containing element sets associated to the mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Mesh.local_frame.html#fedoo.Mesh.local_frame" title="fedoo.Mesh.local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.local_frame</span></code></a></p></td>
+<td><p>Optional nodal local Frame.</p></td>
 </tr>
 </tbody>
 </table>

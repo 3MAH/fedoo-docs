@@ -81,6 +81,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.add_nodes.html">fedoo.Mesh.add_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.as_2d.html">fedoo.Mesh.as_2d</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.as_3d.html">fedoo.Mesh.as_3d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.as_ndim.html">fedoo.Mesh.as_ndim</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.convert_data.html">fedoo.Mesh.convert_data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.copy.html">fedoo.Mesh.copy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.data_to_gausspoint.html">fedoo.Mesh.data_to_gausspoint</a></li>
@@ -125,6 +126,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.elm_type.html">fedoo.Mesh.elm_type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.node_sets.html">fedoo.Mesh.node_sets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.element_sets.html">fedoo.Mesh.element_sets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.local_frame.html">fedoo.Mesh.local_frame</a></li>
 </ul>
 </li>
 </ul>
@@ -206,6 +208,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.mesh.line_mesh_cylindric.html#fedoo.mesh.line_mesh_cylindric"><code class="docutils literal notranslate"><span class="pre">line_mesh_cylindric()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.circle_mesh.html">fedoo.mesh.circle_mesh</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.mesh.circle_mesh.html#fedoo.mesh.circle_mesh"><code class="docutils literal notranslate"><span class="pre">circle_mesh()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a><ul>
@@ -2951,9 +2957,12 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.CompositeUD">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CompositeUD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Vf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.33</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.CompositeUD" title="Link to this definition"></a></dt>
-<dd><p>Linear Orthotropic constitutive law defined from composites phase parameters, assuming uniform unidirectional fibers.
-The fiber are assumed in the X direction. Use Change of basis to rotate the material.
-The constitutive Law should be associated with <code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform.InternalForce</span></code></p>
+<dd><p>Linear Orthotropic constitutive law defined from composites phase
+parameters, assuming uniform unidirectional fibers.
+The fiber are assumed in the X direction. Use a local frame
+to rotate the material.
+The constitutive Law should be associated with a
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform.SressEquilibrium</span></code> type of weakform.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -2962,7 +2971,8 @@ The constitutive Law should be associated with <code class="xref py py-mod docut
 <li><p><strong>E_m</strong> (<em>scalar</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values.</em>) – Matrix Young modulus</p></li>
 <li><p><strong>nu_f</strong> (<em>scalar</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values.</em>) – Fiber Poisson Ratio</p></li>
 <li><p><strong>nu_m</strong> (<em>scalar</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values.</em>) – Matrix Poisson Ratio</p></li>
-<li><p><strong>angle</strong> (scalar or arrays of gauss point values (<em>default=0</em>)) – The angle of the fibers relative to the X direction normal to the Z direction (if defined, the local material coordinates are used)</p></li>
+<li><p><strong>angle</strong> (scalar or arrays of gauss point values (<em>default=0</em>)) – The angle of the fibers relative to the X direction normal to the
+Z direction (if defined, the local material coordinates are used).</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the constitutive law</p></li>
 </ul>
 </dd>

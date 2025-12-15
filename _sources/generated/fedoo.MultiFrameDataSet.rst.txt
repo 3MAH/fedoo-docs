@@ -21,6 +21,7 @@
       
          MultiFrameDataSet.__getitem__
          MultiFrameDataSet.add_data
+         MultiFrameDataSet.field_names
          MultiFrameDataSet.get_all_frame_lim
          MultiFrameDataSet.get_data
          MultiFrameDataSet.get_history
