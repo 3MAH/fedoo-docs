@@ -32,7 +32,7 @@ visualization options are demonstrated, including:
 * Sampling and plotting results along a line
 * Plotting the time evoluation of a field value.
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-24
+.. GENERATED FROM PYTHON SOURCE LINES 17-25
 
 .. code-block:: Python
 
@@ -41,7 +41,8 @@ visualization options are demonstrated, including:
     import numpy as np
     import pyvista as pv
     import matplotlib.pyplot as plt
-    from time import time
+
+    fd.get_config()['USE_PYVISTA_QT'] = False
 
 
 
@@ -50,13 +51,13 @@ visualization options are demonstrated, including:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-28
+.. GENERATED FROM PYTHON SOURCE LINES 26-29
 
 Geometry and mesh
 ~~~~~~~~~~~~~~~~~
 A regular hexahedral mesh of a unit cube is generated.
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-43
+.. GENERATED FROM PYTHON SOURCE LINES 29-44
 
 .. code-block:: Python
 
@@ -82,14 +83,14 @@ A regular hexahedral mesh of a unit cube is generated.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 44-48
+.. GENERATED FROM PYTHON SOURCE LINES 45-49
 
 Constitutive law and weak form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Elasto-plastic constitutive law with power-law hardening,
 solved using a finite-strain formulation.
 
-.. GENERATED FROM PYTHON SOURCE LINES 48-65
+.. GENERATED FROM PYTHON SOURCE LINES 49-66
 
 .. code-block:: Python
 
@@ -117,13 +118,13 @@ solved using a finite-strain formulation.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-69
+.. GENERATED FROM PYTHON SOURCE LINES 67-70
 
 Problem definition
 ~~~~~~~~~~~~~~~~~~
 Nonlinear static problem with displacement-controlled loading.
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-78
+.. GENERATED FROM PYTHON SOURCE LINES 70-79
 
 .. code-block:: Python
 
@@ -143,14 +144,14 @@ Nonlinear static problem with displacement-controlled loading.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-83
+.. GENERATED FROM PYTHON SOURCE LINES 80-84
 
 Boundary conditions
 ~~~~~~~~~~~~~~~~~~~
 The bottom face is fixed.
 A horizontal displacement is imposed on the top face to create shear.
 
-.. GENERATED FROM PYTHON SOURCE LINES 83-91
+.. GENERATED FROM PYTHON SOURCE LINES 84-92
 
 .. code-block:: Python
 
@@ -178,59 +179,33 @@ A horizontal displacement is imposed on the top face to create shear.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-94
+.. GENERATED FROM PYTHON SOURCE LINES 93-95
 
 Solve the problem
 ~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 94-98
+.. GENERATED FROM PYTHON SOURCE LINES 95-99
 
 .. code-block:: Python
 
-    start = time()
-    pb.nlsolve(dt=0.05, tmax=1.0, update_dt=True, interval_output=0.05)
-    print(f"Solve time: {time() - start:.2f} s")
+    pb.nlsolve(
+        dt=0.05, tmax=1.0, update_dt=True, interval_output=0.05, print_info=0
+    )
 
 
 
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00087
-    Iter 2 - Time: 0.10000 - dt 0.05000 - NR iter: 2 - Err: 0.00058
-    Iter 3 - Time: 0.15000 - dt 0.05000 - NR iter: 1 - Err: 0.00078
-    Iter 4 - Time: 0.20000 - dt 0.05000 - NR iter: 1 - Err: 0.00052
-    Iter 5 - Time: 0.25000 - dt 0.05000 - NR iter: 1 - Err: 0.00040
-    Iter 6 - Time: 0.30000 - dt 0.05000 - NR iter: 1 - Err: 0.00034
-    Iter 7 - Time: 0.35000 - dt 0.05000 - NR iter: 1 - Err: 0.00030
-    Iter 8 - Time: 0.40000 - dt 0.05000 - NR iter: 1 - Err: 0.00027
-    Iter 9 - Time: 0.45000 - dt 0.05000 - NR iter: 1 - Err: 0.00026
-    Iter 10 - Time: 0.50000 - dt 0.05000 - NR iter: 1 - Err: 0.00026
-    Iter 11 - Time: 0.55000 - dt 0.05000 - NR iter: 1 - Err: 0.00025
-    Iter 12 - Time: 0.60000 - dt 0.05000 - NR iter: 1 - Err: 0.00025
-    Iter 13 - Time: 0.65000 - dt 0.05000 - NR iter: 1 - Err: 0.00024
-    Iter 14 - Time: 0.70000 - dt 0.05000 - NR iter: 1 - Err: 0.00022
-    Iter 15 - Time: 0.75000 - dt 0.05000 - NR iter: 1 - Err: 0.00020
-    Iter 16 - Time: 0.80000 - dt 0.05000 - NR iter: 1 - Err: 0.00017
-    Iter 17 - Time: 0.85000 - dt 0.05000 - NR iter: 1 - Err: 0.00015
-    Iter 18 - Time: 0.90000 - dt 0.05000 - NR iter: 1 - Err: 0.00014
-    Iter 19 - Time: 0.95000 - dt 0.05000 - NR iter: 1 - Err: 0.00013
-    Iter 20 - Time: 1.00000 - dt 0.05000 - NR iter: 1 - Err: 0.00012
-    Solve time: 3.22 s
 
 
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 99-102
+.. GENERATED FROM PYTHON SOURCE LINES 100-103
 
 Basic visualization: von Mises stress
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Plot the von Mises stress on the deformed mesh.
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-114
+.. GENERATED FROM PYTHON SOURCE LINES 103-112
 
 .. code-block:: Python
 
@@ -239,12 +214,9 @@ Plot the von Mises stress on the deformed mesh.
         field="Stress",
         component="vm",
         data_type="Node",
-        show=False,
         show_edges=True,
         title="Von Mises stress",
     )
-    res_plot.add_axes()
-    res_plot.show()
 
 
 
@@ -261,14 +233,13 @@ Plot the von Mises stress on the deformed mesh.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 115-119
+.. GENERATED FROM PYTHON SOURCE LINES 113-116
 
 Side-by-side linked views
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Compare σ_xx and von Mises stress using linked cameras.
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 119-147
+.. GENERATED FROM PYTHON SOURCE LINES 116-144
 
 .. code-block:: Python
 
@@ -285,6 +256,7 @@ Compare σ_xx and von Mises stress using linked cameras.
         multiplot=True,
         title="Sigma_xx",
     )
+    pl.camera.view_angle = 40.0
 
     pl.subplot(0, 1)
     results.plot(
@@ -296,8 +268,7 @@ Compare σ_xx and von Mises stress using linked cameras.
         multiplot=True,
         title="Von Mises",
     )
-
-    pl.link_views()
+    pl.link_views()  # use same view angle for both subplots
     pl.show()
 
 
@@ -315,13 +286,13 @@ Compare σ_xx and von Mises stress using linked cameras.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-151
+.. GENERATED FROM PYTHON SOURCE LINES 145-148
 
 Clipping with a plane
 ~~~~~~~~~~~~~~~~~~~~~
 Clip the mesh using a plane normal to the X direction.
 
-.. GENERATED FROM PYTHON SOURCE LINES 151-169
+.. GENERATED FROM PYTHON SOURCE LINES 148-163
 
 .. code-block:: Python
 
@@ -337,11 +308,8 @@ Clip the mesh using a plane normal to the X direction.
         "Node",
         clip_args=clip_args,
         show_edges=False,
-        show=False,
         title="Clipped von Mises stress",
     )
-    pl.add_axes()
-    pl.show()
 
 
 
@@ -358,13 +326,14 @@ Clip the mesh using a plane normal to the X direction.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-173
+.. GENERATED FROM PYTHON SOURCE LINES 164-168
 
 Element-set filtering from an expression
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Select elements inside a cylindrical region defined by X² + Y² < 0.25.
+The element selection is based on element center coordinates.
 
-.. GENERATED FROM PYTHON SOURCE LINES 173-187
+.. GENERATED FROM PYTHON SOURCE LINES 168-179
 
 .. code-block:: Python
 
@@ -376,11 +345,8 @@ Select elements inside a cylindrical region defined by X² + Y² < 0.25.
         "vm",
         "Node",
         element_set=element_ids,
-        show=False,
         title="Von Mises stress on selected element set",
     )
-    pl.add_axes()
-    pl.show()
 
 
 
@@ -397,13 +363,13 @@ Select elements inside a cylindrical region defined by X² + Y² < 0.25.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 188-191
+.. GENERATED FROM PYTHON SOURCE LINES 180-183
 
 Sampling results along a line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Extract the von Mises stress along a line passing through the cube center.
 
-.. GENERATED FROM PYTHON SOURCE LINES 191-220
+.. GENERATED FROM PYTHON SOURCE LINES 183-212
 
 .. code-block:: Python
 
@@ -413,9 +379,9 @@ Extract the von Mises stress along a line passing through the cube center.
         "vm",
         # "Node",  # uncomment to avarage results at nodes
         scale=0,
-        show=False,
+        show=False,  # just used to build the mesh here
     )
-    pv_mesh = pl.actors["data1"].mapper.dataset
+    pv_mesh = pl.actors["data1"].mapper.dataset  # extract the mesh
 
     profile = pv_mesh.sample_over_line(
         (0.0, 0.5, 0.5),
@@ -456,7 +422,7 @@ Extract the von Mises stress along a line passing through the cube center.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 221-226
+.. GENERATED FROM PYTHON SOURCE LINES 213-218
 
 History plot at selected nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -464,7 +430,7 @@ When results are written at multiple time steps, the result object is a
 MultiFrameDataSet. History plots can be generated directly using
 the ``plot_history`` method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 226-237
+.. GENERATED FROM PYTHON SOURCE LINES 218-229
 
 .. code-block:: Python
 
@@ -494,7 +460,7 @@ the ``plot_history`` method.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.001 seconds)
+   **Total running time of the script:** (0 minutes 4.925 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_visualization.py:

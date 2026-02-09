@@ -2993,7 +2993,8 @@ visualization options are demonstrated, including:</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">get_config</span><span class="p">()[</span><span class="s1">&#39;USE_PYVISTA_QT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </section>
@@ -3072,32 +3073,9 @@ value = -0.5
 </section>
 <section id="solve-the-problem">
 <h1>Solve the problem<a class="headerlink" href="#solve-the-problem" title="Link to this heading"></a></h1>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">interval_output</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solve time: </span><span class="si">{</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00087
-Iter 2 - Time: 0.10000 - dt 0.05000 - NR iter: 2 - Err: 0.00058
-Iter 3 - Time: 0.15000 - dt 0.05000 - NR iter: 1 - Err: 0.00078
-Iter 4 - Time: 0.20000 - dt 0.05000 - NR iter: 1 - Err: 0.00052
-Iter 5 - Time: 0.25000 - dt 0.05000 - NR iter: 1 - Err: 0.00040
-Iter 6 - Time: 0.30000 - dt 0.05000 - NR iter: 1 - Err: 0.00034
-Iter 7 - Time: 0.35000 - dt 0.05000 - NR iter: 1 - Err: 0.00030
-Iter 8 - Time: 0.40000 - dt 0.05000 - NR iter: 1 - Err: 0.00027
-Iter 9 - Time: 0.45000 - dt 0.05000 - NR iter: 1 - Err: 0.00026
-Iter 10 - Time: 0.50000 - dt 0.05000 - NR iter: 1 - Err: 0.00026
-Iter 11 - Time: 0.55000 - dt 0.05000 - NR iter: 1 - Err: 0.00025
-Iter 12 - Time: 0.60000 - dt 0.05000 - NR iter: 1 - Err: 0.00025
-Iter 13 - Time: 0.65000 - dt 0.05000 - NR iter: 1 - Err: 0.00024
-Iter 14 - Time: 0.70000 - dt 0.05000 - NR iter: 1 - Err: 0.00022
-Iter 15 - Time: 0.75000 - dt 0.05000 - NR iter: 1 - Err: 0.00020
-Iter 16 - Time: 0.80000 - dt 0.05000 - NR iter: 1 - Err: 0.00017
-Iter 17 - Time: 0.85000 - dt 0.05000 - NR iter: 1 - Err: 0.00015
-Iter 18 - Time: 0.90000 - dt 0.05000 - NR iter: 1 - Err: 0.00014
-Iter 19 - Time: 0.95000 - dt 0.05000 - NR iter: 1 - Err: 0.00013
-Iter 20 - Time: 1.00000 - dt 0.05000 - NR iter: 1 - Err: 0.00012
-Solve time: 3.22 s
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
+    <span class="n">dt</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">interval_output</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">print_info</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -3108,12 +3086,9 @@ Solve time: 3.22 s
     <span class="n">field</span><span class="o">=</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span>
     <span class="n">component</span><span class="o">=</span><span class="s2">&quot;vm&quot;</span><span class="p">,</span>
     <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span>
-    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Von Mises stress&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">res_plot</span><span class="o">.</span><span class="n">add_axes</span><span class="p">()</span>
-<span class="n">res_plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_visualization_001.png" srcset="../../_images/sphx_glr_visualization_001.png" alt="visualization" class = "sphx-glr-single-img"/></section>
@@ -3132,6 +3107,7 @@ Solve time: 3.22 s
     <span class="n">multiplot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sigma_xx&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">view_angle</span> <span class="o">=</span> <span class="mf">40.0</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
@@ -3143,8 +3119,7 @@ Solve time: 3.22 s
     <span class="n">multiplot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Von Mises&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-
-<span class="n">pl</span><span class="o">.</span><span class="n">link_views</span><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">link_views</span><span class="p">()</span>  <span class="c1"># use same view angle for both subplots</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3163,17 +3138,15 @@ Solve time: 3.22 s
     <span class="s2">&quot;Node&quot;</span><span class="p">,</span>
     <span class="n">clip_args</span><span class="o">=</span><span class="n">clip_args</span><span class="p">,</span>
     <span class="n">show_edges</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Clipped von Mises stress&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">add_axes</span><span class="p">()</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_visualization_003.png" srcset="../../_images/sphx_glr_visualization_003.png" alt="visualization" class = "sphx-glr-single-img"/></section>
 <section id="element-set-filtering-from-an-expression">
 <h1>Element-set filtering from an expression<a class="headerlink" href="#element-set-filtering-from-an-expression" title="Link to this heading"></a></h1>
-<p>Select elements inside a cylindrical region defined by X² + Y² &lt; 0.25.</p>
+<p>Select elements inside a cylindrical region defined by X² + Y² &lt; 0.25.
+The element selection is based on element center coordinates.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">element_ids</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="s2">&quot;X**2 + Y**2 &lt; 0.5&quot;</span><span class="p">)</span>
 
 <span class="n">pl</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
@@ -3181,11 +3154,8 @@ Solve time: 3.22 s
     <span class="s2">&quot;vm&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Node&quot;</span><span class="p">,</span>
     <span class="n">element_set</span><span class="o">=</span><span class="n">element_ids</span><span class="p">,</span>
-    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Von Mises stress on selected element set&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">add_axes</span><span class="p">()</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_visualization_004.png" srcset="../../_images/sphx_glr_visualization_004.png" alt="visualization" class = "sphx-glr-single-img"/></section>
@@ -3197,9 +3167,9 @@ Solve time: 3.22 s
     <span class="s2">&quot;vm&quot;</span><span class="p">,</span>
     <span class="c1"># &quot;Node&quot;,  # uncomment to avarage results at nodes</span>
     <span class="n">scale</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># just used to build the mesh here</span>
 <span class="p">)</span>
-<span class="n">pv_mesh</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">actors</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mapper</span><span class="o">.</span><span class="n">dataset</span>
+<span class="n">pv_mesh</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">actors</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mapper</span><span class="o">.</span><span class="n">dataset</span>  <span class="c1"># extract the mesh</span>
 
 <span class="n">profile</span> <span class="o">=</span> <span class="n">pv_mesh</span><span class="o">.</span><span class="n">sample_over_line</span><span class="p">(</span>
     <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
@@ -3238,7 +3208,7 @@ the <code class="docutils literal notranslate"><span class="pre">plot_history</s
 <span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_visualization_007.png" srcset="../../_images/sphx_glr_visualization_007.png" alt="visualization" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.001 seconds)</p>
+<img src="../../_images/sphx_glr_visualization_007.png" srcset="../../_images/sphx_glr_visualization_007.png" alt="visualization" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.925 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-visualization-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/d8d2cbd3f698fc54566eff75a50a6fe7/visualization.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">visualization.ipynb</span></code></a></p>
