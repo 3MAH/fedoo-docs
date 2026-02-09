@@ -42,7 +42,7 @@ visualization options are demonstrated, including:
     import pyvista as pv
     import matplotlib.pyplot as plt
 
-    fd.get_config()['USE_PYVISTA_QT'] = False
+    fd.get_config()["USE_PYVISTA_QT"] = False  # avoid rendering useless plot
 
 
 
@@ -184,13 +184,11 @@ A horizontal displacement is imposed on the top face to create shear.
 Solve the problem
 ~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 95-99
+.. GENERATED FROM PYTHON SOURCE LINES 95-97
 
 .. code-block:: Python
 
-    pb.nlsolve(
-        dt=0.05, tmax=1.0, update_dt=True, interval_output=0.05, print_info=0
-    )
+    pb.nlsolve(dt=0.05, tmax=1.0, update_dt=True, interval_output=0.05, print_info=0)
 
 
 
@@ -199,13 +197,13 @@ Solve the problem
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 100-103
+.. GENERATED FROM PYTHON SOURCE LINES 98-101
 
 Basic visualization: von Mises stress
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Plot the von Mises stress on the deformed mesh.
 
-.. GENERATED FROM PYTHON SOURCE LINES 103-112
+.. GENERATED FROM PYTHON SOURCE LINES 101-110
 
 .. code-block:: Python
 
@@ -233,13 +231,13 @@ Plot the von Mises stress on the deformed mesh.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 113-116
+.. GENERATED FROM PYTHON SOURCE LINES 111-114
 
 Side-by-side linked views
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Compare σ_xx and von Mises stress using linked cameras.
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-144
+.. GENERATED FROM PYTHON SOURCE LINES 114-142
 
 .. code-block:: Python
 
@@ -286,13 +284,13 @@ Compare σ_xx and von Mises stress using linked cameras.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-148
+.. GENERATED FROM PYTHON SOURCE LINES 143-146
 
 Clipping with a plane
 ~~~~~~~~~~~~~~~~~~~~~
 Clip the mesh using a plane normal to the X direction.
 
-.. GENERATED FROM PYTHON SOURCE LINES 148-163
+.. GENERATED FROM PYTHON SOURCE LINES 146-161
 
 .. code-block:: Python
 
@@ -326,14 +324,14 @@ Clip the mesh using a plane normal to the X direction.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-168
+.. GENERATED FROM PYTHON SOURCE LINES 162-166
 
 Element-set filtering from an expression
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Select elements inside a cylindrical region defined by X² + Y² < 0.25.
 The element selection is based on element center coordinates.
 
-.. GENERATED FROM PYTHON SOURCE LINES 168-179
+.. GENERATED FROM PYTHON SOURCE LINES 166-177
 
 .. code-block:: Python
 
@@ -363,13 +361,13 @@ The element selection is based on element center coordinates.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-183
+.. GENERATED FROM PYTHON SOURCE LINES 178-181
 
 Sampling results along a line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Extract the von Mises stress along a line passing through the cube center.
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-212
+.. GENERATED FROM PYTHON SOURCE LINES 181-210
 
 .. code-block:: Python
 
@@ -422,7 +420,7 @@ Extract the von Mises stress along a line passing through the cube center.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 213-218
+.. GENERATED FROM PYTHON SOURCE LINES 211-216
 
 History plot at selected nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -430,7 +428,7 @@ When results are written at multiple time steps, the result object is a
 MultiFrameDataSet. History plots can be generated directly using
 the ``plot_history`` method.
 
-.. GENERATED FROM PYTHON SOURCE LINES 218-229
+.. GENERATED FROM PYTHON SOURCE LINES 216-227
 
 .. code-block:: Python
 
@@ -460,7 +458,7 @@ the ``plot_history`` method.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.925 seconds)
+   **Total running time of the script:** (0 minutes 4.974 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_visualization.py:
