@@ -2983,6 +2983,7 @@ and simcoon for the non linear material constitutive models in finite strain.</p
 <section id="main-features">
 <h2>Main features<a class="headerlink" href="#main-features" title="Link to this heading"></a></h2>
 <ul class="simple">
+<li><p><em>New</em> A full interactive viewer is now included to improve the results visualization.</p></li>
 <li><p>Entirely written in Python 3</p></li>
 <li><p>Implicit finite element Solver for Static and Dynamics poblems</p></li>
 <li><p>Finite strain constitutive laws based on the simcoon library (simcoon is developped in C++ allowing a fast execution)</p></li>
@@ -2992,7 +2993,6 @@ and simcoon for the non linear material constitutive models in finite strain.</p
 <li><p>Homogeneisation: Easy application of periodic boundary conditions and fast automatic extraction of mean tangent matrices</p></li>
 <li><p>Embedded results visualization using the powerfull pyvista library (pyvista should be installed for that feature)</p></li>
 <li><p>Multi-point constraints</p></li>
-<li><p>Easy Mesh import/export from VTK formats (and others)</p></li>
 <li><p>Easy scripting</p></li>
 <li><p>Good compromise between a reasonable execution time and an open and lisible code. fedoo is not the fastest finite element software and doesn’t intend to be, but a particular attention is paid
 to the computational cost.</p></li>
@@ -3003,8 +3003,11 @@ to the computational cost.</p></li>
 <section id="road-map">
 <h2>Road map<a class="headerlink" href="#road-map" title="Link to this heading"></a></h2>
 <ul class="simple">
+<li><p>Improve contact formulation and add friction</p></li>
+<li><p>Support an efficient file format based on HDF5 to save and load data</p></li>
+<li><p>Improve the management of local frame</p></li>
+<li><p>Export results on several meshes</p></li>
 <li><p>Thermo-Mechanical problems</p></li>
-<li><p>Contact with friction</p></li>
 </ul>
 </section>
 </section>
