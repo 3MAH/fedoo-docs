@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weak Formulation (fedoo.weakform) &mdash; fedoo  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -2845,7 +2845,13 @@
 <li class="toctree-l3"><a class="reference internal" href="post_processing.html#read-data-from-disk">Read data from disk</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="post_processing.html#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post_processing.html#basic-operations">Basic operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="post_processing.html#extract-data">Extract data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.get_history.html">fedoo.MultiFrameDataSet.get_history</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="post_processing.html#plotting-results">Plotting results</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot.html">fedoo.MultiFrameDataSet.plot</a></li>
@@ -2899,6 +2905,18 @@
 <li class="toctree-l4"><a class="reference internal" href="examples/01-simple/simple_cantilever_beam_3D_model.html">Canteleaver Beam using 3D hexahedral elements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="examples/01-simple/simple_cantilever_beam_3D_model_nlgeom.html">3D Canteleaver Beam with geometric nonlinearities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="examples/01-simple/spherical_shell_compression.html">Compression of a ping pong ball</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html">Visualization tutoral - Shear test of a cube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#geometry-and-mesh">Geometry and mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#constitutive-law-and-weak-form">Constitutive law and weak form</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#problem-definition">Problem definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#solve-the-problem">Solve the problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#basic-visualization-von-mises-stress">Basic visualization: von Mises stress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#side-by-side-linked-views">Side-by-side linked views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#clipping-with-a-plane">Clipping with a plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#element-set-filtering-from-an-expression">Element-set filtering from an expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#sampling-results-along-a-line">Sampling results along a line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#history-plot-at-selected-nodes">History plot at selected nodes</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="examples/02-constraints/index.html">Apply constraints</a><ul>
@@ -2954,27 +2972,32 @@
   <p id="module-fedoo.weakform">WeakForm module.</p>
 <section id="weak-formulation-fedoo-weakform">
 <h1>Weak Formulation (<a class="reference internal" href="#module-fedoo.weakform" title="fedoo.weakform"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code></a>)<a class="headerlink" href="#weak-formulation-fedoo-weakform" title="Link to this heading"></a></h1>
-<p>In fedoo, the differential equations related to the problem to solve are written
-using weak formulations. The weak formations are defined in the WeakForm objects.</p>
+<p>In fedoo, the differential equations related to the problem to solve are
+written using weak formulations. The weak formations are defined in the
+WeakForm objects.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>The WeakForm object include the differential operators (with virtual fields) and can be automatically updated at each time step
-for non linear weak formulations.</p></li>
-<li><p>When created, a WeakForm object doesn’t in general know the domain of integration.
-The domain of integration is defined using a <a class="reference internal" href="generated/fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh</span></code></a>, and is only introduced when creating the corresponding <a class="reference internal" href="Assembly.html#fedoo.Assembly" title="fedoo.Assembly"><code class="xref py py-class docutils literal notranslate"><span class="pre">Assembly</span></code></a>.</p></li>
+<li><p>The WeakForm object include the differential operators (with virtual
+fields) and can be automatically updated at each time step for non linear
+weak formulations.</p></li>
+<li><p>When created, a WeakForm object doesn’t in general know the domain of
+integration. The domain of integration is defined using a
+<a class="reference internal" href="generated/fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh</span></code></a>, and is only introduced when creating the
+corresponding <a class="reference internal" href="Assembly.html#fedoo.Assembly" title="fedoo.Assembly"><code class="xref py py-class docutils literal notranslate"><span class="pre">Assembly</span></code></a>.</p></li>
 </ul>
 </div></blockquote>
-<p>The weakform library of Fedoo includes a few classical weak formulations. Each weak formulation is a class
-deriving from the WeakForm class. The developpement
-of new weak formulation is easy by copying and modifying an existing class.</p>
+<p>The weakform library of Fedoo includes a few classical weak formulations. Each
+weak formulation is a class deriving from the WeakForm class. The
+developpement of new weak formulations can be made by copying and modifying an
+existing class.</p>
 <p>The WeakForm library contains the following classes:</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium</span></code></a>(constitutivelaw[, name, ...])</p></td>
-<td><p>Weak formulation of the mechanical equilibrium equation for solids.</p></td>
+<td><p>Mechanical equilibrium equation for solids.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.ImplicitDynamic.html#fedoo.weakform.ImplicitDynamic" title="fedoo.weakform.ImplicitDynamic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImplicitDynamic</span></code></a>(constitutivelaw, density, ...)</p></td>
-<td><p>Weak formulation.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.ImplicitDynamic.html#fedoo.weakform.ImplicitDynamic" title="fedoo.weakform.ImplicitDynamic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImplicitDynamic</span></code></a>(constitutivelaw, density[, ...])</p></td>
+<td><p>Weak formulation for implicit dynamic problem.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumRI.html#fedoo.weakform.StressEquilibriumRI" title="fedoo.weakform.StressEquilibriumRI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumRI</span></code></a>(constitutivelaw[, ...])</p></td>
 <td><p>Stress equilibrium weak formulation with reduced integration.</p></td>
@@ -2992,13 +3015,13 @@ of new weak formulation is easy by copying and modifying an existing class.</p>
 <td><p>Weak formulation of the mechanical equilibrium equation for spring models.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibrium.html#fedoo.weakform.PlateEquilibrium" title="fedoo.weakform.PlateEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateEquilibrium</span></code></a>(PlateConstitutiveLaw[, ...])</p></td>
-<td><p>Weak formulation of the mechanical equilibrium equation for plate models.</p></td>
+<td><p>Mechanical equilibrium equation for plate models.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibriumFI.html#fedoo.weakform.PlateEquilibriumFI" title="fedoo.weakform.PlateEquilibriumFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateEquilibriumFI</span></code></a>(PlateConstitutiveLaw[, ...])</p></td>
-<td><p>Weak formulation of the mechanical equilibrium equation for plate models.</p></td>
+<td><p>Mechanical equilibrium equation for plate models, with full integration.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibriumSI.html#fedoo.weakform.PlateEquilibriumSI" title="fedoo.weakform.PlateEquilibriumSI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateEquilibriumSI</span></code></a>(PlateConstitutiveLaw[, ...])</p></td>
-<td><p>Weak formulation of the mechanical equilibrium equation for plate models.</p></td>
+<td><p>Mechanical equilibrium equation for plate models.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.Inertia.html#fedoo.weakform.Inertia" title="fedoo.weakform.Inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Inertia</span></code></a>(Density[, name, space])</p></td>
 <td><p>Weak formulation related to the inertia effect into dynamical simulation.</p></td>

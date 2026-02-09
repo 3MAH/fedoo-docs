@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>fedoo.MultiFrameDataSet.write_movie &mdash; fedoo  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -2845,7 +2845,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#read-data-from-disk">Read data from disk</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../post_processing.html#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../post_processing.html#basic-operations">Basic operations</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../post_processing.html#extract-data">Extract data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.MultiFrameDataSet.get_history.html">fedoo.MultiFrameDataSet.get_history</a></li>
+</ul>
+</li>
 <li class="toctree-l3 current"><a class="reference internal" href="../post_processing.html#plotting-results">Plotting results</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.MultiFrameDataSet.plot.html">fedoo.MultiFrameDataSet.plot</a></li>
@@ -2899,6 +2905,18 @@
 <li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/simple_cantilever_beam_3D_model.html">Canteleaver Beam using 3D hexahedral elements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/simple_cantilever_beam_3D_model_nlgeom.html">3D Canteleaver Beam with geometric nonlinearities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/spherical_shell_compression.html">Compression of a ping pong ball</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html">Visualization tutoral - Shear test of a cube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#geometry-and-mesh">Geometry and mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#constitutive-law-and-weak-form">Constitutive law and weak form</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#problem-definition">Problem definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#solve-the-problem">Solve the problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#basic-visualization-von-mises-stress">Basic visualization: von Mises stress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#side-by-side-linked-views">Side-by-side linked views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#clipping-with-a-plane">Clipping with a plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#element-set-filtering-from-an-expression">Element-set filtering from an expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#sampling-results-along-a-line">Sampling results along a line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/01-simple/visualization.html#history-plot-at-selected-nodes">History plot at selected nodes</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../examples/02-constraints/index.html">Apply constraints</a><ul>
@@ -2957,67 +2975,73 @@
 <h1>fedoo.MultiFrameDataSet.write_movie<a class="headerlink" href="#fedoo-multiframedataset-write-movie" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.MultiFrameDataSet.write_movie">
-<span class="sig-prename descclassname"><span class="pre">MultiFrameDataSet.</span></span><span class="sig-name descname"><span class="pre">write_movie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'test'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_edges</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[None,</span> <span class="pre">None]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MultiFrameDataSet.write_movie" title="Link to this definition"></a></dt>
-<dd><p>Generate a video of the MultiFrameDataSet object by loading iteratively every frame.</p>
+<span class="sig-prename descclassname"><span class="pre">MultiFrameDataSet.</span></span><span class="sig-name descname"><span class="pre">write_movie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'test'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MultiFrameDataSet.write_movie" title="Link to this definition"></a></dt>
+<dd><p>Create a video from the data.</p>
+<p>Generate a video by loading iteratively every frame.
+This method rely on the <a class="reference internal" href="fedoo.DataSet.plot.html#fedoo.DataSet.plot" title="fedoo.DataSet.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.DataSet.plot()</span></code></a> and then
+accept the all its arguments as keyword arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<em>str</em>) – Name of the videofile to write.</p></li>
-<li><p><strong>field</strong> (<em>str</em><em> (</em><em>optional</em><em>)</em>) – Name of the field to plot</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the video file to write. The type of video generated
+depend on the file extension. If no extension provided, a ‘mp4’
+file will be written.</p></li>
+<li><p><strong>field</strong> (<em>str</em><em> (</em><em>optional</em><em>)</em>) – Name of the field to plot. If no field provided, only the
+mesh is ploted.</p></li>
 <li><p><strong>component</strong> (<em>int</em><em>, </em><em>str</em><em> (</em><em>default = 0</em><em>)</em>) – The data component to plot in case of vector data</p></li>
-<li><p><strong>data_type</strong> (<em>str in {'Node'</em><em>, </em><em>'Element'</em><em> or </em><em>'GaussPoint'}</em><em>, </em><em>optional</em>) – Type of the data. By default, the data_type is determined automatically by scanning the data arrays.</p></li>
-<li><p><strong>scale</strong> (<em>scalar</em><em> (</em><em>default = 1</em><em>)</em>) – The scale factor used for the nodes displacement, using the ‘Disp’ vector field</p></li>
-<li><p><strong>show_edges</strong> (<em>bool</em><em> (</em><em>default = True</em><em>)</em>) – if True, the mesh edges are shown</p></li>
-<li><p><strong>clim</strong> (<em>sequence</em><em>[</em><em>float</em><em>|</em><em>None</em><em>] or </em><em>None</em>) – Sequence of two float to define data boundaries for color bar.
-If clim is None, clim change at each iteration with the min and max.
-If one of the  boundary is set to None, the value is replace by the min or max.
-of data for the all iterations sequence.
-Defaults to minimum and maximum of data for the all iterations sequence
-(clim =[None,None]).</p></li>
-<li><p><strong>show_nodes</strong> (<em>bool</em><em>|</em><em>float</em><em> (</em><em>default = False</em><em>)</em>) – Plot the nodes. If True, the nodes are shown with a default size.
-If float, show_nodes is the required size.</p></li>
-<li><p><strong>**kargs</strong> (<em>dict</em>) – Other optional parameters (see notes below)</p></li>
+<li><p><strong>data_type</strong> (<em>str in {'Node'</em><em>, </em><em>'Element'</em><em> or </em><em>'GaussPoint'}</em><em>, </em><em>optional</em>) – Type of the data. By default, the data_type is determined
+automatically by scanning the data arrays.</p></li>
+<li><p><strong>**kargs</strong> (<em>dict</em>) – Other optional parameters. See notes below.</p></li>
 </ul>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Many options are available as keyword args. Some of these options are
-directly related to pyvista options (for instance in the pyvista.plotter.add_mesh method).
-Please, refer to the documentation of pyvista for more details.</p>
+<p>Many options are available as keyword args. Refer to the documentation
+of <a class="reference internal" href="fedoo.DataSet.plot.html#fedoo.DataSet.plot" title="fedoo.DataSet.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.DataSet.plot()</span></code></a> method for details.
+Below, only the specific arguments are presented.</p>
 <p>Available keyword arguments are:</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>framerate<span class="classifier">int (default = 24)</span></dt><dd><p>Number of frames per second</p>
+<dt>clim<span class="classifier">sequence[float|None] or None</span></dt><dd><p>Sequence of two float to define data boundaries for colorbar.
+If clim is None, clim change at each iteration with the min and
+max. If one of the boundary is set to None, the value is replace
+by the min or max of data for the all iterations sequence.
+Defaults to minimum and maximum of data for the all iterations
+sequence, ie clim =[None,None].</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>quality<span class="classifier">int between 1 and 10 (default = 5)</span></dt><dd><p>Define the quality of the writen movie. Higher is better but take more place.</p>
+<dt>framerate<span class="classifier">int, default = 24</span></dt><dd><p>Number of frames per second</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>azimuth: scalar (default = 30)</dt><dd><p>Angle of azimuth (degree) at the begining of the video.</p>
+<dt>quality<span class="classifier">int between 1 and 10, default = 5</span></dt><dd><p>Define the quality of the writen movie if the movie writer accept
+this parameter.
+Higher is better but take more place.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>elevation: scalar (default = 15)</dt><dd><p>Angle of elevation (degree) at the begining of the video.</p>
+<dt>azimuth<span class="classifier">scalar, default = 30</span></dt><dd><p>Angle of azimuth (degree) at the begining of the video.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>rot_azimuth<span class="classifier">scalar (default = 0)</span></dt><dd><p>Angle of azimuth rotation that is made at each new frame. Used to make easy video with camera moving around the scene.</p>
+<dt>elevation<span class="classifier">scalar, default = 15</span></dt><dd><p>Angle of elevation (degree) at the begining of the video.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>rot_elevation<span class="classifier">scalar (default = 0)</span></dt><dd><p>Angle of elevation rotation that is made at each new frame. Used to make easy video with camera moving around the scene.</p>
+<dt>rot_azimuth<span class="classifier">scalar, default = 0</span></dt><dd><p>Angle of azimuth rotation that is made at each new frame.
+Used to make easy video with camera moving around the scene.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>scalar_bar_args’ :</dt><dd><p>dict containing the arguments related to scalar bar.</p>
+<dt>rot_elevation<span class="classifier">scalar, default = 0</span></dt><dd><p>Angle of elevation rotation that is made at each new frame.
+Used to make easy video with camera moving around the scene.</p>
 </dd>
 </dl>
 </li>

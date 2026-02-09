@@ -33,11 +33,11 @@ Simple canteleaver beam example using different kind of elements
  .. code-block:: none
 
     Reaction RX at the clamped extermity: 0.0
-    Reaction RY at the clamped extermity: 1.9999999999999822
+    Reaction RY at the clamped extermity: 1.999999999999913
     Reaction RZ at the clamped extermity: 0.0
     Moment MX at the clamped extermity: 0.0
     Moment MY at the clamped extermity: 0.0
-    Moment MZ at the clamped extermity: 20.0
+    Moment MZ at the clamped extermity: 19.99999999999961
     RX at the free extremity: 0.0
     RZ at the free extremity: 0.0
     Analytical deflection:  -0.008695165057587216
@@ -143,7 +143,7 @@ Simple canteleaver beam example using different kind of elements
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.012 seconds)
+   **Total running time of the script:** (0 minutes 0.013 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_simpleBeamElementExample.py:

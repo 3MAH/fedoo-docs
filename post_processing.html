@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Post-Processing &mdash; fedoo  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -2845,7 +2845,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#read-data-from-disk">Read data from disk</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#basic-operations">Basic operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extract-data">Extract data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.get_history.html">fedoo.MultiFrameDataSet.get_history</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#plotting-results">Plotting results</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot.html">fedoo.MultiFrameDataSet.plot</a></li>
@@ -2899,6 +2905,18 @@
 <li class="toctree-l4"><a class="reference internal" href="examples/01-simple/simple_cantilever_beam_3D_model.html">Canteleaver Beam using 3D hexahedral elements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="examples/01-simple/simple_cantilever_beam_3D_model_nlgeom.html">3D Canteleaver Beam with geometric nonlinearities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="examples/01-simple/spherical_shell_compression.html">Compression of a ping pong ball</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html">Visualization tutoral - Shear test of a cube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#geometry-and-mesh">Geometry and mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#constitutive-law-and-weak-form">Constitutive law and weak form</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#problem-definition">Problem definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#solve-the-problem">Solve the problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#basic-visualization-von-mises-stress">Basic visualization: von Mises stress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#side-by-side-linked-views">Side-by-side linked views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#clipping-with-a-plane">Clipping with a plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#element-set-filtering-from-an-expression">Element-set filtering from an expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#sampling-results-along-a-line">Sampling results along a line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/01-simple/visualization.html#history-plot-at-selected-nodes">History plot at selected nodes</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="examples/02-constraints/index.html">Apply constraints</a><ul>
@@ -2957,7 +2975,7 @@
 <h2>Get results from a problem<a class="headerlink" href="#get-results-from-a-problem" title="Link to this heading"></a></h2>
 <p>In fedoo, most of the standard results are easily exportable using the
 <a class="reference internal" href="generated/fedoo.Problem.get_results.html#fedoo.Problem.get_results" title="fedoo.Problem.get_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Problem.get_results()</span></code></a> method of the problem class.</p>
-<p>The get_results method returns a <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.DataSet</span></code></a> object which come
+<p>The get_results method returns a <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.DataSet</span></code></a> object which comes
 with several methods for plotting, saving and loading mesh dependent results.</p>
 <p>To avoid a redundent call of the get_results function, especially for time
 dependent problems, one can simply add some required output with the
@@ -2967,7 +2985,7 @@ Once the required outputs are defined for a given problem, a call to the
 <a class="reference internal" href="generated/fedoo.Problem.save_results.html#fedoo.Problem.save_results" title="fedoo.Problem.save_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Problem.save_results()</span></code></a> method allow to save all the defined
 fields on disk using the choosen file format, and associate the saved file to
 an iteration of the <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a>. For non linear problems
-solved using <code class="xref py py-meth docutils literal notranslate"><span class="pre">Problem.nlsolve()</span></code>, results are automatically saved at
+solved using <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Problem.nlsolve()</span></code>, results are automatically saved at
 some iterations dependending on the choosen parameters.</p>
 <p>The <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> store the path of the saved files for each
 iteration in the MultiFrameDataSet.list_data attribute. The method
@@ -3026,7 +3044,9 @@ The mesh is not included and may be saved beside in a vtk file.</p></li>
 </section>
 <section id="read-data-from-disk">
 <h3>Read data from disk<a class="headerlink" href="#read-data-from-disk" title="Link to this heading"></a></h3>
-<p>To read data saved on disk, use the function <a class="reference internal" href="generated/fedoo.read_data.html#fedoo.read_data" title="fedoo.read_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_data()</span></code></a>.</p>
+<p>To read data saved on disk, use the function <a class="reference internal" href="generated/fedoo.read_data.html#fedoo.read_data" title="fedoo.read_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_data()</span></code></a>.
+The data are imported as <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSet</span></code></a> or
+<a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> objects depending on the imported file(s).</p>
 <p class="rubric" id="very-simple-problem">Example</p>
 <p>For example, defining and solving a very simple problem :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
@@ -3075,11 +3095,59 @@ time interval (here the results are saved on a file).</p>
 <img alt="_images/example_plot_dataset_nl.png" src="_images/example_plot_dataset_nl.png" />
 </section>
 </section>
+<section id="fedoo-interactive-viewer">
+<h2>Fedoo interactive viewer<a class="headerlink" href="#fedoo-interactive-viewer" title="Link to this heading"></a></h2>
+<p>Fedoo includes a graphical application to visulize a result file or
+a DataSet like object. To be able to launch the viewer, the
+package pyvistaqt has to be installed.</p>
+<p>Then the viewer can either be launched as a standalone application from
+command line:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python -m fedoo.viewer
+</pre></div>
+</div>
+<p>or from a python code. The code below show different ways to start the viewer
+inside a python code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;myfile.fdz&#39;</span><span class="p">)</span>  <span class="c1"># load a DataSet from file</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">()</span>  <span class="c1"># start the viewer with no file opened</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># start the viewer and open the result DataSet</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="s1">&#39;myfile.fdz&#39;</span><span class="p">)</span>  <span class="c1"># start the viewer with the data from a file</span>
+</pre></div>
+</div>
+<p>The viewer includes the following tools and features:</p>
+<ul class="simple">
+<li><p>Management of multiple independent windows, which can be linked together.</p></li>
+<li><p>Field and iteration selectors for data exploration.</p></li>
+<li><p>A wide range of plotting options.</p></li>
+<li><p>Show or hide elements from predefined sets, rectangular selections,
+or arbitrary expressions.</p></li>
+<li><p>Plot results along an interactively defined line.</p></li>
+<li><p>Plot time-history data, when applicable.</p></li>
+<li><p>Clip the current mesh using an interactively defined plane.</p></li>
+<li><p>Save figures and create movies using the current visualization settings.</p></li>
+</ul>
+</section>
 <section id="basic-operations">
 <h2>Basic operations<a class="headerlink" href="#basic-operations" title="Link to this heading"></a></h2>
+<p>The principale methods/functions to extract, plot and manage
+result data are listed in this section.</p>
+<section id="extract-data">
+<h3>Extract data<a class="headerlink" href="#extract-data" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.DataSet.get_data.html#fedoo.DataSet.get_data" title="fedoo.DataSet.get_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.get_data</span></code></a>(field[, component, ...])</p></td>
+<td><p>Retrieve data from the DataSet for a given field.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.get_history.html#fedoo.MultiFrameDataSet.get_history" title="fedoo.MultiFrameDataSet.get_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.get_history</span></code></a>(field[, ...])</p></td>
+<td><p>Retrieve history data from the MultiFrameDataSet.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="plotting-results">
 <h3>Plotting results<a class="headerlink" href="#plotting-results" title="Link to this heading"></a></h3>
-<p>A few convinient methods are proposed to generate image of movie from
+<p>A few convenient methods are proposed to generate images or movies from
 <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSet</span></code></a> and <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> objects.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -3089,11 +3157,11 @@ time interval (here the results are saved on a file).</p>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot.html#fedoo.MultiFrameDataSet.plot" title="fedoo.MultiFrameDataSet.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot</span></code></a>([field, component, ...])</p></td>
 <td><p>Plot a field on the surface of the associated mesh.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot_history.html#fedoo.MultiFrameDataSet.plot_history" title="fedoo.MultiFrameDataSet.plot_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot_history</span></code></a>(field, indice)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot_history.html#fedoo.MultiFrameDataSet.plot_history" title="fedoo.MultiFrameDataSet.plot_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot_history</span></code></a>(field, indices)</p></td>
+<td><p>Plot history data from the MultiFrameDataSet.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.write_movie.html#fedoo.MultiFrameDataSet.write_movie" title="fedoo.MultiFrameDataSet.write_movie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.write_movie</span></code></a>([filename, ...])</p></td>
-<td><p>Generate a video of the MultiFrameDataSet object by loading iteratively every frame.</p></td>
+<td><p>Create a video from the data.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3124,7 +3192,7 @@ time interval (here the results are saved on a file).</p>
 <td><p>Write vtk file with the mesh and associated data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.DataSet.to_msh.html#fedoo.DataSet.to_msh" title="fedoo.DataSet.to_msh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_msh</span></code></a>(filename)</p></td>
-<td><p>Write a msh (gmsh format) file with the mesh and associated data (gausspoint data not included).</p></td>
+<td><p>Write a msh (gmsh format) file with mesh and associated data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.save_all.html#fedoo.MultiFrameDataSet.save_all" title="fedoo.MultiFrameDataSet.save_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.save_all</span></code></a>(filename[, ...])</p></td>
 <td><p>Save all data from MultiFrameDataSet.</p></td>
@@ -3137,10 +3205,10 @@ time interval (here the results are saved on a file).</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.read_data.html#fedoo.read_data" title="fedoo.read_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_data</span></code></a>(filename[, file_format])</p></td>
-<td><p>Read a file from a disk.</p></td>
+<td><p>Read a file from disk.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.DataSet.read.html#fedoo.DataSet.read" title="fedoo.DataSet.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.read</span></code></a>(filename[, file_format])</p></td>
-<td><p></p></td>
+<td><p>Read a file from disk.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.DataSet.load.html#fedoo.DataSet.load" title="fedoo.DataSet.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.load</span></code></a>(data[, load_mesh, iteration])</p></td>
 <td><p>Load data from a data object.</p></td>

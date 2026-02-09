@@ -208,15 +208,15 @@ print the macroscopic strain tensor and stress tensor
 
 
     Stress tensor in local frame:
-     [[ 7.932e+03 -6.944e-11 -1.471e-11]
-     [-6.944e-11 -7.996e-10  8.640e-12]
-     [-1.471e-11  8.640e-12  7.208e-11]]  
+     [[ 7.932e+03 -4.402e-10 -1.350e-12]
+     [-4.402e-10 -2.256e-10 -1.251e-12]
+     [-1.350e-12 -1.251e-12 -2.804e-10]]  
 
 
     Stress tensor in global frame:
-     [[3.966e+03 3.966e+03 1.025e-11]
-     [3.966e+03 3.966e+03 8.583e-12]
-     [1.025e-11 8.583e-12 7.208e-11]]  
+     [[ 3.966e+03  3.966e+03  4.661e-12]
+     [ 3.966e+03  3.966e+03  3.581e-12]
+     [ 4.661e-12  3.581e-12 -2.804e-10]]  
 
 
     Stress tensor using integration:
@@ -232,7 +232,7 @@ print the macroscopic strain tensor and stress tensor
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 7.816 seconds)
+   **Total running time of the script:** (0 minutes 7.638 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_3D_periodic_BC_off_axis.py:

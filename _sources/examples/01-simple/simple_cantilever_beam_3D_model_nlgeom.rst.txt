@@ -21,7 +21,7 @@
 3D Canteleaver Beam with geometric nonlinearities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. GENERATED FROM PYTHON SOURCE LINES 5-54
+.. GENERATED FROM PYTHON SOURCE LINES 5-52
 
 
 
@@ -55,8 +55,6 @@
 
 
     import fedoo as fd
-    import numpy as np
-    import time
 
     # --------------- Pre-Treatment --------------------------------------------------------
 
@@ -106,7 +104,7 @@
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.389 seconds)
+   **Total running time of the script:** (0 minutes 1.858 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_simple_cantilever_beam_3D_model_nlgeom.py:

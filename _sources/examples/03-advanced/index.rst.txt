@@ -33,6 +33,23 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="The key points are:     - define two separated mesh that share to the same node       list with different elements.     - create two separated Assembly that are combined in a single AssemblySum       object.     - extract/save results separatedly for each elm_type.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_multi_mesh_example_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/multi_mesh_example`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Very simple example with multiple element type.</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="This model uses self-contact, elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase.">
 
 .. only:: html
@@ -59,5 +76,6 @@ This section show some advanced capabilities of fedoo.
    :hidden:
 
    /examples/03-advanced/3D_periodic_BC_off_axis
+   /examples/03-advanced/multi_mesh_example
    /examples/03-advanced/tube_compression
 

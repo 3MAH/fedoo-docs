@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Compression of a ping pong ball &mdash; fedoo  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -25,7 +25,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Apply constraints" href="../02-constraints/index.html" />
+    <link rel="next" title="Visualization tutoral - Shear test of a cube" href="visualization.html" />
     <link rel="prev" title="3D Canteleaver Beam with geometric nonlinearities" href="simple_cantilever_beam_3D_model_nlgeom.html" /> 
 </head>
 
@@ -2845,7 +2845,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../../post_processing.html#read-data-from-disk">Read data from disk</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../post_processing.html#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../post_processing.html#basic-operations">Basic operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../post_processing.html#extract-data">Extract data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.MultiFrameDataSet.get_history.html">fedoo.MultiFrameDataSet.get_history</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../post_processing.html#plotting-results">Plotting results</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.MultiFrameDataSet.plot.html">fedoo.MultiFrameDataSet.plot</a></li>
@@ -2899,6 +2905,18 @@
 <li class="toctree-l4"><a class="reference internal" href="simple_cantilever_beam_3D_model.html">Canteleaver Beam using 3D hexahedral elements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="simple_cantilever_beam_3D_model_nlgeom.html">3D Canteleaver Beam with geometric nonlinearities</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Compression of a ping pong ball</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html">Visualization tutoral - Shear test of a cube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#geometry-and-mesh">Geometry and mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#constitutive-law-and-weak-form">Constitutive law and weak form</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#problem-definition">Problem definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#solve-the-problem">Solve the problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#basic-visualization-von-mises-stress">Basic visualization: von Mises stress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#side-by-side-linked-views">Side-by-side linked views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#clipping-with-a-plane">Clipping with a plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#element-set-filtering-from-an-expression">Element-set filtering from an expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#sampling-results-along-a-line">Sampling results along a line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="visualization.html#history-plot-at-selected-nodes">History plot at selected nodes</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a><ul>
@@ -3039,7 +3057,7 @@ defined in the element local coordinate system
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.484 seconds)</p>
+<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.471 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-spherical-shell-compression-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/bbbbe72a68b7ca22134fff70ab3d1b26/spherical_shell_compression.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">spherical_shell_compression.ipynb</span></code></a></p>
@@ -3059,7 +3077,7 @@ defined in the element local coordinate system
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="simple_cantilever_beam_3D_model_nlgeom.html" class="btn btn-neutral float-left" title="3D Canteleaver Beam with geometric nonlinearities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../02-constraints/index.html" class="btn btn-neutral float-right" title="Apply constraints" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="visualization.html" class="btn btn-neutral float-right" title="Visualization tutoral - Shear test of a cube" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

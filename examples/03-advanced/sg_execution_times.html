@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Computation times &mdash; fedoo  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -2843,7 +2843,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../../post_processing.html#read-data-from-disk">Read data from disk</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../post_processing.html#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../post_processing.html#basic-operations">Basic operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../post_processing.html#extract-data">Extract data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.MultiFrameDataSet.get_history.html">fedoo.MultiFrameDataSet.get_history</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../post_processing.html#plotting-results">Plotting results</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.MultiFrameDataSet.plot.html">fedoo.MultiFrameDataSet.plot</a></li>
@@ -2897,6 +2903,18 @@
 <li class="toctree-l4"><a class="reference internal" href="../01-simple/simple_cantilever_beam_3D_model.html">Canteleaver Beam using 3D hexahedral elements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../01-simple/simple_cantilever_beam_3D_model_nlgeom.html">3D Canteleaver Beam with geometric nonlinearities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../01-simple/spherical_shell_compression.html">Compression of a ping pong ball</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html">Visualization tutoral - Shear test of a cube</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#geometry-and-mesh">Geometry and mesh</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#constitutive-law-and-weak-form">Constitutive law and weak form</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#problem-definition">Problem definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#solve-the-problem">Solve the problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#basic-visualization-von-mises-stress">Basic visualization: von Mises stress</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#side-by-side-linked-views">Side-by-side linked views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#clipping-with-a-plane">Clipping with a plane</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#element-set-filtering-from-an-expression">Element-set filtering from an expression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#sampling-results-along-a-line">Sampling results along a line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../01-simple/visualization.html#history-plot-at-selected-nodes">History plot at selected nodes</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a><ul>
@@ -2951,7 +2969,7 @@
              
   <section id="computation-times">
 <span id="sphx-glr-examples-03-advanced-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Link to this heading"></a></h1>
-<p><strong>01:01.506</strong> total execution time for 2 files <strong>from examples/03-advanced</strong>:</p>
+<p><strong>00:58.617</strong> total execution time for 3 files <strong>from examples/03-advanced</strong>:</p>
 <div class="docutils container">
 <style scoped>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
@@ -2973,11 +2991,15 @@ $(document).ready( function () {
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="tube_compression.html#sphx-glr-examples-03-advanced-tube-compression-py"><span class="std std-ref">Compression of a tube using 2D axisymmetric model</span></a> (<code class="docutils literal notranslate"><span class="pre">tube_compression.py</span></code>)</p></td>
-<td><p>00:53.690</p></td>
+<td><p>00:50.735</p></td>
 <td><p>0.0</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="3D_periodic_BC_off_axis.html#sphx-glr-examples-03-advanced-3d-periodic-bc-off-axis-py"><span class="std std-ref">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</span></a> (<code class="docutils literal notranslate"><span class="pre">3D_periodic_BC_off_axis.py</span></code>)</p></td>
-<td><p>00:07.816</p></td>
+<td><p>00:07.638</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="xref std std-ref">sphx_glr_examples_03-advanced_multi_mesh_example.py</span> (<code class="docutils literal notranslate"><span class="pre">multi_mesh_example.py</span></code>)</p></td>
+<td><p>00:00.244</p></td>
 <td><p>0.0</p></td>
 </tr>
 </tbody>

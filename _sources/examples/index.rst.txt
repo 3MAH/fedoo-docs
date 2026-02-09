@@ -173,6 +173,23 @@ apply basics boundary conditions and get the results.
     </div>
 
 
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example performs a displacement-driven shear test on a unit cube using a finite-strain formulation. Several post-processing and visualization options are demonstrated, including:">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_visualization_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/visualization`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Visualization tutoral - Shear test of a cube</div>
+    </div>
+
+
 .. thumbnail-parent-div-close
 
 .. raw:: html
@@ -292,6 +309,23 @@ This section show some advanced capabilities of fedoo.
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The key points are:     - define two separated mesh that share to the same node       list with different elements.     - create two separated Assembly that are combined in a single AssemblySum       object.     - extract/save results separatedly for each elm_type.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_multi_mesh_example_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/multi_mesh_example`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Very simple example with multiple element type.</div>
     </div>
 
 
