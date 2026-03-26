@@ -48,23 +48,6 @@ This section show some advanced capabilities of fedoo.
     </div>
 
 
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="This model uses self-contact, elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase.">
-
-.. only:: html
-
-  .. image:: /examples/03-advanced/images/thumb/sphx_glr_tube_compression_thumb.png
-    :alt:
-
-  :doc:`/examples/03-advanced/tube_compression`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model</div>
-    </div>
-
-
 .. thumbnail-parent-div-close
 
 .. raw:: html
@@ -77,5 +60,4 @@ This section show some advanced capabilities of fedoo.
 
    /examples/03-advanced/3D_periodic_BC_off_axis
    /examples/03-advanced/multi_mesh_example
-   /examples/03-advanced/tube_compression
 

@@ -20,16 +20,16 @@
          
       
          NonLinearNewmark.GetVelocity
-         NonLinearNewmark.NewtonRaphsonError
-         NonLinearNewmark.NewtonRaphsonIncrement
          NonLinearNewmark.SetInitialAcceleration
          NonLinearNewmark.SetInitialDisplacement
          NonLinearNewmark.SetInitialVelocity
          NonLinearNewmark.SetRayleighDamping
          NonLinearNewmark.add_global_dof
+         NonLinearNewmark.add_line_search
          NonLinearNewmark.add_output
          NonLinearNewmark.apply_boundary_conditions
          NonLinearNewmark.change_assembly
+         NonLinearNewmark.compute_nr_error
          NonLinearNewmark.elastic_prediction
          NonLinearNewmark.get_A
          NonLinearNewmark.get_Acceleration
@@ -49,6 +49,7 @@
          NonLinearNewmark.initialize
          NonLinearNewmark.make_active
          NonLinearNewmark.nlsolve
+         NonLinearNewmark.remove_line_search
          NonLinearNewmark.reset
          NonLinearNewmark.save_results
          NonLinearNewmark.set_A
@@ -61,6 +62,7 @@
          NonLinearNewmark.set_solver
          NonLinearNewmark.set_start
          NonLinearNewmark.solve
+         NonLinearNewmark.solve_nr_increment
          NonLinearNewmark.solve_time_increment
          NonLinearNewmark.to_start
          NonLinearNewmark.update

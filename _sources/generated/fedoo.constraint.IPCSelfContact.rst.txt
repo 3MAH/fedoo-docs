@@ -1,0 +1,49 @@
+﻿fedoo.constraint.IPCSelfContact
+===============================
+
+.. currentmodule:: fedoo.constraint
+
+.. autoclass:: IPCSelfContact
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         IPCSelfContact.assemble_global_mat
+         IPCSelfContact.delete_global_mat
+         IPCSelfContact.get_all
+         IPCSelfContact.get_global_matrix
+         IPCSelfContact.get_global_vector
+         IPCSelfContact.initialize
+         IPCSelfContact.reset
+         IPCSelfContact.set_start
+         IPCSelfContact.to_start
+         IPCSelfContact.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         IPCSelfContact.name
+         IPCSelfContact.space
+         IPCSelfContact.current
+         IPCSelfContact.associated_assembly_sum
+  
+  

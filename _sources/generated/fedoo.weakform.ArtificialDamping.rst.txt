@@ -1,0 +1,47 @@
+﻿fedoo.weakform.ArtificialDamping
+================================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: ArtificialDamping
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         ArtificialDamping.get_all
+         ArtificialDamping.get_weak_equation
+         ArtificialDamping.initialize
+         ArtificialDamping.nvar
+         ArtificialDamping.reset
+         ArtificialDamping.set_start
+         ArtificialDamping.sum
+         ArtificialDamping.to_start
+         ArtificialDamping.update
+         ArtificialDamping.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         ArtificialDamping.name
+         ArtificialDamping.space
+  
+  
