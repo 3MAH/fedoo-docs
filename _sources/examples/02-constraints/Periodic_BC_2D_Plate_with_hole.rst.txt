@@ -60,7 +60,7 @@ Dimension of the problem
  .. code-block:: none
 
 
-    <fedoo.core.modelingspace.ModelingSpace object at 0x7f16424321d0>
+    <fedoo.core.modelingspace.ModelingSpace object at 0x7ff83f67f130>
 
 
 
@@ -253,7 +253,7 @@ print the macroscopic strain tensor and stress tensor
  .. code-block:: none
 
     Strain tensor ([Exx, Eyy, Exy]):  [np.float64(0.0), np.float64(0.0), np.float64(0.1)]
-    Stress tensor ([Sxx, Syy, Sxy]):  [np.float64(3.0474410550596077e-12), np.float64(-3.0569822229153944e-13), np.float64(2497.6680151186415)]
+    Stress tensor ([Sxx, Syy, Sxy]):  [np.float64(-4.118837182431889e-12), np.float64(-9.570732117936132e-12), np.float64(2497.6680151186065)]
 
 
 
@@ -261,7 +261,7 @@ print the macroscopic strain tensor and stress tensor
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.217 seconds)
+   **Total running time of the script:** (0 minutes 0.208 seconds)
 
 
 .. _sphx_glr_download_examples_02-constraints_Periodic_BC_2D_Plate_with_hole.py:
