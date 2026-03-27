@@ -26,6 +26,7 @@
          NonLinear.change_assembly
          NonLinear.compute_nr_error
          NonLinear.elastic_prediction
+         NonLinear.force_elastic_matrix_next_iter
          NonLinear.get_A
          NonLinear.get_B
          NonLinear.get_D

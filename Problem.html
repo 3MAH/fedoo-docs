@@ -1667,6 +1667,10 @@
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.problem.NonLinear.elastic_prediction.html#fedoo.problem.NonLinear.elastic_prediction"><code class="docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html">fedoo.problem.NonLinear.force_elastic_matrix_next_iter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinear.force_elastic_matrix_next_iter"><code class="docutils literal notranslate"><span class="pre">NonLinear.force_elastic_matrix_next_iter()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.problem.NonLinear.get_A.html">fedoo.problem.NonLinear.get_A</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.problem.NonLinear.get_A.html#fedoo.problem.NonLinear.get_A"><code class="docutils literal notranslate"><span class="pre">NonLinear.get_A()</span></code></a></li>
 </ul>
@@ -2135,6 +2139,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.elastic_prediction.html">fedoo.problem.NonLinearNewmark.elastic_prediction</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.elastic_prediction.html#fedoo.problem.NonLinearNewmark.elastic_prediction"><code class="docutils literal notranslate"><span class="pre">NonLinearNewmark.elastic_prediction()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html">fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter"><code class="docutils literal notranslate"><span class="pre">NonLinearNewmark.force_elastic_matrix_next_iter()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.get_A.html">fedoo.problem.NonLinearNewmark.get_A</a><ul>
@@ -2770,7 +2778,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#handling-incompressibility">1. Handling Incompressibility</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#numerical-damping-artificial-viscosity">2. Numerical Damping (Artificial Viscosity)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#line-search-algorithms">3. Line Search Algorithms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adaptive-stiffness-blending">4. Adaptive Stiffness (Blending)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stiffness-strategies-blending-elastic-overrides">4. Stiffness Strategies (Blending &amp; Elastic Overrides)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#eigenvalue-shifting">5. Eigenvalue Shifting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#static-vs-dynamic-fallback">6. Static vs. Dynamic Fallback</a></li>
 </ul>
@@ -3157,12 +3165,13 @@ problems.</p>
 <section id="newton-raphson-algorithm">
 <h3>Newton-Raphson Algorithm<a class="headerlink" href="#newton-raphson-algorithm" title="Link to this heading"></a></h3>
 <p>The Newton-Raphson algorithm is an iterative process used to find the equilibrium state
-of a non-linear system. Starting from an initial guess from <code class="xref py py-meth docutils literal notranslate"><span class="pre">nonlinear.elastic_prediction()</span></code>,
+of a non-linear system. Starting from an initial guess from
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction()</span></code>,
 the solver iteratively updates the displacement increment until the internal and
 external forces are balanced within a specified tolerance.</p>
 <section id="available-convergence-criteria">
 <h4>Available Convergence Criteria<a class="headerlink" href="#available-convergence-criteria" title="Link to this heading"></a></h4>
-<p>You can define how the solver determines convergence via <code class="xref py py-meth docutils literal notranslate"><span class="pre">nonlinear.set_nr_criterion()</span></code>.
+<p>You can define how the solver determines convergence via <code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_nr_criterion()</span></code>.
 Three criteria are available:</p>
 <ul class="simple">
 <li><p><strong>Force</strong> (default): Measures the residual (out-of-balance) forces relative to the
@@ -3175,7 +3184,7 @@ the initial work increment.</p></li>
 </section>
 <section id="key-newton-raphson-parameters">
 <h4>Key Newton-Raphson Parameters<a class="headerlink" href="#key-newton-raphson-parameters" title="Link to this heading"></a></h4>
-<p>The following parameters can be adjusted via <code class="xref py py-meth docutils literal notranslate"><span class="pre">nonlinear.set_nr_criterion()</span></code> or the
+<p>The following parameters can be adjusted via <code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_nr_criterion()</span></code> or the
 <code class="docutils literal notranslate"><span class="pre">nr_parameters</span></code> dictionary:</p>
 <ul>
 <li><p><strong>tol</strong>: The convergence tolerance (default: <code class="docutils literal notranslate"><span class="pre">5e-3</span></code>). A smaller value increases
@@ -3207,7 +3216,7 @@ consecutive iterations.</p></li>
 </section>
 <section id="the-nlsolve-method">
 <h3>The <code class="docutils literal notranslate"><span class="pre">nlsolve</span></code> Method<a class="headerlink" href="#the-nlsolve-method" title="Link to this heading"></a></h3>
-<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">nonlinear.nlsolve()</span></code> method manages the time-steering logic, calling the NR
+<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.nlsolve()</span></code> method manages the time-steering logic, calling the NR
 loop for each increment and handling time-step adaptations.</p>
 <section id="time-steering-parameters">
 <h4>Time-Steering Parameters<a class="headerlink" href="#time-steering-parameters" title="Link to this heading"></a></h4>
@@ -3340,28 +3349,57 @@ setting <code class="docutils literal notranslate"><span class="pre">energy_frac
 <p>Line search prevents the solver from taking steps that are too large, which can
 lead to non-physical states or divergence.</p>
 <ul class="simple">
-<li><p><strong>Usage</strong>: Enable via the <code class="xref py py-meth docutils literal notranslate"><span class="pre">nonlinear.add_line_search()</span></code> method.</p></li>
+<li><p><strong>Usage</strong>: Enable via the <code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.add_line_search()</span></code> method.</p></li>
 <li><p><strong>Mechanism</strong>: Scales the displacement increment <span class="math notranslate nohighlight">\(d\mathbf{U}\)</span> by a
 factor <span class="math notranslate nohighlight">\(\eta \in (0, 1]\)</span> to minimize the residual norm along the
 search direction.</p></li>
 </ul>
 </section>
-<section id="adaptive-stiffness-blending">
-<h4>4. Adaptive Stiffness (Blending)<a class="headerlink" href="#adaptive-stiffness-blending" title="Link to this heading"></a></h4>
+<section id="stiffness-strategies-blending-elastic-overrides">
+<h4>4. Stiffness Strategies (Blending &amp; Elastic Overrides)<a class="headerlink" href="#stiffness-strategies-blending-elastic-overrides" title="Link to this heading"></a></h4>
 <p>Useful for elastoplasticity or damage modeling where a sudden change in
 direction requires a “safe” search direction.</p>
 <ul>
+<li><dl>
+<dt><strong>Adaptive Stiffness (Blending)</strong>:</dt><dd><ul>
 <li><p><strong>Mechanism</strong>: Blends the tangent matrix <span class="math notranslate nohighlight">\(\mathbf{K_T}\)</span> with the
 initial elastic matrix <span class="math notranslate nohighlight">\(\mathbf{K_E}\)</span> using a scalar <span class="math notranslate nohighlight">\(\xi\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{K} = (1-\xi)\mathbf{K_T} + \xi\mathbf{K_E}\]</div>
 </li>
 <li><p><strong>Usage</strong>: Enable <code class="docutils literal notranslate"><span class="pre">adaptive_stiffness=True</span></code> in the Newton-Raphson
-parameters via <code class="xref py py-meth docutils literal notranslate"><span class="pre">nonlinear.set_nr_criterion()</span></code>.</p></li>
+parameters via <code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_nr_criterion()</span></code>.</p></li>
 <li><p><strong>Benefit</strong>: If the tangent prediction diverges, the solver automatically
 increases <span class="math notranslate nohighlight">\(\xi\)</span> (shifting toward the elastic matrix) to restore
 stability. It then attempts to decrease <span class="math notranslate nohighlight">\(\xi\)</span> back to 0 as
 convergence improves.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Forced Elastic Stiffness</strong>:</dt><dd><ul class="simple">
+<li><p><strong>force_elastic_stiffness</strong>: If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the solver performs a
+Modified Newton-Raphson (Initial Stiffness) solution, using
+<span class="math notranslate nohighlight">\(\mathbf{K_E}\)</span> for all iterations. This is slower to converge (linear)
+but highly robust against tangent singularities.</p></li>
+<li><p><strong>elastic_initial_guess</strong>: If <code class="docutils literal notranslate"><span class="pre">True</span></code>, forces the use of <span class="math notranslate nohighlight">\(\mathbf{K_E}\)</span>
+only for the very first iteration of every time increment to provide a stable
+initial direction.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>One-Time Manual Override</strong>:</dt><dd><ul class="simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.force_elastic_matrix_next_iter()</span></code>: Use this method to flag the
+solver to recompute and use the elastic stiffness matrix for the <strong>very next</strong>
+Newton-Raphson initial guess only. This is ideal for manually
+“restarting” a stalled increment.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </section>
 <section id="eigenvalue-shifting">

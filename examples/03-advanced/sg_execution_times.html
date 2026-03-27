@@ -1664,6 +1664,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.problem.NonLinear.elastic_prediction.html#fedoo.problem.NonLinear.elastic_prediction"><code class="docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html">fedoo.problem.NonLinear.force_elastic_matrix_next_iter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinear.force_elastic_matrix_next_iter"><code class="docutils literal notranslate"><span class="pre">NonLinear.force_elastic_matrix_next_iter()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../generated/fedoo.problem.NonLinear.get_A.html">fedoo.problem.NonLinear.get_A</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.problem.NonLinear.get_A.html#fedoo.problem.NonLinear.get_A"><code class="docutils literal notranslate"><span class="pre">NonLinear.get_A()</span></code></a></li>
 </ul>
@@ -2132,6 +2136,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../generated/fedoo.problem.NonLinearNewmark.elastic_prediction.html">fedoo.problem.NonLinearNewmark.elastic_prediction</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.problem.NonLinearNewmark.elastic_prediction.html#fedoo.problem.NonLinearNewmark.elastic_prediction"><code class="docutils literal notranslate"><span class="pre">NonLinearNewmark.elastic_prediction()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html">fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter"><code class="docutils literal notranslate"><span class="pre">NonLinearNewmark.force_elastic_matrix_next_iter()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../generated/fedoo.problem.NonLinearNewmark.get_A.html">fedoo.problem.NonLinearNewmark.get_A</a><ul>
@@ -2767,7 +2775,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../Problem.html#handling-incompressibility">1. Handling Incompressibility</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../Problem.html#numerical-damping-artificial-viscosity">2. Numerical Damping (Artificial Viscosity)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../Problem.html#line-search-algorithms">3. Line Search Algorithms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../Problem.html#adaptive-stiffness-blending">4. Adaptive Stiffness (Blending)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Problem.html#stiffness-strategies-blending-elastic-overrides">4. Stiffness Strategies (Blending &amp; Elastic Overrides)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../Problem.html#eigenvalue-shifting">5. Eigenvalue Shifting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../Problem.html#static-vs-dynamic-fallback">6. Static vs. Dynamic Fallback</a></li>
 </ul>
@@ -3109,7 +3117,7 @@
              
   <section id="computation-times">
 <span id="sphx-glr-examples-03-advanced-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Link to this heading"></a></h1>
-<p><strong>02:09.415</strong> total execution time for 3 files <strong>from examples/03-advanced</strong>:</p>
+<p><strong>02:27.975</strong> total execution time for 3 files <strong>from examples/03-advanced</strong>:</p>
 <div class="docutils container">
 <style scoped>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
@@ -3131,15 +3139,15 @@ $(document).ready( function () {
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="tube_compression.html#sphx-glr-examples-03-advanced-tube-compression-py"><span class="std std-ref">Compression of a tube using 2D axisymmetric model</span></a> (<code class="docutils literal notranslate"><span class="pre">tube_compression.py</span></code>)</p></td>
-<td><p>02:02.989</p></td>
+<td><p>02:21.755</p></td>
 <td><p>0.0</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="3D_periodic_BC_off_axis.html#sphx-glr-examples-03-advanced-3d-periodic-bc-off-axis-py"><span class="std std-ref">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</span></a> (<code class="docutils literal notranslate"><span class="pre">3D_periodic_BC_off_axis.py</span></code>)</p></td>
-<td><p>00:06.228</p></td>
+<td><p>00:06.002</p></td>
 <td><p>0.0</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="xref std std-ref">sphx_glr_examples_03-advanced_multi_mesh_example.py</span> (<code class="docutils literal notranslate"><span class="pre">multi_mesh_example.py</span></code>)</p></td>
-<td><p>00:00.198</p></td>
+<td><p>00:00.218</p></td>
 <td><p>0.0</p></td>
 </tr>
 </tbody>

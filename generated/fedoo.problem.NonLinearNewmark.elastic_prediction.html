@@ -25,7 +25,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.problem.NonLinearNewmark.get_A" href="fedoo.problem.NonLinearNewmark.get_A.html" />
+    <link rel="next" title="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter" href="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html" />
     <link rel="prev" title="fedoo.problem.NonLinearNewmark.compute_nr_error" href="fedoo.problem.NonLinearNewmark.compute_nr_error.html" /> 
 </head>
 
@@ -1666,6 +1666,10 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.problem.NonLinear.elastic_prediction.html#fedoo.problem.NonLinear.elastic_prediction"><code class="docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html">fedoo.problem.NonLinear.force_elastic_matrix_next_iter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinear.force_elastic_matrix_next_iter"><code class="docutils literal notranslate"><span class="pre">NonLinear.force_elastic_matrix_next_iter()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.get_A.html">fedoo.problem.NonLinear.get_A</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.problem.NonLinear.get_A.html#fedoo.problem.NonLinear.get_A"><code class="docutils literal notranslate"><span class="pre">NonLinear.get_A()</span></code></a></li>
 </ul>
@@ -2134,6 +2138,10 @@
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.problem.NonLinearNewmark.elastic_prediction</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#fedoo.problem.NonLinearNewmark.elastic_prediction"><code class="docutils literal notranslate"><span class="pre">NonLinearNewmark.elastic_prediction()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html">fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter"><code class="docutils literal notranslate"><span class="pre">NonLinearNewmark.force_elastic_matrix_next_iter()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_A.html">fedoo.problem.NonLinearNewmark.get_A</a><ul>
@@ -2769,7 +2777,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../Problem.html#handling-incompressibility">1. Handling Incompressibility</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Problem.html#numerical-damping-artificial-viscosity">2. Numerical Damping (Artificial Viscosity)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Problem.html#line-search-algorithms">3. Line Search Algorithms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Problem.html#adaptive-stiffness-blending">4. Adaptive Stiffness (Blending)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Problem.html#stiffness-strategies-blending-elastic-overrides">4. Stiffness Strategies (Blending &amp; Elastic Overrides)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Problem.html#eigenvalue-shifting">5. Eigenvalue Shifting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Problem.html#static-vs-dynamic-fallback">6. Static vs. Dynamic Fallback</a></li>
 </ul>
@@ -3125,7 +3133,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="fedoo.problem.NonLinearNewmark.compute_nr_error.html" class="btn btn-neutral float-left" title="fedoo.problem.NonLinearNewmark.compute_nr_error" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.problem.NonLinearNewmark.get_A.html" class="btn btn-neutral float-right" title="fedoo.problem.NonLinearNewmark.get_A" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html" class="btn btn-neutral float-right" title="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1667,6 +1667,10 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.problem.NonLinear.elastic_prediction.html#fedoo.problem.NonLinear.elastic_prediction"><code class="docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html">fedoo.problem.NonLinear.force_elastic_matrix_next_iter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinear.force_elastic_matrix_next_iter"><code class="docutils literal notranslate"><span class="pre">NonLinear.force_elastic_matrix_next_iter()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.get_A.html">fedoo.problem.NonLinear.get_A</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.problem.NonLinear.get_A.html#fedoo.problem.NonLinear.get_A"><code class="docutils literal notranslate"><span class="pre">NonLinear.get_A()</span></code></a></li>
 </ul>
@@ -2135,6 +2139,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.elastic_prediction.html">fedoo.problem.NonLinearNewmark.elastic_prediction</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.elastic_prediction.html#fedoo.problem.NonLinearNewmark.elastic_prediction"><code class="docutils literal notranslate"><span class="pre">NonLinearNewmark.elastic_prediction()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html">fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter"><code class="docutils literal notranslate"><span class="pre">NonLinearNewmark.force_elastic_matrix_next_iter()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_A.html">fedoo.problem.NonLinearNewmark.get_A</a><ul>
@@ -2770,7 +2778,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../Problem.html#handling-incompressibility">1. Handling Incompressibility</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Problem.html#numerical-damping-artificial-viscosity">2. Numerical Damping (Artificial Viscosity)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Problem.html#line-search-algorithms">3. Line Search Algorithms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Problem.html#adaptive-stiffness-blending">4. Adaptive Stiffness (Blending)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Problem.html#stiffness-strategies-blending-elastic-overrides">4. Stiffness Strategies (Blending &amp; Elastic Overrides)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Problem.html#eigenvalue-shifting">5. Eigenvalue Shifting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Problem.html#static-vs-dynamic-fallback">6. Static vs. Dynamic Fallback</a></li>
 </ul>
@@ -3161,118 +3169,121 @@ The algorithm come from:  Bathe KJ and Edward W, “Numerical methods in finite 
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.elastic_prediction.html#fedoo.problem.NonLinearNewmark.elastic_prediction" title="fedoo.problem.NonLinearNewmark.elastic_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.elastic_prediction</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_A.html#fedoo.problem.NonLinearNewmark.get_A" title="fedoo.problem.NonLinearNewmark.get_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_A</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter" title="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.force_elastic_matrix_next_iter</span></code></a>()</p></td>
+<td><p>Flags the solver to use the elastic stiffness matrix at the begining of the next new iteration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_A.html#fedoo.problem.NonLinearNewmark.get_A" title="fedoo.problem.NonLinearNewmark.get_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_A</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_Acceleration.html#fedoo.problem.NonLinearNewmark.get_Acceleration" title="fedoo.problem.NonLinearNewmark.get_Acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_Acceleration</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_Acceleration.html#fedoo.problem.NonLinearNewmark.get_Acceleration" title="fedoo.problem.NonLinearNewmark.get_Acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_Acceleration</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_Assembly.html#fedoo.problem.NonLinearNewmark.get_Assembly" title="fedoo.problem.NonLinearNewmark.get_Assembly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_Assembly</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_Assembly.html#fedoo.problem.NonLinearNewmark.get_Assembly" title="fedoo.problem.NonLinearNewmark.get_Assembly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_Assembly</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_B.html#fedoo.problem.NonLinearNewmark.get_B" title="fedoo.problem.NonLinearNewmark.get_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_B</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_B.html#fedoo.problem.NonLinearNewmark.get_B" title="fedoo.problem.NonLinearNewmark.get_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_B</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_D.html#fedoo.problem.NonLinearNewmark.get_D" title="fedoo.problem.NonLinearNewmark.get_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_D</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_D.html#fedoo.problem.NonLinearNewmark.get_D" title="fedoo.problem.NonLinearNewmark.get_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_D</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_X.html#fedoo.problem.NonLinearNewmark.get_X" title="fedoo.problem.NonLinearNewmark.get_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_X</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_X.html#fedoo.problem.NonLinearNewmark.get_X" title="fedoo.problem.NonLinearNewmark.get_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_X</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_active.html#fedoo.problem.NonLinearNewmark.get_active" title="fedoo.problem.NonLinearNewmark.get_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_active</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_active.html#fedoo.problem.NonLinearNewmark.get_active" title="fedoo.problem.NonLinearNewmark.get_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_active</span></code></a>()</p></td>
 <td><p>Return the active Problem.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_all.html#fedoo.problem.NonLinearNewmark.get_all" title="fedoo.problem.NonLinearNewmark.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_all</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_all.html#fedoo.problem.NonLinearNewmark.get_all" title="fedoo.problem.NonLinearNewmark.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_all</span></code></a>()</p></td>
 <td><p>Return the list of all problems.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_disp.html#fedoo.problem.NonLinearNewmark.get_disp" title="fedoo.problem.NonLinearNewmark.get_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_disp</span></code></a>([name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_disp.html#fedoo.problem.NonLinearNewmark.get_disp" title="fedoo.problem.NonLinearNewmark.get_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_disp</span></code></a>([name])</p></td>
 <td><p>Return the displacement components.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_dof_solution.html#fedoo.problem.NonLinearNewmark.get_dof_solution" title="fedoo.problem.NonLinearNewmark.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_dof_solution</span></code></a>([name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_dof_solution.html#fedoo.problem.NonLinearNewmark.get_dof_solution" title="fedoo.problem.NonLinearNewmark.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_dof_solution</span></code></a>([name])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_ext_forces.html#fedoo.problem.NonLinearNewmark.get_ext_forces" title="fedoo.problem.NonLinearNewmark.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_ext_forces</span></code></a>([name, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_ext_forces.html#fedoo.problem.NonLinearNewmark.get_ext_forces" title="fedoo.problem.NonLinearNewmark.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_ext_forces</span></code></a>([name, ...])</p></td>
 <td><p>Return the nodal Forces in global coordinates system.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_results.html#fedoo.problem.NonLinearNewmark.get_results" title="fedoo.problem.NonLinearNewmark.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_results</span></code></a>(*args, **kargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_results.html#fedoo.problem.NonLinearNewmark.get_results" title="fedoo.problem.NonLinearNewmark.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_results</span></code></a>(*args, **kargs)</p></td>
 <td><p>Extract some results from the current problem.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_rot.html#fedoo.problem.NonLinearNewmark.get_rot" title="fedoo.problem.NonLinearNewmark.get_rot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_rot</span></code></a>([name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_rot.html#fedoo.problem.NonLinearNewmark.get_rot" title="fedoo.problem.NonLinearNewmark.get_rot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_rot</span></code></a>([name])</p></td>
 <td><p>Return the rotation components.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_temp.html#fedoo.problem.NonLinearNewmark.get_temp" title="fedoo.problem.NonLinearNewmark.get_temp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_temp</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_temp.html#fedoo.problem.NonLinearNewmark.get_temp" title="fedoo.problem.NonLinearNewmark.get_temp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.get_temp</span></code></a>()</p></td>
 <td><p>Return the nodal temperature field.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.init_bc_start_value.html#fedoo.problem.NonLinearNewmark.init_bc_start_value" title="fedoo.problem.NonLinearNewmark.init_bc_start_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.init_bc_start_value</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.init_bc_start_value.html#fedoo.problem.NonLinearNewmark.init_bc_start_value" title="fedoo.problem.NonLinearNewmark.init_bc_start_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.init_bc_start_value</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.initialize.html#fedoo.problem.NonLinearNewmark.initialize" title="fedoo.problem.NonLinearNewmark.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.initialize</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.initialize.html#fedoo.problem.NonLinearNewmark.initialize" title="fedoo.problem.NonLinearNewmark.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.initialize</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.make_active.html#fedoo.problem.NonLinearNewmark.make_active" title="fedoo.problem.NonLinearNewmark.make_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.make_active</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.make_active.html#fedoo.problem.NonLinearNewmark.make_active" title="fedoo.problem.NonLinearNewmark.make_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.make_active</span></code></a>()</p></td>
 <td><p>Define the problem instance as the active Problem.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.nlsolve.html#fedoo.problem.NonLinearNewmark.nlsolve" title="fedoo.problem.NonLinearNewmark.nlsolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.nlsolve</span></code></a>([dt, update_dt, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.nlsolve.html#fedoo.problem.NonLinearNewmark.nlsolve" title="fedoo.problem.NonLinearNewmark.nlsolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.nlsolve</span></code></a>([dt, update_dt, ...])</p></td>
 <td><p>Solve the non linear problem using the newton-raphson algorithm.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.remove_line_search.html#fedoo.problem.NonLinearNewmark.remove_line_search" title="fedoo.problem.NonLinearNewmark.remove_line_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.remove_line_search</span></code></a>([name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.remove_line_search.html#fedoo.problem.NonLinearNewmark.remove_line_search" title="fedoo.problem.NonLinearNewmark.remove_line_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.remove_line_search</span></code></a>([name])</p></td>
 <td><p>Remove a line search algorithm by its name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.reset.html#fedoo.problem.NonLinearNewmark.reset" title="fedoo.problem.NonLinearNewmark.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.reset</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.reset.html#fedoo.problem.NonLinearNewmark.reset" title="fedoo.problem.NonLinearNewmark.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.reset</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.save_results.html#fedoo.problem.NonLinearNewmark.save_results" title="fedoo.problem.NonLinearNewmark.save_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.save_results</span></code></a>([iterOutput])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.save_results.html#fedoo.problem.NonLinearNewmark.save_results" title="fedoo.problem.NonLinearNewmark.save_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.save_results</span></code></a>([iterOutput])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_A.html#fedoo.problem.NonLinearNewmark.set_A" title="fedoo.problem.NonLinearNewmark.set_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_A</span></code></a>(A)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_A.html#fedoo.problem.NonLinearNewmark.set_A" title="fedoo.problem.NonLinearNewmark.set_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_A</span></code></a>(A)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_B.html#fedoo.problem.NonLinearNewmark.set_B" title="fedoo.problem.NonLinearNewmark.set_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_B</span></code></a>(B)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_B.html#fedoo.problem.NonLinearNewmark.set_B" title="fedoo.problem.NonLinearNewmark.set_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_B</span></code></a>(B)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_D.html#fedoo.problem.NonLinearNewmark.set_D" title="fedoo.problem.NonLinearNewmark.set_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_D</span></code></a>(D)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_D.html#fedoo.problem.NonLinearNewmark.set_D" title="fedoo.problem.NonLinearNewmark.set_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_D</span></code></a>(D)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_X.html#fedoo.problem.NonLinearNewmark.set_X" title="fedoo.problem.NonLinearNewmark.set_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_X</span></code></a>(value)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_X.html#fedoo.problem.NonLinearNewmark.set_X" title="fedoo.problem.NonLinearNewmark.set_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_X</span></code></a>(value)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_active.html#fedoo.problem.NonLinearNewmark.set_active" title="fedoo.problem.NonLinearNewmark.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_active</span></code></a>(name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_active.html#fedoo.problem.NonLinearNewmark.set_active" title="fedoo.problem.NonLinearNewmark.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_active</span></code></a>(name)</p></td>
 <td><p>Define the active Problem from its name.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_dof_solution.html#fedoo.problem.NonLinearNewmark.set_dof_solution" title="fedoo.problem.NonLinearNewmark.set_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_dof_solution</span></code></a>(name, value)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_dof_solution.html#fedoo.problem.NonLinearNewmark.set_dof_solution" title="fedoo.problem.NonLinearNewmark.set_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_dof_solution</span></code></a>(name, value)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_nr_criterion.html#fedoo.problem.NonLinearNewmark.set_nr_criterion" title="fedoo.problem.NonLinearNewmark.set_nr_criterion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_nr_criterion</span></code></a>([criterion])</p></td>
-<td><p>Define the convergence criterion of the newton raphson algorith.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_nr_criterion.html#fedoo.problem.NonLinearNewmark.set_nr_criterion" title="fedoo.problem.NonLinearNewmark.set_nr_criterion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_nr_criterion</span></code></a>([criterion])</p></td>
+<td><p>Define the convergence criterion of the newton raphson algorithm.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_solver.html#fedoo.problem.NonLinearNewmark.set_solver" title="fedoo.problem.NonLinearNewmark.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_solver</span></code></a>([solver])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_solver.html#fedoo.problem.NonLinearNewmark.set_solver" title="fedoo.problem.NonLinearNewmark.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_solver</span></code></a>([solver])</p></td>
 <td><p>Define the solver for the linear system resolution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_start.html#fedoo.problem.NonLinearNewmark.set_start" title="fedoo.problem.NonLinearNewmark.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_start</span></code></a>([save_results, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_start.html#fedoo.problem.NonLinearNewmark.set_start" title="fedoo.problem.NonLinearNewmark.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.set_start</span></code></a>([save_results, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.solve.html#fedoo.problem.NonLinearNewmark.solve" title="fedoo.problem.NonLinearNewmark.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.solve</span></code></a>(**kargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.solve.html#fedoo.problem.NonLinearNewmark.solve" title="fedoo.problem.NonLinearNewmark.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.solve</span></code></a>(**kargs)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.solve_nr_increment.html#fedoo.problem.NonLinearNewmark.solve_nr_increment" title="fedoo.problem.NonLinearNewmark.solve_nr_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.solve_nr_increment</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.solve_nr_increment.html#fedoo.problem.NonLinearNewmark.solve_nr_increment" title="fedoo.problem.NonLinearNewmark.solve_nr_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.solve_nr_increment</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.solve_time_increment.html#fedoo.problem.NonLinearNewmark.solve_time_increment" title="fedoo.problem.NonLinearNewmark.solve_time_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.solve_time_increment</span></code></a>([...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.solve_time_increment.html#fedoo.problem.NonLinearNewmark.solve_time_increment" title="fedoo.problem.NonLinearNewmark.solve_time_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.solve_time_increment</span></code></a>([...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.to_start.html#fedoo.problem.NonLinearNewmark.to_start" title="fedoo.problem.NonLinearNewmark.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.to_start</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.to_start.html#fedoo.problem.NonLinearNewmark.to_start" title="fedoo.problem.NonLinearNewmark.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.to_start</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.update.html#fedoo.problem.NonLinearNewmark.update" title="fedoo.problem.NonLinearNewmark.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.update</span></code></a>([compute, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.update.html#fedoo.problem.NonLinearNewmark.update" title="fedoo.problem.NonLinearNewmark.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.update</span></code></a>([compute, ...])</p></td>
 <td><p>Assemble the matrix including the following modification:</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.updateA.html#fedoo.problem.NonLinearNewmark.updateA" title="fedoo.problem.NonLinearNewmark.updateA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.updateA</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.updateA.html#fedoo.problem.NonLinearNewmark.updateA" title="fedoo.problem.NonLinearNewmark.updateA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.updateA</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.updateD.html#fedoo.problem.NonLinearNewmark.updateD" title="fedoo.problem.NonLinearNewmark.updateD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.updateD</span></code></a>([start])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.updateD.html#fedoo.problem.NonLinearNewmark.updateD" title="fedoo.problem.NonLinearNewmark.updateD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.updateD</span></code></a>([start])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.update_boundary_conditions.html#fedoo.problem.NonLinearNewmark.update_boundary_conditions" title="fedoo.problem.NonLinearNewmark.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.update_boundary_conditions</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinearNewmark.update_boundary_conditions.html#fedoo.problem.NonLinearNewmark.update_boundary_conditions" title="fedoo.problem.NonLinearNewmark.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark.update_boundary_conditions</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>

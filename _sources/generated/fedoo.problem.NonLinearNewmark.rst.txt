@@ -31,6 +31,7 @@
          NonLinearNewmark.change_assembly
          NonLinearNewmark.compute_nr_error
          NonLinearNewmark.elastic_prediction
+         NonLinearNewmark.force_elastic_matrix_next_iter
          NonLinearNewmark.get_A
          NonLinearNewmark.get_Acceleration
          NonLinearNewmark.get_Assembly
