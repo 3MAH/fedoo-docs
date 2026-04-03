@@ -19,13 +19,14 @@
          :toctree:
          
       
-         NonLinear.NewtonRaphsonError
-         NonLinear.NewtonRaphsonIncrement
          NonLinear.add_global_dof
+         NonLinear.add_line_search
          NonLinear.add_output
          NonLinear.apply_boundary_conditions
          NonLinear.change_assembly
+         NonLinear.compute_nr_error
          NonLinear.elastic_prediction
+         NonLinear.force_elastic_matrix_next_iter
          NonLinear.get_A
          NonLinear.get_B
          NonLinear.get_D
@@ -42,6 +43,7 @@
          NonLinear.initialize
          NonLinear.make_active
          NonLinear.nlsolve
+         NonLinear.remove_line_search
          NonLinear.reset
          NonLinear.save_results
          NonLinear.set_A
@@ -54,6 +56,7 @@
          NonLinear.set_solver
          NonLinear.set_start
          NonLinear.solve
+         NonLinear.solve_nr_increment
          NonLinear.solve_time_increment
          NonLinear.to_start
          NonLinear.update

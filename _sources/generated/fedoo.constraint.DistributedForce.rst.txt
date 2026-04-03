@@ -38,6 +38,7 @@
          DistributedForce.get_strain
          DistributedForce.initialize
          DistributedForce.integrate_field
+         DistributedForce.operator_apply
          DistributedForce.reset
          DistributedForce.set_disp
          DistributedForce.set_start

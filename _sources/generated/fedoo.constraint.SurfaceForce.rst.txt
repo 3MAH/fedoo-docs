@@ -40,6 +40,7 @@
          SurfaceForce.get_strain
          SurfaceForce.initialize
          SurfaceForce.integrate_field
+         SurfaceForce.operator_apply
          SurfaceForce.reset
          SurfaceForce.set_disp
          SurfaceForce.set_start

@@ -22,6 +22,7 @@
          Simcoon.get_H_plane_stress
          Simcoon.get_all
          Simcoon.get_tangent_matrix
+         Simcoon.get_temp_gp
          Simcoon.initialize
          Simcoon.local2global_H
          Simcoon.reset
@@ -41,5 +42,6 @@
          
       
          Simcoon.name
+         Simcoon.is_initialized
   
   

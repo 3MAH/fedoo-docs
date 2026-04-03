@@ -228,7 +228,7 @@ that can be applied in fedoo.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Contact bewteen a disk and a rectangle">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates contact between a disk and a rectangle using the IPC (Incremental Potential Contact) barrier method. The disk is pressed into the rectangle and then unloaded.">
 
 .. only:: html
 
@@ -239,7 +239,7 @@ that can be applied in fedoo.
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Contact bewteen a disk and a rectangle</div>
+      <div class="sphx-glr-thumbnail-title">Contact between a disk and a rectangle (IPC)</div>
     </div>
 
 
@@ -326,6 +326,23 @@ This section show some advanced capabilities of fedoo.
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Very simple example with multiple element type.</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_thermal_loading_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/thermal_loading`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</div>
     </div>
 
 

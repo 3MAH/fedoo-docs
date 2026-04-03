@@ -50,6 +50,23 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_thermal_loading_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/thermal_loading`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="This model uses self-contact, elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase.">
 
 .. only:: html
@@ -77,5 +94,6 @@ This section show some advanced capabilities of fedoo.
 
    /examples/03-advanced/3D_periodic_BC_off_axis
    /examples/03-advanced/multi_mesh_example
+   /examples/03-advanced/thermal_loading
    /examples/03-advanced/tube_compression
 

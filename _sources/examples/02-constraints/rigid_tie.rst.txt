@@ -41,11 +41,11 @@ rotation is imposed on the top face.
 
  .. code-block:: none
 
-    Iter 1 - Time: 0.20000 - dt 0.20000 - NR iter: 2 - Err: 0.00996
-    Iter 2 - Time: 0.40000 - dt 0.20000 - NR iter: 2 - Err: 0.00976
-    Iter 3 - Time: 0.60000 - dt 0.20000 - NR iter: 3 - Err: 0.00469
-    Iter 4 - Time: 0.80000 - dt 0.20000 - NR iter: 3 - Err: 0.00584
-    Iter 5 - Time: 1.00000 - dt 0.20000 - NR iter: 3 - Err: 0.00821
+    Iter 1 - Time: 0.20000 - dt 0.20000 - NR iter: 3 - Err: 0.00996
+    Iter 2 - Time: 0.40000 - dt 0.20000 - NR iter: 3 - Err: 0.00980
+    Iter 3 - Time: 0.60000 - dt 0.20000 - NR iter: 4 - Err: 0.00473
+    Iter 4 - Time: 0.80000 - dt 0.20000 - NR iter: 4 - Err: 0.00584
+    Iter 5 - Time: 1.00000 - dt 0.20000 - NR iter: 4 - Err: 0.00819
 
 
 
@@ -108,7 +108,7 @@ rotation is imposed on the top face.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.444 seconds)
+   **Total running time of the script:** (0 minutes 0.451 seconds)
 
 
 .. _sphx_glr_download_examples_02-constraints_rigid_tie.py:

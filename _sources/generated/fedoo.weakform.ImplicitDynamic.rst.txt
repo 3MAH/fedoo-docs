@@ -12,37 +12,8 @@
 
     
   
-
-    **Methods**
-    
-      .. autosummary::
-         :toctree:
-         
-      
-         ImplicitDynamic.get_all
-         ImplicitDynamic.get_weak_equation
-         ImplicitDynamic.initialize
-         ImplicitDynamic.nvar
-         ImplicitDynamic.reset
-         ImplicitDynamic.set_start
-         ImplicitDynamic.sum
-         ImplicitDynamic.to_start
-         ImplicitDynamic.update
-         ImplicitDynamic.update_2
-      
-      
-  
   
 
   
-  
-  
-      .. autosummary::
-         :toctree:
-         
-      
-         ImplicitDynamic.name
-         ImplicitDynamic.nlgeom
-         ImplicitDynamic.space
   
   
