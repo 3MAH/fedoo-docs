@@ -22,10 +22,7 @@
          RigidTie.generate
          RigidTie.get_all
          RigidTie.initialize
-         RigidTie.pre_update
-         RigidTie.set_start
          RigidTie.str_condensed
-         RigidTie.to_start_bc
       
       
   
@@ -38,7 +35,6 @@
          :toctree:
          
       
-         RigidTie.Q_total
          RigidTie.name
   
   

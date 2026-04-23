@@ -16,88 +16,11 @@ and the result obtained may not be accurate.
 
 .. thumbnail-parent-div-open
 
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Uses RigidBody with Newmark integration built into the assembly, solved by Fedoo&#x27;s standard NonLinear solver.">
-
-.. only:: html
-
-  .. image:: /examples/images/thumb/sphx_glr_rigid_body_bounce_ipc_thumb.gif
-    :alt:
-
-  :doc:`/examples/rigid_body_bounce_ipc`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Sphere bouncing on a plane — NonLinear + IPC contact + Rayleigh damping.</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Convex hull of Stanford bunny (watertight). Demonstrates tumbling on impact with asymmetric geometry.">
-
-.. only:: html
-
-  .. image:: /examples/images/thumb/sphx_glr_rigid_body_bunny_bounce_thumb.gif
-    :alt:
-
-  :doc:`/examples/rigid_body_bunny_bounce`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Bunny bouncing on a plane — NonLinear + IPC contact.</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="The cow mesh from PyVista is watertight (2903 nodes), decimated for speed. Full rotation via quaternion, rotation vectors (no gimbal lock).">
-
-.. only:: html
-
-  .. image:: /examples/images/thumb/sphx_glr_rigid_body_cow_bounce_thumb.gif
-    :alt:
-
-  :doc:`/examples/rigid_body_cow_bounce`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Cow bouncing on a plane — NonLinear + IPC contact.</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="A rigid sphere falls under gravity. Compared with z(t) = z0 - 0.5gt^2. Uses RigidBody + NonLinear (Fedoo&#x27;s standard solver).">
-
-.. only:: html
-
-  .. image:: /examples/images/thumb/sphx_glr_rigid_body_freefall_thumb.png
-    :alt:
-
-  :doc:`/examples/rigid_body_freefall`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Rigid body free fall — validation with NonLinear solver.</div>
-    </div>
-
-
 .. thumbnail-parent-div-close
 
 .. raw:: html
 
     </div>
-
-
-.. toctree::
-   :hidden:
-
-   /examples/rigid_body_bounce_ipc
-   /examples/rigid_body_bunny_bounce
-   /examples/rigid_body_cow_bounce
-   /examples/rigid_body_freefall
 
 Simple examples to start
 ---------------------------
