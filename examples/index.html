@@ -26,7 +26,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Simple examples to start" href="01-simple/index.html" />
+    <link rel="next" title="&lt;no title&gt;" href="rigid_body_bounce_ipc.html" />
     <link rel="prev" title="fedoo.read_data" href="../generated/fedoo.read_data.html" /> 
 </head>
 
@@ -2963,7 +2963,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.constraint.RigidTie.get_all.html">fedoo.constraint.RigidTie.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.constraint.RigidTie.to_start_bc.html">fedoo.constraint.RigidTie.to_start_bc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
 </ul>
 </li>
@@ -3148,7 +3152,21 @@ These examples are desgined to serve as tutorials.
 In that sense, an effort is made to keep the scripts simple and executable with
 a low computational cost. The meshes, tolerances and time increment used are coarse
 and the result obtained may not be accurate.</p>
-<div class="sphx-glr-thumbnails"></div><section id="simple-examples-to-start">
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Uses RigidBody with Newmark integration built into the assembly, solved by Fedoo&#x27;s standard NonLinear solver."><img alt="" src="../_images/sphx_glr_rigid_body_bounce_ipc_thumb.gif" />
+<p><a class="reference internal" href="rigid_body_bounce_ipc.html"><span class="doc">&lt;no title&gt;</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sphere bouncing on a plane — NonLinear + IPC contact + Rayleigh damping.</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Convex hull of Stanford bunny (watertight). Demonstrates tumbling on impact with asymmetric geometry."><img alt="" src="../_images/sphx_glr_rigid_body_bunny_bounce_thumb.gif" />
+<p><a class="reference internal" href="rigid_body_bunny_bounce.html"><span class="doc">&lt;no title&gt;</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Bunny bouncing on a plane — NonLinear + IPC contact.</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The cow mesh from PyVista is watertight (2903 nodes), decimated for speed. Full rotation via quaternion, rotation vectors (no gimbal lock)."><img alt="" src="../_images/sphx_glr_rigid_body_cow_bounce_thumb.gif" />
+<p><a class="reference internal" href="rigid_body_cow_bounce.html"><span class="doc">&lt;no title&gt;</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cow bouncing on a plane — NonLinear + IPC contact.</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A rigid sphere falls under gravity. Compared with z(t) = z0 - 0.5gt^2. Uses RigidBody + NonLinear (Fedoo&#x27;s standard solver)."><img alt="" src="../_images/sphx_glr_rigid_body_freefall_thumb.png" />
+<p><a class="reference internal" href="rigid_body_freefall.html"><span class="doc">&lt;no title&gt;</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rigid body free fall — validation with NonLinear solver.</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<section id="simple-examples-to-start">
 <h2>Simple examples to start<a class="headerlink" href="#simple-examples-to-start" title="Link to this heading"></a></h2>
 <p>This section contains several very simple examples that illustrate
 the basics feature of fedoo, like how to create simple meshes,
@@ -3232,7 +3250,7 @@ that can be applied in fedoo.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../generated/fedoo.read_data.html" class="btn btn-neutral float-left" title="fedoo.read_data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="01-simple/index.html" class="btn btn-neutral float-right" title="Simple examples to start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rigid_body_bounce_ipc.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
