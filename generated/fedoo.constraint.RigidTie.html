@@ -2963,7 +2963,11 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.get_all.html">fedoo.constraint.RigidTie.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.to_start_bc.html">fedoo.constraint.RigidTie.to_start_bc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
 </ul>
 </li>
@@ -3146,7 +3150,7 @@
 <h1>fedoo.constraint.RigidTie<a class="headerlink" href="#fedoo-constraint-rigidtie" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.constraint.RigidTie">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RigidTie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Rigid</span> <span class="pre">Tie'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.RigidTie" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RigidTie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_quaternion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Rigid</span> <span class="pre">Tie'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.RigidTie" title="Link to this definition"></a></dt>
 <dd><p>Constraint that eliminate dof assuming a rigid body tie between nodes.</p>
 <p>Create an object that defines a rigid tie coupling between some nodes using
 several multi-points constraints. Some constraint drivers (cd) dof are
@@ -3160,7 +3164,7 @@ and two global_dot vectors:</p>
 <li><p>“RigidDisp” = [“RigidDispX”, “RigidDispY”, “RigidDispZ”] for rigid displacement</p></li>
 <li><p>“RigidRot” = [“RigidRotX”, “RigidRotY”, “RigidRotZ”] for rigid rotation</p></li>
 </ul>
-<p>If several RigidTime constraints are used with the same problem, all the previous
+<p>If several RigidTie constraints are used with the same problem, all the previous
 variables will contains several dof, the indice of the dof being associated to
 order in which the constraint has been added.
 For instance, pb.global_dof[‘RigidDispX’][0] will be associated to the first
@@ -3169,10 +3173,15 @@ added RigidTie and dof[‘RigidDispX’][1] to the second one.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>list_nodes</strong> (<em>list</em><em> (</em><em>int</em><em>) or </em><em>1d np.array</em>) – List of nodes that will be eliminated considering a rigid body tie.</p></li>
-<li><p><strong>center</strong> (<em>int</em><em> of </em><em>np.array</em><em>[</em><em>float</em><em>] </em><em>with shape =</em><em> (</em><em>3</em><em>)</em><em>, </em><em>optional</em>) – If center is an int, the rotation center will be initialized at the coordinates
+<li><p><strong>center</strong> (<em>int</em><em> or </em><em>np.array</em><em>[</em><em>float</em><em>] </em><em>with shape =</em><em> (</em><em>3</em><em>)</em><em>, </em><em>optional</em>) – If center is an int, the rotation center will be initialized at the coordinates
 of the corresponding node in the mesh. If center is an array (or list, …)
 it contains the initial coordinates of the rotation center. By default, the
-center is set at the midle of the rigid sets.</p></li>
+center is set at the middle of the rigid sets.</p></li>
+<li><p><strong>use_quaternion</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True (default), use a multiplicative quaternion update to avoid
+gimbal lock for large rotations. The rotation DOFs (RigidRotX/Y/Z)
+are interpreted as incremental Euler angles relative to a quaternion
+base state that is updated at each converged increment.
+If False, use the original Euler angle formulation.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the created boundary condition. The default is “Rigid Tie”.</p></li>
 </ul>
 </dd>
@@ -3181,12 +3190,25 @@ center is set at the midle of the rigid sets.</p></li>
 <h2>Definition of rotations<a class="headerlink" href="#definition-of-rotations" title="Link to this heading"></a></h2>
 <p>A convention needs to be defined the orders of rotations.
 The convention used in this class is: First rotation around X, then
-rotation around Y’ (Y’ being the new Y afte r rotation around X)
-and finaly the rotation arould Z” (Z” beging the new Z after the 2 first
+rotation around Y’ (Y’ being the new Y after rotation around X)
+and finally the rotation around Z” (Z” being the new Z after the 2 first
 rotations).</p>
 <p>We can note that this convention can also be interpreted using global axis
 not attached to the solid by applying first the rotation around Z, then the
 rotation around Y and finally, the rotation around X.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">use_quaternion=True</span></code> (default), the total rotation is stored as a
+quaternion (via <code class="docutils literal notranslate"><span class="pre">simcoon.Rotation</span></code>) using a multiplicative update:</p>
+<ul class="simple">
+<li><p>The Euler angle DOFs represent a <strong>small incremental</strong> rotation from
+the current quaternion base state <code class="docutils literal notranslate"><span class="pre">Q_base</span></code>.</p></li>
+<li><p>At each converged increment, the increment is composed:
+<code class="docutils literal notranslate"><span class="pre">Q_base</span> <span class="pre">=</span> <span class="pre">Rotation.from_rotvec(delta)</span> <span class="pre">*</span> <span class="pre">Q_base</span></code></p></li>
+<li><p>The total rotation is exact for arbitrarily large angles — no gimbal
+lock, no small-angle approximation.</p></li>
+<li><p>The rotation derivatives <code class="docutils literal notranslate"><span class="pre">dR/d(angle)</span></code> used in the MPC linearization
+are evaluated at the small increment (well-conditioned), then composed
+with <code class="docutils literal notranslate"><span class="pre">R_base</span></code> via the chain rule for exact consistency.</p></li>
+</ul>
 <p class="rubric">Notes</p>
 <ul class="simple">
 <li><p>The node given in list_nodes are eliminated from the system (slave nodes)
@@ -3210,7 +3232,7 @@ using the Problem.add method.</p></li>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constraint.RigidTie.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Rigid</span> <span class="pre">Tie'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.RigidTie.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_quaternion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Rigid</span> <span class="pre">Tie'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.RigidTie.__init__" title="Link to this definition"></a></dt>
 <dd><p><strong>Methods</strong></p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
@@ -3224,14 +3246,26 @@ using the Problem.add method.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.initialize.html#fedoo.constraint.RigidTie.initialize" title="fedoo.constraint.RigidTie.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.initialize</span></code></a>(problem)</p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.pre_update.html#fedoo.constraint.RigidTie.pre_update" title="fedoo.constraint.RigidTie.pre_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.pre_update</span></code></a>(problem)</p></td>
+<td><p>Refresh slave node positions in _dU before assembly update.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html#fedoo.constraint.RigidTie.set_start" title="fedoo.constraint.RigidTie.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.set_start</span></code></a>(problem)</p></td>
+<td><p>Absorb the converged incremental rotation into the quaternion base.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html#fedoo.constraint.RigidTie.str_condensed" title="fedoo.constraint.RigidTie.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.str_condensed</span></code></a>()</p></td>
 <td><p>Return a condensed one line str describing the object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.to_start_bc.html#fedoo.constraint.RigidTie.to_start_bc" title="fedoo.constraint.RigidTie.to_start_bc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.to_start_bc</span></code></a>(problem)</p></td>
+<td><p>Revert the quaternion base after a failed increment.</p></td>
 </tr>
 </tbody>
 </table>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.name.html#fedoo.constraint.RigidTie.name" title="fedoo.constraint.RigidTie.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.name</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.Q_total.html#fedoo.constraint.RigidTie.Q_total" title="fedoo.constraint.RigidTie.Q_total"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.Q_total</span></code></a></p></td>
+<td><p>Current total rotation as a Rotation object (quaternion-backed).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.name.html#fedoo.constraint.RigidTie.name" title="fedoo.constraint.RigidTie.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.name</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>

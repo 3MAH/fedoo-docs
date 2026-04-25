@@ -27,7 +27,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.constraint.IPCSelfContact.assemble_global_mat" href="fedoo.constraint.IPCSelfContact.assemble_global_mat.html" />
+    <link rel="next" title="fedoo.constraint.IPCSelfContact.add_rigid_body" href="fedoo.constraint.IPCSelfContact.add_rigid_body.html" />
     <link rel="prev" title="fedoo.constraint.IPCContact.associated_assembly_sum" href="fedoo.constraint.IPCContact.associated_assembly_sum.html" /> 
 </head>
 
@@ -2964,7 +2964,11 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.get_all.html">fedoo.constraint.RigidTie.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.to_start_bc.html">fedoo.constraint.RigidTie.to_start_bc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
 </ul>
 </li>
@@ -3212,34 +3216,37 @@ meshes</strong>; raises <code class="docutils literal notranslate"><span class="
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.assemble_global_mat.html#fedoo.constraint.IPCSelfContact.assemble_global_mat" title="fedoo.constraint.IPCSelfContact.assemble_global_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.assemble_global_mat</span></code></a>([compute])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.add_rigid_body.html#fedoo.constraint.IPCSelfContact.add_rigid_body" title="fedoo.constraint.IPCSelfContact.add_rigid_body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.add_rigid_body</span></code></a>(node_indices, ...)</p></td>
+<td><p>Register surface nodes as belonging to a rigid body.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.assemble_global_mat.html#fedoo.constraint.IPCSelfContact.assemble_global_mat" title="fedoo.constraint.IPCSelfContact.assemble_global_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.assemble_global_mat</span></code></a>([compute])</p></td>
 <td><p>Recompute barrier contributions from cached vertex positions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.delete_global_mat.html#fedoo.constraint.IPCSelfContact.delete_global_mat" title="fedoo.constraint.IPCSelfContact.delete_global_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.delete_global_mat</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.delete_global_mat.html#fedoo.constraint.IPCSelfContact.delete_global_mat" title="fedoo.constraint.IPCSelfContact.delete_global_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.delete_global_mat</span></code></a>()</p></td>
 <td><p>Delete Global Matrix and Global Vector related to the assembly.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.get_all.html#fedoo.constraint.IPCSelfContact.get_all" title="fedoo.constraint.IPCSelfContact.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.get_all</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.get_all.html#fedoo.constraint.IPCSelfContact.get_all" title="fedoo.constraint.IPCSelfContact.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.get_all</span></code></a>()</p></td>
 <td><p>Return a dict with all the known Assembly (with a name).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.get_global_matrix.html#fedoo.constraint.IPCSelfContact.get_global_matrix" title="fedoo.constraint.IPCSelfContact.get_global_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.get_global_matrix</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.get_global_matrix.html#fedoo.constraint.IPCSelfContact.get_global_matrix" title="fedoo.constraint.IPCSelfContact.get_global_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.get_global_matrix</span></code></a>()</p></td>
 <td><p>Get the last computed global matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.get_global_vector.html#fedoo.constraint.IPCSelfContact.get_global_vector" title="fedoo.constraint.IPCSelfContact.get_global_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.get_global_vector</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.get_global_vector.html#fedoo.constraint.IPCSelfContact.get_global_vector" title="fedoo.constraint.IPCSelfContact.get_global_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.get_global_vector</span></code></a>()</p></td>
 <td><p>Get the last computed global vector.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.initialize.html#fedoo.constraint.IPCSelfContact.initialize" title="fedoo.constraint.IPCSelfContact.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.initialize</span></code></a>(pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.initialize.html#fedoo.constraint.IPCSelfContact.initialize" title="fedoo.constraint.IPCSelfContact.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.initialize</span></code></a>(pb)</p></td>
 <td><p>Initialize the IPC contact assembly.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.reset.html#fedoo.constraint.IPCSelfContact.reset" title="fedoo.constraint.IPCSelfContact.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.reset.html#fedoo.constraint.IPCSelfContact.reset" title="fedoo.constraint.IPCSelfContact.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.reset</span></code></a>()</p></td>
 <td><p>Reset the assembly.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.set_start.html#fedoo.constraint.IPCSelfContact.set_start" title="fedoo.constraint.IPCSelfContact.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.set_start</span></code></a>(pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.set_start.html#fedoo.constraint.IPCSelfContact.set_start" title="fedoo.constraint.IPCSelfContact.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.set_start</span></code></a>(pb)</p></td>
 <td><p>Begin a new time increment.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.to_start.html#fedoo.constraint.IPCSelfContact.to_start" title="fedoo.constraint.IPCSelfContact.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.to_start</span></code></a>(pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.to_start.html#fedoo.constraint.IPCSelfContact.to_start" title="fedoo.constraint.IPCSelfContact.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.to_start</span></code></a>(pb)</p></td>
 <td><p>Restart the current time increment after NR failure.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.update.html#fedoo.constraint.IPCSelfContact.update" title="fedoo.constraint.IPCSelfContact.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.update</span></code></a>(pb[, compute])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.update.html#fedoo.constraint.IPCSelfContact.update" title="fedoo.constraint.IPCSelfContact.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.update</span></code></a>(pb[, compute])</p></td>
 <td><p>Update the IPC assembly for the current Newton–Raphson iteration.</p></td>
 </tr>
 </tbody>
@@ -3272,7 +3279,7 @@ meshes</strong>; raises <code class="docutils literal notranslate"><span class="
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="fedoo.constraint.IPCContact.associated_assembly_sum.html" class="btn btn-neutral float-left" title="fedoo.constraint.IPCContact.associated_assembly_sum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.constraint.IPCSelfContact.assemble_global_mat.html" class="btn btn-neutral float-right" title="fedoo.constraint.IPCSelfContact.assemble_global_mat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.constraint.IPCSelfContact.add_rigid_body.html" class="btn btn-neutral float-right" title="fedoo.constraint.IPCSelfContact.add_rigid_body" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
