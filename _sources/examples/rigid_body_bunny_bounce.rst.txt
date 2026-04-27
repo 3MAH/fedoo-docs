@@ -48,7 +48,7 @@ on impact with asymmetric geometry.
     silence this warning.
       pv_bunny = pv_raw.delaunay_3d().extract_surface().triangulate().clean()
       Bunny: 239 nodes, mass=0.5kg
-      4001 steps in 99.3s (24.8ms/step)
+      4001 steps in 99.0s (24.7ms/step)
       z_min=0.0824m
       Saved: /home/runner/work/fedoo/fedoo/examples/rigid_body_bunny_bounce.gif
 
@@ -211,7 +211,7 @@ on impact with asymmetric geometry.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 45.572 seconds)
+   **Total running time of the script:** (1 minutes 45.057 seconds)
 
 
 .. _sphx_glr_download_examples_rigid_body_bunny_bounce.py:
