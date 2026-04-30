@@ -2963,11 +2963,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.get_all.html">fedoo.constraint.RigidTie.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.to_start_bc.html">fedoo.constraint.RigidTie.to_start_bc</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
 </ul>
 </li>
@@ -3103,6 +3099,7 @@
 <li class="toctree-l4"><a class="reference internal" href="thermal_loading.html#constitutive-laws-and-assembly">Constitutive Laws and Assembly</a></li>
 <li class="toctree-l4"><a class="reference internal" href="thermal_loading.html#problem-definition-and-boundary-conditions">Problem Definition and Boundary Conditions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="thermal_loading.html#solving-and-post-treatment">Solving and Post-Treatment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="thick_cylinder_inflation_axi.html">Thick cylinder inflation: F_theta-theta verification (2Daxi)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tube_compression.html">Compression of a tube using 2D axisymmetric model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
 </ul>
@@ -3307,15 +3304,15 @@ Strain tensor in global frame:
 
 
 Stress tensor in local frame:
- [[ 7.932e+03 -6.944e-11 -1.471e-11]
- [-6.944e-11 -7.996e-10  8.640e-12]
- [-1.471e-11  8.640e-12  7.208e-11]]
+ [[ 7.932e+03 -4.402e-10 -1.350e-12]
+ [-4.402e-10 -2.256e-10 -1.251e-12]
+ [-1.350e-12 -1.251e-12 -2.804e-10]]
 
 
 Stress tensor in global frame:
- [[3.966e+03 3.966e+03 1.025e-11]
- [3.966e+03 3.966e+03 8.583e-12]
- [1.025e-11 8.583e-12 7.208e-11]]
+ [[ 3.966e+03  3.966e+03  4.661e-12]
+ [ 3.966e+03  3.966e+03  3.581e-12]
+ [ 4.661e-12  3.581e-12 -2.804e-10]]
 
 
 Stress tensor using integration:
@@ -3324,7 +3321,7 @@ Stress tensor using integration:
  [-4.645e-04  3.360e-04  4.221e-04]]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.330 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.164 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-3d-periodic-bc-off-axis-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/843981659eacdc34289da3fc54525360/3D_periodic_BC_off_axis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">3D_periodic_BC_off_axis.ipynb</span></code></a></p>
