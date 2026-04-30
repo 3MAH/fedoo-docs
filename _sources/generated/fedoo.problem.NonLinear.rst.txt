@@ -41,6 +41,7 @@
          NonLinear.get_temp
          NonLinear.init_bc_start_value
          NonLinear.initialize
+         NonLinear.invalidate_factorization
          NonLinear.make_active
          NonLinear.nlsolve
          NonLinear.remove_line_search
@@ -53,6 +54,7 @@
          NonLinear.set_active
          NonLinear.set_dof_solution
          NonLinear.set_nr_criterion
+         NonLinear.set_reuse_factorization
          NonLinear.set_solver
          NonLinear.set_start
          NonLinear.solve

@@ -48,6 +48,7 @@
          NonLinearNewmark.get_temp
          NonLinearNewmark.init_bc_start_value
          NonLinearNewmark.initialize
+         NonLinearNewmark.invalidate_factorization
          NonLinearNewmark.make_active
          NonLinearNewmark.nlsolve
          NonLinearNewmark.remove_line_search
@@ -60,6 +61,7 @@
          NonLinearNewmark.set_active
          NonLinearNewmark.set_dof_solution
          NonLinearNewmark.set_nr_criterion
+         NonLinearNewmark.set_reuse_factorization
          NonLinearNewmark.set_solver
          NonLinearNewmark.set_start
          NonLinearNewmark.solve

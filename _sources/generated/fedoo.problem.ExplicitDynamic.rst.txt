@@ -44,6 +44,7 @@
          ExplicitDynamic.get_results
          ExplicitDynamic.init_bc_start_value
          ExplicitDynamic.initialize
+         ExplicitDynamic.invalidate_factorization
          ExplicitDynamic.make_active
          ExplicitDynamic.save_results
          ExplicitDynamic.set_A
@@ -52,6 +53,7 @@
          ExplicitDynamic.set_X
          ExplicitDynamic.set_active
          ExplicitDynamic.set_dof_solution
+         ExplicitDynamic.set_reuse_factorization
          ExplicitDynamic.set_solver
          ExplicitDynamic.solve
          ExplicitDynamic.update

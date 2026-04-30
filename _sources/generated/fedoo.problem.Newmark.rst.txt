@@ -47,6 +47,7 @@
          Newmark.get_results
          Newmark.init_bc_start_value
          Newmark.initialize
+         Newmark.invalidate_factorization
          Newmark.make_active
          Newmark.save_results
          Newmark.set_A
@@ -55,6 +56,7 @@
          Newmark.set_X
          Newmark.set_active
          Newmark.set_dof_solution
+         Newmark.set_reuse_factorization
          Newmark.set_solver
          Newmark.solve
          Newmark.update

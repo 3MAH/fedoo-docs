@@ -37,6 +37,7 @@
          Linear.get_results
          Linear.get_rot
          Linear.init_bc_start_value
+         Linear.invalidate_factorization
          Linear.make_active
          Linear.reset
          Linear.save_results
@@ -46,6 +47,7 @@
          Linear.set_X
          Linear.set_active
          Linear.set_dof_solution
+         Linear.set_reuse_factorization
          Linear.set_solver
          Linear.solve
          Linear.update
