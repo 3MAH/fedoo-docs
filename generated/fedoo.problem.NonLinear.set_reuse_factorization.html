@@ -3211,7 +3211,8 @@ perform back-substitution. This is useful when the matrix does not
 change between solves but the right-hand side does (e.g. tangent
 stiffness computation by perturbation, multiple load cases on a
 linear problem).</p>
-<p>Requires <cite>python-mumps</cite> to be installed.</p>
+<p>Requires one of <cite>pypardiso</cite>, <cite>python-mumps</cite> or <cite>petsc4py</cite> to be
+installed (same backend priority as <code class="docutils literal notranslate"><span class="pre">solver=&quot;direct&quot;</span></code>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>reuse</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, enable factorization reuse. If False, disable it and
@@ -3224,6 +3225,12 @@ called. The user is responsible for calling
 <a class="reference internal" href="fedoo.problem.NonLinear.invalidate_factorization.html#fedoo.problem.NonLinear.invalidate_factorization" title="fedoo.problem.NonLinear.invalidate_factorization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">invalidate_factorization()</span></code></a> if anything else modifies the
 reduced system matrix (e.g. Dirichlet boundary conditions affecting
 the constraint reduction matrix).</p>
+<p>Backend is selected automatically (pypardiso &gt; python-mumps &gt; petsc),
+regardless of the solver previously set with <a class="reference internal" href="fedoo.problem.NonLinear.set_solver.html#fedoo.problem.NonLinear.set_solver" title="fedoo.problem.NonLinear.set_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_solver()</span></code></a>. The
+reuse path is direct LU only; if an iterative solver was set with
+<a class="reference internal" href="fedoo.problem.NonLinear.set_solver.html#fedoo.problem.NonLinear.set_solver" title="fedoo.problem.NonLinear.set_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_solver()</span></code></a>, it is silently bypassed while reuse is enabled.
+Disable reuse with <code class="docutils literal notranslate"><span class="pre">set_reuse_factorization(False)</span></code> to restore the
+normal solver dispatch.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">set_reuse_factorization</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">B</span> <span class="ow">in</span> <span class="n">load_cases</span><span class="p">:</span>
