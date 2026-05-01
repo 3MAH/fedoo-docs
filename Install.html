@@ -3252,7 +3252,7 @@ and <code class="docutils literal notranslate"><span class="pre">pyside6</span><
 <section id="individual-optional-groups">
 <h2>Individual optional groups<a class="headerlink" href="#individual-optional-groups" title="Link to this heading"></a></h2>
 <p>You can also install optional groups individually:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install fedoo[solver]      # fast sparse solver (pypardiso, python-mumps, or umfpack)
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install fedoo[solver]      # fast sparse solver (pypardiso or python-mumps)
 $ pip install fedoo[plot]        # matplotlib + pyvista
 $ pip install fedoo[simcoon]     # simcoon
 $ pip install fedoo[ipc]         # IPC contact (ipctk)
@@ -3276,7 +3276,12 @@ needed.</p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/petsc4py/">Petsc4Py</a>
 mainly compatible with linux or macos including the MUMPS solver.
 Use this if you need PETSc’s iterative solvers or MPI parallelism.</p></li>
-<li><p><a class="reference external" href="https://scikit-umfpack.github.io/scikit-umfpack/">Scikit-umfpack</a></p></li>
+<li><p><a class="reference external" href="https://scikit-umfpack.github.io/scikit-umfpack/">Scikit-umfpack</a>
+optional fallback to <code class="docutils literal notranslate"><span class="pre">python-mumps</span></code>. Detected automatically if
+installed, useful in very specific cases (e.g. very small problems,
+or as a serial backup). Not included in <code class="docutils literal notranslate"><span class="pre">[solver]</span></code> extras because
+its install can be tricky on some platforms; install it manually if
+you need it.</p></li>
 </ul>
 </div></blockquote>
 <p>To be able to launch the fedoo viewer, the module
