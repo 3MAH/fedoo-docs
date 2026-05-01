@@ -3227,10 +3227,7 @@ reduced system matrix (e.g. Dirichlet boundary conditions affecting
 the constraint reduction matrix).</p>
 <p>Backend is selected automatically (pypardiso &gt; python-mumps &gt; petsc),
 regardless of the solver previously set with <a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_solver.html#fedoo.problem.ExplicitDynamic.set_solver" title="fedoo.problem.ExplicitDynamic.set_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_solver()</span></code></a>. The
-reuse path is direct LU only; if an iterative solver was set with
-<a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_solver.html#fedoo.problem.ExplicitDynamic.set_solver" title="fedoo.problem.ExplicitDynamic.set_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_solver()</span></code></a>, it is silently bypassed while reuse is enabled.
-Disable reuse with <code class="docutils literal notranslate"><span class="pre">set_reuse_factorization(False)</span></code> to restore the
-normal solver dispatch.</p>
+reuse path is direct LU only; iterative solvers are not supported.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">set_reuse_factorization</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">B</span> <span class="ow">in</span> <span class="n">load_cases</span><span class="p">:</span>
