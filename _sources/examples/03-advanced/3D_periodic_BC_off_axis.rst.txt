@@ -27,7 +27,7 @@ to load the structure with prescribed strain in local coordinate system.
 After that, the mean stress and mean strain results are extracted in local and
 global coordinate system.
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-57
+.. GENERATED FROM PYTHON SOURCE LINES 11-55
 
 .. code-block:: Python
 
@@ -41,7 +41,7 @@ global coordinate system.
     fd.ModelingSpace("3D")
     mesh = fd.Mesh.read("../../util/meshes/gyroid_per.vtk")
     # mesh = fd.mesh.box_mesh(2,2,2)
-    assert mesh.is_periodic(tol=1e-3)
+    assert mesh.is_periodic()
 
     # Material definition
     material = fd.constitutivelaw.ElasticIsotrop(1e5, 0.3)
@@ -58,9 +58,7 @@ global coordinate system.
 
     # periodic constraint in local frame
     local_frame = Rotation.from_rotvec([0, 0, np.pi / 4])
-    bc_periodic = fd.constraint.PeriodicBC(
-        "small_strain", off_axis_rotation=local_frame, tol=1e-3
-    )
+    bc_periodic = fd.constraint.PeriodicBC("small_strain", off_axis_rotation=local_frame)
     pb.bc.add(bc_periodic)
 
     # block a node near the center to avoid rigid body motion
@@ -84,11 +82,11 @@ global coordinate system.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-59
+.. GENERATED FROM PYTHON SOURCE LINES 56-57
 
 print the macroscopic strain tensor and stress tensor
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-146
+.. GENERATED FROM PYTHON SOURCE LINES 57-144
 
 .. code-block:: Python
 
@@ -196,33 +194,33 @@ print the macroscopic strain tensor and stress tensor
  .. code-block:: none
 
     Strain tensor in local frame:
-     [[ 1.000e+00 -3.994e-04  1.282e-03]
-     [-3.994e-04 -2.648e-01  1.917e-03]
-     [ 1.282e-03  1.917e-03 -3.348e-01]]  
+     [[ 1.000e+00  2.697e-04 -4.041e-04]
+     [ 2.697e-04 -2.385e-01 -4.608e-04]
+     [-4.041e-04 -4.608e-04 -3.280e-01]]  
 
 
     Strain tensor in global frame:
-     [[ 3.678e-01  1.265e+00 -4.495e-04]
-     [ 1.265e+00  3.674e-01  2.262e-03]
-     [-4.495e-04  2.262e-03 -3.348e-01]]  
+     [[ 3.806e-01  1.238e+00  4.011e-05]
+     [ 1.238e+00  3.809e-01 -6.116e-04]
+     [ 4.011e-05 -6.116e-04 -3.280e-01]]  
 
 
     Stress tensor in local frame:
-     [[ 7.932e+03 -4.402e-10 -1.350e-12]
-     [-4.402e-10 -2.256e-10 -1.251e-12]
-     [-1.350e-12 -1.251e-12 -2.804e-10]]  
+     [[ 1.351e+04 -5.771e-11 -4.184e-11]
+     [-5.771e-11 -3.032e-09  1.089e-11]
+     [-4.184e-11  1.089e-11  5.368e-10]]  
 
 
     Stress tensor in global frame:
-     [[ 3.966e+03  3.966e+03  4.661e-12]
-     [ 3.966e+03  3.966e+03  3.581e-12]
-     [ 4.661e-12  3.581e-12 -2.804e-10]]  
+     [[ 6.756e+03  6.756e+03 -6.531e-11]
+     [ 6.756e+03  6.756e+03 -2.902e-11]
+     [-6.531e-11 -2.902e-11  5.368e-10]]  
 
 
     Stress tensor using integration:
-     [[ 3.966e+03  3.966e+03 -4.645e-04]
-     [ 3.966e+03  3.966e+03  3.360e-04]
-     [-4.645e-04  3.360e-04  4.221e-04]]  
+     [[ 6.756e+03  6.756e+03  3.731e-11]
+     [ 6.756e+03  6.756e+03 -6.807e-11]
+     [ 3.731e-11 -6.807e-11  5.150e-10]]  
 
 
 
@@ -232,7 +230,7 @@ print the macroscopic strain tensor and stress tensor
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.204 seconds)
+   **Total running time of the script:** (0 minutes 4.414 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_3D_periodic_BC_off_axis.py:

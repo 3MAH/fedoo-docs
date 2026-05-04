@@ -3208,7 +3208,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tol</strong> (<em>float</em><em> (</em><em>default = 1e-8</em><em>)</em>) – Tolerance used to test the nodes positions.</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em> (</em><em>default = 1e-8</em><em>)</em>) – Maximum accepted distance between paired nodes on opposite
+faces. Must be smaller than the mesh element size.</p></li>
 <li><p><strong>dim</strong> (<em>1</em><em>,</em><em>2</em><em> or </em><em>3</em><em> (</em><em>default = 3</em><em>)</em>) – Dimension of the periodicity. If dim = 1, the periodicity is tested only over the 1st axis (x axis).
 if dim = 2, the periodicity is tested on the 2 first axis (x and y axis).
 if dim = 3, the periodicity is tested in 3 directions (x,y,z).</p></li>

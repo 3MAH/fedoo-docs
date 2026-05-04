@@ -3220,7 +3220,7 @@ global coordinate system.</p>
 <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;3D&quot;</span><span class="p">)</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;../../util/meshes/gyroid_per.vtk&quot;</span><span class="p">)</span>
 <span class="c1"># mesh = fd.mesh.box_mesh(2,2,2)</span>
-<span class="k">assert</span> <span class="n">mesh</span><span class="o">.</span><span class="n">is_periodic</span><span class="p">(</span><span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">mesh</span><span class="o">.</span><span class="n">is_periodic</span><span class="p">()</span>
 
 <span class="c1"># Material definition</span>
 <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
@@ -3237,9 +3237,7 @@ global coordinate system.</p>
 
 <span class="c1"># periodic constraint in local frame</span>
 <span class="n">local_frame</span> <span class="o">=</span> <span class="n">Rotation</span><span class="o">.</span><span class="n">from_rotvec</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">bc_periodic</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span>
-    <span class="s2">&quot;small_strain&quot;</span><span class="p">,</span> <span class="n">off_axis_rotation</span><span class="o">=</span><span class="n">local_frame</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span>
-<span class="p">)</span>
+<span class="n">bc_periodic</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="s2">&quot;small_strain&quot;</span><span class="p">,</span> <span class="n">off_axis_rotation</span><span class="o">=</span><span class="n">local_frame</span><span class="p">)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bc_periodic</span><span class="p">)</span>
 
 <span class="c1"># block a node near the center to avoid rigid body motion</span>
@@ -3347,36 +3345,36 @@ global coordinate system.</p>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_3D_periodic_BC_off_axis_001.png" srcset="../../_images/sphx_glr_3D_periodic_BC_off_axis_001.png" alt="3D periodic BC off axis" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Strain tensor in local frame:
- [[ 1.000e+00 -3.994e-04  1.282e-03]
- [-3.994e-04 -2.648e-01  1.917e-03]
- [ 1.282e-03  1.917e-03 -3.348e-01]]
+ [[ 1.000e+00  2.697e-04 -4.041e-04]
+ [ 2.697e-04 -2.385e-01 -4.608e-04]
+ [-4.041e-04 -4.608e-04 -3.280e-01]]
 
 
 Strain tensor in global frame:
- [[ 3.678e-01  1.265e+00 -4.495e-04]
- [ 1.265e+00  3.674e-01  2.262e-03]
- [-4.495e-04  2.262e-03 -3.348e-01]]
+ [[ 3.806e-01  1.238e+00  4.011e-05]
+ [ 1.238e+00  3.809e-01 -6.116e-04]
+ [ 4.011e-05 -6.116e-04 -3.280e-01]]
 
 
 Stress tensor in local frame:
- [[ 7.932e+03 -4.402e-10 -1.350e-12]
- [-4.402e-10 -2.256e-10 -1.251e-12]
- [-1.350e-12 -1.251e-12 -2.804e-10]]
+ [[ 1.351e+04 -5.771e-11 -4.184e-11]
+ [-5.771e-11 -3.032e-09  1.089e-11]
+ [-4.184e-11  1.089e-11  5.368e-10]]
 
 
 Stress tensor in global frame:
- [[ 3.966e+03  3.966e+03  4.661e-12]
- [ 3.966e+03  3.966e+03  3.581e-12]
- [ 4.661e-12  3.581e-12 -2.804e-10]]
+ [[ 6.756e+03  6.756e+03 -6.531e-11]
+ [ 6.756e+03  6.756e+03 -2.902e-11]
+ [-6.531e-11 -2.902e-11  5.368e-10]]
 
 
 Stress tensor using integration:
- [[ 3.966e+03  3.966e+03 -4.645e-04]
- [ 3.966e+03  3.966e+03  3.360e-04]
- [-4.645e-04  3.360e-04  4.221e-04]]
+ [[ 6.756e+03  6.756e+03  3.731e-11]
+ [ 6.756e+03  6.756e+03 -6.807e-11]
+ [ 3.731e-11 -6.807e-11  5.150e-10]]
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 6.204 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.414 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-3d-periodic-bc-off-axis-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/843981659eacdc34289da3fc54525360/3D_periodic_BC_off_axis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">3D_periodic_BC_off_axis.ipynb</span></code></a></p>
