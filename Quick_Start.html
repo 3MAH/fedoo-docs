@@ -3278,8 +3278,11 @@ To get the global stiffness matrix:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_solver</span><span class="p">(</span><span class="s1">&#39;cg&#39;</span><span class="p">)</span> <span class="c1">#for conjugate gradient solver</span>
 </pre></div>
 </div>
-<p>For direct solver, it is strongly recommanded to install the pypardiso that allow to use the pardiso linear system solver
-for drastically improved computation performance.</p>
+<p>For direct solver, it is strongly recommended to install one of
+<code class="docutils literal notranslate"><span class="pre">pypardiso</span></code> (Intel CPUs), <code class="docutils literal notranslate"><span class="pre">python-mumps</span></code> (cross-platform, also
+required for <code class="xref py py-meth docutils literal notranslate"><span class="pre">Problem.set_reuse_factorization()</span></code>) or <code class="docutils literal notranslate"><span class="pre">petsc4py</span></code>
+for drastically improved computation performance. See
+<a class="reference internal" href="Install.html"><span class="doc">Installation</span></a> for the recommended commands per platform.</p>
 </section>
 <section id="boundary-conditions">
 <h2>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading"></a></h2>

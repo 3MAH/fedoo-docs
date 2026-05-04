@@ -3263,7 +3263,8 @@ $ pip install fedoo[gui]         # pyvistaqt + pyside6
 <section id="sparse-solvers">
 <h2>Sparse solvers<a class="headerlink" href="#sparse-solvers" title="Link to this heading"></a></h2>
 <p>It is highly recommended to install a fast direct sparse matrix solver
-to improve performances:</p>
+to improve performances. fedoo dispatches to the first one available in
+this priority order: pypardiso → python-mumps → petsc4py:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/pypardiso/">Pypardiso</a>
@@ -3286,6 +3287,28 @@ you need it.</p></li>
 </div></blockquote>
 <p>To be able to launch the fedoo viewer, the module
 <a class="reference external" href="https://qtdocs.pyvista.org/">pyvistaqt</a> is also required.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On macOS (Apple Silicon especially), prefer <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span>
+<span class="pre">conda-forge</span> <span class="pre">python-mumps</span></code> over <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">python-mumps</span></code>: the
+PyPI sdist requires a system MUMPS lib via pkg-config, while the
+conda-forge package bundles <code class="docutils literal notranslate"><span class="pre">mumps-seq</span></code> directly. Pin the BLAS
+variant to Accelerate at the same time to route the dense block
+kernels through Apple’s vecLib:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge &quot;libblas=*=*accelerate&quot; python-mumps
+</pre></div>
+</div>
+<p>On Linux / AMD, the OpenBLAS variant is the equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge &quot;libblas=*=*openblas&quot; python-mumps
+</pre></div>
+</div>
+<p>You can verify which BLAS got linked with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -c &quot;import numpy; numpy.show_config()&quot;
+$ otool -L $(python -c &#39;import numpy.linalg._umath_linalg as m; print(m.__file__)&#39;)   # macOS
+$ ldd  $(python -c &#39;import numpy.linalg._umath_linalg as m; print(m.__file__)&#39;)      # Linux
+</pre></div>
+</div>
+</div>
 </section>
 <section id="id1">
 <h2>Simcoon<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
