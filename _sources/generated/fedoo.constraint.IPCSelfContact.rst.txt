@@ -19,6 +19,7 @@
          :toctree:
          
       
+         IPCSelfContact.add_rigid_body
          IPCSelfContact.assemble_global_mat
          IPCSelfContact.delete_global_mat
          IPCSelfContact.get_all
