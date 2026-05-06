@@ -3019,11 +3019,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.get_all.html">fedoo.constraint.RigidTie.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.to_start_bc.html">fedoo.constraint.RigidTie.to_start_bc</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
 </ul>
 </li>
@@ -3159,6 +3155,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../examples/03-advanced/thermal_loading.html#constitutive-laws-and-assembly">Constitutive Laws and Assembly</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../examples/03-advanced/thermal_loading.html#problem-definition-and-boundary-conditions">Problem Definition and Boundary Conditions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../examples/03-advanced/thermal_loading.html#solving-and-post-treatment">Solving and Post-Treatment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../examples/03-advanced/thick_cylinder_inflation_axi.html">Thick cylinder inflation: F_theta-theta verification (2Daxi)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../examples/03-advanced/tube_compression.html">Compression of a tube using 2D axisymmetric model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../examples/03-advanced/tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
 </ul>
@@ -3227,6 +3224,12 @@ Z direction (if defined, the local material coordinates are used).</p></li>
 </ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">2Daxi</span></code>, slot 2 is the hoop direction (not Cartesian z). The
+fibers default to the X (= radial) direction; rotating with <code class="docutils literal notranslate"><span class="pre">angle</span></code>
+around the implicit “Z” axis effectively rotates between r and the
+hoop direction. See <code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.mechanical3d.Mechanical3D</span></code> for
+the slot-ordering convention.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.CompositeUD.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Vf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.33</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.CompositeUD.__init__" title="Link to this definition"></a></dt>
