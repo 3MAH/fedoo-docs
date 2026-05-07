@@ -364,23 +364,6 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Pinning benchmark for the canonical hoop deformation gradient F_{\theta\theta} = r_{\text{current}} / R_{\text{reference}} in a finite-strain updated-lagrangian axisymmetric problem.">
-
-.. only:: html
-
-  .. image:: /examples/03-advanced/images/thumb/sphx_glr_thick_cylinder_inflation_axi_thumb.png
-    :alt:
-
-  :doc:`/examples/03-advanced/thick_cylinder_inflation_axi`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Thick cylinder inflation: F_theta-theta verification (2Daxi)</div>
-    </div>
-
-
-.. raw:: html
-
     <div class="sphx-glr-thumbcontainer" tooltip="This model uses self-contact, elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase.">
 
 .. only:: html
@@ -393,23 +376,6 @@ This section show some advanced capabilities of fedoo.
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Same problem as tube_compression.py but with IPCSelfContact instead of the penalty SelfContact. Used to benchmark the 2π·r-weighted IPC formulation against the penalty reference.">
-
-.. only:: html
-
-  .. image:: /examples/03-advanced/images/thumb/sphx_glr_tube_compression_ipc_thumb.png
-    :alt:
-
-  :doc:`/examples/03-advanced/tube_compression_ipc`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model — IPC self-contact</div>
     </div>
 
 

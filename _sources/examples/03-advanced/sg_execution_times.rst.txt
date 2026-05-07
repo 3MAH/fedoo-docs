@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**04:25.900** total execution time for 6 files **from examples/03-advanced**:
+**02:29.060** total execution time for 4 files **from examples/03-advanced**:
 
 .. container::
 
@@ -33,20 +33,14 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_03-advanced_tube_compression.py` (``tube_compression.py``)
-     - 02:25.971
-     - 0.0
-   * - :ref:`sphx_glr_examples_03-advanced_tube_compression_ipc.py` (``tube_compression_ipc.py``)
-     - 01:50.835
+     - 02:20.427
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_3D_periodic_BC_off_axis.py` (``3D_periodic_BC_off_axis.py``)
-     - 00:04.637
+     - 00:04.472
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_thermal_loading.py` (``thermal_loading.py``)
-     - 00:03.637
-     - 0.0
-   * - :ref:`sphx_glr_examples_03-advanced_thick_cylinder_inflation_axi.py` (``thick_cylinder_inflation_axi.py``)
-     - 00:00.631
+     - 00:03.960
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_multi_mesh_example.py` (``multi_mesh_example.py``)
-     - 00:00.189
+     - 00:00.202
      - 0.0
