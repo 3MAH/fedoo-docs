@@ -141,15 +141,15 @@ and final top displacement at the last saved iteration.
 
 
     --- IPC (this run) ---
-      peak |Stress YY|     = 5.4770e+04
-      peak P (eq. plastic) = 1.1898e+00
+      peak |Stress YY|     = 5.5852e+04
+      peak P (eq. plastic) = 1.1322e+00
       min Disp Y           = -1.5048e+02
-      max Disp Y           = 4.8139e-01
+      max Disp Y           = 4.6659e-01
     --- Penalty (reference) ---
-      peak |Stress YY|     = 6.2268e+04
-      peak P (eq. plastic) = 1.5418e+00
-      min Disp Y           = -1.5000e+02
-      max Disp Y           = 3.5771e-01
+      peak |Stress YY|     = 6.7538e+04
+      peak P (eq. plastic) = 1.5105e+00
+      min Disp Y           = -1.5004e+02
+      max Disp Y           = 3.4504e-01
 
 
 
@@ -157,7 +157,7 @@ and final top displacement at the last saved iteration.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 42.805 seconds)
+   **Total running time of the script:** (1 minutes 50.835 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_tube_compression_ipc.py:
