@@ -116,6 +116,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.init_interpolation.html">fedoo.Mesh.init_interpolation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.integrate_field.html">fedoo.Mesh.integrate_field</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.is_periodic.html">fedoo.Mesh.is_periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.merge_coincident_nodes.html">fedoo.Mesh.merge_coincident_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.merge_nodes.html">fedoo.Mesh.merge_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.nearest_node.html">fedoo.Mesh.nearest_node</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.plot.html">fedoo.Mesh.plot</a></li>
@@ -3212,6 +3213,11 @@
 <p>Called by the solver when the tangent matrix needs reassembly
 without a full <code class="docutils literal notranslate"><span class="pre">update()</span></code> cycle.  Uses vertex positions
 cached by the most recent <code class="docutils literal notranslate"><span class="pre">update()</span></code> or <code class="docutils literal notranslate"><span class="pre">set_start()</span></code> call.</p>
+<p>When rigid bodies are registered the scatter matrix depends on the
+current rigid rotation; the MPC coefficients have just been
+refreshed by <code class="docutils literal notranslate"><span class="pre">update_boundary_conditions</span></code> for this NR step, so
+refresh the scatter here too to keep the contact tangent
+consistent with the kinematic constraint.</p>
 </dd></dl>
 
 </section>

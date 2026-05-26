@@ -116,6 +116,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.init_interpolation.html">fedoo.Mesh.init_interpolation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.integrate_field.html">fedoo.Mesh.integrate_field</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.is_periodic.html">fedoo.Mesh.is_periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.merge_coincident_nodes.html">fedoo.Mesh.merge_coincident_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.merge_nodes.html">fedoo.Mesh.merge_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.nearest_node.html">fedoo.Mesh.nearest_node</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.plot.html">fedoo.Mesh.plot</a></li>
@@ -3219,7 +3220,7 @@ BUNNY BOUNCE — NonLinear + IPC contact
 silence this warning.
   pv_bunny = pv_raw.delaunay_3d().extract_surface().triangulate().clean()
   Bunny: 239 nodes, mass=0.5kg
-  4001 steps in 101.7s (25.4ms/step)
+  4001 steps in 98.1s (24.5ms/step)
   z_min=0.0824m
   Saved: /home/runner/work/fedoo/fedoo/examples/rigid_body_bunny_bounce.gif
 </pre></div>
@@ -3293,13 +3294,12 @@ silence this warning.
 <span class="p">)</span>
 <span class="n">body</span><span class="o">.</span><span class="n">set_force</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">mass</span> <span class="o">*</span> <span class="n">g</span><span class="p">])</span>
 <span class="n">body</span><span class="o">.</span><span class="n">set_rayleigh_damping</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">body</span><span class="o">.</span><span class="n">enable_ipc_contact</span><span class="p">(</span><span class="n">plane_mesh</span><span class="p">,</span> <span class="n">dhat</span><span class="o">=</span><span class="mf">0.008</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">1e8</span><span class="p">)</span>
+<span class="n">body</span><span class="o">.</span><span class="n">set_static_obstacle</span><span class="p">(</span><span class="n">plane_mesh</span><span class="p">,</span> <span class="n">dhat</span><span class="o">=</span><span class="mf">0.008</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">1e8</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Bunny: </span><span class="si">{</span><span class="n">bunny_mesh</span><span class="o">.</span><span class="n">n_nodes</span><span class="si">}</span><span class="s2"> nodes, mass=</span><span class="si">{</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg&quot;</span><span class="p">)</span>
 
 <span class="c1"># Solve with manual loop for trajectory</span>
 <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">assembly</span><span class="p">)</span>
-<span class="n">body</span><span class="o">.</span><span class="n">add_to_problem</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
 
 <span class="n">idx</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">_dof_indices</span>
@@ -3374,7 +3374,7 @@ silence this warning.
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Saved: </span><span class="si">{</span><span class="n">out</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 48.384 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 44.460 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-rigid-body-bunny-bounce-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/888df97c354883a72df351872a88bc21/rigid_body_bunny_bounce.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">rigid_body_bunny_bounce.ipynb</span></code></a></p>

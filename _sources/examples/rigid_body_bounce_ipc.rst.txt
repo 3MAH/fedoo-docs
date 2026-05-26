@@ -22,7 +22,7 @@ Sphere bouncing on a plane — NonLinear + IPC contact + Rayleigh damping.
 Uses RigidBody with Newmark integration built into the assembly,
 solved by Fedoo's standard NonLinear solver.
 
-.. GENERATED FROM PYTHON SOURCE LINES 6-125
+.. GENERATED FROM PYTHON SOURCE LINES 6-124
 
 
 
@@ -44,7 +44,7 @@ solved by Fedoo's standard NonLinear solver.
       m=1.0kg, z0=0.5m, r=0.1m, dt=0.0005s
     ============================================================
 
-      4001 steps in 52.5s (13.1ms/step)
+      4001 steps in 52.0s (13.0ms/step)
       z_min=0.1083m, z_max=0.5000m
       Saved: /home/runner/work/fedoo/fedoo/examples/rigid_body_bounce_ipc.gif
 
@@ -105,11 +105,10 @@ solved by Fedoo's standard NonLinear solver.
     )
     body.set_force([0, 0, -mass * g])
     body.set_rayleigh_damping(1.0)
-    body.enable_ipc_contact(plane_mesh, dhat=0.01, kappa=1e8)
+    body.set_static_obstacle(plane_mesh, dhat=0.01, kappa=1e8)
 
     # Solve using NonLinear via manual time stepping for trajectory collection
     pb = fd.problem.NonLinear(body.assembly)
-    body.add_to_problem(pb)
     pb.initialize()
 
     idx = body.assembly._dof_indices
@@ -180,7 +179,7 @@ solved by Fedoo's standard NonLinear solver.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 5.288 seconds)
+   **Total running time of the script:** (1 minutes 4.022 seconds)
 
 
 .. _sphx_glr_download_examples_rigid_body_bounce_ipc.py:

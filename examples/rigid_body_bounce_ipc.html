@@ -116,6 +116,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.init_interpolation.html">fedoo.Mesh.init_interpolation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.integrate_field.html">fedoo.Mesh.integrate_field</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.is_periodic.html">fedoo.Mesh.is_periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.merge_coincident_nodes.html">fedoo.Mesh.merge_coincident_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.merge_nodes.html">fedoo.Mesh.merge_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.nearest_node.html">fedoo.Mesh.nearest_node</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../generated/fedoo.Mesh.plot.html">fedoo.Mesh.plot</a></li>
@@ -3215,7 +3216,7 @@ SPHERE BOUNCE — NonLinear + IPC + Rayleigh
   m=1.0kg, z0=0.5m, r=0.1m, dt=0.0005s
 ============================================================
 
-  4001 steps in 52.5s (13.1ms/step)
+  4001 steps in 52.0s (13.0ms/step)
   z_min=0.1083m, z_max=0.5000m
   Saved: /home/runner/work/fedoo/fedoo/examples/rigid_body_bounce_ipc.gif
 </pre></div>
@@ -3270,11 +3271,10 @@ SPHERE BOUNCE — NonLinear + IPC + Rayleigh
 <span class="p">)</span>
 <span class="n">body</span><span class="o">.</span><span class="n">set_force</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">mass</span> <span class="o">*</span> <span class="n">g</span><span class="p">])</span>
 <span class="n">body</span><span class="o">.</span><span class="n">set_rayleigh_damping</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">body</span><span class="o">.</span><span class="n">enable_ipc_contact</span><span class="p">(</span><span class="n">plane_mesh</span><span class="p">,</span> <span class="n">dhat</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">1e8</span><span class="p">)</span>
+<span class="n">body</span><span class="o">.</span><span class="n">set_static_obstacle</span><span class="p">(</span><span class="n">plane_mesh</span><span class="p">,</span> <span class="n">dhat</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">1e8</span><span class="p">)</span>
 
 <span class="c1"># Solve using NonLinear via manual time stepping for trajectory collection</span>
 <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">assembly</span><span class="p">)</span>
-<span class="n">body</span><span class="o">.</span><span class="n">add_to_problem</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
 
 <span class="n">idx</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">_dof_indices</span>
@@ -3343,7 +3343,7 @@ SPHERE BOUNCE — NonLinear + IPC + Rayleigh
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Saved: </span><span class="si">{</span><span class="n">gif_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 5.288 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 4.022 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-rigid-body-bounce-ipc-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/e092368225f64c186659b4928e4299f2/rigid_body_bounce_ipc.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">rigid_body_bounce_ipc.ipynb</span></code></a></p>

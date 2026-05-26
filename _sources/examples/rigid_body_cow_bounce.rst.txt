@@ -22,7 +22,7 @@ Cow bouncing on a plane — NonLinear + IPC contact.
 The cow mesh from PyVista is watertight (2903 nodes), decimated for speed.
 Full rotation via quaternion, rotation vectors (no gimbal lock).
 
-.. GENERATED FROM PYTHON SOURCE LINES 6-157
+.. GENERATED FROM PYTHON SOURCE LINES 6-156
 
 
 
@@ -52,7 +52,7 @@ Full rotation via quaternion, rotation vectors (no gimbal lock).
         t=1.50s  z=0.093m  contacts=0
         t=1.75s  z=0.098m  contacts=0
 
-      4001 steps in 115.8s (28.9ms/step)
+      4001 steps in 109.6s (27.4ms/step)
       z_min=0.0555m
       Saved: /home/runner/work/fedoo/fedoo/examples/rigid_body_cow_bounce.gif
 
@@ -132,13 +132,12 @@ Full rotation via quaternion, rotation vectors (no gimbal lock).
     )
     body.set_force([0, 0, -mass * g])
     body.set_rayleigh_damping(1.5)
-    body.enable_ipc_contact(plane_mesh, dhat=0.01)
+    body.set_static_obstacle(plane_mesh, dhat=0.01)
 
     print(f"  Cow: {cow_mesh.n_nodes} nodes, mass={mass}kg")
 
     # Solve with NonLinear (manual stepping for trajectory)
     pb = fd.problem.NonLinear(body.assembly)
-    body.add_to_problem(pb)
     pb.initialize()
 
     idx = body.assembly._dof_indices
@@ -220,7 +219,7 @@ Full rotation via quaternion, rotation vectors (no gimbal lock).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (2 minutes 7.420 seconds)
+   **Total running time of the script:** (2 minutes 1.422 seconds)
 
 
 .. _sphx_glr_download_examples_rigid_body_cow_bounce.py:

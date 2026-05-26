@@ -116,6 +116,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.init_interpolation.html">fedoo.Mesh.init_interpolation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.integrate_field.html">fedoo.Mesh.integrate_field</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.is_periodic.html">fedoo.Mesh.is_periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.merge_coincident_nodes.html">fedoo.Mesh.merge_coincident_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.merge_nodes.html">fedoo.Mesh.merge_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.nearest_node.html">fedoo.Mesh.nearest_node</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.plot.html">fedoo.Mesh.plot</a></li>
@@ -3207,23 +3208,30 @@
 <h1>fedoo.constraint.IPCContact.add_rigid_body<a class="headerlink" href="#fedoo-constraint-ipccontact-add-rigid-body" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constraint.IPCContact.add_rigid_body">
-<span class="sig-prename descclassname"><span class="pre">IPCContact.</span></span><span class="sig-name descname"><span class="pre">add_rigid_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rigid_body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.IPCContact.add_rigid_body" title="Link to this definition"></a></dt>
-<dd><p>Register surface nodes as belonging to a rigid body.</p>
-<p>When rigid bodies are registered, the scatter matrix maps their
-surface DOFs directly onto the 6 rigid body global DOFs via the
-contact Jacobian <code class="docutils literal notranslate"><span class="pre">J</span> <span class="pre">=</span> <span class="pre">[I_3</span> <span class="pre">|</span> <span class="pre">dR/d(angle)]</span></code>, instead of placing
-forces at the per-node DOF positions.</p>
-<p>This is intended for mixed rigid-deformable contact problems where
-rigid body surfaces and deformable surfaces are in the same
-IPCContact assembly. For pure rigid-body problems, prefer
-<code class="docutils literal notranslate"><span class="pre">RigidBody.solve()</span></code> which uses a faster direct 6x6 solver.</p>
+<span class="sig-prename descclassname"><span class="pre">IPCContact.</span></span><span class="sig-name descname"><span class="pre">add_rigid_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rigid_body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_node_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.IPCContact.add_rigid_body" title="Link to this definition"></a></dt>
+<dd><p>Register a <code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBody</span></code> with this IPCContact.</p>
+<p>Use this for rigid-vs-deformable (or rigid-vs-rigid) contact where
+a single <code class="docutils literal notranslate"><span class="pre">IPCContact</span></code> carries the full collision mesh. The body’s
+surface nodes are routed onto the 6 rigid-body global DOFs by the
+scatter matrix via the exact rigid Jacobian
+<code class="docutils literal notranslate"><span class="pre">J</span> <span class="pre">=</span> <span class="pre">[I_3</span> <span class="pre">|</span> <span class="pre">dR/d(omega)</span> <span class="pre">&#64;</span> <span class="pre">r_ref]</span></code>, instead of placing forces at
+the per-node mesh DOFs.</p>
+<p>For rigid-vs-static contact (rigid body bouncing on a fixed floor),
+use <code class="xref py py-meth docutils literal notranslate"><span class="pre">RigidBody.set_static_obstacle()</span></code> instead — that path uses
+a private 6x6 fast route with no shared mesh.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>node_indices</strong> (<em>array_like</em>) – Global node indices in the full mesh that belong to this
-rigid body’s surface.</p></li>
-<li><p><strong>rigid_body</strong> (<em>RigidBody</em>) – The rigid body object (must have <code class="docutils literal notranslate"><span class="pre">.constraint</span></code> and
-<code class="docutils literal notranslate"><span class="pre">.assembly</span></code> attributes).</p></li>
+<li><p><strong>rigid_body</strong> (<em>RigidBody</em>) – The rigid body. When the body’s nodes live inside this
+IPCContact’s mesh (stacked rigid-plus-deformable case),
+construct it from a <code class="xref py py-meth docutils literal notranslate"><span class="pre">Mesh.extract_elements()</span></code> of the
+shared mesh so the carried <code class="docutils literal notranslate"><span class="pre">parent_node_indices</span></code> wires
+RigidTie to the correct parent DOFs.
+<code class="docutils literal notranslate"><span class="pre">rigid_body.constraint.list_nodes</span></code> is read as the default
+surface index set.</p></li>
+<li><p><strong>surface_node_indices</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Override for <code class="docutils literal notranslate"><span class="pre">rigid_body.constraint.list_nodes</span></code>. Rarely
+needed; useful only when the rigid body’s surface is a strict
+subset of its tie node set.</p></li>
 </ul>
 </dd>
 </dl>

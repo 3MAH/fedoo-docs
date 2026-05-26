@@ -116,6 +116,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.init_interpolation.html">fedoo.Mesh.init_interpolation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.integrate_field.html">fedoo.Mesh.integrate_field</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.is_periodic.html">fedoo.Mesh.is_periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.merge_coincident_nodes.html">fedoo.Mesh.merge_coincident_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.merge_nodes.html">fedoo.Mesh.merge_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.nearest_node.html">fedoo.Mesh.nearest_node</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.plot.html">fedoo.Mesh.plot</a></li>
@@ -3211,55 +3212,55 @@ to download the full example code.</p>
 <section class="sphx-glr-example-title" id="beam-lattice-structure-using-beam-model-with-geometric-nonlinearities">
 <span id="sphx-glr-examples-01-simple-lattice-beam-py"></span><h1>Beam Lattice Structure using beam model with geometric nonlinearities<a class="headerlink" href="#beam-lattice-structure-using-beam-model-with-geometric-nonlinearities" title="Link to this heading"></a></h1>
 <img src="../../_images/sphx_glr_lattice_beam_001.png" srcset="../../_images/sphx_glr_lattice_beam_001.png" alt="lattice beam" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.02000 - dt 0.02000 - NR iter: 3 - Err: 0.00000
-Iter 2 - Time: 0.04000 - dt 0.02500 - NR iter: 2 - Err: 0.00493
-Iter 3 - Time: 0.06000 - dt 0.02500 - NR iter: 2 - Err: 0.00495
-Iter 4 - Time: 0.08000 - dt 0.02500 - NR iter: 2 - Err: 0.00487
-Iter 5 - Time: 0.10000 - dt 0.02500 - NR iter: 2 - Err: 0.00480
-Iter 6 - Time: 0.12000 - dt 0.02500 - NR iter: 2 - Err: 0.00473
-Iter 7 - Time: 0.14000 - dt 0.02500 - NR iter: 2 - Err: 0.00466
-Iter 8 - Time: 0.16000 - dt 0.02500 - NR iter: 2 - Err: 0.00459
-Iter 9 - Time: 0.18000 - dt 0.02500 - NR iter: 2 - Err: 0.00453
-Iter 10 - Time: 0.20000 - dt 0.02500 - NR iter: 2 - Err: 0.00447
-Iter 11 - Time: 0.22000 - dt 0.02500 - NR iter: 2 - Err: 0.00441
-Iter 12 - Time: 0.24000 - dt 0.02500 - NR iter: 2 - Err: 0.00435
-Iter 13 - Time: 0.26000 - dt 0.02500 - NR iter: 2 - Err: 0.00429
-Iter 14 - Time: 0.28000 - dt 0.02500 - NR iter: 2 - Err: 0.00424
-Iter 15 - Time: 0.30000 - dt 0.02500 - NR iter: 2 - Err: 0.00419
-Iter 16 - Time: 0.32000 - dt 0.02500 - NR iter: 2 - Err: 0.00414
-Iter 17 - Time: 0.34000 - dt 0.02500 - NR iter: 2 - Err: 0.00409
-Iter 18 - Time: 0.36000 - dt 0.02500 - NR iter: 2 - Err: 0.00405
-Iter 19 - Time: 0.38000 - dt 0.02500 - NR iter: 2 - Err: 0.00400
-Iter 20 - Time: 0.40000 - dt 0.02500 - NR iter: 2 - Err: 0.00396
-Iter 21 - Time: 0.42000 - dt 0.02500 - NR iter: 2 - Err: 0.00392
-Iter 22 - Time: 0.44000 - dt 0.02500 - NR iter: 2 - Err: 0.00389
-Iter 23 - Time: 0.46000 - dt 0.02500 - NR iter: 2 - Err: 0.00385
-Iter 24 - Time: 0.48000 - dt 0.02500 - NR iter: 2 - Err: 0.00382
-Iter 25 - Time: 0.50000 - dt 0.02500 - NR iter: 2 - Err: 0.00379
-Iter 26 - Time: 0.52000 - dt 0.02500 - NR iter: 2 - Err: 0.00376
-Iter 27 - Time: 0.54000 - dt 0.02500 - NR iter: 2 - Err: 0.00373
-Iter 28 - Time: 0.56000 - dt 0.02500 - NR iter: 2 - Err: 0.00370
-Iter 29 - Time: 0.58000 - dt 0.02500 - NR iter: 2 - Err: 0.00368
-Iter 30 - Time: 0.60000 - dt 0.02500 - NR iter: 2 - Err: 0.00366
-Iter 31 - Time: 0.62000 - dt 0.02500 - NR iter: 2 - Err: 0.00364
-Iter 32 - Time: 0.64000 - dt 0.02500 - NR iter: 2 - Err: 0.00362
-Iter 33 - Time: 0.66000 - dt 0.02500 - NR iter: 2 - Err: 0.00360
-Iter 34 - Time: 0.68000 - dt 0.02500 - NR iter: 2 - Err: 0.00359
-Iter 35 - Time: 0.70000 - dt 0.02500 - NR iter: 2 - Err: 0.00358
-Iter 36 - Time: 0.72000 - dt 0.02500 - NR iter: 2 - Err: 0.00357
-Iter 37 - Time: 0.74000 - dt 0.02500 - NR iter: 2 - Err: 0.00356
-Iter 38 - Time: 0.76000 - dt 0.02500 - NR iter: 2 - Err: 0.00356
-Iter 39 - Time: 0.78000 - dt 0.02500 - NR iter: 2 - Err: 0.00356
-Iter 40 - Time: 0.80000 - dt 0.02500 - NR iter: 2 - Err: 0.00356
-Iter 41 - Time: 0.82000 - dt 0.02500 - NR iter: 2 - Err: 0.00356
-Iter 42 - Time: 0.84000 - dt 0.02500 - NR iter: 2 - Err: 0.00357
-Iter 43 - Time: 0.86000 - dt 0.02500 - NR iter: 2 - Err: 0.00358
-Iter 44 - Time: 0.88000 - dt 0.02500 - NR iter: 2 - Err: 0.00359
-Iter 45 - Time: 0.90000 - dt 0.02500 - NR iter: 2 - Err: 0.00361
-Iter 46 - Time: 0.92000 - dt 0.02500 - NR iter: 2 - Err: 0.00363
-Iter 47 - Time: 0.94000 - dt 0.02500 - NR iter: 2 - Err: 0.00366
-Iter 48 - Time: 0.96000 - dt 0.02500 - NR iter: 2 - Err: 0.00370
-Iter 49 - Time: 0.98000 - dt 0.02500 - NR iter: 2 - Err: 0.00375
-Iter 50 - Time: 1.00000 - dt 0.02500 - NR iter: 2 - Err: 0.00412
+Iter 2 - Time: 0.04000 - dt 0.02000 - NR iter: 2 - Err: 0.00493
+Iter 3 - Time: 0.06000 - dt 0.02000 - NR iter: 2 - Err: 0.00495
+Iter 4 - Time: 0.08000 - dt 0.02000 - NR iter: 2 - Err: 0.00487
+Iter 5 - Time: 0.10000 - dt 0.02000 - NR iter: 2 - Err: 0.00480
+Iter 6 - Time: 0.12000 - dt 0.02000 - NR iter: 2 - Err: 0.00473
+Iter 7 - Time: 0.14000 - dt 0.02000 - NR iter: 2 - Err: 0.00466
+Iter 8 - Time: 0.16000 - dt 0.02000 - NR iter: 2 - Err: 0.00459
+Iter 9 - Time: 0.18000 - dt 0.02000 - NR iter: 2 - Err: 0.00453
+Iter 10 - Time: 0.20000 - dt 0.02000 - NR iter: 2 - Err: 0.00447
+Iter 11 - Time: 0.22000 - dt 0.02000 - NR iter: 2 - Err: 0.00441
+Iter 12 - Time: 0.24000 - dt 0.02000 - NR iter: 2 - Err: 0.00435
+Iter 13 - Time: 0.26000 - dt 0.02000 - NR iter: 2 - Err: 0.00429
+Iter 14 - Time: 0.28000 - dt 0.02000 - NR iter: 2 - Err: 0.00424
+Iter 15 - Time: 0.30000 - dt 0.02000 - NR iter: 2 - Err: 0.00419
+Iter 16 - Time: 0.32000 - dt 0.02000 - NR iter: 2 - Err: 0.00414
+Iter 17 - Time: 0.34000 - dt 0.02000 - NR iter: 2 - Err: 0.00409
+Iter 18 - Time: 0.36000 - dt 0.02000 - NR iter: 2 - Err: 0.00405
+Iter 19 - Time: 0.38000 - dt 0.02000 - NR iter: 2 - Err: 0.00400
+Iter 20 - Time: 0.40000 - dt 0.02000 - NR iter: 2 - Err: 0.00396
+Iter 21 - Time: 0.42000 - dt 0.02000 - NR iter: 2 - Err: 0.00392
+Iter 22 - Time: 0.44000 - dt 0.02000 - NR iter: 2 - Err: 0.00389
+Iter 23 - Time: 0.46000 - dt 0.02000 - NR iter: 2 - Err: 0.00385
+Iter 24 - Time: 0.48000 - dt 0.02000 - NR iter: 2 - Err: 0.00382
+Iter 25 - Time: 0.50000 - dt 0.02000 - NR iter: 2 - Err: 0.00379
+Iter 26 - Time: 0.52000 - dt 0.02000 - NR iter: 2 - Err: 0.00376
+Iter 27 - Time: 0.54000 - dt 0.02000 - NR iter: 2 - Err: 0.00373
+Iter 28 - Time: 0.56000 - dt 0.02000 - NR iter: 2 - Err: 0.00370
+Iter 29 - Time: 0.58000 - dt 0.02000 - NR iter: 2 - Err: 0.00368
+Iter 30 - Time: 0.60000 - dt 0.02000 - NR iter: 2 - Err: 0.00366
+Iter 31 - Time: 0.62000 - dt 0.02000 - NR iter: 2 - Err: 0.00364
+Iter 32 - Time: 0.64000 - dt 0.02000 - NR iter: 2 - Err: 0.00362
+Iter 33 - Time: 0.66000 - dt 0.02000 - NR iter: 2 - Err: 0.00360
+Iter 34 - Time: 0.68000 - dt 0.02000 - NR iter: 2 - Err: 0.00359
+Iter 35 - Time: 0.70000 - dt 0.02000 - NR iter: 2 - Err: 0.00358
+Iter 36 - Time: 0.72000 - dt 0.02000 - NR iter: 2 - Err: 0.00357
+Iter 37 - Time: 0.74000 - dt 0.02000 - NR iter: 2 - Err: 0.00356
+Iter 38 - Time: 0.76000 - dt 0.02000 - NR iter: 2 - Err: 0.00356
+Iter 39 - Time: 0.78000 - dt 0.02000 - NR iter: 2 - Err: 0.00356
+Iter 40 - Time: 0.80000 - dt 0.02000 - NR iter: 2 - Err: 0.00356
+Iter 41 - Time: 0.82000 - dt 0.02000 - NR iter: 2 - Err: 0.00356
+Iter 42 - Time: 0.84000 - dt 0.02000 - NR iter: 2 - Err: 0.00357
+Iter 43 - Time: 0.86000 - dt 0.02000 - NR iter: 2 - Err: 0.00358
+Iter 44 - Time: 0.88000 - dt 0.02000 - NR iter: 2 - Err: 0.00359
+Iter 45 - Time: 0.90000 - dt 0.02000 - NR iter: 2 - Err: 0.00361
+Iter 46 - Time: 0.92000 - dt 0.02000 - NR iter: 2 - Err: 0.00363
+Iter 47 - Time: 0.94000 - dt 0.02000 - NR iter: 2 - Err: 0.00366
+Iter 48 - Time: 0.96000 - dt 0.02000 - NR iter: 2 - Err: 0.00370
+Iter 49 - Time: 0.98000 - dt 0.02000 - NR iter: 2 - Err: 0.00375
+Iter 50 - Time: 1.00000 - dt 0.02000 - NR iter: 2 - Err: 0.00381
 </pre></div>
 </div>
 <div class="line-block">
@@ -3313,7 +3314,7 @@ Iter 50 - Time: 1.00000 - dt 0.02500 - NR iter: 2 - Err: 0.00412
 <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;BeamStress&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.052 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.096 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-lattice-beam-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/d6a656418e98c8a49622e91fec2fe844/lattice_beam.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">lattice_beam.ipynb</span></code></a></p>
