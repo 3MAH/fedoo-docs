@@ -226,25 +226,25 @@ Von Mises stress distribution across the entire heterogeneous domain.
  .. code-block:: none
 
     Iter 1 - Time: 0.10000 - dt 0.10000 - NR iter: 1 - Err: 0.00000
-    Iter 2 - Time: 0.20000 - dt 0.10000 - NR iter: 1 - Err: 0.00000
-    Iter 3 - Time: 0.30000 - dt 0.10000 - NR iter: 1 - Err: 0.00047
-    Iter 4 - Time: 0.40000 - dt 0.10000 - NR iter: 1 - Err: 0.00045
-    Iter 5 - Time: 0.50000 - dt 0.10000 - NR iter: 1 - Err: 0.00041
-    Iter 6 - Time: 0.60000 - dt 0.10000 - NR iter: 1 - Err: 0.00036
-    Iter 7 - Time: 0.70000 - dt 0.10000 - NR iter: 1 - Err: 0.00032
-    Iter 8 - Time: 0.80000 - dt 0.10000 - NR iter: 1 - Err: 0.00027
-    Iter 9 - Time: 0.90000 - dt 0.10000 - NR iter: 1 - Err: 0.00024
-    Iter 10 - Time: 1.00000 - dt 0.10000 - NR iter: 1 - Err: 0.00020
-    Iter 11 - Time: 1.10000 - dt 0.10000 - NR iter: 1 - Err: 0.00017
-    Iter 12 - Time: 1.20000 - dt 0.10000 - NR iter: 1 - Err: 0.00141
-    Iter 13 - Time: 1.30000 - dt 0.10000 - NR iter: 1 - Err: 0.00118
-    Iter 14 - Time: 1.40000 - dt 0.10000 - NR iter: 1 - Err: 0.00099
-    Iter 15 - Time: 1.50000 - dt 0.10000 - NR iter: 1 - Err: 0.00083
-    Iter 16 - Time: 1.60000 - dt 0.10000 - NR iter: 1 - Err: 0.00069
-    Iter 17 - Time: 1.70000 - dt 0.10000 - NR iter: 1 - Err: 0.00058
-    Iter 18 - Time: 1.80000 - dt 0.10000 - NR iter: 1 - Err: 0.00048
-    Iter 19 - Time: 1.90000 - dt 0.10000 - NR iter: 1 - Err: 0.00040
-    Iter 20 - Time: 2.00000 - dt 0.10000 - NR iter: 1 - Err: 0.00033
+    Iter 2 - Time: 0.20000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+    Iter 3 - Time: 0.30000 - dt 0.12500 - NR iter: 1 - Err: 0.00047
+    Iter 4 - Time: 0.40000 - dt 0.12500 - NR iter: 1 - Err: 0.00045
+    Iter 5 - Time: 0.50000 - dt 0.12500 - NR iter: 1 - Err: 0.00041
+    Iter 6 - Time: 0.60000 - dt 0.12500 - NR iter: 1 - Err: 0.00036
+    Iter 7 - Time: 0.70000 - dt 0.12500 - NR iter: 1 - Err: 0.00032
+    Iter 8 - Time: 0.80000 - dt 0.12500 - NR iter: 1 - Err: 0.00027
+    Iter 9 - Time: 0.90000 - dt 0.12500 - NR iter: 1 - Err: 0.00024
+    Iter 10 - Time: 1.00000 - dt 0.12500 - NR iter: 1 - Err: 0.00020
+    Iter 11 - Time: 1.10000 - dt 0.12500 - NR iter: 1 - Err: 0.00017
+    Iter 12 - Time: 1.20000 - dt 0.12500 - NR iter: 1 - Err: 0.00141
+    Iter 13 - Time: 1.30000 - dt 0.12500 - NR iter: 1 - Err: 0.00118
+    Iter 14 - Time: 1.40000 - dt 0.12500 - NR iter: 1 - Err: 0.00099
+    Iter 15 - Time: 1.50000 - dt 0.12500 - NR iter: 1 - Err: 0.00083
+    Iter 16 - Time: 1.60000 - dt 0.12500 - NR iter: 1 - Err: 0.00069
+    Iter 17 - Time: 1.70000 - dt 0.12500 - NR iter: 1 - Err: 0.00058
+    Iter 18 - Time: 1.80000 - dt 0.12500 - NR iter: 1 - Err: 0.00048
+    Iter 19 - Time: 1.90000 - dt 0.12500 - NR iter: 1 - Err: 0.00040
+    Iter 20 - Time: 2.00000 - dt 0.12500 - NR iter: 1 - Err: 0.00033
 
 
 
@@ -252,7 +252,7 @@ Von Mises stress distribution across the entire heterogeneous domain.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.526 seconds)
+   **Total running time of the script:** (0 minutes 3.585 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_thermal_loading.py:

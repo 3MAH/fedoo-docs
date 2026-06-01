@@ -116,7 +116,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.init_interpolation.html">fedoo.Mesh.init_interpolation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.integrate_field.html">fedoo.Mesh.integrate_field</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.is_periodic.html">fedoo.Mesh.is_periodic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.merge_coincident_nodes.html">fedoo.Mesh.merge_coincident_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.merge_nodes.html">fedoo.Mesh.merge_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.nearest_node.html">fedoo.Mesh.nearest_node</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.plot.html">fedoo.Mesh.plot</a></li>
@@ -3020,11 +3019,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.get_all.html">fedoo.constraint.RigidTie.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.to_start_bc.html">fedoo.constraint.RigidTie.to_start_bc</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
 </ul>
 </li>
@@ -3212,10 +3207,10 @@ to download the full example code.</p>
 <section class="sphx-glr-example-title" id="d-canteleaver-beam-with-geometric-nonlinearities">
 <span id="sphx-glr-examples-01-simple-simple-cantilever-beam-3d-model-nlgeom-py"></span><h1>3D Canteleaver Beam with geometric nonlinearities<a class="headerlink" href="#d-canteleaver-beam-with-geometric-nonlinearities" title="Link to this heading"></a></h1>
 <img src="../../_images/sphx_glr_simple_cantilever_beam_3D_model_nlgeom_001.png" srcset="../../_images/sphx_glr_simple_cantilever_beam_3D_model_nlgeom_001.png" alt="simple cantilever beam 3D model nlgeom" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.20000 - dt 0.20000 - NR iter: 2 - Err: 0.00469
-Iter 2 - Time: 0.40000 - dt 0.20000 - NR iter: 2 - Err: 0.00482
-Iter 3 - Time: 0.60000 - dt 0.20000 - NR iter: 3 - Err: 0.00047
-Iter 4 - Time: 0.80000 - dt 0.20000 - NR iter: 3 - Err: 0.00082
-Iter 5 - Time: 1.00000 - dt 0.20000 - NR iter: 3 - Err: 0.00137
+Iter 2 - Time: 0.40000 - dt 0.25000 - NR iter: 2 - Err: 0.00482
+Iter 3 - Time: 0.60000 - dt 0.25000 - NR iter: 3 - Err: 0.00047
+Iter 4 - Time: 0.80000 - dt 0.25000 - NR iter: 3 - Err: 0.00082
+Iter 5 - Time: 1.00000 - dt 0.25000 - NR iter: 3 - Err: 0.00137
 </pre></div>
 </div>
 <div class="line-block">
@@ -3269,7 +3264,7 @@ Iter 5 - Time: 1.00000 - dt 0.20000 - NR iter: 3 - Err: 0.00137
 <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;XX&quot;</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.216 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.326 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-simple-cantilever-beam-3d-model-nlgeom-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/c3d575435185fd0cc01966ccc7ff05d4/simple_cantilever_beam_3D_model_nlgeom.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">simple_cantilever_beam_3D_model_nlgeom.ipynb</span></code></a></p>
