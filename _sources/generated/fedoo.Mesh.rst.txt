@@ -46,6 +46,7 @@
          Mesh.init_interpolation
          Mesh.integrate_field
          Mesh.is_periodic
+         Mesh.merge_coincident_nodes
          Mesh.merge_nodes
          Mesh.nearest_node
          Mesh.plot

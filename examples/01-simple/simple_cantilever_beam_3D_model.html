@@ -116,6 +116,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.init_interpolation.html">fedoo.Mesh.init_interpolation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.integrate_field.html">fedoo.Mesh.integrate_field</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.is_periodic.html">fedoo.Mesh.is_periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.merge_coincident_nodes.html">fedoo.Mesh.merge_coincident_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.merge_nodes.html">fedoo.Mesh.merge_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.nearest_node.html">fedoo.Mesh.nearest_node</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.plot.html">fedoo.Mesh.plot</a></li>
@@ -3019,7 +3020,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.get_all.html">fedoo.constraint.RigidTie.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.to_start_bc.html">fedoo.constraint.RigidTie.to_start_bc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
 </ul>
 </li>
@@ -3028,6 +3033,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.generate.html">fedoo.constraint.RigidTie2D.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.get_all.html">fedoo.constraint.RigidTie2D.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.initialize.html">fedoo.constraint.RigidTie2D.initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.pre_update.html">fedoo.constraint.RigidTie2D.pre_update</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.str_condensed.html">fedoo.constraint.RigidTie2D.str_condensed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.name.html">fedoo.constraint.RigidTie2D.name</a></li>
 </ul>
@@ -3271,7 +3277,7 @@ value = -50
 <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;XX&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_simple_cantilever_beam_3D_model_001.png" srcset="../../_images/sphx_glr_simple_cantilever_beam_3D_model_001.png" alt="simple cantilever beam 3D model" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.320 seconds)</p>
+<img src="../../_images/sphx_glr_simple_cantilever_beam_3D_model_001.png" srcset="../../_images/sphx_glr_simple_cantilever_beam_3D_model_001.png" alt="simple cantilever beam 3D model" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.345 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-simple-cantilever-beam-3d-model-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/f69db95bf41d7411edab10db92bada09/simple_cantilever_beam_3D_model.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">simple_cantilever_beam_3D_model.ipynb</span></code></a></p>
