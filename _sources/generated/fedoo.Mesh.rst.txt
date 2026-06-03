@@ -46,7 +46,6 @@
          Mesh.init_interpolation
          Mesh.integrate_field
          Mesh.is_periodic
-         Mesh.merge_coincident_nodes
          Mesh.merge_nodes
          Mesh.nearest_node
          Mesh.plot
@@ -83,6 +82,5 @@
          Mesh.elm_type
          Mesh.node_sets
          Mesh.element_sets
-         Mesh.local_frame
   
   

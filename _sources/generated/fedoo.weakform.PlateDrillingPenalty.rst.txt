@@ -1,0 +1,49 @@
+﻿fedoo.weakform.PlateDrillingPenalty
+===================================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: PlateDrillingPenalty
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         PlateDrillingPenalty.drill_constraint_operator
+         PlateDrillingPenalty.generalized_strain_operator
+         PlateDrillingPenalty.get_all
+         PlateDrillingPenalty.get_weak_equation
+         PlateDrillingPenalty.initialize
+         PlateDrillingPenalty.nvar
+         PlateDrillingPenalty.reset
+         PlateDrillingPenalty.set_start
+         PlateDrillingPenalty.sum
+         PlateDrillingPenalty.to_start
+         PlateDrillingPenalty.update
+         PlateDrillingPenalty.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         PlateDrillingPenalty.name
+         PlateDrillingPenalty.space
+  
+  

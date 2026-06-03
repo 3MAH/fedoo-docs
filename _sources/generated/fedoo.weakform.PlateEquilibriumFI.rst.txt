@@ -19,7 +19,8 @@
          :toctree:
          
       
-         PlateEquilibriumFI.GetGeneralizedStrainOperator
+         PlateEquilibriumFI.drill_constraint_operator
+         PlateEquilibriumFI.generalized_strain_operator
          PlateEquilibriumFI.get_all
          PlateEquilibriumFI.get_weak_equation
          PlateEquilibriumFI.initialize
