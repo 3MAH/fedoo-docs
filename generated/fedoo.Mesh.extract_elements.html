@@ -116,6 +116,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.init_interpolation.html">fedoo.Mesh.init_interpolation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.integrate_field.html">fedoo.Mesh.integrate_field</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.is_periodic.html">fedoo.Mesh.is_periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.merge_coincident_nodes.html">fedoo.Mesh.merge_coincident_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.merge_nodes.html">fedoo.Mesh.merge_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.nearest_node.html">fedoo.Mesh.nearest_node</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.Mesh.plot.html">fedoo.Mesh.plot</a></li>
@@ -3019,7 +3020,11 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.get_all.html">fedoo.constraint.RigidTie.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.to_start_bc.html">fedoo.constraint.RigidTie.to_start_bc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
 </ul>
 </li>
@@ -3028,6 +3033,7 @@
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie2D.generate.html">fedoo.constraint.RigidTie2D.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie2D.get_all.html">fedoo.constraint.RigidTie2D.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie2D.initialize.html">fedoo.constraint.RigidTie2D.initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie2D.pre_update.html">fedoo.constraint.RigidTie2D.pre_update</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie2D.str_condensed.html">fedoo.constraint.RigidTie2D.str_condensed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="fedoo.constraint.RigidTie2D.name.html">fedoo.constraint.RigidTie2D.name</a></li>
 </ul>
@@ -3223,9 +3229,14 @@ the indices of the nodes.</p></li>
 <ul class="simple">
 <li><p>The new mesh keep the former element_sets dict with only the extrated elements.</p></li>
 <li><p>The element indices of the new mesh are not the same as the former one.</p></li>
-<li><p>The new mesh keep the initial nodes and node_sets. To also removed the
-nodes, a simple solution is to use the method “remove_isolated_nodes”
-with the new mesh.</p></li>
+<li><p>The new mesh keep the initial <code class="docutils literal notranslate"><span class="pre">nodes</span></code> array (shared with the parent), so
+an assembly built on it stays in the parent DOF space and can be summed
+with full-mesh assemblies. To also remove the nodes, a simple solution is
+to use the method “remove_isolated_nodes” with the new mesh.</p></li>
+<li><p>The result carries a <code class="docutils literal notranslate"><span class="pre">parent_node_indices</span></code> attribute listing the rows of
+<code class="docutils literal notranslate"><span class="pre">self.nodes</span></code> actually referenced by the extracted elements. Consumers
+that need the active subset (e.g. <code class="docutils literal notranslate"><span class="pre">RigidBody</span></code> slaving the right DOFs)
+read it directly without recomputing <code class="docutils literal notranslate"><span class="pre">np.unique(elements.ravel())</span></code>.</p></li>
 </ul>
 </dd></dl>
 

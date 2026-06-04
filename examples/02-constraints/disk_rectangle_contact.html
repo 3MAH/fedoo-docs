@@ -116,6 +116,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.init_interpolation.html">fedoo.Mesh.init_interpolation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.integrate_field.html">fedoo.Mesh.integrate_field</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.is_periodic.html">fedoo.Mesh.is_periodic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.merge_coincident_nodes.html">fedoo.Mesh.merge_coincident_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.merge_nodes.html">fedoo.Mesh.merge_nodes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.nearest_node.html">fedoo.Mesh.nearest_node</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.Mesh.plot.html">fedoo.Mesh.plot</a></li>
@@ -3019,7 +3020,11 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.get_all.html">fedoo.constraint.RigidTie.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.to_start_bc.html">fedoo.constraint.RigidTie.to_start_bc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
 </ul>
 </li>
@@ -3028,6 +3033,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.generate.html">fedoo.constraint.RigidTie2D.generate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.get_all.html">fedoo.constraint.RigidTie2D.get_all</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.initialize.html">fedoo.constraint.RigidTie2D.initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.pre_update.html">fedoo.constraint.RigidTie2D.pre_update</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.str_condensed.html">fedoo.constraint.RigidTie2D.str_condensed</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.name.html">fedoo.constraint.RigidTie2D.name</a></li>
 </ul>
@@ -3210,45 +3216,45 @@ to download the full example code.</p>
 using the IPC (Incremental Potential Contact) barrier method.
 The disk is pressed into the rectangle and then unloaded.</p>
 <img src="../../_images/sphx_glr_disk_rectangle_contact_001.png" srcset="../../_images/sphx_glr_disk_rectangle_contact_001.png" alt="disk rectangle contact" class = "sphx-glr-single-img"/><img src="../../_images/sphx_glr_disk_rectangle_contact_002.png" srcset="../../_images/sphx_glr_disk_rectangle_contact_002.png" alt="disk rectangle contact" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
-Iter 2 - Time: 0.10000 - dt 0.06250 - NR iter: 3 - Err: 0.00000
+Iter 2 - Time: 0.10000 - dt 0.05000 - NR iter: 3 - Err: 0.00000
 Iter 3 - Time: 0.16250 - dt 0.06250 - NR iter: 3 - Err: 0.00000
-Iter 4 - Time: 0.20000 - dt 0.07812 - NR iter: 3 - Err: 0.00058
-Iter 5 - Time: 0.27813 - dt 0.07812 - NR iter: 5 - Err: 0.00276
-Iter 6 - Time: 0.30000 - dt 0.09766 - NR iter: 3 - Err: 0.00250
-Iter 7 - Time: 0.39766 - dt 0.09766 - NR iter: 7 - Err: 0.00360
-Iter 8 - Time: 0.40000 - dt 0.09766 - NR iter: 3 - Err: 0.00048
-Iter 9 - Time: 0.49766 - dt 0.09766 - NR iter: 8 - Err: 0.00165
-Iter 10 - Time: 0.50000 - dt 0.09766 - NR iter: 3 - Err: 0.00153
-Iter 11 - Time: 0.59766 - dt 0.09766 - NR iter: 6 - Err: 0.00446
-Iter 12 - Time: 0.60000 - dt 0.09766 - NR iter: 4 - Err: 0.00139
-Iter 13 - Time: 0.69766 - dt 0.09766 - NR iter: 6 - Err: 0.00279
-Iter 14 - Time: 0.70000 - dt 0.09766 - NR iter: 3 - Err: 0.00415
-Iter 15 - Time: 0.79766 - dt 0.09766 - NR iter: 4 - Err: 0.00169
-Iter 16 - Time: 0.80000 - dt 0.12207 - NR iter: 3 - Err: 0.00084
-Iter 17 - Time: 0.90000 - dt 0.12207 - NR iter: 4 - Err: 0.00207
-Iter 18 - Time: 1.00000 - dt 0.12207 - NR iter: 4 - Err: 0.00305
+Iter 4 - Time: 0.20000 - dt 0.03750 - NR iter: 3 - Err: 0.00058
+Iter 5 - Time: 0.27813 - dt 0.07812 - NR iter: 5 - Err: 0.00455
+Iter 6 - Time: 0.30000 - dt 0.02188 - NR iter: 3 - Err: 0.00249
+Iter 7 - Time: 0.39766 - dt 0.09766 - NR iter: 7 - Err: 0.00377
+Iter 8 - Time: 0.40000 - dt 0.00234 - NR iter: 3 - Err: 0.00049
+Iter 9 - Time: 0.49766 - dt 0.09766 - NR iter: 8 - Err: 0.00167
+Iter 10 - Time: 0.50000 - dt 0.00234 - NR iter: 3 - Err: 0.00154
+Iter 11 - Time: 0.59766 - dt 0.09766 - NR iter: 6 - Err: 0.00439
+Iter 12 - Time: 0.60000 - dt 0.00234 - NR iter: 3 - Err: 0.00480
+Iter 13 - Time: 0.69766 - dt 0.09766 - NR iter: 6 - Err: 0.00272
+Iter 14 - Time: 0.70000 - dt 0.00234 - NR iter: 3 - Err: 0.00410
+Iter 15 - Time: 0.79766 - dt 0.09766 - NR iter: 4 - Err: 0.00273
+Iter 16 - Time: 0.80000 - dt 0.00234 - NR iter: 3 - Err: 0.00088
+Iter 17 - Time: 0.90000 - dt 0.10000 - NR iter: 4 - Err: 0.00207
+Iter 18 - Time: 1.00000 - dt 0.10000 - NR iter: 4 - Err: 0.00308
 Iter 19 - Time: 0.05000 - dt 0.05000 - NR iter: 6 - Err: 0.00458
-Convergence Failed - dt 0.05000 - NR iter: 15 - Err: 0.60946
-Iter 20 - Time: 0.06250 - dt 0.01250 - NR iter: 3 - Err: 0.00068
+Convergence Failed - dt 0.05000 - NR iter: 15 - Err: 0.61037
+Iter 20 - Time: 0.06250 - dt 0.01250 - NR iter: 3 - Err: 0.00067
 Iter 21 - Time: 0.07812 - dt 0.01562 - NR iter: 3 - Err: 0.00091
 Iter 22 - Time: 0.09766 - dt 0.01953 - NR iter: 3 - Err: 0.00185
-Iter 23 - Time: 0.10000 - dt 0.02441 - NR iter: 3 - Err: 0.00057
+Iter 23 - Time: 0.10000 - dt 0.00234 - NR iter: 3 - Err: 0.00057
 Iter 24 - Time: 0.12441 - dt 0.02441 - NR iter: 3 - Err: 0.00311
 Iter 25 - Time: 0.15493 - dt 0.03052 - NR iter: 3 - Err: 0.00410
 Iter 26 - Time: 0.19308 - dt 0.03815 - NR iter: 3 - Err: 0.00254
-Iter 27 - Time: 0.20000 - dt 0.04768 - NR iter: 3 - Err: 0.00087
+Iter 27 - Time: 0.20000 - dt 0.00692 - NR iter: 3 - Err: 0.00087
 Iter 28 - Time: 0.24768 - dt 0.04768 - NR iter: 3 - Err: 0.00178
-Iter 29 - Time: 0.30000 - dt 0.05960 - NR iter: 4 - Err: 0.00086
+Iter 29 - Time: 0.30000 - dt 0.05232 - NR iter: 4 - Err: 0.00086
 Iter 30 - Time: 0.35960 - dt 0.05960 - NR iter: 4 - Err: 0.00288
-Iter 31 - Time: 0.40000 - dt 0.07451 - NR iter: 3 - Err: 0.00060
+Iter 31 - Time: 0.40000 - dt 0.04040 - NR iter: 3 - Err: 0.00060
 Iter 32 - Time: 0.47451 - dt 0.07451 - NR iter: 3 - Err: 0.00000
-Iter 33 - Time: 0.50000 - dt 0.09313 - NR iter: 2 - Err: 0.00000
+Iter 33 - Time: 0.50000 - dt 0.02549 - NR iter: 2 - Err: 0.00000
 Iter 34 - Time: 0.59313 - dt 0.09313 - NR iter: 2 - Err: 0.00000
-Iter 35 - Time: 0.60000 - dt 0.11642 - NR iter: 2 - Err: 0.00000
-Iter 36 - Time: 0.70000 - dt 0.11642 - NR iter: 2 - Err: 0.00000
-Iter 37 - Time: 0.80000 - dt 0.11642 - NR iter: 2 - Err: 0.00000
-Iter 38 - Time: 0.90000 - dt 0.11642 - NR iter: 2 - Err: 0.00000
-Iter 39 - Time: 1.00000 - dt 0.11642 - NR iter: 2 - Err: 0.00000
+Iter 35 - Time: 0.60000 - dt 0.00687 - NR iter: 2 - Err: 0.00000
+Iter 36 - Time: 0.70000 - dt 0.10000 - NR iter: 2 - Err: 0.00000
+Iter 37 - Time: 0.80000 - dt 0.10000 - NR iter: 2 - Err: 0.00000
+Iter 38 - Time: 0.90000 - dt 0.10000 - NR iter: 2 - Err: 0.00000
+Iter 39 - Time: 1.00000 - dt 0.10000 - NR iter: 2 - Err: 0.00000
 </pre></div>
 </div>
 <div class="line-block">
@@ -3367,7 +3373,7 @@ Iter 39 - Time: 1.00000 - dt 0.11642 - NR iter: 2 - Err: 0.00000
 <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;XX&quot;</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">show_nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 4.932 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.135 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-constraints-disk-rectangle-contact-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/28b68c70e830110f02039ed8129e4235/disk_rectangle_contact.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">disk_rectangle_contact.ipynb</span></code></a></p>
