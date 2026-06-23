@@ -19,14 +19,12 @@
          :toctree:
          
       
-         ShellLaminate.GetShellRigidityMatrix
-         ShellLaminate.GetShellRigidityMatrix_FI
-         ShellLaminate.GetShellRigidityMatrix_RI
          ShellLaminate.GetStressDistribution
-         ShellLaminate.GetThickness
-         ShellLaminate.Get_k
          ShellLaminate.find_layer
          ShellLaminate.get_all
+         ShellLaminate.get_shell_stiffness_matrix
+         ShellLaminate.get_shell_stiffness_matrix_FI
+         ShellLaminate.get_shell_stiffness_matrix_RI
          ShellLaminate.get_strain
          ShellLaminate.get_stress
          ShellLaminate.initialize
@@ -47,6 +45,8 @@
          
       
          ShellLaminate.name
+         ShellLaminate.thickness
+         ShellLaminate.k
          ShellLaminate.is_initialized
   
   
