@@ -3214,10 +3214,11 @@ inferred from the last axis length.</p></li>
 <li><p><strong>convert_to</strong> (<em>{'Node'</em><em>, </em><em>'Element'</em><em>, </em><em>'GaussPoint'}</em>) – Source and target storage. If <code class="docutils literal notranslate"><span class="pre">convert_from</span></code> is None, it is
 inferred from the last axis length.</p></li>
 <li><p><strong>n_elm_gp</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of Gauss points per element.</p></li>
-<li><p><strong>method</strong> (<em>{'mean'</em><em>, </em><em>'l2'}</em><em>, </em><em>optional</em>) – Method used when converting Gauss-point values to nodes. <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>
+<li><p><strong>method</strong> (<em>{'mean'</em><em>, </em><em>'l2'</em><em>, </em><em>'spr'}</em><em>, </em><em>optional</em>) – Method used when converting Gauss-point values to nodes. <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>
 keeps the historical element-wise extrapolation followed by nodal
 averaging. <code class="docutils literal notranslate"><span class="pre">'l2'</span></code> performs a global L2 projection using fedoo’s
-node-to-Gauss-point interpolation and quadrature matrices.</p></li>
+node-to-Gauss-point interpolation and quadrature matrices. <code class="docutils literal notranslate"><span class="pre">'spr'</span></code>
+performs a linear Superconvergent Patch Recovery around each node.</p></li>
 </ul>
 </dd>
 </dl>
