@@ -3222,6 +3222,11 @@ coefficients in local material coordinates.</p>
 </ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Material directions X / Y / Z map to fedoo’s slot ordering. In <code class="docutils literal notranslate"><span class="pre">2Daxi</span></code>,
+slot 2 carries the hoop response, so <strong>EZ, GYZ, GXZ, nuYZ, nuXZ refer
+to the hoop direction</strong>, not Cartesian z. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.mechanical3d.Mechanical3D</span></code> for details.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.ElasticOrthotropic.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ez</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gxz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuxz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ElasticOrthotropic.__init__" title="Link to this definition"></a></dt>

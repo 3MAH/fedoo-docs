@@ -3254,6 +3254,25 @@ node lies on the contact surface.  Solid meshes with interior
 nodes must use <code class="docutils literal notranslate"><span class="pre">use_ccd=True</span></code> instead.  An error is raised at
 initialization if <code class="docutils literal notranslate"><span class="pre">use_ogc=True</span></code> is used with a solid mesh.</p>
 </div>
+<p><strong>Axisymmetric (2Daxi)</strong> — Under a <code class="docutils literal notranslate"><span class="pre">&quot;2Daxi&quot;</span></code> ModelingSpace the
+barrier gradient and hessian returned by ipctk are scaled by the
+circumferential integration weight <code class="docutils literal notranslate"><span class="pre">2*pi*r</span></code> per surface vertex
+before being scattered into the global system.  This is the IPC
+analogue of fedoo’s per-Gauss-point <code class="docutils literal notranslate"><span class="pre">axi_volume_weight</span></code> for weak
+forms.  The scaling is applied per vertex (using the reference
+radius <code class="docutils literal notranslate"><span class="pre">R₀</span></code>); it is exact when both endpoints of a contact pair
+sit at similar radii, and slightly asymmetric otherwise.  Vertices
+on the symmetry axis (r = 0) get weight 0, which is geometrically
+correct (a “ring” of zero radius collapses to a point).  In the
+current implementation, the axisymmetric residual uses a single
+integration weight <code class="docutils literal notranslate"><span class="pre">W</span> <span class="pre">=</span> <span class="pre">diag(2*pi*r)</span></code> while the tangent uses the
+two-sided product <code class="docutils literal notranslate"><span class="pre">W</span> <span class="pre">&#64;</span> <span class="pre">H</span> <span class="pre">&#64;</span> <span class="pre">W</span></code>.  This intentionally increases the
+tangent stiffness for 2Daxi IPC as a numerical stabilization; a
+strictly single-weighted tangent should be reconsidered together
+with a consistently weighted IPC energy and line search.  In 2Daxi
+the planar (r, z) distance equals the true 3D minimum distance
+between the corresponding circles (closest points share the
+azimuth), so the barrier distance and PSD projection are unchanged.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

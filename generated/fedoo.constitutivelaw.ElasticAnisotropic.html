@@ -3215,6 +3215,12 @@ If H is a list of gauss point values, the shape shoud be H.shape = (6,6,NumberOf
 </ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>H is interpreted in the slot ordering documented on
+<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.mechanical3d.Mechanical3D</span></code>. In <code class="docutils literal notranslate"><span class="pre">2Daxi</span></code>, slot 2 is
+the <strong>hoop</strong> direction (not Cartesian z): rows/columns labelled “3” of
+H apply to the hoop response. Define the rigidity matrix accordingly,
+or use a local frame.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.ElasticAnisotropic.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ElasticAnisotropic.__init__" title="Link to this definition"></a></dt>
