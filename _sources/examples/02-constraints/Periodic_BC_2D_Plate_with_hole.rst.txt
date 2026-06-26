@@ -60,7 +60,7 @@ Dimension of the problem
  .. code-block:: none
 
 
-    <fedoo.core.modelingspace.ModelingSpace object at 0x7f5384bc1c00>
+    <fedoo.core.modelingspace.ModelingSpace object at 0x7f690745eb30>
 
 
 
@@ -253,7 +253,7 @@ print the macroscopic strain tensor and stress tensor
  .. code-block:: none
 
     Strain tensor ([Exx, Eyy, Exy]):  [np.float64(0.0), np.float64(0.0), np.float64(0.1)]
-    Stress tensor ([Sxx, Syy, Sxy]):  [np.float64(-7.052631190163084e-12), np.float64(-1.352008780486358e-11), np.float64(2497.6680151185924)]
+    Stress tensor ([Sxx, Syy, Sxy]):  [np.float64(3.0474410550596077e-12), np.float64(-3.0569822229153944e-13), np.float64(2497.6680151186415)]
 
 
 

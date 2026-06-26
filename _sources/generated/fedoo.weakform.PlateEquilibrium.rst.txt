@@ -12,38 +12,8 @@
 
     
   
-
-    **Methods**
-    
-      .. autosummary::
-         :toctree:
-         
-      
-         PlateEquilibrium.drill_constraint_operator
-         PlateEquilibrium.generalized_strain_operator
-         PlateEquilibrium.get_all
-         PlateEquilibrium.get_weak_equation
-         PlateEquilibrium.initialize
-         PlateEquilibrium.nvar
-         PlateEquilibrium.reset
-         PlateEquilibrium.set_start
-         PlateEquilibrium.sum
-         PlateEquilibrium.to_start
-         PlateEquilibrium.update
-         PlateEquilibrium.update_2
-      
-      
-  
   
 
   
-  
-  
-      .. autosummary::
-         :toctree:
-         
-      
-         PlateEquilibrium.name
-         PlateEquilibrium.space
   
   
