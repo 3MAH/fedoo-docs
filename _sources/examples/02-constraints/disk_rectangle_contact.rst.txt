@@ -59,7 +59,7 @@ The disk is pressed into the rectangle and then unloaded.
     Iter 7 - Time: 0.39766 - dt 0.09766 - NR iter: 7 - Err: 0.00360
     Iter 8 - Time: 0.40000 - dt 0.09766 - NR iter: 3 - Err: 0.00048
     Iter 9 - Time: 0.49766 - dt 0.09766 - NR iter: 8 - Err: 0.00165
-    Iter 10 - Time: 0.50000 - dt 0.09766 - NR iter: 3 - Err: 0.00154
+    Iter 10 - Time: 0.50000 - dt 0.09766 - NR iter: 3 - Err: 0.00153
     Iter 11 - Time: 0.59766 - dt 0.09766 - NR iter: 6 - Err: 0.00446
     Iter 12 - Time: 0.60000 - dt 0.09766 - NR iter: 4 - Err: 0.00139
     Iter 13 - Time: 0.69766 - dt 0.09766 - NR iter: 6 - Err: 0.00279
@@ -69,8 +69,8 @@ The disk is pressed into the rectangle and then unloaded.
     Iter 17 - Time: 0.90000 - dt 0.12207 - NR iter: 4 - Err: 0.00207
     Iter 18 - Time: 1.00000 - dt 0.12207 - NR iter: 4 - Err: 0.00305
     Iter 19 - Time: 0.05000 - dt 0.05000 - NR iter: 6 - Err: 0.00458
-    Convergence Failed - dt 0.05000 - NR iter: 15 - Err: 0.63177
-    Iter 20 - Time: 0.06250 - dt 0.01250 - NR iter: 3 - Err: 0.00066
+    Convergence Failed - dt 0.05000 - NR iter: 15 - Err: 0.60946
+    Iter 20 - Time: 0.06250 - dt 0.01250 - NR iter: 3 - Err: 0.00068
     Iter 21 - Time: 0.07812 - dt 0.01562 - NR iter: 3 - Err: 0.00091
     Iter 22 - Time: 0.09766 - dt 0.01953 - NR iter: 3 - Err: 0.00185
     Iter 23 - Time: 0.10000 - dt 0.02441 - NR iter: 3 - Err: 0.00057
@@ -216,7 +216,7 @@ The disk is pressed into the rectangle and then unloaded.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.639 seconds)
+   **Total running time of the script:** (0 minutes 3.606 seconds)
 
 
 .. _sphx_glr_download_examples_02-constraints_disk_rectangle_contact.py:
