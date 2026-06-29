@@ -179,12 +179,15 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.NonLinear.set_time_integrator">
 <span class="sig-prename descclassname"><span class="pre">NonLinear.</span></span><span class="sig-name descname"><span class="pre">set_time_integrator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evolution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinear.set_time_integrator" title="Link to this definition"></a></dt>
-<dd><p>Attach a problem-level time integrator to an evolution category.</p>
+<dd><p>Attach or remove a problem-level time integrator.</p>
 <p>The integrator compiles compatible static weakforms before assembly
 initialization. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">SECOND_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Newmark</span><span class="p">())</span>
 </pre></div>
 </div>
+<p>Passing <code class="docutils literal notranslate"><span class="pre">None</span></code> removes the integrator associated with the evolution
+category. This can only be used before a compatible weakform has been
+compiled into its transient form.</p>
 </dd></dl>
 
 </section>

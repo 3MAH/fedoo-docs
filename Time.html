@@ -124,6 +124,26 @@ Newmark or generalized-alpha integrator:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">FIRST_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">BackwardEuler</span><span class="p">())</span>
 </pre></div>
 </div>
+<section id="static-analysis">
+<h2>Static analysis<a class="headerlink" href="#static-analysis" title="Link to this heading"></a></h2>
+<p>A problem remains static as long as no time integrator is attached. Weak forms
+may still expose storage metadata, such as a density or heat capacity, but this
+metadata is ignored until a compatible integrator is selected:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>An integrator can also be removed before the problem is initialized by passing
+<code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">SECOND_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Newmark</span><span class="p">())</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">SECOND_ORDER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once the problem has been initialized, compatible weak forms may already have
+been compiled into transient weak forms. At that point the integrator cannot be
+removed safely from the same problem object; create a new static problem, or
+change the assembly before removing the integrator.</p>
+</section>
 <section id="evolution-categories">
 <h2>Evolution categories<a class="headerlink" href="#evolution-categories" title="Link to this heading"></a></h2>
 <p>The predefined categories are <code class="xref py py-data docutils literal notranslate"><span class="pre">FIRST_ORDER</span></code> and <code class="xref py py-data docutils literal notranslate"><span class="pre">SECOND_ORDER</span></code>.

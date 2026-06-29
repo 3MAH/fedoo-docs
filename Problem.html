@@ -140,7 +140,9 @@
 <p>Transient analyses are controlled by problem-level integrators from
 <a class="reference internal" href="Time.html#module-fedoo.time" title="fedoo.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code></a>. They are attached to a nonlinear problem with
 <a class="reference internal" href="generated/fedoo.problem.NonLinear.set_time_integrator.html#fedoo.problem.NonLinear.set_time_integrator" title="fedoo.problem.NonLinear.set_time_integrator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_time_integrator()</span></code></a>, which keeps weak forms focused on their
-static, storage, and dissipation contributions.</p>
+static, storage, and dissipation contributions. Without a time integrator, or
+after removing a pending one with <code class="docutils literal notranslate"><span class="pre">set_time_integrator(...,</span> <span class="pre">None)</span></code> before
+initialization, the problem remains static.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.core.base.ProblemBase.html#fedoo.core.base.ProblemBase" title="fedoo.core.base.ProblemBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.core.base.ProblemBase</span></code></a>([name, space])</p></td>
