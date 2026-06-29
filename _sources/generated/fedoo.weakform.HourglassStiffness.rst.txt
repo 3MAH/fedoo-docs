@@ -25,7 +25,11 @@
          HourglassStiffness.initialize
          HourglassStiffness.nvar
          HourglassStiffness.reset
+         HourglassStiffness.set_damping
+         HourglassStiffness.set_dissipation
+         HourglassStiffness.set_inertia
          HourglassStiffness.set_start
+         HourglassStiffness.set_storage
          HourglassStiffness.sum
          HourglassStiffness.to_start
          HourglassStiffness.update

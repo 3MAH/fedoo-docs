@@ -1,0 +1,53 @@
+﻿fedoo.weakform.PlateShearEquilibrium
+====================================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: PlateShearEquilibrium
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         PlateShearEquilibrium.drill_constraint_operator
+         PlateShearEquilibrium.generalized_strain_operator
+         PlateShearEquilibrium.get_all
+         PlateShearEquilibrium.get_weak_equation
+         PlateShearEquilibrium.initialize
+         PlateShearEquilibrium.nvar
+         PlateShearEquilibrium.reset
+         PlateShearEquilibrium.set_damping
+         PlateShearEquilibrium.set_dissipation
+         PlateShearEquilibrium.set_inertia
+         PlateShearEquilibrium.set_start
+         PlateShearEquilibrium.set_storage
+         PlateShearEquilibrium.sum
+         PlateShearEquilibrium.to_start
+         PlateShearEquilibrium.update
+         PlateShearEquilibrium.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         PlateShearEquilibrium.name
+         PlateShearEquilibrium.space
+  
+  

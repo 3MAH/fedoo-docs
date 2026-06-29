@@ -24,7 +24,11 @@
          StressEquilibriumFbar.initialize
          StressEquilibriumFbar.nvar
          StressEquilibriumFbar.reset
+         StressEquilibriumFbar.set_damping
+         StressEquilibriumFbar.set_dissipation
+         StressEquilibriumFbar.set_inertia
          StressEquilibriumFbar.set_start
+         StressEquilibriumFbar.set_storage
          StressEquilibriumFbar.sum
          StressEquilibriumFbar.to_start
          StressEquilibriumFbar.update

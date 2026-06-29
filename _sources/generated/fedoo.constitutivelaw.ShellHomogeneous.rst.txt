@@ -19,14 +19,9 @@
          :toctree:
          
       
-         ShellHomogeneous.GetMaterial
-         ShellHomogeneous.GetShellRigidityMatrix
-         ShellHomogeneous.GetShellRigidityMatrix_FI
-         ShellHomogeneous.GetShellRigidityMatrix_RI
          ShellHomogeneous.GetStressDistribution
-         ShellHomogeneous.GetThickness
-         ShellHomogeneous.Get_k
          ShellHomogeneous.get_all
+         ShellHomogeneous.get_shell_stiffness_matrix
          ShellHomogeneous.get_strain
          ShellHomogeneous.get_stress
          ShellHomogeneous.initialize
@@ -47,6 +42,8 @@
          
       
          ShellHomogeneous.name
+         ShellHomogeneous.thickness
+         ShellHomogeneous.k
          ShellHomogeneous.is_initialized
   
   

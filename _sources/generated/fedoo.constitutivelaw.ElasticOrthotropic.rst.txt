@@ -27,6 +27,7 @@
          ElasticOrthotropic.initialize
          ElasticOrthotropic.local2global_H
          ElasticOrthotropic.reset
+         ElasticOrthotropic.set_density
          ElasticOrthotropic.set_start
          ElasticOrthotropic.to_start
          ElasticOrthotropic.update
