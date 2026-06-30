@@ -12,41 +12,8 @@
 
     
   
-
-    **Methods**
-    
-      .. autosummary::
-         :toctree:
-         
-      
-         HeatEquation.get_all
-         HeatEquation.get_weak_equation
-         HeatEquation.initialize
-         HeatEquation.nvar
-         HeatEquation.reset
-         HeatEquation.set_damping
-         HeatEquation.set_dissipation
-         HeatEquation.set_inertia
-         HeatEquation.set_start
-         HeatEquation.set_storage
-         HeatEquation.sum
-         HeatEquation.to_start
-         HeatEquation.update
-         HeatEquation.update_2
-      
-      
-  
   
 
   
-  
-  
-      .. autosummary::
-         :toctree:
-         
-      
-         HeatEquation.name
-         HeatEquation.nlgeom
-         HeatEquation.space
   
   

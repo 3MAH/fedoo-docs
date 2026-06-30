@@ -24,11 +24,7 @@
          BeamEquilibrium.initialize
          BeamEquilibrium.nvar
          BeamEquilibrium.reset
-         BeamEquilibrium.set_damping
-         BeamEquilibrium.set_dissipation
-         BeamEquilibrium.set_inertia
          BeamEquilibrium.set_start
-         BeamEquilibrium.set_storage
          BeamEquilibrium.sum
          BeamEquilibrium.to_start
          BeamEquilibrium.update

@@ -43,7 +43,6 @@
          ElastoPlasticity.initialize
          ElastoPlasticity.local2global_H
          ElastoPlasticity.reset
-         ElastoPlasticity.set_density
          ElastoPlasticity.set_start
          ElastoPlasticity.to_start
          ElastoPlasticity.update

@@ -72,6 +72,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumFbar.html">fedoo.weakform.StressEquilibriumFbar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.html">fedoo.weakform.StressEquilibriumBbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.SteadyHeatEquation.html">fedoo.weakform.SteadyHeatEquation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.HeatEquation.html">fedoo.weakform.HeatEquation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.BeamEquilibrium.html">fedoo.weakform.BeamEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.SpringEquilibrium.html">fedoo.weakform.SpringEquilibrium</a></li>
@@ -90,7 +91,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Assembly.html">Class Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
@@ -130,13 +130,6 @@
 <dt class="sig sig-object py" id="fedoo.weakform.ImplicitDynamic">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ImplicitDynamic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.ImplicitDynamic" title="Link to this definition"></a></dt>
 <dd><p>Weak formulation for implicit dynamic problems.</p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version Prefer: </span>defining a static weakform with <code class="docutils literal notranslate"><span class="pre">set_storage</span></code> or a material
-density, then attach the time integrator to
-<a class="reference internal" href="fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.problem.NonLinear</span></code></a> with <code class="docutils literal notranslate"><span class="pre">set_time_integrator</span></code>. This
-factory is kept as a compact pedagogical example of the Newmark weakform
-embedding.</p>
-</div>
 <p>Constructs a dynamic weak formulation by combining internal forces
 (stiffness matrix) to inertia (mass matrix). Time integration is
 performed using the Newmark-beta scheme.</p>

@@ -67,7 +67,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Assembly.html">Class Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.problem.NonLinear</a><ul>
@@ -109,7 +108,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_reuse_factorization.html">fedoo.problem.NonLinear.set_reuse_factorization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_solver.html">fedoo.problem.NonLinear.set_solver</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_start.html">fedoo.problem.NonLinear.set_start</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_time_integrator.html">fedoo.problem.NonLinear.set_time_integrator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.solve.html">fedoo.problem.NonLinear.solve</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.solve_nr_increment.html">fedoo.problem.NonLinear.solve_nr_increment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.solve_time_increment.html">fedoo.problem.NonLinear.solve_time_increment</a></li>
@@ -300,31 +298,28 @@
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.set_start.html#fedoo.problem.NonLinear.set_start" title="fedoo.problem.NonLinear.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.set_start</span></code></a>([save_results, callback])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.set_time_integrator.html#fedoo.problem.NonLinear.set_time_integrator" title="fedoo.problem.NonLinear.set_time_integrator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.set_time_integrator</span></code></a>(evolution, ...)</p></td>
-<td><p>Attach or remove a problem-level time integrator.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.solve.html#fedoo.problem.NonLinear.solve" title="fedoo.problem.NonLinear.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.solve</span></code></a>(**kargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.solve.html#fedoo.problem.NonLinear.solve" title="fedoo.problem.NonLinear.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.solve</span></code></a>(**kargs)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.solve_nr_increment.html#fedoo.problem.NonLinear.solve_nr_increment" title="fedoo.problem.NonLinear.solve_nr_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.solve_nr_increment</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.solve_nr_increment.html#fedoo.problem.NonLinear.solve_nr_increment" title="fedoo.problem.NonLinear.solve_nr_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.solve_nr_increment</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.solve_time_increment.html#fedoo.problem.NonLinear.solve_time_increment" title="fedoo.problem.NonLinear.solve_time_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.solve_time_increment</span></code></a>([...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.solve_time_increment.html#fedoo.problem.NonLinear.solve_time_increment" title="fedoo.problem.NonLinear.solve_time_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.solve_time_increment</span></code></a>([...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.to_start.html#fedoo.problem.NonLinear.to_start" title="fedoo.problem.NonLinear.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.to_start</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.to_start.html#fedoo.problem.NonLinear.to_start" title="fedoo.problem.NonLinear.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.to_start</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.update.html#fedoo.problem.NonLinear.update" title="fedoo.problem.NonLinear.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.update</span></code></a>([compute, updateWeakForm])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.update.html#fedoo.problem.NonLinear.update" title="fedoo.problem.NonLinear.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.update</span></code></a>([compute, updateWeakForm])</p></td>
 <td><p>Assemble the matrix including the following modification:</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.updateA.html#fedoo.problem.NonLinear.updateA" title="fedoo.problem.NonLinear.updateA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.updateA</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.updateA.html#fedoo.problem.NonLinear.updateA" title="fedoo.problem.NonLinear.updateA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.updateA</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.updateD.html#fedoo.problem.NonLinear.updateD" title="fedoo.problem.NonLinear.updateD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.updateD</span></code></a>([start])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.updateD.html#fedoo.problem.NonLinear.updateD" title="fedoo.problem.NonLinear.updateD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.updateD</span></code></a>([start])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.update_boundary_conditions.html#fedoo.problem.NonLinear.update_boundary_conditions" title="fedoo.problem.NonLinear.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.update_boundary_conditions</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.update_boundary_conditions.html#fedoo.problem.NonLinear.update_boundary_conditions" title="fedoo.problem.NonLinear.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.update_boundary_conditions</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>

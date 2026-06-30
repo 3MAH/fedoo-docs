@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.problem.NonLinearNewmark.set_nr_criterion &mdash; fedoo  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.problem.NonLinearNewmark.set_reuse_factorization" href="fedoo.problem.NonLinearNewmark.set_reuse_factorization.html" />
+    <link rel="prev" title="fedoo.problem.NonLinearNewmark.set_dof_solution" href="fedoo.problem.NonLinearNewmark.set_dof_solution.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedOOLogos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Quick_Start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Assembly.html">Class Assembly</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Newmark.html">fedoo.problem.Newmark</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.GetVelocity.html">fedoo.problem.NonLinearNewmark.GetVelocity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.SetInitialAcceleration.html">fedoo.problem.NonLinearNewmark.SetInitialAcceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.SetInitialDisplacement.html">fedoo.problem.NonLinearNewmark.SetInitialDisplacement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.SetInitialVelocity.html">fedoo.problem.NonLinearNewmark.SetInitialVelocity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.SetRayleighDamping.html">fedoo.problem.NonLinearNewmark.SetRayleighDamping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.add_global_dof.html">fedoo.problem.NonLinearNewmark.add_global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.add_line_search.html">fedoo.problem.NonLinearNewmark.add_line_search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.add_output.html">fedoo.problem.NonLinearNewmark.add_output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.apply_boundary_conditions.html">fedoo.problem.NonLinearNewmark.apply_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.change_assembly.html">fedoo.problem.NonLinearNewmark.change_assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.compute_nr_error.html">fedoo.problem.NonLinearNewmark.compute_nr_error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.elastic_prediction.html">fedoo.problem.NonLinearNewmark.elastic_prediction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html">fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_A.html">fedoo.problem.NonLinearNewmark.get_A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_Acceleration.html">fedoo.problem.NonLinearNewmark.get_Acceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_Assembly.html">fedoo.problem.NonLinearNewmark.get_Assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_B.html">fedoo.problem.NonLinearNewmark.get_B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_D.html">fedoo.problem.NonLinearNewmark.get_D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_X.html">fedoo.problem.NonLinearNewmark.get_X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_active.html">fedoo.problem.NonLinearNewmark.get_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_all.html">fedoo.problem.NonLinearNewmark.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_disp.html">fedoo.problem.NonLinearNewmark.get_disp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_dof_solution.html">fedoo.problem.NonLinearNewmark.get_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_ext_forces.html">fedoo.problem.NonLinearNewmark.get_ext_forces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_results.html">fedoo.problem.NonLinearNewmark.get_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_rot.html">fedoo.problem.NonLinearNewmark.get_rot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.get_temp.html">fedoo.problem.NonLinearNewmark.get_temp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.init_bc_start_value.html">fedoo.problem.NonLinearNewmark.init_bc_start_value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.initialize.html">fedoo.problem.NonLinearNewmark.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.invalidate_factorization.html">fedoo.problem.NonLinearNewmark.invalidate_factorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.make_active.html">fedoo.problem.NonLinearNewmark.make_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.nlsolve.html">fedoo.problem.NonLinearNewmark.nlsolve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.remove_line_search.html">fedoo.problem.NonLinearNewmark.remove_line_search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.reset.html">fedoo.problem.NonLinearNewmark.reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.save_results.html">fedoo.problem.NonLinearNewmark.save_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_A.html">fedoo.problem.NonLinearNewmark.set_A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_B.html">fedoo.problem.NonLinearNewmark.set_B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_D.html">fedoo.problem.NonLinearNewmark.set_D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_X.html">fedoo.problem.NonLinearNewmark.set_X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_active.html">fedoo.problem.NonLinearNewmark.set_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_dof_solution.html">fedoo.problem.NonLinearNewmark.set_dof_solution</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.problem.NonLinearNewmark.set_nr_criterion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_reuse_factorization.html">fedoo.problem.NonLinearNewmark.set_reuse_factorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_solver.html">fedoo.problem.NonLinearNewmark.set_solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.set_start.html">fedoo.problem.NonLinearNewmark.set_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.solve.html">fedoo.problem.NonLinearNewmark.solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.solve_nr_increment.html">fedoo.problem.NonLinearNewmark.solve_nr_increment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.solve_time_increment.html">fedoo.problem.NonLinearNewmark.solve_time_increment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.to_start.html">fedoo.problem.NonLinearNewmark.to_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.update.html">fedoo.problem.NonLinearNewmark.update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.updateA.html">fedoo.problem.NonLinearNewmark.updateA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.updateD.html">fedoo.problem.NonLinearNewmark.updateD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.update_boundary_conditions.html">fedoo.problem.NonLinearNewmark.update_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.active.html">fedoo.problem.NonLinearNewmark.active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.assembly.html">fedoo.problem.NonLinearNewmark.assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.global_dof.html">fedoo.problem.NonLinearNewmark.global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.n_dof.html">fedoo.problem.NonLinearNewmark.n_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.n_global_dof.html">fedoo.problem.NonLinearNewmark.n_global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.n_iter.html">fedoo.problem.NonLinearNewmark.n_iter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.n_node_dof.html">fedoo.problem.NonLinearNewmark.n_node_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.name.html">fedoo.problem.NonLinearNewmark.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.results.html">fedoo.problem.NonLinearNewmark.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.solver.html">fedoo.problem.NonLinearNewmark.solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.space.html">fedoo.problem.NonLinearNewmark.space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.t_fact.html">fedoo.problem.NonLinearNewmark.t_fact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.t_fact_old.html">fedoo.problem.NonLinearNewmark.t_fact_old</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.nr_parameters.html">fedoo.problem.NonLinearNewmark.nr_parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.bc.html">fedoo.problem.NonLinearNewmark.bc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.Problem.html">fedoo.Problem</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+          <li class="breadcrumb-item"><a href="fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
+      <li class="breadcrumb-item active">fedoo.problem.NonLinearNewmark.set_nr_criterion</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.problem.NonLinearNewmark.set_nr_criterion.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-problem-nonlinearnewmark-set-nr-criterion">
+<h1>fedoo.problem.NonLinearNewmark.set_nr_criterion<a class="headerlink" href="#fedoo-problem-nonlinearnewmark-set-nr-criterion" title="Link to this heading"></a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.problem.NonLinearNewmark.set_nr_criterion">
+<span class="sig-prename descclassname"><span class="pre">NonLinearNewmark.</span></span><span class="sig-name descname"><span class="pre">set_nr_criterion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criterion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Force'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinearNewmark.set_nr_criterion" title="Link to this definition"></a></dt>
+<dd><p>Define the convergence criterion of the newton raphson algorithm.</p>
+<p>For a problem pb, the newton raphson parameters can also be directly set in the
+pb.nr_parameters dict.</p>
+<dl>
+<dt>Parameter:</dt><dd><ul class="simple">
+<li><p>criterion: str in [‘Displacement’, ‘Force’, ‘Work’],
+default = “Displacement”.
+Type of convergence test.</p></li>
+</ul>
+</dd>
+<dt>Optional parameters that can be set as kargs:</dt><dd><ul>
+<li><p>‘err0’: float or None, default = None.
+The reference error.
+If None (default), err0 is automatically computed.</p></li>
+<li><p>‘tol’: float, default is 5e-3.
+Error tolerance for convergence.</p></li>
+<li><p>‘max_subiter’: int, default = 16.
+Number of nr iterations before returning a convergence error.</p></li>
+<li><p>‘dt_increase_niter’: int or None, default = None.
+Number of nr iterations threshold that define an easy convergence.
+In problem allowing automatic convergence, if the Newton–Raphson
+loop converges in strictly fewer iterations, the time step is increased.
+If None, defaults to max_subiter//3.</p></li>
+<li><p>‘norm_type’: int or numpy.inf, default = 2.
+Define the norm used to test the criterion.</p></li>
+<li><p>‘force_elastic_stiffness’: bool, default = False.
+If True, always forces the use of the elastic stiffness matrix (KE)
+for all NR iterations (Quasi-Newton / Initial Stiffness method).</p></li>
+<li><p>‘elastic_initial_guess’: bool, default = False.
+If True, forces the use of the elastic matrix for the initial
+guess (first iteration) of a time increment.
+Ignored if force_elastic_stiffness is True.</p></li>
+<li><p>‘adaptive_stiffness’: bool, default = False.
+Enable adaptive stiffness algorithm with xi-blending between safe
+(often elastic) and tangent stiffness matrices to enhance convergence
+robustness. Only works if the weak form provides an elastic stiffness
+matrix at the beginning of the increment, when set_start is triggered
+(e.g. not for contact problems).
+Ignored if force_elastic_stiffness is True.</p></li>
+<li><p>‘assume_cvg_at_max_subiter’: bool, default = False.
+WARNING: DANGEROUS PARAMETER. If True, assumes convergence when
+max_subiter iterations are reached, regardless of tolerance criterion.
+Use only for special cases requiring forced convergence. Skips
+convergence tolerance check when iteration limit is reached.</p></li>
+<li><p>‘eigenvalue_shift’: bool, default = False.
+If True, adds a shifted identity matrix to improve conditioning:
+A_eff = A + alpha*I where alpha = eigenvalue_shift_factor * R.
+R is estimated via Rayleigh quotient of the current stiffness.</p></li>
+<li><p>‘eigenvalue_shift_factor’: float, default = 1e-4.
+Scaling factor for the eigenvalue shift margin.
+Larger values = stronger stabilization but less accuracy.
+Smaller values = more accurate but weaker stabilization.</p></li>
+<li><p>‘eigenvalue_assume_sym’: bool, default = True.
+If True, uses the symmetric Lanczos solver (eigsh) for efficiency.
+If False, uses the general Arnoldi solver (eigs) to account for
+non-symmetric tangent terms.</p></li>
+<li><p>‘check_early_divergence’: bool, default = True.
+If True, aborts the time step early if convergence trends are poor.
+A step is considered diverging if:
+1. The error remains “unproductive” (new_error &gt; 0.999 * previous_error)</p>
+<blockquote>
+<div><p>for 3 consecutive Newton-Raphson iterations.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>The error spikes to more than 100 times the previous error.</p></li>
+</ol>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.problem.NonLinearNewmark.set_dof_solution.html" class="btn btn-neutral float-left" title="fedoo.problem.NonLinearNewmark.set_dof_solution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.problem.NonLinearNewmark.set_reuse_factorization.html" class="btn btn-neutral float-right" title="fedoo.problem.NonLinearNewmark.set_reuse_factorization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

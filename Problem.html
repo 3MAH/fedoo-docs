@@ -28,7 +28,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="fedoo.problem.Linear" href="generated/fedoo.problem.Linear.html" />
-    <link rel="prev" title="fedoo.time.TimeEvolution.kind" href="generated/fedoo.time.TimeEvolution.kind.html" /> 
+    <link rel="prev" title="Class Assembly" href="Assembly.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -67,7 +67,6 @@
 <li class="toctree-l1"><a class="reference internal" href="ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Assembly.html">Class Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
@@ -125,8 +124,8 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.Newmark.html#fedoo.problem.Newmark" title="fedoo.problem.Newmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Newmark</span></code></a>(StiffnessAssembling, MassAssembling, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.html#fedoo.problem.NonLinearNewmark" title="fedoo.problem.NonLinearNewmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark</span></code></a>(assembly[, beta, gamma, ...])</p></td>
-<td><p>Create a nonlinear Newmark problem with default time integrators.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.html#fedoo.problem.NonLinearNewmark" title="fedoo.problem.NonLinearNewmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark</span></code></a>(StiffnessAssembly, ...[, ...])</p></td>
+<td><p>Define a Newmark problem The algorithm come from:  Bathe KJ and Edward W, &quot;Numerical methods in finite element analysis&quot;, Prentice Hall, 1976, pp 323-324</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.ExplicitDynamic.html#fedoo.problem.ExplicitDynamic" title="fedoo.problem.ExplicitDynamic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic</span></code></a>(StiffnessAssembly, ...[, ...])</p></td>
 <td><p>Define a Centred Difference problem for structural dynamic For damping, the backward euler derivative is used to compute the velocity The algorithm come from:  Bathe KJ and Edward W, &quot;Numerical methods in finite element analysis&quot;, Prentice Hall, 1976, pp 323-324</p></td>
@@ -137,12 +136,6 @@
 <dt>Each of these functions creates an object that is derived from the </dt><dd><p>base classes “ProblemBase” or “Problem”.</p>
 </dd>
 </dl>
-<p>Transient analyses are controlled by problem-level integrators from
-<a class="reference internal" href="Time.html#module-fedoo.time" title="fedoo.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code></a>. They are attached to a nonlinear problem with
-<a class="reference internal" href="generated/fedoo.problem.NonLinear.set_time_integrator.html#fedoo.problem.NonLinear.set_time_integrator" title="fedoo.problem.NonLinear.set_time_integrator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_time_integrator()</span></code></a>, which keeps weak forms focused on their
-static, storage, and dissipation contributions. Without a time integrator, or
-after removing a pending one with <code class="docutils literal notranslate"><span class="pre">set_time_integrator(...,</span> <span class="pre">None)</span></code> before
-initialization, the problem remains static.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.core.base.ProblemBase.html#fedoo.core.base.ProblemBase" title="fedoo.core.base.ProblemBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.core.base.ProblemBase</span></code></a>([name, space])</p></td>
@@ -418,16 +411,11 @@ solver always finds a descent direction.</p></li>
 <p>If a static simulation fails despite the above techniques, the problem may be
 inherently dynamic (e.g., rapid snap-through or post-buckling).</p>
 <ul class="simple">
-<li><p><strong>Strategy</strong>: Switch to a <strong>Dynamic Solver</strong> by adding a second-order time
-integrator from <a class="reference internal" href="Time.html#module-fedoo.time" title="fedoo.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code></a> to a <code class="xref py py-class docutils literal notranslate"><span class="pre">NonLinear</span></code> problem, for
-instance <a class="reference internal" href="generated/fedoo.time.Newmark.html#fedoo.time.Newmark" title="fedoo.time.Newmark"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.time.Newmark</span></code></a> or
-<a class="reference internal" href="generated/fedoo.time.GeneralizedAlpha.html#fedoo.time.GeneralizedAlpha" title="fedoo.time.GeneralizedAlpha"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.time.GeneralizedAlpha</span></code></a>.</p></li>
+<li><p><strong>Strategy</strong>: Switch to a <strong>Dynamic Solver</strong>, using the
+<a class="reference internal" href="generated/fedoo.weakform.ImplicitDynamic.html#fedoo.weakform.ImplicitDynamic" title="fedoo.weakform.ImplicitDynamic"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.ImplicitDynamic</span></code></a> weak form.</p></li>
 <li><p><strong>Stabilization</strong>: Add <strong>Rayleigh Damping</strong>
 (<span class="math notranslate nohighlight">\(\mathbf{C} = a\mathbf{M} + b\mathbf{K}\)</span>) to dissipate high-frequency
-numerical noise and stabilize the inertial response during sudden transitions.
-The legacy <a class="reference internal" href="generated/fedoo.weakform.ImplicitDynamic.html#fedoo.weakform.ImplicitDynamic" title="fedoo.weakform.ImplicitDynamic"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.ImplicitDynamic</span></code></a> weak form is kept for
-pedagogical purposes, but new transient models should prefer
-problem-level time integrators.</p></li>
+numerical noise and stabilize the inertial response during sudden transitions.</p></li>
 </ul>
 </section>
 </section>
@@ -438,7 +426,7 @@ problem-level time integrators.</p></li>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="generated/fedoo.time.TimeEvolution.kind.html" class="btn btn-neutral float-left" title="fedoo.time.TimeEvolution.kind" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Assembly.html" class="btn btn-neutral float-left" title="Class Assembly" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="generated/fedoo.problem.Linear.html" class="btn btn-neutral float-right" title="fedoo.problem.Linear" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -24,7 +24,6 @@
          FE2.initialize
          FE2.local2global_H
          FE2.reset
-         FE2.set_density
          FE2.set_start
          FE2.to_start
          FE2.update

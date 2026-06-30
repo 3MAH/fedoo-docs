@@ -24,11 +24,7 @@
          ExternalPressure.initialize
          ExternalPressure.nvar
          ExternalPressure.reset
-         ExternalPressure.set_damping
-         ExternalPressure.set_dissipation
-         ExternalPressure.set_inertia
          ExternalPressure.set_start
-         ExternalPressure.set_storage
          ExternalPressure.sum
          ExternalPressure.to_start
          ExternalPressure.update

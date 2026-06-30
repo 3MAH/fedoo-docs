@@ -78,7 +78,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.initialize.html">fedoo.constitutivelaw.Simcoon.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.local2global_H.html">fedoo.constitutivelaw.Simcoon.local2global_H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.reset.html">fedoo.constitutivelaw.Simcoon.reset</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.set_density.html">fedoo.constitutivelaw.Simcoon.set_density</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.set_start.html">fedoo.constitutivelaw.Simcoon.set_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.to_start.html">fedoo.constitutivelaw.Simcoon.to_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.update.html">fedoo.constitutivelaw.Simcoon.update</a></li>
@@ -99,7 +98,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Assembly.html">Class Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
@@ -140,10 +138,13 @@
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.Simcoon.get_temp_gp">
 <span class="sig-prename descclassname"><span class="pre">Simcoon.</span></span><span class="sig-name descname"><span class="pre">get_temp_gp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.get_temp_gp" title="Link to this definition"></a></dt>
 <dd><p>Get the current temperature field at Gauss Point.</p>
-<p>If a temperature field ‘Temp’ is defined in the ModelingSpace, extract the
-node values from the problem and them to Gauss Points.
-If not, check if the ‘Temp’ field is defined in the assembly.sv dict (among
-state variables). If no temperature is found or if it is set to 0, return None.</p>
+<p>An explicitly set ‘Temp’ field in the assembly.sv dict takes precedence:
+it is used as is (it is already defined at Gauss Points). This is the
+historical way to impose a temperature (e.g. a constant field, or a weak
+thermo-mechanical coupling that copies the thermal solution into sv).
+Otherwise, if ‘Temp’ is a variable of the ModelingSpace, the nodal dof
+solution is extracted from the problem and converted to Gauss Points.
+If no temperature is found or if it is set to 0, return None.</p>
 </dd></dl>
 
 </section>

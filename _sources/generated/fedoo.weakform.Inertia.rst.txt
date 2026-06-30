@@ -24,11 +24,7 @@
          Inertia.initialize
          Inertia.nvar
          Inertia.reset
-         Inertia.set_damping
-         Inertia.set_dissipation
-         Inertia.set_inertia
          Inertia.set_start
-         Inertia.set_storage
          Inertia.sum
          Inertia.to_start
          Inertia.update

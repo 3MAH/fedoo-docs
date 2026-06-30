@@ -24,11 +24,7 @@
          InterfaceForce.initialize
          InterfaceForce.nvar
          InterfaceForce.reset
-         InterfaceForce.set_damping
-         InterfaceForce.set_dissipation
-         InterfaceForce.set_inertia
          InterfaceForce.set_start
-         InterfaceForce.set_storage
          InterfaceForce.sum
          InterfaceForce.to_start
          InterfaceForce.update

@@ -24,11 +24,7 @@
          SpringEquilibrium.initialize
          SpringEquilibrium.nvar
          SpringEquilibrium.reset
-         SpringEquilibrium.set_damping
-         SpringEquilibrium.set_dissipation
-         SpringEquilibrium.set_inertia
          SpringEquilibrium.set_start
-         SpringEquilibrium.set_storage
          SpringEquilibrium.sum
          SpringEquilibrium.to_start
          SpringEquilibrium.update

@@ -24,11 +24,7 @@
          RotaryInertia.initialize
          RotaryInertia.nvar
          RotaryInertia.reset
-         RotaryInertia.set_damping
-         RotaryInertia.set_dissipation
-         RotaryInertia.set_inertia
          RotaryInertia.set_start
-         RotaryInertia.set_storage
          RotaryInertia.sum
          RotaryInertia.to_start
          RotaryInertia.update

@@ -24,11 +24,7 @@
          StressEquilibrium.initialize
          StressEquilibrium.nvar
          StressEquilibrium.reset
-         StressEquilibrium.set_damping
-         StressEquilibrium.set_dissipation
-         StressEquilibrium.set_inertia
          StressEquilibrium.set_start
-         StressEquilibrium.set_storage
          StressEquilibrium.sum
          StressEquilibrium.to_start
          StressEquilibrium.update

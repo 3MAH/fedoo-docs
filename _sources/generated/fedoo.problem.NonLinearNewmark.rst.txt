@@ -12,8 +12,92 @@
 
     
   
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         NonLinearNewmark.GetVelocity
+         NonLinearNewmark.SetInitialAcceleration
+         NonLinearNewmark.SetInitialDisplacement
+         NonLinearNewmark.SetInitialVelocity
+         NonLinearNewmark.SetRayleighDamping
+         NonLinearNewmark.add_global_dof
+         NonLinearNewmark.add_line_search
+         NonLinearNewmark.add_output
+         NonLinearNewmark.apply_boundary_conditions
+         NonLinearNewmark.change_assembly
+         NonLinearNewmark.compute_nr_error
+         NonLinearNewmark.elastic_prediction
+         NonLinearNewmark.force_elastic_matrix_next_iter
+         NonLinearNewmark.get_A
+         NonLinearNewmark.get_Acceleration
+         NonLinearNewmark.get_Assembly
+         NonLinearNewmark.get_B
+         NonLinearNewmark.get_D
+         NonLinearNewmark.get_X
+         NonLinearNewmark.get_active
+         NonLinearNewmark.get_all
+         NonLinearNewmark.get_disp
+         NonLinearNewmark.get_dof_solution
+         NonLinearNewmark.get_ext_forces
+         NonLinearNewmark.get_results
+         NonLinearNewmark.get_rot
+         NonLinearNewmark.get_temp
+         NonLinearNewmark.init_bc_start_value
+         NonLinearNewmark.initialize
+         NonLinearNewmark.invalidate_factorization
+         NonLinearNewmark.make_active
+         NonLinearNewmark.nlsolve
+         NonLinearNewmark.remove_line_search
+         NonLinearNewmark.reset
+         NonLinearNewmark.save_results
+         NonLinearNewmark.set_A
+         NonLinearNewmark.set_B
+         NonLinearNewmark.set_D
+         NonLinearNewmark.set_X
+         NonLinearNewmark.set_active
+         NonLinearNewmark.set_dof_solution
+         NonLinearNewmark.set_nr_criterion
+         NonLinearNewmark.set_reuse_factorization
+         NonLinearNewmark.set_solver
+         NonLinearNewmark.set_start
+         NonLinearNewmark.solve
+         NonLinearNewmark.solve_nr_increment
+         NonLinearNewmark.solve_time_increment
+         NonLinearNewmark.to_start
+         NonLinearNewmark.update
+         NonLinearNewmark.updateA
+         NonLinearNewmark.updateD
+         NonLinearNewmark.update_boundary_conditions
+      
+      
+  
   
 
   
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         NonLinearNewmark.active
+         NonLinearNewmark.assembly
+         NonLinearNewmark.global_dof
+         NonLinearNewmark.n_dof
+         NonLinearNewmark.n_global_dof
+         NonLinearNewmark.n_iter
+         NonLinearNewmark.n_node_dof
+         NonLinearNewmark.name
+         NonLinearNewmark.results
+         NonLinearNewmark.solver
+         NonLinearNewmark.space
+         NonLinearNewmark.t_fact
+         NonLinearNewmark.t_fact_old
+         NonLinearNewmark.nr_parameters
+         NonLinearNewmark.bc
   
   
