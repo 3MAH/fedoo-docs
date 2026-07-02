@@ -71,6 +71,7 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.time.BackwardEuler.html">fedoo.time.BackwardEuler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.time.GeneralizedAlpha.html">fedoo.time.GeneralizedAlpha</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.time.Newmark.html">fedoo.time.Newmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.time.RayleighDamping.html">fedoo.time.RayleighDamping</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.time.TimeEvolution.html">fedoo.time.TimeEvolution</a></li>
 </ul>
 </li>
@@ -164,7 +165,10 @@ compatible schemes.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.time.Newmark.html#fedoo.time.Newmark" title="fedoo.time.Newmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Newmark</span></code></a>([beta, gamma])</p></td>
 <td><p>Newmark-beta time integrator.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.time.TimeEvolution.html#fedoo.time.TimeEvolution" title="fedoo.time.TimeEvolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeEvolution</span></code></a>(kind)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.time.RayleighDamping.html#fedoo.time.RayleighDamping" title="fedoo.time.RayleighDamping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RayleighDamping</span></code></a>([alpha, beta])</p></td>
+<td><p>Rayleigh damping descriptor: <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">=</span> <span class="pre">alpha*M</span> <span class="pre">+</span> <span class="pre">beta*K</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.time.TimeEvolution.html#fedoo.time.TimeEvolution" title="fedoo.time.TimeEvolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeEvolution</span></code></a>(kind)</p></td>
 <td><p>Time-evolution category used to match weakforms and integrators.</p></td>
 </tr>
 </tbody>
