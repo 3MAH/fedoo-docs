@@ -63,6 +63,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
@@ -138,6 +139,8 @@
       <li><a href="generated/fedoo.weakform.ArtificialDamping.html#fedoo.weakform.ArtificialDamping.__init__">__init__() (ArtificialDamping method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.time.BackwardEuler.html#fedoo.time.BackwardEuler.__init__">(BackwardEuler method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamCircular.html#fedoo.constitutivelaw.BeamCircular.__init__">(BeamCircular method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.BeamEquilibrium.html#fedoo.weakform.BeamEquilibrium.__init__">(BeamEquilibrium method)</a>
@@ -176,6 +179,8 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.FE2.html#fedoo.constitutivelaw.FE2.__init__">(FE2 method)</a>
 </li>
+        <li><a href="generated/fedoo.time.GeneralizedAlpha.html#fedoo.time.GeneralizedAlpha.__init__">(GeneralizedAlpha method)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HeatEquation.html#fedoo.weakform.HeatEquation.__init__">(HeatEquation method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.html#fedoo.weakform.HourglassStiffness.__init__">(HourglassStiffness method)</a>
@@ -200,7 +205,7 @@
 </li>
         <li><a href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet.__init__">(MultiFrameDataSet method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.Newmark.html#fedoo.problem.Newmark.__init__">(Newmark method)</a>
+        <li><a href="generated/fedoo.problem.Newmark.html#fedoo.problem.Newmark.__init__">(Newmark method)</a>, <a href="generated/fedoo.time.Newmark.html#fedoo.time.Newmark.__init__">[1]</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.html#fedoo.problem.NonLinear.__init__">(NonLinear method)</a>
 </li>
@@ -242,8 +247,6 @@
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.html#fedoo.weakform.SpringEquilibrium.__init__">(SpringEquilibrium method)</a>
 </li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.html#fedoo.weakform.SteadyHeatEquation.__init__">(SteadyHeatEquation method)</a>
-</li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium.__init__">(StressEquilibrium method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.html#fedoo.weakform.StressEquilibriumBbar.__init__">(StressEquilibriumBbar method)</a>
@@ -257,6 +260,8 @@
         <li><a href="generated/fedoo.constraint.SurfaceForce.html#fedoo.constraint.SurfaceForce.__init__">(SurfaceForce method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.ThermalProperties.html#fedoo.constitutivelaw.ThermalProperties.__init__">(ThermalProperties method)</a>
+</li>
+        <li><a href="generated/fedoo.time.TimeEvolution.html#fedoo.time.TimeEvolution.__init__">(TimeEvolution method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -290,8 +295,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.active.html#fedoo.problem.NonLinear.active">(NonLinear attribute)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.active.html#fedoo.problem.NonLinearNewmark.active">(NonLinearNewmark attribute)</a>
-</li>
         <li><a href="generated/fedoo.Problem.active.html#fedoo.Problem.active">(Problem attribute)</a>
 </li>
         <li><a href="generated/fedoo.core.base.ProblemBase.active.html#fedoo.core.base.ProblemBase.active">(ProblemBase attribute)</a>
@@ -316,8 +319,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.add_global_dof.html#fedoo.problem.NonLinear.add_global_dof">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.add_global_dof.html#fedoo.problem.NonLinearNewmark.add_global_dof">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.add_global_dof.html#fedoo.Problem.add_global_dof">(Problem method)</a>
 </li>
         <li><a href="generated/fedoo.core.base.ProblemBase.add_global_dof.html#fedoo.core.base.ProblemBase.add_global_dof">(ProblemBase method)</a>
@@ -326,11 +327,7 @@
       <li><a href="generated/fedoo.Mesh.add_internal_nodes.html#fedoo.Mesh.add_internal_nodes">add_internal_nodes() (Mesh method)</a>
 </li>
       <li><a href="generated/fedoo.problem.NonLinear.add_line_search.html#fedoo.problem.NonLinear.add_line_search">add_line_search() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.add_line_search.html#fedoo.problem.NonLinearNewmark.add_line_search">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.Mesh.add_node_set.html#fedoo.Mesh.add_node_set">add_node_set() (Mesh method)</a>
 </li>
       <li><a href="generated/fedoo.Mesh.add_nodes.html#fedoo.Mesh.add_nodes">add_nodes() (Mesh method)</a>
@@ -343,8 +340,6 @@
         <li><a href="generated/fedoo.problem.Newmark.add_output.html#fedoo.problem.Newmark.add_output">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.add_output.html#fedoo.problem.NonLinear.add_output">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.add_output.html#fedoo.problem.NonLinearNewmark.add_output">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.add_output.html#fedoo.Problem.add_output">(Problem method)</a>
 </li>
@@ -361,8 +356,6 @@
         <li><a href="generated/fedoo.problem.Newmark.apply_boundary_conditions.html#fedoo.problem.Newmark.apply_boundary_conditions">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.apply_boundary_conditions.html#fedoo.problem.NonLinear.apply_boundary_conditions">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.apply_boundary_conditions.html#fedoo.problem.NonLinearNewmark.apply_boundary_conditions">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.apply_boundary_conditions.html#fedoo.Problem.apply_boundary_conditions">(Problem method)</a>
 </li>
@@ -400,8 +393,6 @@
       <ul>
         <li><a href="generated/fedoo.problem.NonLinear.assembly.html#fedoo.problem.NonLinear.assembly">(NonLinear property)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.assembly.html#fedoo.problem.NonLinearNewmark.assembly">(NonLinearNewmark property)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.constraint.Contact.associated_assembly_sum.html#fedoo.constraint.Contact.associated_assembly_sum">associated_assembly_sum (Contact attribute)</a>
 
@@ -427,6 +418,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.constitutivelaw.BeamRectangular.b.html#fedoo.constitutivelaw.BeamRectangular.b">b (BeamRectangular attribute)</a>
 </li>
+      <li><a href="generated/fedoo.time.BackwardEuler.html#fedoo.time.BackwardEuler">BackwardEuler (class in fedoo.time)</a>
+</li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.bc.html#fedoo.problem.ExplicitDynamic.bc">bc (ExplicitDynamic attribute)</a>
 
       <ul>
@@ -435,8 +428,6 @@
         <li><a href="generated/fedoo.problem.Newmark.bc.html#fedoo.problem.Newmark.bc">(Newmark attribute)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.bc.html#fedoo.problem.NonLinear.bc">(NonLinear attribute)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.bc.html#fedoo.problem.NonLinearNewmark.bc">(NonLinearNewmark attribute)</a>
 </li>
         <li><a href="generated/fedoo.Problem.bc.html#fedoo.Problem.bc">(Problem attribute)</a>
 </li>
@@ -472,8 +463,6 @@
       <ul>
         <li><a href="generated/fedoo.problem.NonLinear.change_assembly.html#fedoo.problem.NonLinear.change_assembly">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.change_assembly.html#fedoo.problem.NonLinearNewmark.change_assembly">(NonLinearNewmark method)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.mesh.change_elm_type.html#fedoo.mesh.change_elm_type">change_elm_type() (in module fedoo.mesh)</a>
 </li>
@@ -489,6 +478,22 @@
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.CohesiveLaw.html#fedoo.constitutivelaw.CohesiveLaw">CohesiveLaw (class in fedoo.constitutivelaw)</a>
 </li>
+      <li><a href="generated/fedoo.time.BackwardEuler.compile_assembly.html#fedoo.time.BackwardEuler.compile_assembly">compile_assembly() (BackwardEuler method)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.time.GeneralizedAlpha.compile_assembly.html#fedoo.time.GeneralizedAlpha.compile_assembly">(GeneralizedAlpha method)</a>
+</li>
+        <li><a href="generated/fedoo.time.Newmark.compile_assembly.html#fedoo.time.Newmark.compile_assembly">(Newmark method)</a>
+</li>
+      </ul></li>
+      <li><a href="generated/fedoo.time.BackwardEuler.compile_weakform.html#fedoo.time.BackwardEuler.compile_weakform">compile_weakform() (BackwardEuler method)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.time.GeneralizedAlpha.compile_weakform.html#fedoo.time.GeneralizedAlpha.compile_weakform">(GeneralizedAlpha method)</a>
+</li>
+        <li><a href="generated/fedoo.time.Newmark.compile_weakform.html#fedoo.time.Newmark.compile_weakform">(Newmark method)</a>
+</li>
+      </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.CompositeUD.html#fedoo.constitutivelaw.CompositeUD">CompositeUD (class in fedoo.constitutivelaw)</a>
 </li>
       <li><a href="generated/fedoo.constraint.DistributedForce.compute_elementary_operators.html#fedoo.constraint.DistributedForce.compute_elementary_operators">compute_elementary_operators() (DistributedForce method)</a>
@@ -500,11 +505,7 @@
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.NonLinear.compute_nr_error.html#fedoo.problem.NonLinear.compute_nr_error">compute_nr_error() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.compute_nr_error.html#fedoo.problem.NonLinearNewmark.compute_nr_error">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.ComputeStress.html#fedoo.constitutivelaw.ElastoPlasticity.ComputeStress">ComputeStress() (ElastoPlasticity method)</a>
 </li>
       <li><a href="generated/fedoo.constraint.Contact.html#fedoo.constraint.Contact">Contact (class in fedoo.constraint)</a>
@@ -521,6 +522,8 @@
         <li><a href="generated/fedoo.constraint.SelfContact.contact_search_once.html#fedoo.constraint.SelfContact.contact_search_once">(SelfContact attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.constraint.DistributedForce.convert_data.html#fedoo.constraint.DistributedForce.convert_data">convert_data() (DistributedForce method)</a>
 
       <ul>
@@ -531,8 +534,6 @@
         <li><a href="generated/fedoo.constraint.SurfaceForce.convert_data.html#fedoo.constraint.SurfaceForce.convert_data">(SurfaceForce method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="Assembly.html#fedoo.Assembly.copy">copy() (Assembly method)</a>
 
       <ul>
@@ -666,11 +667,7 @@
       <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.E.html#fedoo.constitutivelaw.ElasticIsotrop.E">E (ElasticIsotrop attribute)</a>
 </li>
       <li><a href="generated/fedoo.problem.NonLinear.elastic_prediction.html#fedoo.problem.NonLinear.elastic_prediction">elastic_prediction() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.elastic_prediction.html#fedoo.problem.NonLinearNewmark.elastic_prediction">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.html#fedoo.constitutivelaw.ElasticAnisotropic">ElasticAnisotropic (class in fedoo.constitutivelaw)</a>
 </li>
       <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.html#fedoo.constitutivelaw.ElasticIsotrop">ElasticIsotrop (class in fedoo.constitutivelaw)</a>
@@ -687,8 +684,6 @@
 </li>
       <li><a href="generated/fedoo.Mesh.elements.html#fedoo.Mesh.elements">elements (Mesh attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.Mesh.elm_type.html#fedoo.Mesh.elm_type">elm_type (Mesh attribute)</a>
 </li>
       <li><a href="generated/fedoo.constraint.Contact.eps_a.html#fedoo.constraint.Contact.eps_a">eps_a (Contact attribute)</a>
@@ -697,10 +692,20 @@
         <li><a href="generated/fedoo.constraint.SelfContact.eps_a.html#fedoo.constraint.SelfContact.eps_a">(SelfContact attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.constraint.Contact.eps_n.html#fedoo.constraint.Contact.eps_n">eps_n (Contact attribute)</a>
 
       <ul>
         <li><a href="generated/fedoo.constraint.SelfContact.eps_n.html#fedoo.constraint.SelfContact.eps_n">(SelfContact attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="generated/fedoo.time.BackwardEuler.evolution.html#fedoo.time.BackwardEuler.evolution">evolution (BackwardEuler attribute)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.time.GeneralizedAlpha.evolution.html#fedoo.time.GeneralizedAlpha.evolution">(GeneralizedAlpha attribute)</a>
+</li>
+        <li><a href="generated/fedoo.time.Newmark.evolution.html#fedoo.time.Newmark.evolution">(Newmark attribute)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.html#fedoo.problem.ExplicitDynamic">ExplicitDynamic (class in fedoo.problem)</a>
@@ -764,14 +769,21 @@
 </li>
       </ul></li>
       <li>
+    fedoo.time
+
+      <ul>
+        <li><a href="Time.html#module-fedoo.time">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
     fedoo.weakform
 
       <ul>
         <li><a href="WeakForm.html#module-fedoo.weakform">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.DataSet.field_names.html#fedoo.DataSet.field_names">field_names() (DataSet method)</a>
 
       <ul>
@@ -789,11 +801,7 @@
       <li><a href="generated/fedoo.Mesh.find_nodes.html#fedoo.Mesh.find_nodes">find_nodes() (Mesh method)</a>
 </li>
       <li><a href="generated/fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinear.force_elastic_matrix_next_iter">force_elastic_matrix_next_iter() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinearNewmark.force_elastic_matrix_next_iter">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.constraint.Pressure.from_elements.html#fedoo.constraint.Pressure.from_elements">from_elements() (Pressure static method)</a>
 
       <ul>
@@ -832,6 +840,8 @@
         <li><a href="generated/fedoo.weakform.PlateShearEquilibrium.generalized_strain_operator.html#fedoo.weakform.PlateShearEquilibrium.generalized_strain_operator">(PlateShearEquilibrium method)</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.time.GeneralizedAlpha.html#fedoo.time.GeneralizedAlpha">GeneralizedAlpha (class in fedoo.time)</a>
+</li>
       <li><a href="generated/fedoo.core.BoundaryCondition.generate.html#fedoo.core.BoundaryCondition.generate">generate() (BoundaryCondition method)</a>
 
       <ul>
@@ -867,17 +877,11 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.get_A.html#fedoo.problem.NonLinear.get_A">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_A.html#fedoo.problem.NonLinearNewmark.get_A">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.get_A.html#fedoo.Problem.get_A">(Problem method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.Newmark.get_Acceleration.html#fedoo.problem.Newmark.get_Acceleration">get_Acceleration() (Newmark method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_Acceleration.html#fedoo.problem.NonLinearNewmark.get_Acceleration">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.get_active.html#fedoo.problem.ExplicitDynamic.get_active">get_active() (ExplicitDynamic static method)</a>
 
       <ul>
@@ -886,8 +890,6 @@
         <li><a href="generated/fedoo.problem.Newmark.get_active.html#fedoo.problem.Newmark.get_active">(Newmark static method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.get_active.html#fedoo.problem.NonLinear.get_active">(NonLinear static method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_active.html#fedoo.problem.NonLinearNewmark.get_active">(NonLinearNewmark static method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.get_active.html#fedoo.Problem.get_active">(Problem static method)</a>
 </li>
@@ -933,6 +935,8 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.FE2.get_all.html#fedoo.constitutivelaw.FE2.get_all">(FE2 static method)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.get_all.html#fedoo.weakform.HeatEquation.get_all">(HeatEquation static method)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.get_all.html#fedoo.weakform.HourglassStiffness.get_all">(HourglassStiffness static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.Inertia.get_all.html#fedoo.weakform.Inertia.get_all">(Inertia static method)</a>
@@ -954,8 +958,6 @@
         <li><a href="generated/fedoo.problem.Newmark.get_all.html#fedoo.problem.Newmark.get_all">(Newmark static method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.get_all.html#fedoo.problem.NonLinear.get_all">(NonLinear static method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_all.html#fedoo.problem.NonLinearNewmark.get_all">(NonLinearNewmark static method)</a>
 </li>
         <li><a href="generated/fedoo.constraint.PeriodicBC.get_all.html#fedoo.constraint.PeriodicBC.get_all">(PeriodicBC static method)</a>
 </li>
@@ -993,8 +995,6 @@
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.get_all.html#fedoo.weakform.SpringEquilibrium.get_all">(SpringEquilibrium static method)</a>
 </li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.get_all.html#fedoo.weakform.SteadyHeatEquation.get_all">(SteadyHeatEquation static method)</a>
-</li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.get_all.html#fedoo.weakform.StressEquilibrium.get_all">(StressEquilibrium static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.get_all.html#fedoo.weakform.StressEquilibriumBbar.get_all">(StressEquilibriumBbar static method)</a>
@@ -1010,8 +1010,6 @@
       </ul></li>
       <li><a href="generated/fedoo.MultiFrameDataSet.get_all_frame_lim.html#fedoo.MultiFrameDataSet.get_all_frame_lim">get_all_frame_lim() (MultiFrameDataSet method)</a>
 </li>
-      <li><a href="generated/fedoo.problem.NonLinearNewmark.get_Assembly.html#fedoo.problem.NonLinearNewmark.get_Assembly">get_Assembly() (NonLinearNewmark method)</a>
-</li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.get_B.html#fedoo.problem.ExplicitDynamic.get_B">get_B() (ExplicitDynamic method)</a>
 
       <ul>
@@ -1020,8 +1018,6 @@
         <li><a href="generated/fedoo.problem.Newmark.get_B.html#fedoo.problem.Newmark.get_B">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.get_B.html#fedoo.problem.NonLinear.get_B">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_B.html#fedoo.problem.NonLinearNewmark.get_B">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.get_B.html#fedoo.Problem.get_B">(Problem method)</a>
 </li>
@@ -1055,8 +1051,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.get_D.html#fedoo.problem.NonLinear.get_D">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_D.html#fedoo.problem.NonLinearNewmark.get_D">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.get_D.html#fedoo.Problem.get_D">(Problem method)</a>
 </li>
       </ul></li>
@@ -1079,8 +1073,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.get_disp.html#fedoo.problem.NonLinear.get_disp">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_disp.html#fedoo.problem.NonLinearNewmark.get_disp">(NonLinearNewmark method)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.get_disp_grad.html#fedoo.constitutivelaw.ElastoPlasticity.get_disp_grad">get_disp_grad() (ElastoPlasticity method)</a>
 </li>
@@ -1092,8 +1084,6 @@
         <li><a href="generated/fedoo.problem.Newmark.get_dof_solution.html#fedoo.problem.Newmark.get_dof_solution">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.get_dof_solution.html#fedoo.problem.NonLinear.get_dof_solution">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_dof_solution.html#fedoo.problem.NonLinearNewmark.get_dof_solution">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.get_dof_solution.html#fedoo.Problem.get_dof_solution">(Problem method)</a>
 </li>
@@ -1134,8 +1124,6 @@
         <li><a href="generated/fedoo.problem.Newmark.get_ext_forces.html#fedoo.problem.Newmark.get_ext_forces">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.get_ext_forces.html#fedoo.problem.NonLinear.get_ext_forces">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_ext_forces.html#fedoo.problem.NonLinearNewmark.get_ext_forces">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.get_ext_forces.html#fedoo.Problem.get_ext_forces">(Problem method)</a>
 </li>
@@ -1251,8 +1239,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.get_results.html#fedoo.problem.NonLinear.get_results">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_results.html#fedoo.problem.NonLinearNewmark.get_results">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.get_results.html#fedoo.Problem.get_results">(Problem method)</a>
 </li>
       </ul></li>
@@ -1260,8 +1246,6 @@
 
       <ul>
         <li><a href="generated/fedoo.problem.NonLinear.get_rot.html#fedoo.problem.NonLinear.get_rot">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_rot.html#fedoo.problem.NonLinearNewmark.get_rot">(NonLinearNewmark method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.ShellHomogeneous.get_shell_stiffness_matrix.html#fedoo.constitutivelaw.ShellHomogeneous.get_shell_stiffness_matrix">get_shell_stiffness_matrix() (ShellHomogeneous method)</a>
@@ -1327,11 +1311,7 @@
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.NonLinear.get_temp.html#fedoo.problem.NonLinear.get_temp">get_temp() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_temp.html#fedoo.problem.NonLinearNewmark.get_temp">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.Simcoon.get_temp_gp.html#fedoo.constitutivelaw.Simcoon.get_temp_gp">get_temp_gp() (Simcoon method)</a>
 </li>
       <li><a href="generated/fedoo.core.BoundaryCondition.get_true_value.html#fedoo.core.BoundaryCondition.get_true_value">get_true_value() (BoundaryCondition method)</a>
@@ -1348,6 +1328,8 @@
         <li><a href="generated/fedoo.weakform.DistributedLoad.get_weak_equation.html#fedoo.weakform.DistributedLoad.get_weak_equation">(DistributedLoad method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.ExternalPressure.get_weak_equation.html#fedoo.weakform.ExternalPressure.get_weak_equation">(ExternalPressure method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.get_weak_equation.html#fedoo.weakform.HeatEquation.get_weak_equation">(HeatEquation method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.get_weak_equation.html#fedoo.weakform.HourglassStiffness.get_weak_equation">(HourglassStiffness method)</a>
 </li>
@@ -1369,8 +1351,6 @@
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.get_weak_equation.html#fedoo.weakform.SpringEquilibrium.get_weak_equation">(SpringEquilibrium method)</a>
 </li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.get_weak_equation.html#fedoo.weakform.SteadyHeatEquation.get_weak_equation">(SteadyHeatEquation method)</a>
-</li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.get_weak_equation.html#fedoo.weakform.StressEquilibrium.get_weak_equation">(StressEquilibrium method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.get_weak_equation.html#fedoo.weakform.StressEquilibriumBbar.get_weak_equation">(StressEquilibriumBbar method)</a>
@@ -1388,8 +1368,6 @@
         <li><a href="generated/fedoo.problem.Newmark.get_X.html#fedoo.problem.Newmark.get_X">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.get_X.html#fedoo.problem.NonLinear.get_X">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.get_X.html#fedoo.problem.NonLinearNewmark.get_X">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.get_X.html#fedoo.Problem.get_X">(Problem method)</a>
 </li>
@@ -1437,11 +1415,7 @@
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.Newmark.GetVelocity.html#fedoo.problem.Newmark.GetVelocity">GetVelocity() (Newmark method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.GetVelocity.html#fedoo.problem.NonLinearNewmark.GetVelocity">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.GetYieldStress.html#fedoo.constitutivelaw.ElastoPlasticity.GetYieldStress">GetYieldStress() (ElastoPlasticity method)</a>
 </li>
       <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.GetYoungModulus.html#fedoo.constitutivelaw.ElastoPlasticity.GetYoungModulus">GetYoungModulus() (ElastoPlasticity method)</a>
@@ -1454,8 +1428,6 @@
         <li><a href="generated/fedoo.problem.Newmark.global_dof.html#fedoo.problem.Newmark.global_dof">(Newmark property)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.global_dof.html#fedoo.problem.NonLinear.global_dof">(NonLinear property)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.global_dof.html#fedoo.problem.NonLinearNewmark.global_dof">(NonLinearNewmark property)</a>
 </li>
         <li><a href="generated/fedoo.Problem.global_dof.html#fedoo.Problem.global_dof">(Problem property)</a>
 </li>
@@ -1517,8 +1489,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.init_bc_start_value.html#fedoo.problem.NonLinear.init_bc_start_value">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.init_bc_start_value.html#fedoo.problem.NonLinearNewmark.init_bc_start_value">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.init_bc_start_value.html#fedoo.Problem.init_bc_start_value">(Problem method)</a>
 </li>
       </ul></li>
@@ -1565,6 +1535,8 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.FE2.initialize.html#fedoo.constitutivelaw.FE2.initialize">(FE2 method)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.initialize.html#fedoo.weakform.HeatEquation.initialize">(HeatEquation method)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.initialize.html#fedoo.weakform.HourglassStiffness.initialize">(HourglassStiffness method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.Inertia.initialize.html#fedoo.weakform.Inertia.initialize">(Inertia method)</a>
@@ -1582,8 +1554,6 @@
         <li><a href="generated/fedoo.problem.Newmark.initialize.html#fedoo.problem.Newmark.initialize">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.initialize.html#fedoo.problem.NonLinear.initialize">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.initialize.html#fedoo.problem.NonLinearNewmark.initialize">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.constraint.PeriodicBC.initialize.html#fedoo.constraint.PeriodicBC.initialize">(PeriodicBC method)</a>
 </li>
@@ -1616,8 +1586,6 @@
         <li><a href="generated/fedoo.constitutivelaw.Spring.initialize.html#fedoo.constitutivelaw.Spring.initialize">(Spring method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.initialize.html#fedoo.weakform.SpringEquilibrium.initialize">(SpringEquilibrium method)</a>
-</li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.initialize.html#fedoo.weakform.SteadyHeatEquation.initialize">(SteadyHeatEquation method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.initialize.html#fedoo.weakform.StressEquilibrium.initialize">(StressEquilibrium method)</a>
 </li>
@@ -1654,8 +1622,6 @@
         <li><a href="generated/fedoo.problem.Newmark.invalidate_factorization.html#fedoo.problem.Newmark.invalidate_factorization">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.invalidate_factorization.html#fedoo.problem.NonLinear.invalidate_factorization">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.invalidate_factorization.html#fedoo.problem.NonLinearNewmark.invalidate_factorization">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.invalidate_factorization.html#fedoo.Problem.invalidate_factorization">(Problem method)</a>
 </li>
@@ -1759,6 +1725,10 @@
 </li>
       </ul></li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/fedoo.time.TimeEvolution.kind.html#fedoo.time.TimeEvolution.kind">kind (TimeEvolution attribute)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="L">L</h2>
@@ -1833,8 +1803,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.make_active.html#fedoo.problem.NonLinear.make_active">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.make_active.html#fedoo.problem.NonLinearNewmark.make_active">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.make_active.html#fedoo.Problem.make_active">(Problem method)</a>
 </li>
         <li><a href="generated/fedoo.core.base.ProblemBase.make_active.html#fedoo.core.base.ProblemBase.make_active">(ProblemBase method)</a>
@@ -1850,10 +1818,10 @@
       </ul></li>
       <li><a href="generated/fedoo.Mesh.merge_nodes.html#fedoo.Mesh.merge_nodes">merge_nodes() (Mesh method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.Mesh.html#fedoo.Mesh">Mesh (class in fedoo)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.DataSet.html#fedoo.DataSet.mesh">mesh (DataSet attribute)</a>
 </li>
       <li>
@@ -1867,6 +1835,8 @@
         <li><a href="post_processing.html#module-fedoo.post_processing">fedoo.post_processing</a>
 </li>
         <li><a href="Problem.html#module-fedoo.problem">fedoo.problem</a>
+</li>
+        <li><a href="Time.html#module-fedoo.time">fedoo.time</a>
 </li>
         <li><a href="WeakForm.html#module-fedoo.weakform">fedoo.weakform</a>
 </li>
@@ -1891,8 +1861,6 @@
         <li><a href="generated/fedoo.problem.Newmark.n_dof.html#fedoo.problem.Newmark.n_dof">(Newmark property)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.n_dof.html#fedoo.problem.NonLinear.n_dof">(NonLinear property)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.n_dof.html#fedoo.problem.NonLinearNewmark.n_dof">(NonLinearNewmark property)</a>
 </li>
         <li><a href="generated/fedoo.Problem.n_dof.html#fedoo.Problem.n_dof">(Problem property)</a>
 </li>
@@ -1920,8 +1888,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.n_global_dof.html#fedoo.problem.NonLinear.n_global_dof">(NonLinear property)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.n_global_dof.html#fedoo.problem.NonLinearNewmark.n_global_dof">(NonLinearNewmark property)</a>
-</li>
         <li><a href="generated/fedoo.Problem.n_global_dof.html#fedoo.Problem.n_global_dof">(Problem property)</a>
 </li>
         <li><a href="generated/fedoo.core.base.ProblemBase.n_global_dof.html#fedoo.core.base.ProblemBase.n_global_dof">(ProblemBase property)</a>
@@ -1932,8 +1898,6 @@
       <ul>
         <li><a href="generated/fedoo.problem.NonLinear.n_iter.html#fedoo.problem.NonLinear.n_iter">(NonLinear property)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.n_iter.html#fedoo.problem.NonLinearNewmark.n_iter">(NonLinearNewmark property)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.n_node_dof.html#fedoo.problem.ExplicitDynamic.n_node_dof">n_node_dof (ExplicitDynamic property)</a>
 
@@ -1943,8 +1907,6 @@
         <li><a href="generated/fedoo.problem.Newmark.n_node_dof.html#fedoo.problem.Newmark.n_node_dof">(Newmark property)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.n_node_dof.html#fedoo.problem.NonLinear.n_node_dof">(NonLinear property)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.n_node_dof.html#fedoo.problem.NonLinearNewmark.n_node_dof">(NonLinearNewmark property)</a>
 </li>
         <li><a href="generated/fedoo.Problem.n_node_dof.html#fedoo.Problem.n_node_dof">(Problem property)</a>
 </li>
@@ -1990,6 +1952,8 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.FE2.name.html#fedoo.constitutivelaw.FE2.name">(FE2 property)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.name.html#fedoo.weakform.HeatEquation.name">(HeatEquation property)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.name.html#fedoo.weakform.HourglassStiffness.name">(HourglassStiffness property)</a>
 </li>
         <li><a href="generated/fedoo.weakform.Inertia.name.html#fedoo.weakform.Inertia.name">(Inertia property)</a>
@@ -2011,8 +1975,6 @@
         <li><a href="generated/fedoo.problem.Newmark.name.html#fedoo.problem.Newmark.name">(Newmark property)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.name.html#fedoo.problem.NonLinear.name">(NonLinear property)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.name.html#fedoo.problem.NonLinearNewmark.name">(NonLinearNewmark property)</a>
 </li>
         <li><a href="generated/fedoo.constraint.PeriodicBC.name.html#fedoo.constraint.PeriodicBC.name">(PeriodicBC property)</a>
 </li>
@@ -2050,8 +2012,6 @@
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.name.html#fedoo.weakform.SpringEquilibrium.name">(SpringEquilibrium property)</a>
 </li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.name.html#fedoo.weakform.SteadyHeatEquation.name">(SteadyHeatEquation property)</a>
-</li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.name.html#fedoo.weakform.StressEquilibrium.name">(StressEquilibrium property)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.name.html#fedoo.weakform.StressEquilibriumBbar.name">(StressEquilibriumBbar property)</a>
@@ -2072,7 +2032,11 @@
       <li><a href="generated/fedoo.Mesh.nearest_node.html#fedoo.Mesh.nearest_node">nearest_node() (Mesh method)</a>
 </li>
       <li><a href="generated/fedoo.problem.Newmark.html#fedoo.problem.Newmark">Newmark (class in fedoo.problem)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.time.Newmark.html#fedoo.time.Newmark">(class in fedoo.time)</a>
 </li>
+      </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.NewTimeIncrement.html#fedoo.constitutivelaw.ElastoPlasticity.NewTimeIncrement">NewTimeIncrement() (ElastoPlasticity method)</a>
 </li>
       <li><a href="generated/fedoo.weakform.BeamEquilibrium.nlgeom.html#fedoo.weakform.BeamEquilibrium.nlgeom">nlgeom (BeamEquilibrium attribute)</a>
@@ -2080,13 +2044,13 @@
       <ul>
         <li><a href="generated/fedoo.weakform.ExternalPressure.nlgeom.html#fedoo.weakform.ExternalPressure.nlgeom">(ExternalPressure attribute)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.nlgeom.html#fedoo.weakform.HeatEquation.nlgeom">(HeatEquation property)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.nlgeom.html#fedoo.weakform.HourglassStiffness.nlgeom">(HourglassStiffness attribute)</a>
 </li>
         <li><a href="generated/fedoo.weakform.InterfaceForce.nlgeom.html#fedoo.weakform.InterfaceForce.nlgeom">(InterfaceForce attribute)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.nlgeom.html#fedoo.weakform.SpringEquilibrium.nlgeom">(SpringEquilibrium attribute)</a>
-</li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.nlgeom.html#fedoo.weakform.SteadyHeatEquation.nlgeom">(SteadyHeatEquation property)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.nlgeom.html#fedoo.weakform.StressEquilibrium.nlgeom">(StressEquilibrium attribute)</a>
 </li>
@@ -2098,11 +2062,7 @@
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.NonLinear.nlsolve.html#fedoo.problem.NonLinear.nlsolve">nlsolve() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.nlsolve.html#fedoo.problem.NonLinearNewmark.nlsolve">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.DataSet.html#fedoo.DataSet.node_data">node_data (DataSet attribute)</a>
 </li>
       <li><a href="generated/fedoo.Mesh.node_sets.html#fedoo.Mesh.node_sets">node_sets (Mesh attribute)</a>
@@ -2120,11 +2080,7 @@
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.NonLinear.nr_parameters.html#fedoo.problem.NonLinear.nr_parameters">nr_parameters (NonLinear attribute)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.nr_parameters.html#fedoo.problem.NonLinearNewmark.nr_parameters">(NonLinearNewmark attribute)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.nu.html#fedoo.constitutivelaw.ElasticIsotrop.nu">nu (ElasticIsotrop attribute)</a>
 </li>
       <li><a href="generated/fedoo.weakform.ArtificialDamping.nvar.html#fedoo.weakform.ArtificialDamping.nvar">nvar() (ArtificialDamping static method)</a>
@@ -2135,6 +2091,8 @@
         <li><a href="generated/fedoo.weakform.DistributedLoad.nvar.html#fedoo.weakform.DistributedLoad.nvar">(DistributedLoad static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.ExternalPressure.nvar.html#fedoo.weakform.ExternalPressure.nvar">(ExternalPressure static method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.nvar.html#fedoo.weakform.HeatEquation.nvar">(HeatEquation static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.nvar.html#fedoo.weakform.HourglassStiffness.nvar">(HourglassStiffness static method)</a>
 </li>
@@ -2155,8 +2113,6 @@
         <li><a href="generated/fedoo.weakform.RotaryInertia.nvar.html#fedoo.weakform.RotaryInertia.nvar">(RotaryInertia static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.nvar.html#fedoo.weakform.SpringEquilibrium.nvar">(SpringEquilibrium static method)</a>
-</li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.nvar.html#fedoo.weakform.SteadyHeatEquation.nvar">(SteadyHeatEquation static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.nvar.html#fedoo.weakform.StressEquilibrium.nvar">(StressEquilibrium static method)</a>
 </li>
@@ -2258,11 +2214,7 @@
       <li><a href="generated/fedoo.Mesh.remove_isolated_nodes.html#fedoo.Mesh.remove_isolated_nodes">remove_isolated_nodes() (Mesh method)</a>
 </li>
       <li><a href="generated/fedoo.problem.NonLinear.remove_line_search.html#fedoo.problem.NonLinear.remove_line_search">remove_line_search() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.remove_line_search.html#fedoo.problem.NonLinearNewmark.remove_line_search">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.Mesh.remove_nodes.html#fedoo.Mesh.remove_nodes">remove_nodes() (Mesh method)</a>
 </li>
       <li><a href="generated/fedoo.weakform.ArtificialDamping.reset.html#fedoo.weakform.ArtificialDamping.reset">reset() (ArtificialDamping method)</a>
@@ -2302,6 +2254,8 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.FE2.reset.html#fedoo.constitutivelaw.FE2.reset">(FE2 method)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.reset.html#fedoo.weakform.HeatEquation.reset">(HeatEquation method)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.reset.html#fedoo.weakform.HourglassStiffness.reset">(HourglassStiffness method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.Inertia.reset.html#fedoo.weakform.Inertia.reset">(Inertia method)</a>
@@ -2315,8 +2269,6 @@
         <li><a href="generated/fedoo.problem.Linear.reset.html#fedoo.problem.Linear.reset">(Linear method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.reset.html#fedoo.problem.NonLinear.reset">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.reset.html#fedoo.problem.NonLinearNewmark.reset">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.PlateDrillingPenalty.reset.html#fedoo.weakform.PlateDrillingPenalty.reset">(PlateDrillingPenalty method)</a>
 </li>
@@ -2344,8 +2296,6 @@
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.reset.html#fedoo.weakform.SpringEquilibrium.reset">(SpringEquilibrium method)</a>
 </li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.reset.html#fedoo.weakform.SteadyHeatEquation.reset">(SteadyHeatEquation method)</a>
-</li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.reset.html#fedoo.weakform.StressEquilibrium.reset">(StressEquilibrium method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.reset.html#fedoo.weakform.StressEquilibriumBbar.reset">(StressEquilibriumBbar method)</a>
@@ -2371,8 +2321,6 @@
         <li><a href="generated/fedoo.problem.Newmark.results.html#fedoo.problem.Newmark.results">(Newmark property)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.results.html#fedoo.problem.NonLinear.results">(NonLinear property)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.results.html#fedoo.problem.NonLinearNewmark.results">(NonLinearNewmark property)</a>
 </li>
         <li><a href="generated/fedoo.Problem.results.html#fedoo.Problem.results">(Problem property)</a>
 </li>
@@ -2420,8 +2368,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.save_results.html#fedoo.problem.NonLinear.save_results">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.save_results.html#fedoo.problem.NonLinearNewmark.save_results">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.save_results.html#fedoo.Problem.save_results">(Problem method)</a>
 </li>
       </ul></li>
@@ -2450,8 +2396,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.set_A.html#fedoo.problem.NonLinear.set_A">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.set_A.html#fedoo.problem.NonLinearNewmark.set_A">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.set_A.html#fedoo.Problem.set_A">(Problem method)</a>
 </li>
       </ul></li>
@@ -2463,8 +2407,6 @@
         <li><a href="generated/fedoo.problem.Newmark.set_active.html#fedoo.problem.Newmark.set_active">(Newmark static method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.set_active.html#fedoo.problem.NonLinear.set_active">(NonLinear static method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.set_active.html#fedoo.problem.NonLinearNewmark.set_active">(NonLinearNewmark static method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.set_active.html#fedoo.Problem.set_active">(Problem static method)</a>
 </li>
@@ -2480,8 +2422,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.set_B.html#fedoo.problem.NonLinear.set_B">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.set_B.html#fedoo.problem.NonLinearNewmark.set_B">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.set_B.html#fedoo.Problem.set_B">(Problem method)</a>
 </li>
       </ul></li>
@@ -2494,13 +2434,67 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.set_D.html#fedoo.problem.NonLinear.set_D">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.set_D.html#fedoo.problem.NonLinearNewmark.set_D">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.set_D.html#fedoo.Problem.set_D">(Problem method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.CohesiveLaw.set_damage.html#fedoo.constitutivelaw.CohesiveLaw.set_damage">set_damage() (CohesiveLaw method)</a>
 </li>
+      <li><a href="generated/fedoo.weakform.ArtificialDamping.set_damping.html#fedoo.weakform.ArtificialDamping.set_damping">set_damping() (ArtificialDamping method)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.weakform.BeamEquilibrium.set_damping.html#fedoo.weakform.BeamEquilibrium.set_damping">(BeamEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.DistributedLoad.set_damping.html#fedoo.weakform.DistributedLoad.set_damping">(DistributedLoad method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.ExternalPressure.set_damping.html#fedoo.weakform.ExternalPressure.set_damping">(ExternalPressure method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.set_damping.html#fedoo.weakform.HeatEquation.set_damping">(HeatEquation method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.HourglassStiffness.set_damping.html#fedoo.weakform.HourglassStiffness.set_damping">(HourglassStiffness method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.Inertia.set_damping.html#fedoo.weakform.Inertia.set_damping">(Inertia method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.InterfaceForce.set_damping.html#fedoo.weakform.InterfaceForce.set_damping">(InterfaceForce method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateDrillingPenalty.set_damping.html#fedoo.weakform.PlateDrillingPenalty.set_damping">(PlateDrillingPenalty method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateEquilibrium.set_damping.html#fedoo.weakform.PlateEquilibrium.set_damping">(PlateEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateEquilibriumFI.set_damping.html#fedoo.weakform.PlateEquilibriumFI.set_damping">(PlateEquilibriumFI method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateKirchhoffLoveEquilibrium.set_damping.html#fedoo.weakform.PlateKirchhoffLoveEquilibrium.set_damping">(PlateKirchhoffLoveEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateShearEquilibrium.set_damping.html#fedoo.weakform.PlateShearEquilibrium.set_damping">(PlateShearEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.RotaryInertia.set_damping.html#fedoo.weakform.RotaryInertia.set_damping">(RotaryInertia method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.SpringEquilibrium.set_damping.html#fedoo.weakform.SpringEquilibrium.set_damping">(SpringEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibrium.set_damping.html#fedoo.weakform.StressEquilibrium.set_damping">(StressEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.set_damping.html#fedoo.weakform.StressEquilibriumBbar.set_damping">(StressEquilibriumBbar method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumFbar.set_damping.html#fedoo.weakform.StressEquilibriumFbar.set_damping">(StressEquilibriumFbar method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumMixed.set_damping.html#fedoo.weakform.StressEquilibriumMixed.set_damping">(StressEquilibriumMixed method)</a>
+</li>
+      </ul></li>
+      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.set_density.html#fedoo.constitutivelaw.CompositeUD.set_density">set_density() (CompositeUD method)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.set_density.html#fedoo.constitutivelaw.ElasticAnisotropic.set_density">(ElasticAnisotropic method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.set_density.html#fedoo.constitutivelaw.ElasticIsotrop.set_density">(ElasticIsotrop method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.set_density.html#fedoo.constitutivelaw.ElasticOrthotropic.set_density">(ElasticOrthotropic method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.set_density.html#fedoo.constitutivelaw.ElastoPlasticity.set_density">(ElastoPlasticity method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.FE2.set_density.html#fedoo.constitutivelaw.FE2.set_density">(FE2 method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.Simcoon.set_density.html#fedoo.constitutivelaw.Simcoon.set_density">(Simcoon method)</a>
+</li>
+      </ul></li>
       <li><a href="generated/fedoo.constraint.Contact.set_disp.html#fedoo.constraint.Contact.set_disp">set_disp() (Contact method)</a>
 
       <ul>
@@ -2513,6 +2507,46 @@
         <li><a href="generated/fedoo.constraint.SurfaceForce.set_disp.html#fedoo.constraint.SurfaceForce.set_disp">(SurfaceForce method)</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.weakform.ArtificialDamping.set_dissipation.html#fedoo.weakform.ArtificialDamping.set_dissipation">set_dissipation() (ArtificialDamping method)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.weakform.BeamEquilibrium.set_dissipation.html#fedoo.weakform.BeamEquilibrium.set_dissipation">(BeamEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.DistributedLoad.set_dissipation.html#fedoo.weakform.DistributedLoad.set_dissipation">(DistributedLoad method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.ExternalPressure.set_dissipation.html#fedoo.weakform.ExternalPressure.set_dissipation">(ExternalPressure method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.set_dissipation.html#fedoo.weakform.HeatEquation.set_dissipation">(HeatEquation method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.HourglassStiffness.set_dissipation.html#fedoo.weakform.HourglassStiffness.set_dissipation">(HourglassStiffness method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.Inertia.set_dissipation.html#fedoo.weakform.Inertia.set_dissipation">(Inertia method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.InterfaceForce.set_dissipation.html#fedoo.weakform.InterfaceForce.set_dissipation">(InterfaceForce method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateDrillingPenalty.set_dissipation.html#fedoo.weakform.PlateDrillingPenalty.set_dissipation">(PlateDrillingPenalty method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateEquilibrium.set_dissipation.html#fedoo.weakform.PlateEquilibrium.set_dissipation">(PlateEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateEquilibriumFI.set_dissipation.html#fedoo.weakform.PlateEquilibriumFI.set_dissipation">(PlateEquilibriumFI method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateKirchhoffLoveEquilibrium.set_dissipation.html#fedoo.weakform.PlateKirchhoffLoveEquilibrium.set_dissipation">(PlateKirchhoffLoveEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateShearEquilibrium.set_dissipation.html#fedoo.weakform.PlateShearEquilibrium.set_dissipation">(PlateShearEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.RotaryInertia.set_dissipation.html#fedoo.weakform.RotaryInertia.set_dissipation">(RotaryInertia method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.SpringEquilibrium.set_dissipation.html#fedoo.weakform.SpringEquilibrium.set_dissipation">(SpringEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibrium.set_dissipation.html#fedoo.weakform.StressEquilibrium.set_dissipation">(StressEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.set_dissipation.html#fedoo.weakform.StressEquilibriumBbar.set_dissipation">(StressEquilibriumBbar method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumFbar.set_dissipation.html#fedoo.weakform.StressEquilibriumFbar.set_dissipation">(StressEquilibriumFbar method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumMixed.set_dissipation.html#fedoo.weakform.StressEquilibriumMixed.set_dissipation">(StressEquilibriumMixed method)</a>
+</li>
+      </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.set_dof_solution.html#fedoo.problem.ExplicitDynamic.set_dof_solution">set_dof_solution() (ExplicitDynamic method)</a>
 
       <ul>
@@ -2522,17 +2556,51 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.set_dof_solution.html#fedoo.problem.NonLinear.set_dof_solution">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.set_dof_solution.html#fedoo.problem.NonLinearNewmark.set_dof_solution">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.set_dof_solution.html#fedoo.Problem.set_dof_solution">(Problem method)</a>
 </li>
       </ul></li>
-      <li><a href="generated/fedoo.problem.NonLinear.set_nr_criterion.html#fedoo.problem.NonLinear.set_nr_criterion">set_nr_criterion() (NonLinear method)</a>
+      <li><a href="generated/fedoo.weakform.ArtificialDamping.set_inertia.html#fedoo.weakform.ArtificialDamping.set_inertia">set_inertia() (ArtificialDamping method)</a>
 
       <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.set_nr_criterion.html#fedoo.problem.NonLinearNewmark.set_nr_criterion">(NonLinearNewmark method)</a>
+        <li><a href="generated/fedoo.weakform.BeamEquilibrium.set_inertia.html#fedoo.weakform.BeamEquilibrium.set_inertia">(BeamEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.DistributedLoad.set_inertia.html#fedoo.weakform.DistributedLoad.set_inertia">(DistributedLoad method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.ExternalPressure.set_inertia.html#fedoo.weakform.ExternalPressure.set_inertia">(ExternalPressure method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.set_inertia.html#fedoo.weakform.HeatEquation.set_inertia">(HeatEquation method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.HourglassStiffness.set_inertia.html#fedoo.weakform.HourglassStiffness.set_inertia">(HourglassStiffness method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.Inertia.set_inertia.html#fedoo.weakform.Inertia.set_inertia">(Inertia method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.InterfaceForce.set_inertia.html#fedoo.weakform.InterfaceForce.set_inertia">(InterfaceForce method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateDrillingPenalty.set_inertia.html#fedoo.weakform.PlateDrillingPenalty.set_inertia">(PlateDrillingPenalty method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateEquilibrium.set_inertia.html#fedoo.weakform.PlateEquilibrium.set_inertia">(PlateEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateEquilibriumFI.set_inertia.html#fedoo.weakform.PlateEquilibriumFI.set_inertia">(PlateEquilibriumFI method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateKirchhoffLoveEquilibrium.set_inertia.html#fedoo.weakform.PlateKirchhoffLoveEquilibrium.set_inertia">(PlateKirchhoffLoveEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateShearEquilibrium.set_inertia.html#fedoo.weakform.PlateShearEquilibrium.set_inertia">(PlateShearEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.RotaryInertia.set_inertia.html#fedoo.weakform.RotaryInertia.set_inertia">(RotaryInertia method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.SpringEquilibrium.set_inertia.html#fedoo.weakform.SpringEquilibrium.set_inertia">(SpringEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibrium.set_inertia.html#fedoo.weakform.StressEquilibrium.set_inertia">(StressEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.set_inertia.html#fedoo.weakform.StressEquilibriumBbar.set_inertia">(StressEquilibriumBbar method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumFbar.set_inertia.html#fedoo.weakform.StressEquilibriumFbar.set_inertia">(StressEquilibriumFbar method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumMixed.set_inertia.html#fedoo.weakform.StressEquilibriumMixed.set_inertia">(StressEquilibriumMixed method)</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.problem.NonLinear.set_nr_criterion.html#fedoo.problem.NonLinear.set_nr_criterion">set_nr_criterion() (NonLinear method)</a>
+</li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.set_reuse_factorization.html#fedoo.problem.ExplicitDynamic.set_reuse_factorization">set_reuse_factorization() (ExplicitDynamic method)</a>
 
       <ul>
@@ -2541,8 +2609,6 @@
         <li><a href="generated/fedoo.problem.Newmark.set_reuse_factorization.html#fedoo.problem.Newmark.set_reuse_factorization">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.set_reuse_factorization.html#fedoo.problem.NonLinear.set_reuse_factorization">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.set_reuse_factorization.html#fedoo.problem.NonLinearNewmark.set_reuse_factorization">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.set_reuse_factorization.html#fedoo.Problem.set_reuse_factorization">(Problem method)</a>
 </li>
@@ -2557,8 +2623,6 @@
         <li><a href="generated/fedoo.problem.Newmark.set_solver.html#fedoo.problem.Newmark.set_solver">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.set_solver.html#fedoo.problem.NonLinear.set_solver">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.set_solver.html#fedoo.problem.NonLinearNewmark.set_solver">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.Problem.set_solver.html#fedoo.Problem.set_solver">(Problem method)</a>
 </li>
@@ -2602,6 +2666,8 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.FE2.set_start.html#fedoo.constitutivelaw.FE2.set_start">(FE2 method)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.set_start.html#fedoo.weakform.HeatEquation.set_start">(HeatEquation method)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.set_start.html#fedoo.weakform.HourglassStiffness.set_start">(HourglassStiffness method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.Inertia.set_start.html#fedoo.weakform.Inertia.set_start">(Inertia method)</a>
@@ -2613,8 +2679,6 @@
         <li><a href="generated/fedoo.constraint.IPCSelfContact.set_start.html#fedoo.constraint.IPCSelfContact.set_start">(IPCSelfContact method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.set_start.html#fedoo.problem.NonLinear.set_start">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.set_start.html#fedoo.problem.NonLinearNewmark.set_start">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.PlateDrillingPenalty.set_start.html#fedoo.weakform.PlateDrillingPenalty.set_start">(PlateDrillingPenalty method)</a>
 </li>
@@ -2642,8 +2706,6 @@
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.set_start.html#fedoo.weakform.SpringEquilibrium.set_start">(SpringEquilibrium method)</a>
 </li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.set_start.html#fedoo.weakform.SteadyHeatEquation.set_start">(SteadyHeatEquation method)</a>
-</li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.set_start.html#fedoo.weakform.StressEquilibrium.set_start">(StressEquilibrium method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.set_start.html#fedoo.weakform.StressEquilibriumBbar.set_start">(StressEquilibriumBbar method)</a>
@@ -2657,6 +2719,50 @@
         <li><a href="generated/fedoo.constitutivelaw.ThermalProperties.set_start.html#fedoo.constitutivelaw.ThermalProperties.set_start">(ThermalProperties method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/fedoo.weakform.ArtificialDamping.set_storage.html#fedoo.weakform.ArtificialDamping.set_storage">set_storage() (ArtificialDamping method)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.weakform.BeamEquilibrium.set_storage.html#fedoo.weakform.BeamEquilibrium.set_storage">(BeamEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.DistributedLoad.set_storage.html#fedoo.weakform.DistributedLoad.set_storage">(DistributedLoad method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.ExternalPressure.set_storage.html#fedoo.weakform.ExternalPressure.set_storage">(ExternalPressure method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.set_storage.html#fedoo.weakform.HeatEquation.set_storage">(HeatEquation method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.HourglassStiffness.set_storage.html#fedoo.weakform.HourglassStiffness.set_storage">(HourglassStiffness method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.Inertia.set_storage.html#fedoo.weakform.Inertia.set_storage">(Inertia method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.InterfaceForce.set_storage.html#fedoo.weakform.InterfaceForce.set_storage">(InterfaceForce method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateDrillingPenalty.set_storage.html#fedoo.weakform.PlateDrillingPenalty.set_storage">(PlateDrillingPenalty method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateEquilibrium.set_storage.html#fedoo.weakform.PlateEquilibrium.set_storage">(PlateEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateEquilibriumFI.set_storage.html#fedoo.weakform.PlateEquilibriumFI.set_storage">(PlateEquilibriumFI method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateKirchhoffLoveEquilibrium.set_storage.html#fedoo.weakform.PlateKirchhoffLoveEquilibrium.set_storage">(PlateKirchhoffLoveEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.PlateShearEquilibrium.set_storage.html#fedoo.weakform.PlateShearEquilibrium.set_storage">(PlateShearEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.RotaryInertia.set_storage.html#fedoo.weakform.RotaryInertia.set_storage">(RotaryInertia method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.SpringEquilibrium.set_storage.html#fedoo.weakform.SpringEquilibrium.set_storage">(SpringEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibrium.set_storage.html#fedoo.weakform.StressEquilibrium.set_storage">(StressEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.set_storage.html#fedoo.weakform.StressEquilibriumBbar.set_storage">(StressEquilibriumBbar method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumFbar.set_storage.html#fedoo.weakform.StressEquilibriumFbar.set_storage">(StressEquilibriumFbar method)</a>
+</li>
+        <li><a href="generated/fedoo.weakform.StressEquilibriumMixed.set_storage.html#fedoo.weakform.StressEquilibriumMixed.set_storage">(StressEquilibriumMixed method)</a>
+</li>
+      </ul></li>
+      <li><a href="generated/fedoo.problem.NonLinear.set_time_integrator.html#fedoo.problem.NonLinear.set_time_integrator">set_time_integrator() (NonLinear method)</a>
+</li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.set_X.html#fedoo.problem.ExplicitDynamic.set_X">set_X() (ExplicitDynamic method)</a>
 
       <ul>
@@ -2666,13 +2772,9 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.set_X.html#fedoo.problem.NonLinear.set_X">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.set_X.html#fedoo.problem.NonLinearNewmark.set_X">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.set_X.html#fedoo.Problem.set_X">(Problem method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.SetHardeningFunction.html#fedoo.constitutivelaw.ElastoPlasticity.SetHardeningFunction">SetHardeningFunction() (ElastoPlasticity method)</a>
 </li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.SetInitialAcceleration.html#fedoo.problem.ExplicitDynamic.SetInitialAcceleration">SetInitialAcceleration() (ExplicitDynamic method)</a>
@@ -2680,23 +2782,17 @@
       <ul>
         <li><a href="generated/fedoo.problem.Newmark.SetInitialAcceleration.html#fedoo.problem.Newmark.SetInitialAcceleration">(Newmark method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.SetInitialAcceleration.html#fedoo.problem.NonLinearNewmark.SetInitialAcceleration">(NonLinearNewmark method)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.SetInitialDisplacement.html#fedoo.problem.ExplicitDynamic.SetInitialDisplacement">SetInitialDisplacement() (ExplicitDynamic method)</a>
 
       <ul>
         <li><a href="generated/fedoo.problem.Newmark.SetInitialDisplacement.html#fedoo.problem.Newmark.SetInitialDisplacement">(Newmark method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.SetInitialDisplacement.html#fedoo.problem.NonLinearNewmark.SetInitialDisplacement">(NonLinearNewmark method)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.SetInitialVelocity.html#fedoo.problem.ExplicitDynamic.SetInitialVelocity">SetInitialVelocity() (ExplicitDynamic method)</a>
 
       <ul>
         <li><a href="generated/fedoo.problem.Newmark.SetInitialVelocity.html#fedoo.problem.Newmark.SetInitialVelocity">(Newmark method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.SetInitialVelocity.html#fedoo.problem.NonLinearNewmark.SetInitialVelocity">(NonLinearNewmark method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.SetMassMatrix.html#fedoo.problem.ExplicitDynamic.SetMassMatrix">SetMassMatrix() (ExplicitDynamic method)</a>
@@ -2707,8 +2803,6 @@
 
       <ul>
         <li><a href="generated/fedoo.problem.Newmark.SetRayleighDamping.html#fedoo.problem.Newmark.SetRayleighDamping">(Newmark method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.SetRayleighDamping.html#fedoo.problem.NonLinearNewmark.SetRayleighDamping">(NonLinearNewmark method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.SetStiffnessMatrix.html#fedoo.problem.ExplicitDynamic.SetStiffnessMatrix">SetStiffnessMatrix() (ExplicitDynamic method)</a>
@@ -2728,23 +2822,13 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.solve.html#fedoo.problem.NonLinear.solve">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.solve.html#fedoo.problem.NonLinearNewmark.solve">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.solve.html#fedoo.Problem.solve">(Problem method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.NonLinear.solve_nr_increment.html#fedoo.problem.NonLinear.solve_nr_increment">solve_nr_increment() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.solve_nr_increment.html#fedoo.problem.NonLinearNewmark.solve_nr_increment">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.problem.NonLinear.solve_time_increment.html#fedoo.problem.NonLinear.solve_time_increment">solve_time_increment() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.solve_time_increment.html#fedoo.problem.NonLinearNewmark.solve_time_increment">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.solver.html#fedoo.problem.ExplicitDynamic.solver">solver (ExplicitDynamic property)</a>
 
       <ul>
@@ -2753,8 +2837,6 @@
         <li><a href="generated/fedoo.problem.Newmark.solver.html#fedoo.problem.Newmark.solver">(Newmark property)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.solver.html#fedoo.problem.NonLinear.solver">(NonLinear property)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.solver.html#fedoo.problem.NonLinearNewmark.solver">(NonLinearNewmark property)</a>
 </li>
         <li><a href="generated/fedoo.Problem.solver.html#fedoo.Problem.solver">(Problem property)</a>
 </li>
@@ -2776,6 +2858,8 @@
 </li>
         <li><a href="generated/fedoo.weakform.ExternalPressure.space.html#fedoo.weakform.ExternalPressure.space">(ExternalPressure property)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.space.html#fedoo.weakform.HeatEquation.space">(HeatEquation property)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.space.html#fedoo.weakform.HourglassStiffness.space">(HourglassStiffness property)</a>
 </li>
         <li><a href="generated/fedoo.weakform.Inertia.space.html#fedoo.weakform.Inertia.space">(Inertia property)</a>
@@ -2791,8 +2875,6 @@
         <li><a href="generated/fedoo.problem.Newmark.space.html#fedoo.problem.Newmark.space">(Newmark property)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.space.html#fedoo.problem.NonLinear.space">(NonLinear property)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.space.html#fedoo.problem.NonLinearNewmark.space">(NonLinearNewmark property)</a>
 </li>
         <li><a href="generated/fedoo.weakform.PlateDrillingPenalty.space.html#fedoo.weakform.PlateDrillingPenalty.space">(PlateDrillingPenalty property)</a>
 </li>
@@ -2815,8 +2897,6 @@
         <li><a href="generated/fedoo.constraint.SelfContact.space.html#fedoo.constraint.SelfContact.space">(SelfContact property)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.space.html#fedoo.weakform.SpringEquilibrium.space">(SpringEquilibrium property)</a>
-</li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.space.html#fedoo.weakform.SteadyHeatEquation.space">(SteadyHeatEquation property)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.space.html#fedoo.weakform.StressEquilibrium.space">(StressEquilibrium property)</a>
 </li>
@@ -2849,8 +2929,6 @@
         <li><a href="generated/fedoo.constraint.SurfaceForce.state_variables.html#fedoo.constraint.SurfaceForce.state_variables">(SurfaceForce property)</a>
 </li>
       </ul></li>
-      <li><a href="generated/fedoo.weakform.SteadyHeatEquation.html#fedoo.weakform.SteadyHeatEquation">SteadyHeatEquation (class in fedoo.weakform)</a>
-</li>
       <li><a href="generated/fedoo.core.BoundaryCondition.str_condensed.html#fedoo.core.BoundaryCondition.str_condensed">str_condensed() (BoundaryCondition method)</a>
 
       <ul>
@@ -2890,6 +2968,8 @@
 </li>
         <li><a href="generated/fedoo.weakform.ExternalPressure.sum.html#fedoo.weakform.ExternalPressure.sum">(ExternalPressure static method)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.sum.html#fedoo.weakform.HeatEquation.sum">(HeatEquation static method)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.sum.html#fedoo.weakform.HourglassStiffness.sum">(HourglassStiffness static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.Inertia.sum.html#fedoo.weakform.Inertia.sum">(Inertia static method)</a>
@@ -2911,8 +2991,6 @@
         <li><a href="generated/fedoo.weakform.RotaryInertia.sum.html#fedoo.weakform.RotaryInertia.sum">(RotaryInertia static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.sum.html#fedoo.weakform.SpringEquilibrium.sum">(SpringEquilibrium static method)</a>
-</li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.sum.html#fedoo.weakform.SteadyHeatEquation.sum">(SteadyHeatEquation static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.sum.html#fedoo.weakform.StressEquilibrium.sum">(StressEquilibrium static method)</a>
 </li>
@@ -2950,17 +3028,9 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.problem.NonLinear.t_fact.html#fedoo.problem.NonLinear.t_fact">t_fact (NonLinear property)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.t_fact.html#fedoo.problem.NonLinearNewmark.t_fact">(NonLinearNewmark property)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.problem.NonLinear.t_fact_old.html#fedoo.problem.NonLinear.t_fact_old">t_fact_old (NonLinear property)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.t_fact_old.html#fedoo.problem.NonLinearNewmark.t_fact_old">(NonLinearNewmark property)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.ThermalProperties.html#fedoo.constitutivelaw.ThermalProperties">ThermalProperties (class in fedoo.constitutivelaw)</a>
 </li>
       <li><a href="generated/fedoo.constitutivelaw.ShellHomogeneous.thickness.html#fedoo.constitutivelaw.ShellHomogeneous.thickness">thickness (ShellHomogeneous attribute)</a>
@@ -2969,6 +3039,8 @@
         <li><a href="generated/fedoo.constitutivelaw.ShellLaminate.thickness.html#fedoo.constitutivelaw.ShellLaminate.thickness">(ShellLaminate attribute)</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.time.TimeEvolution.html#fedoo.time.TimeEvolution">TimeEvolution (class in fedoo.time)</a>
+</li>
       <li><a href="generated/fedoo.DataSet.to_csv.html#fedoo.DataSet.to_csv">to_csv() (DataSet method)</a>
 
       <ul>
@@ -3050,6 +3122,8 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.FE2.to_start.html#fedoo.constitutivelaw.FE2.to_start">(FE2 method)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.to_start.html#fedoo.weakform.HeatEquation.to_start">(HeatEquation method)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.to_start.html#fedoo.weakform.HourglassStiffness.to_start">(HourglassStiffness method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.Inertia.to_start.html#fedoo.weakform.Inertia.to_start">(Inertia method)</a>
@@ -3061,8 +3135,6 @@
         <li><a href="generated/fedoo.constraint.IPCSelfContact.to_start.html#fedoo.constraint.IPCSelfContact.to_start">(IPCSelfContact method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.to_start.html#fedoo.problem.NonLinear.to_start">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.to_start.html#fedoo.problem.NonLinearNewmark.to_start">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.PlateDrillingPenalty.to_start.html#fedoo.weakform.PlateDrillingPenalty.to_start">(PlateDrillingPenalty method)</a>
 </li>
@@ -3089,8 +3161,6 @@
         <li><a href="generated/fedoo.constitutivelaw.Spring.to_start.html#fedoo.constitutivelaw.Spring.to_start">(Spring method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.to_start.html#fedoo.weakform.SpringEquilibrium.to_start">(SpringEquilibrium method)</a>
-</li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.to_start.html#fedoo.weakform.SteadyHeatEquation.to_start">(SteadyHeatEquation method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.to_start.html#fedoo.weakform.StressEquilibrium.to_start">(StressEquilibrium method)</a>
 </li>
@@ -3166,6 +3236,8 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.FE2.update.html#fedoo.constitutivelaw.FE2.update">(FE2 method)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.update.html#fedoo.weakform.HeatEquation.update">(HeatEquation method)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.update.html#fedoo.weakform.HourglassStiffness.update">(HourglassStiffness method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.Inertia.update.html#fedoo.weakform.Inertia.update">(Inertia method)</a>
@@ -3181,8 +3253,6 @@
         <li><a href="generated/fedoo.problem.Newmark.update.html#fedoo.problem.Newmark.update">(Newmark method)</a>
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.update.html#fedoo.problem.NonLinear.update">(NonLinear method)</a>
-</li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.update.html#fedoo.problem.NonLinearNewmark.update">(NonLinearNewmark method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.PlateDrillingPenalty.update.html#fedoo.weakform.PlateDrillingPenalty.update">(PlateDrillingPenalty method)</a>
 </li>
@@ -3210,8 +3280,6 @@
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.update.html#fedoo.weakform.SpringEquilibrium.update">(SpringEquilibrium method)</a>
 </li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.update.html#fedoo.weakform.SteadyHeatEquation.update">(SteadyHeatEquation method)</a>
-</li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.update.html#fedoo.weakform.StressEquilibrium.update">(StressEquilibrium method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.update.html#fedoo.weakform.StressEquilibriumBbar.update">(StressEquilibriumBbar method)</a>
@@ -3236,6 +3304,8 @@
 </li>
         <li><a href="generated/fedoo.weakform.ExternalPressure.update_2.html#fedoo.weakform.ExternalPressure.update_2">(ExternalPressure method)</a>
 </li>
+        <li><a href="generated/fedoo.weakform.HeatEquation.update_2.html#fedoo.weakform.HeatEquation.update_2">(HeatEquation method)</a>
+</li>
         <li><a href="generated/fedoo.weakform.HourglassStiffness.update_2.html#fedoo.weakform.HourglassStiffness.update_2">(HourglassStiffness method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.Inertia.update_2.html#fedoo.weakform.Inertia.update_2">(Inertia method)</a>
@@ -3256,8 +3326,6 @@
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.update_2.html#fedoo.weakform.SpringEquilibrium.update_2">(SpringEquilibrium method)</a>
 </li>
-        <li><a href="generated/fedoo.weakform.SteadyHeatEquation.update_2.html#fedoo.weakform.SteadyHeatEquation.update_2">(SteadyHeatEquation method)</a>
-</li>
         <li><a href="generated/fedoo.weakform.StressEquilibrium.update_2.html#fedoo.weakform.StressEquilibrium.update_2">(StressEquilibrium method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.StressEquilibriumBbar.update_2.html#fedoo.weakform.StressEquilibriumBbar.update_2">(StressEquilibriumBbar method)</a>
@@ -3276,8 +3344,6 @@
 </li>
         <li><a href="generated/fedoo.problem.NonLinear.update_boundary_conditions.html#fedoo.problem.NonLinear.update_boundary_conditions">(NonLinear method)</a>
 </li>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.update_boundary_conditions.html#fedoo.problem.NonLinearNewmark.update_boundary_conditions">(NonLinearNewmark method)</a>
-</li>
         <li><a href="generated/fedoo.Problem.update_boundary_conditions.html#fedoo.Problem.update_boundary_conditions">(Problem method)</a>
 </li>
       </ul></li>
@@ -3286,17 +3352,9 @@
       <li><a href="generated/fedoo.constitutivelaw.CohesiveLaw.update_irreversible_damage.html#fedoo.constitutivelaw.CohesiveLaw.update_irreversible_damage">update_irreversible_damage() (CohesiveLaw method)</a>
 </li>
       <li><a href="generated/fedoo.problem.NonLinear.updateA.html#fedoo.problem.NonLinear.updateA">updateA() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.updateA.html#fedoo.problem.NonLinearNewmark.updateA">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.problem.NonLinear.updateD.html#fedoo.problem.NonLinear.updateD">updateD() (NonLinear method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.problem.NonLinearNewmark.updateD.html#fedoo.problem.NonLinearNewmark.updateD">(NonLinearNewmark method)</a>
 </li>
-      </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.updateStiffness.html#fedoo.problem.ExplicitDynamic.updateStiffness">updateStiffness() (ExplicitDynamic method)</a>
 
       <ul>

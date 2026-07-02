@@ -71,7 +71,6 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumFbar.html">fedoo.weakform.StressEquilibriumFbar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.html">fedoo.weakform.StressEquilibriumBbar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.SteadyHeatEquation.html">fedoo.weakform.SteadyHeatEquation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.HeatEquation.html">fedoo.weakform.HeatEquation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.BeamEquilibrium.html">fedoo.weakform.BeamEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.SpringEquilibrium.html">fedoo.weakform.SpringEquilibrium</a></li>
@@ -87,7 +86,11 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.initialize.html">fedoo.weakform.RotaryInertia.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.nvar.html">fedoo.weakform.RotaryInertia.nvar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.reset.html">fedoo.weakform.RotaryInertia.reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_damping.html">fedoo.weakform.RotaryInertia.set_damping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_dissipation.html">fedoo.weakform.RotaryInertia.set_dissipation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_inertia.html">fedoo.weakform.RotaryInertia.set_inertia</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_start.html">fedoo.weakform.RotaryInertia.set_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_storage.html">fedoo.weakform.RotaryInertia.set_storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.sum.html">fedoo.weakform.RotaryInertia.sum</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.to_start.html">fedoo.weakform.RotaryInertia.to_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.RotaryInertia.update.html">fedoo.weakform.RotaryInertia.update</a></li>
@@ -104,6 +107,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
@@ -179,8 +183,20 @@ coordinate system), e.g in 3D:
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.RotaryInertia.reset.html#fedoo.weakform.RotaryInertia.reset" title="fedoo.weakform.RotaryInertia.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotaryInertia.reset</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_start.html#fedoo.weakform.RotaryInertia.set_start" title="fedoo.weakform.RotaryInertia.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotaryInertia.set_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_damping.html#fedoo.weakform.RotaryInertia.set_damping" title="fedoo.weakform.RotaryInertia.set_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotaryInertia.set_damping</span></code></a>([damping])</p></td>
+<td><p>Mechanical alias for <code class="docutils literal notranslate"><span class="pre">set_dissipation</span></code> (tags a second-order evolution).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_dissipation.html#fedoo.weakform.RotaryInertia.set_dissipation" title="fedoo.weakform.RotaryInertia.set_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotaryInertia.set_dissipation</span></code></a>([dissipation, ...])</p></td>
+<td><p>Attach a dissipative contribution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_inertia.html#fedoo.weakform.RotaryInertia.set_inertia" title="fedoo.weakform.RotaryInertia.set_inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotaryInertia.set_inertia</span></code></a>(density_or_storage)</p></td>
+<td><p>Mechanical alias for <code class="docutils literal notranslate"><span class="pre">set_storage</span></code> (tags a second-order evolution).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_start.html#fedoo.weakform.RotaryInertia.set_start" title="fedoo.weakform.RotaryInertia.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotaryInertia.set_start</span></code></a>(assembly, pb)</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.RotaryInertia.set_storage.html#fedoo.weakform.RotaryInertia.set_storage" title="fedoo.weakform.RotaryInertia.set_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotaryInertia.set_storage</span></code></a>(storage[, evolution])</p></td>
+<td><p>Attach a time-storage weakform to this static weakform.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.RotaryInertia.sum.html#fedoo.weakform.RotaryInertia.sum" title="fedoo.weakform.RotaryInertia.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotaryInertia.sum</span></code></a>(wf1, wf2)</p></td>
 <td><p></p></td>

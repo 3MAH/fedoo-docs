@@ -28,6 +28,7 @@
          CompositeUD.initialize
          CompositeUD.local2global_H
          CompositeUD.reset
+         CompositeUD.set_density
          CompositeUD.set_start
          CompositeUD.to_start
          CompositeUD.update

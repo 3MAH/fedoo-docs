@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Integration (fedoo.time) &mdash; fedoo  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="fedoo.time.BackwardEuler" href="generated/fedoo.time.BackwardEuler.html" />
+    <link rel="prev" title="Class Assembly" href="Assembly.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/fedOOLogos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Quick_Start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Assembly.html">Class Assembly</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.time.BackwardEuler.html">fedoo.time.BackwardEuler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.time.GeneralizedAlpha.html">fedoo.time.GeneralizedAlpha</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.time.Newmark.html">fedoo.time.Newmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.time.TimeEvolution.html">fedoo.time.TimeEvolution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Time.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p id="module-fedoo.time">Problem-level time integration helpers.</p>
+<section id="time-integration-fedoo-time">
+<h1>Time Integration (<a class="reference internal" href="#module-fedoo.time" title="fedoo.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code></a>)<a class="headerlink" href="#time-integration-fedoo-time" title="Link to this heading"></a></h1>
+<p>The <a class="reference internal" href="#module-fedoo.time" title="fedoo.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code></a> module contains time integrators that are attached to a
+problem rather than embedded directly in a weak form. Weak forms describe the
+static equilibrium, storage, and dissipation terms, while the problem selects
+which temporal scheme advances each evolution category.</p>
+<p>For example, a mechanical weak form can expose a second-order storage term
+through a mass or inertia weak form, and the problem can advance it with a
+Newmark or generalized-alpha integrator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">SECOND_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Newmark</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Thermal diffusion is a first-order evolution and can be advanced independently:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">FIRST_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">BackwardEuler</span><span class="p">())</span>
+</pre></div>
+</div>
+<section id="static-analysis">
+<h2>Static analysis<a class="headerlink" href="#static-analysis" title="Link to this heading"></a></h2>
+<p>A problem remains static as long as no time integrator is attached. Weak forms
+may still expose storage metadata, such as a density or heat capacity, but this
+metadata is ignored until a compatible integrator is selected:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>An integrator can also be removed before the problem is initialized by passing
+<code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">SECOND_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Newmark</span><span class="p">())</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">SECOND_ORDER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once the problem has been initialized, compatible weak forms may already have
+been compiled into transient weak forms. At that point the integrator cannot be
+removed safely from the same problem object; create a new static problem, or
+change the assembly before removing the integrator.</p>
+</section>
+<section id="evolution-categories">
+<h2>Evolution categories<a class="headerlink" href="#evolution-categories" title="Link to this heading"></a></h2>
+<p>The predefined categories are <code class="xref py py-data docutils literal notranslate"><span class="pre">FIRST_ORDER</span></code> and <code class="xref py py-data docutils literal notranslate"><span class="pre">SECOND_ORDER</span></code>.
+They are instances of <a class="reference internal" href="generated/fedoo.time.TimeEvolution.html#fedoo.time.TimeEvolution" title="fedoo.time.TimeEvolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeEvolution</span></code></a> and are used by
+<a class="reference internal" href="generated/fedoo.problem.NonLinear.set_time_integrator.html#fedoo.problem.NonLinear.set_time_integrator" title="fedoo.problem.NonLinear.set_time_integrator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.problem.NonLinear.set_time_integrator()</span></code></a> to match weak forms with
+compatible schemes.</p>
+</section>
+<section id="integrators">
+<h2>Integrators<a class="headerlink" href="#integrators" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.time.BackwardEuler.html#fedoo.time.BackwardEuler" title="fedoo.time.BackwardEuler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BackwardEuler</span></code></a>()</p></td>
+<td><p>Backward-Euler integrator for first-order storage weakforms.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.time.GeneralizedAlpha.html#fedoo.time.GeneralizedAlpha" title="fedoo.time.GeneralizedAlpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneralizedAlpha</span></code></a>([alpha_m, alpha_f, beta, gamma])</p></td>
+<td><p>Generalized-alpha time integrator for second-order evolutions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.time.Newmark.html#fedoo.time.Newmark" title="fedoo.time.Newmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Newmark</span></code></a>([beta, gamma])</p></td>
+<td><p>Newmark-beta time integrator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.time.TimeEvolution.html#fedoo.time.TimeEvolution" title="fedoo.time.TimeEvolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TimeEvolution</span></code></a>(kind)</p></td>
+<td><p>Time-evolution category used to match weakforms and integrators.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="second-order-schemes">
+<h2>Second-order schemes<a class="headerlink" href="#second-order-schemes" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="generated/fedoo.time.GeneralizedAlpha.html#fedoo.time.GeneralizedAlpha" title="fedoo.time.GeneralizedAlpha"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneralizedAlpha</span></code></a> is the general second-order integrator. In fedoo’s
+convention, <code class="docutils literal notranslate"><span class="pre">alpha_m</span> <span class="pre">=</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">alpha_f</span> <span class="pre">=</span> <span class="pre">0</span></code> gives the classical endpoint
+Newmark scheme. The default values of <code class="docutils literal notranslate"><span class="pre">beta</span></code> and <code class="docutils literal notranslate"><span class="pre">gamma</span></code> are chosen from</p>
+<div class="math notranslate nohighlight">
+\[\gamma = \frac{1}{2} - \alpha_m + \alpha_f,
+\qquad
+\beta = \frac{1}{4}(1 - \alpha_m + \alpha_f)^2.\]</div>
+<p>The <a class="reference internal" href="generated/fedoo.time.Newmark.html#fedoo.time.Newmark" title="fedoo.time.Newmark"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newmark</span></code></a> constructor is kept as the compact interface for the
+common case:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Newmark</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which is equivalent to:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">GeneralizedAlpha</span><span class="p">(</span><span class="n">alpha_m</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">alpha_f</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                         <span class="n">beta</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="dissipation">
+<h2>Dissipation<a class="headerlink" href="#dissipation" title="Link to this heading"></a></h2>
+<p>Physical damping is defined on the weak form so that only selected parts of a
+multi-assembly problem are damped:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">set_dissipation</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The keyword form defines Rayleigh damping
+<span class="math notranslate nohighlight">\(\mathbf{C} = \alpha\mathbf{M} + \beta\mathbf{K}\)</span>. A dedicated
+dissipative weak form can also be passed to <code class="docutils literal notranslate"><span class="pre">set_dissipation</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Assembly.html" class="btn btn-neutral float-left" title="Class Assembly" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/fedoo.time.BackwardEuler.html" class="btn btn-neutral float-right" title="fedoo.time.BackwardEuler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

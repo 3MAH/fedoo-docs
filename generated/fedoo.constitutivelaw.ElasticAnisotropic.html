@@ -75,6 +75,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.initialize.html">fedoo.constitutivelaw.ElasticAnisotropic.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.local2global_H.html">fedoo.constitutivelaw.ElasticAnisotropic.local2global_H</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.reset.html">fedoo.constitutivelaw.ElasticAnisotropic.reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.set_density.html">fedoo.constitutivelaw.ElasticAnisotropic.set_density</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.set_start.html">fedoo.constitutivelaw.ElasticAnisotropic.set_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.to_start.html">fedoo.constitutivelaw.ElasticAnisotropic.to_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.update.html">fedoo.constitutivelaw.ElasticAnisotropic.update</a></li>
@@ -99,6 +100,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
@@ -186,13 +188,16 @@ or use a local frame.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.reset.html#fedoo.constitutivelaw.ElasticAnisotropic.reset" title="fedoo.constitutivelaw.ElasticAnisotropic.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticAnisotropic.reset</span></code></a>()</p></td>
 <td><p>Reset the constitutive law.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.set_start.html#fedoo.constitutivelaw.ElasticAnisotropic.set_start" title="fedoo.constitutivelaw.ElasticAnisotropic.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticAnisotropic.set_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.set_density.html#fedoo.constitutivelaw.ElasticAnisotropic.set_density" title="fedoo.constitutivelaw.ElasticAnisotropic.set_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticAnisotropic.set_density</span></code></a>(density)</p></td>
+<td><p>Set the mass density associated with this mechanical material.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.set_start.html#fedoo.constitutivelaw.ElasticAnisotropic.set_start" title="fedoo.constitutivelaw.ElasticAnisotropic.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticAnisotropic.set_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Begin a new time iteration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.to_start.html#fedoo.constitutivelaw.ElasticAnisotropic.to_start" title="fedoo.constitutivelaw.ElasticAnisotropic.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticAnisotropic.to_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.to_start.html#fedoo.constitutivelaw.ElasticAnisotropic.to_start" title="fedoo.constitutivelaw.ElasticAnisotropic.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticAnisotropic.to_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Restart the current time iteration.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.update.html#fedoo.constitutivelaw.ElasticAnisotropic.update" title="fedoo.constitutivelaw.ElasticAnisotropic.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticAnisotropic.update</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.update.html#fedoo.constitutivelaw.ElasticAnisotropic.update" title="fedoo.constitutivelaw.ElasticAnisotropic.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticAnisotropic.update</span></code></a>(assembly, pb)</p></td>
 <td><p>Update the constitutive law for the current problem state.</p></td>
 </tr>
 </tbody>

@@ -26,7 +26,11 @@
          PlateKirchhoffLoveEquilibrium.initialize
          PlateKirchhoffLoveEquilibrium.nvar
          PlateKirchhoffLoveEquilibrium.reset
+         PlateKirchhoffLoveEquilibrium.set_damping
+         PlateKirchhoffLoveEquilibrium.set_dissipation
+         PlateKirchhoffLoveEquilibrium.set_inertia
          PlateKirchhoffLoveEquilibrium.set_start
+         PlateKirchhoffLoveEquilibrium.set_storage
          PlateKirchhoffLoveEquilibrium.sum
          PlateKirchhoffLoveEquilibrium.to_start
          PlateKirchhoffLoveEquilibrium.update

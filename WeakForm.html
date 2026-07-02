@@ -72,7 +72,6 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumFbar.html">fedoo.weakform.StressEquilibriumFbar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumBbar.html">fedoo.weakform.StressEquilibriumBbar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.SteadyHeatEquation.html">fedoo.weakform.SteadyHeatEquation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.HeatEquation.html">fedoo.weakform.HeatEquation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html">fedoo.weakform.BeamEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.SpringEquilibrium.html">fedoo.weakform.SpringEquilibrium</a></li>
@@ -91,6 +90,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
@@ -165,52 +165,49 @@ existing class.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumBbar.html#fedoo.weakform.StressEquilibriumBbar" title="fedoo.weakform.StressEquilibriumBbar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar</span></code></a>(constitutivelaw[, ...])</p></td>
 <td><p>Mechanical equilibrium equation for solids with the Fbar method.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.SteadyHeatEquation.html#fedoo.weakform.SteadyHeatEquation" title="fedoo.weakform.SteadyHeatEquation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SteadyHeatEquation</span></code></a>(thermal_constitutivelaw)</p></td>
-<td><p>Weak formulation of the steady heat equation (without time evolution).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.HeatEquation.html#fedoo.weakform.HeatEquation" title="fedoo.weakform.HeatEquation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HeatEquation</span></code></a>(thermal_constitutivelaw[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.HeatEquation.html#fedoo.weakform.HeatEquation" title="fedoo.weakform.HeatEquation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HeatEquation</span></code></a>(thermal_constitutivelaw[, ...])</p></td>
 <td><p>Weak formulation of the heat equation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html#fedoo.weakform.BeamEquilibrium" title="fedoo.weakform.BeamEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamEquilibrium</span></code></a>(material[, A, Jx, Iyy, Izz, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html#fedoo.weakform.BeamEquilibrium" title="fedoo.weakform.BeamEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamEquilibrium</span></code></a>(material[, A, Jx, Iyy, Izz, ...])</p></td>
 <td><p>Weak formulation of the mechanical equilibrium equation for beam models.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.SpringEquilibrium.html#fedoo.weakform.SpringEquilibrium" title="fedoo.weakform.SpringEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpringEquilibrium</span></code></a>(K[, name, nlgeom, space])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.SpringEquilibrium.html#fedoo.weakform.SpringEquilibrium" title="fedoo.weakform.SpringEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpringEquilibrium</span></code></a>(K[, name, nlgeom, space])</p></td>
 <td><p>Weak formulation of the mechanical equilibrium equation for spring models.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibrium.html#fedoo.weakform.PlateEquilibrium" title="fedoo.weakform.PlateEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateEquilibrium</span></code></a>(plate_properties[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibrium.html#fedoo.weakform.PlateEquilibrium" title="fedoo.weakform.PlateEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateEquilibrium</span></code></a>(plate_properties[, ...])</p></td>
 <td><p>Mechanical equilibrium equation for plate models.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibriumFI.html#fedoo.weakform.PlateEquilibriumFI" title="fedoo.weakform.PlateEquilibriumFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateEquilibriumFI</span></code></a>(plate_properties[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibriumFI.html#fedoo.weakform.PlateEquilibriumFI" title="fedoo.weakform.PlateEquilibriumFI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateEquilibriumFI</span></code></a>(plate_properties[, ...])</p></td>
 <td><p>Mechanical equilibrium equation for plate models, with full integration.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateKirchhoffLoveEquilibrium.html#fedoo.weakform.PlateKirchhoffLoveEquilibrium" title="fedoo.weakform.PlateKirchhoffLoveEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateKirchhoffLoveEquilibrium</span></code></a>(plate_properties)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateKirchhoffLoveEquilibrium.html#fedoo.weakform.PlateKirchhoffLoveEquilibrium" title="fedoo.weakform.PlateKirchhoffLoveEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateKirchhoffLoveEquilibrium</span></code></a>(plate_properties)</p></td>
 <td><p>Mechanical weak form for the membrane and bending contributions in plate models.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateShearEquilibrium.html#fedoo.weakform.PlateShearEquilibrium" title="fedoo.weakform.PlateShearEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium</span></code></a>(plate_properties[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateShearEquilibrium.html#fedoo.weakform.PlateShearEquilibrium" title="fedoo.weakform.PlateShearEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium</span></code></a>(plate_properties[, ...])</p></td>
 <td><p>Mechanical weak form for the transverse shear contribution in plate models.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateDrillingPenalty.html#fedoo.weakform.PlateDrillingPenalty" title="fedoo.weakform.PlateDrillingPenalty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateDrillingPenalty</span></code></a>(plate_properties[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.PlateDrillingPenalty.html#fedoo.weakform.PlateDrillingPenalty" title="fedoo.weakform.PlateDrillingPenalty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateDrillingPenalty</span></code></a>(plate_properties[, ...])</p></td>
 <td><p>Mechanical weak form for the drilling penalty in plate models.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.Inertia.html#fedoo.weakform.Inertia" title="fedoo.weakform.Inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Inertia</span></code></a>(density[, name, space])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.Inertia.html#fedoo.weakform.Inertia" title="fedoo.weakform.Inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Inertia</span></code></a>(density[, name, space])</p></td>
 <td><p>Weak formulation related to the inertia effect into dynamical simulation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.RotaryInertia.html#fedoo.weakform.RotaryInertia" title="fedoo.weakform.RotaryInertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotaryInertia</span></code></a>(rotary_inertia[, name, space])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.RotaryInertia.html#fedoo.weakform.RotaryInertia" title="fedoo.weakform.RotaryInertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RotaryInertia</span></code></a>(rotary_inertia[, name, space])</p></td>
 <td><p>Rotary inertia effect into dynamical simulation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.InterfaceForce.html#fedoo.weakform.InterfaceForce" title="fedoo.weakform.InterfaceForce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InterfaceForce</span></code></a>(constitutivelaw[, name, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.InterfaceForce.html#fedoo.weakform.InterfaceForce" title="fedoo.weakform.InterfaceForce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InterfaceForce</span></code></a>(constitutivelaw[, name, ...])</p></td>
 <td><p>Weak formulation of the interface equilibrium equation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.DistributedLoad.html#fedoo.weakform.DistributedLoad" title="fedoo.weakform.DistributedLoad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedLoad</span></code></a>(distributed_force[, name, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.DistributedLoad.html#fedoo.weakform.DistributedLoad" title="fedoo.weakform.DistributedLoad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedLoad</span></code></a>(distributed_force[, name, ...])</p></td>
 <td><p>Weak formulation for a distributed load.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.ExternalPressure.html#fedoo.weakform.ExternalPressure" title="fedoo.weakform.ExternalPressure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExternalPressure</span></code></a>(pressure[, name, nlgeom, space])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.ExternalPressure.html#fedoo.weakform.ExternalPressure" title="fedoo.weakform.ExternalPressure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExternalPressure</span></code></a>(pressure[, name, nlgeom, space])</p></td>
 <td><p>Weak formulation for a pressure over a surface.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.HourglassStiffness.html#fedoo.weakform.HourglassStiffness" title="fedoo.weakform.HourglassStiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HourglassStiffness</span></code></a>([stiffness_coef, name, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.HourglassStiffness.html#fedoo.weakform.HourglassStiffness" title="fedoo.weakform.HourglassStiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HourglassStiffness</span></code></a>([stiffness_coef, name, ...])</p></td>
 <td><p>Hourglass stiffness weak formulation for reduced integration elements.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.ArtificialDamping.html#fedoo.weakform.ArtificialDamping" title="fedoo.weakform.ArtificialDamping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArtificialDamping</span></code></a>([c_stab, energy_fraction, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.ArtificialDamping.html#fedoo.weakform.ArtificialDamping" title="fedoo.weakform.ArtificialDamping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArtificialDamping</span></code></a>([c_stab, energy_fraction, ...])</p></td>
 <td><p>Weak formulation for artificial viscous stabilization.</p></td>
 </tr>
 </tbody>

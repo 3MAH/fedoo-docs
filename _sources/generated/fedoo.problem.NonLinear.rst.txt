@@ -57,6 +57,7 @@
          NonLinear.set_reuse_factorization
          NonLinear.set_solver
          NonLinear.set_start
+         NonLinear.set_time_integrator
          NonLinear.solve
          NonLinear.solve_nr_increment
          NonLinear.solve_time_increment

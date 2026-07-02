@@ -26,7 +26,11 @@
          PlateDrillingPenalty.initialize
          PlateDrillingPenalty.nvar
          PlateDrillingPenalty.reset
+         PlateDrillingPenalty.set_damping
+         PlateDrillingPenalty.set_dissipation
+         PlateDrillingPenalty.set_inertia
          PlateDrillingPenalty.set_start
+         PlateDrillingPenalty.set_storage
          PlateDrillingPenalty.sum
          PlateDrillingPenalty.to_start
          PlateDrillingPenalty.update

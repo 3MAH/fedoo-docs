@@ -27,6 +27,7 @@
          ElasticIsotrop.initialize
          ElasticIsotrop.local2global_H
          ElasticIsotrop.reset
+         ElasticIsotrop.set_density
          ElasticIsotrop.set_start
          ElasticIsotrop.to_start
          ElasticIsotrop.update

@@ -24,7 +24,11 @@
          StressEquilibriumBbar.initialize
          StressEquilibriumBbar.nvar
          StressEquilibriumBbar.reset
+         StressEquilibriumBbar.set_damping
+         StressEquilibriumBbar.set_dissipation
+         StressEquilibriumBbar.set_inertia
          StressEquilibriumBbar.set_start
+         StressEquilibriumBbar.set_storage
          StressEquilibriumBbar.sum
          StressEquilibriumBbar.to_start
          StressEquilibriumBbar.update

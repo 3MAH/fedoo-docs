@@ -26,7 +26,11 @@
          PlateEquilibriumFI.initialize
          PlateEquilibriumFI.nvar
          PlateEquilibriumFI.reset
+         PlateEquilibriumFI.set_damping
+         PlateEquilibriumFI.set_dissipation
+         PlateEquilibriumFI.set_inertia
          PlateEquilibriumFI.set_start
+         PlateEquilibriumFI.set_storage
          PlateEquilibriumFI.sum
          PlateEquilibriumFI.to_start
          PlateEquilibriumFI.update
