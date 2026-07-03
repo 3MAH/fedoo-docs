@@ -26,6 +26,7 @@
          Simcoon.initialize
          Simcoon.local2global_H
          Simcoon.reset
+         Simcoon.set_density
          Simcoon.set_start
          Simcoon.to_start
          Simcoon.update

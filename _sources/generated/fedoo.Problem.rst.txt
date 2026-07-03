@@ -32,6 +32,7 @@
          Problem.get_ext_forces
          Problem.get_results
          Problem.init_bc_start_value
+         Problem.invalidate_factorization
          Problem.make_active
          Problem.save_results
          Problem.set_A
@@ -40,6 +41,7 @@
          Problem.set_X
          Problem.set_active
          Problem.set_dof_solution
+         Problem.set_reuse_factorization
          Problem.set_solver
          Problem.solve
          Problem.update_boundary_conditions

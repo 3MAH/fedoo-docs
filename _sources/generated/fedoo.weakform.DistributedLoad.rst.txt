@@ -24,7 +24,11 @@
          DistributedLoad.initialize
          DistributedLoad.nvar
          DistributedLoad.reset
+         DistributedLoad.set_damping
+         DistributedLoad.set_dissipation
+         DistributedLoad.set_inertia
          DistributedLoad.set_start
+         DistributedLoad.set_storage
          DistributedLoad.sum
          DistributedLoad.to_start
          DistributedLoad.update

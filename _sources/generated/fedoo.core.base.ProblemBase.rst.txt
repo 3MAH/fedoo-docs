@@ -22,8 +22,10 @@
          ProblemBase.add_global_dof
          ProblemBase.get_active
          ProblemBase.get_all
+         ProblemBase.invalidate_factorization
          ProblemBase.make_active
          ProblemBase.set_active
+         ProblemBase.set_reuse_factorization
          ProblemBase.set_solver
       
       

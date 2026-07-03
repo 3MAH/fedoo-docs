@@ -24,7 +24,11 @@
          StressEquilibriumMixed.initialize
          StressEquilibriumMixed.nvar
          StressEquilibriumMixed.reset
+         StressEquilibriumMixed.set_damping
+         StressEquilibriumMixed.set_dissipation
+         StressEquilibriumMixed.set_inertia
          StressEquilibriumMixed.set_start
+         StressEquilibriumMixed.set_storage
          StressEquilibriumMixed.sum
          StressEquilibriumMixed.to_start
          StressEquilibriumMixed.update
