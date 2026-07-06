@@ -1,0 +1,49 @@
+﻿fedoo.constraint.MeanValueConstraint
+====================================
+
+.. currentmodule:: fedoo.constraint
+
+.. autoclass:: MeanValueConstraint
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         MeanValueConstraint.assemble_global_mat
+         MeanValueConstraint.delete_global_mat
+         MeanValueConstraint.get_all
+         MeanValueConstraint.get_global_matrix
+         MeanValueConstraint.get_global_vector
+         MeanValueConstraint.initialize
+         MeanValueConstraint.reset
+         MeanValueConstraint.set_start
+         MeanValueConstraint.to_start
+         MeanValueConstraint.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         MeanValueConstraint.name
+         MeanValueConstraint.space
+         MeanValueConstraint.current
+         MeanValueConstraint.associated_assembly_sum
+  
+  

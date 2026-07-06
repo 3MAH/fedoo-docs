@@ -76,6 +76,7 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.PeriodicBC.html">fedoo.constraint.PeriodicBC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
@@ -227,6 +228,32 @@ to the assembly defining the stiffness matrix.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.SurfaceForce.html#fedoo.constraint.SurfaceForce" title="fedoo.constraint.SurfaceForce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.SurfaceForce</span></code></a>(mesh, force[, ...])</p></td>
 <td><p>Surface stress with a fixed orientation.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The mean value of a field over a set of nodes can be constrained with the
+<a class="reference internal" href="generated/fedoo.constraint.MeanValueConstraint.html#fedoo.constraint.MeanValueConstraint" title="fedoo.constraint.MeanValueConstraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.MeanValueConstraint</span></code></a> class. This constraint is
+also an assembly object that should be summed with the assembly defining
+the stiffness matrix. The main application is the removal of the rigid body
+translation in periodic homogenization problems, by enforcing a zero mean
+displacement instead of blocking an arbitrary node:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span> <span class="o">+</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanValueConstraint</span><span class="p">(</span><span class="n">mesh</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The constraint is enforced with Lagrange multipliers (one additional global
+dof per variable) leading to a saddle-point system: a direct solver is
+required (this is the default solver). The imposed value is not affected by
+the time evolution of the problem (no ramp is applied).</p>
+<p>Unlike blocking an arbitrary node, this gauge is independent of the choice
+of node and, being the zero-mean condition, gives the canonical fluctuation
+field of periodic homogenization (the volume average of the displacement is
+zero). The single-node pin remains a valid and cheaper alternative when only
+the stresses (e.g. the homogenized stiffness) are of interest, since both
+constraints give the same stress field.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.MeanValueConstraint.html#fedoo.constraint.MeanValueConstraint" title="fedoo.constraint.MeanValueConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.MeanValueConstraint</span></code></a>(mesh[, ...])</p></td>
+<td><p>Enforce the weighted mean of a field over a set of nodes.</p></td>
 </tr>
 </tbody>
 </table>
