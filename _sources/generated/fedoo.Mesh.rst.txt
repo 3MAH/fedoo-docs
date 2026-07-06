@@ -36,7 +36,7 @@
          Mesh.find_elements
          Mesh.find_isolated_nodes
          Mesh.find_nodes
-         Mesh.from_meshlane
+         Mesh.from_meshio
          Mesh.from_pyvista
          Mesh.gausspoint_coordinates
          Mesh.get_all
