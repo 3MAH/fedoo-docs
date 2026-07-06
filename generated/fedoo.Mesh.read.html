@@ -81,6 +81,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.find_elements.html">fedoo.Mesh.find_elements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.find_isolated_nodes.html">fedoo.Mesh.find_isolated_nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.find_nodes.html">fedoo.Mesh.find_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.from_meshlane.html">fedoo.Mesh.from_meshlane</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.from_pyvista.html">fedoo.Mesh.from_pyvista</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.gausspoint_coordinates.html">fedoo.Mesh.gausspoint_coordinates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.get_all.html">fedoo.Mesh.get_all</a></li>
@@ -185,10 +186,13 @@
 <dt class="sig sig-object py" id="fedoo.Mesh.read">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.core.mesh.Mesh"><span class="pre">Mesh</span></a></span></span><a class="headerlink" href="#fedoo.Mesh.read" title="Link to this definition"></a></dt>
 <dd><p>Build a Mesh from a file.</p>
-<p>The file type is inferred from the file name.
-This function use the pyvista read method which
-is itself based on the vtk native readers and the meshio readers
-(available only if the meshio lib is installed.)</p>
+<p>The file type is inferred from the file name. FEA solver decks such
+as Abaqus (<code class="docutils literal notranslate"><span class="pre">.inp</span></code>) and Ansys/APDL (<code class="docutils literal notranslate"><span class="pre">.cdb</span></code>) are read with the
+meshlane library (a descendant of meshio); these support second-order
+(quadratic) elements, multiple element types (returned as a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code>) and node/element sets (<code class="docutils literal notranslate"><span class="pre">*NSET</span></code>/<code class="docutils literal notranslate"><span class="pre">*ELSET</span></code>).
+Other formats are read with pyvista, which relies on the native VTK
+readers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -199,9 +203,6 @@ By default, the  Mesh is not added to the list.</p></li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>For now, only mesh with single element type may be imported.
-Multi-element meshes will be integrated later.</p>
 </dd></dl>
 
 </section>
