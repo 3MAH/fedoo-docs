@@ -149,10 +149,11 @@
 <dd><p>Weak formulation for a distributed load.</p>
 <p>This weak formulation permit to define distributed loads and
 should be associated to another weak formulation (e.g. StressEquilibrium).</p>
-<p>The easiest way to define a distributed load is to directly
-build the corresponding assembly with
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">fd.constraint.DistributedForce()</span></code> or
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">fd.constraint.SurfaceForce()</span></code>.</p>
+<p>The recommended way to apply a distributed load is to build the
+corresponding assembly with <code class="xref py py-meth docutils literal notranslate"><span class="pre">fd.constraint.DistributedForce()</span></code> or
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">fd.constraint.SurfaceForce()</span></code> and add it to the problem boundary
+conditions with <code class="docutils literal notranslate"><span class="pre">pb.bc.add(load_assembly)</span></code>. The assembly is then
+converted to an equivalent Neumann boundary condition.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.weakform.DistributedLoad.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distributed_force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.DistributedLoad.__init__" title="Link to this definition"></a></dt>

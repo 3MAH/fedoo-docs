@@ -214,9 +214,31 @@ factor to the prescribed value and should be between 0 and 1.</p>
 </section>
 <section id="avdanced-bc-and-constraints">
 <h2>Avdanced BC and constraints<a class="headerlink" href="#avdanced-bc-and-constraints" title="Link to this heading"></a></h2>
-<p>Distributed loads are applied to a Problem by building dedicated assembly
-objects. To add them to a problem, one should add the constraint assembly
-to the assembly defining the stiffness matrix.</p>
+<p>Distributed loads are defined by dedicated assembly objects. The recommended
+way to apply them is to add the load assembly to the problem boundary
+conditions. If the assembly provides an <code class="docutils literal notranslate"><span class="pre">as_neumann()</span></code> method,
+<a class="reference internal" href="generated/fedoo.ListBC.add.html#fedoo.ListBC.add" title="fedoo.ListBC.add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ListBC.add()</span></code></a> automatically converts it to an equivalent
+Neumann boundary condition. This is especially useful for nonlinear problems:
+the load is included in the external force vector, follows the usual load
+coefficient, and is taken into account by the residual normalization.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solid_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+<span class="n">pressure</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="p">(</span><span class="n">surface_mesh</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The explicit form is also available:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pressure</span><span class="o">.</span><span class="n">as_neumann</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The load assembly can still be combined directly with the mechanical assembly.
+This form is kept as an alternative, but is not recommended for nonlinear
+analyses because the load is part of the residual assembly rather than a
+boundary-condition force.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">solid_assembly</span> <span class="o">+</span> <span class="n">pressure</span><span class="p">)</span>
+</pre></div>
+</div>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.DistributedForce.html#fedoo.constraint.DistributedForce" title="fedoo.constraint.DistributedForce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.DistributedForce</span></code></a>(mesh, force)</p></td>
@@ -230,8 +252,8 @@ to the assembly defining the stiffness matrix.</p>
 </tr>
 </tbody>
 </table>
-<p>Some advanced constraints base on multiple linearized MPC are available in
-fedoo. They can be created and add to the problem with the pb.bc.add method.</p>
+<p>Some advanced constraints based on multiple linearized MPC are available in
+fedoo. They can be created and added to the problem with the pb.bc.add method.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.PeriodicBC.html#fedoo.constraint.PeriodicBC" title="fedoo.constraint.PeriodicBC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.PeriodicBC</span></code></a>([...])</p></td>

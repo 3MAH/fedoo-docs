@@ -19,6 +19,7 @@
          :toctree:
          
       
+         Pressure.as_neumann
          Pressure.assemble_global_mat
          Pressure.compute_elementary_operators
          Pressure.convert_data

@@ -141,7 +141,8 @@ if there is one.</p>
 <p>Three possible uses:</p>
 <ul>
 <li><p>ListBC.add(bc), where bc is any BC object.</p>
-<p>Add the object bc at the end of the list. (equivalent to ListBC.append(bc))</p>
+<p>Add the object bc at the end of the list. (equivalent to ListBC.append(bc))
+If bc provides an as_neumann() method, it is converted first.</p>
 </li>
 <li><p>ListBC.add(bc_type, node_set, variable, value, time_func=None, start_value=None, name=””):</p>
 <p>Define some standard boundary conditions (Dirichlet of Neumann BC), using
