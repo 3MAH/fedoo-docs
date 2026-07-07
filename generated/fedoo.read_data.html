@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Examples" href="../examples/index.html" />
-    <link rel="prev" title="fedoo.MultiFrameDataSet.n_iter" href="fedoo.MultiFrameDataSet.n_iter.html" /> 
+    <link rel="prev" title="fedoo.MultiFrameDataSet.active_submesh" href="fedoo.MultiFrameDataSet.active_submesh.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -127,20 +127,21 @@
 <h1>fedoo.read_data<a class="headerlink" href="#fedoo-read-data" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="fedoo.read_data">
-<span class="sig-name descname"><span class="pre">read_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fdz'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.read_data" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">read_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fdh5'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.read_data" title="Link to this definition"></a></dt>
 <dd><p>Read a file from disk.</p>
 <p>The file may be a single file or a directory containing files from
 several iterations. The file format may be specified either by the
 filename extension or by the <code class="docutils literal notranslate"><span class="pre">file_format</span></code> parameter (default is
-<code class="docutils literal notranslate"><span class="pre">&quot;fdz&quot;</span></code>) when the filename has no extension.</p>
-<p>Supported file formats are <code class="docutils literal notranslate"><span class="pre">&quot;fdz&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;vtk&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;npz&quot;</span></code>.
-For <code class="docutils literal notranslate"><span class="pre">&quot;npz&quot;</span></code> files, a VTK mesh with the same base name is also searched.</p>
+<code class="docutils literal notranslate"><span class="pre">&quot;fdh5&quot;</span></code>) when the filename has no extension.</p>
+<p>Supported file formats are <code class="docutils literal notranslate"><span class="pre">&quot;fdz&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;fdh5&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;vtk&quot;</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">&quot;npz&quot;</span></code>. For <code class="docutils literal notranslate"><span class="pre">&quot;npz&quot;</span></code> files, a VTK mesh with the same base name is
+also searched.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filename</strong> (<em>str</em>) – Path to the file or directory to read.</p></li>
 <li><p><strong>file_format</strong> (<em>str</em><em>, </em><em>optional</em>) – File format identifier to use when the filename has no extension.
-Default is <code class="docutils literal notranslate"><span class="pre">&quot;fdz&quot;</span></code>.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">&quot;fdh5&quot;</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -158,7 +159,7 @@ Default is <code class="docutils literal notranslate"><span class="pre">&quot;fd
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.MultiFrameDataSet.n_iter.html" class="btn btn-neutral float-left" title="fedoo.MultiFrameDataSet.n_iter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.MultiFrameDataSet.active_submesh.html" class="btn btn-neutral float-left" title="fedoo.MultiFrameDataSet.active_submesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../examples/index.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
