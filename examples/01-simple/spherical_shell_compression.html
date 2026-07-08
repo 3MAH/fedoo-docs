@@ -185,17 +185,16 @@ minimal or maximal z value (sphere extremity along the z axis.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Now we build the pressure assembly by extracting the surface mesh.
-The pressure assembly is then added to the solid_assembly to form
-the global assembly.</p>
+<p>Now we build the pressure load by extracting the loaded surface mesh.
+For nonlinear analyses, the pressure is added as an external Neumann boundary
+condition so that the residual normalization sees the applied load.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pressure_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="p">(</span>
     <span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="n">boundaries</span><span class="p">),</span>
     <span class="n">pressure</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">assembly</span> <span class="o">=</span> <span class="n">solid_assembly</span> <span class="o">+</span> <span class="n">pressure_assembly</span>
 </pre></div>
 </div>
-<p>Define a linear analysis and solve the problem.</p>
+<p>Define a nonlinear analysis and solve the problem.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To improve numerical stability, a few displacement boundary conditions are
@@ -205,7 +204,10 @@ Without them, the unconstrained problem is singular; some solvers may still
 return a usable strain/stress field, but the displacement field can contain
 arbitrary rigid-body motion.</p>
 </div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">assembly</span> <span class="o">=</span> <span class="n">solid_assembly</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pressure_assembly</span><span class="p">)</span>
 
 <span class="n">nodes</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span>
 <span class="n">node_a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]))</span>
@@ -216,7 +218,19 @@ arbitrary rigid-body motion.</p>
 <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="n">node_b</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;DispY&quot;</span><span class="p">,</span> <span class="s2">&quot;DispZ&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="n">node_c</span><span class="p">,</span> <span class="s2">&quot;DispZ&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.10000 - dt 0.10000 - NR iter: 1 - Err: 0.00000
+Iter 2 - Time: 0.20000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+Iter 3 - Time: 0.30000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+Iter 4 - Time: 0.40000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+Iter 5 - Time: 0.50000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+Iter 6 - Time: 0.60000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+Iter 7 - Time: 0.70000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+Iter 8 - Time: 0.80000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+Iter 9 - Time: 0.90000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+Iter 10 - Time: 1.00000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
 </pre></div>
 </div>
 <p>Extract the results:
@@ -231,7 +245,7 @@ defined in the element local coordinate system
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.422 seconds)</p>
+<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.916 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-spherical-shell-compression-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/bbbbe72a68b7ca22134fff70ab3d1b26/spherical_shell_compression.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">spherical_shell_compression.ipynb</span></code></a></p>

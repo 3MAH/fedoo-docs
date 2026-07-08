@@ -19,6 +19,7 @@
          :toctree:
          
       
+         SurfaceForce.as_neumann
          SurfaceForce.assemble_global_mat
          SurfaceForce.compute_elementary_operators
          SurfaceForce.convert_data

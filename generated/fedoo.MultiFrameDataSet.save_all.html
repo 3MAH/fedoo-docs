@@ -128,13 +128,12 @@
 <h1>fedoo.MultiFrameDataSet.save_all<a class="headerlink" href="#fedoo-multiframedataset-save-all" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.MultiFrameDataSet.save_all">
-<span class="sig-prename descclassname"><span class="pre">MultiFrameDataSet.</span></span><span class="sig-name descname"><span class="pre">save_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fdh5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MultiFrameDataSet.save_all" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">MultiFrameDataSet.</span></span><span class="sig-name descname"><span class="pre">save_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fdz'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MultiFrameDataSet.save_all" title="Link to this definition"></a></dt>
 <dd><p>Save all data from MultiFrameDataSet.</p>
 <p>If filename has no extension, the format is given in the parameter file_format
-(default = ‘fdh5’).
-If format is not ‘fdz’ or ‘fdh5’, the data files are saved using the given filename and format
-simply adding the iteration number to the file name. The mesh is also saved in vtk format in the same directory.
-For ‘fdh5’, all iterations are written into one HDF5 file.</p>
+(default = ‘fdz’).
+If format is not ‘fdz’, the data files are saved using the given filename and format
+simply adding the iteration number to the file name. The mesh is also saved in vtk format in the same directory.</p>
 </dd></dl>
 
 </section>

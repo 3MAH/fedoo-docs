@@ -153,11 +153,11 @@ minimal or maximal z value (sphere extremity along the z axis.
 
 .. GENERATED FROM PYTHON SOURCE LINES 51-54
 
-Now we build the pressure assembly by extracting the surface mesh.
-The pressure assembly is then added to the solid_assembly to form
-the global assembly.
+Now we build the pressure load by extracting the loaded surface mesh.
+For nonlinear analyses, the pressure is added as an external Neumann boundary
+condition so that the residual normalization sees the applied load.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-61
+.. GENERATED FROM PYTHON SOURCE LINES 54-60
 
 .. code-block:: Python
 
@@ -166,7 +166,6 @@ the global assembly.
         mesh.extract_elements(boundaries),
         pressure,
     )
-    assembly = solid_assembly + pressure_assembly
 
 
 
@@ -175,25 +174,27 @@ the global assembly.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 62-72
+.. GENERATED FROM PYTHON SOURCE LINES 61-71
 
-Define a linear analysis and solve the problem.
+Define a nonlinear analysis and solve the problem.
 
 .. note::
-   To improve numerical stability, a few displacement boundary conditions are
-   added to remove rigid-body motions. These constraints do not affect the
-   strain/stress solution because they only suppress the nullspace modes.
-   Without them, the unconstrained problem is singular; some solvers may still
-   return a usable strain/stress field, but the displacement field can contain
-   arbitrary rigid-body motion.
+  To improve numerical stability, a few displacement boundary conditions are
+  added to remove rigid-body motions. These constraints do not affect the
+  strain/stress solution because they only suppress the nullspace modes.
+  Without them, the unconstrained problem is singular; some solvers may still
+  return a usable strain/stress field, but the displacement field can contain
+  arbitrary rigid-body motion.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-86
+.. GENERATED FROM PYTHON SOURCE LINES 71-87
 
 .. code-block:: Python
 
+    assembly = solid_assembly
 
-    pb = fd.problem.Linear(assembly)
+    pb = fd.problem.NonLinear(assembly, nlgeom=False)
+    pb.bc.add(pressure_assembly)
 
     nodes = mesh.nodes
     node_a = int(np.argmin(nodes[:, 0]))
@@ -204,16 +205,31 @@ Define a linear analysis and solve the problem.
     pb.bc.add("Dirichlet", node_b, ["DispY", "DispZ"], 0)
     pb.bc.add("Dirichlet", node_c, "DispZ", 0)
 
-    pb.solve()
+    pb.nlsolve()
 
 
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Iter 1 - Time: 0.10000 - dt 0.10000 - NR iter: 1 - Err: 0.00000
+    Iter 2 - Time: 0.20000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+    Iter 3 - Time: 0.30000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+    Iter 4 - Time: 0.40000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+    Iter 5 - Time: 0.50000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+    Iter 6 - Time: 0.60000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+    Iter 7 - Time: 0.70000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+    Iter 8 - Time: 0.80000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+    Iter 9 - Time: 0.90000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+    Iter 10 - Time: 1.00000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-92
+
+.. GENERATED FROM PYTHON SOURCE LINES 88-93
 
 Extract the results:
 position = 1 is set for the surface along the positif direction of the
@@ -221,7 +237,7 @@ normal vector (0 is the mean plane). The strains and stresses components are
 defined in the element local coordinate system
 (mesh.get_element_local_frame()).
 
-.. GENERATED FROM PYTHON SOURCE LINES 92-98
+.. GENERATED FROM PYTHON SOURCE LINES 93-99
 
 .. code-block:: Python
 
@@ -249,7 +265,7 @@ defined in the element local coordinate system
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.422 seconds)
+   **Total running time of the script:** (0 minutes 0.916 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_spherical_shell_compression.py:

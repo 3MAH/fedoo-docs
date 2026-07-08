@@ -88,14 +88,12 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_csv.html">fedoo.DataSet.to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_dict.html">fedoo.DataSet.to_dict</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_excel.html">fedoo.DataSet.to_excel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_fdh5.html">fedoo.DataSet.to_fdh5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_fdz.html">fedoo.DataSet.to_fdz</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_msh.html">fedoo.DataSet.to_msh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_pandas.html">fedoo.DataSet.to_pandas</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.DataSet.to_pyvista</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_vtk.html">fedoo.DataSet.to_vtk</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.dict_data.html">fedoo.DataSet.dict_data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.active_submesh.html">fedoo.DataSet.active_submesh</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.html">fedoo.MultiFrameDataSet</a></li>
@@ -155,27 +153,8 @@
 <h1>fedoo.DataSet.to_pyvista<a class="headerlink" href="#fedoo-dataset-to-pyvista" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.DataSet.to_pyvista">
-<span class="sig-prename descclassname"><span class="pre">DataSet.</span></span><span class="sig-name descname"><span class="pre">to_pyvista</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gp_data_to_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_submeshes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.DataSet.to_pyvista" title="Link to this definition"></a></dt>
-<dd><p>Convert the dataset to a PyVista unstructured grid.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>gp_data_to_node</strong> (<em>bool</em><em>, </em><em>default=True</em>) – For a single <code class="docutils literal notranslate"><span class="pre">Mesh</span></code>, convert Gauss point data to node data before
-export. For a <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code>, Gauss point conversion is currently
-skipped.</p></li>
-<li><p><strong>selected_submeshes</strong> (<em>int</em><em>, </em><em>str</em><em> or </em><em>sequence</em><em>, </em><em>optional</em>) – Only used with <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code> datasets. Restrict the exported grid
-and element data to the selected submesh ids, names, or element
-types.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Mesh with point, cell and field data attached.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pyvista.UnstructuredGrid</p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">DataSet.</span></span><span class="sig-name descname"><span class="pre">to_pyvista</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gp_data_to_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.DataSet.to_pyvista" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 

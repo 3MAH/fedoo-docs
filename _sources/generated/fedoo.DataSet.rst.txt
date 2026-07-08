@@ -36,7 +36,6 @@
          DataSet.to_csv
          DataSet.to_dict
          DataSet.to_excel
-         DataSet.to_fdh5
          DataSet.to_fdz
          DataSet.to_msh
          DataSet.to_pandas
@@ -55,6 +54,5 @@
          
       
          DataSet.dict_data
-         DataSet.active_submesh
   
   

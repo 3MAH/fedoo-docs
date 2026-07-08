@@ -40,7 +40,6 @@
          MultiFrameDataSet.to_csv
          MultiFrameDataSet.to_dict
          MultiFrameDataSet.to_excel
-         MultiFrameDataSet.to_fdh5
          MultiFrameDataSet.to_fdz
          MultiFrameDataSet.to_msh
          MultiFrameDataSet.to_pandas
@@ -61,6 +60,5 @@
       
          MultiFrameDataSet.dict_data
          MultiFrameDataSet.n_iter
-         MultiFrameDataSet.active_submesh
   
   
