@@ -27,6 +27,8 @@
          MultiFrameDataSet.get_all_frame_lim
          MultiFrameDataSet.get_data
          MultiFrameDataSet.get_history
+         MultiFrameDataSet.global_element_id
+         MultiFrameDataSet.global_element_location
          MultiFrameDataSet.load
          MultiFrameDataSet.load_dict
          MultiFrameDataSet.plot
@@ -37,9 +39,11 @@
          MultiFrameDataSet.save_mesh
          MultiFrameDataSet.savez
          MultiFrameDataSet.savez_compressed
+         MultiFrameDataSet.split_global_element_indices
          MultiFrameDataSet.to_csv
          MultiFrameDataSet.to_dict
          MultiFrameDataSet.to_excel
+         MultiFrameDataSet.to_fdh5
          MultiFrameDataSet.to_fdz
          MultiFrameDataSet.to_msh
          MultiFrameDataSet.to_pandas
@@ -60,5 +64,6 @@
       
          MultiFrameDataSet.dict_data
          MultiFrameDataSet.n_iter
+         MultiFrameDataSet.active_submesh
   
   
