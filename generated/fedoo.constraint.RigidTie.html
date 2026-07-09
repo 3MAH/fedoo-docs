@@ -75,6 +75,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.PeriodicBC.html">fedoo.constraint.PeriodicBC</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.constraint.RigidTie</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
@@ -159,14 +160,9 @@ center is set at the midle of the rigid sets.</p></li>
 </dl>
 <section id="definition-of-rotations">
 <h2>Definition of rotations<a class="headerlink" href="#definition-of-rotations" title="Link to this heading"></a></h2>
-<p>A convention needs to be defined the orders of rotations.
-The convention used in this class is: First rotation around X, then
-rotation around Y’ (Y’ being the new Y afte r rotation around X)
-and finaly the rotation arould Z” (Z” beging the new Z after the 2 first
-rotations).</p>
-<p>We can note that this convention can also be interpreted using global axis
-not attached to the solid by applying first the rotation around Z, then the
-rotation around Y and finally, the rotation around X.</p>
+<p><code class="docutils literal notranslate"><span class="pre">RigidRotX</span></code>, <code class="docutils literal notranslate"><span class="pre">RigidRotY</span></code> and <code class="docutils literal notranslate"><span class="pre">RigidRotZ</span></code> use a rotation-vector
+convention. The vector direction defines the rotation axis and its norm is
+the rotation angle.</p>
 <p class="rubric">Notes</p>
 <ul class="simple">
 <li><p>The node given in list_nodes are eliminated from the system (slave nodes)
