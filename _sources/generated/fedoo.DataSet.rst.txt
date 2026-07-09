@@ -25,8 +25,6 @@
          DataSet.deepcopy
          DataSet.field_names
          DataSet.get_data
-         DataSet.global_element_id
-         DataSet.global_element_location
          DataSet.load
          DataSet.load_dict
          DataSet.plot
@@ -35,11 +33,9 @@
          DataSet.save_mesh
          DataSet.savez
          DataSet.savez_compressed
-         DataSet.split_global_element_indices
          DataSet.to_csv
          DataSet.to_dict
          DataSet.to_excel
-         DataSet.to_fdh5
          DataSet.to_fdz
          DataSet.to_msh
          DataSet.to_pandas
@@ -58,6 +54,5 @@
          
       
          DataSet.dict_data
-         DataSet.active_submesh
   
   
