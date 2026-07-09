@@ -20,6 +20,8 @@
          
       
          Inertia.get_all
+         Inertia.get_dissipation
+         Inertia.get_storage
          Inertia.get_weak_equation
          Inertia.initialize
          Inertia.nvar

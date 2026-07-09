@@ -20,6 +20,8 @@
          
       
          ShellLaminate.GetStressDistribution
+         ShellLaminate.compute_area_density
+         ShellLaminate.compute_rotary_density
          ShellLaminate.find_layer
          ShellLaminate.get_all
          ShellLaminate.get_shell_stiffness_matrix
@@ -44,7 +46,9 @@
          :toctree:
          
       
+         ShellLaminate.area_density
          ShellLaminate.name
+         ShellLaminate.rotary_density
          ShellLaminate.thickness
          ShellLaminate.k
          ShellLaminate.is_initialized

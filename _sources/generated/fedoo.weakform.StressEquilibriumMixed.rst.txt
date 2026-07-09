@@ -20,6 +20,8 @@
          
       
          StressEquilibriumMixed.get_all
+         StressEquilibriumMixed.get_dissipation
+         StressEquilibriumMixed.get_storage
          StressEquilibriumMixed.get_weak_equation
          StressEquilibriumMixed.initialize
          StressEquilibriumMixed.nvar

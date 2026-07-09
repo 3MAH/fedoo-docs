@@ -84,6 +84,8 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.InterfaceForce.html">fedoo.weakform.InterfaceForce</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.weakform.DistributedLoad</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.DistributedLoad.get_all.html">fedoo.weakform.DistributedLoad.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.DistributedLoad.get_dissipation.html">fedoo.weakform.DistributedLoad.get_dissipation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.DistributedLoad.get_storage.html">fedoo.weakform.DistributedLoad.get_storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.DistributedLoad.get_weak_equation.html">fedoo.weakform.DistributedLoad.get_weak_equation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.DistributedLoad.initialize.html">fedoo.weakform.DistributedLoad.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.DistributedLoad.nvar.html">fedoo.weakform.DistributedLoad.nvar</a></li>
@@ -163,6 +165,12 @@ converted to an equivalent Neumann boundary condition.</p>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.DistributedLoad.get_all.html#fedoo.weakform.DistributedLoad.get_all" title="fedoo.weakform.DistributedLoad.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedLoad.get_all</span></code></a>()</p></td>
 <td><p>Return the list of all weak forms.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.DistributedLoad.get_dissipation.html#fedoo.weakform.DistributedLoad.get_dissipation" title="fedoo.weakform.DistributedLoad.get_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedLoad.get_dissipation</span></code></a>()</p></td>
+<td><p>Return the optional dissipative provider for a time integrator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.DistributedLoad.get_storage.html#fedoo.weakform.DistributedLoad.get_storage" title="fedoo.weakform.DistributedLoad.get_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedLoad.get_storage</span></code></a>()</p></td>
+<td><p>Return the optional storage weakform for a time integrator.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.DistributedLoad.get_weak_equation.html#fedoo.weakform.DistributedLoad.get_weak_equation" title="fedoo.weakform.DistributedLoad.get_weak_equation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedLoad.get_weak_equation</span></code></a>(assembly, pb)</p></td>
 <td><p>Return the weak equation related to the current state.</p></td>

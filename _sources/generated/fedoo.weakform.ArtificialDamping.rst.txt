@@ -20,6 +20,8 @@
          
       
          ArtificialDamping.get_all
+         ArtificialDamping.get_dissipation
+         ArtificialDamping.get_storage
          ArtificialDamping.get_weak_equation
          ArtificialDamping.initialize
          ArtificialDamping.nvar

@@ -20,6 +20,8 @@
          
       
          ExternalPressure.get_all
+         ExternalPressure.get_dissipation
+         ExternalPressure.get_storage
          ExternalPressure.get_weak_equation
          ExternalPressure.initialize
          ExternalPressure.nvar

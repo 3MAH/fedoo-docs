@@ -20,6 +20,8 @@
          
       
          SpringEquilibrium.get_all
+         SpringEquilibrium.get_dissipation
+         SpringEquilibrium.get_storage
          SpringEquilibrium.get_weak_equation
          SpringEquilibrium.initialize
          SpringEquilibrium.nvar

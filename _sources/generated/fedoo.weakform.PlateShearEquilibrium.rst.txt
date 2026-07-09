@@ -22,6 +22,8 @@
          PlateShearEquilibrium.drill_constraint_operator
          PlateShearEquilibrium.generalized_strain_operator
          PlateShearEquilibrium.get_all
+         PlateShearEquilibrium.get_dissipation
+         PlateShearEquilibrium.get_storage
          PlateShearEquilibrium.get_weak_equation
          PlateShearEquilibrium.initialize
          PlateShearEquilibrium.nvar

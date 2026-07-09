@@ -19,6 +19,8 @@
          :toctree:
          
       
+         BeamProperties.compute_linear_density
+         BeamProperties.compute_rotary_density
          BeamProperties.get_all
          BeamProperties.get_beam_rigidity
          BeamProperties.initialize
@@ -38,7 +40,9 @@
          :toctree:
          
       
+         BeamProperties.linear_density
          BeamProperties.name
+         BeamProperties.rotary_density
          BeamProperties.A
          BeamProperties.Jx
          BeamProperties.Iyy

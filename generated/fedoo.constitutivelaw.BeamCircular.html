@@ -26,7 +26,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.constitutivelaw.BeamCircular.get_all" href="fedoo.constitutivelaw.BeamCircular.get_all.html" />
+    <link rel="next" title="fedoo.constitutivelaw.BeamCircular.compute_linear_density" href="fedoo.constitutivelaw.BeamCircular.compute_linear_density.html" />
     <link rel="prev" title="fedoo.constitutivelaw.BeamProperties.is_initialized" href="fedoo.constitutivelaw.BeamProperties.is_initialized.html" /> 
 </head>
 
@@ -75,6 +75,8 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.Spring.html">fedoo.constitutivelaw.Spring</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.BeamProperties.html">fedoo.constitutivelaw.BeamProperties</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.constitutivelaw.BeamCircular</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.compute_linear_density.html">fedoo.constitutivelaw.BeamCircular.compute_linear_density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.compute_rotary_density.html">fedoo.constitutivelaw.BeamCircular.compute_rotary_density</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.get_all.html">fedoo.constitutivelaw.BeamCircular.get_all</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.get_beam_rigidity.html">fedoo.constitutivelaw.BeamCircular.get_beam_rigidity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.initialize.html">fedoo.constitutivelaw.BeamCircular.initialize</a></li>
@@ -82,7 +84,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.set_start.html">fedoo.constitutivelaw.BeamCircular.set_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.to_start.html">fedoo.constitutivelaw.BeamCircular.to_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.update.html">fedoo.constitutivelaw.BeamCircular.update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.linear_density.html">fedoo.constitutivelaw.BeamCircular.linear_density</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.name.html">fedoo.constitutivelaw.BeamCircular.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.rotary_density.html">fedoo.constitutivelaw.BeamCircular.rotary_density</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.r.html">fedoo.constitutivelaw.BeamCircular.r</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.A.html">fedoo.constitutivelaw.BeamCircular.A</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.Jx.html">fedoo.constitutivelaw.BeamCircular.Jx</a></li>
@@ -162,6 +166,12 @@ Default is set to 0.9 (usual value for cylindrical beam).</p></li>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.compute_linear_density.html#fedoo.constitutivelaw.BeamCircular.compute_linear_density" title="fedoo.constitutivelaw.BeamCircular.compute_linear_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamCircular.compute_linear_density</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.compute_rotary_density.html#fedoo.constitutivelaw.BeamCircular.compute_rotary_density" title="fedoo.constitutivelaw.BeamCircular.compute_rotary_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamCircular.compute_rotary_density</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.get_all.html#fedoo.constitutivelaw.BeamCircular.get_all" title="fedoo.constitutivelaw.BeamCircular.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamCircular.get_all</span></code></a>()</p></td>
 <td><p>Return a dict with all the known ConstitutiveLaw (with a name).</p></td>
 </tr>
@@ -187,8 +197,14 @@ Default is set to 0.9 (usual value for cylindrical beam).</p></li>
 </table>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.name.html#fedoo.constitutivelaw.BeamCircular.name" title="fedoo.constitutivelaw.BeamCircular.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamCircular.name</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.linear_density.html#fedoo.constitutivelaw.BeamCircular.linear_density" title="fedoo.constitutivelaw.BeamCircular.linear_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamCircular.linear_density</span></code></a></p></td>
+<td><p>Mass per unit beam length.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.name.html#fedoo.constitutivelaw.BeamCircular.name" title="fedoo.constitutivelaw.BeamCircular.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamCircular.name</span></code></a></p></td>
 <td><p>Name of the constitutive law.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.rotary_density.html#fedoo.constitutivelaw.BeamCircular.rotary_density" title="fedoo.constitutivelaw.BeamCircular.rotary_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamCircular.rotary_density</span></code></a></p></td>
+<td><p>Mass moments of inertia per unit beam length.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.r.html#fedoo.constitutivelaw.BeamCircular.r" title="fedoo.constitutivelaw.BeamCircular.r"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamCircular.r</span></code></a></p></td>
 <td><p>Radius of the beam section.</p></td>
@@ -225,7 +241,7 @@ Default is set to 0.9 (usual value for cylindrical beam).</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="fedoo.constitutivelaw.BeamProperties.is_initialized.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.BeamProperties.is_initialized" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.constitutivelaw.BeamCircular.get_all.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.BeamCircular.get_all" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.constitutivelaw.BeamCircular.compute_linear_density.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.BeamCircular.compute_linear_density" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

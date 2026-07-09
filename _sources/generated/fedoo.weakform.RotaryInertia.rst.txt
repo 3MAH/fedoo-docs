@@ -20,6 +20,8 @@
          
       
          RotaryInertia.get_all
+         RotaryInertia.get_dissipation
+         RotaryInertia.get_storage
          RotaryInertia.get_weak_equation
          RotaryInertia.initialize
          RotaryInertia.nvar

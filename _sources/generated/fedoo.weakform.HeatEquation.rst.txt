@@ -20,6 +20,8 @@
          
       
          HeatEquation.get_all
+         HeatEquation.get_dissipation
+         HeatEquation.get_storage
          HeatEquation.get_weak_equation
          HeatEquation.initialize
          HeatEquation.nvar

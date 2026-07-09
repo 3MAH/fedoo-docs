@@ -70,6 +70,8 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.weakform.StressEquilibriumMixed</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_all.html">fedoo.weakform.StressEquilibriumMixed.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_dissipation.html">fedoo.weakform.StressEquilibriumMixed.get_dissipation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_storage.html">fedoo.weakform.StressEquilibriumMixed.get_storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_weak_equation.html">fedoo.weakform.StressEquilibriumMixed.get_weak_equation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.initialize.html">fedoo.weakform.StressEquilibriumMixed.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.nvar.html">fedoo.weakform.StressEquilibriumMixed.nvar</a></li>
@@ -192,6 +194,12 @@ If False, a single projection (P:H) is used. Default is True.</p>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_all.html#fedoo.weakform.StressEquilibriumMixed.get_all" title="fedoo.weakform.StressEquilibriumMixed.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_all</span></code></a>()</p></td>
 <td><p>Return the list of all weak forms.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_dissipation.html#fedoo.weakform.StressEquilibriumMixed.get_dissipation" title="fedoo.weakform.StressEquilibriumMixed.get_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_dissipation</span></code></a>()</p></td>
+<td><p>Return the optional dissipative provider for a time integrator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_storage.html#fedoo.weakform.StressEquilibriumMixed.get_storage" title="fedoo.weakform.StressEquilibriumMixed.get_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_storage</span></code></a>()</p></td>
+<td><p>Return the optional storage weakform for a time integrator.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_weak_equation.html#fedoo.weakform.StressEquilibriumMixed.get_weak_equation" title="fedoo.weakform.StressEquilibriumMixed.get_weak_equation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_weak_equation</span></code></a>(...)</p></td>
 <td><p>Get the weak equation related to the current problem state.</p></td>

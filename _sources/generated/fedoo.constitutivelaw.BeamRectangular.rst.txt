@@ -19,6 +19,8 @@
          :toctree:
          
       
+         BeamRectangular.compute_linear_density
+         BeamRectangular.compute_rotary_density
          BeamRectangular.get_all
          BeamRectangular.get_beam_rigidity
          BeamRectangular.initialize
@@ -38,7 +40,9 @@
          :toctree:
          
       
+         BeamRectangular.linear_density
          BeamRectangular.name
+         BeamRectangular.rotary_density
          BeamRectangular.a
          BeamRectangular.b
          BeamRectangular.A

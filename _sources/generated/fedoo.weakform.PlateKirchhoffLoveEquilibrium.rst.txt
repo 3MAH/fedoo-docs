@@ -22,6 +22,8 @@
          PlateKirchhoffLoveEquilibrium.drill_constraint_operator
          PlateKirchhoffLoveEquilibrium.generalized_strain_operator
          PlateKirchhoffLoveEquilibrium.get_all
+         PlateKirchhoffLoveEquilibrium.get_dissipation
+         PlateKirchhoffLoveEquilibrium.get_storage
          PlateKirchhoffLoveEquilibrium.get_weak_equation
          PlateKirchhoffLoveEquilibrium.initialize
          PlateKirchhoffLoveEquilibrium.nvar

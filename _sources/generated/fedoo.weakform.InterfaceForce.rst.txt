@@ -20,6 +20,8 @@
          
       
          InterfaceForce.get_all
+         InterfaceForce.get_dissipation
+         InterfaceForce.get_storage
          InterfaceForce.get_weak_equation
          InterfaceForce.initialize
          InterfaceForce.nvar

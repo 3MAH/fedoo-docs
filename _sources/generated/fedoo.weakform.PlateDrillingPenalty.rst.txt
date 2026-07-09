@@ -22,6 +22,8 @@
          PlateDrillingPenalty.drill_constraint_operator
          PlateDrillingPenalty.generalized_strain_operator
          PlateDrillingPenalty.get_all
+         PlateDrillingPenalty.get_dissipation
+         PlateDrillingPenalty.get_storage
          PlateDrillingPenalty.get_weak_equation
          PlateDrillingPenalty.initialize
          PlateDrillingPenalty.nvar

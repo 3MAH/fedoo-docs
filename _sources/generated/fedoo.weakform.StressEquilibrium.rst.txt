@@ -20,6 +20,8 @@
          
       
          StressEquilibrium.get_all
+         StressEquilibrium.get_dissipation
+         StressEquilibrium.get_storage
          StressEquilibrium.get_weak_equation
          StressEquilibrium.initialize
          StressEquilibrium.nvar

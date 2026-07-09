@@ -22,6 +22,8 @@
          PlateEquilibriumFI.drill_constraint_operator
          PlateEquilibriumFI.generalized_strain_operator
          PlateEquilibriumFI.get_all
+         PlateEquilibriumFI.get_dissipation
+         PlateEquilibriumFI.get_storage
          PlateEquilibriumFI.get_weak_equation
          PlateEquilibriumFI.initialize
          PlateEquilibriumFI.nvar

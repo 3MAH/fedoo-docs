@@ -20,6 +20,8 @@
          
       
          BeamEquilibrium.get_all
+         BeamEquilibrium.get_dissipation
+         BeamEquilibrium.get_storage
          BeamEquilibrium.get_weak_equation
          BeamEquilibrium.initialize
          BeamEquilibrium.nvar

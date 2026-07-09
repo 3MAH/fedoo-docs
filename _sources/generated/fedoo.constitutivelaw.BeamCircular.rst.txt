@@ -19,6 +19,8 @@
          :toctree:
          
       
+         BeamCircular.compute_linear_density
+         BeamCircular.compute_rotary_density
          BeamCircular.get_all
          BeamCircular.get_beam_rigidity
          BeamCircular.initialize
@@ -38,7 +40,9 @@
          :toctree:
          
       
+         BeamCircular.linear_density
          BeamCircular.name
+         BeamCircular.rotary_density
          BeamCircular.r
          BeamCircular.A
          BeamCircular.Jx

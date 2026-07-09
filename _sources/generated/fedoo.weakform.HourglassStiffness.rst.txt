@@ -20,7 +20,9 @@
          
       
          HourglassStiffness.get_all
+         HourglassStiffness.get_dissipation
          HourglassStiffness.get_p_wave_modulus
+         HourglassStiffness.get_storage
          HourglassStiffness.get_weak_equation
          HourglassStiffness.initialize
          HourglassStiffness.nvar

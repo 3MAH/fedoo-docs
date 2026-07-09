@@ -20,6 +20,8 @@
          
       
          ShellHomogeneous.GetStressDistribution
+         ShellHomogeneous.compute_area_density
+         ShellHomogeneous.compute_rotary_density
          ShellHomogeneous.get_all
          ShellHomogeneous.get_shell_stiffness_matrix
          ShellHomogeneous.get_strain
@@ -41,7 +43,9 @@
          :toctree:
          
       
+         ShellHomogeneous.area_density
          ShellHomogeneous.name
+         ShellHomogeneous.rotary_density
          ShellHomogeneous.thickness
          ShellHomogeneous.k
          ShellHomogeneous.is_initialized

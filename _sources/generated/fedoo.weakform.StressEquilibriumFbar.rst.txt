@@ -20,6 +20,8 @@
          
       
          StressEquilibriumFbar.get_all
+         StressEquilibriumFbar.get_dissipation
+         StressEquilibriumFbar.get_storage
          StressEquilibriumFbar.get_weak_equation
          StressEquilibriumFbar.initialize
          StressEquilibriumFbar.nvar

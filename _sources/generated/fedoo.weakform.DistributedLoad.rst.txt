@@ -20,6 +20,8 @@
          
       
          DistributedLoad.get_all
+         DistributedLoad.get_dissipation
+         DistributedLoad.get_storage
          DistributedLoad.get_weak_equation
          DistributedLoad.initialize
          DistributedLoad.nvar
