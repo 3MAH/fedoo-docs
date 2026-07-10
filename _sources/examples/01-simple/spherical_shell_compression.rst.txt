@@ -193,7 +193,7 @@ Define a nonlinear analysis and solve the problem.
 
     assembly = solid_assembly
 
-    pb = fd.problem.NonLinear(assembly, nlgeom=False)
+    pb = fd.problem.Linear(assembly)
     pb.bc.add(pressure_assembly)
 
     nodes = mesh.nodes
@@ -205,26 +205,11 @@ Define a nonlinear analysis and solve the problem.
     pb.bc.add("Dirichlet", node_b, ["DispY", "DispZ"], 0)
     pb.bc.add("Dirichlet", node_c, "DispZ", 0)
 
-    pb.nlsolve()
+    pb.solve()
 
 
 
 
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Iter 1 - Time: 0.10000 - dt 0.10000 - NR iter: 1 - Err: 0.00000
-    Iter 2 - Time: 0.20000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
-    Iter 3 - Time: 0.30000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
-    Iter 4 - Time: 0.40000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
-    Iter 5 - Time: 0.50000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
-    Iter 6 - Time: 0.60000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
-    Iter 7 - Time: 0.70000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
-    Iter 8 - Time: 0.80000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
-    Iter 9 - Time: 0.90000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
-    Iter 10 - Time: 1.00000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
 
 
 
@@ -265,7 +250,7 @@ defined in the element local coordinate system
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.858 seconds)
+   **Total running time of the script:** (0 minutes 0.411 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_spherical_shell_compression.py:
