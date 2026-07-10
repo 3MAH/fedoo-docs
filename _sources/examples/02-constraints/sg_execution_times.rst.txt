@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:06.529** total execution time for 4 files **from examples/02-constraints**:
+**00:24.561** total execution time for 5 files **from examples/02-constraints**:
 
 .. container::
 
@@ -32,15 +32,18 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
+   * - :ref:`sphx_glr_examples_02-constraints_mean_rigid_motion_torsion.py` (``mean_rigid_motion_torsion.py``)
+     - 00:18.923
+     - 0.0
    * - :ref:`sphx_glr_examples_02-constraints_disk_rectangle_contact.py` (``disk_rectangle_contact.py``)
-     - 00:05.671
+     - 00:04.813
      - 0.0
    * - :ref:`sphx_glr_examples_02-constraints_rigid_tie.py` (``rigid_tie.py``)
-     - 00:00.486
+     - 00:00.436
      - 0.0
    * - :ref:`sphx_glr_examples_02-constraints_Periodic_BC_2D_Plate_with_hole.py` (``Periodic_BC_2D_Plate_with_hole.py``)
-     - 00:00.201
+     - 00:00.206
      - 0.0
    * - :ref:`sphx_glr_examples_02-constraints_pressurized_pipe.py` (``pressurized_pipe.py``)
-     - 00:00.170
+     - 00:00.182
      - 0.0

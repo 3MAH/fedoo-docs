@@ -76,9 +76,10 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.PeriodicBC.html">fedoo.constraint.PeriodicBC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.PeriodicBC.html">fedoo.constraint.PeriodicBC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.Contact.html">fedoo.constraint.Contact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.SelfContact.html">fedoo.constraint.SelfContact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.IPCContact.html">fedoo.constraint.IPCContact</a></li>
@@ -212,8 +213,14 @@ factor to the prescribed value and should be between 0 and 1.</p>
 </table>
 </section>
 </section>
-<section id="avdanced-bc-and-constraints">
-<h2>Avdanced BC and constraints<a class="headerlink" href="#avdanced-bc-and-constraints" title="Link to this heading"></a></h2>
+<section id="advanced-bc-and-constraints">
+<h2>Advanced BC and constraints<a class="headerlink" href="#advanced-bc-and-constraints" title="Link to this heading"></a></h2>
+<p>Fedoo also provides higher-level boundary-condition objects for common
+distributed loads and constraint patterns. Distributed loads are converted to
+external Neumann forces, while the kinematic constraints below are based on
+MPC equations and can be added directly to <code class="docutils literal notranslate"><span class="pre">pb.bc</span></code>.</p>
+<section id="distributed-loads">
+<h3>Distributed loads<a class="headerlink" href="#distributed-loads" title="Link to this heading"></a></h3>
 <p>Distributed loads are defined by dedicated assembly objects. The recommended
 way to apply them is to add the load assembly to the problem boundary
 conditions. If the assembly provides an <code class="docutils literal notranslate"><span class="pre">as_neumann()</span></code> method,
@@ -252,21 +259,107 @@ boundary-condition force.</p>
 </tr>
 </tbody>
 </table>
-<p>Some advanced constraints based on multiple linearized MPC are available in
-fedoo. They can be created and added to the problem with the pb.bc.add method.</p>
+</section>
+<section id="kinematic-mpc-constraints">
+<h3>Kinematic MPC constraints<a class="headerlink" href="#kinematic-mpc-constraints" title="Link to this heading"></a></h3>
+<section id="rigid-tie">
+<h4>Rigid tie<a class="headerlink" href="#rigid-tie" title="Link to this heading"></a></h4>
+<p>The <a class="reference internal" href="generated/fedoo.constraint.RigidTie.html#fedoo.constraint.RigidTie" title="fedoo.constraint.RigidTie"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie</span></code></a> constraint couples a set of nodes to
+a rigid-body motion. It creates global degrees of freedom for rigid
+translation and rotation, then eliminates the selected nodal displacement DOFs
+through MPC equations. Prescribing <code class="docutils literal notranslate"><span class="pre">RigidDisp</span></code> or <code class="docutils literal notranslate"><span class="pre">RigidRot</span></code> therefore
+drives the whole selected node set as a rigid object.</p>
+<p>This constraint is useful to impose a strict rigid connection, for instance to
+drive a face from a reference rigid point. It is more restrictive than
+<a class="reference internal" href="generated/fedoo.constraint.MeanMotion.html#fedoo.constraint.MeanMotion" title="fedoo.constraint.MeanMotion"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.MeanMotion</span></code></a>, because all selected nodes follow the
+same rigid-body kinematics and local warping of the selected surface is
+suppressed.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.RigidTie.html#fedoo.constraint.RigidTie" title="fedoo.constraint.RigidTie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie</span></code></a>(list_nodes[, ...])</p></td>
+<td><p>Constraint that eliminate dof assuming a rigid body tie between nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constraint.RigidTie2D.html#fedoo.constraint.RigidTie2D" title="fedoo.constraint.RigidTie2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie2D</span></code></a>(list_nodes[, ...])</p></td>
+<td><p>Constraint that eliminate dof assuming a rigid body tie between nodes in 2D.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mean-motion-control">
+<h4>Mean motion control<a class="headerlink" href="#mean-motion-control" title="Link to this heading"></a></h4>
+<p>The <a class="reference internal" href="generated/fedoo.constraint.MeanMotion.html#fedoo.constraint.MeanMotion" title="fedoo.constraint.MeanMotion"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.MeanMotion</span></code></a> constraint is a less
+restrictive alternative to <a class="reference internal" href="generated/fedoo.constraint.RigidTie.html#fedoo.constraint.RigidTie" title="fedoo.constraint.RigidTie"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie</span></code></a>. It extracts
+selected components of the best-fit motion of a node set or surface mesh in a
+mean sense, without forcing every selected node to follow a rigid motion. The
+selected surface can therefore deform locally while selected mean translation
+and rotation components are controlled.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">components</span></code> argument is required and defines which global DOFs are
+created. Accepted component names include <code class="docutils literal notranslate"><span class="pre">&quot;RotX&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;MeanRotX&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;DispZ&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;MeanDispZ&quot;</span></code>. The vector aliases <code class="docutils literal notranslate"><span class="pre">&quot;Rot&quot;</span></code>/<code class="docutils literal notranslate"><span class="pre">&quot;MeanRot&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&quot;Disp&quot;</span></code>/<code class="docutils literal notranslate"><span class="pre">&quot;MeanDisp&quot;</span></code> select all rotation or displacement components
+available in the current modeling dimension. In 2D, the rotation vector
+contains only <code class="docutils literal notranslate"><span class="pre">MeanRotZ</span></code>.</p>
+<p>When a surface mesh is passed, nodal weights are computed from the element
+area, or from the element length in 2D. These weights define an area-weighted
+least-squares projection of the displacement field onto rigid-body modes.</p>
+<p>For displacement-only mean control, select only displacement components:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mean_disp</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanMotion</span><span class="p">(</span><span class="n">surface_mesh</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="s2">&quot;DispZ&quot;</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mean_disp</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="s2">&quot;MeanDispZ&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">delta</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">finite_rotation</span></code> is left to <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), rotational
+components use finite rotations automatically if geometrical nonlinearity is
+enabled on the problem. Otherwise, the rotation components are small-rotation
+vector components. The finite-rotation mode uses a rotation-vector convention
+and linearizes the constraint at each Newton iteration using the derivative of
+the rotation matrix with respect to the rotation vector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">face_motion</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanMotion</span><span class="p">(</span>
+    <span class="n">surface_mesh</span><span class="p">,</span>
+    <span class="n">components</span><span class="o">=</span><span class="s2">&quot;RotZ&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">face_motion</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="n">face_motion</span><span class="o">.</span><span class="n">node_by_variable</span><span class="p">[</span><span class="s2">&quot;MeanRotZ&quot;</span><span class="p">],</span> <span class="s2">&quot;MeanRotZ&quot;</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">face_motion</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanMotion</span><span class="p">(</span>
+    <span class="n">surface_mesh</span><span class="p">,</span>
+    <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;RotZ&quot;</span><span class="p">,</span> <span class="s2">&quot;DispZ&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">face_motion</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="s2">&quot;MeanRotZ&quot;</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="s2">&quot;MeanDispZ&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">delta</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The reactions on the created global DOFs are generalized forces. For instance,
+the reaction associated with <code class="docutils literal notranslate"><span class="pre">MeanRotZ</span></code> is the conjugate moment around the
+mean-motion center.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.MeanMotion.html#fedoo.constraint.MeanMotion" title="fedoo.constraint.MeanMotion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.MeanMotion</span></code></a>([node_set, ...])</p></td>
+<td><p>Constraint defining selected global DOFs equal to a mean motion.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="periodic-boundary-conditions">
+<h3>Periodic boundary conditions<a class="headerlink" href="#periodic-boundary-conditions" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="generated/fedoo.constraint.PeriodicBC.html#fedoo.constraint.PeriodicBC" title="fedoo.constraint.PeriodicBC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.PeriodicBC</span></code></a> constraint creates MPC equations
+between opposite boundaries so that their displacement fluctuations are
+periodic. It is mainly used for representative volume elements and
+homogenization problems, where the boundary kinematics must be compatible with
+a prescribed macroscopic strain or displacement gradient.</p>
+<p>The constraint can build the required node pairings from opposite node sets
+and then be added to <code class="docutils literal notranslate"><span class="pre">pb.bc</span></code> like the other MPC-based constraints.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.PeriodicBC.html#fedoo.constraint.PeriodicBC" title="fedoo.constraint.PeriodicBC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.PeriodicBC</span></code></a>([...])</p></td>
 <td><p>Periodic boundary conditions constraint.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constraint.RigidTie.html#fedoo.constraint.RigidTie" title="fedoo.constraint.RigidTie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie</span></code></a>(list_nodes[, ...])</p></td>
-<td><p>Constraint that eliminate dof assuming a rigid body tie between nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.RigidTie2D.html#fedoo.constraint.RigidTie2D" title="fedoo.constraint.RigidTie2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie2D</span></code></a>(list_nodes[, ...])</p></td>
-<td><p>Constraint that eliminate dof assuming a rigid body tie between nodes in 2D.</p></td>
-</tr>
 </tbody>
 </table>
+</section>
 </section>
 <section id="contact">
 <h2>Contact<a class="headerlink" href="#contact" title="Link to this heading"></a></h2>

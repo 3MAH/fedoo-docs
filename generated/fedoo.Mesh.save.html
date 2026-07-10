@@ -185,10 +185,9 @@
 <dt class="sig sig-object py" id="fedoo.Mesh.save">
 <span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#fedoo.Mesh.save" title="Link to this definition"></a></dt>
 <dd><p>Save the mesh object to file.</p>
-<p>This function uses the save function of the pyvista UnstructuredGrid
-object, except for FDH5 files which are written directly as raw mesh
-data. If using a ‘vtk’ format, The node and element sets are saved as
-field data with a prefix “_nset_” or “_eset_”.</p>
+<p>This function use the save function of the pyvista UnstructuredGrid
+object. If using a ‘vtk’ format, The node and element sets are saved
+as field data with a prefix “_nset_” or “_eset_”.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
