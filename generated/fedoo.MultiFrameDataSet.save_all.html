@@ -72,6 +72,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../post_processing.html">Post-Processing</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.html">fedoo.DataSet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.html">fedoo.MultiFrameDataSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.MultiMeshData.html">fedoo.MultiMeshData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.get_history.html">fedoo.MultiFrameDataSet.get_history</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
@@ -86,6 +87,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_excel.html">fedoo.DataSet.to_excel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_vtk.html">fedoo.DataSet.to_vtk</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_msh.html">fedoo.DataSet.to_msh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_fdh5.html">fedoo.DataSet.to_fdh5</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.MultiFrameDataSet.save_all</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.read_data.html">fedoo.read_data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.read.html">fedoo.DataSet.read</a></li>
@@ -128,12 +130,13 @@
 <h1>fedoo.MultiFrameDataSet.save_all<a class="headerlink" href="#fedoo-multiframedataset-save-all" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.MultiFrameDataSet.save_all">
-<span class="sig-prename descclassname"><span class="pre">MultiFrameDataSet.</span></span><span class="sig-name descname"><span class="pre">save_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fdz'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MultiFrameDataSet.save_all" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">MultiFrameDataSet.</span></span><span class="sig-name descname"><span class="pre">save_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fdh5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MultiFrameDataSet.save_all" title="Link to this definition"></a></dt>
 <dd><p>Save all data from MultiFrameDataSet.</p>
 <p>If filename has no extension, the format is given in the parameter file_format
-(default = ‘fdz’).
-If format is not ‘fdz’, the data files are saved using the given filename and format
-simply adding the iteration number to the file name. The mesh is also saved in vtk format in the same directory.</p>
+(default = ‘fdh5’).
+If format is not ‘fdz’ or ‘fdh5’, the data files are saved using the given filename and format
+simply adding the iteration number to the file name. The mesh is also saved in vtk format in the same directory.
+For ‘fdh5’, all iterations are written into one HDF5 file.</p>
 </dd></dl>
 
 </section>

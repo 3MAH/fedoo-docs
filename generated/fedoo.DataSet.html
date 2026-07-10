@@ -77,6 +77,8 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.deepcopy.html">fedoo.DataSet.deepcopy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.field_names.html">fedoo.DataSet.field_names</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.global_element_id.html">fedoo.DataSet.global_element_id</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.global_element_location.html">fedoo.DataSet.global_element_location</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.load.html">fedoo.DataSet.load</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.load_dict.html">fedoo.DataSet.load_dict</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
@@ -85,18 +87,22 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.save_mesh.html">fedoo.DataSet.save_mesh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.savez.html">fedoo.DataSet.savez</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.savez_compressed.html">fedoo.DataSet.savez_compressed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.split_global_element_indices.html">fedoo.DataSet.split_global_element_indices</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_csv.html">fedoo.DataSet.to_csv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_dict.html">fedoo.DataSet.to_dict</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_excel.html">fedoo.DataSet.to_excel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_fdh5.html">fedoo.DataSet.to_fdh5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_fdz.html">fedoo.DataSet.to_fdz</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_msh.html">fedoo.DataSet.to_msh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_pandas.html">fedoo.DataSet.to_pandas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_pyvista.html">fedoo.DataSet.to_pyvista</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_vtk.html">fedoo.DataSet.to_vtk</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.dict_data.html">fedoo.DataSet.dict_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.active_submesh.html">fedoo.DataSet.active_submesh</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.html">fedoo.MultiFrameDataSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.MultiMeshData.html">fedoo.MultiMeshData</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.get_history.html">fedoo.MultiFrameDataSet.get_history</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
@@ -111,6 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_excel.html">fedoo.DataSet.to_excel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_vtk.html">fedoo.DataSet.to_vtk</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_msh.html">fedoo.DataSet.to_msh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_fdh5.html">fedoo.DataSet.to_fdh5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.save_all.html">fedoo.MultiFrameDataSet.save_all</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.read_data.html">fedoo.read_data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.read.html">fedoo.DataSet.read</a></li>
@@ -258,6 +265,12 @@ conversion between different data types.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.get_data.html#fedoo.DataSet.get_data" title="fedoo.DataSet.get_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.get_data</span></code></a>(field[, component, ...])</p></td>
 <td><p>Retrieve data from the DataSet for a given field.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.global_element_id.html#fedoo.DataSet.global_element_id" title="fedoo.DataSet.global_element_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.global_element_id</span></code></a>(submesh_id, ...)</p></td>
+<td><p>Return the global element id for a submesh-local element id.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.global_element_location.html#fedoo.DataSet.global_element_location" title="fedoo.DataSet.global_element_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.global_element_location</span></code></a>(element_id)</p></td>
+<td><p>Return <code class="docutils literal notranslate"><span class="pre">(submesh_id,</span> <span class="pre">local_element_id)</span></code> for a global element id.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.load.html#fedoo.DataSet.load" title="fedoo.DataSet.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.load</span></code></a>(data[, load_mesh, iteration])</p></td>
 <td><p>Load data from a data object.</p></td>
 </tr>
@@ -282,14 +295,20 @@ conversion between different data types.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.savez_compressed.html#fedoo.DataSet.savez_compressed" title="fedoo.DataSet.savez_compressed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.savez_compressed</span></code></a>(filename[, save_mesh])</p></td>
 <td><p>Write a compressed npz file using the numpy savez_compressed function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_csv.html#fedoo.DataSet.to_csv" title="fedoo.DataSet.to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_csv</span></code></a>(filename[, save_mesh])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.split_global_element_indices.html#fedoo.DataSet.split_global_element_indices" title="fedoo.DataSet.split_global_element_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.split_global_element_indices</span></code></a>(element_ids)</p></td>
+<td><p>Split global element ids into submesh-local element ids.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_csv.html#fedoo.DataSet.to_csv" title="fedoo.DataSet.to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_csv</span></code></a>(filename[, save_mesh])</p></td>
 <td><p>Write data in a csv file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_dict.html#fedoo.DataSet.to_dict" title="fedoo.DataSet.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_dict</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_dict.html#fedoo.DataSet.to_dict" title="fedoo.DataSet.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_dict</span></code></a>()</p></td>
 <td><p>Return a dict with all the node, element and gausspoint data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_excel.html#fedoo.DataSet.to_excel" title="fedoo.DataSet.to_excel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_excel</span></code></a>(filename[, save_mesh])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_excel.html#fedoo.DataSet.to_excel" title="fedoo.DataSet.to_excel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_excel</span></code></a>(filename[, save_mesh])</p></td>
 <td><p>Write data in a xlsx file (excel format).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_fdh5.html#fedoo.DataSet.to_fdh5" title="fedoo.DataSet.to_fdh5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_fdh5</span></code></a>(filename[, iteration, overwrite])</p></td>
+<td><p>Write the dataset to a FDH5 file.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_fdz.html#fedoo.DataSet.to_fdz" title="fedoo.DataSet.to_fdz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_fdz</span></code></a>(filename[, save_mesh, ...])</p></td>
 <td><p>Write a fdz file from the dataset.</p></td>
@@ -300,8 +319,8 @@ conversion between different data types.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_pandas.html#fedoo.DataSet.to_pandas" title="fedoo.DataSet.to_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_pandas</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_pyvista.html#fedoo.DataSet.to_pyvista" title="fedoo.DataSet.to_pyvista"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_pyvista</span></code></a>([gp_data_to_node])</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_pyvista.html#fedoo.DataSet.to_pyvista" title="fedoo.DataSet.to_pyvista"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_pyvista</span></code></a>([gp_data_to_node, ...])</p></td>
+<td><p>Convert the dataset to a PyVista unstructured grid.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_vtk.html#fedoo.DataSet.to_vtk" title="fedoo.DataSet.to_vtk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_vtk</span></code></a>(filename[, binary, ...])</p></td>
 <td><p>Write vtk file with the mesh and associated data.</p></td>
@@ -312,6 +331,9 @@ conversion between different data types.</p>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.dict_data.html#fedoo.DataSet.dict_data" title="fedoo.DataSet.dict_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.dict_data</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.active_submesh.html#fedoo.DataSet.active_submesh" title="fedoo.DataSet.active_submesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.active_submesh</span></code></a></p></td>
+<td><p>Active submesh used by MultiMesh data access.</p></td>
 </tr>
 </tbody>
 </table>
