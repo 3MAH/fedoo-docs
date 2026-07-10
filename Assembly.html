@@ -162,7 +162,7 @@ efficient way.
 However, the stored data may cause errors if the mesh is modified. In this case, the data should be recomputed,
 but it is not done by default. In this case, deleting the memory should
 resolve the problem.</p>
-<p>Note: it the MeshChange argument is set to True when creating the Assembly object, the
+<p>Note: if the mesh_change argument is set to True when creating the Assembly object, the
 memory will be recomputed by default, which may cause a decrease in assembling performances</p>
 </dd></dl>
 
@@ -292,7 +292,7 @@ n_gauss_points = mesh.n_elements + assembly.n_elm_gp.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.Assembly.operator_apply">
-<span class="sig-name descname"><span class="pre">operator_apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodal_vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.operator_apply" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">operator_apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodal_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_dof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.operator_apply" title="Link to this definition"></a></dt>
 <dd><p>Apply a discrete nodal vector to the trial space of a bilinear operator.</p>
 <p>This function performs a contraction of a bilinear form a(v, u*) with
 a known field ‘v’. It replaces the trial function (v) with the
@@ -305,7 +305,10 @@ virtual/test field (u*) symbolic.</p>
 <li><p><strong>wf</strong> (<em>DiffOp</em>) – A bilinear opearator associated with a weakform that may be used
 to build a global matrix (e.g., stiffness or mass matrix).</p></li>
 <li><p><strong>nodal_vector</strong> (<em>array_like</em>) – The discrete values (Degrees of Freedom) used to instantiate
-the trial field.</p></li>
+the trial field. By default, the vector is interpreted in the
+global nodal basis.</p></li>
+<li><p><strong>use_local_dof</strong> (<em>bool</em><em>, </em><em>default: False</em>) – If True, nodal_vector is interpreted as local element dofs, ordered
+by variable blocks with <code class="docutils literal notranslate"><span class="pre">n_elements</span> <span class="pre">*</span> <span class="pre">n_elm_nodes</span></code> values each.</p></li>
 <li><p><strong>Return</strong> – <dl class="simple">
 <dt>DiffOp<span class="classifier">An operator containing only the virtual (test) operator,</span></dt><dd><p>ready for vector assembly.</p>
 </dd>
