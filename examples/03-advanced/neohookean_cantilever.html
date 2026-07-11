@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finite-strain Neo-Hookean cantilever (rigid cap) &mdash; fedoo  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading" href="thermal_loading.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="multi_mesh_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedOOLogos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Quick_Start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01-simple/index.html">Simple examples to start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Advanced problems</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="3D_periodic_BC_off_axis.html">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Finite-strain Neo-Hookean cantilever (rigid cap)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#geometry-and-mesh">Geometry and Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#modeling-space-and-field-definitions">Modeling Space and Field Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#constitutive-laws-and-assembly">Constitutive Laws and Assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#problem-definition-and-boundary-conditions">Problem Definition and Boundary Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#solving-and-post-treatment">Solving and Post-Treatment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tube_compression.html">Compression of a tube using 2D axisymmetric model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Advanced problems</a></li>
+      <li class="breadcrumb-item active">Finite-strain Neo-Hookean cantilever (rigid cap)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/03-advanced/neohookean_cantilever.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-03-advanced-neohookean-cantilever-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="finite-strain-neo-hookean-cantilever-rigid-cap">
+<span id="sphx-glr-examples-03-advanced-neohookean-cantilever-py"></span><h1>Finite-strain Neo-Hookean cantilever (rigid cap)<a class="headerlink" href="#finite-strain-neo-hookean-cantilever-rigid-cap" title="Link to this heading"></a></h1>
+<p>A slender, nearly-incompressible cylinder is clamped at its base and bent by a
+transverse load applied to a rigid cap tied to its top face. It is loaded well
+into the large-deflection, finite-strain regime (tip deflection of order the
+cylinder length, ~40 % local strain at the clamped base).</p>
+<p>This exercises the updated-lagrangian hyperelastic path of
+<a class="reference internal" href="../../generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a> with a simcoon <code class="docutils literal notranslate"><span class="pre">NEOHC</span></code> (compressible
+Neo-Hookean) law. The strain energy is</p>
+<div class="math notranslate nohighlight">
+\[W = \tfrac{\mu}{2}(\bar I_1 - 3) + \kappa (J \ln J - J + 1),\]</div>
+<p>with <span class="math notranslate nohighlight">\(\mu = E/2(1+\nu)\)</span> the shear modulus and
+<span class="math notranslate nohighlight">\(\kappa = E/3(1-2\nu)\)</span> the bulk modulus.</p>
+<p>The rigid cap is a <a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.html#fedoo.constraint.RigidTie" title="fedoo.constraint.RigidTie"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie</span></code></a>: it ties the whole top face
+to six global rigid-body DOFs (<code class="docutils literal notranslate"><span class="pre">RigidDispX/Y/Z</span></code>, <code class="docutils literal notranslate"><span class="pre">RigidRotX/Y/Z</span></code>). Here the
+cap is driven by prescribing its transverse displacement <code class="docutils literal notranslate"><span class="pre">RigidDispX</span></code>.</p>
+<p>The mesh is read from an Abaqus <code class="docutils literal notranslate"><span class="pre">.inp</span></code> deck. Two are provided and give the same
+result: a <strong>linear</strong> hex8 mesh solved with reduced integration
+(<a class="reference internal" href="../../generated/fedoo.weakform.StressEquilibriumRI.html#fedoo.weakform.StressEquilibriumRI" title="fedoo.weakform.StressEquilibriumRI"><code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumRI()</span></code></a>, which avoids volumetric locking at
+<span class="math notranslate nohighlight">\(\nu = 0.49\)</span>), and a <strong>quadratic</strong> hex20 mesh solved with full integration
+(<a class="reference internal" href="../../generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a>).</p>
+<p>Displacement control is used because static <em>force</em> control is ill-conditioned
+for such a flexible structure: the cap’s transverse stiffness is tiny next to the
+internal stiffness, so a force increment demands a large displacement jump.
+Loading by force is done through implicit dynamics
+(<a class="reference internal" href="../../generated/fedoo.weakform.ImplicitDynamic.html#fedoo.weakform.ImplicitDynamic" title="fedoo.weakform.implicit_dynamic.ImplicitDynamic"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.implicit_dynamic.ImplicitDynamic</span></code></a>), where the cap’s
+inertia/damping regularise that soft mode.</p>
+<img src="../../_images/sphx_glr_neohookean_cantilever_001.png" srcset="../../_images/sphx_glr_neohookean_cantilever_001.png" alt="neohookean cantilever" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00066
+Iter 2 - Time: 0.10000 - dt 0.06250 - NR iter: 2 - Err: 0.00068
+Iter 3 - Time: 0.15000 - dt 0.06250 - NR iter: 2 - Err: 0.00068
+Iter 4 - Time: 0.20000 - dt 0.06250 - NR iter: 2 - Err: 0.00069
+Iter 5 - Time: 0.25000 - dt 0.06250 - NR iter: 2 - Err: 0.00070
+Iter 6 - Time: 0.30000 - dt 0.06250 - NR iter: 2 - Err: 0.00071
+Iter 7 - Time: 0.35000 - dt 0.06250 - NR iter: 2 - Err: 0.00074
+Iter 8 - Time: 0.40000 - dt 0.06250 - NR iter: 2 - Err: 0.00077
+Iter 9 - Time: 0.45000 - dt 0.06250 - NR iter: 2 - Err: 0.00081
+Iter 10 - Time: 0.50000 - dt 0.06250 - NR iter: 2 - Err: 0.00087
+Iter 11 - Time: 0.55000 - dt 0.06250 - NR iter: 2 - Err: 0.00095
+Iter 12 - Time: 0.60000 - dt 0.06250 - NR iter: 3 - Err: 0.00017
+Iter 13 - Time: 0.65000 - dt 0.06250 - NR iter: 3 - Err: 0.00011
+Iter 14 - Time: 0.70000 - dt 0.06250 - NR iter: 3 - Err: 0.00011
+Iter 15 - Time: 0.75000 - dt 0.06250 - NR iter: 3 - Err: 0.00010
+Iter 16 - Time: 0.80000 - dt 0.06250 - NR iter: 3 - Err: 0.00008
+Iter 17 - Time: 0.85000 - dt 0.06250 - NR iter: 3 - Err: 0.00005
+Iter 18 - Time: 0.90000 - dt 0.06250 - NR iter: 3 - Err: 0.00008
+Iter 19 - Time: 0.95000 - dt 0.06250 - NR iter: 3 - Err: 0.00020
+Iter 20 - Time: 1.00000 - dt 0.06250 - NR iter: 3 - Err: 0.00040
+max |displacement| : 3.2793e-02 m  (L = 0.05)
+max von Mises stress: 5.2276e+06 Pa
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="c1"># Parameters</span>
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0025</span>  <span class="c1"># cylinder length / radius [m]</span>
+<span class="n">E</span><span class="p">,</span> <span class="n">nu</span> <span class="o">=</span> <span class="mf">60e6</span><span class="p">,</span> <span class="mf">0.49</span>  <span class="c1"># Young&#39;s modulus [Pa], Poisson&#39;s ratio</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">))</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">nu</span><span class="p">))</span>
+
+<span class="n">U_CAP</span> <span class="o">=</span> <span class="mf">0.03</span>  <span class="c1"># prescribed transverse cap displacement [m] (~0.6 L)</span>
+
+<span class="c1"># &quot;linear&quot;    -&gt; hex8,  reduced integration (StressEquilibriumRI); faster</span>
+<span class="c1"># &quot;quadratic&quot; -&gt; hex20, full integration    (StressEquilibrium)</span>
+<span class="n">MESH</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span>
+
+<span class="c1"># path relative to this example&#39;s directory (as run by sphinx-gallery)</span>
+<span class="n">MESH_FILE</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;../../util/meshes/cyl08_hexa_lin.inp&quot;</span>
+    <span class="k">if</span> <span class="n">MESH</span> <span class="o">==</span> <span class="s2">&quot;linear&quot;</span>
+    <span class="k">else</span> <span class="s2">&quot;../../util/meshes/cyl08_hexa_quad.inp&quot;</span>
+<span class="p">)</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;3D&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">read_cylinder_inp</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read a C3D8 / C3D20 Abaqus .inp into a fedoo hex8 / hex20 Mesh.</span>
+
+<span class="sd">    ``fd.Mesh.read`` handles this directly where the meshio-based reader is</span>
+<span class="sd">    available; otherwise fall back to meshio (pulled in via ``pyvista[io]``).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">NotImplementedError</span><span class="p">,</span> <span class="ne">NameError</span><span class="p">,</span> <span class="ne">ModuleNotFoundError</span><span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">meshio</span>  <span class="c1"># noqa: PLC0415</span>
+
+        <span class="n">m</span> <span class="o">=</span> <span class="n">meshio</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;hexahedron20&quot;</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">cells_dict</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">cells_dict</span><span class="p">[</span><span class="s2">&quot;hexahedron20&quot;</span><span class="p">],</span> <span class="s2">&quot;hex20&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">cells_dict</span><span class="p">[</span><span class="s2">&quot;hexahedron&quot;</span><span class="p">],</span> <span class="s2">&quot;hex8&quot;</span><span class="p">)</span>
+
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">read_cylinder_inp</span><span class="p">(</span><span class="n">MESH_FILE</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">bottom</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>  <span class="c1"># clamped base</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>  <span class="c1"># tied to the rigid cap</span>
+
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="c1"># Material, weak form, assembly</span>
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">&quot;NEOHC&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">mu</span><span class="p">,</span> <span class="n">kappa</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;neohookean&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">mesh</span><span class="o">.</span><span class="n">elm_type</span> <span class="o">==</span> <span class="s2">&quot;hex8&quot;</span><span class="p">:</span>
+    <span class="c1"># reduced integration + hourglass control avoids volumetric locking</span>
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibriumRI</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">&quot;UL&quot;</span><span class="p">)</span>
+    <span class="n">stress_wf</span> <span class="o">=</span> <span class="n">wf</span><span class="o">.</span><span class="n">list_weakform</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>  <span class="c1"># hex20: full integration</span>
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">&quot;UL&quot;</span><span class="p">)</span>
+    <span class="n">stress_wf</span> <span class="o">=</span> <span class="n">wf</span>
+<span class="c1"># initial-stress stiffness, needed in the tangent under large rotations</span>
+<span class="n">stress_wf</span><span class="o">.</span><span class="n">geometric_stiffness</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;assembly&quot;</span><span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="c1"># Problem, boundary conditions, solve (displacement control)</span>
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">&quot;Displacement&quot;</span><span class="p">,</span> <span class="n">err0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">&quot;neohookean_cantilever&quot;</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;Strain&quot;</span><span class="p">])</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">RigidTie</span><span class="p">(</span><span class="n">top</span><span class="p">))</span>  <span class="c1"># rigid cap on the top face</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># clamp the base</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="s2">&quot;RigidDispX&quot;</span><span class="p">,</span> <span class="n">U_CAP</span><span class="p">)</span>  <span class="c1"># drive the cap transversely</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">interval_output</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="c1"># Post-processing</span>
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="n">results</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">n_iter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># last (fully-loaded) increment</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;max |displacement| : </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">disp</span><span class="p">,</span><span class="w"> </span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="s2"> m  (L = </span><span class="si">{</span><span class="n">L</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;max von Mises stress: </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s1">&#39;Stress&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;vm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Node&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span>
+
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">&quot;vm&quot;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 13.381 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-neohookean-cantilever-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/609f1bb569bbe7204bcc004160256c61/neohookean_cantilever.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">neohookean_cantilever.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/cc11770a0c3e433b6bda089c78355fd9/neohookean_cantilever.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">neohookean_cantilever.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/112077788ca489be441966b3d653cbe9/neohookean_cantilever.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">neohookean_cantilever.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="multi_mesh_example.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="thermal_loading.html" class="btn btn-neutral float-right" title="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

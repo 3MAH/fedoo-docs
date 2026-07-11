@@ -364,6 +364,23 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="A slender, nearly-incompressible cylinder is clamped at its base and bent by a transverse load applied to a rigid cap tied to its top face. It is loaded well into the large-deflection, finite-strain regime (tip deflection of order the cylinder length, ~40 % local strain at the clamped base).">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_neohookean_cantilever_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/neohookean_cantilever`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Finite-strain Neo-Hookean cantilever (rigid cap)</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading">
 
 .. only:: html
