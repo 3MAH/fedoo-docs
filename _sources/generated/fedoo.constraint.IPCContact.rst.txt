@@ -25,6 +25,7 @@
          IPCContact.get_global_matrix
          IPCContact.get_global_vector
          IPCContact.initialize
+         IPCContact.register_global_dofs
          IPCContact.reset
          IPCContact.set_start
          IPCContact.to_start

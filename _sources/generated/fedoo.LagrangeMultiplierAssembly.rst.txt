@@ -1,0 +1,50 @@
+﻿fedoo.LagrangeMultiplierAssembly
+================================
+
+.. currentmodule:: fedoo
+
+.. autoclass:: LagrangeMultiplierAssembly
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         LagrangeMultiplierAssembly.assemble_global_mat
+         LagrangeMultiplierAssembly.delete_global_mat
+         LagrangeMultiplierAssembly.get_all
+         LagrangeMultiplierAssembly.get_global_matrix
+         LagrangeMultiplierAssembly.get_global_vector
+         LagrangeMultiplierAssembly.initialize
+         LagrangeMultiplierAssembly.register_global_dofs
+         LagrangeMultiplierAssembly.reset
+         LagrangeMultiplierAssembly.set_start
+         LagrangeMultiplierAssembly.to_start
+         LagrangeMultiplierAssembly.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         LagrangeMultiplierAssembly.name
+         LagrangeMultiplierAssembly.space
+         LagrangeMultiplierAssembly.current
+         LagrangeMultiplierAssembly.associated_assembly_sum
+  
+  

@@ -25,6 +25,7 @@
          IPCSelfContact.get_global_matrix
          IPCSelfContact.get_global_vector
          IPCSelfContact.initialize
+         IPCSelfContact.register_global_dofs
          IPCSelfContact.reset
          IPCSelfContact.set_start
          IPCSelfContact.to_start

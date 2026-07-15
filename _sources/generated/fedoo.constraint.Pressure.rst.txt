@@ -42,6 +42,7 @@
          Pressure.initialize
          Pressure.integrate_field
          Pressure.operator_apply
+         Pressure.register_global_dofs
          Pressure.reset
          Pressure.set_disp
          Pressure.set_start

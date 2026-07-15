@@ -97,6 +97,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.Pressure.initialize.html">fedoo.constraint.Pressure.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.Pressure.integrate_field.html">fedoo.constraint.Pressure.integrate_field</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.Pressure.operator_apply.html">fedoo.constraint.Pressure.operator_apply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.Pressure.register_global_dofs.html">fedoo.constraint.Pressure.register_global_dofs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.Pressure.reset.html">fedoo.constraint.Pressure.reset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.Pressure.set_disp.html">fedoo.constraint.Pressure.set_disp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.Pressure.set_start.html">fedoo.constraint.Pressure.set_start</a></li>
@@ -113,6 +114,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
@@ -308,22 +311,25 @@ Newton iterations.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.operator_apply.html#fedoo.constraint.Pressure.operator_apply" title="fedoo.constraint.Pressure.operator_apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.operator_apply</span></code></a>(wf, nodal_vector[, ...])</p></td>
 <td><p>Apply a discrete nodal vector to the trial space of a bilinear operator.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.reset.html#fedoo.constraint.Pressure.reset" title="fedoo.constraint.Pressure.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.register_global_dofs.html#fedoo.constraint.Pressure.register_global_dofs" title="fedoo.constraint.Pressure.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.register_global_dofs</span></code></a>(pb)</p></td>
+<td><p>Register global DOFs required by the assembly on a problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.reset.html#fedoo.constraint.Pressure.reset" title="fedoo.constraint.Pressure.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.reset</span></code></a>()</p></td>
 <td><p>reset the assembly to it's initial state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.set_disp.html#fedoo.constraint.Pressure.set_disp" title="fedoo.constraint.Pressure.set_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.set_disp</span></code></a>(disp)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.set_disp.html#fedoo.constraint.Pressure.set_disp" title="fedoo.constraint.Pressure.set_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.set_disp</span></code></a>(disp)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.set_start.html#fedoo.constraint.Pressure.set_start" title="fedoo.constraint.Pressure.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.set_start</span></code></a>(pb[, t_fact])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.set_start.html#fedoo.constraint.Pressure.set_start" title="fedoo.constraint.Pressure.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.set_start</span></code></a>(pb[, t_fact])</p></td>
 <td><p>Start a new time increment.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.sum.html#fedoo.constraint.Pressure.sum" title="fedoo.constraint.Pressure.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.sum</span></code></a>(*listAssembly[, name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.sum.html#fedoo.constraint.Pressure.sum" title="fedoo.constraint.Pressure.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.sum</span></code></a>(*listAssembly[, name])</p></td>
 <td><p>Return a new assembly which is a sum of N assembly.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.to_start.html#fedoo.constraint.Pressure.to_start" title="fedoo.constraint.Pressure.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.to_start</span></code></a>(pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.to_start.html#fedoo.constraint.Pressure.to_start" title="fedoo.constraint.Pressure.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.to_start</span></code></a>(pb)</p></td>
 <td><p>Reset the assembly to the beginning of the time iteration.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.update.html#fedoo.constraint.Pressure.update" title="fedoo.constraint.Pressure.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.update</span></code></a>(pb[, compute])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.Pressure.update.html#fedoo.constraint.Pressure.update" title="fedoo.constraint.Pressure.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pressure.update</span></code></a>(pb[, compute])</p></td>
 <td><p>Update the associated weak form and assemble the global matrix :param - pb: a Problem object containing the Dof values</p></td>
 </tr>
 </tbody>

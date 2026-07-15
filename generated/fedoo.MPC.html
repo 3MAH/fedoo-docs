@@ -74,7 +74,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.MPC</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.generate.html">fedoo.MPC.generate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.get_all.html">fedoo.MPC.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.get_generated_equations.html">fedoo.MPC.get_generated_equations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.initialize.html">fedoo.MPC.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.register_global_dofs.html">fedoo.MPC.register_global_dofs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.str_condensed.html">fedoo.MPC.str_condensed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.name.html">fedoo.MPC.name</a></li>
 </ul>
@@ -82,6 +84,8 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
@@ -181,8 +185,14 @@ boundary conditions should be applied on this dof.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.MPC.get_all.html#fedoo.MPC.get_all" title="fedoo.MPC.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.get_all</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MPC.initialize.html#fedoo.MPC.initialize" title="fedoo.MPC.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.initialize</span></code></a>(problem)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MPC.get_generated_equations.html#fedoo.MPC.get_generated_equations" title="fedoo.MPC.get_generated_equations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.get_generated_equations</span></code></a>()</p></td>
+<td><p>Return generated MPC equations with their original scaling.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MPC.initialize.html#fedoo.MPC.initialize" title="fedoo.MPC.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.initialize</span></code></a>(problem)</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MPC.register_global_dofs.html#fedoo.MPC.register_global_dofs" title="fedoo.MPC.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.register_global_dofs</span></code></a>(problem)</p></td>
+<td><p>Register global DOFs required by this boundary condition.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.MPC.str_condensed.html#fedoo.MPC.str_condensed" title="fedoo.MPC.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.str_condensed</span></code></a>()</p></td>
 <td><p>Return a condensed one line str describing the object</p></td>

@@ -76,6 +76,8 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
@@ -90,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.get_global_matrix.html">fedoo.constraint.IPCSelfContact.get_global_matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.get_global_vector.html">fedoo.constraint.IPCSelfContact.get_global_vector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.initialize.html">fedoo.constraint.IPCSelfContact.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.register_global_dofs.html">fedoo.constraint.IPCSelfContact.register_global_dofs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.reset.html">fedoo.constraint.IPCSelfContact.reset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.set_start.html">fedoo.constraint.IPCSelfContact.set_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.to_start.html">fedoo.constraint.IPCSelfContact.to_start</a></li>
@@ -220,16 +223,19 @@ meshes</strong>; raises <code class="docutils literal notranslate"><span class="
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.initialize.html#fedoo.constraint.IPCSelfContact.initialize" title="fedoo.constraint.IPCSelfContact.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.initialize</span></code></a>(pb)</p></td>
 <td><p>Initialize the IPC contact assembly.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.reset.html#fedoo.constraint.IPCSelfContact.reset" title="fedoo.constraint.IPCSelfContact.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.reset</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.register_global_dofs.html#fedoo.constraint.IPCSelfContact.register_global_dofs" title="fedoo.constraint.IPCSelfContact.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.register_global_dofs</span></code></a>(pb)</p></td>
+<td><p>Register global DOFs required by the assembly on a problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.reset.html#fedoo.constraint.IPCSelfContact.reset" title="fedoo.constraint.IPCSelfContact.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.reset</span></code></a>()</p></td>
 <td><p>Reset the assembly.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.set_start.html#fedoo.constraint.IPCSelfContact.set_start" title="fedoo.constraint.IPCSelfContact.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.set_start</span></code></a>(pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.set_start.html#fedoo.constraint.IPCSelfContact.set_start" title="fedoo.constraint.IPCSelfContact.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.set_start</span></code></a>(pb)</p></td>
 <td><p>Begin a new time increment.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.to_start.html#fedoo.constraint.IPCSelfContact.to_start" title="fedoo.constraint.IPCSelfContact.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.to_start</span></code></a>(pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.to_start.html#fedoo.constraint.IPCSelfContact.to_start" title="fedoo.constraint.IPCSelfContact.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.to_start</span></code></a>(pb)</p></td>
 <td><p>Restart the current time increment after NR failure.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.update.html#fedoo.constraint.IPCSelfContact.update" title="fedoo.constraint.IPCSelfContact.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.update</span></code></a>(pb[, compute])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.IPCSelfContact.update.html#fedoo.constraint.IPCSelfContact.update" title="fedoo.constraint.IPCSelfContact.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IPCSelfContact.update</span></code></a>(pb[, compute])</p></td>
 <td><p>Update the IPC assembly for the current Newton–Raphson iteration.</p></td>
 </tr>
 </tbody>

@@ -76,6 +76,8 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
@@ -256,6 +258,54 @@ boundary-condition force.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.SurfaceForce.html#fedoo.constraint.SurfaceForce" title="fedoo.constraint.SurfaceForce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.SurfaceForce</span></code></a>(mesh, force[, ...])</p></td>
 <td><p>Surface stress with a fixed orientation.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="generic-lagrange-multiplier-constraints">
+<h3>Generic Lagrange-multiplier constraints<a class="headerlink" href="#generic-lagrange-multiplier-constraints" title="Link to this heading"></a></h3>
+<p>Any boundary-condition object that generates only <a class="reference internal" href="generated/fedoo.MPC.html#fedoo.MPC" title="fedoo.MPC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MPC</span></code></a> leaves
+can be enforced with Lagrange multipliers by wrapping it in
+<a class="reference internal" href="generated/fedoo.LagrangeMultiplierAssembly.html#fedoo.LagrangeMultiplierAssembly" title="fedoo.LagrangeMultiplierAssembly"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.LagrangeMultiplierAssembly</span></code></a>. Original MPC
+coefficients are preserved; the first term is not normalized as a slave DOF.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">periodic_lm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">LagrangeMultiplierAssembly</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">,</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="n">periodicity_type</span><span class="o">=</span><span class="s2">&quot;small_strain&quot;</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PeriodicLM&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">solid_assembly</span> <span class="o">+</span> <span class="n">periodic_lm</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Do not also add the wrapped constraint to <code class="docutils literal notranslate"><span class="pre">pb.bc</span></code>: that would enforce its
+equations a second time through MPC elimination. The bordered system is
+an indefinite saddle-point system. Use a direct solver; positive-definite
+iterative solvers such as <code class="docutils literal notranslate"><span class="pre">cg</span></code> are not suitable.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.LagrangeMultiplierAssembly.html#fedoo.LagrangeMultiplierAssembly" title="fedoo.LagrangeMultiplierAssembly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.LagrangeMultiplierAssembly</span></code></a>(mesh, ...)</p></td>
+<td><p>Enforce MPC-generated linear constraints with Lagrange multipliers.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mean-value-constraint">
+<h3>Mean-value constraint<a class="headerlink" href="#mean-value-constraint" title="Link to this heading"></a></h3>
+<p>The mean value of a field can be constrained with
+<a class="reference internal" href="generated/fedoo.constraint.MeanValueConstraint.html#fedoo.constraint.MeanValueConstraint" title="fedoo.constraint.MeanValueConstraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.MeanValueConstraint</span></code></a>. It is an assembly object
+that is summed with the stiffness assembly. Its main use is to remove rigid
+body translation in periodic homogenization without pinning an arbitrary node:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+    <span class="n">assembly</span> <span class="o">+</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanValueConstraint</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The constraint uses one Lagrange multiplier per variable. The zero-mean
+condition provides a canonical periodic fluctuation field while retaining the
+same stress field as a single-node pin.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.MeanValueConstraint.html#fedoo.constraint.MeanValueConstraint" title="fedoo.constraint.MeanValueConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.MeanValueConstraint</span></code></a>(mesh[, ...])</p></td>
+<td><p>Enforce the weighted mean of a field over a set of nodes.</p></td>
 </tr>
 </tbody>
 </table>

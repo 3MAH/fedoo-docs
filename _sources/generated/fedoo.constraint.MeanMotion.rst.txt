@@ -22,6 +22,7 @@
          MeanMotion.generate
          MeanMotion.get_all
          MeanMotion.initialize
+         MeanMotion.register_global_dofs
          MeanMotion.str_condensed
       
       

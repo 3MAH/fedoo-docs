@@ -40,6 +40,7 @@
          DistributedForce.initialize
          DistributedForce.integrate_field
          DistributedForce.operator_apply
+         DistributedForce.register_global_dofs
          DistributedForce.reset
          DistributedForce.set_disp
          DistributedForce.set_start

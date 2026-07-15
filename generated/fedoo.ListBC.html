@@ -80,6 +80,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.ListBC.initialize.html">fedoo.ListBC.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.ListBC.list_all.html">fedoo.ListBC.list_all</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.ListBC.mpc.html">fedoo.ListBC.mpc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.ListBC.register_global_dofs.html">fedoo.ListBC.register_global_dofs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.ListBC.remove.html">fedoo.ListBC.remove</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.ListBC.str_condensed.html">fedoo.ListBC.str_condensed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.ListBC.name.html">fedoo.ListBC.name</a></li>
@@ -90,6 +91,8 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
@@ -176,10 +179,13 @@ Derived from the python list object.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.mpc.html#fedoo.ListBC.mpc" title="fedoo.ListBC.mpc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.mpc</span></code></a>(*args, **kargs)</p></td>
 <td><p>Add a linear multi-point constraint to the list of boundary conditions.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.remove.html#fedoo.ListBC.remove" title="fedoo.ListBC.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.remove</span></code></a>(bc)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.register_global_dofs.html#fedoo.ListBC.register_global_dofs" title="fedoo.ListBC.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.register_global_dofs</span></code></a>(problem)</p></td>
+<td><p>Register global DOFs required by this boundary condition.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.remove.html#fedoo.ListBC.remove" title="fedoo.ListBC.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.remove</span></code></a>(bc)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.str_condensed.html#fedoo.ListBC.str_condensed" title="fedoo.ListBC.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.str_condensed</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.str_condensed.html#fedoo.ListBC.str_condensed" title="fedoo.ListBC.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.str_condensed</span></code></a>()</p></td>
 <td><p>Return a condensed one line str describing the object</p></td>
 </tr>
 </tbody>

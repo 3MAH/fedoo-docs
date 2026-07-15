@@ -98,6 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.initialize.html">fedoo.constraint.SurfaceForce.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.integrate_field.html">fedoo.constraint.SurfaceForce.integrate_field</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.operator_apply.html">fedoo.constraint.SurfaceForce.operator_apply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.register_global_dofs.html">fedoo.constraint.SurfaceForce.register_global_dofs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.reset.html">fedoo.constraint.SurfaceForce.reset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_disp.html">fedoo.constraint.SurfaceForce.set_disp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_start.html">fedoo.constraint.SurfaceForce.set_start</a></li>
@@ -113,6 +114,8 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.associated_assembly_sum.html">fedoo.constraint.SurfaceForce.associated_assembly_sum</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
@@ -240,22 +243,25 @@ from_nodes or from_elements constructors.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.operator_apply.html#fedoo.constraint.SurfaceForce.operator_apply" title="fedoo.constraint.SurfaceForce.operator_apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.operator_apply</span></code></a>(wf, nodal_vector)</p></td>
 <td><p>Apply a discrete nodal vector to the trial space of a bilinear operator.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.reset.html#fedoo.constraint.SurfaceForce.reset" title="fedoo.constraint.SurfaceForce.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.register_global_dofs.html#fedoo.constraint.SurfaceForce.register_global_dofs" title="fedoo.constraint.SurfaceForce.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.register_global_dofs</span></code></a>(pb)</p></td>
+<td><p>Register global DOFs required by the assembly on a problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.reset.html#fedoo.constraint.SurfaceForce.reset" title="fedoo.constraint.SurfaceForce.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.reset</span></code></a>()</p></td>
 <td><p>reset the assembly to it's initial state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_disp.html#fedoo.constraint.SurfaceForce.set_disp" title="fedoo.constraint.SurfaceForce.set_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.set_disp</span></code></a>(disp)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_disp.html#fedoo.constraint.SurfaceForce.set_disp" title="fedoo.constraint.SurfaceForce.set_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.set_disp</span></code></a>(disp)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_start.html#fedoo.constraint.SurfaceForce.set_start" title="fedoo.constraint.SurfaceForce.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.set_start</span></code></a>(pb[, t_fact])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_start.html#fedoo.constraint.SurfaceForce.set_start" title="fedoo.constraint.SurfaceForce.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.set_start</span></code></a>(pb[, t_fact])</p></td>
 <td><p>Start a new time increment.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.sum.html#fedoo.constraint.SurfaceForce.sum" title="fedoo.constraint.SurfaceForce.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.sum</span></code></a>(*listAssembly[, name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.sum.html#fedoo.constraint.SurfaceForce.sum" title="fedoo.constraint.SurfaceForce.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.sum</span></code></a>(*listAssembly[, name])</p></td>
 <td><p>Return a new assembly which is a sum of N assembly.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.to_start.html#fedoo.constraint.SurfaceForce.to_start" title="fedoo.constraint.SurfaceForce.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.to_start</span></code></a>(pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.to_start.html#fedoo.constraint.SurfaceForce.to_start" title="fedoo.constraint.SurfaceForce.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.to_start</span></code></a>(pb)</p></td>
 <td><p>Reset the assembly to the beginning of the time iteration.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.update.html#fedoo.constraint.SurfaceForce.update" title="fedoo.constraint.SurfaceForce.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.update</span></code></a>(pb[, compute])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.update.html#fedoo.constraint.SurfaceForce.update" title="fedoo.constraint.SurfaceForce.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.update</span></code></a>(pb[, compute])</p></td>
 <td><p>Update the associated weak form and assemble the global matrix :param - pb: a Problem object containing the Dof values</p></td>
 </tr>
 </tbody>

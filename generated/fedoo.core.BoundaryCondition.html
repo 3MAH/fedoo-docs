@@ -78,6 +78,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.core.BoundaryCondition.get_true_value.html">fedoo.core.BoundaryCondition.get_true_value</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.core.BoundaryCondition.get_value.html">fedoo.core.BoundaryCondition.get_value</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.core.BoundaryCondition.initialize.html">fedoo.core.BoundaryCondition.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.core.BoundaryCondition.register_global_dofs.html">fedoo.core.BoundaryCondition.register_global_dofs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.core.BoundaryCondition.str_condensed.html">fedoo.core.BoundaryCondition.str_condensed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.core.BoundaryCondition.name.html">fedoo.core.BoundaryCondition.name</a></li>
 </ul>
@@ -86,6 +87,8 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
@@ -191,7 +194,10 @@ if array: the len of the array should be = to the number of dof defined in the B
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.core.BoundaryCondition.initialize.html#fedoo.core.BoundaryCondition.initialize" title="fedoo.core.BoundaryCondition.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BoundaryCondition.initialize</span></code></a>(problem)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.core.BoundaryCondition.str_condensed.html#fedoo.core.BoundaryCondition.str_condensed" title="fedoo.core.BoundaryCondition.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BoundaryCondition.str_condensed</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.core.BoundaryCondition.register_global_dofs.html#fedoo.core.BoundaryCondition.register_global_dofs" title="fedoo.core.BoundaryCondition.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BoundaryCondition.register_global_dofs</span></code></a>(problem)</p></td>
+<td><p>Register global DOFs required by this boundary condition.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.core.BoundaryCondition.str_condensed.html#fedoo.core.BoundaryCondition.str_condensed" title="fedoo.core.BoundaryCondition.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BoundaryCondition.str_condensed</span></code></a>()</p></td>
 <td><p>Return a condensed one line str describing the object</p></td>
 </tr>
 </tbody>
