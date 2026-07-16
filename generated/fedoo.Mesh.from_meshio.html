@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.Mesh.node_sets &mdash; fedoo  documentation</title>
+  <title>fedoo.Mesh.from_meshio &mdash; fedoo  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -26,8 +26,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.Mesh.element_sets" href="fedoo.Mesh.element_sets.html" />
-    <link rel="prev" title="fedoo.Mesh.elm_type" href="fedoo.Mesh.elm_type.html" /> 
+    <link rel="next" title="fedoo.Mesh.from_pyvista" href="fedoo.Mesh.from_pyvista.html" />
+    <link rel="prev" title="fedoo.Mesh.find_nodes" href="fedoo.Mesh.find_nodes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -81,7 +81,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.find_elements.html">fedoo.Mesh.find_elements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.find_isolated_nodes.html">fedoo.Mesh.find_isolated_nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.find_nodes.html">fedoo.Mesh.find_nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.from_meshio.html">fedoo.Mesh.from_meshio</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.Mesh.from_meshio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.from_pyvista.html">fedoo.Mesh.from_pyvista</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.gausspoint_coordinates.html">fedoo.Mesh.gausspoint_coordinates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.get_all.html">fedoo.Mesh.get_all</a></li>
@@ -114,7 +114,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.nodes.html">fedoo.Mesh.nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.elements.html">fedoo.Mesh.elements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.elm_type.html">fedoo.Mesh.elm_type</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.Mesh.node_sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.node_sets.html">fedoo.Mesh.node_sets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.element_sets.html">fedoo.Mesh.element_sets</a></li>
 </ul>
 </li>
@@ -170,9 +170,9 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
           <li class="breadcrumb-item"><a href="fedoo.Mesh.html">fedoo.Mesh</a></li>
-      <li class="breadcrumb-item active">fedoo.Mesh.node_sets</li>
+      <li class="breadcrumb-item active">fedoo.Mesh.from_meshio</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/generated/fedoo.Mesh.node_sets.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/fedoo.Mesh.from_meshio.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -180,12 +180,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="fedoo-mesh-node-sets">
-<h1>fedoo.Mesh.node_sets<a class="headerlink" href="#fedoo-mesh-node-sets" title="Link to this heading"></a></h1>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="fedoo.Mesh.node_sets">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">node_sets</span></span><a class="headerlink" href="#fedoo.Mesh.node_sets" title="Link to this definition"></a></dt>
-<dd><p>Dict containing node sets associated to the mesh.</p>
+  <section id="fedoo-mesh-from-meshio">
+<h1>fedoo.Mesh.from_meshio<a class="headerlink" href="#fedoo-mesh-from-meshio" title="Link to this heading"></a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Mesh.from_meshio">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">from_meshio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">io_mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.core.mesh.Mesh"><span class="pre">Mesh</span></a></span></span><a class="headerlink" href="#fedoo.Mesh.from_meshio" title="Link to this definition"></a></dt>
+<dd><p>Build a Mesh from a meshio mesh object.</p>
+<p>Node coordinates, element connectivity, node sets (<code class="docutils literal notranslate"><span class="pre">point_sets</span></code>,
+e.g. Abaqus <code class="docutils literal notranslate"><span class="pre">*NSET</span></code>) and element sets (<code class="docutils literal notranslate"><span class="pre">cell_sets</span></code>, e.g. Abaqus
+<code class="docutils literal notranslate"><span class="pre">*ELSET</span></code>) are imported. Meshes holding several element types are
+returned as a <code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code>; element sets are then split per
+element type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>io_mesh</strong> (<em>meshio.Mesh</em>) – Mesh object returned by <code class="docutils literal notranslate"><span class="pre">meshio.read</span></code>.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the new created Mesh. If specified, this Mesh is added to
+the dict containing all the loaded Mesh (Mesh.get_all()).</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -194,8 +208,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.Mesh.elm_type.html" class="btn btn-neutral float-left" title="fedoo.Mesh.elm_type" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.Mesh.element_sets.html" class="btn btn-neutral float-right" title="fedoo.Mesh.element_sets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.Mesh.find_nodes.html" class="btn btn-neutral float-left" title="fedoo.Mesh.find_nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.Mesh.from_pyvista.html" class="btn btn-neutral float-right" title="fedoo.Mesh.from_pyvista" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

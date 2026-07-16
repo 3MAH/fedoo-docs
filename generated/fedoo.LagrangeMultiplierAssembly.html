@@ -145,6 +145,24 @@
 method produces only MPC leaves, or an iterable of such objects. Wrapped
 constraints must not also be added to the problem boundary conditions,
 since that would enforce them a second time through elimination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><em>fedoo.Mesh</em></a>) – Mesh associated with the constraint. It should share the nodes of the
+assembly with which this constraint is summed.</p></li>
+<li><p><strong>constraints</strong> (<a class="reference internal" href="fedoo.MPC.html#fedoo.MPC" title="fedoo.MPC"><em>MPC</em></a><em>, </em><a class="reference internal" href="fedoo.ListBC.html#fedoo.ListBC" title="fedoo.ListBC"><em>ListBC</em></a><em>, </em><em>BC object</em><em> or </em><em>iterable</em><em> of </em><em>BC objects</em>) – Constraint(s) to enforce. Any wrapped object must generate only
+<a class="reference internal" href="fedoo.MPC.html#fedoo.MPC" title="fedoo.MPC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MPC</span></code></a> leaves.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>default = &quot;LagrangeMultiplier&quot;</em>) – Assembly name. It is also the name of the global vector that gathers
+the Lagrange-multiplier DOFs.</p></li>
+<li><p><strong>multiplier_names</strong> (<em>list</em><em> of </em><em>str</em><em> or </em><em>None</em><em>, </em><em>default = None</em>) – Names of the multiplier DOFs, one per generated equation. If None, the
+multipliers are gathered as a single global vector named <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></li>
+<li><p><strong>space</strong> (<em>ModelingSpace</em><em>, </em><em>optional</em>) – Modeling space. If None, the active modeling space is used.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The multipliers give the system a zero diagonal block and an indefinite
+saddle-point structure, so a direct solver is required.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.LagrangeMultiplierAssembly.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LagrangeMultiplier'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multiplier_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelingSpace</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.LagrangeMultiplierAssembly.__init__" title="Link to this definition"></a></dt>
