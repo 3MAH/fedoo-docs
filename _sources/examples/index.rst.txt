@@ -347,6 +347,23 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="The model consists of two composite arms separated by a zero-thickness cohesive interface. Cohesive elements are inserted only after the prescribed starter-crack length. The initially unconnected part of the two arms therefore represents the pre-crack.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_composite_DCB_test_3D_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/composite_DCB_test_3D`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Composite double-cantilever beam with a cohesive interface</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="The key points are:     - define two separated mesh that share to the same node       list with different elements.     - create two separated Assembly that are combined in a single AssemblySum       object.     - extract/save results separatedly for each elm_type.">
 
 .. only:: html
