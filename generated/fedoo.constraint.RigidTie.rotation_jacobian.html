@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.constraint.RigidTie.str_condensed &mdash; fedoo  documentation</title>
+  <title>fedoo.constraint.RigidTie.rotation_jacobian &mdash; fedoo  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -26,8 +26,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.constraint.RigidTie.to_start" href="fedoo.constraint.RigidTie.to_start.html" />
-    <link rel="prev" title="fedoo.constraint.RigidTie.set_start" href="fedoo.constraint.RigidTie.set_start.html" /> 
+    <link rel="next" title="fedoo.constraint.RigidTie.set_start" href="fedoo.constraint.RigidTie.set_start.html" />
+    <link rel="prev" title="fedoo.constraint.RigidTie.register_global_dofs" href="fedoo.constraint.RigidTie.register_global_dofs.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -83,9 +83,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.register_global_dofs.html">fedoo.constraint.RigidTie.register_global_dofs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.rotation_jacobian.html">fedoo.constraint.RigidTie.rotation_jacobian</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.constraint.RigidTie.rotation_jacobian</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.constraint.RigidTie.str_condensed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.to_start.html">fedoo.constraint.RigidTie.to_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
@@ -122,9 +122,9 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
           <li class="breadcrumb-item"><a href="fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
-      <li class="breadcrumb-item active">fedoo.constraint.RigidTie.str_condensed</li>
+      <li class="breadcrumb-item active">fedoo.constraint.RigidTie.rotation_jacobian</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/generated/fedoo.constraint.RigidTie.str_condensed.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/fedoo.constraint.RigidTie.rotation_jacobian.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -132,12 +132,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="fedoo-constraint-rigidtie-str-condensed">
-<h1>fedoo.constraint.RigidTie.str_condensed<a class="headerlink" href="#fedoo-constraint-rigidtie-str-condensed" title="Link to this heading"></a></h1>
+  <section id="fedoo-constraint-rigidtie-rotation-jacobian">
+<h1>fedoo.constraint.RigidTie.rotation_jacobian<a class="headerlink" href="#fedoo-constraint-rigidtie-rotation-jacobian" title="Link to this heading"></a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="fedoo.constraint.RigidTie.str_condensed">
-<span class="sig-prename descclassname"><span class="pre">RigidTie.</span></span><span class="sig-name descname"><span class="pre">str_condensed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.RigidTie.str_condensed" title="Link to this definition"></a></dt>
-<dd><p>Return a condensed one line str describing the object</p>
+<dt class="sig sig-object py" id="fedoo.constraint.RigidTie.rotation_jacobian">
+<span class="sig-prename descclassname"><span class="pre">RigidTie.</span></span><span class="sig-name descname"><span class="pre">rotation_jacobian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotvec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.RigidTie.rotation_jacobian" title="Link to this definition"></a></dt>
+<dd><p>Rotation matrix and per-point displacement/rotation derivatives.</p>
+<p>For each point, <code class="docutils literal notranslate"><span class="pre">du_dr{k}</span> <span class="pre">=</span> <span class="pre">(point</span> <span class="pre">-</span> <span class="pre">center)</span> <span class="pre">&#64;</span> <span class="pre">(dR/dr{k}).T</span></code> is the
+sensitivity of the slaved displacement to rigid rotation DOF <code class="docutils literal notranslate"><span class="pre">k</span></code>.
+Shared by the MPC linearization (<a class="reference internal" href="fedoo.constraint.RigidTie.generate.html#fedoo.constraint.RigidTie.generate" title="fedoo.constraint.RigidTie.generate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">generate()</span></code></a>) and the IPC contact
+Jacobians (<code class="docutils literal notranslate"><span class="pre">RigidBodyAssembly</span></code> and <code class="docutils literal notranslate"><span class="pre">IPCContact</span></code>) so the three stay
+consistent.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">(R,</span> <span class="pre">du_drx,</span> <span class="pre">du_dry,</span> <span class="pre">du_drz)</span></code> where each derivative array has
+the same shape as <code class="docutils literal notranslate"><span class="pre">points</span></code>.</p>
 </dd></dl>
 
 </section>
@@ -146,8 +153,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.constraint.RigidTie.set_start.html" class="btn btn-neutral float-left" title="fedoo.constraint.RigidTie.set_start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.constraint.RigidTie.to_start.html" class="btn btn-neutral float-right" title="fedoo.constraint.RigidTie.to_start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.constraint.RigidTie.register_global_dofs.html" class="btn btn-neutral float-left" title="fedoo.constraint.RigidTie.register_global_dofs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.constraint.RigidTie.set_start.html" class="btn btn-neutral float-right" title="fedoo.constraint.RigidTie.set_start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

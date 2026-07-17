@@ -83,6 +83,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.register_global_dofs.html">fedoo.constraint.RigidTie.register_global_dofs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.rotation_jacobian.html">fedoo.constraint.RigidTie.rotation_jacobian</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.to_start.html">fedoo.constraint.RigidTie.to_start</a></li>
@@ -221,13 +222,16 @@ using the Problem.add method.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.register_global_dofs.html#fedoo.constraint.RigidTie.register_global_dofs" title="fedoo.constraint.RigidTie.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.register_global_dofs</span></code></a>(problem)</p></td>
 <td><p>Register global DOFs required by this boundary condition.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html#fedoo.constraint.RigidTie.set_start" title="fedoo.constraint.RigidTie.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.set_start</span></code></a>(problem)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.rotation_jacobian.html#fedoo.constraint.RigidTie.rotation_jacobian" title="fedoo.constraint.RigidTie.rotation_jacobian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.rotation_jacobian</span></code></a>(rotvec, points)</p></td>
+<td><p>Rotation matrix and per-point displacement/rotation derivatives.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html#fedoo.constraint.RigidTie.set_start" title="fedoo.constraint.RigidTie.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.set_start</span></code></a>(problem)</p></td>
 <td><p>Commit a converged incremental rotation to the quaternion state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html#fedoo.constraint.RigidTie.str_condensed" title="fedoo.constraint.RigidTie.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.str_condensed</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html#fedoo.constraint.RigidTie.str_condensed" title="fedoo.constraint.RigidTie.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.str_condensed</span></code></a>()</p></td>
 <td><p>Return a condensed one line str describing the object</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.to_start.html#fedoo.constraint.RigidTie.to_start" title="fedoo.constraint.RigidTie.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.to_start</span></code></a>(problem)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.to_start.html#fedoo.constraint.RigidTie.to_start" title="fedoo.constraint.RigidTie.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.to_start</span></code></a>(problem)</p></td>
 <td><p>Leave the last converged quaternion unchanged after a failed step.</p></td>
 </tr>
 </tbody>

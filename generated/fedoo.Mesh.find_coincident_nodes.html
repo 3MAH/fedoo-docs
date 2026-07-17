@@ -193,6 +193,9 @@ These pairs of nodes can be merged using :</p>
 <div><p>meshObject.merge_nodes(meshObject.find_coincident_nodes())</p>
 </div></blockquote>
 <p>where meshObject is the Mesh object containing merged coincidentNodes.</p>
+<p>Detection here uses a round-to-tolerance lexsort. For a distance-based
+(KDTree) detector that also collapses clusters of 3+ coincident nodes
+in one call, see <a class="reference internal" href="fedoo.Mesh.merge_coincident_nodes.html#fedoo.Mesh.merge_coincident_nodes" title="fedoo.Mesh.merge_coincident_nodes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">merge_coincident_nodes()</span></code></a>.</p>
 </dd></dl>
 
 </section>

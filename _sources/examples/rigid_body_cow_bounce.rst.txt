@@ -52,7 +52,7 @@ Full rotation via quaternion, rotation vectors (no gimbal lock).
         t=1.50s  z=0.120m  contacts=0
         t=1.75s  z=0.099m  contacts=0
 
-      4001 steps in 99.9s (25.0ms/step)
+      4001 steps in 102.2s (25.6ms/step)
       z_min=0.0564m
       Saved: /home/runner/work/fedoo/fedoo/examples/rigid_body_cow_bounce.gif
 
@@ -217,7 +217,7 @@ Full rotation via quaternion, rotation vectors (no gimbal lock).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (1 minutes 51.549 seconds)
+   **Total running time of the script:** (1 minutes 53.546 seconds)
 
 
 .. _sphx_glr_download_examples_rigid_body_cow_bounce.py:
