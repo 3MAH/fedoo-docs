@@ -26,8 +26,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.constitutivelaw.ShellHomogeneous.compute_area_density" href="fedoo.constitutivelaw.ShellHomogeneous.compute_area_density.html" />
-    <link rel="prev" title="fedoo.constitutivelaw.ShellLaminateNonLinear.is_initialized" href="fedoo.constitutivelaw.ShellLaminateNonLinear.is_initialized.html" /> 
+    <link rel="next" title="fedoo.constitutivelaw.ShellHomogeneous.GetStressDistribution" href="fedoo.constitutivelaw.ShellHomogeneous.GetStressDistribution.html" />
+    <link rel="prev" title="fedoo.constitutivelaw.ShellLaminate.is_initialized" href="fedoo.constitutivelaw.ShellLaminate.is_initialized.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -78,15 +78,14 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.html">fedoo.constitutivelaw.BeamPipe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.BeamRectangular.html">fedoo.constitutivelaw.BeamRectangular</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminate.html">fedoo.constitutivelaw.ShellLaminate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.html">fedoo.constitutivelaw.ShellLaminateNonLinear</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.constitutivelaw.ShellHomogeneous</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.GetStressDistribution.html">fedoo.constitutivelaw.ShellHomogeneous.GetStressDistribution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.compute_area_density.html">fedoo.constitutivelaw.ShellHomogeneous.compute_area_density</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.compute_rotary_density.html">fedoo.constitutivelaw.ShellHomogeneous.compute_rotary_density</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_all.html">fedoo.constitutivelaw.ShellHomogeneous.get_all</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_shell_stiffness_matrix.html">fedoo.constitutivelaw.ShellHomogeneous.get_shell_stiffness_matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_strain.html">fedoo.constitutivelaw.ShellHomogeneous.get_strain</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_stress.html">fedoo.constitutivelaw.ShellHomogeneous.get_stress</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_stress_distribution.html">fedoo.constitutivelaw.ShellHomogeneous.get_stress_distribution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.initialize.html">fedoo.constitutivelaw.ShellHomogeneous.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.reset.html">fedoo.constitutivelaw.ShellHomogeneous.reset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.set_start.html">fedoo.constitutivelaw.ShellHomogeneous.set_start</a></li>
@@ -100,7 +99,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.is_initialized.html">fedoo.constitutivelaw.ShellHomogeneous.is_initialized</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneousNonLinear.html">fedoo.constitutivelaw.ShellHomogeneousNonLinear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ThermalProperties.html">fedoo.constitutivelaw.ThermalProperties</a></li>
 </ul>
 </li>
@@ -152,25 +150,25 @@
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.compute_area_density.html#fedoo.constitutivelaw.ShellHomogeneous.compute_area_density" title="fedoo.constitutivelaw.ShellHomogeneous.compute_area_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.compute_area_density</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.GetStressDistribution.html#fedoo.constitutivelaw.ShellHomogeneous.GetStressDistribution" title="fedoo.constitutivelaw.ShellHomogeneous.GetStressDistribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.GetStressDistribution</span></code></a>(...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.compute_rotary_density.html#fedoo.constitutivelaw.ShellHomogeneous.compute_rotary_density" title="fedoo.constitutivelaw.ShellHomogeneous.compute_rotary_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.compute_rotary_density</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.compute_area_density.html#fedoo.constitutivelaw.ShellHomogeneous.compute_area_density" title="fedoo.constitutivelaw.ShellHomogeneous.compute_area_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.compute_area_density</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_all.html#fedoo.constitutivelaw.ShellHomogeneous.get_all" title="fedoo.constitutivelaw.ShellHomogeneous.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.get_all</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.compute_rotary_density.html#fedoo.constitutivelaw.ShellHomogeneous.compute_rotary_density" title="fedoo.constitutivelaw.ShellHomogeneous.compute_rotary_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.compute_rotary_density</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_all.html#fedoo.constitutivelaw.ShellHomogeneous.get_all" title="fedoo.constitutivelaw.ShellHomogeneous.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.get_all</span></code></a>()</p></td>
 <td><p>Return a dict with all the known ConstitutiveLaw (with a name).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_shell_stiffness_matrix.html#fedoo.constitutivelaw.ShellHomogeneous.get_shell_stiffness_matrix" title="fedoo.constitutivelaw.ShellHomogeneous.get_shell_stiffness_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.get_shell_stiffness_matrix</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_shell_stiffness_matrix.html#fedoo.constitutivelaw.ShellHomogeneous.get_shell_stiffness_matrix" title="fedoo.constitutivelaw.ShellHomogeneous.get_shell_stiffness_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.get_shell_stiffness_matrix</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_strain.html#fedoo.constitutivelaw.ShellHomogeneous.get_strain" title="fedoo.constitutivelaw.ShellHomogeneous.get_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.get_strain</span></code></a>(assembly, **kargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_strain.html#fedoo.constitutivelaw.ShellHomogeneous.get_strain" title="fedoo.constitutivelaw.ShellHomogeneous.get_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.get_strain</span></code></a>(assembly, **kargs)</p></td>
 <td><p>Return the last computed strain associated to the given assembly.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_stress.html#fedoo.constitutivelaw.ShellHomogeneous.get_stress" title="fedoo.constitutivelaw.ShellHomogeneous.get_stress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.get_stress</span></code></a>(assembly, **kargs)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_stress_distribution.html#fedoo.constitutivelaw.ShellHomogeneous.get_stress_distribution" title="fedoo.constitutivelaw.ShellHomogeneous.get_stress_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.get_stress_distribution</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.get_stress.html#fedoo.constitutivelaw.ShellHomogeneous.get_stress" title="fedoo.constitutivelaw.ShellHomogeneous.get_stress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.get_stress</span></code></a>(assembly, **kargs)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.initialize.html#fedoo.constitutivelaw.ShellHomogeneous.initialize" title="fedoo.constitutivelaw.ShellHomogeneous.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellHomogeneous.initialize</span></code></a>(assembly, pb)</p></td>
@@ -223,8 +221,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.constitutivelaw.ShellLaminateNonLinear.is_initialized.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.ShellLaminateNonLinear.is_initialized" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.constitutivelaw.ShellHomogeneous.compute_area_density.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.ShellHomogeneous.compute_area_density" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.constitutivelaw.ShellLaminate.is_initialized.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.ShellLaminate.is_initialized" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.constitutivelaw.ShellHomogeneous.GetStressDistribution.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.ShellHomogeneous.GetStressDistribution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

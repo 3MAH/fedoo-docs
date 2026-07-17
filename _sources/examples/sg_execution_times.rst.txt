@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.000** total execution time for 0 files **from examples**:
+**03:33.347** total execution time for 4 files **from examples**:
 
 .. container::
 
@@ -32,6 +32,15 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - N/A
-     - N/A
-     - N/A
+   * - :ref:`sphx_glr_examples_rigid_body_cow_bounce.py` (``rigid_body_cow_bounce.py``)
+     - 01:27.998
+     - 0.0
+   * - :ref:`sphx_glr_examples_rigid_body_bunny_bounce.py` (``rigid_body_bunny_bounce.py``)
+     - 01:14.332
+     - 0.0
+   * - :ref:`sphx_glr_examples_rigid_body_bounce_ipc.py` (``rigid_body_bounce_ipc.py``)
+     - 00:47.102
+     - 0.0
+   * - :ref:`sphx_glr_examples_rigid_body_freefall.py` (``rigid_body_freefall.py``)
+     - 00:03.914
+     - 0.0
