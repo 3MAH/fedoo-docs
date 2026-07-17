@@ -215,9 +215,6 @@ or hide the element set if element_set_invert == True.</p></li>
 <li><p><strong>element_set_invert</strong> (<em>bool</em><em>, </em><em>optional</em>) – Used only if element_set is defined. Invert element set.</p></li>
 <li><p><strong>selected_submeshes</strong> (<em>int</em><em>, </em><em>str</em><em> or </em><em>list</em><em>, </em><em>optional</em>) – Only used with MultiMesh objects. Restrict the plot to the selected
 submesh ids, submesh names or element types.</p></li>
-<li><p><strong>missing_field_color</strong> (<em>color</em><em>, </em><em>optional</em>) – Only used with MultiMesh objects. Render submeshes on which the
-selected element or Gauss-point field is absent with this solid
-color. By default, submeshes missing the field are not plotted.</p></li>
 <li><p><strong>clip_args</strong> (<em>dict</em><em>, </em><em>optional</em>) – Dictionary of arguments to pass to the pyvista clip filter in
 order to clip the current plot.
 If clip_args[“cell_ids”] exist and is set to True, the “cell_ids”

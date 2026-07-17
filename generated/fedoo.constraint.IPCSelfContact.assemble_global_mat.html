@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="fedoo.constraint.IPCSelfContact.delete_global_mat" href="fedoo.constraint.IPCSelfContact.delete_global_mat.html" />
-    <link rel="prev" title="fedoo.constraint.IPCSelfContact.add_rigid_body" href="fedoo.constraint.IPCSelfContact.add_rigid_body.html" /> 
+    <link rel="prev" title="fedoo.constraint.IPCSelfContact" href="fedoo.constraint.IPCSelfContact.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -85,7 +85,6 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SelfContact.html">fedoo.constraint.SelfContact</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.IPCContact.html">fedoo.constraint.IPCContact</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.html">fedoo.constraint.IPCSelfContact</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.add_rigid_body.html">fedoo.constraint.IPCSelfContact.add_rigid_body</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.constraint.IPCSelfContact.assemble_global_mat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.delete_global_mat.html">fedoo.constraint.IPCSelfContact.delete_global_mat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.get_all.html">fedoo.constraint.IPCSelfContact.get_all</a></li>
@@ -146,11 +145,6 @@
 <p>Called by the solver when the tangent matrix needs reassembly
 without a full <code class="docutils literal notranslate"><span class="pre">update()</span></code> cycle.  Uses vertex positions
 cached by the most recent <code class="docutils literal notranslate"><span class="pre">update()</span></code> or <code class="docutils literal notranslate"><span class="pre">set_start()</span></code> call.</p>
-<p>When rigid bodies are registered the scatter matrix depends on the
-current rigid rotation; the MPC coefficients have just been
-refreshed by <code class="docutils literal notranslate"><span class="pre">update_boundary_conditions</span></code> for this NR step, so
-refresh the scatter here too to keep the contact tangent
-consistent with the kinematic constraint.</p>
 </dd></dl>
 
 </section>
@@ -159,7 +153,7 @@ consistent with the kinematic constraint.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.constraint.IPCSelfContact.add_rigid_body.html" class="btn btn-neutral float-left" title="fedoo.constraint.IPCSelfContact.add_rigid_body" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.constraint.IPCSelfContact.html" class="btn btn-neutral float-left" title="fedoo.constraint.IPCSelfContact" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="fedoo.constraint.IPCSelfContact.delete_global_mat.html" class="btn btn-neutral float-right" title="fedoo.constraint.IPCSelfContact.delete_global_mat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
