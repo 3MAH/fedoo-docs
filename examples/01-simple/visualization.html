@@ -195,7 +195,7 @@ solved using a finite-strain formulation.</p>
 <span class="p">)</span>
 
 <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">&quot;EPICP&quot;</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
-<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibriumRI</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">&quot;UL&quot;</span><span class="p">)</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">stress_equilibrium_ri</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">&quot;UL&quot;</span><span class="p">)</span>
 
 <span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
 </pre></div>
@@ -368,7 +368,7 @@ the <code class="docutils literal notranslate"><span class="pre">plot_history</s
 <span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_visualization_007.png" srcset="../../_images/sphx_glr_visualization_007.png" alt="visualization" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 19.680 seconds)</p>
+<img src="../../_images/sphx_glr_visualization_007.png" srcset="../../_images/sphx_glr_visualization_007.png" alt="visualization" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 19.855 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-visualization-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/d8d2cbd3f698fc54566eff75a50a6fe7/visualization.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">visualization.ipynb</span></code></a></p>

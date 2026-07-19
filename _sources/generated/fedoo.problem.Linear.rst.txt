@@ -33,7 +33,9 @@
          Linear.get_all
          Linear.get_disp
          Linear.get_dof_solution
+         Linear.get_elastic_energy
          Linear.get_ext_forces
+         Linear.get_nodal_elastic_energy
          Linear.get_results
          Linear.get_rot
          Linear.init_bc_start_value

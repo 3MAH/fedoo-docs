@@ -24,7 +24,6 @@
          DistributedLoad.get_storage
          DistributedLoad.get_weak_equation
          DistributedLoad.initialize
-         DistributedLoad.nvar
          DistributedLoad.reset
          DistributedLoad.set_damping
          DistributedLoad.set_dissipation
@@ -48,6 +47,7 @@
          
       
          DistributedLoad.name
+         DistributedLoad.nvar
          DistributedLoad.space
   
   

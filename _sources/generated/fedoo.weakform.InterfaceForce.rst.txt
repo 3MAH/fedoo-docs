@@ -24,7 +24,6 @@
          InterfaceForce.get_storage
          InterfaceForce.get_weak_equation
          InterfaceForce.initialize
-         InterfaceForce.nvar
          InterfaceForce.reset
          InterfaceForce.set_damping
          InterfaceForce.set_dissipation
@@ -48,6 +47,8 @@
          
       
          InterfaceForce.name
+         InterfaceForce.nvar
          InterfaceForce.space
+         InterfaceForce.nlgeom
   
   

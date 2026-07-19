@@ -26,7 +26,6 @@
          PlateEquilibrium.get_storage
          PlateEquilibrium.get_weak_equation
          PlateEquilibrium.initialize
-         PlateEquilibrium.nvar
          PlateEquilibrium.reset
          PlateEquilibrium.set_damping
          PlateEquilibrium.set_dissipation
@@ -50,6 +49,7 @@
          
       
          PlateEquilibrium.name
+         PlateEquilibrium.nvar
          PlateEquilibrium.space
   
   

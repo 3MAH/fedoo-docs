@@ -26,7 +26,6 @@
          PlateDrillingPenalty.get_storage
          PlateDrillingPenalty.get_weak_equation
          PlateDrillingPenalty.initialize
-         PlateDrillingPenalty.nvar
          PlateDrillingPenalty.reset
          PlateDrillingPenalty.set_damping
          PlateDrillingPenalty.set_dissipation
@@ -50,6 +49,7 @@
          
       
          PlateDrillingPenalty.name
+         PlateDrillingPenalty.nvar
          PlateDrillingPenalty.space
   
   

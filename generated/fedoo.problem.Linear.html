@@ -83,7 +83,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_all.html">fedoo.problem.Linear.get_all</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_disp.html">fedoo.problem.Linear.get_disp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_dof_solution.html">fedoo.problem.Linear.get_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_elastic_energy.html">fedoo.problem.Linear.get_elastic_energy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_ext_forces.html">fedoo.problem.Linear.get_ext_forces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_nodal_elastic_energy.html">fedoo.problem.Linear.get_nodal_elastic_energy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_results.html">fedoo.problem.Linear.get_results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_rot.html">fedoo.problem.Linear.get_rot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.init_bc_start_value.html">fedoo.problem.Linear.init_bc_start_value</a></li>
@@ -238,8 +240,14 @@ where:</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_dof_solution.html#fedoo.problem.Linear.get_dof_solution" title="fedoo.problem.Linear.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_dof_solution</span></code></a>([name])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_ext_forces.html#fedoo.problem.Linear.get_ext_forces" title="fedoo.problem.Linear.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_ext_forces</span></code></a>([name, include_mpc])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_elastic_energy.html#fedoo.problem.Linear.get_elastic_energy" title="fedoo.problem.Linear.get_elastic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_elastic_energy</span></code></a>()</p></td>
+<td><p>returns : sum (0.5 * U.transposed * K * U)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_ext_forces.html#fedoo.problem.Linear.get_ext_forces" title="fedoo.problem.Linear.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_ext_forces</span></code></a>([name, include_mpc])</p></td>
 <td><p>Return the nodal Forces in global coordinates system.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_nodal_elastic_energy.html#fedoo.problem.Linear.get_nodal_elastic_energy" title="fedoo.problem.Linear.get_nodal_elastic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_nodal_elastic_energy</span></code></a>()</p></td>
+<td><p>returns : 0.5 * K * U .</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_results.html#fedoo.problem.Linear.get_results" title="fedoo.problem.Linear.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_results</span></code></a>(*args, **kargs)</p></td>
 <td><p>Extract some results from the current problem.</p></td>
