@@ -63,6 +63,8 @@
          NonLinear.solve_time_increment
          NonLinear.to_start
          NonLinear.update
+         NonLinear.updateA
+         NonLinear.updateD
          NonLinear.update_boundary_conditions
       
       

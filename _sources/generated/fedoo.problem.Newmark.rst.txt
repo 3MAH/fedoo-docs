@@ -19,8 +19,6 @@
          :toctree:
          
       
-         Newmark.GetAcceleration
-         Newmark.GetDampingPower
          Newmark.GetElasticEnergy
          Newmark.GetExternalForceWork
          Newmark.GetKineticEnergy
@@ -30,7 +28,6 @@
          Newmark.SetInitialDisplacement
          Newmark.SetInitialVelocity
          Newmark.SetRayleighDamping
-         Newmark.UpdateStiffness
          Newmark.add_global_dof
          Newmark.add_output
          Newmark.apply_boundary_conditions
@@ -42,19 +39,12 @@
          Newmark.get_X
          Newmark.get_Xdot
          Newmark.get_Xdotdot
-         Newmark.get_acceleration
          Newmark.get_active
          Newmark.get_all
-         Newmark.get_damping_power
          Newmark.get_disp
          Newmark.get_dof_solution
-         Newmark.get_elastic_energy
          Newmark.get_ext_forces
-         Newmark.get_external_force_work
-         Newmark.get_kinetic_energy
-         Newmark.get_nodal_elastic_energy
          Newmark.get_results
-         Newmark.get_velocity
          Newmark.init_bc_start_value
          Newmark.initialize
          Newmark.invalidate_factorization
@@ -66,17 +56,12 @@
          Newmark.set_X
          Newmark.set_active
          Newmark.set_dof_solution
-         Newmark.set_initial_acceleration
-         Newmark.set_initial_displacement
-         Newmark.set_initial_velocity
-         Newmark.set_rayleigh_damping
          Newmark.set_reuse_factorization
          Newmark.set_solver
          Newmark.solve
          Newmark.update
          Newmark.updateStiffness
          Newmark.update_boundary_conditions
-         Newmark.update_stiffness
       
       
   

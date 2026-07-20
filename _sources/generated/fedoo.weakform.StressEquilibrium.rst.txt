@@ -24,6 +24,7 @@
          StressEquilibrium.get_storage
          StressEquilibrium.get_weak_equation
          StressEquilibrium.initialize
+         StressEquilibrium.nvar
          StressEquilibrium.reset
          StressEquilibrium.set_damping
          StressEquilibrium.set_dissipation
@@ -50,7 +51,6 @@
          StressEquilibrium.fbar
          StressEquilibrium.geometric_stiffness
          StressEquilibrium.name
-         StressEquilibrium.nvar
          StressEquilibrium.space
          StressEquilibrium.nlgeom
   

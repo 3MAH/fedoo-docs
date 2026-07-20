@@ -3,4 +3,4 @@ fedoo.weakform.HourglassStiffness.nvar
 
 .. currentmodule:: fedoo.weakform
 
-.. autoproperty:: HourglassStiffness.nvar
+.. automethod:: HourglassStiffness.nvar

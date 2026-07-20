@@ -66,8 +66,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.html">fedoo.weakform.StressEquilibrium</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.implicit_dynamic.html">fedoo.weakform.implicit_dynamic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.stress_equilibrium_ri.html">fedoo.weakform.stress_equilibrium_ri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.ImplicitDynamic.html">fedoo.weakform.ImplicitDynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumFbar.html">fedoo.weakform.StressEquilibriumFbar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.html">fedoo.weakform.StressEquilibriumBbar</a></li>
@@ -85,6 +85,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.get_storage.html">fedoo.weakform.PlateShearEquilibrium.get_storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.get_weak_equation.html">fedoo.weakform.PlateShearEquilibrium.get_weak_equation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.initialize.html">fedoo.weakform.PlateShearEquilibrium.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.nvar.html">fedoo.weakform.PlateShearEquilibrium.nvar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.reset.html">fedoo.weakform.PlateShearEquilibrium.reset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_damping.html">fedoo.weakform.PlateShearEquilibrium.set_damping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_dissipation.html">fedoo.weakform.PlateShearEquilibrium.set_dissipation</a></li>
@@ -96,7 +97,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.update.html">fedoo.weakform.PlateShearEquilibrium.update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.update_2.html">fedoo.weakform.PlateShearEquilibrium.update_2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.name.html">fedoo.weakform.PlateShearEquilibrium.name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.nvar.html">fedoo.weakform.PlateShearEquilibrium.nvar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.space.html">fedoo.weakform.PlateShearEquilibrium.space</a></li>
 </ul>
 </li>
@@ -198,34 +198,37 @@ reduced integration internally.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.initialize.html#fedoo.weakform.PlateShearEquilibrium.initialize" title="fedoo.weakform.PlateShearEquilibrium.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.initialize</span></code></a>(assembly, pb)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.reset.html#fedoo.weakform.PlateShearEquilibrium.reset" title="fedoo.weakform.PlateShearEquilibrium.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.nvar.html#fedoo.weakform.PlateShearEquilibrium.nvar" title="fedoo.weakform.PlateShearEquilibrium.nvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.nvar</span></code></a>(self)</p></td>
+<td><p>Return the number of variables used in the modeling space associated to the WeakForm.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.reset.html#fedoo.weakform.PlateShearEquilibrium.reset" title="fedoo.weakform.PlateShearEquilibrium.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.reset</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_damping.html#fedoo.weakform.PlateShearEquilibrium.set_damping" title="fedoo.weakform.PlateShearEquilibrium.set_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.set_damping</span></code></a>([damping])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_damping.html#fedoo.weakform.PlateShearEquilibrium.set_damping" title="fedoo.weakform.PlateShearEquilibrium.set_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.set_damping</span></code></a>([damping])</p></td>
 <td><p>Mechanical alias for <code class="docutils literal notranslate"><span class="pre">set_dissipation</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_dissipation.html#fedoo.weakform.PlateShearEquilibrium.set_dissipation" title="fedoo.weakform.PlateShearEquilibrium.set_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.set_dissipation</span></code></a>([...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_dissipation.html#fedoo.weakform.PlateShearEquilibrium.set_dissipation" title="fedoo.weakform.PlateShearEquilibrium.set_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.set_dissipation</span></code></a>([...])</p></td>
 <td><p>Attach a dissipative contribution.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_inertia.html#fedoo.weakform.PlateShearEquilibrium.set_inertia" title="fedoo.weakform.PlateShearEquilibrium.set_inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.set_inertia</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_inertia.html#fedoo.weakform.PlateShearEquilibrium.set_inertia" title="fedoo.weakform.PlateShearEquilibrium.set_inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.set_inertia</span></code></a>(...)</p></td>
 <td><p>Mechanical alias for <code class="docutils literal notranslate"><span class="pre">set_storage</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_start.html#fedoo.weakform.PlateShearEquilibrium.set_start" title="fedoo.weakform.PlateShearEquilibrium.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.set_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_start.html#fedoo.weakform.PlateShearEquilibrium.set_start" title="fedoo.weakform.PlateShearEquilibrium.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.set_start</span></code></a>(assembly, pb)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_storage.html#fedoo.weakform.PlateShearEquilibrium.set_storage" title="fedoo.weakform.PlateShearEquilibrium.set_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.set_storage</span></code></a>(storage[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.set_storage.html#fedoo.weakform.PlateShearEquilibrium.set_storage" title="fedoo.weakform.PlateShearEquilibrium.set_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.set_storage</span></code></a>(storage[, ...])</p></td>
 <td><p>Attach a time-storage weakform to this static weakform.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.sum.html#fedoo.weakform.PlateShearEquilibrium.sum" title="fedoo.weakform.PlateShearEquilibrium.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.sum</span></code></a>(wf1, wf2)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.sum.html#fedoo.weakform.PlateShearEquilibrium.sum" title="fedoo.weakform.PlateShearEquilibrium.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.sum</span></code></a>(wf1, wf2)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.to_start.html#fedoo.weakform.PlateShearEquilibrium.to_start" title="fedoo.weakform.PlateShearEquilibrium.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.to_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.to_start.html#fedoo.weakform.PlateShearEquilibrium.to_start" title="fedoo.weakform.PlateShearEquilibrium.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.to_start</span></code></a>(assembly, pb)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.update.html#fedoo.weakform.PlateShearEquilibrium.update" title="fedoo.weakform.PlateShearEquilibrium.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.update</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.update.html#fedoo.weakform.PlateShearEquilibrium.update" title="fedoo.weakform.PlateShearEquilibrium.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.update</span></code></a>(assembly, pb)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.update_2.html#fedoo.weakform.PlateShearEquilibrium.update_2" title="fedoo.weakform.PlateShearEquilibrium.update_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.update_2</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.update_2.html#fedoo.weakform.PlateShearEquilibrium.update_2" title="fedoo.weakform.PlateShearEquilibrium.update_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.update_2</span></code></a>(assembly, pb)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -235,10 +238,7 @@ reduced integration internally.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.name.html#fedoo.weakform.PlateShearEquilibrium.name" title="fedoo.weakform.PlateShearEquilibrium.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.name</span></code></a></p></td>
 <td><p>Return the name of the WeakForm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.nvar.html#fedoo.weakform.PlateShearEquilibrium.nvar" title="fedoo.weakform.PlateShearEquilibrium.nvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.nvar</span></code></a></p></td>
-<td><p>Number of variables in the modeling space associated to the WeakForm.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.space.html#fedoo.weakform.PlateShearEquilibrium.space" title="fedoo.weakform.PlateShearEquilibrium.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.space</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.PlateShearEquilibrium.space.html#fedoo.weakform.PlateShearEquilibrium.space" title="fedoo.weakform.PlateShearEquilibrium.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlateShearEquilibrium.space</span></code></a></p></td>
 <td><p>Return the ModelingSpace associated to the WeakForm if defined.</p></td>
 </tr>
 </tbody>

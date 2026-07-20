@@ -24,6 +24,7 @@
          SpringEquilibrium.get_storage
          SpringEquilibrium.get_weak_equation
          SpringEquilibrium.initialize
+         SpringEquilibrium.nvar
          SpringEquilibrium.reset
          SpringEquilibrium.set_damping
          SpringEquilibrium.set_dissipation
@@ -47,7 +48,6 @@
          
       
          SpringEquilibrium.name
-         SpringEquilibrium.nvar
          SpringEquilibrium.space
          SpringEquilibrium.nlgeom
   

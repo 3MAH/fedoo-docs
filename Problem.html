@@ -279,7 +279,7 @@ ratio <span class="math notranslate nohighlight">\(\nu \approx 0.5\)</span>), st
 </dd>
 </dl>
 </li>
-<li><p><strong>Reduced Integration</strong>: Use the <a class="reference internal" href="generated/fedoo.weakform.stress_equilibrium_ri.html#fedoo.weakform.stress_equilibrium_ri" title="fedoo.weakform.stress_equilibrium_ri"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.stress_equilibrium_ri</span></code></a>
+<li><p><strong>Reduced Integration</strong>: Use the <a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumRI.html#fedoo.weakform.StressEquilibriumRI" title="fedoo.weakform.StressEquilibriumRI"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumRI</span></code></a>
 weak form. This evaluates volumetric terms at fewer integration points to
 relax the incompressibility constraint. Reduced integration is known to be
 prone to <strong>hourglass</strong> instabilities; this weak form includes an hourglass
@@ -425,7 +425,7 @@ instance <a class="reference internal" href="generated/fedoo.time.Newmark.html#f
 <li><p><strong>Stabilization</strong>: Add <strong>Rayleigh Damping</strong>
 (<span class="math notranslate nohighlight">\(\mathbf{C} = a\mathbf{M} + b\mathbf{K}\)</span>) to dissipate high-frequency
 numerical noise and stabilize the inertial response during sudden transitions.
-The legacy <a class="reference internal" href="generated/fedoo.weakform.implicit_dynamic.html#fedoo.weakform.implicit_dynamic" title="fedoo.weakform.implicit_dynamic"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.implicit_dynamic</span></code></a> weak form is kept for
+The legacy <a class="reference internal" href="generated/fedoo.weakform.ImplicitDynamic.html#fedoo.weakform.ImplicitDynamic" title="fedoo.weakform.ImplicitDynamic"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.ImplicitDynamic</span></code></a> weak form is kept for
 pedagogical purposes, but new transient models should prefer
 problem-level time integrators.</p></li>
 </ul>

@@ -26,8 +26,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.weakform.PlateEquilibriumFI.space" href="fedoo.weakform.PlateEquilibriumFI.space.html" />
-    <link rel="prev" title="fedoo.weakform.PlateEquilibriumFI.name" href="fedoo.weakform.PlateEquilibriumFI.name.html" /> 
+    <link rel="next" title="fedoo.weakform.PlateEquilibriumFI.reset" href="fedoo.weakform.PlateEquilibriumFI.reset.html" />
+    <link rel="prev" title="fedoo.weakform.PlateEquilibriumFI.initialize" href="fedoo.weakform.PlateEquilibriumFI.initialize.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,8 +66,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.html">fedoo.weakform.StressEquilibrium</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.implicit_dynamic.html">fedoo.weakform.implicit_dynamic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.stress_equilibrium_ri.html">fedoo.weakform.stress_equilibrium_ri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.ImplicitDynamic.html">fedoo.weakform.ImplicitDynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumFbar.html">fedoo.weakform.StressEquilibriumFbar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.html">fedoo.weakform.StressEquilibriumBbar</a></li>
@@ -83,6 +83,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateEquilibriumFI.get_storage.html">fedoo.weakform.PlateEquilibriumFI.get_storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateEquilibriumFI.get_weak_equation.html">fedoo.weakform.PlateEquilibriumFI.get_weak_equation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateEquilibriumFI.initialize.html">fedoo.weakform.PlateEquilibriumFI.initialize</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.weakform.PlateEquilibriumFI.nvar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateEquilibriumFI.reset.html">fedoo.weakform.PlateEquilibriumFI.reset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateEquilibriumFI.set_damping.html">fedoo.weakform.PlateEquilibriumFI.set_damping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateEquilibriumFI.set_dissipation.html">fedoo.weakform.PlateEquilibriumFI.set_dissipation</a></li>
@@ -94,7 +95,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateEquilibriumFI.update.html">fedoo.weakform.PlateEquilibriumFI.update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateEquilibriumFI.update_2.html">fedoo.weakform.PlateEquilibriumFI.update_2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateEquilibriumFI.name.html">fedoo.weakform.PlateEquilibriumFI.name</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.weakform.PlateEquilibriumFI.nvar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.PlateEquilibriumFI.space.html">fedoo.weakform.PlateEquilibriumFI.space</a></li>
 </ul>
 </li>
@@ -148,10 +148,10 @@
              
   <section id="fedoo-weakform-plateequilibriumfi-nvar">
 <h1>fedoo.weakform.PlateEquilibriumFI.nvar<a class="headerlink" href="#fedoo-weakform-plateequilibriumfi-nvar" title="Link to this heading"></a></h1>
-<dl class="py property">
+<dl class="py method">
 <dt class="sig sig-object py" id="fedoo.weakform.PlateEquilibriumFI.nvar">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PlateEquilibriumFI.</span></span><span class="sig-name descname"><span class="pre">nvar</span></span><a class="headerlink" href="#fedoo.weakform.PlateEquilibriumFI.nvar" title="Link to this definition"></a></dt>
-<dd><p>Number of variables in the modeling space associated to the WeakForm.</p>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PlateEquilibriumFI.</span></span><span class="sig-name descname"><span class="pre">nvar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.PlateEquilibriumFI.nvar" title="Link to this definition"></a></dt>
+<dd><p>Return the number of variables used in the modeling space associated to the WeakForm.</p>
 </dd></dl>
 
 </section>
@@ -160,8 +160,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.weakform.PlateEquilibriumFI.name.html" class="btn btn-neutral float-left" title="fedoo.weakform.PlateEquilibriumFI.name" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.weakform.PlateEquilibriumFI.space.html" class="btn btn-neutral float-right" title="fedoo.weakform.PlateEquilibriumFI.space" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.weakform.PlateEquilibriumFI.initialize.html" class="btn btn-neutral float-left" title="fedoo.weakform.PlateEquilibriumFI.initialize" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.weakform.PlateEquilibriumFI.reset.html" class="btn btn-neutral float-right" title="fedoo.weakform.PlateEquilibriumFI.reset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
