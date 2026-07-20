@@ -91,9 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.html">fedoo.constitutivelaw.BeamPipe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.BeamRectangular.html">fedoo.constitutivelaw.BeamRectangular</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminate.html">fedoo.constitutivelaw.ShellLaminate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.html">fedoo.constitutivelaw.ShellLaminateNonLinear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.html">fedoo.constitutivelaw.ShellHomogeneous</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneousNonLinear.html">fedoo.constitutivelaw.ShellHomogeneousNonLinear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ThermalProperties.html">fedoo.constitutivelaw.ThermalProperties</a></li>
 </ul>
 </li>
@@ -138,17 +136,14 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.FE2">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FE2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assemb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.FE2" title="Link to this definition"></a></dt>
-<dd><p>FE² constitutive law based on periodic microscopic problems.</p>
-<p>A microscopic finite-element problem is solved at each macroscopic
-integration point. The macroscopic strain is prescribed through the
-problem-level <code class="docutils literal notranslate"><span class="pre">MeanStrain</span></code> degrees of freedom created by
-<code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicBC</span></code>.</p>
+<dd><p>ConstitutiveLaw that solve a Finite Element Problem at each point of gauss
+in the contexte of the so called “FE²” method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>assemb</strong> (<a class="reference internal" href="../Assembly.html#fedoo.Assembly" title="fedoo.Assembly"><em>Assembly</em></a><em>, </em><em>str</em><em>, or </em><em>list</em><em> of </em><a class="reference internal" href="../Assembly.html#fedoo.Assembly" title="fedoo.Assembly"><em>Assembly</em></a>) – Microscopic assembly, its registered name, or one microscopic
-assembly per macroscopic integration point.</p></li>
-<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the constitutive law.</p></li>
+<li><p><strong>assemb</strong> (<a class="reference internal" href="../Assembly.html#fedoo.Assembly" title="fedoo.Assembly"><em>Assembly</em></a><em> or </em><em>Assembly name</em><em> (</em><em>str</em><em>)</em><em>, or </em><em>list</em><em> of </em><a class="reference internal" href="../Assembly.html#fedoo.Assembly" title="fedoo.Assembly"><em>Assembly</em></a>) – (with len(list) = number of integration points).
+Assembly that correspond to the microscopic problem</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the constitutive law</p></li>
 </ul>
 </dd>
 </dl>

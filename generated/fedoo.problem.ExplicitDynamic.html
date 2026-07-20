@@ -26,7 +26,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.problem.ExplicitDynamic.GetElasticEnergy" href="fedoo.problem.ExplicitDynamic.GetElasticEnergy.html" />
+    <link rel="next" title="fedoo.problem.ExplicitDynamic.GetDampingPower" href="fedoo.problem.ExplicitDynamic.GetDampingPower.html" />
     <link rel="prev" title="fedoo.problem.NonLinearNewmark" href="fedoo.problem.NonLinearNewmark.html" /> 
 </head>
 
@@ -73,6 +73,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Newmark.html">fedoo.problem.Newmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.problem.ExplicitDynamic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.GetDampingPower.html">fedoo.problem.ExplicitDynamic.GetDampingPower</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.GetElasticEnergy.html">fedoo.problem.ExplicitDynamic.GetElasticEnergy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.GetKineticEnergy.html">fedoo.problem.ExplicitDynamic.GetKineticEnergy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.MassLumping.html">fedoo.problem.ExplicitDynamic.MassLumping</a></li>
@@ -82,6 +83,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetMassMatrix.html">fedoo.problem.ExplicitDynamic.SetMassMatrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetRayleighDamping.html">fedoo.problem.ExplicitDynamic.SetRayleighDamping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetStiffnessMatrix.html">fedoo.problem.ExplicitDynamic.SetStiffnessMatrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.UpdateStiffness.html">fedoo.problem.ExplicitDynamic.UpdateStiffness</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.add_global_dof.html">fedoo.problem.ExplicitDynamic.add_global_dof</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.add_output.html">fedoo.problem.ExplicitDynamic.add_output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.apply_boundary_conditions.html">fedoo.problem.ExplicitDynamic.apply_boundary_conditions</a></li>
@@ -93,13 +95,18 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_Xdot.html">fedoo.problem.ExplicitDynamic.get_Xdot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_active.html">fedoo.problem.ExplicitDynamic.get_active</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_all.html">fedoo.problem.ExplicitDynamic.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_damping_power.html">fedoo.problem.ExplicitDynamic.get_damping_power</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_dof_solution.html">fedoo.problem.ExplicitDynamic.get_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_elastic_energy.html">fedoo.problem.ExplicitDynamic.get_elastic_energy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_ext_forces.html">fedoo.problem.ExplicitDynamic.get_ext_forces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_kinetic_energy.html">fedoo.problem.ExplicitDynamic.get_kinetic_energy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_results.html">fedoo.problem.ExplicitDynamic.get_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_velocity.html">fedoo.problem.ExplicitDynamic.get_velocity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.init_bc_start_value.html">fedoo.problem.ExplicitDynamic.init_bc_start_value</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.initialize.html">fedoo.problem.ExplicitDynamic.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.invalidate_factorization.html">fedoo.problem.ExplicitDynamic.invalidate_factorization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.make_active.html">fedoo.problem.ExplicitDynamic.make_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.mass_lumping.html">fedoo.problem.ExplicitDynamic.mass_lumping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.save_results.html">fedoo.problem.ExplicitDynamic.save_results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_A.html">fedoo.problem.ExplicitDynamic.set_A</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_B.html">fedoo.problem.ExplicitDynamic.set_B</a></li>
@@ -107,12 +114,19 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_X.html">fedoo.problem.ExplicitDynamic.set_X</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_active.html">fedoo.problem.ExplicitDynamic.set_active</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_dof_solution.html">fedoo.problem.ExplicitDynamic.set_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_acceleration.html">fedoo.problem.ExplicitDynamic.set_initial_acceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_displacement.html">fedoo.problem.ExplicitDynamic.set_initial_displacement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_velocity.html">fedoo.problem.ExplicitDynamic.set_initial_velocity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_mass_matrix.html">fedoo.problem.ExplicitDynamic.set_mass_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_rayleigh_damping.html">fedoo.problem.ExplicitDynamic.set_rayleigh_damping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_reuse_factorization.html">fedoo.problem.ExplicitDynamic.set_reuse_factorization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_solver.html">fedoo.problem.ExplicitDynamic.set_solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_stiffness_matrix.html">fedoo.problem.ExplicitDynamic.set_stiffness_matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve.html">fedoo.problem.ExplicitDynamic.solve</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update.html">fedoo.problem.ExplicitDynamic.update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.updateStiffness.html">fedoo.problem.ExplicitDynamic.updateStiffness</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update_boundary_conditions.html">fedoo.problem.ExplicitDynamic.update_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update_stiffness.html">fedoo.problem.ExplicitDynamic.update_stiffness</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.active.html">fedoo.problem.ExplicitDynamic.active</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.global_dof.html">fedoo.problem.ExplicitDynamic.global_dof</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.n_dof.html">fedoo.problem.ExplicitDynamic.n_dof</a></li>
@@ -165,42 +179,48 @@
 <h1>fedoo.problem.ExplicitDynamic<a class="headerlink" href="#fedoo-problem-explicitdynamic" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.problem.ExplicitDynamic">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ExplicitDynamic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">StiffnessAssembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MassAssembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TimeStep</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DampingAssembly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.ExplicitDynamic" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ExplicitDynamic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stiffness_assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass_assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damping_assembly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.ExplicitDynamic" title="Link to this definition"></a></dt>
 <dd><p>Define a Centred Difference problem for structural dynamic
 For damping, the backward euler derivative is used to compute the velocity
 The algorithm come from:  Bathe KJ and Edward W, “Numerical methods in finite element analysis”, Prentice Hall, 1976, pp 323-324</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.ExplicitDynamic.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">StiffnessAssembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MassAssembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TimeStep</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DampingAssembly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.ExplicitDynamic.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stiffness_assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass_assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damping_assembly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.ExplicitDynamic.__init__" title="Link to this definition"></a></dt>
 <dd><p><strong>Methods</strong></p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.GetElasticEnergy.html#fedoo.problem.ExplicitDynamic.GetElasticEnergy" title="fedoo.problem.ExplicitDynamic.GetElasticEnergy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.GetElasticEnergy</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.GetDampingPower.html#fedoo.problem.ExplicitDynamic.GetDampingPower" title="fedoo.problem.ExplicitDynamic.GetDampingPower"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.GetDampingPower</span></code></a>()</p></td>
+<td><p>returns : Udot.transposed * C * Udot The damping disspated energy can be approximated by:         Edis = cumtrapz(DampingPower * TimeStep)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.GetElasticEnergy.html#fedoo.problem.ExplicitDynamic.GetElasticEnergy" title="fedoo.problem.ExplicitDynamic.GetElasticEnergy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.GetElasticEnergy</span></code></a>()</p></td>
 <td><p>returns : 0.5 * U.transposed * K * U</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.GetKineticEnergy.html#fedoo.problem.ExplicitDynamic.GetKineticEnergy" title="fedoo.problem.ExplicitDynamic.GetKineticEnergy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.GetKineticEnergy</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.GetKineticEnergy.html#fedoo.problem.ExplicitDynamic.GetKineticEnergy" title="fedoo.problem.ExplicitDynamic.GetKineticEnergy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.GetKineticEnergy</span></code></a>()</p></td>
 <td><p>returns : 0.5 * Udot.transposed * M * Udot</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.MassLumping.html#fedoo.problem.ExplicitDynamic.MassLumping" title="fedoo.problem.ExplicitDynamic.MassLumping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.MassLumping</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.MassLumping.html#fedoo.problem.ExplicitDynamic.MassLumping" title="fedoo.problem.ExplicitDynamic.MassLumping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.MassLumping</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetInitialAcceleration.html#fedoo.problem.ExplicitDynamic.SetInitialAcceleration" title="fedoo.problem.ExplicitDynamic.SetInitialAcceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetInitialAcceleration</span></code></a>(name, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetInitialAcceleration.html#fedoo.problem.ExplicitDynamic.SetInitialAcceleration" title="fedoo.problem.ExplicitDynamic.SetInitialAcceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetInitialAcceleration</span></code></a>(name, ...)</p></td>
 <td><p>name is the name of the associated variable (generaly 'DispX', 'DispY' or 'DispZ') value is an array containing the initial acceleration of each nodes</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetInitialDisplacement.html#fedoo.problem.ExplicitDynamic.SetInitialDisplacement" title="fedoo.problem.ExplicitDynamic.SetInitialDisplacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetInitialDisplacement</span></code></a>(name, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetInitialDisplacement.html#fedoo.problem.ExplicitDynamic.SetInitialDisplacement" title="fedoo.problem.ExplicitDynamic.SetInitialDisplacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetInitialDisplacement</span></code></a>(name, ...)</p></td>
 <td><p>name is the name of the associated variable (generaly 'DispX', 'DispY' or 'DispZ') value is an array containing the initial displacement of each nodes</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetInitialVelocity.html#fedoo.problem.ExplicitDynamic.SetInitialVelocity" title="fedoo.problem.ExplicitDynamic.SetInitialVelocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetInitialVelocity</span></code></a>(name, value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetInitialVelocity.html#fedoo.problem.ExplicitDynamic.SetInitialVelocity" title="fedoo.problem.ExplicitDynamic.SetInitialVelocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetInitialVelocity</span></code></a>(name, value)</p></td>
 <td><p>name is the name of the associated variable (generaly 'DispX', 'DispY' or 'DispZ') value is an array containing the initial velocity of each nodes</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetMassMatrix.html#fedoo.problem.ExplicitDynamic.SetMassMatrix" title="fedoo.problem.ExplicitDynamic.SetMassMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetMassMatrix</span></code></a>(e)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetMassMatrix.html#fedoo.problem.ExplicitDynamic.SetMassMatrix" title="fedoo.problem.ExplicitDynamic.SetMassMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetMassMatrix</span></code></a>(e)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetRayleighDamping.html#fedoo.problem.ExplicitDynamic.SetRayleighDamping" title="fedoo.problem.ExplicitDynamic.SetRayleighDamping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetRayleighDamping</span></code></a>(alpha, beta)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetRayleighDamping.html#fedoo.problem.ExplicitDynamic.SetRayleighDamping" title="fedoo.problem.ExplicitDynamic.SetRayleighDamping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetRayleighDamping</span></code></a>(alpha, beta)</p></td>
 <td><p>Compute the damping matrix from the Rayleigh's model: [C] = alpha*[M] + beta*[K]</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetStiffnessMatrix.html#fedoo.problem.ExplicitDynamic.SetStiffnessMatrix" title="fedoo.problem.ExplicitDynamic.SetStiffnessMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetStiffnessMatrix</span></code></a>(e)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetStiffnessMatrix.html#fedoo.problem.ExplicitDynamic.SetStiffnessMatrix" title="fedoo.problem.ExplicitDynamic.SetStiffnessMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.SetStiffnessMatrix</span></code></a>(e)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.UpdateStiffness.html#fedoo.problem.ExplicitDynamic.UpdateStiffness" title="fedoo.problem.ExplicitDynamic.UpdateStiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.UpdateStiffness</span></code></a>(...)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.add_global_dof.html#fedoo.problem.ExplicitDynamic.add_global_dof" title="fedoo.problem.ExplicitDynamic.add_global_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.add_global_dof</span></code></a>(variable_names)</p></td>
@@ -236,14 +256,26 @@ The algorithm come from:  Bathe KJ and Edward W, “Numerical methods in finite 
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_all.html#fedoo.problem.ExplicitDynamic.get_all" title="fedoo.problem.ExplicitDynamic.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_all</span></code></a>()</p></td>
 <td><p>Return the list of all problems.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_dof_solution.html#fedoo.problem.ExplicitDynamic.get_dof_solution" title="fedoo.problem.ExplicitDynamic.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_dof_solution</span></code></a>([name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_damping_power.html#fedoo.problem.ExplicitDynamic.get_damping_power" title="fedoo.problem.ExplicitDynamic.get_damping_power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_damping_power</span></code></a>()</p></td>
+<td><p>returns : Udot.transposed * C * Udot The damping disspated energy can be approximated by:         Edis = cumtrapz(DampingPower * TimeStep)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_dof_solution.html#fedoo.problem.ExplicitDynamic.get_dof_solution" title="fedoo.problem.ExplicitDynamic.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_dof_solution</span></code></a>([name])</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_elastic_energy.html#fedoo.problem.ExplicitDynamic.get_elastic_energy" title="fedoo.problem.ExplicitDynamic.get_elastic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_elastic_energy</span></code></a>()</p></td>
+<td><p>returns : 0.5 * U.transposed * K * U</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_ext_forces.html#fedoo.problem.ExplicitDynamic.get_ext_forces" title="fedoo.problem.ExplicitDynamic.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_ext_forces</span></code></a>([name, ...])</p></td>
 <td><p>Return the nodal Forces in global coordinates system.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_results.html#fedoo.problem.ExplicitDynamic.get_results" title="fedoo.problem.ExplicitDynamic.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_results</span></code></a>(*args, **kargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_kinetic_energy.html#fedoo.problem.ExplicitDynamic.get_kinetic_energy" title="fedoo.problem.ExplicitDynamic.get_kinetic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_kinetic_energy</span></code></a>()</p></td>
+<td><p>returns : 0.5 * Udot.transposed * M * Udot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_results.html#fedoo.problem.ExplicitDynamic.get_results" title="fedoo.problem.ExplicitDynamic.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_results</span></code></a>(*args, **kargs)</p></td>
 <td><p>Extract some results from the current problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_velocity.html#fedoo.problem.ExplicitDynamic.get_velocity" title="fedoo.problem.ExplicitDynamic.get_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_velocity</span></code></a>()</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.init_bc_start_value.html#fedoo.problem.ExplicitDynamic.init_bc_start_value" title="fedoo.problem.ExplicitDynamic.init_bc_start_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.init_bc_start_value</span></code></a>()</p></td>
 <td><p></p></td>
@@ -257,26 +289,44 @@ The algorithm come from:  Bathe KJ and Edward W, “Numerical methods in finite 
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.make_active.html#fedoo.problem.ExplicitDynamic.make_active" title="fedoo.problem.ExplicitDynamic.make_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.make_active</span></code></a>()</p></td>
 <td><p>Define the problem instance as the active Problem.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.save_results.html#fedoo.problem.ExplicitDynamic.save_results" title="fedoo.problem.ExplicitDynamic.save_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.save_results</span></code></a>([iterOutput])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.mass_lumping.html#fedoo.problem.ExplicitDynamic.mass_lumping" title="fedoo.problem.ExplicitDynamic.mass_lumping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.mass_lumping</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_A.html#fedoo.problem.ExplicitDynamic.set_A" title="fedoo.problem.ExplicitDynamic.set_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_A</span></code></a>(A)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.save_results.html#fedoo.problem.ExplicitDynamic.save_results" title="fedoo.problem.ExplicitDynamic.save_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.save_results</span></code></a>([iterOutput])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_B.html#fedoo.problem.ExplicitDynamic.set_B" title="fedoo.problem.ExplicitDynamic.set_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_B</span></code></a>(B)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_A.html#fedoo.problem.ExplicitDynamic.set_A" title="fedoo.problem.ExplicitDynamic.set_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_A</span></code></a>(A)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_D.html#fedoo.problem.ExplicitDynamic.set_D" title="fedoo.problem.ExplicitDynamic.set_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_D</span></code></a>(D)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_B.html#fedoo.problem.ExplicitDynamic.set_B" title="fedoo.problem.ExplicitDynamic.set_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_B</span></code></a>(B)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_X.html#fedoo.problem.ExplicitDynamic.set_X" title="fedoo.problem.ExplicitDynamic.set_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_X</span></code></a>(value)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_D.html#fedoo.problem.ExplicitDynamic.set_D" title="fedoo.problem.ExplicitDynamic.set_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_D</span></code></a>(D)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_active.html#fedoo.problem.ExplicitDynamic.set_active" title="fedoo.problem.ExplicitDynamic.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_active</span></code></a>(name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_X.html#fedoo.problem.ExplicitDynamic.set_X" title="fedoo.problem.ExplicitDynamic.set_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_X</span></code></a>(value)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_active.html#fedoo.problem.ExplicitDynamic.set_active" title="fedoo.problem.ExplicitDynamic.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_active</span></code></a>(name)</p></td>
 <td><p>Define the active Problem from its name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_dof_solution.html#fedoo.problem.ExplicitDynamic.set_dof_solution" title="fedoo.problem.ExplicitDynamic.set_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_dof_solution</span></code></a>(name, value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_dof_solution.html#fedoo.problem.ExplicitDynamic.set_dof_solution" title="fedoo.problem.ExplicitDynamic.set_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_dof_solution</span></code></a>(name, value)</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_acceleration.html#fedoo.problem.ExplicitDynamic.set_initial_acceleration" title="fedoo.problem.ExplicitDynamic.set_initial_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_initial_acceleration</span></code></a>(...)</p></td>
+<td><p>name is the name of the associated variable (generaly 'DispX', 'DispY' or 'DispZ') value is an array containing the initial acceleration of each nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_displacement.html#fedoo.problem.ExplicitDynamic.set_initial_displacement" title="fedoo.problem.ExplicitDynamic.set_initial_displacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_initial_displacement</span></code></a>(...)</p></td>
+<td><p>name is the name of the associated variable (generaly 'DispX', 'DispY' or 'DispZ') value is an array containing the initial displacement of each nodes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_velocity.html#fedoo.problem.ExplicitDynamic.set_initial_velocity" title="fedoo.problem.ExplicitDynamic.set_initial_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_initial_velocity</span></code></a>(name, value)</p></td>
+<td><p>name is the name of the associated variable (generaly 'DispX', 'DispY' or 'DispZ') value is an array containing the initial velocity of each nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_mass_matrix.html#fedoo.problem.ExplicitDynamic.set_mass_matrix" title="fedoo.problem.ExplicitDynamic.set_mass_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_mass_matrix</span></code></a>(e)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_rayleigh_damping.html#fedoo.problem.ExplicitDynamic.set_rayleigh_damping" title="fedoo.problem.ExplicitDynamic.set_rayleigh_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_rayleigh_damping</span></code></a>(alpha, beta)</p></td>
+<td><p>Compute the damping matrix from the Rayleigh's model: [C] = alpha*[M] + beta*[K]</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_reuse_factorization.html#fedoo.problem.ExplicitDynamic.set_reuse_factorization" title="fedoo.problem.ExplicitDynamic.set_reuse_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_reuse_factorization</span></code></a>([reuse])</p></td>
 <td><p>Enable or disable factorization reuse for repeated solves.</p></td>
@@ -284,16 +334,22 @@ The algorithm come from:  Bathe KJ and Edward W, “Numerical methods in finite 
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_solver.html#fedoo.problem.ExplicitDynamic.set_solver" title="fedoo.problem.ExplicitDynamic.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_solver</span></code></a>([solver])</p></td>
 <td><p>Define the solver for the linear system resolution.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve.html#fedoo.problem.ExplicitDynamic.solve" title="fedoo.problem.ExplicitDynamic.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.solve</span></code></a>(**kargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_stiffness_matrix.html#fedoo.problem.ExplicitDynamic.set_stiffness_matrix" title="fedoo.problem.ExplicitDynamic.set_stiffness_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_stiffness_matrix</span></code></a>(e)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update.html#fedoo.problem.ExplicitDynamic.update" title="fedoo.problem.ExplicitDynamic.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.update</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve.html#fedoo.problem.ExplicitDynamic.solve" title="fedoo.problem.ExplicitDynamic.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.solve</span></code></a>(**kargs)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.updateStiffness.html#fedoo.problem.ExplicitDynamic.updateStiffness" title="fedoo.problem.ExplicitDynamic.updateStiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.updateStiffness</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update.html#fedoo.problem.ExplicitDynamic.update" title="fedoo.problem.ExplicitDynamic.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.update</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update_boundary_conditions.html#fedoo.problem.ExplicitDynamic.update_boundary_conditions" title="fedoo.problem.ExplicitDynamic.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.update_boundary_conditions</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.updateStiffness.html#fedoo.problem.ExplicitDynamic.updateStiffness" title="fedoo.problem.ExplicitDynamic.updateStiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.updateStiffness</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update_boundary_conditions.html#fedoo.problem.ExplicitDynamic.update_boundary_conditions" title="fedoo.problem.ExplicitDynamic.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.update_boundary_conditions</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update_stiffness.html#fedoo.problem.ExplicitDynamic.update_stiffness" title="fedoo.problem.ExplicitDynamic.update_stiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.update_stiffness</span></code></a>(...)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -344,7 +400,7 @@ The algorithm come from:  Bathe KJ and Edward W, “Numerical methods in finite 
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="fedoo.problem.NonLinearNewmark.html" class="btn btn-neutral float-left" title="fedoo.problem.NonLinearNewmark" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.problem.ExplicitDynamic.GetElasticEnergy.html" class="btn btn-neutral float-right" title="fedoo.problem.ExplicitDynamic.GetElasticEnergy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.problem.ExplicitDynamic.GetDampingPower.html" class="btn btn-neutral float-right" title="fedoo.problem.ExplicitDynamic.GetDampingPower" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

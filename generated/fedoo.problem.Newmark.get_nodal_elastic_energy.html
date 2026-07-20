@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.problem.Newmark.get_nodal_elastic_energy &mdash; fedoo  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.problem.Newmark.get_results" href="fedoo.problem.Newmark.get_results.html" />
+    <link rel="prev" title="fedoo.problem.Newmark.get_kinetic_energy" href="fedoo.problem.Newmark.get_kinetic_energy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedOOLogos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Quick_Start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="fedoo.problem.Newmark.html">fedoo.problem.Newmark</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.GetAcceleration.html">fedoo.problem.Newmark.GetAcceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.GetDampingPower.html">fedoo.problem.Newmark.GetDampingPower</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.GetElasticEnergy.html">fedoo.problem.Newmark.GetElasticEnergy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.GetExternalForceWork.html">fedoo.problem.Newmark.GetExternalForceWork</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.GetKineticEnergy.html">fedoo.problem.Newmark.GetKineticEnergy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.GetNodalElasticEnergy.html">fedoo.problem.Newmark.GetNodalElasticEnergy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.GetVelocity.html">fedoo.problem.Newmark.GetVelocity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.SetInitialAcceleration.html">fedoo.problem.Newmark.SetInitialAcceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.SetInitialDisplacement.html">fedoo.problem.Newmark.SetInitialDisplacement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.SetInitialVelocity.html">fedoo.problem.Newmark.SetInitialVelocity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.SetRayleighDamping.html">fedoo.problem.Newmark.SetRayleighDamping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.UpdateStiffness.html">fedoo.problem.Newmark.UpdateStiffness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.add_global_dof.html">fedoo.problem.Newmark.add_global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.add_output.html">fedoo.problem.Newmark.add_output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.apply_boundary_conditions.html">fedoo.problem.Newmark.apply_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_A.html">fedoo.problem.Newmark.get_A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_Acceleration.html">fedoo.problem.Newmark.get_Acceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_B.html">fedoo.problem.Newmark.get_B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_D.html">fedoo.problem.Newmark.get_D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_DampingPower.html">fedoo.problem.Newmark.get_DampingPower</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_X.html">fedoo.problem.Newmark.get_X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_Xdot.html">fedoo.problem.Newmark.get_Xdot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_Xdotdot.html">fedoo.problem.Newmark.get_Xdotdot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_acceleration.html">fedoo.problem.Newmark.get_acceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_active.html">fedoo.problem.Newmark.get_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_all.html">fedoo.problem.Newmark.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_damping_power.html">fedoo.problem.Newmark.get_damping_power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_disp.html">fedoo.problem.Newmark.get_disp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_dof_solution.html">fedoo.problem.Newmark.get_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_elastic_energy.html">fedoo.problem.Newmark.get_elastic_energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_ext_forces.html">fedoo.problem.Newmark.get_ext_forces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_external_force_work.html">fedoo.problem.Newmark.get_external_force_work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_kinetic_energy.html">fedoo.problem.Newmark.get_kinetic_energy</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.problem.Newmark.get_nodal_elastic_energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_results.html">fedoo.problem.Newmark.get_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.get_velocity.html">fedoo.problem.Newmark.get_velocity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.init_bc_start_value.html">fedoo.problem.Newmark.init_bc_start_value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.initialize.html">fedoo.problem.Newmark.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.invalidate_factorization.html">fedoo.problem.Newmark.invalidate_factorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.make_active.html">fedoo.problem.Newmark.make_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.save_results.html">fedoo.problem.Newmark.save_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_A.html">fedoo.problem.Newmark.set_A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_B.html">fedoo.problem.Newmark.set_B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_D.html">fedoo.problem.Newmark.set_D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_X.html">fedoo.problem.Newmark.set_X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_active.html">fedoo.problem.Newmark.set_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_dof_solution.html">fedoo.problem.Newmark.set_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_initial_acceleration.html">fedoo.problem.Newmark.set_initial_acceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_initial_displacement.html">fedoo.problem.Newmark.set_initial_displacement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_initial_velocity.html">fedoo.problem.Newmark.set_initial_velocity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_rayleigh_damping.html">fedoo.problem.Newmark.set_rayleigh_damping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_reuse_factorization.html">fedoo.problem.Newmark.set_reuse_factorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.set_solver.html">fedoo.problem.Newmark.set_solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.solve.html">fedoo.problem.Newmark.solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.update.html">fedoo.problem.Newmark.update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.updateStiffness.html">fedoo.problem.Newmark.updateStiffness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.update_boundary_conditions.html">fedoo.problem.Newmark.update_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.update_stiffness.html">fedoo.problem.Newmark.update_stiffness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.active.html">fedoo.problem.Newmark.active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.global_dof.html">fedoo.problem.Newmark.global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.n_dof.html">fedoo.problem.Newmark.n_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.n_global_dof.html">fedoo.problem.Newmark.n_global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.n_node_dof.html">fedoo.problem.Newmark.n_node_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.name.html">fedoo.problem.Newmark.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.results.html">fedoo.problem.Newmark.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.solver.html">fedoo.problem.Newmark.solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.space.html">fedoo.problem.Newmark.space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Newmark.bc.html">fedoo.problem.Newmark.bc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.Problem.html">fedoo.Problem</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+          <li class="breadcrumb-item"><a href="fedoo.problem.Newmark.html">fedoo.problem.Newmark</a></li>
+      <li class="breadcrumb-item active">fedoo.problem.Newmark.get_nodal_elastic_energy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.problem.Newmark.get_nodal_elastic_energy.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-problem-newmark-get-nodal-elastic-energy">
+<h1>fedoo.problem.Newmark.get_nodal_elastic_energy<a class="headerlink" href="#fedoo-problem-newmark-get-nodal-elastic-energy" title="Link to this heading"></a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.problem.Newmark.get_nodal_elastic_energy">
+<span class="sig-prename descclassname"><span class="pre">Newmark.</span></span><span class="sig-name descname"><span class="pre">get_nodal_elastic_energy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.Newmark.get_nodal_elastic_energy" title="Link to this definition"></a></dt>
+<dd><p>returns : 0.5 * K * U . U</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.problem.Newmark.get_kinetic_energy.html" class="btn btn-neutral float-left" title="fedoo.problem.Newmark.get_kinetic_energy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.problem.Newmark.get_results.html" class="btn btn-neutral float-right" title="fedoo.problem.Newmark.get_results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

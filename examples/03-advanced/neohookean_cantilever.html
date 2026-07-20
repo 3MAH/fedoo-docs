@@ -76,15 +76,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Advanced problems</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="3D_periodic_BC_off_axis.html">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html">Composite double-cantilever beam with a cohesive interface</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#geometry-and-discretization">Geometry and discretization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#mesh-the-two-arms">Mesh the two arms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#construct-the-cohesive-interface">Construct the cohesive interface</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#constitutive-laws-and-assemblies">Constitutive laws and assemblies</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#problem-and-boundary-conditions">Problem and boundary conditions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#incremental-nonlinear-solution">Incremental nonlinear solution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#cohesive-zone-response">Cohesive-zone response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#plot-the-deformed-dcb">Plot the deformed DCB</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Finite-strain Neo-Hookean cantilever (rigid cap)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thermal_loading.html">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#geometry-and-mesh">Geometry and Mesh</a></li>
@@ -151,14 +142,14 @@ to six global rigid-body DOFs (<code class="docutils literal notranslate"><span 
 cap is driven by prescribing its transverse displacement <code class="docutils literal notranslate"><span class="pre">RigidDispX</span></code>.</p>
 <p>The mesh is read from an Abaqus <code class="docutils literal notranslate"><span class="pre">.inp</span></code> deck. Two are provided and give the same
 result: a <strong>linear</strong> hex8 mesh solved with reduced integration
-(<a class="reference internal" href="../../generated/fedoo.weakform.StressEquilibriumRI.html#fedoo.weakform.StressEquilibriumRI" title="fedoo.weakform.StressEquilibriumRI"><code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumRI()</span></code></a>, which avoids volumetric locking at
+(<a class="reference internal" href="../../generated/fedoo.weakform.StressEquilibriumRI.html#fedoo.weakform.StressEquilibriumRI" title="fedoo.weakform.StressEquilibriumRI"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumRI</span></code></a>, which avoids volumetric locking at
 <span class="math notranslate nohighlight">\(\nu = 0.49\)</span>), and a <strong>quadratic</strong> hex20 mesh solved with full integration
 (<a class="reference internal" href="../../generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a>).</p>
 <p>Displacement control is used because static <em>force</em> control is ill-conditioned
 for such a flexible structure: the cap’s transverse stiffness is tiny next to the
 internal stiffness, so a force increment demands a large displacement jump.
 Loading by force is done through implicit dynamics
-(<a class="reference internal" href="../../generated/fedoo.weakform.ImplicitDynamic.html#fedoo.weakform.ImplicitDynamic" title="fedoo.weakform.implicit_dynamic.ImplicitDynamic"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.implicit_dynamic.ImplicitDynamic</span></code></a>), where the cap’s
+(<a class="reference internal" href="../../generated/fedoo.weakform.ImplicitDynamic.html#fedoo.weakform.ImplicitDynamic" title="fedoo.weakform.ImplicitDynamic"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.ImplicitDynamic</span></code></a>), where the cap’s
 inertia/damping regularise that soft mode.</p>
 <img src="../../_images/sphx_glr_neohookean_cantilever_001.png" srcset="../../_images/sphx_glr_neohookean_cantilever_001.png" alt="neohookean cantilever" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00066
 Iter 2 - Time: 0.10000 - dt 0.06250 - NR iter: 2 - Err: 0.00068
@@ -214,25 +205,8 @@ max von Mises stress: 5.2276e+06 Pa
 
 <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;3D&quot;</span><span class="p">)</span>
 
-
-<span class="k">def</span><span class="w"> </span><span class="nf">read_cylinder_inp</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read a C3D8 / C3D20 Abaqus .inp into a fedoo hex8 / hex20 Mesh.</span>
-
-<span class="sd">    ``fd.Mesh.read`` handles this directly where the meshio-based reader is</span>
-<span class="sd">    available; otherwise fall back to meshio (pulled in via ``pyvista[io]``).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="k">except</span> <span class="p">(</span><span class="ne">NotImplementedError</span><span class="p">,</span> <span class="ne">NameError</span><span class="p">,</span> <span class="ne">ModuleNotFoundError</span><span class="p">):</span>
-        <span class="kn">import</span><span class="w"> </span><span class="nn">meshio</span>  <span class="c1"># noqa: PLC0415</span>
-
-        <span class="n">m</span> <span class="o">=</span> <span class="n">meshio</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s2">&quot;hexahedron20&quot;</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">cells_dict</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">cells_dict</span><span class="p">[</span><span class="s2">&quot;hexahedron20&quot;</span><span class="p">],</span> <span class="s2">&quot;hex20&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">points</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">cells_dict</span><span class="p">[</span><span class="s2">&quot;hexahedron&quot;</span><span class="p">],</span> <span class="s2">&quot;hex8&quot;</span><span class="p">)</span>
-
-
-<span class="n">mesh</span> <span class="o">=</span> <span class="n">read_cylinder_inp</span><span class="p">(</span><span class="n">MESH_FILE</span><span class="p">)</span>
+<span class="c1"># Read the C3D8/C3D20 cylinder mesh from its Abaqus .inp file.</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">MESH_FILE</span><span class="p">)</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="n">bottom</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>  <span class="c1"># clamped base</span>
 <span class="n">top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>  <span class="c1"># tied to the rigid cap</span>
@@ -279,7 +253,7 @@ max von Mises stress: 5.2276e+06 Pa
 <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">&quot;vm&quot;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.323 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.895 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-neohookean-cantilever-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/609f1bb569bbe7204bcc004160256c61/neohookean_cantilever.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">neohookean_cantilever.ipynb</span></code></a></p>

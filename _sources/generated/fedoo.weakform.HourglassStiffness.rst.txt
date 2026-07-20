@@ -25,7 +25,6 @@
          HourglassStiffness.get_storage
          HourglassStiffness.get_weak_equation
          HourglassStiffness.initialize
-         HourglassStiffness.nvar
          HourglassStiffness.reset
          HourglassStiffness.set_damping
          HourglassStiffness.set_dissipation
@@ -49,6 +48,7 @@
          
       
          HourglassStiffness.name
+         HourglassStiffness.nvar
          HourglassStiffness.space
          HourglassStiffness.nlgeom
   

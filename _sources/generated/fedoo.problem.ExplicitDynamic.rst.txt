@@ -19,6 +19,7 @@
          :toctree:
          
       
+         ExplicitDynamic.GetDampingPower
          ExplicitDynamic.GetElasticEnergy
          ExplicitDynamic.GetKineticEnergy
          ExplicitDynamic.MassLumping
@@ -28,6 +29,7 @@
          ExplicitDynamic.SetMassMatrix
          ExplicitDynamic.SetRayleighDamping
          ExplicitDynamic.SetStiffnessMatrix
+         ExplicitDynamic.UpdateStiffness
          ExplicitDynamic.add_global_dof
          ExplicitDynamic.add_output
          ExplicitDynamic.apply_boundary_conditions
@@ -39,13 +41,18 @@
          ExplicitDynamic.get_Xdot
          ExplicitDynamic.get_active
          ExplicitDynamic.get_all
+         ExplicitDynamic.get_damping_power
          ExplicitDynamic.get_dof_solution
+         ExplicitDynamic.get_elastic_energy
          ExplicitDynamic.get_ext_forces
+         ExplicitDynamic.get_kinetic_energy
          ExplicitDynamic.get_results
+         ExplicitDynamic.get_velocity
          ExplicitDynamic.init_bc_start_value
          ExplicitDynamic.initialize
          ExplicitDynamic.invalidate_factorization
          ExplicitDynamic.make_active
+         ExplicitDynamic.mass_lumping
          ExplicitDynamic.save_results
          ExplicitDynamic.set_A
          ExplicitDynamic.set_B
@@ -53,12 +60,19 @@
          ExplicitDynamic.set_X
          ExplicitDynamic.set_active
          ExplicitDynamic.set_dof_solution
+         ExplicitDynamic.set_initial_acceleration
+         ExplicitDynamic.set_initial_displacement
+         ExplicitDynamic.set_initial_velocity
+         ExplicitDynamic.set_mass_matrix
+         ExplicitDynamic.set_rayleigh_damping
          ExplicitDynamic.set_reuse_factorization
          ExplicitDynamic.set_solver
+         ExplicitDynamic.set_stiffness_matrix
          ExplicitDynamic.solve
          ExplicitDynamic.update
          ExplicitDynamic.updateStiffness
          ExplicitDynamic.update_boundary_conditions
+         ExplicitDynamic.update_stiffness
       
       
   
