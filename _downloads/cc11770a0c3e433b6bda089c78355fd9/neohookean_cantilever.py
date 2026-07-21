@@ -23,7 +23,7 @@ cap is driven by prescribing its transverse displacement ``RigidDispX``.
 
 The mesh is read from an Abaqus ``.inp`` deck. Two are provided and give the same
 result: a **linear** hex8 mesh solved with reduced integration
-(:class:`fedoo.weakform.StressEquilibriumRI`, which avoids volumetric locking at
+(:func:`fedoo.weakform.StressEquilibriumRI`, which avoids volumetric locking at
 :math:`\\nu = 0.49`), and a **quadratic** hex20 mesh solved with full integration
 (:class:`fedoo.weakform.StressEquilibrium`).
 
@@ -31,7 +31,7 @@ Displacement control is used because static *force* control is ill-conditioned
 for such a flexible structure: the cap's transverse stiffness is tiny next to the
 internal stiffness, so a force increment demands a large displacement jump.
 Loading by force is done through implicit dynamics
-(:class:`fedoo.weakform.ImplicitDynamic`), where the cap's
+(:class:`fedoo.weakform.implicit_dynamic.ImplicitDynamic`), where the cap's
 inertia/damping regularise that soft mode.
 """
 
@@ -62,8 +62,25 @@ MESH_FILE = (
 
 fd.ModelingSpace("3D")
 
-# Read the C3D8/C3D20 cylinder mesh from its Abaqus .inp file.
-mesh = fd.Mesh.read(MESH_FILE)
+
+def read_cylinder_inp(path):
+    """Read a C3D8 / C3D20 Abaqus .inp into a fedoo hex8 / hex20 Mesh.
+
+    ``fd.Mesh.read`` handles this directly where the meshio-based reader is
+    available; otherwise fall back to meshio (pulled in via ``pyvista[io]``).
+    """
+    try:
+        return fd.Mesh.read(path)
+    except (NotImplementedError, NameError, ModuleNotFoundError):
+        import meshio  # noqa: PLC0415
+
+        m = meshio.read(path)
+        if "hexahedron20" in m.cells_dict:
+            return fd.Mesh(m.points, m.cells_dict["hexahedron20"], "hex20")
+        return fd.Mesh(m.points, m.cells_dict["hexahedron"], "hex8")
+
+
+mesh = read_cylinder_inp(MESH_FILE)
 z = mesh.nodes[:, 2]
 bottom = mesh.find_nodes("Z", z.min())  # clamped base
 top = mesh.find_nodes("Z", z.max())  # tied to the rigid cap

@@ -24,6 +24,7 @@
          BeamEquilibrium.get_storage
          BeamEquilibrium.get_weak_equation
          BeamEquilibrium.initialize
+         BeamEquilibrium.nvar
          BeamEquilibrium.reset
          BeamEquilibrium.set_damping
          BeamEquilibrium.set_dissipation
@@ -47,7 +48,6 @@
          
       
          BeamEquilibrium.name
-         BeamEquilibrium.nvar
          BeamEquilibrium.space
          BeamEquilibrium.nlgeom
   
