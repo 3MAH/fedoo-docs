@@ -21,6 +21,7 @@
       
          CohesiveLaw.get_K
          CohesiveLaw.get_all
+         CohesiveLaw.get_secant_matrix
          CohesiveLaw.get_tangent_matrix
          CohesiveLaw.initialize
          CohesiveLaw.local2global_K

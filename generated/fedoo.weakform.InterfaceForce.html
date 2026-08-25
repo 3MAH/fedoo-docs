@@ -101,7 +101,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.InterfaceForce.name.html">fedoo.weakform.InterfaceForce.name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.InterfaceForce.nvar.html">fedoo.weakform.InterfaceForce.nvar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.InterfaceForce.space.html">fedoo.weakform.InterfaceForce.space</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.InterfaceForce.nlgeom.html">fedoo.weakform.InterfaceForce.nlgeom</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.DistributedLoad.html">fedoo.weakform.DistributedLoad</a></li>
@@ -149,11 +148,11 @@
 <h1>fedoo.weakform.InterfaceForce<a class="headerlink" href="#fedoo-weakform-interfaceforce" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.weakform.InterfaceForce">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InterfaceForce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.InterfaceForce" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InterfaceForce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.InterfaceForce" title="Link to this definition"></a></dt>
 <dd><p>Weak formulation of the interface equilibrium equation.</p>
 <ul class="simple">
 <li><p>Require an interface constitutive law such as <a class="reference internal" href="fedoo.constitutivelaw.CohesiveLaw.html#fedoo.constitutivelaw.CohesiveLaw" title="fedoo.constitutivelaw.CohesiveLaw"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.CohesiveLaw</span></code></a> or <a class="reference internal" href="fedoo.constitutivelaw.Spring.html#fedoo.constitutivelaw.Spring" title="fedoo.constitutivelaw.Spring"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.Spring</span></code></a></p></li>
-<li><p>Geometrical non linearities not implemented</p></li>
+<li><p>Updated-Lagrangian geometrical nonlinearities are supported.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -161,14 +160,16 @@
 <li><p><strong>constitutivelaw</strong> (<em>str</em><em> or </em><em>ConstitutiveLaw</em>) – Interface constitutive law (ConstitutiveLaw object or name)
 (<a class="reference internal" href="../constitutive_law.html#module-fedoo.constitutivelaw" title="fedoo.constitutivelaw"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code></a>)</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – name of the WeakForm</p></li>
-<li><p><strong>nlgeom</strong> (<em>bool</em><em> (</em><em>default = False</em><em>)</em>) – For future development
-If True, return a NotImplemented Error</p></li>
+<li><p><strong>nlgeom</strong> (<em>{None</em><em>, </em><em>bool</em><em>, </em><em>&quot;UL&quot;}</em><em>, </em><em>optional</em>) – Geometrical-nonlinearity formulation. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (default), use the
+value defined by the associated problem. <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;UL&quot;</span></code> select
+the updated-Lagrangian formulation. Total Lagrangian (<code class="docutils literal notranslate"><span class="pre">&quot;TL&quot;</span></code>) is not
+implemented for interface forces.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.weakform.InterfaceForce.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.InterfaceForce.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.InterfaceForce.__init__" title="Link to this definition"></a></dt>
 <dd><p><strong>Methods</strong></p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
@@ -233,9 +234,6 @@ If True, return a NotImplemented Error</p></li>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.InterfaceForce.space.html#fedoo.weakform.InterfaceForce.space" title="fedoo.weakform.InterfaceForce.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InterfaceForce.space</span></code></a></p></td>
 <td><p>Return the ModelingSpace associated to the WeakForm if defined.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.InterfaceForce.nlgeom.html#fedoo.weakform.InterfaceForce.nlgeom" title="fedoo.weakform.InterfaceForce.nlgeom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InterfaceForce.nlgeom</span></code></a></p></td>
-<td><p>Method used to treat the geometric non linearities.</p></td>
 </tr>
 </tbody>
 </table>

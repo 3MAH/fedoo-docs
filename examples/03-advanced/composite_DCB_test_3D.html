@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Composite double-cantilever beam with a cohesive interface &mdash; fedoo  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="multi_mesh_example.html" />
+    <link rel="prev" title="Off-axis tensile test on a Gyroid unit cell with periodic boundary condition" href="3D_periodic_BC_off_axis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01-simple/index.html">Simple examples to start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Advanced problems</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="3D_periodic_BC_off_axis.html">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Composite double-cantilever beam with a cohesive interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-and-discretization">Geometry and discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mesh-the-two-arms">Mesh the two arms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#construct-the-cohesive-interface">Construct the cohesive interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constitutive-laws-and-assemblies">Constitutive laws and assemblies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#problem-and-boundary-conditions">Problem and boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incremental-nonlinear-solution">Incremental nonlinear solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cohesive-zone-response">Cohesive-zone response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-the-deformed-dcb">Plot the deformed DCB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="neohookean_cantilever.html">Finite-strain Neo-Hookean cantilever (rigid cap)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#geometry-and-mesh">Geometry and Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#modeling-space-and-field-definitions">Modeling Space and Field Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#constitutive-laws-and-assembly">Constitutive Laws and Assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#problem-definition-and-boundary-conditions">Problem Definition and Boundary Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#solving-and-post-treatment">Solving and Post-Treatment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tube_compression.html">Compression of a tube using 2D axisymmetric model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Advanced problems</a></li>
+      <li class="breadcrumb-item active">Composite double-cantilever beam with a cohesive interface</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/03-advanced/composite_DCB_test_3D.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-03-advanced-composite-dcb-test-3d-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="composite-double-cantilever-beam-with-a-cohesive-interface">
+<span id="sphx-glr-examples-03-advanced-composite-dcb-test-3d-py"></span><h1>Composite double-cantilever beam with a cohesive interface<a class="headerlink" href="#composite-double-cantilever-beam-with-a-cohesive-interface" title="Link to this heading"></a></h1>
+<p>The model consists of two composite arms separated by a zero-thickness
+cohesive interface. Cohesive elements are inserted only after the prescribed
+starter-crack length. The initially unconnected part of the two arms therefore
+represents the pre-crack.</p>
+<p>The arms are made from a unidirectional composite whose fibres are aligned
+with the beam axis. A mixed-mode bilinear
+<a class="reference internal" href="../../generated/fedoo.constitutivelaw.CohesiveLaw.html#fedoo.constitutivelaw.CohesiveLaw" title="fedoo.constitutivelaw.CohesiveLaw"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.CohesiveLaw</span></code></a> governs the interface, and the
+opening displacement is applied incrementally with
+<a class="reference internal" href="../../generated/fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.problem.NonLinear</span></code></a>.</p>
+<p>The example uses N, mm, and MPa. Its compact mesh demonstrates the cohesive-law
+workflow; it is not intended as a mesh-converged fracture benchmark.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+</section>
+<section id="geometry-and-discretization">
+<h1>Geometry and discretization<a class="headerlink" href="#geometry-and-discretization" title="Link to this heading"></a></h1>
+<p>We first define the DCB dimensions, loading, and compact mesh resolution.
+The mesh is deliberately small so that the complete nonlinear example
+remains fast enough for the documentation gallery.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Number of nodes along the beam length, width, and through each arm.</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">nz_per_arm</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">length</span> <span class="o">=</span> <span class="mf">60.0</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">arm_thickness</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">crack_length</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">opening</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;fedoo.core.modelingspace.ModelingSpace object at 0x7fb918cd66e0&gt;
+</pre></div>
+</div>
+</section>
+<section id="mesh-the-two-arms">
+<h1>Mesh the two arms<a class="headerlink" href="#mesh-the-two-arms" title="Link to this heading"></a></h1>
+<p>The lower and upper meshes deliberately retain separate nodes at z=0.
+Coincident-but-distinct nodes are necessary because the cohesive element
+interpolates the displacement jump between the two interface faces.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">lower</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="p">,</span>
+    <span class="n">ny</span><span class="p">,</span>
+    <span class="n">nz_per_arm</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="n">length</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
+    <span class="n">z_min</span><span class="o">=-</span><span class="n">arm_thickness</span><span class="p">,</span>
+    <span class="n">z_max</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"hex8"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">upper</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="p">,</span>
+    <span class="n">ny</span><span class="p">,</span>
+    <span class="n">nz_per_arm</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="n">length</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
+    <span class="n">z_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">z_max</span><span class="o">=</span><span class="n">arm_thickness</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"hex8"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Mesh.stack concatenates the two node lists without merging coincident nodes.</span>
+<span class="n">domain</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"DCB_domain"</span><span class="p">)</span>
+<span class="n">upper_offset</span> <span class="o">=</span> <span class="n">lower</span><span class="o">.</span><span class="n">n_nodes</span>
+
+<span class="c1"># Define one volume mesh per arm using the common global node list. Separate</span>
+<span class="c1"># meshes make it possible to assign distinct materials or ply orientations to</span>
+<span class="c1"># the arms without altering the interface node numbering.</span>
+<span class="n">lower_volume</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span>
+    <span class="n">domain</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span>
+    <span class="n">lower</span><span class="o">.</span><span class="n">elements</span><span class="p">,</span>
+    <span class="s2">"hex8"</span><span class="p">,</span>
+    <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">upper_volume</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span>
+    <span class="n">domain</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span>
+    <span class="n">upper</span><span class="o">.</span><span class="n">elements</span> <span class="o">+</span> <span class="n">upper_offset</span><span class="p">,</span>
+    <span class="s2">"hex8"</span><span class="p">,</span>
+    <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="construct-the-cohesive-interface">
+<h1>Construct the cohesive interface<a class="headerlink" href="#construct-the-cohesive-interface" title="Link to this heading"></a></h1>
+<p>For hex8 elements, nodes 4:8 form the upper face and nodes 0:4 form the
+lower face. Pair the top face of the lower arm with the bottom face of the
+upper arm. A quad4interface element therefore contains eight nodes:</p>
+<blockquote>
+<div><p>[four nodes on the lower arm, four nodes on the upper arm]</p>
+</div></blockquote>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n_interface_cells</span> <span class="o">=</span> <span class="p">(</span><span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ny</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">lower_interface_faces</span> <span class="o">=</span> <span class="n">lower</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="o">-</span><span class="n">n_interface_cells</span><span class="p">:,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">upper_interface_faces</span> <span class="o">=</span> <span class="n">upper</span><span class="o">.</span><span class="n">elements</span><span class="p">[:</span><span class="n">n_interface_cells</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">upper_offset</span>
+<span class="n">interface_elements</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">lower_interface_faces</span><span class="p">,</span> <span class="n">upper_interface_faces</span><span class="p">))</span>
+
+<span class="c1"># Do not insert cohesive elements over the starter-crack region. The two arms</span>
+<span class="c1"># are consequently disconnected for x &lt; crack_length and bonded by cohesive</span>
+<span class="c1"># elements for x &gt;= crack_length.</span>
+<span class="n">interface_centers_x</span> <span class="o">=</span> <span class="n">domain</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">interface_elements</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">interface_elements</span> <span class="o">=</span> <span class="n">interface_elements</span><span class="p">[</span><span class="n">interface_centers_x</span> <span class="o">&gt;=</span> <span class="n">crack_length</span> <span class="o">-</span> <span class="mf">1.0e-12</span><span class="p">]</span>
+
+<span class="n">interface</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span>
+    <span class="n">domain</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span>
+    <span class="n">interface_elements</span><span class="p">,</span>
+    <span class="s2">"quad4interface"</span><span class="p">,</span>
+    <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"DCB_cohesive_interface"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="constitutive-laws-and-assemblies">
+<h1>Constitutive laws and assemblies<a class="headerlink" href="#constitutive-laws-and-assemblies" title="Link to this heading"></a></h1>
+<p>Both unidirectional composite arms have fibres along the beam axis (X).
+Separate objects are retained so either arm can easily be changed later.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">lower_material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">CompositeUD</span><span class="p">(</span>
+    <span class="n">Vf</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">E_f</span><span class="o">=</span><span class="mf">250000.0</span><span class="p">,</span>
+    <span class="n">E_m</span><span class="o">=</span><span class="mf">3500.0</span><span class="p">,</span>
+    <span class="n">nu_f</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span>
+    <span class="n">nu_m</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">angle</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">upper_material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">CompositeUD</span><span class="p">(</span>
+    <span class="n">Vf</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">E_f</span><span class="o">=</span><span class="mf">250000.0</span><span class="p">,</span>
+    <span class="n">E_m</span><span class="o">=</span><span class="mf">3500.0</span><span class="p">,</span>
+    <span class="n">nu_f</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span>
+    <span class="n">nu_m</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">angle</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Bilinear mixed-mode cohesive law. Axis 2 is the local interface-normal</span>
+<span class="c1"># direction; the quad4interface element supplies the corresponding local frame.</span>
+<span class="n">cohesive_law</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">CohesiveLaw</span><span class="p">(</span>
+    <span class="n">GIc</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">SImax</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span>
+    <span class="n">KI</span><span class="o">=</span><span class="mf">1.0e4</span><span class="p">,</span>
+    <span class="n">GIIc</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span>
+    <span class="n">SIImax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">KII</span><span class="o">=</span><span class="mf">1.0e4</span><span class="p">,</span>
+    <span class="n">tangent_mode</span><span class="o">=</span><span class="s2">"secant"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">lower_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">lower_material</span><span class="p">),</span>
+    <span class="n">lower_volume</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">upper_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">upper_material</span><span class="p">),</span>
+    <span class="n">upper_volume</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">cohesive_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">InterfaceForce</span><span class="p">(</span><span class="n">cohesive_law</span><span class="p">),</span>
+    <span class="n">interface</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Keep a separate sum of the two volume assemblies for post-processing. It</span>
+<span class="c1"># contains only standard hex8 meshes and can therefore be converted directly</span>
+<span class="c1"># to a PyVista ``MultiMesh``. The cohesive assembly is then added only to the</span>
+<span class="c1"># global mechanical assembly.</span>
+<span class="n">volume_assembly</span> <span class="o">=</span> <span class="n">lower_assembly</span> <span class="o">+</span> <span class="n">upper_assembly</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">volume_assembly</span> <span class="o">+</span> <span class="n">cohesive_assembly</span>
+</pre></div>
+</div>
+</section>
+<section id="problem-and-boundary-conditions">
+<h1>Problem and boundary conditions<a class="headerlink" href="#problem-and-boundary-conditions" title="Link to this heading"></a></h1>
+<p>Material softening makes the problem nonlinear even though large-deformation
+kinematics are disabled.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Load the end faces at x=0. The lower end is fully fixed; the upper end is</span>
+<span class="c1"># prevented from moving in X and Y and receives the prescribed opening in Z.</span>
+<span class="n">lower_left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">arm_thickness</span> <span class="o">+</span> <span class="mf">1.0e-12</span><span class="p">)</span>
+<span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">upper_left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">arm_thickness</span> <span class="o">-</span> <span class="mf">1.0e-12</span><span class="p">)</span>
+<span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">problem</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">lower_left</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">upper_left</span><span class="p">,</span> <span class="s2">"DispX"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">upper_left</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">upper_left</span><span class="p">,</span> <span class="s2">"DispZ"</span><span class="p">,</span> <span class="n">opening</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Dirichlet boundary condition:
+var = 'DispZ'
+n_nodes = 5
+value = 10
+</pre></div>
+</div>
+</section>
+<section id="incremental-nonlinear-solution">
+<h1>Incremental nonlinear solution<a class="headerlink" href="#incremental-nonlinear-solution" title="Link to this heading"></a></h1>
+<p>The imposed opening is scaled by the problem time from zero to its final
+value. Adaptive increments help the Newton solver cross the damage events.
+Convergence may be slow for this kind of problem. During damage propagation,
+the residual may temporarily increase over several iterations before
+convergence, so the early-divergence check is disabled.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="n">check_early_divergence</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
+    <span class="n">dt</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dt_min</span><span class="o">=</span><span class="mf">1.0e-5</span><span class="p">,</span>
+    <span class="n">tol_nr</span><span class="o">=</span><span class="mf">5.0e-3</span><span class="p">,</span>
+    <span class="n">print_info</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="cohesive-zone-response">
+<h1>Cohesive-zone response<a class="headerlink" href="#cohesive-zone-response" title="Link to this heading"></a></h1>
+<p>Damage and relative displacement are stored at the interface Gauss points.
+A damage value of one denotes a fully failed cohesive point.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">damage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">cohesive_assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"DamageVariable"</span><span class="p">])</span>
+<span class="n">relative_disp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">cohesive_assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"RelativeDisp"</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">DCB cohesive-zone summary"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-------------------------"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"n_nodes: </span><span class="si">{</span><span class="n">domain</span><span class="o">.</span><span class="n">n_nodes</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"n_volume_elements: "</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">lower_volume</span><span class="o">.</span><span class="n">n_elements</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">upper_volume</span><span class="o">.</span><span class="n">n_elements</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"n_cohesive_elements: </span><span class="si">{</span><span class="n">interface</span><span class="o">.</span><span class="n">n_elements</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"max_damage: </span><span class="si">{</span><span class="n">damage</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"damaged_gauss_points: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">damage</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"failed_gauss_points: "</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">damage</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1.0e-10</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"max_opening: </span><span class="si">{</span><span class="n">relative_disp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>DCB cohesive-zone summary
+-------------------------
+n_nodes: 570
+n_volume_elements: 288
+n_cohesive_elements: 60
+max_damage: 1.0
+damaged_gauss_points: 112
+failed_gauss_points: 112
+max_opening: 5.589760930506802
+</pre></div>
+</div>
+</section>
+<section id="plot-the-deformed-dcb">
+<h1>Plot the deformed DCB<a class="headerlink" href="#plot-the-deformed-dcb" title="Link to this heading"></a></h1>
+<p>Request results from the volume sum explicitly. Calling
+problem.get_results(…) without an assembly would select the summed
+assembly, which also contains the eight-node <code class="docutils literal notranslate"><span class="pre">quad4interface</span></code> elements.
+These elements are valid for the mechanical calculation but have no direct
+VTK/PyVista cell equivalent.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">volume_assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">])</span>
+
+<span class="c1"># The AssemblySum result is a single MultiMesh dataset containing both arms.</span>
+<span class="c1"># Element fields are retained independently on each submesh, whereas a</span>
+<span class="c1"># recovered nodal stress field would be treated as one shared global field and</span>
+<span class="c1"># would keep only the first arm's recovery. Displacement remains a shared nodal</span>
+<span class="c1"># field and is used to display the final deformed geometry.</span>
+<span class="n">plotter</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">"Stress"</span><span class="p">,</span>
+    <span class="n">component</span><span class="o">=</span><span class="s2">"vm"</span><span class="p">,</span>
+    <span class="n">data_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">,</span>
+    <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"DCB - von Mises stress"</span><span class="p">,</span>
+    <span class="n">scalar_bar_args</span><span class="o">=</span><span class="p">{</span><span class="s2">"interactive"</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="c1"># Use an isometric camera from the negative-X side. This reverses the visual</span>
+<span class="c1"># direction of the beam axis without changing the mesh, crack position, or</span>
+<span class="c1"># boundary conditions.</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">view_vector</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">viewup</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">reset_camera</span><span class="p">()</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_composite_DCB_test_3D_001.png" srcset="../../_images/sphx_glr_composite_DCB_test_3D_001.png" alt="composite DCB test 3D" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.698 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-composite-dcb-test-3d-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/240963c1254c2b1919147325afbce7fd/composite_DCB_test_3D.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">composite_DCB_test_3D.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/7dbfa90f6f17d552078fda5ae55d93d4/composite_DCB_test_3D.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">composite_DCB_test_3D.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/9663be0194c97cd7f99efbf5748af3e1/composite_DCB_test_3D.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">composite_DCB_test_3D.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="3D_periodic_BC_off_axis.html" class="btn btn-neutral float-left" title="Off-axis tensile test on a Gyroid unit cell with periodic boundary condition" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="multi_mesh_example.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

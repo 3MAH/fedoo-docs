@@ -72,26 +72,26 @@ inertia/damping regularise that soft mode.
 
     Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00066
     Iter 2 - Time: 0.10000 - dt 0.06250 - NR iter: 2 - Err: 0.00068
-    Iter 3 - Time: 0.15000 - dt 0.06250 - NR iter: 2 - Err: 0.00068
-    Iter 4 - Time: 0.20000 - dt 0.06250 - NR iter: 2 - Err: 0.00069
+    Iter 3 - Time: 0.15000 - dt 0.06250 - NR iter: 2 - Err: 0.00069
+    Iter 4 - Time: 0.20000 - dt 0.06250 - NR iter: 2 - Err: 0.00070
     Iter 5 - Time: 0.25000 - dt 0.06250 - NR iter: 2 - Err: 0.00070
-    Iter 6 - Time: 0.30000 - dt 0.06250 - NR iter: 2 - Err: 0.00071
+    Iter 6 - Time: 0.30000 - dt 0.06250 - NR iter: 2 - Err: 0.00072
     Iter 7 - Time: 0.35000 - dt 0.06250 - NR iter: 2 - Err: 0.00074
-    Iter 8 - Time: 0.40000 - dt 0.06250 - NR iter: 2 - Err: 0.00077
+    Iter 8 - Time: 0.40000 - dt 0.06250 - NR iter: 2 - Err: 0.00076
     Iter 9 - Time: 0.45000 - dt 0.06250 - NR iter: 2 - Err: 0.00081
-    Iter 10 - Time: 0.50000 - dt 0.06250 - NR iter: 2 - Err: 0.00087
+    Iter 10 - Time: 0.50000 - dt 0.06250 - NR iter: 2 - Err: 0.00086
     Iter 11 - Time: 0.55000 - dt 0.06250 - NR iter: 2 - Err: 0.00095
-    Iter 12 - Time: 0.60000 - dt 0.06250 - NR iter: 3 - Err: 0.00017
-    Iter 13 - Time: 0.65000 - dt 0.06250 - NR iter: 3 - Err: 0.00011
-    Iter 14 - Time: 0.70000 - dt 0.06250 - NR iter: 3 - Err: 0.00011
-    Iter 15 - Time: 0.75000 - dt 0.06250 - NR iter: 3 - Err: 0.00010
-    Iter 16 - Time: 0.80000 - dt 0.06250 - NR iter: 3 - Err: 0.00008
-    Iter 17 - Time: 0.85000 - dt 0.06250 - NR iter: 3 - Err: 0.00005
-    Iter 18 - Time: 0.90000 - dt 0.06250 - NR iter: 3 - Err: 0.00008
-    Iter 19 - Time: 0.95000 - dt 0.06250 - NR iter: 3 - Err: 0.00020
-    Iter 20 - Time: 1.00000 - dt 0.06250 - NR iter: 3 - Err: 0.00040
+    Iter 12 - Time: 0.60000 - dt 0.06250 - NR iter: 3 - Err: 0.00010
+    Iter 13 - Time: 0.65000 - dt 0.06250 - NR iter: 3 - Err: 0.00007
+    Iter 14 - Time: 0.70000 - dt 0.06250 - NR iter: 3 - Err: 0.00007
+    Iter 15 - Time: 0.75000 - dt 0.06250 - NR iter: 3 - Err: 0.00006
+    Iter 16 - Time: 0.80000 - dt 0.06250 - NR iter: 3 - Err: 0.00006
+    Iter 17 - Time: 0.85000 - dt 0.06250 - NR iter: 3 - Err: 0.00009
+    Iter 18 - Time: 0.90000 - dt 0.06250 - NR iter: 3 - Err: 0.00016
+    Iter 19 - Time: 0.95000 - dt 0.06250 - NR iter: 3 - Err: 0.00029
+    Iter 20 - Time: 1.00000 - dt 0.06250 - NR iter: 3 - Err: 0.00050
     max |displacement| : 3.2793e-02 m  (L = 0.05)
-    max von Mises stress: 5.2276e+06 Pa
+    max von Mises stress: 5.2275e+06 Pa
 
 
 
@@ -180,7 +180,7 @@ inertia/damping regularise that soft mode.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 8.015 seconds)
+   **Total running time of the script:** (0 minutes 9.842 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_neohookean_cantilever.py:

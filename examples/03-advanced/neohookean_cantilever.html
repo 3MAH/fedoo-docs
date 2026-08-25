@@ -76,6 +76,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Advanced problems</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="3D_periodic_BC_off_axis.html">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html">Composite double-cantilever beam with a cohesive interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#geometry-and-discretization">Geometry and discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#mesh-the-two-arms">Mesh the two arms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#construct-the-cohesive-interface">Construct the cohesive interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#constitutive-laws-and-assemblies">Constitutive laws and assemblies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#problem-and-boundary-conditions">Problem and boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#incremental-nonlinear-solution">Incremental nonlinear solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#cohesive-zone-response">Cohesive-zone response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#plot-the-deformed-dcb">Plot the deformed DCB</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Finite-strain Neo-Hookean cantilever (rigid cap)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thermal_loading.html">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#geometry-and-mesh">Geometry and Mesh</a></li>
@@ -153,26 +162,26 @@ Loading by force is done through implicit dynamics
 inertia/damping regularise that soft mode.</p>
 <img src="../../_images/sphx_glr_neohookean_cantilever_001.png" srcset="../../_images/sphx_glr_neohookean_cantilever_001.png" alt="neohookean cantilever" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00066
 Iter 2 - Time: 0.10000 - dt 0.06250 - NR iter: 2 - Err: 0.00068
-Iter 3 - Time: 0.15000 - dt 0.06250 - NR iter: 2 - Err: 0.00068
-Iter 4 - Time: 0.20000 - dt 0.06250 - NR iter: 2 - Err: 0.00069
+Iter 3 - Time: 0.15000 - dt 0.06250 - NR iter: 2 - Err: 0.00069
+Iter 4 - Time: 0.20000 - dt 0.06250 - NR iter: 2 - Err: 0.00070
 Iter 5 - Time: 0.25000 - dt 0.06250 - NR iter: 2 - Err: 0.00070
-Iter 6 - Time: 0.30000 - dt 0.06250 - NR iter: 2 - Err: 0.00071
+Iter 6 - Time: 0.30000 - dt 0.06250 - NR iter: 2 - Err: 0.00072
 Iter 7 - Time: 0.35000 - dt 0.06250 - NR iter: 2 - Err: 0.00074
-Iter 8 - Time: 0.40000 - dt 0.06250 - NR iter: 2 - Err: 0.00077
+Iter 8 - Time: 0.40000 - dt 0.06250 - NR iter: 2 - Err: 0.00076
 Iter 9 - Time: 0.45000 - dt 0.06250 - NR iter: 2 - Err: 0.00081
-Iter 10 - Time: 0.50000 - dt 0.06250 - NR iter: 2 - Err: 0.00087
+Iter 10 - Time: 0.50000 - dt 0.06250 - NR iter: 2 - Err: 0.00086
 Iter 11 - Time: 0.55000 - dt 0.06250 - NR iter: 2 - Err: 0.00095
-Iter 12 - Time: 0.60000 - dt 0.06250 - NR iter: 3 - Err: 0.00017
-Iter 13 - Time: 0.65000 - dt 0.06250 - NR iter: 3 - Err: 0.00011
-Iter 14 - Time: 0.70000 - dt 0.06250 - NR iter: 3 - Err: 0.00011
-Iter 15 - Time: 0.75000 - dt 0.06250 - NR iter: 3 - Err: 0.00010
-Iter 16 - Time: 0.80000 - dt 0.06250 - NR iter: 3 - Err: 0.00008
-Iter 17 - Time: 0.85000 - dt 0.06250 - NR iter: 3 - Err: 0.00005
-Iter 18 - Time: 0.90000 - dt 0.06250 - NR iter: 3 - Err: 0.00008
-Iter 19 - Time: 0.95000 - dt 0.06250 - NR iter: 3 - Err: 0.00020
-Iter 20 - Time: 1.00000 - dt 0.06250 - NR iter: 3 - Err: 0.00040
+Iter 12 - Time: 0.60000 - dt 0.06250 - NR iter: 3 - Err: 0.00010
+Iter 13 - Time: 0.65000 - dt 0.06250 - NR iter: 3 - Err: 0.00007
+Iter 14 - Time: 0.70000 - dt 0.06250 - NR iter: 3 - Err: 0.00007
+Iter 15 - Time: 0.75000 - dt 0.06250 - NR iter: 3 - Err: 0.00006
+Iter 16 - Time: 0.80000 - dt 0.06250 - NR iter: 3 - Err: 0.00006
+Iter 17 - Time: 0.85000 - dt 0.06250 - NR iter: 3 - Err: 0.00009
+Iter 18 - Time: 0.90000 - dt 0.06250 - NR iter: 3 - Err: 0.00016
+Iter 19 - Time: 0.95000 - dt 0.06250 - NR iter: 3 - Err: 0.00029
+Iter 20 - Time: 1.00000 - dt 0.06250 - NR iter: 3 - Err: 0.00050
 max |displacement| : 3.2793e-02 m  (L = 0.05)
-max von Mises stress: 5.2276e+06 Pa
+max von Mises stress: 5.2275e+06 Pa
 </pre></div>
 </div>
 <div class="line-block">
@@ -253,7 +262,7 @@ max von Mises stress: 5.2276e+06 Pa
 <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"vm"</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 8.015 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 9.842 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-neohookean-cantilever-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/609f1bb569bbe7204bcc004160256c61/neohookean_cantilever.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">neohookean_cantilever.ipynb</span></code></a></p>
