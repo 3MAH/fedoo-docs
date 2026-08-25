@@ -40,7 +40,7 @@
           
           <a href="../index.html">
             
-              <img src="../_static/fedOOLogos_ss_fond.png" class="logo" alt="Logo"/>
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -59,15 +59,15 @@
 
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Quick_Start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Assembly.html">Class Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fedoo.ListBC.html">fedoo.ListBC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.core.BoundaryCondition.html">fedoo.core.BoundaryCondition</a></li>
@@ -82,6 +82,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.get_global_matrix.html">fedoo.LagrangeMultiplierAssembly.get_global_matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.get_global_vector.html">fedoo.LagrangeMultiplierAssembly.get_global_vector</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.initialize.html">fedoo.LagrangeMultiplierAssembly.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.iter_leaf.html">fedoo.LagrangeMultiplierAssembly.iter_leaf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.register_global_dofs.html">fedoo.LagrangeMultiplierAssembly.register_global_dofs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.reset.html">fedoo.LagrangeMultiplierAssembly.reset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.set_start.html">fedoo.LagrangeMultiplierAssembly.set_start</a></li>
@@ -188,19 +189,22 @@ saddle-point structure, so a direct solver is required.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.initialize.html#fedoo.LagrangeMultiplierAssembly.initialize" title="fedoo.LagrangeMultiplierAssembly.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.initialize</span></code></a>(pb)</p></td>
 <td><p>Initialize the assembly for the current problem.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.register_global_dofs.html#fedoo.LagrangeMultiplierAssembly.register_global_dofs" title="fedoo.LagrangeMultiplierAssembly.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.register_global_dofs</span></code></a>(pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.iter_leaf.html#fedoo.LagrangeMultiplierAssembly.iter_leaf" title="fedoo.LagrangeMultiplierAssembly.iter_leaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.iter_leaf</span></code></a>()</p></td>
+<td><p>Iterate over the leaf assemblies contained in this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.register_global_dofs.html#fedoo.LagrangeMultiplierAssembly.register_global_dofs" title="fedoo.LagrangeMultiplierAssembly.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.register_global_dofs</span></code></a>(pb)</p></td>
 <td><p>Register global DOFs required by the assembly on a problem.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.reset.html#fedoo.LagrangeMultiplierAssembly.reset" title="fedoo.LagrangeMultiplierAssembly.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.reset</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.reset.html#fedoo.LagrangeMultiplierAssembly.reset" title="fedoo.LagrangeMultiplierAssembly.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.reset</span></code></a>()</p></td>
 <td><p>Reset the assembly.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.set_start.html#fedoo.LagrangeMultiplierAssembly.set_start" title="fedoo.LagrangeMultiplierAssembly.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.set_start</span></code></a>(pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.set_start.html#fedoo.LagrangeMultiplierAssembly.set_start" title="fedoo.LagrangeMultiplierAssembly.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.set_start</span></code></a>(pb)</p></td>
 <td><p>Begin a new time iteration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.to_start.html#fedoo.LagrangeMultiplierAssembly.to_start" title="fedoo.LagrangeMultiplierAssembly.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.to_start</span></code></a>(pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.to_start.html#fedoo.LagrangeMultiplierAssembly.to_start" title="fedoo.LagrangeMultiplierAssembly.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.to_start</span></code></a>(pb)</p></td>
 <td><p>Restart the current time iteration.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.update.html#fedoo.LagrangeMultiplierAssembly.update" title="fedoo.LagrangeMultiplierAssembly.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.update</span></code></a>(pb[, compute])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.update.html#fedoo.LagrangeMultiplierAssembly.update" title="fedoo.LagrangeMultiplierAssembly.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LagrangeMultiplierAssembly.update</span></code></a>(pb[, compute])</p></td>
 <td><p>Update the assembly for the current problem state.</p></td>
 </tr>
 </tbody>

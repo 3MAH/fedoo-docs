@@ -24,7 +24,7 @@
          Inertia.get_storage
          Inertia.get_weak_equation
          Inertia.initialize
-         Inertia.nvar
+         Inertia.iter_leaf
          Inertia.reset
          Inertia.set_damping
          Inertia.set_dissipation
@@ -48,6 +48,7 @@
          
       
          Inertia.name
+         Inertia.nvar
          Inertia.space
   
   

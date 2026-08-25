@@ -22,12 +22,8 @@
          RigidTie.generate
          RigidTie.get_all
          RigidTie.initialize
-         RigidTie.pre_update
          RigidTie.register_global_dofs
-         RigidTie.rotation_jacobian
-         RigidTie.set_start
          RigidTie.str_condensed
-         RigidTie.to_start
       
       
   
@@ -40,7 +36,6 @@
          :toctree:
          
       
-         RigidTie.Q_total
          RigidTie.name
   
   

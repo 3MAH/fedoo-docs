@@ -24,7 +24,7 @@
          ArtificialDamping.get_storage
          ArtificialDamping.get_weak_equation
          ArtificialDamping.initialize
-         ArtificialDamping.nvar
+         ArtificialDamping.iter_leaf
          ArtificialDamping.reset
          ArtificialDamping.set_damping
          ArtificialDamping.set_dissipation
@@ -48,6 +48,7 @@
          
       
          ArtificialDamping.name
+         ArtificialDamping.nvar
          ArtificialDamping.space
   
   

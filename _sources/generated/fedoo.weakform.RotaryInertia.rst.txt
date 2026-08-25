@@ -24,7 +24,7 @@
          RotaryInertia.get_storage
          RotaryInertia.get_weak_equation
          RotaryInertia.initialize
-         RotaryInertia.nvar
+         RotaryInertia.iter_leaf
          RotaryInertia.reset
          RotaryInertia.set_damping
          RotaryInertia.set_dissipation
@@ -48,6 +48,7 @@
          
       
          RotaryInertia.name
+         RotaryInertia.nvar
          RotaryInertia.space
   
   

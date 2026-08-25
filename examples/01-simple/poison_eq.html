@@ -40,7 +40,7 @@
           
           <a href="../../index.html">
             
-              <img src="../../_static/fedOOLogos_ss_fond.png" class="logo" alt="Logo"/>
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -59,15 +59,15 @@
 
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../Overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Quick_Start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Assembly.html">Class Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
@@ -147,8 +147,8 @@ how to solve it with Dirichlet boundary conditions.</p>
 </div>
 <p>Define a modeling space and add a variable “U” to this space
 A “2D” problem include by default the coordinates “X” and “Y”.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;2D&quot;</span><span class="p">)</span>
-<span class="n">U</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"U"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -158,10 +158,10 @@ A “2D” problem include by default the coordinates “X” and “Y”.</p>
 can combine with the +, - and * operators to build the weak form.
 the virtual properties set the variable as virtuals
 (in the sense of weak equations)</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dU_dX</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">)</span>
-<span class="n">dU_dY</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dU_dX</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">"U"</span><span class="p">,</span> <span class="s2">"X"</span><span class="p">)</span>
+<span class="n">dU_dY</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">"U"</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">)</span>
 
-<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">WeakForm</span><span class="p">(</span><span class="n">dU_dX</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="n">dU_dX</span> <span class="o">+</span> <span class="n">dU_dY</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="n">dU_dY</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Poisson Equation&quot;</span><span class="p">)</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">WeakForm</span><span class="p">(</span><span class="n">dU_dX</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="n">dU_dX</span> <span class="o">+</span> <span class="n">dU_dY</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="n">dU_dY</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Poisson Equation"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Define the integration domain (mesh)</p>
@@ -170,19 +170,19 @@ the virtual properties set the variable as virtuals
 </div>
 <p>Assembly the global matrix, define a linear problem,
 add boundary conditions and solve the problem</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;assembly&quot;</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"assembly"</span><span class="p">)</span>
 
-<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="s2">&quot;assembly&quot;</span><span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="s2">"assembly"</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"left"</span><span class="p">,</span> <span class="s2">"U"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">,</span> <span class="s2">"U"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="s2">&quot;assembly&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;U&quot;</span><span class="p">])</span>
-<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="s2">"assembly"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"U"</span><span class="p">])</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"U"</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_poison_eq_001.png" srcset="../../_images/sphx_glr_poison_eq_001.png" alt="poison eq" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.191 seconds)</p>
+<img src="../../_images/sphx_glr_poison_eq_001.png" srcset="../../_images/sphx_glr_poison_eq_001.png" alt="poison eq" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.132 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-poison-eq-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/1709583c3dfb518a8f4124b2be33f0a6/poison_eq.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">poison_eq.ipynb</span></code></a></p>

@@ -27,6 +27,7 @@
          SelfContact.get_global_vector
          SelfContact.global_search
          SelfContact.initialize
+         SelfContact.iter_leaf
          SelfContact.register_global_dofs
          SelfContact.reset
          SelfContact.run_normal_law

@@ -25,6 +25,7 @@
          MeanValueConstraint.get_global_matrix
          MeanValueConstraint.get_global_vector
          MeanValueConstraint.initialize
+         MeanValueConstraint.iter_leaf
          MeanValueConstraint.register_global_dofs
          MeanValueConstraint.reset
          MeanValueConstraint.set_start

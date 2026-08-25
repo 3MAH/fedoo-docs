@@ -24,7 +24,7 @@
          StressEquilibriumBbar.get_storage
          StressEquilibriumBbar.get_weak_equation
          StressEquilibriumBbar.initialize
-         StressEquilibriumBbar.nvar
+         StressEquilibriumBbar.iter_leaf
          StressEquilibriumBbar.reset
          StressEquilibriumBbar.set_damping
          StressEquilibriumBbar.set_dissipation
@@ -51,6 +51,7 @@
          StressEquilibriumBbar.fbar
          StressEquilibriumBbar.geometric_stiffness
          StressEquilibriumBbar.name
+         StressEquilibriumBbar.nvar
          StressEquilibriumBbar.space
          StressEquilibriumBbar.nlgeom
   

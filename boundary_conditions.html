@@ -41,7 +41,7 @@
           
           <a href="index.html">
             
-              <img src="_static/fedOOLogos_ss_fond.png" class="logo" alt="Logo"/>
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -60,15 +60,15 @@
 
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Quick_Start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Assembly.html">Class Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Boundary conditions and constraints</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.ListBC.html">fedoo.ListBC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html">fedoo.core.BoundaryCondition</a></li>
@@ -163,31 +163,31 @@ the problem boundary conditions.</p>
 <p>Here are some examples to add some Dirichlet or Neumann Boundary conditions
 for a given problem  <em>pb</em>:</p>
 <p>Displacement along the X axis blocked (=0) for the nodes 0, 1 and 8</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dirichlet&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="s1">&#39;DispX&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="s1">'DispX'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Displacement along the all axis blocked (=0) for the nodes defined by the
 node sets ‘node_sets’ (the given node nets is supposed to be present in the
 associated mesh. If note, it will raise an error).</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dirichlet&#39;</span><span class="p">,</span><span class="s1">&#39;node_sets&#39;</span><span class="p">,</span> <span class="s1">&#39;Disp&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span><span class="s1">'node_sets'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>External force on the node 112 with Fx = 5, Fy = 10 and Fz = 0.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Neumann&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">112</span><span class="p">],</span> <span class="s1">&#39;Disp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Neumann'</span><span class="p">,</span> <span class="p">[</span><span class="mi">112</span><span class="p">],</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Enforce a nul displacement on nodes 1, 2 and 3, and a rotation around X = 0
 for node 1, 0.1 for node 2 and 0.2 for node 3.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dirichlet&#39;</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span>
 <span class="gp">&gt;&gt;&gt; </span>          <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
-<span class="gp">&gt;&gt;&gt; </span>          <span class="p">[</span><span class="s1">&#39;Disp&#39;</span><span class="p">,</span><span class="s1">&#39;RotX&#39;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>          <span class="p">[</span><span class="s1">'Disp'</span><span class="p">,</span><span class="s1">'RotX'</span><span class="p">],</span>
 <span class="gp">&gt;&gt;&gt; </span>          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])]</span>
 <span class="gp">&gt;&gt;&gt; </span>         <span class="p">)</span>
 </pre></div>
 </div>
 <p>Instead of adding directly the boundary conditions to the problem, it
 may be convenient to create boundary conditions and add them afterwards</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_bc</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">BoundaryCondition</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;Dirichlet&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;Disp&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_bc</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">BoundaryCondition</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">my_bc</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -200,7 +200,7 @@ factor to the prescribed value and should be between 0 and 1.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">step_function</span><span class="p">(</span><span class="n">t_fact</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">t_fact</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dirichlet&#39;</span><span class="p">,</span> <span class="s1">&#39;nodeset&#39;</span><span class="p">,</span> <span class="s1">&#39;Disp&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">time_func</span> <span class="o">=</span> <span class="n">step_function</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="s1">'nodeset'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">time_func</span> <span class="o">=</span> <span class="n">step_function</span><span class="p">)])</span>
 </pre></div>
 </div>
 </section>
@@ -270,8 +270,8 @@ can be enforced with Lagrange multipliers by wrapping it in
 coefficients are preserved; the first term is not normalized as a slave DOF.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">periodic_lm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">LagrangeMultiplierAssembly</span><span class="p">(</span>
     <span class="n">mesh</span><span class="p">,</span>
-    <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="n">periodicity_type</span><span class="o">=</span><span class="s2">&quot;small_strain&quot;</span><span class="p">),</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PeriodicLM&quot;</span><span class="p">,</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="n">periodicity_type</span><span class="o">=</span><span class="s2">"small_strain"</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"PeriodicLM"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">solid_assembly</span> <span class="o">+</span> <span class="n">periodic_lm</span><span class="p">)</span>
 </pre></div>
@@ -353,9 +353,9 @@ contains only <code class="docutils literal notranslate"><span class="pre">MeanR
 area, or from the element length in 2D. These weights define an area-weighted
 least-squares projection of the displacement field onto rigid-body modes.</p>
 <p>For displacement-only mean control, select only displacement components:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mean_disp</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanMotion</span><span class="p">(</span><span class="n">surface_mesh</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="s2">&quot;DispZ&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mean_disp</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanMotion</span><span class="p">(</span><span class="n">surface_mesh</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="s2">"DispZ"</span><span class="p">)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mean_disp</span><span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="s2">&quot;MeanDispZ&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">delta</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"MeanDispZ"</span><span class="p">,</span> <span class="o">-</span><span class="n">delta</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>When <code class="docutils literal notranslate"><span class="pre">finite_rotation</span></code> is left to <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), rotational
@@ -366,19 +366,19 @@ and linearizes the constraint at each Newton iteration using the derivative of
 the rotation matrix with respect to the rotation vector.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">face_motion</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanMotion</span><span class="p">(</span>
     <span class="n">surface_mesh</span><span class="p">,</span>
-    <span class="n">components</span><span class="o">=</span><span class="s2">&quot;RotZ&quot;</span><span class="p">,</span>
+    <span class="n">components</span><span class="o">=</span><span class="s2">"RotZ"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">face_motion</span><span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="n">face_motion</span><span class="o">.</span><span class="n">node_by_variable</span><span class="p">[</span><span class="s2">&quot;MeanRotZ&quot;</span><span class="p">],</span> <span class="s2">&quot;MeanRotZ&quot;</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">face_motion</span><span class="o">.</span><span class="n">node_by_variable</span><span class="p">[</span><span class="s2">"MeanRotZ"</span><span class="p">],</span> <span class="s2">"MeanRotZ"</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">face_motion</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanMotion</span><span class="p">(</span>
     <span class="n">surface_mesh</span><span class="p">,</span>
-    <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;RotZ&quot;</span><span class="p">,</span> <span class="s2">&quot;DispZ&quot;</span><span class="p">],</span>
+    <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">"RotZ"</span><span class="p">,</span> <span class="s2">"DispZ"</span><span class="p">],</span>
 <span class="p">)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">face_motion</span><span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="s2">&quot;MeanRotZ&quot;</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="s2">&quot;MeanDispZ&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">delta</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"MeanRotZ"</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"MeanDispZ"</span><span class="p">,</span> <span class="o">-</span><span class="n">delta</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The reactions on the created global DOFs are generalized forces. For instance,
@@ -416,7 +416,7 @@ and then be added to <code class="docutils literal notranslate"><span class="pre
 <p>Fedoo provides two contact approaches: a <strong>penalty-based</strong> method and an
 <strong>IPC (Incremental Potential Contact)</strong> method. Both are implemented as
 assembly objects and can be combined with other assemblies using
-<a class="reference internal" href="Assembly.html#fedoo.Assembly.sum" title="fedoo.Assembly.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Assembly.sum()</span></code></a>.</p>
+<a class="reference internal" href="assembly.html#fedoo.Assembly.sum" title="fedoo.Assembly.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Assembly.sum()</span></code></a>.</p>
 <section id="penalty-based-contact">
 <h3>Penalty-based contact<a class="headerlink" href="#penalty-based-contact" title="Link to this heading"></a></h3>
 <p>The penalty method uses a node-to-surface formulation. It is available for
@@ -434,7 +434,7 @@ assembly objects and can be combined with other assemblies using
 <p>The contact class is derived from assembly. To add a contact contraint
 to a problem, we need first to create the contact assembly (using the class
 <a class="reference internal" href="generated/fedoo.constraint.Contact.html#fedoo.constraint.Contact" title="fedoo.constraint.Contact"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.Contact</span></code></a>) and then to add it to the global
-assembly with <a class="reference internal" href="Assembly.html#fedoo.Assembly.sum" title="fedoo.Assembly.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Assembly.sum()</span></code></a>.</p>
+assembly with <a class="reference internal" href="assembly.html#fedoo.Assembly.sum" title="fedoo.Assembly.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Assembly.sum()</span></code></a>.</p>
 </section>
 <section id="ipc-contact">
 <h3>IPC contact<a class="headerlink" href="#ipc-contact" title="Link to this heading"></a></h3>
@@ -468,7 +468,7 @@ convergence for difficult contact scenarios).</p>
 is recommended for IPC contact problems.  It measures the relative
 decrease of the force residual, matching the gradient-norm convergence
 used by reference IPC implementations:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s1">&#39;Force&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s1">'Force'</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">'Displacement'</span></code> criterion may become unreliable as contact
@@ -496,33 +496,33 @@ pip<span class="w"> </span>install<span class="w"> </span>fedoo<span class="o">[
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;2D&quot;</span><span class="p">)</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
 
-<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;disk_rectangle_contact&#39;</span> <span class="c1">#file to save results</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">'disk_rectangle_contact'</span> <span class="c1">#file to save results</span>
 
 <span class="c1">#---- Create geometries --------------</span>
 <span class="n">mesh_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span><span class="n">nx</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
                                    <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                   <span class="n">elm_type</span> <span class="o">=</span> <span class="s1">&#39;quad4&#39;</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Domain&#39;</span>
+                                   <span class="n">elm_type</span> <span class="o">=</span> <span class="s1">'quad4'</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">'Domain'</span>
                                   <span class="p">)</span>
-<span class="n">mesh_rect</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">&#39;rect&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh_rect</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
-<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">elm_type</span> <span class="o">=</span> <span class="s1">&#39;quad4&#39;</span><span class="p">)</span>
+<span class="n">mesh_rect</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">'rect'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh_rect</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">elm_type</span> <span class="o">=</span> <span class="s1">'quad4'</span><span class="p">)</span>
 <span class="n">mesh_disk</span><span class="o">.</span><span class="n">nodes</span><span class="o">+=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">0.48</span><span class="p">])</span> <span class="c1"># translate disk on the right</span>
-<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">&#39;disk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">'disk'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
 
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">mesh_rect</span><span class="p">,</span><span class="n">mesh_disk</span><span class="p">)</span>
 
 <span class="c1">#node sets for boundary conditions</span>
-<span class="n">nodes_left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">nodes_right</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">nodes_left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X'</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">nodes_right</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X'</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">nodes_bc</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">&#39;X&gt;1.5&#39;</span><span class="p">)</span>
-<span class="n">nodes_bc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">nodes_bc</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s1">&#39;boundary&#39;</span><span class="p">]))</span>
+<span class="n">nodes_bc</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X&gt;1.5'</span><span class="p">)</span>
+<span class="n">nodes_bc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">nodes_bc</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s1">'boundary'</span><span class="p">]))</span>
 
 <span class="c1">#---- Define contact --------------</span>
 <span class="c1">#slave surface = right face of rectangle mesh</span>
 <span class="n">nodes_contact</span> <span class="o">=</span> <span class="n">nodes_right</span>
-<span class="n">surf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s1">&#39;disk&#39;</span><span class="p">))</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s1">'disk'</span><span class="p">))</span>
 <span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Contact</span><span class="p">(</span><span class="n">nodes_contact</span><span class="p">,</span> <span class="n">surf</span><span class="p">)</span>
 <span class="n">contact</span><span class="o">.</span><span class="n">contact_search_once</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">contact</span><span class="o">.</span><span class="n">eps_n</span> <span class="o">=</span> <span class="mf">5e5</span>
@@ -530,11 +530,11 @@ pip<span class="w"> </span>install<span class="w"> </span>fedoo<span class="o">[
 <span class="c1">#---- Material properties --------------</span>
 <span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">200e3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
 <span class="c1"># E, nu, alpha (non used), Re, k, m</span>
-<span class="n">material_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">&quot;EPICP&quot;</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+<span class="n">material_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
 <span class="n">material_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">50e3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span> <span class="c1">#E, nu</span>
 <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Heterogeneous</span><span class="p">(</span>
     <span class="p">(</span><span class="n">material_rect</span><span class="p">,</span> <span class="n">material_disk</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;rect&#39;</span><span class="p">,</span> <span class="s1">&#39;disk&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="s1">'rect'</span><span class="p">,</span> <span class="s1">'disk'</span><span class="p">)</span>
     <span class="p">)</span>
 
 <span class="c1">#---- Build problem --------------</span>
@@ -546,19 +546,19 @@ pip<span class="w"> </span>install<span class="w"> </span>fedoo<span class="o">[
 <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span>
                         <span class="n">solid_assembly</span><span class="p">,</span>
-                        <span class="p">[</span><span class="s1">&#39;Disp&#39;</span><span class="p">,</span> <span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="s1">&#39;Strain&#39;</span><span class="p">,</span> <span class="s1">&#39;Fext&#39;</span><span class="p">]</span>
+                        <span class="p">[</span><span class="s1">'Disp'</span><span class="p">,</span> <span class="s1">'Stress'</span><span class="p">,</span> <span class="s1">'Strain'</span><span class="p">,</span> <span class="s1">'Fext'</span><span class="p">]</span>
                         <span class="p">)</span>
 
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dirichlet&#39;</span><span class="p">,</span><span class="n">nodes_left</span><span class="p">,</span> <span class="s1">&#39;Disp&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dirichlet&#39;</span><span class="p">,</span><span class="n">nodes_bc</span><span class="p">,</span> <span class="s1">&#39;Disp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span><span class="n">nodes_left</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span><span class="n">nodes_bc</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])</span>
 
-<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">&quot;Displacement&quot;</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Displacement"</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 
 <span class="c1">#---- Solve problem in two steps: load, unload --------------</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.005</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">update_dt</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">interval_output</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span>
 
 <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#remove last boundary contidion</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dirichlet&#39;</span><span class="p">,</span><span class="n">nodes_bc</span><span class="p">,</span> <span class="s1">&#39;Disp&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span><span class="n">nodes_bc</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.005</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">update_dt</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">interval_output</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span>
 
@@ -570,16 +570,16 @@ pip<span class="w"> </span>install<span class="w"> </span>fedoo<span class="o">[
 <span class="c1"># ------------------------------------</span>
 <span class="c1"># Simple plot with default options</span>
 <span class="c1"># ------------------------------------</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">&#39;vm&#39;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;Node&#39;</span><span class="p">)</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Disp&#39;</span><span class="p">,</span> <span class="n">component</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;Node&#39;</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">'Stress'</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">'vm'</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">'Node'</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">'Disp'</span><span class="p">,</span> <span class="n">component</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">'Node'</span><span class="p">)</span>
 
 <span class="c1"># ------------------------------------</span>
 <span class="c1"># Write movie with default options</span>
 <span class="c1"># ------------------------------------</span>
 <span class="n">results</span><span class="o">.</span><span class="n">write_movie</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span>
-                    <span class="s1">&#39;Stress&#39;</span><span class="p">,</span>
-                    <span class="n">component</span> <span class="o">=</span> <span class="s1">&#39;XX&#39;</span><span class="p">,</span>
-                    <span class="n">data_type</span> <span class="o">=</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span>
+                    <span class="s1">'Stress'</span><span class="p">,</span>
+                    <span class="n">component</span> <span class="o">=</span> <span class="s1">'XX'</span><span class="p">,</span>
+                    <span class="n">data_type</span> <span class="o">=</span> <span class="s1">'Node'</span><span class="p">,</span>
                     <span class="n">framerate</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
                     <span class="n">quality</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
                     <span class="n">clim</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">3e3</span><span class="p">,</span> <span class="mf">3e3</span><span class="p">]</span>
@@ -598,13 +598,13 @@ adapted.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;2D&quot;</span><span class="p">)</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
 
 <span class="c1">#---- Create geometries (same as penalty example) --------------</span>
 <span class="n">mesh_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span><span class="n">nx</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
                                    <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                   <span class="n">elm_type</span><span class="o">=</span><span class="s1">&#39;quad4&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Domain&#39;</span><span class="p">)</span>
-<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s1">&#39;quad4&#39;</span><span class="p">)</span>
+                                   <span class="n">elm_type</span><span class="o">=</span><span class="s1">'quad4'</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Domain'</span><span class="p">)</span>
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s1">'quad4'</span><span class="p">)</span>
 <span class="n">mesh_disk</span><span class="o">.</span><span class="n">nodes</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">])</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">mesh_rect</span><span class="p">,</span> <span class="n">mesh_disk</span><span class="p">)</span>
 
@@ -624,7 +624,7 @@ adapted.</p>
 <span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="n">ipc_contact</span><span class="p">)</span>
 
 <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s1">&#39;results&#39;</span><span class="p">,</span> <span class="n">solid_assembly</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Disp&#39;</span><span class="p">,</span> <span class="s1">&#39;Stress&#39;</span><span class="p">])</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s1">'results'</span><span class="p">,</span> <span class="n">solid_assembly</span><span class="p">,</span> <span class="p">[</span><span class="s1">'Disp'</span><span class="p">,</span> <span class="s1">'Stress'</span><span class="p">])</span>
 <span class="c1"># ... add BCs ...</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -642,21 +642,21 @@ which automatically extracts the surface from the volumetric mesh.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;3D&quot;</span><span class="p">)</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
 
-<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;gyroid.vtk&quot;</span><span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"gyroid.vtk"</span><span class="p">)</span>
 <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
 
 <span class="c1"># Self-contact: auto surface extraction, auto barrier stiffness</span>
 <span class="c1"># Add line_search_energy=True for extra robustness (slower)</span>
 <span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">IPCSelfContact</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">use_ccd</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">&quot;UL&quot;</span><span class="p">)</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">"UL"</span><span class="p">)</span>
 <span class="n">solid</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
 <span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">solid</span><span class="p">,</span> <span class="n">contact</span><span class="p">)</span>
 
 <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="n">solid</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="s2">&quot;Stress&quot;</span><span class="p">])</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"results"</span><span class="p">,</span> <span class="n">solid</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">])</span>
 <span class="c1"># ... add BCs ...</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>

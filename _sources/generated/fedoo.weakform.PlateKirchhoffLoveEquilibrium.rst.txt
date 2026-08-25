@@ -26,7 +26,7 @@
          PlateKirchhoffLoveEquilibrium.get_storage
          PlateKirchhoffLoveEquilibrium.get_weak_equation
          PlateKirchhoffLoveEquilibrium.initialize
-         PlateKirchhoffLoveEquilibrium.nvar
+         PlateKirchhoffLoveEquilibrium.iter_leaf
          PlateKirchhoffLoveEquilibrium.reset
          PlateKirchhoffLoveEquilibrium.set_damping
          PlateKirchhoffLoveEquilibrium.set_dissipation
@@ -50,6 +50,7 @@
          
       
          PlateKirchhoffLoveEquilibrium.name
+         PlateKirchhoffLoveEquilibrium.nvar
          PlateKirchhoffLoveEquilibrium.space
   
   

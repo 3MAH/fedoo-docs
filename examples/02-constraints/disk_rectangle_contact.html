@@ -40,7 +40,7 @@
           
           <a href="../../index.html">
             
-              <img src="../../_static/fedOOLogos_ss_fond.png" class="logo" alt="Logo"/>
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -59,15 +59,15 @@
 
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../Overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Quick_Start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Assembly.html">Class Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
@@ -127,9 +127,9 @@ The disk is pressed into the rectangle and then unloaded.</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 
-<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;2D&quot;</span><span class="p">)</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
 
-<span class="n">NLGEOM</span> <span class="o">=</span> <span class="s2">&quot;UL&quot;</span>  <span class="c1"># updated lagrangian</span>
+<span class="n">NLGEOM</span> <span class="o">=</span> <span class="s2">"UL"</span>  <span class="c1"># updated lagrangian</span>
 
 <span class="c1"># parameters</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
@@ -140,25 +140,25 @@ The disk is pressed into the rectangle and then unloaded.</p>
 
 <span class="c1"># mesh of the rectangle</span>
 <span class="n">mesh_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
-    <span class="n">nx</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="n">L</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">&quot;quad4&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Domain&quot;</span>
+    <span class="n">nx</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="n">L</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Domain"</span>
 <span class="p">)</span>
-<span class="n">mesh_rect</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">&quot;rect&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh_rect</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+<span class="n">mesh_rect</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"rect"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh_rect</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
 
 <span class="c1"># mesh of a disk (small gap for IPC barrier method)</span>
-<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">&quot;quad4&quot;</span><span class="p">)</span>
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">)</span>
 <span class="n">mesh_disk</span><span class="o">.</span><span class="n">nodes</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
     <span class="p">[</span><span class="mf">1.51</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">]</span>
 <span class="p">)</span>  <span class="c1"># translate the disk (0.01 gap from rectangle)</span>
-<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">&quot;disk&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"disk"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
 
 <span class="c1"># put the two meshes in a single mesh (change the element indices)</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">mesh_rect</span><span class="p">,</span> <span class="n">mesh_disk</span><span class="p">)</span>
 
 <span class="c1"># node sets for boundary conditions</span>
-<span class="n">nodes_left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">nodes_left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="n">nodes_bc</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">&quot;X&gt;1.5&quot;</span><span class="p">)</span>
-<span class="n">nodes_bc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">nodes_bc</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">&quot;boundary&quot;</span><span class="p">]))</span>
+<span class="n">nodes_bc</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X&gt;1.5"</span><span class="p">)</span>
+<span class="n">nodes_bc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">nodes_bc</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"boundary"</span><span class="p">]))</span>
 
 <span class="c1"># IPC contact assembly</span>
 <span class="n">surf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
@@ -175,14 +175,14 @@ The disk is pressed into the rectangle and then unloaded.</p>
 <span class="n">k</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># 1500</span>
 <span class="n">m</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># 0.25</span>
 <span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Re</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">])</span>
-<span class="n">material_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">&quot;EPICP&quot;</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ConstitutiveLaw&quot;</span><span class="p">)</span>
+<span class="n">material_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"ConstitutiveLaw"</span><span class="p">)</span>
 
 <span class="c1"># define material for disk (elastic isotropic)</span>
-<span class="n">material_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">50e3</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ConstitutiveLaw&quot;</span><span class="p">)</span>
+<span class="n">material_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">50e3</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"ConstitutiveLaw"</span><span class="p">)</span>
 
 <span class="c1"># define an heterogeneous constitutive law</span>
 <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Heterogeneous</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">material_rect</span><span class="p">,</span> <span class="n">material_disk</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;rect&quot;</span><span class="p">,</span> <span class="s2">&quot;disk&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">material_rect</span><span class="p">,</span> <span class="n">material_disk</span><span class="p">),</span> <span class="p">(</span><span class="s2">"rect"</span><span class="p">,</span> <span class="s2">"disk"</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="c1"># stress equilibrium weak form and related assembly</span>
@@ -196,14 +196,14 @@ The disk is pressed into the rectangle and then unloaded.</p>
 <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
 
 <span class="c1"># add some output that are automatically saved</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">&quot;contact_example&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;Strain&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;Fext&quot;</span><span class="p">])</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"contact_example"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"P"</span><span class="p">,</span> <span class="s2">"Fext"</span><span class="p">])</span>
 
 <span class="c1"># boundary conditions</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="n">nodes_left</span><span class="p">,</span> <span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="n">nodes_bc</span><span class="p">,</span> <span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">])</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_left</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_bc</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">])</span>
 
 <span class="c1"># set newton-raphson convergence criterion</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">&quot;Displacement&quot;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Displacement"</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 
 <span class="c1"># solve load step</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
@@ -213,7 +213,7 @@ The disk is pressed into the rectangle and then unloaded.</p>
 
 <span class="c1"># change boundary condition (unload)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># remove last boundary condition</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Dirichlet&quot;</span><span class="p">,</span> <span class="n">nodes_bc</span><span class="p">,</span> <span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_bc</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 
 <span class="c1"># solve unload step</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
@@ -222,36 +222,36 @@ The disk is pressed into the rectangle and then unloaded.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
-Iter 2 - Time: 0.10000 - dt 0.06250 - NR iter: 2 - Err: 0.00000
+Iter 2 - Time: 0.10000 - dt 0.06250 - NR iter: 3 - Err: 0.00000
 Iter 3 - Time: 0.16250 - dt 0.06250 - NR iter: 3 - Err: 0.00000
-Iter 4 - Time: 0.20000 - dt 0.07812 - NR iter: 3 - Err: 0.00041
-Iter 5 - Time: 0.27813 - dt 0.07812 - NR iter: 5 - Err: 0.00451
-Iter 6 - Time: 0.30000 - dt 0.09766 - NR iter: 4 - Err: 0.00222
-Iter 7 - Time: 0.39766 - dt 0.09766 - NR iter: 8 - Err: 0.00313
-Iter 8 - Time: 0.40000 - dt 0.09766 - NR iter: 3 - Err: 0.00024
-Iter 9 - Time: 0.49766 - dt 0.09766 - NR iter: 9 - Err: 0.00347
-Iter 10 - Time: 0.50000 - dt 0.09766 - NR iter: 3 - Err: 0.00174
-Iter 11 - Time: 0.59766 - dt 0.09766 - NR iter: 12 - Err: 0.00382
-Iter 12 - Time: 0.60000 - dt 0.09766 - NR iter: 4 - Err: 0.00209
-Iter 13 - Time: 0.69766 - dt 0.09766 - NR iter: 8 - Err: 0.00345
-Iter 14 - Time: 0.70000 - dt 0.09766 - NR iter: 3 - Err: 0.00059
-Iter 15 - Time: 0.79766 - dt 0.09766 - NR iter: 4 - Err: 0.00176
-Iter 16 - Time: 0.80000 - dt 0.12207 - NR iter: 3 - Err: 0.00070
+Iter 4 - Time: 0.20000 - dt 0.07812 - NR iter: 3 - Err: 0.00058
+Iter 5 - Time: 0.27813 - dt 0.07812 - NR iter: 5 - Err: 0.00276
+Iter 6 - Time: 0.30000 - dt 0.09766 - NR iter: 3 - Err: 0.00250
+Iter 7 - Time: 0.39766 - dt 0.09766 - NR iter: 7 - Err: 0.00360
+Iter 8 - Time: 0.40000 - dt 0.09766 - NR iter: 3 - Err: 0.00048
+Iter 9 - Time: 0.49766 - dt 0.09766 - NR iter: 8 - Err: 0.00165
+Iter 10 - Time: 0.50000 - dt 0.09766 - NR iter: 3 - Err: 0.00154
+Iter 11 - Time: 0.59766 - dt 0.09766 - NR iter: 6 - Err: 0.00446
+Iter 12 - Time: 0.60000 - dt 0.09766 - NR iter: 4 - Err: 0.00139
+Iter 13 - Time: 0.69766 - dt 0.09766 - NR iter: 6 - Err: 0.00279
+Iter 14 - Time: 0.70000 - dt 0.09766 - NR iter: 3 - Err: 0.00415
+Iter 15 - Time: 0.79766 - dt 0.09766 - NR iter: 4 - Err: 0.00169
+Iter 16 - Time: 0.80000 - dt 0.12207 - NR iter: 3 - Err: 0.00084
 Iter 17 - Time: 0.90000 - dt 0.12207 - NR iter: 4 - Err: 0.00207
 Iter 18 - Time: 1.00000 - dt 0.12207 - NR iter: 4 - Err: 0.00305
-Iter 19 - Time: 0.05000 - dt 0.05000 - NR iter: 6 - Err: 0.00457
-Convergence Failed - dt 0.05000 - NR iter: 15 - Err: 0.73757
-Iter 20 - Time: 0.06250 - dt 0.01250 - NR iter: 3 - Err: 0.00362
-Iter 21 - Time: 0.07812 - dt 0.01562 - NR iter: 3 - Err: 0.00087
-Iter 22 - Time: 0.09766 - dt 0.01953 - NR iter: 3 - Err: 0.00183
-Iter 23 - Time: 0.10000 - dt 0.02441 - NR iter: 3 - Err: 0.00056
-Iter 24 - Time: 0.12441 - dt 0.02441 - NR iter: 3 - Err: 0.00309
+Iter 19 - Time: 0.05000 - dt 0.05000 - NR iter: 6 - Err: 0.00458
+Convergence Failed - dt 0.05000 - NR iter: 15 - Err: 0.63177
+Iter 20 - Time: 0.06250 - dt 0.01250 - NR iter: 3 - Err: 0.00066
+Iter 21 - Time: 0.07812 - dt 0.01562 - NR iter: 3 - Err: 0.00091
+Iter 22 - Time: 0.09766 - dt 0.01953 - NR iter: 3 - Err: 0.00185
+Iter 23 - Time: 0.10000 - dt 0.02441 - NR iter: 3 - Err: 0.00057
+Iter 24 - Time: 0.12441 - dt 0.02441 - NR iter: 3 - Err: 0.00311
 Iter 25 - Time: 0.15493 - dt 0.03052 - NR iter: 3 - Err: 0.00410
 Iter 26 - Time: 0.19308 - dt 0.03815 - NR iter: 3 - Err: 0.00254
 Iter 27 - Time: 0.20000 - dt 0.04768 - NR iter: 3 - Err: 0.00087
 Iter 28 - Time: 0.24768 - dt 0.04768 - NR iter: 3 - Err: 0.00178
-Iter 29 - Time: 0.30000 - dt 0.05960 - NR iter: 4 - Err: 0.00085
-Iter 30 - Time: 0.35960 - dt 0.05960 - NR iter: 4 - Err: 0.00287
+Iter 29 - Time: 0.30000 - dt 0.05960 - NR iter: 4 - Err: 0.00086
+Iter 30 - Time: 0.35960 - dt 0.05960 - NR iter: 4 - Err: 0.00288
 Iter 31 - Time: 0.40000 - dt 0.07451 - NR iter: 3 - Err: 0.00060
 Iter 32 - Time: 0.47451 - dt 0.07451 - NR iter: 3 - Err: 0.00000
 Iter 33 - Time: 0.50000 - dt 0.09313 - NR iter: 2 - Err: 0.00000
@@ -270,13 +270,13 @@ unloading. With <code class="docutils literal notranslate"><span class="pre">mul
 its deformed geometry, so loading the second saved state does not update the
 first figure.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">n_iter_load</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># load state at the end of load</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;vm&quot;</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">multiplot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"vm"</span><span class="p">,</span> <span class="s2">"Node"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">multiplot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">results</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># load state at the end of unload</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;XX&quot;</span><span class="p">,</span> <span class="s2">&quot;Node&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">multiplot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"XX"</span><span class="p">,</span> <span class="s2">"Node"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">multiplot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_disk_rectangle_contact_001.png" srcset="../../_images/sphx_glr_disk_rectangle_contact_001.png" alt="disk rectangle contact" class = "sphx-glr-single-img"/><img src="../../_images/sphx_glr_disk_rectangle_contact_002.png" srcset="../../_images/sphx_glr_disk_rectangle_contact_002.png" alt="disk rectangle contact" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.184 seconds)</p>
+<img src="../../_images/sphx_glr_disk_rectangle_contact_001.png" srcset="../../_images/sphx_glr_disk_rectangle_contact_001.png" alt="disk rectangle contact" class = "sphx-glr-single-img"/><img src="../../_images/sphx_glr_disk_rectangle_contact_002.png" srcset="../../_images/sphx_glr_disk_rectangle_contact_002.png" alt="disk rectangle contact" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.930 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-constraints-disk-rectangle-contact-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/28b68c70e830110f02039ed8129e4235/disk_rectangle_contact.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">disk_rectangle_contact.ipynb</span></code></a></p>

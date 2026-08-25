@@ -29,14 +29,20 @@
          Linear.get_B
          Linear.get_D
          Linear.get_X
+         Linear.get_acceleration
          Linear.get_active
          Linear.get_all
          Linear.get_disp
          Linear.get_dof_solution
+         Linear.get_elastic_energy
          Linear.get_ext_forces
+         Linear.get_kinetic_energy
+         Linear.get_nodal_elastic_energy
          Linear.get_results
          Linear.get_rot
+         Linear.get_velocity
          Linear.init_bc_start_value
+         Linear.initialize
          Linear.invalidate_factorization
          Linear.make_active
          Linear.reset
@@ -47,9 +53,15 @@
          Linear.set_X
          Linear.set_active
          Linear.set_dof_solution
+         Linear.set_initial_acceleration
+         Linear.set_initial_displacement
+         Linear.set_initial_velocity
          Linear.set_reuse_factorization
          Linear.set_solver
+         Linear.set_time_integrator
          Linear.solve
+         Linear.solve_history
+         Linear.solve_time_increment
          Linear.update
          Linear.update_boundary_conditions
       
@@ -67,6 +79,7 @@
          Linear.active
          Linear.assembly
          Linear.global_dof
+         Linear.is_dynamic
          Linear.n_dof
          Linear.n_global_dof
          Linear.n_node_dof
@@ -74,6 +87,7 @@
          Linear.results
          Linear.solver
          Linear.space
+         Linear.time_integrator
          Linear.bc
   
   

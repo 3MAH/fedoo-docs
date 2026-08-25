@@ -24,7 +24,7 @@
          StressEquilibriumMixed.get_storage
          StressEquilibriumMixed.get_weak_equation
          StressEquilibriumMixed.initialize
-         StressEquilibriumMixed.nvar
+         StressEquilibriumMixed.iter_leaf
          StressEquilibriumMixed.reset
          StressEquilibriumMixed.set_damping
          StressEquilibriumMixed.set_dissipation
@@ -51,6 +51,7 @@
          StressEquilibriumMixed.fbar
          StressEquilibriumMixed.geometric_stiffness
          StressEquilibriumMixed.name
+         StressEquilibriumMixed.nvar
          StressEquilibriumMixed.space
          StressEquilibriumMixed.nlgeom
   

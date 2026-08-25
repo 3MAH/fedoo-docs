@@ -41,6 +41,7 @@
          Pressure.get_strain
          Pressure.initialize
          Pressure.integrate_field
+         Pressure.iter_leaf
          Pressure.operator_apply
          Pressure.register_global_dofs
          Pressure.reset

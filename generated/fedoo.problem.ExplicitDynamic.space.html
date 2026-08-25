@@ -26,7 +26,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.problem.ExplicitDynamic.bc" href="fedoo.problem.ExplicitDynamic.bc.html" />
+    <link rel="next" title="fedoo.problem.ExplicitDynamic.time_integrator" href="fedoo.problem.ExplicitDynamic.time_integrator.html" />
     <link rel="prev" title="fedoo.problem.ExplicitDynamic.solver" href="fedoo.problem.ExplicitDynamic.solver.html" /> 
 </head>
 
@@ -40,7 +40,7 @@
           
           <a href="../index.html">
             
-              <img src="../_static/fedOOLogos_ss_fond.png" class="logo" alt="Logo"/>
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -59,47 +59,45 @@
 
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../Overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Quick_Start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Assembly.html">Class Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.LinearNewmark.html">fedoo.problem.LinearNewmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Newmark.html">fedoo.problem.Newmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.GetElasticEnergy.html">fedoo.problem.ExplicitDynamic.GetElasticEnergy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.GetKineticEnergy.html">fedoo.problem.ExplicitDynamic.GetKineticEnergy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.MassLumping.html">fedoo.problem.ExplicitDynamic.MassLumping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetInitialAcceleration.html">fedoo.problem.ExplicitDynamic.SetInitialAcceleration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetInitialDisplacement.html">fedoo.problem.ExplicitDynamic.SetInitialDisplacement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetInitialVelocity.html">fedoo.problem.ExplicitDynamic.SetInitialVelocity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetMassMatrix.html">fedoo.problem.ExplicitDynamic.SetMassMatrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetRayleighDamping.html">fedoo.problem.ExplicitDynamic.SetRayleighDamping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.SetStiffnessMatrix.html">fedoo.problem.ExplicitDynamic.SetStiffnessMatrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.add_global_dof.html">fedoo.problem.ExplicitDynamic.add_global_dof</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.add_output.html">fedoo.problem.ExplicitDynamic.add_output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.apply_boundary_conditions.html">fedoo.problem.ExplicitDynamic.apply_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.evaluate.html">fedoo.problem.ExplicitDynamic.evaluate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_A.html">fedoo.problem.ExplicitDynamic.get_A</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_B.html">fedoo.problem.ExplicitDynamic.get_B</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_D.html">fedoo.problem.ExplicitDynamic.get_D</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_DampingPower.html">fedoo.problem.ExplicitDynamic.get_DampingPower</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_X.html">fedoo.problem.ExplicitDynamic.get_X</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_Xdot.html">fedoo.problem.ExplicitDynamic.get_Xdot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_acceleration.html">fedoo.problem.ExplicitDynamic.get_acceleration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_active.html">fedoo.problem.ExplicitDynamic.get_active</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_all.html">fedoo.problem.ExplicitDynamic.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_damping_power.html">fedoo.problem.ExplicitDynamic.get_damping_power</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_disp.html">fedoo.problem.ExplicitDynamic.get_disp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_dof_solution.html">fedoo.problem.ExplicitDynamic.get_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_elastic_energy.html">fedoo.problem.ExplicitDynamic.get_elastic_energy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_ext_forces.html">fedoo.problem.ExplicitDynamic.get_ext_forces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_kinetic_energy.html">fedoo.problem.ExplicitDynamic.get_kinetic_energy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_results.html">fedoo.problem.ExplicitDynamic.get_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_velocity.html">fedoo.problem.ExplicitDynamic.get_velocity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.init_bc_start_value.html">fedoo.problem.ExplicitDynamic.init_bc_start_value</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.initialize.html">fedoo.problem.ExplicitDynamic.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.invalidate_factorization.html">fedoo.problem.ExplicitDynamic.invalidate_factorization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.make_active.html">fedoo.problem.ExplicitDynamic.make_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.prepare_time_increment.html">fedoo.problem.ExplicitDynamic.prepare_time_increment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.reset.html">fedoo.problem.ExplicitDynamic.reset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.save_results.html">fedoo.problem.ExplicitDynamic.save_results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_A.html">fedoo.problem.ExplicitDynamic.set_A</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_B.html">fedoo.problem.ExplicitDynamic.set_B</a></li>
@@ -107,13 +105,22 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_X.html">fedoo.problem.ExplicitDynamic.set_X</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_active.html">fedoo.problem.ExplicitDynamic.set_active</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_dof_solution.html">fedoo.problem.ExplicitDynamic.set_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_acceleration.html">fedoo.problem.ExplicitDynamic.set_initial_acceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_displacement.html">fedoo.problem.ExplicitDynamic.set_initial_displacement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_velocity.html">fedoo.problem.ExplicitDynamic.set_initial_velocity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_rayleigh_damping.html">fedoo.problem.ExplicitDynamic.set_rayleigh_damping</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_reuse_factorization.html">fedoo.problem.ExplicitDynamic.set_reuse_factorization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_solver.html">fedoo.problem.ExplicitDynamic.set_solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_start.html">fedoo.problem.ExplicitDynamic.set_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_time_integrator.html">fedoo.problem.ExplicitDynamic.set_time_integrator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve.html">fedoo.problem.ExplicitDynamic.solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve_history.html">fedoo.problem.ExplicitDynamic.solve_history</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve_time_increment.html">fedoo.problem.ExplicitDynamic.solve_time_increment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.to_start.html">fedoo.problem.ExplicitDynamic.to_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update.html">fedoo.problem.ExplicitDynamic.update</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.updateStiffness.html">fedoo.problem.ExplicitDynamic.updateStiffness</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update_boundary_conditions.html">fedoo.problem.ExplicitDynamic.update_boundary_conditions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.active.html">fedoo.problem.ExplicitDynamic.active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.assembly.html">fedoo.problem.ExplicitDynamic.assembly</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.global_dof.html">fedoo.problem.ExplicitDynamic.global_dof</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.n_dof.html">fedoo.problem.ExplicitDynamic.n_dof</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.n_global_dof.html">fedoo.problem.ExplicitDynamic.n_global_dof</a></li>
@@ -122,6 +129,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.results.html">fedoo.problem.ExplicitDynamic.results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solver.html">fedoo.problem.ExplicitDynamic.solver</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.problem.ExplicitDynamic.space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.time_integrator.html">fedoo.problem.ExplicitDynamic.time_integrator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.bc.html">fedoo.problem.ExplicitDynamic.bc</a></li>
 </ul>
 </li>
@@ -150,7 +158,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+          <li class="breadcrumb-item"><a href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
           <li class="breadcrumb-item"><a href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
       <li class="breadcrumb-item active">fedoo.problem.ExplicitDynamic.space</li>
       <li class="wy-breadcrumbs-aside">
@@ -177,7 +185,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="fedoo.problem.ExplicitDynamic.solver.html" class="btn btn-neutral float-left" title="fedoo.problem.ExplicitDynamic.solver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.problem.ExplicitDynamic.bc.html" class="btn btn-neutral float-right" title="fedoo.problem.ExplicitDynamic.bc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.problem.ExplicitDynamic.time_integrator.html" class="btn btn-neutral float-right" title="fedoo.problem.ExplicitDynamic.time_integrator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

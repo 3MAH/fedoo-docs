@@ -19,33 +19,31 @@
          :toctree:
          
       
-         ExplicitDynamic.GetElasticEnergy
-         ExplicitDynamic.GetKineticEnergy
-         ExplicitDynamic.MassLumping
-         ExplicitDynamic.SetInitialAcceleration
-         ExplicitDynamic.SetInitialDisplacement
-         ExplicitDynamic.SetInitialVelocity
-         ExplicitDynamic.SetMassMatrix
-         ExplicitDynamic.SetRayleighDamping
-         ExplicitDynamic.SetStiffnessMatrix
          ExplicitDynamic.add_global_dof
          ExplicitDynamic.add_output
          ExplicitDynamic.apply_boundary_conditions
+         ExplicitDynamic.evaluate
          ExplicitDynamic.get_A
          ExplicitDynamic.get_B
          ExplicitDynamic.get_D
-         ExplicitDynamic.get_DampingPower
          ExplicitDynamic.get_X
-         ExplicitDynamic.get_Xdot
+         ExplicitDynamic.get_acceleration
          ExplicitDynamic.get_active
          ExplicitDynamic.get_all
+         ExplicitDynamic.get_damping_power
+         ExplicitDynamic.get_disp
          ExplicitDynamic.get_dof_solution
+         ExplicitDynamic.get_elastic_energy
          ExplicitDynamic.get_ext_forces
+         ExplicitDynamic.get_kinetic_energy
          ExplicitDynamic.get_results
+         ExplicitDynamic.get_velocity
          ExplicitDynamic.init_bc_start_value
          ExplicitDynamic.initialize
          ExplicitDynamic.invalidate_factorization
          ExplicitDynamic.make_active
+         ExplicitDynamic.prepare_time_increment
+         ExplicitDynamic.reset
          ExplicitDynamic.save_results
          ExplicitDynamic.set_A
          ExplicitDynamic.set_B
@@ -53,11 +51,19 @@
          ExplicitDynamic.set_X
          ExplicitDynamic.set_active
          ExplicitDynamic.set_dof_solution
+         ExplicitDynamic.set_initial_acceleration
+         ExplicitDynamic.set_initial_displacement
+         ExplicitDynamic.set_initial_velocity
+         ExplicitDynamic.set_rayleigh_damping
          ExplicitDynamic.set_reuse_factorization
          ExplicitDynamic.set_solver
+         ExplicitDynamic.set_start
+         ExplicitDynamic.set_time_integrator
          ExplicitDynamic.solve
+         ExplicitDynamic.solve_history
+         ExplicitDynamic.solve_time_increment
+         ExplicitDynamic.to_start
          ExplicitDynamic.update
-         ExplicitDynamic.updateStiffness
          ExplicitDynamic.update_boundary_conditions
       
       
@@ -72,6 +78,7 @@
          
       
          ExplicitDynamic.active
+         ExplicitDynamic.assembly
          ExplicitDynamic.global_dof
          ExplicitDynamic.n_dof
          ExplicitDynamic.n_global_dof
@@ -80,6 +87,7 @@
          ExplicitDynamic.results
          ExplicitDynamic.solver
          ExplicitDynamic.space
+         ExplicitDynamic.time_integrator
          ExplicitDynamic.bc
   
   

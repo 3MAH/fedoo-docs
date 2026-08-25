@@ -27,6 +27,7 @@
          Contact.get_global_vector
          Contact.global_search
          Contact.initialize
+         Contact.iter_leaf
          Contact.register_global_dofs
          Contact.reset
          Contact.run_normal_law

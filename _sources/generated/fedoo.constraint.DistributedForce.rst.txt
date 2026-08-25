@@ -39,6 +39,7 @@
          DistributedForce.get_strain
          DistributedForce.initialize
          DistributedForce.integrate_field
+         DistributedForce.iter_leaf
          DistributedForce.operator_apply
          DistributedForce.register_global_dofs
          DistributedForce.reset

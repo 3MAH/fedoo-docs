@@ -25,6 +25,7 @@
          LagrangeMultiplierAssembly.get_global_matrix
          LagrangeMultiplierAssembly.get_global_vector
          LagrangeMultiplierAssembly.initialize
+         LagrangeMultiplierAssembly.iter_leaf
          LagrangeMultiplierAssembly.register_global_dofs
          LagrangeMultiplierAssembly.reset
          LagrangeMultiplierAssembly.set_start

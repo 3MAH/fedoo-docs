@@ -41,6 +41,7 @@
          SurfaceForce.get_strain
          SurfaceForce.initialize
          SurfaceForce.integrate_field
+         SurfaceForce.iter_leaf
          SurfaceForce.operator_apply
          SurfaceForce.register_global_dofs
          SurfaceForce.reset

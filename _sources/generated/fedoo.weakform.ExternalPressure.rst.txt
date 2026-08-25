@@ -24,7 +24,7 @@
          ExternalPressure.get_storage
          ExternalPressure.get_weak_equation
          ExternalPressure.initialize
-         ExternalPressure.nvar
+         ExternalPressure.iter_leaf
          ExternalPressure.reset
          ExternalPressure.set_damping
          ExternalPressure.set_dissipation
@@ -48,6 +48,7 @@
          
       
          ExternalPressure.name
+         ExternalPressure.nvar
          ExternalPressure.space
          ExternalPressure.nlgeom
   
