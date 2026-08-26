@@ -1,0 +1,59 @@
+﻿fedoo.constitutivelaw.ElastoPlasticity
+======================================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: ElastoPlasticity
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         ElastoPlasticity.compute_stress
+         ElastoPlasticity.get_H_plane_stress
+         ElastoPlasticity.get_all
+         ElastoPlasticity.get_elastic_matrix
+         ElastoPlasticity.get_plastic_strain
+         ElastoPlasticity.get_plasticity
+         ElastoPlasticity.get_stress
+         ElastoPlasticity.get_tangent_matrix
+         ElastoPlasticity.hardening_function
+         ElastoPlasticity.hardening_function_derivative
+         ElastoPlasticity.initialize
+         ElastoPlasticity.local2global_H
+         ElastoPlasticity.reset
+         ElastoPlasticity.set_density
+         ElastoPlasticity.set_hardening_function
+         ElastoPlasticity.set_return_mapping_tolerance
+         ElastoPlasticity.set_start
+         ElastoPlasticity.to_start
+         ElastoPlasticity.update
+         ElastoPlasticity.yield_function
+         ElastoPlasticity.yield_function_derivative
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         ElastoPlasticity.name
+         ElastoPlasticity.shear_modulus
+         ElastoPlasticity.is_initialized
+  
+  

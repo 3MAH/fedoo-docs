@@ -1,0 +1,54 @@
+﻿fedoo.weakform.DistributedLoad
+==============================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: DistributedLoad
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         DistributedLoad.get_all
+         DistributedLoad.get_dissipation
+         DistributedLoad.get_storage
+         DistributedLoad.get_weak_equation
+         DistributedLoad.initialize
+         DistributedLoad.iter_leaf
+         DistributedLoad.reset
+         DistributedLoad.set_damping
+         DistributedLoad.set_dissipation
+         DistributedLoad.set_inertia
+         DistributedLoad.set_start
+         DistributedLoad.set_storage
+         DistributedLoad.sum
+         DistributedLoad.to_start
+         DistributedLoad.update
+         DistributedLoad.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         DistributedLoad.name
+         DistributedLoad.nvar
+         DistributedLoad.space
+  
+  

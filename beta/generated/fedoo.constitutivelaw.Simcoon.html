@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.constitutivelaw.Simcoon &mdash; Fedoo 1.0.0b1 (beta)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.constitutivelaw.Simcoon.get_H_plane_stress" href="fedoo.constitutivelaw.Simcoon.get_H_plane_stress.html" />
+    <link rel="prev" title="fedoo.constitutivelaw.FE2.is_initialized" href="fedoo.constitutivelaw.FE2.is_initialized.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ElasticIsotrop.html">fedoo.constitutivelaw.ElasticIsotrop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.html">fedoo.constitutivelaw.ElasticOrthotropic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.html">fedoo.constitutivelaw.ElasticAnisotropic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.html">fedoo.constitutivelaw.CompositeUD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ElastoPlasticity.html">fedoo.constitutivelaw.ElastoPlasticity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.FE2.html">fedoo.constitutivelaw.FE2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.constitutivelaw.Simcoon</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.get_H_plane_stress.html">fedoo.constitutivelaw.Simcoon.get_H_plane_stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.get_all.html">fedoo.constitutivelaw.Simcoon.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.get_tangent_matrix.html">fedoo.constitutivelaw.Simcoon.get_tangent_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.get_temp_gp.html">fedoo.constitutivelaw.Simcoon.get_temp_gp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.initialize.html">fedoo.constitutivelaw.Simcoon.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.local2global_H.html">fedoo.constitutivelaw.Simcoon.local2global_H</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.reset.html">fedoo.constitutivelaw.Simcoon.reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.set_density.html">fedoo.constitutivelaw.Simcoon.set_density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.set_start.html">fedoo.constitutivelaw.Simcoon.set_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.to_start.html">fedoo.constitutivelaw.Simcoon.to_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.update.html">fedoo.constitutivelaw.Simcoon.update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.name.html">fedoo.constitutivelaw.Simcoon.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.is_initialized.html">fedoo.constitutivelaw.Simcoon.is_initialized</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.CohesiveLaw.html">fedoo.constitutivelaw.CohesiveLaw</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.Spring.html">fedoo.constitutivelaw.Spring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.BeamProperties.html">fedoo.constitutivelaw.BeamProperties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.html">fedoo.constitutivelaw.BeamCircular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.html">fedoo.constitutivelaw.BeamPipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.BeamRectangular.html">fedoo.constitutivelaw.BeamRectangular</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminate.html">fedoo.constitutivelaw.ShellLaminate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.html">fedoo.constitutivelaw.ShellLaminateNonLinear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneous.html">fedoo.constitutivelaw.ShellHomogeneous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ShellHomogeneousNonLinear.html">fedoo.constitutivelaw.ShellHomogeneousNonLinear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constitutivelaw.ThermalProperties.html">fedoo.constitutivelaw.ThermalProperties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+      <li class="breadcrumb-item active">fedoo.constitutivelaw.Simcoon</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.constitutivelaw.Simcoon.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-constitutivelaw-simcoon">
+<h1>fedoo.constitutivelaw.Simcoon<a class="headerlink" href="#fedoo-constitutivelaw-simcoon" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fedoo.constitutivelaw.Simcoon">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Simcoon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">umat_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon" title="Link to this definition"></a></dt>
+<dd><p>Constitutive laws from the simcoon library.</p>
+<p>The constitutive Law should be associated with
+<a class="reference internal" href="fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>umat_name</strong> (<em>str</em>) – Name of the constitutive law.</p></li>
+<li><p><strong>props</strong> (<em>numpy.array</em>) – The constitive laws properties</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The name of the constitutive law</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>UMAT compatibility with the <code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> ModelingSpace:</p>
+<ul class="simple">
+<li><p><strong>Isotropic UMATs</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">ELI</span></code>, <code class="docutils literal notranslate"><span class="pre">NEOH</span></code>, <code class="docutils literal notranslate"><span class="pre">MOON</span></code>, <code class="docutils literal notranslate"><span class="pre">EPICP</span></code> J2
+plasticity): supported. Hooke’s response and J2 invariants are
+invariant under the slot remapping fedoo applies in 2Daxi
+(cf. <code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.mechanical3d.Mechanical3D</span></code>).</p></li>
+<li><p><strong>Orthotropic / anisotropic UMATs</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">ELIO</span></code>, composite
+Mori-Tanaka, anisotropic damage / plasticity): user-supplied
+material direction “3” is silently the <strong>hoop</strong> direction in
+2Daxi (because slot 2 of the 6-vector carries ε_θθ). Define the
+stiffness / hardening parameters with this convention or the
+response will not match the intended material orientation.</p></li>
+<li><p>Hyperelastic laws are gated on plane stress (see
+<code class="docutils literal notranslate"><span class="pre">_Lt_from_F</span></code> branch); they remain compatible with 2Daxi at
+finite strain provided the F[θθ] = r/R fix is in effect (see
+<code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.weakform.stress_equilibrium._comp_grad_disp()</span></code>).</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.constitutivelaw.Simcoon.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">umat_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.__init__" title="Link to this definition"></a></dt>
+<dd><p><strong>Methods</strong></p>
+<blockquote>
+<div><table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.get_H_plane_stress.html#fedoo.constitutivelaw.Simcoon.get_H_plane_stress" title="fedoo.constitutivelaw.Simcoon.get_H_plane_stress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.get_H_plane_stress</span></code></a>(H)</p></td>
+<td><p>Convert a full 3D tangent matrix H in an equivalent behavior in 2D with the plane stress assumption.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.get_all.html#fedoo.constitutivelaw.Simcoon.get_all" title="fedoo.constitutivelaw.Simcoon.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.get_all</span></code></a>()</p></td>
+<td><p>Return a dict with all the known ConstitutiveLaw (with a name).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.get_tangent_matrix.html#fedoo.constitutivelaw.Simcoon.get_tangent_matrix" title="fedoo.constitutivelaw.Simcoon.get_tangent_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.get_tangent_matrix</span></code></a>(assembly[, dimension])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.get_temp_gp.html#fedoo.constitutivelaw.Simcoon.get_temp_gp" title="fedoo.constitutivelaw.Simcoon.get_temp_gp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.get_temp_gp</span></code></a>(assembly, pb)</p></td>
+<td><p>Get the current temperature field at Gauss Point.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.initialize.html#fedoo.constitutivelaw.Simcoon.initialize" title="fedoo.constitutivelaw.Simcoon.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.initialize</span></code></a>(assembly, pb)</p></td>
+<td><p>Initialize the constitutive law for the current problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.local2global_H.html#fedoo.constitutivelaw.Simcoon.local2global_H" title="fedoo.constitutivelaw.Simcoon.local2global_H"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.local2global_H</span></code></a>(H)</p></td>
+<td><p>Rotate stiffness matrix from local material frame to global frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.reset.html#fedoo.constitutivelaw.Simcoon.reset" title="fedoo.constitutivelaw.Simcoon.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.reset</span></code></a>()</p></td>
+<td><p>Reset the constitutive law.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.set_density.html#fedoo.constitutivelaw.Simcoon.set_density" title="fedoo.constitutivelaw.Simcoon.set_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.set_density</span></code></a>(density)</p></td>
+<td><p>Set the mass density associated with this mechanical material.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.set_start.html#fedoo.constitutivelaw.Simcoon.set_start" title="fedoo.constitutivelaw.Simcoon.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.set_start</span></code></a>(assembly, pb)</p></td>
+<td><p>Begin a new time iteration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.to_start.html#fedoo.constitutivelaw.Simcoon.to_start" title="fedoo.constitutivelaw.Simcoon.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.to_start</span></code></a>(assembly, pb)</p></td>
+<td><p>Restart the current time iteration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.update.html#fedoo.constitutivelaw.Simcoon.update" title="fedoo.constitutivelaw.Simcoon.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.update</span></code></a>(assembly, pb)</p></td>
+<td><p>Update the constitutive law for the current problem state.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.name.html#fedoo.constitutivelaw.Simcoon.name" title="fedoo.constitutivelaw.Simcoon.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.name</span></code></a></p></td>
+<td><p>Name of the constitutive law.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.is_initialized.html#fedoo.constitutivelaw.Simcoon.is_initialized" title="fedoo.constitutivelaw.Simcoon.is_initialized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.is_initialized</span></code></a></p></td>
+<td><p>Tag set to True once the law is intialized.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.constitutivelaw.FE2.is_initialized.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.FE2.is_initialized" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.constitutivelaw.Simcoon.get_H_plane_stress.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.Simcoon.get_H_plane_stress" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

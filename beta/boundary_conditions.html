@@ -1,0 +1,699 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boundary conditions and constraints &mdash; Fedoo 1.0.0b1 (beta)</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="fedoo.ListBC" href="generated/fedoo.ListBC.html" />
+    <link rel="prev" title="fedoo.Problem.bc" href="generated/fedoo.Problem.bc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Boundary conditions and constraints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.ListBC.html">fedoo.ListBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html">fedoo.core.BoundaryCondition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MPC.html">fedoo.MPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.PeriodicBC.html">fedoo.constraint.PeriodicBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.Contact.html">fedoo.constraint.Contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.SelfContact.html">fedoo.constraint.SelfContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.IPCContact.html">fedoo.constraint.IPCContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.IPCSelfContact.html">fedoo.constraint.IPCSelfContact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Boundary conditions and constraints</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/boundary_conditions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="boundary-conditions-and-constraints">
+<h1>Boundary conditions and constraints<a class="headerlink" href="#boundary-conditions-and-constraints" title="Link to this heading"></a></h1>
+<section id="basic-boundary-conditions">
+<h2>Basic boundary conditions<a class="headerlink" href="#basic-boundary-conditions" title="Link to this heading"></a></h2>
+<p>There is 3 basic types of boundary conditions in fedoo:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Dirichlet boundary conditions: Value specified for a degree of freedom
+(for instance displacement).</p></li>
+<li><p>Neumann boundary conditions: Value specified for the dual value of a
+degree of freedom (for instance force)</p></li>
+<li><p>Multi-point constraints (MPC): linear coupling between degrees of
+freedom. MPC are not properly speaking boundary conditions.
+In fedoo they are considered as part of boundary conditions, because
+they often used to specify complexe boundary conditions, but they are
+more general that simple boundary conditions.</p></li>
+</ol>
+</div></blockquote>
+<p>Each time a problem is created, a list of boundary conditions is associated to
+the problem in the “<em>bc</em>” attribute of the problem instance.</p>
+<p>problem.bc is then a <a class="reference internal" href="generated/fedoo.ListBC.html#fedoo.ListBC" title="fedoo.ListBC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.ListBC</span></code></a> Object.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.ListBC.html#fedoo.ListBC" title="fedoo.ListBC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.ListBC</span></code></a>([l, name])</p></td>
+<td><p>List of boundary conditions.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="dirichlet-and-neumann-boundary-conditions">
+<h3>Dirichlet and Neumann Boundary conditions<a class="headerlink" href="#dirichlet-and-neumann-boundary-conditions" title="Link to this heading"></a></h3>
+<p>The recommanded way to apply some boundary conditions is to use the method
+<a class="reference internal" href="generated/fedoo.ListBC.add.html#fedoo.ListBC.add" title="fedoo.ListBC.add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ListBC.add()</span></code></a>, directly from problem attribute
+<a class="reference internal" href="generated/fedoo.Problem.bc.html#fedoo.Problem.bc" title="fedoo.Problem.bc"><code class="xref py py-attr docutils literal notranslate"><span class="pre">fedoo.Problem.bc</span></code></a>.
+This method build a <a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html#fedoo.core.BoundaryCondition" title="fedoo.core.BoundaryCondition"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.BoundaryCondition</span></code></a> object and add it to
+the problem boundary conditions.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html#fedoo.core.BoundaryCondition" title="fedoo.core.BoundaryCondition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.core.BoundaryCondition</span></code></a>(bc_type, ...[, ...])</p></td>
+<td><p>Basic boundary conditions.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here are some examples to add some Dirichlet or Neumann Boundary conditions
+for a given problem  <em>pb</em>:</p>
+<p>Displacement along the X axis blocked (=0) for the nodes 0, 1 and 8</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="s1">'DispX'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Displacement along the all axis blocked (=0) for the nodes defined by the
+node sets ‘node_sets’ (the given node nets is supposed to be present in the
+associated mesh. If note, it will raise an error).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span><span class="s1">'node_sets'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>External force on the node 112 with Fx = 5, Fy = 10 and Fz = 0.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Neumann'</span><span class="p">,</span> <span class="p">[</span><span class="mi">112</span><span class="p">],</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Enforce a nul displacement on nodes 1, 2 and 3, and a rotation around X = 0
+for node 1, 0.1 for node 2 and 0.2 for node 3.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>          <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>          <span class="p">[</span><span class="s1">'Disp'</span><span class="p">,</span><span class="s1">'RotX'</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span>          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])]</span>
+<span class="gp">&gt;&gt;&gt; </span>         <span class="p">)</span>
+</pre></div>
+</div>
+<p>Instead of adding directly the boundary conditions to the problem, it
+may be convenient to create boundary conditions and add them afterwards</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_bc</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">BoundaryCondition</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">my_bc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For non linear problem, we can also defined the time_func to sepcify how the
+boundary condition evolve during time. By default, a linear evolution is
+enforced.
+The time function depend on the time_factor. The time_factor is 0 at the
+begining and 1 at the end of the iteration. The time function is also a
+factor to the prescribed value and should be between 0 and 1.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">step_function</span><span class="p">(</span><span class="n">t_fact</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">t_fact</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="s1">'nodeset'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">time_func</span> <span class="o">=</span> <span class="n">step_function</span><span class="p">)])</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-point-constraints">
+<h3>Multi Point Constraints<a class="headerlink" href="#multi-point-constraints" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.MPC.html#fedoo.MPC" title="fedoo.MPC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.MPC</span></code></a>(list_node_sets, list_variables, ...)</p></td>
+<td><p>Class that define multi-point constraints</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="advanced-bc-and-constraints">
+<h2>Advanced BC and constraints<a class="headerlink" href="#advanced-bc-and-constraints" title="Link to this heading"></a></h2>
+<p>Fedoo also provides higher-level boundary-condition objects for common
+distributed loads and constraint patterns. Distributed loads are converted to
+external Neumann forces, while the kinematic constraints below are based on
+MPC equations and can be added directly to <code class="docutils literal notranslate"><span class="pre">pb.bc</span></code>.</p>
+<section id="distributed-loads">
+<h3>Distributed loads<a class="headerlink" href="#distributed-loads" title="Link to this heading"></a></h3>
+<p>Distributed loads are defined by dedicated assembly objects. The recommended
+way to apply them is to add the load assembly to the problem boundary
+conditions. If the assembly provides an <code class="docutils literal notranslate"><span class="pre">as_neumann()</span></code> method,
+<a class="reference internal" href="generated/fedoo.ListBC.add.html#fedoo.ListBC.add" title="fedoo.ListBC.add"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ListBC.add()</span></code></a> automatically converts it to an equivalent
+Neumann boundary condition. This is especially useful for nonlinear problems:
+the load is included in the external force vector, follows the usual load
+coefficient, and is taken into account by the residual normalization.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solid_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+<span class="n">pressure</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="p">(</span><span class="n">surface_mesh</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The explicit form is also available:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pressure</span><span class="o">.</span><span class="n">as_neumann</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The load assembly can still be combined directly with the mechanical assembly.
+This form is kept as an alternative, but is not recommended for nonlinear
+analyses because the load is part of the residual assembly rather than a
+boundary-condition force.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">solid_assembly</span> <span class="o">+</span> <span class="n">pressure</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.DistributedForce.html#fedoo.constraint.DistributedForce" title="fedoo.constraint.DistributedForce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.DistributedForce</span></code></a>(mesh, force)</p></td>
+<td><p>Distributed force (e.g gravity load).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constraint.Pressure.html#fedoo.constraint.Pressure" title="fedoo.constraint.Pressure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.Pressure</span></code></a>(surface_mesh, pressure)</p></td>
+<td><p>Pressure load.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.SurfaceForce.html#fedoo.constraint.SurfaceForce" title="fedoo.constraint.SurfaceForce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.SurfaceForce</span></code></a>(mesh, force[, ...])</p></td>
+<td><p>Surface stress with a fixed orientation.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="generic-lagrange-multiplier-constraints">
+<h3>Generic Lagrange-multiplier constraints<a class="headerlink" href="#generic-lagrange-multiplier-constraints" title="Link to this heading"></a></h3>
+<p>Any boundary-condition object that generates only <a class="reference internal" href="generated/fedoo.MPC.html#fedoo.MPC" title="fedoo.MPC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MPC</span></code></a> leaves
+can be enforced with Lagrange multipliers by wrapping it in
+<a class="reference internal" href="generated/fedoo.LagrangeMultiplierAssembly.html#fedoo.LagrangeMultiplierAssembly" title="fedoo.LagrangeMultiplierAssembly"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.LagrangeMultiplierAssembly</span></code></a>. Original MPC
+coefficients are preserved; the first term is not normalized as a slave DOF.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">periodic_lm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">LagrangeMultiplierAssembly</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">,</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="n">periodicity_type</span><span class="o">=</span><span class="s2">"small_strain"</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"PeriodicLM"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">solid_assembly</span> <span class="o">+</span> <span class="n">periodic_lm</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Do not also add the wrapped constraint to <code class="docutils literal notranslate"><span class="pre">pb.bc</span></code>: that would enforce its
+equations a second time through MPC elimination. The bordered system is
+an indefinite saddle-point system. Use a direct solver; positive-definite
+iterative solvers such as <code class="docutils literal notranslate"><span class="pre">cg</span></code> are not suitable.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.LagrangeMultiplierAssembly.html#fedoo.LagrangeMultiplierAssembly" title="fedoo.LagrangeMultiplierAssembly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.LagrangeMultiplierAssembly</span></code></a>(mesh, ...)</p></td>
+<td><p>Enforce MPC-generated linear constraints with Lagrange multipliers.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mean-value-constraint">
+<h3>Mean-value constraint<a class="headerlink" href="#mean-value-constraint" title="Link to this heading"></a></h3>
+<p>The mean value of a field can be constrained with
+<a class="reference internal" href="generated/fedoo.constraint.MeanValueConstraint.html#fedoo.constraint.MeanValueConstraint" title="fedoo.constraint.MeanValueConstraint"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.MeanValueConstraint</span></code></a>. It is an assembly object
+that is summed with the stiffness assembly. Its main use is to remove rigid
+body translation in periodic homogenization without pinning an arbitrary node:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+    <span class="n">assembly</span> <span class="o">+</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanValueConstraint</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The constraint uses one Lagrange multiplier per variable. The zero-mean
+condition provides a canonical periodic fluctuation field while retaining the
+same stress field as a single-node pin.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.MeanValueConstraint.html#fedoo.constraint.MeanValueConstraint" title="fedoo.constraint.MeanValueConstraint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.MeanValueConstraint</span></code></a>(mesh[, ...])</p></td>
+<td><p>Enforce the weighted mean of a field over a set of nodes.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="kinematic-mpc-constraints">
+<h3>Kinematic MPC constraints<a class="headerlink" href="#kinematic-mpc-constraints" title="Link to this heading"></a></h3>
+<section id="rigid-tie">
+<h4>Rigid tie<a class="headerlink" href="#rigid-tie" title="Link to this heading"></a></h4>
+<p>The <a class="reference internal" href="generated/fedoo.constraint.RigidTie.html#fedoo.constraint.RigidTie" title="fedoo.constraint.RigidTie"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie</span></code></a> constraint couples a set of nodes to
+a rigid-body motion. It creates global degrees of freedom for rigid
+translation and rotation, then eliminates the selected nodal displacement DOFs
+through MPC equations. Prescribing <code class="docutils literal notranslate"><span class="pre">RigidDisp</span></code> or <code class="docutils literal notranslate"><span class="pre">RigidRot</span></code> therefore
+drives the whole selected node set as a rigid object.</p>
+<p>This constraint is useful to impose a strict rigid connection, for instance to
+drive a face from a reference rigid point. It is more restrictive than
+<a class="reference internal" href="generated/fedoo.constraint.MeanMotion.html#fedoo.constraint.MeanMotion" title="fedoo.constraint.MeanMotion"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.MeanMotion</span></code></a>, because all selected nodes follow the
+same rigid-body kinematics and local warping of the selected surface is
+suppressed.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.RigidTie.html#fedoo.constraint.RigidTie" title="fedoo.constraint.RigidTie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie</span></code></a>(list_nodes[, ...])</p></td>
+<td><p>Constraint that eliminate dof assuming a rigid body tie between nodes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constraint.RigidTie2D.html#fedoo.constraint.RigidTie2D" title="fedoo.constraint.RigidTie2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie2D</span></code></a>(list_nodes[, ...])</p></td>
+<td><p>Constraint that eliminate dof assuming a rigid body tie between nodes in 2D.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mean-motion-control">
+<h4>Mean motion control<a class="headerlink" href="#mean-motion-control" title="Link to this heading"></a></h4>
+<p>The <a class="reference internal" href="generated/fedoo.constraint.MeanMotion.html#fedoo.constraint.MeanMotion" title="fedoo.constraint.MeanMotion"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.MeanMotion</span></code></a> constraint is a less
+restrictive alternative to <a class="reference internal" href="generated/fedoo.constraint.RigidTie.html#fedoo.constraint.RigidTie" title="fedoo.constraint.RigidTie"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie</span></code></a>. It extracts
+selected components of the best-fit motion of a node set or surface mesh in a
+mean sense, without forcing every selected node to follow a rigid motion. The
+selected surface can therefore deform locally while selected mean translation
+and rotation components are controlled.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">components</span></code> argument is required and defines which global DOFs are
+created. Accepted component names include <code class="docutils literal notranslate"><span class="pre">&quot;RotX&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;MeanRotX&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;DispZ&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;MeanDispZ&quot;</span></code>. The vector aliases <code class="docutils literal notranslate"><span class="pre">&quot;Rot&quot;</span></code>/<code class="docutils literal notranslate"><span class="pre">&quot;MeanRot&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&quot;Disp&quot;</span></code>/<code class="docutils literal notranslate"><span class="pre">&quot;MeanDisp&quot;</span></code> select all rotation or displacement components
+available in the current modeling dimension. In 2D, the rotation vector
+contains only <code class="docutils literal notranslate"><span class="pre">MeanRotZ</span></code>.</p>
+<p>When a surface mesh is passed, nodal weights are computed from the element
+area, or from the element length in 2D. These weights define an area-weighted
+least-squares projection of the displacement field onto rigid-body modes.</p>
+<p>For displacement-only mean control, select only displacement components:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mean_disp</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanMotion</span><span class="p">(</span><span class="n">surface_mesh</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="s2">"DispZ"</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mean_disp</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"MeanDispZ"</span><span class="p">,</span> <span class="o">-</span><span class="n">delta</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">finite_rotation</span></code> is left to <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), rotational
+components use finite rotations automatically if geometrical nonlinearity is
+enabled on the problem. Otherwise, the rotation components are small-rotation
+vector components. The finite-rotation mode uses a rotation-vector convention
+and linearizes the constraint at each Newton iteration using the derivative of
+the rotation matrix with respect to the rotation vector.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">face_motion</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanMotion</span><span class="p">(</span>
+    <span class="n">surface_mesh</span><span class="p">,</span>
+    <span class="n">components</span><span class="o">=</span><span class="s2">"RotZ"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">face_motion</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">face_motion</span><span class="o">.</span><span class="n">node_by_variable</span><span class="p">[</span><span class="s2">"MeanRotZ"</span><span class="p">],</span> <span class="s2">"MeanRotZ"</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">face_motion</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">MeanMotion</span><span class="p">(</span>
+    <span class="n">surface_mesh</span><span class="p">,</span>
+    <span class="n">components</span><span class="o">=</span><span class="p">[</span><span class="s2">"RotZ"</span><span class="p">,</span> <span class="s2">"DispZ"</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">face_motion</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"MeanRotZ"</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"MeanDispZ"</span><span class="p">,</span> <span class="o">-</span><span class="n">delta</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The reactions on the created global DOFs are generalized forces. For instance,
+the reaction associated with <code class="docutils literal notranslate"><span class="pre">MeanRotZ</span></code> is the conjugate moment around the
+mean-motion center.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.MeanMotion.html#fedoo.constraint.MeanMotion" title="fedoo.constraint.MeanMotion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.MeanMotion</span></code></a>([node_set, ...])</p></td>
+<td><p>Constraint defining selected global DOFs equal to a mean motion.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="periodic-boundary-conditions">
+<h3>Periodic boundary conditions<a class="headerlink" href="#periodic-boundary-conditions" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="generated/fedoo.constraint.PeriodicBC.html#fedoo.constraint.PeriodicBC" title="fedoo.constraint.PeriodicBC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.PeriodicBC</span></code></a> constraint creates MPC equations
+between opposite boundaries so that their displacement fluctuations are
+periodic. It is mainly used for representative volume elements and
+homogenization problems, where the boundary kinematics must be compatible with
+a prescribed macroscopic strain or displacement gradient.</p>
+<p>The constraint can build the required node pairings from opposite node sets
+and then be added to <code class="docutils literal notranslate"><span class="pre">pb.bc</span></code> like the other MPC-based constraints.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.PeriodicBC.html#fedoo.constraint.PeriodicBC" title="fedoo.constraint.PeriodicBC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.PeriodicBC</span></code></a>([...])</p></td>
+<td><p>Periodic boundary conditions constraint.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Link to this heading"></a></h2>
+<p>Fedoo provides two contact approaches: a <strong>penalty-based</strong> method and an
+<strong>IPC (Incremental Potential Contact)</strong> method. Both are implemented as
+assembly objects and can be combined with other assemblies using
+<a class="reference internal" href="assembly.html#fedoo.Assembly.sum" title="fedoo.Assembly.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Assembly.sum()</span></code></a>.</p>
+<section id="penalty-based-contact">
+<h3>Penalty-based contact<a class="headerlink" href="#penalty-based-contact" title="Link to this heading"></a></h3>
+<p>The penalty method uses a node-to-surface formulation. It is available for
+2D problems and supports frictionless contact.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.Contact.html#fedoo.constraint.Contact" title="fedoo.constraint.Contact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.Contact</span></code></a>(slave_nodes, ...[, ...])</p></td>
+<td><p>Contact Assembly based on a node 2 surface formulation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constraint.SelfContact.html#fedoo.constraint.SelfContact" title="fedoo.constraint.SelfContact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.SelfContact</span></code></a>(mesh[, ...])</p></td>
+<td><p>Self contact Assembly (ie contact of a geomtry between itself) based on a node 2 surface formulation</p></td>
+</tr>
+</tbody>
+</table>
+<p>The contact class is derived from assembly. To add a contact contraint
+to a problem, we need first to create the contact assembly (using the class
+<a class="reference internal" href="generated/fedoo.constraint.Contact.html#fedoo.constraint.Contact" title="fedoo.constraint.Contact"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.Contact</span></code></a>) and then to add it to the global
+assembly with <a class="reference internal" href="assembly.html#fedoo.Assembly.sum" title="fedoo.Assembly.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Assembly.sum()</span></code></a>.</p>
+</section>
+<section id="ipc-contact">
+<h3>IPC contact<a class="headerlink" href="#ipc-contact" title="Link to this heading"></a></h3>
+<p>The IPC (Incremental Potential Contact) method uses barrier potentials from
+the <a class="reference external" href="https://ipctk.xyz/">ipctk</a> library to guarantee intersection-free
+configurations.  It supports both 2D and 3D problems, friction, and optional
+CCD (Continuous Collision Detection) line search.</p>
+<p>Unlike the penalty method, IPC does <strong>not</strong> require tuning a penalty
+parameter.  The barrier stiffness <span class="math notranslate nohighlight">\(\kappa\)</span> is automatically computed
+and adaptively updated to balance the elastic and contact forces.  The only
+physical parameter is <code class="docutils literal notranslate"><span class="pre">dhat</span></code> — the barrier activation distance that
+controls the minimum gap between surfaces (default: 0.1% of the bounding
+box diagonal).</p>
+<p><strong>Choosing dhat</strong> — The default <code class="docutils literal notranslate"><span class="pre">dhat=1e-3</span></code> (relative) means the
+barrier activates when surfaces are within 0.1 % of the bounding-box
+diagonal.  For problems with a very small initial gap, increase <code class="docutils literal notranslate"><span class="pre">dhat</span></code>
+(e.g. <code class="docutils literal notranslate"><span class="pre">1e-2</span></code>) so the barrier catches contact early.  For tight-fitting
+assemblies where a visible gap is unacceptable, decrease it (e.g.
+<code class="docutils literal notranslate"><span class="pre">1e-4</span></code>), but expect more Newton–Raphson iterations.</p>
+<p><strong>CCD line search</strong> — Enabling <code class="docutils literal notranslate"><span class="pre">use_ccd=True</span></code> is recommended for
+problems where first contact occurs suddenly (e.g. a punch hitting a
+plate) or where self-contact can cause rapid topology changes.</p>
+<p><strong>Energy-based backtracking</strong> — When <code class="docutils literal notranslate"><span class="pre">use_ccd=True</span></code>, an
+energy-based backtracking phase is automatically enabled after CCD
+filtering: the step is halved until total energy (exact barrier +
+quadratic elastic approximation) decreases.  This matches the
+reference IPC algorithm and improves convergence robustness.  Set
+<code class="docutils literal notranslate"><span class="pre">line_search_energy=False</span></code> to disable (faster but may degrade
+convergence for difficult contact scenarios).</p>
+<p><strong>Convergence criterion</strong> — The <code class="docutils literal notranslate"><span class="pre">'Force'</span></code> convergence criterion
+is recommended for IPC contact problems.  It measures the relative
+decrease of the force residual, matching the gradient-norm convergence
+used by reference IPC implementations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s1">'Force'</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">'Displacement'</span></code> criterion may become unreliable as contact
+stiffness grows.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ipctk</span></code> package is required and can be installed with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>ipctk
+<span class="c1"># or</span>
+pip<span class="w"> </span>install<span class="w"> </span>fedoo<span class="o">[</span>ipc<span class="o">]</span>
+</pre></div>
+</div>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constraint.IPCContact.html#fedoo.constraint.IPCContact" title="fedoo.constraint.IPCContact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.IPCContact</span></code></a>(mesh[, ...])</p></td>
+<td><p>Contact Assembly based on the IPC (Incremental Potential Contact) method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constraint.IPCSelfContact.html#fedoo.constraint.IPCSelfContact" title="fedoo.constraint.IPCSelfContact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fedoo.constraint.IPCSelfContact</span></code></a>(mesh[, ...])</p></td>
+<td><p>Self-contact Assembly using the IPC method.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="penalty-contact-example">
+<h3>Penalty contact example<a class="headerlink" href="#penalty-contact-example" title="Link to this heading"></a></h3>
+<p>Here an example of a contact between a square and a disk using the penalty method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">'disk_rectangle_contact'</span> <span class="c1">#file to save results</span>
+
+<span class="c1">#---- Create geometries --------------</span>
+<span class="n">mesh_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span><span class="n">nx</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+                                   <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                   <span class="n">elm_type</span> <span class="o">=</span> <span class="s1">'quad4'</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">'Domain'</span>
+                                  <span class="p">)</span>
+<span class="n">mesh_rect</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">'rect'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh_rect</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">elm_type</span> <span class="o">=</span> <span class="s1">'quad4'</span><span class="p">)</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">nodes</span><span class="o">+=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">0.48</span><span class="p">])</span> <span class="c1"># translate disk on the right</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">'disk'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">mesh_rect</span><span class="p">,</span><span class="n">mesh_disk</span><span class="p">)</span>
+
+<span class="c1">#node sets for boundary conditions</span>
+<span class="n">nodes_left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X'</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">nodes_right</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X'</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">nodes_bc</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X&gt;1.5'</span><span class="p">)</span>
+<span class="n">nodes_bc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">nodes_bc</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s1">'boundary'</span><span class="p">]))</span>
+
+<span class="c1">#---- Define contact --------------</span>
+<span class="c1">#slave surface = right face of rectangle mesh</span>
+<span class="n">nodes_contact</span> <span class="o">=</span> <span class="n">nodes_right</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s1">'disk'</span><span class="p">))</span>
+<span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Contact</span><span class="p">(</span><span class="n">nodes_contact</span><span class="p">,</span> <span class="n">surf</span><span class="p">)</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">contact_search_once</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">eps_n</span> <span class="o">=</span> <span class="mf">5e5</span>
+
+<span class="c1">#---- Material properties --------------</span>
+<span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">200e3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+<span class="c1"># E, nu, alpha (non used), Re, k, m</span>
+<span class="n">material_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+<span class="n">material_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">50e3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span> <span class="c1">#E, nu</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Heterogeneous</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">material_rect</span><span class="p">,</span> <span class="n">material_disk</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'rect'</span><span class="p">,</span> <span class="s1">'disk'</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="c1">#---- Build problem --------------</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">solid_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="n">contact</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span>
+                        <span class="n">solid_assembly</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s1">'Disp'</span><span class="p">,</span> <span class="s1">'Stress'</span><span class="p">,</span> <span class="s1">'Strain'</span><span class="p">,</span> <span class="s1">'Fext'</span><span class="p">]</span>
+                        <span class="p">)</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span><span class="n">nodes_left</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span><span class="n">nodes_bc</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Displacement"</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1">#---- Solve problem in two steps: load, unload --------------</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.005</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">update_dt</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">interval_output</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#remove last boundary contidion</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span><span class="n">nodes_bc</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.005</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">update_dt</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">interval_output</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span>
+
+
+<span class="c1"># =============================================================</span>
+<span class="c1"># Example of plots with pyvista - uncomment the desired plot</span>
+<span class="c1"># =============================================================</span>
+
+<span class="c1"># ------------------------------------</span>
+<span class="c1"># Simple plot with default options</span>
+<span class="c1"># ------------------------------------</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">'Stress'</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">'vm'</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">'Node'</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">'Disp'</span><span class="p">,</span> <span class="n">component</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">'Node'</span><span class="p">)</span>
+
+<span class="c1"># ------------------------------------</span>
+<span class="c1"># Write movie with default options</span>
+<span class="c1"># ------------------------------------</span>
+<span class="n">results</span><span class="o">.</span><span class="n">write_movie</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span>
+                    <span class="s1">'Stress'</span><span class="p">,</span>
+                    <span class="n">component</span> <span class="o">=</span> <span class="s1">'XX'</span><span class="p">,</span>
+                    <span class="n">data_type</span> <span class="o">=</span> <span class="s1">'Node'</span><span class="p">,</span>
+                    <span class="n">framerate</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
+                    <span class="n">quality</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+                    <span class="n">clim</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">3e3</span><span class="p">,</span> <span class="mf">3e3</span><span class="p">]</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+<p>Video of results:
+<a class="reference download internal" download="" href="_downloads/317ef4441eee63c9d7aac471a2f3cfbe/disk_rectangle_contact.mp4"><code class="xref download docutils literal notranslate"><span class="pre">contact</span> <span class="pre">video</span></code></a></p>
+</section>
+<section id="ipc-contact-example">
+<h3>IPC contact example<a class="headerlink" href="#ipc-contact-example" title="Link to this heading"></a></h3>
+<p>The same disk-rectangle contact problem can be solved with the IPC method.
+The IPC method does not require choosing slave/master nodes or tuning a
+penalty parameter. The barrier stiffness is automatically computed and
+adapted.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
+
+<span class="c1">#---- Create geometries (same as penalty example) --------------</span>
+<span class="n">mesh_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span><span class="n">nx</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+                                   <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                   <span class="n">elm_type</span><span class="o">=</span><span class="s1">'quad4'</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'Domain'</span><span class="p">)</span>
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s1">'quad4'</span><span class="p">)</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">nodes</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">])</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">mesh_rect</span><span class="p">,</span> <span class="n">mesh_disk</span><span class="p">)</span>
+
+<span class="c1">#---- Define IPC contact --------------</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">ipc_contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">IPCContact</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">,</span> <span class="n">surface_mesh</span><span class="o">=</span><span class="n">surf</span><span class="p">,</span>
+    <span class="n">friction_coefficient</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>     <span class="c1"># Coulomb friction coefficient</span>
+    <span class="n">use_ccd</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                 <span class="c1"># enable CCD line search for robustness</span>
+<span class="p">)</span>
+<span class="c1"># barrier_stiffness is auto-computed; dhat defaults to 1e-3 * bbox_diag</span>
+
+<span class="c1">#---- Material and problem setup --------------</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">200e3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">solid_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="n">ipc_contact</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s1">'results'</span><span class="p">,</span> <span class="n">solid_assembly</span><span class="p">,</span> <span class="p">[</span><span class="s1">'Disp'</span><span class="p">,</span> <span class="s1">'Stress'</span><span class="p">])</span>
+<span class="c1"># ... add BCs ...</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using <code class="docutils literal notranslate"><span class="pre">add_output</span></code>, pass the <strong>solid assembly</strong> (not the sum).
+<code class="docutils literal notranslate"><span class="pre">AssemblySum</span></code> objects cannot be used directly for output extraction.</p>
+</div>
+</section>
+<section id="ipc-self-contact-example">
+<h3>IPC self-contact example<a class="headerlink" href="#ipc-self-contact-example" title="Link to this heading"></a></h3>
+<p>For self-contact problems, use <a class="reference internal" href="generated/fedoo.constraint.IPCSelfContact.html#fedoo.constraint.IPCSelfContact" title="fedoo.constraint.IPCSelfContact"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPCSelfContact</span></code></a>
+which automatically extracts the surface from the volumetric mesh.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"gyroid.vtk"</span><span class="p">)</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># Self-contact: auto surface extraction, auto barrier stiffness</span>
+<span class="c1"># Add line_search_energy=True for extra robustness (slower)</span>
+<span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">IPCSelfContact</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">use_ccd</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">"UL"</span><span class="p">)</span>
+<span class="n">solid</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">solid</span><span class="p">,</span> <span class="n">contact</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"results"</span><span class="p">,</span> <span class="n">solid</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">])</span>
+<span class="c1"># ... add BCs ...</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="generated/fedoo.Problem.bc.html" class="btn btn-neutral float-left" title="fedoo.Problem.bc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/fedoo.ListBC.html" class="btn btn-neutral float-right" title="fedoo.ListBC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

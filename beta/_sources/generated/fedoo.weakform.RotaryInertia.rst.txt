@@ -1,0 +1,54 @@
+﻿fedoo.weakform.RotaryInertia
+============================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: RotaryInertia
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         RotaryInertia.get_all
+         RotaryInertia.get_dissipation
+         RotaryInertia.get_storage
+         RotaryInertia.get_weak_equation
+         RotaryInertia.initialize
+         RotaryInertia.iter_leaf
+         RotaryInertia.reset
+         RotaryInertia.set_damping
+         RotaryInertia.set_dissipation
+         RotaryInertia.set_inertia
+         RotaryInertia.set_start
+         RotaryInertia.set_storage
+         RotaryInertia.sum
+         RotaryInertia.to_start
+         RotaryInertia.update
+         RotaryInertia.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         RotaryInertia.name
+         RotaryInertia.nvar
+         RotaryInertia.space
+  
+  

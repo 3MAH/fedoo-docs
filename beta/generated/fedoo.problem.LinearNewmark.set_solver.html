@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.problem.LinearNewmark.set_solver &mdash; Fedoo 1.0.0b1 (beta)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">fedoo.problem.LinearNewmark.set_solver</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.problem.LinearNewmark.set_solver.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-problem-linearnewmark-set-solver">
+<h1>fedoo.problem.LinearNewmark.set_solver<a class="headerlink" href="#fedoo-problem-linearnewmark-set-solver" title="Link to this heading"></a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.problem.LinearNewmark.set_solver">
+<span class="sig-prename descclassname"><span class="pre">LinearNewmark.</span></span><span class="sig-name descname"><span class="pre">set_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.LinearNewmark.set_solver" title="Link to this definition"></a></dt>
+<dd><p>Define the solver for the linear system resolution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solver</strong> (<em>str</em><em>, </em><em>ufunc</em>) – <p>Type of solver.
+The possible choice are :
+* ‘direct’: direct solver. If pypardiso is installed, the</p>
+<blockquote>
+<div><p>pypardiso solver is used. Else, if python-mumps is installed,
+the standalone MUMPS solver is used. Else, if petsc is installed,
+the mumps solver from petsc is used. If not, the function
+scipy.sparse.linalg.spsolve is used. If scikit-umfpack is
+installed, scipy will use the umfpack solver which is
+significantly more efficient than the base scipy solver.</p>
+</div></blockquote>
+<ul>
+<li><p>’cg’, ‘bicg’, ‘bicgstab’,’minres’,’gmres’, ‘lgmres’ or ‘gcrotmk’
+using the corresponding iterative method from
+scipy.sparse.linalg. For instance, ‘cg’ is the conjugate
+gradient based on the function scipy.sparse.linalg.cg.</p></li>
+<li><p>’pardiso’: force the use of the pypardiso solver</p></li>
+<li><p>’mumps’: force the use of the standalone MUMPS solver
+(python-mumps must be installed). This is the recommended direct
+solver on arm64 platforms where pypardiso is not available.</p></li>
+<li><p>’direct_scipy’: force the use of the direct scipy solver
+(umfpack if installed)</p></li>
+<li><p>’petsc’: use the petsc methods (iterative or direct). petsc4py
+should be installed.</p></li>
+<li><p>function: A user spsolve function that should have the signature
+res = solver(A,B,**kargs).
+where A is a scipy sparse matrix and B a 1d numpy array.
+kargs may contains optional parameters.</p></li>
+</ul>
+</p></li>
+<li><p><strong>kargs</strong> (<em>optional parameters depending on the type</em><em> of </em><em>solver</em>) – <dl class="simple">
+<dt>precond: bool</dt><dd><p>Use precond = False to desactivate the diagonal matrix
+preconditionning for scipy iterative methods.
+If this parametre is not given, the precoditionning is activated
+if M is not given.</p>
+</dd>
+<dt>M: {sparse matrix, ndarray, LinearOperator}</dt><dd><p>Preconditioner for A used for scipy iterative methods.</p>
+</dd>
+<dt>solver_type: str</dt><dd><p>Petsc solver. The default is ‘bcgs’.
+See the petsc documentation for available solvers.</p>
+</dd>
+<dt>pc_type: str</dt><dd><p>Petsc type of preconditioner. The default is ‘eisenstat’.
+See the petsc documentation for available preconditioners.</p>
+</dd>
+<dt>pc_factor_mat_solver_type: str</dt><dd><p>Petsc solver for matrix factorization when applicable.
+See the petsc documentation for details about this parameter.</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul>
+<li><p>To change the many available petsc options, the
+petsc4py.PETSc.Options dict should be imported and modified
+(see example below).</p></li>
+<li><p>To use the petsc with MPI parallelization (PCMPI), the script
+mpi4py needs to be installed, and the script should be launch in
+command line using mpiexec. For instance:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mpiexec</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4</span> <span class="n">python</span> <span class="n">petsc_examples</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">mpi_linear_solver_server</span> <span class="o">-</span><span class="n">ksp_type</span> <span class="n">cg</span> <span class="o">-</span><span class="n">pc_type</span> <span class="n">bjacobi</span>
+</pre></div>
+</div>
+<p>A performance gain may be observed for very large problems, but
+this method should be avoid for problem with moderate size.</p>
+</li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use the scipy cg solver without preconditioner</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">set_solver</span><span class="p">(</span><span class="s1">'cg'</span><span class="p">,</span> <span class="n">precond</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use the petsc cg solver with jacobi preconditioner and modify</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the rtol default parameter.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">set_solver</span><span class="p">(</span><span class="s1">'petsc'</span><span class="p">,</span> <span class="n">solver_type</span><span class="o">=</span><span class="s1">'cg'</span><span class="p">,</span> <span class="n">pc_type</span><span class="o">=</span><span class="s1">'jacobi'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">petsc4py.PETSc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Options</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">petsc_opt</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">petsc_opt</span><span class="p">[</span><span class="s1">'ksp_rtol'</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e-4</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use the MUMPS direct solver with petsc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">set_solver</span><span class="p">(</span><span class="s1">'petsc'</span><span class="p">,</span> <span class="n">solver_type</span><span class="o">=</span><span class="s1">'preonly'</span><span class="p">,</span> <span class="n">pc_type</span><span class="o">=</span><span class="s1">'lu'</span><span class="p">,</span> <span class="n">pc_factor_mat_solver_type</span><span class="o">=</span><span class="s1">'mumps'</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

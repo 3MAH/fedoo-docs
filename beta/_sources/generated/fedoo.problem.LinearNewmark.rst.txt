@@ -1,0 +1,93 @@
+﻿fedoo.problem.LinearNewmark
+===========================
+
+.. currentmodule:: fedoo.problem
+
+.. autoclass:: LinearNewmark
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         LinearNewmark.GetElasticEnergy
+         LinearNewmark.GetNodalElasticEnergy
+         LinearNewmark.add_global_dof
+         LinearNewmark.add_output
+         LinearNewmark.apply_boundary_conditions
+         LinearNewmark.change_assembly
+         LinearNewmark.get_A
+         LinearNewmark.get_B
+         LinearNewmark.get_D
+         LinearNewmark.get_X
+         LinearNewmark.get_acceleration
+         LinearNewmark.get_active
+         LinearNewmark.get_all
+         LinearNewmark.get_disp
+         LinearNewmark.get_dof_solution
+         LinearNewmark.get_elastic_energy
+         LinearNewmark.get_ext_forces
+         LinearNewmark.get_kinetic_energy
+         LinearNewmark.get_nodal_elastic_energy
+         LinearNewmark.get_results
+         LinearNewmark.get_rot
+         LinearNewmark.get_velocity
+         LinearNewmark.init_bc_start_value
+         LinearNewmark.initialize
+         LinearNewmark.invalidate_factorization
+         LinearNewmark.make_active
+         LinearNewmark.reset
+         LinearNewmark.save_results
+         LinearNewmark.set_A
+         LinearNewmark.set_B
+         LinearNewmark.set_D
+         LinearNewmark.set_X
+         LinearNewmark.set_active
+         LinearNewmark.set_dof_solution
+         LinearNewmark.set_initial_acceleration
+         LinearNewmark.set_initial_displacement
+         LinearNewmark.set_initial_velocity
+         LinearNewmark.set_reuse_factorization
+         LinearNewmark.set_solver
+         LinearNewmark.set_time_integrator
+         LinearNewmark.solve
+         LinearNewmark.solve_history
+         LinearNewmark.solve_time_increment
+         LinearNewmark.update
+         LinearNewmark.update_boundary_conditions
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         LinearNewmark.active
+         LinearNewmark.assembly
+         LinearNewmark.global_dof
+         LinearNewmark.is_dynamic
+         LinearNewmark.n_dof
+         LinearNewmark.n_global_dof
+         LinearNewmark.n_node_dof
+         LinearNewmark.name
+         LinearNewmark.results
+         LinearNewmark.solver
+         LinearNewmark.space
+         LinearNewmark.time_integrator
+         LinearNewmark.bc
+  
+  

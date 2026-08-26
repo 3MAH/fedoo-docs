@@ -1,0 +1,54 @@
+﻿fedoo.weakform.Inertia
+======================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: Inertia
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         Inertia.get_all
+         Inertia.get_dissipation
+         Inertia.get_storage
+         Inertia.get_weak_equation
+         Inertia.initialize
+         Inertia.iter_leaf
+         Inertia.reset
+         Inertia.set_damping
+         Inertia.set_dissipation
+         Inertia.set_inertia
+         Inertia.set_start
+         Inertia.set_storage
+         Inertia.sum
+         Inertia.to_start
+         Inertia.update
+         Inertia.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         Inertia.name
+         Inertia.nvar
+         Inertia.space
+  
+  

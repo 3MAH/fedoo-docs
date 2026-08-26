@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heterogeneous Material: Inclusion in a Matrix under Thermal Loading &mdash; Fedoo 1.0.0b1 (beta)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Compression of a tube using 2D axisymmetric model" href="tube_compression.html" />
+    <link rel="prev" title="Finite-strain Neo-Hookean cantilever (rigid cap)" href="neohookean_cantilever.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01-simple/index.html">Simple examples to start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Advanced problems</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="3D_periodic_BC_off_axis.html">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html">Composite double-cantilever beam with a cohesive interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#geometry-and-discretization">Geometry and discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#mesh-the-two-arms">Mesh the two arms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#construct-the-cohesive-interface">Construct the cohesive interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#constitutive-laws-and-assemblies">Constitutive laws and assemblies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#problem-and-boundary-conditions">Problem and boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#incremental-nonlinear-solution">Incremental nonlinear solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#cohesive-zone-response">Cohesive-zone response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#plot-the-deformed-dcb">Plot the deformed DCB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="neohookean_cantilever.html">Finite-strain Neo-Hookean cantilever (rigid cap)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geometry-and-mesh">Geometry and Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modeling-space-and-field-definitions">Modeling Space and Field Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constitutive-laws-and-assembly">Constitutive Laws and Assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#problem-definition-and-boundary-conditions">Problem Definition and Boundary Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solving-and-post-treatment">Solving and Post-Treatment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tube_compression.html">Compression of a tube using 2D axisymmetric model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Advanced problems</a></li>
+      <li class="breadcrumb-item active">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/03-advanced/thermal_loading.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-03-advanced-thermal-loading-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="heterogeneous-material-inclusion-in-a-matrix-under-thermal-loading">
+<span id="sphx-glr-examples-03-advanced-thermal-loading-py"></span><h1>Heterogeneous Material: Inclusion in a Matrix under Thermal Loading<a class="headerlink" href="#heterogeneous-material-inclusion-in-a-matrix-under-thermal-loading" title="Link to this heading"></a></h1>
+<p>This example demonstrates how to model a composite material consisting of a
+disk-shaped inclusion embedded within a matrix. It utilizes the
+<cite>Heterogeneous</cite> constitutive law to manage different material behaviors
+(Elastic and Elastoplastic) within a single Assembly.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+</section>
+<section id="geometry-and-mesh">
+<h1>Geometry and Mesh<a class="headerlink" href="#geometry-and-mesh" title="Link to this heading"></a></h1>
+<p>First, we generate a mesh for the matrix (a plate with a hole) and a mesh
+for the inclusion (a disk). Both meshes are then merged to create a
+continuous domain.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matrix: plate with a central hole</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hole_plate_mesh</span><span class="p">(</span>
+    <span class="n">nr</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Domain"</span>
+<span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"matrix"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="c1"># Inclusion: disk mesh fitting the hole</span>
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"inclusion"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="c1"># Glue the inclusion to the matrix</span>
+<span class="c1"># We merge nodes at the interface (hole_edge and boundary of the disk)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span> <span class="o">+</span> <span class="n">mesh_disk</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">merge_nodes</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"hole_edge"</span><span class="p">],</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"boundary"</span><span class="p">]])</span>
+</pre></div>
+</div>
+</section>
+<section id="modeling-space-and-field-definitions">
+<h1>Modeling Space and Field Definitions<a class="headerlink" href="#modeling-space-and-field-definitions" title="Link to this heading"></a></h1>
+<p>We define a 2D modeling space with a plane stress assumption.
+A custom temperature field ‘Temp’ is added to the space.
+This field is automatically detected by the Simcoon constituve laws.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dstress"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"Temp"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="constitutive-laws-and-assembly">
+<h1>Constitutive Laws and Assembly<a class="headerlink" href="#constitutive-laws-and-assembly" title="Link to this heading"></a></h1>
+<p>We define two distinct materials using the Simcoon interface:
+1. An isotropic elastic material for the matrix.
+2. An isotropic elastoplastic material (EPICP) for the inclusion.
+Both are combined into a single <cite>Heterogeneous</cite> constitutive law.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matrix material: Elastic Isotropic with Thermal Expansion</span>
+<span class="n">props_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="mf">50e3</span><span class="p">,</span>  <span class="c1"># Young's Modulus (E)</span>
+        <span class="mf">0.3</span><span class="p">,</span>  <span class="c1"># Poisson's ratio (nu)</span>
+        <span class="mf">1e-5</span><span class="p">,</span>  <span class="c1"># Coefficient of thermal expansion</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">mat_matrix</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"ELISO"</span><span class="p">,</span> <span class="n">props_matrix</span><span class="p">)</span>
+
+<span class="c1"># Inclusion material: Elastoplastic with Power Law Hardening</span>
+<span class="n">props_inclusion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="mf">200e3</span><span class="p">,</span>  <span class="c1"># E</span>
+        <span class="mf">0.3</span><span class="p">,</span>  <span class="c1"># nu</span>
+        <span class="mf">1e-3</span><span class="p">,</span>  <span class="c1"># Thermal expansion</span>
+        <span class="mi">200</span><span class="p">,</span>  <span class="c1"># Yield stress</span>
+        <span class="mi">1000</span><span class="p">,</span>  <span class="c1"># Hardening power law coefficient</span>
+        <span class="mf">0.3</span><span class="p">,</span>  <span class="c1"># Hardening power law exponent</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">mat_inclusion</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props_inclusion</span><span class="p">)</span>
+
+<span class="c1"># Define the Heterogeneous material mapping element sets to laws</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Heterogeneous</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">mat_matrix</span><span class="p">,</span> <span class="n">mat_inclusion</span><span class="p">),</span> <span class="p">(</span><span class="s2">"matrix"</span><span class="p">,</span> <span class="s2">"inclusion"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Build the weak form and the global assembly</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="problem-definition-and-boundary-conditions">
+<h1>Problem Definition and Boundary Conditions<a class="headerlink" href="#problem-definition-and-boundary-conditions" title="Link to this heading"></a></h1>
+<p>A non-linear static problem is defined to account for the plastic behavior
+of the inclusion. We apply Dirichlet conditions for displacement (clamped edges)
+and a time-dependent temperature evolution.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Displacement"</span><span class="p">)</span>
+
+<span class="c1"># Boundary conditions: Clamp all exterior nodes</span>
+
+<span class="n">nodes_ext</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="n">elset</span><span class="p">]</span> <span class="k">for</span> <span class="n">elset</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">,</span> <span class="s2">"bottom"</span><span class="p">,</span> <span class="s2">"top"</span><span class="p">]]</span>
+<span class="p">)</span>  <span class="c1"># some nodes are duplicated in nodes_ext, but this is well managed by fedoo</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_ext</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="c1"># Thermal loading: Temperature increases then decreases over time</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">time_evolution</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="k">else</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span>
+
+
+<span class="n">all_nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_nodes</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">all_nodes</span><span class="p">,</span> <span class="s2">"Temp"</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="n">time_func</span><span class="o">=</span><span class="n">time_evolution</span><span class="p">)</span>
+
+<span class="c1"># Define output results for the whole assembly</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"results"</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Temp"</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="solving-and-post-treatment">
+<h1>Solving and Post-Treatment<a class="headerlink" href="#solving-and-post-treatment" title="Link to this heading"></a></h1>
+<p>The problem is solved over a predefined time range. Finally, we plot the
+Von Mises stress distribution across the entire heterogeneous domain.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">tmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Plotting the Von Mises stress at the last time increment</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"vm"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_thermal_loading_001.png" srcset="../../_images/sphx_glr_thermal_loading_001.png" alt="thermal loading" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.10000 - dt 0.10000 - NR iter: 1 - Err: 0.00000
+Iter 2 - Time: 0.20000 - dt 0.12500 - NR iter: 1 - Err: 0.00000
+Iter 3 - Time: 0.30000 - dt 0.12500 - NR iter: 1 - Err: 0.00047
+Iter 4 - Time: 0.40000 - dt 0.12500 - NR iter: 1 - Err: 0.00045
+Iter 5 - Time: 0.50000 - dt 0.12500 - NR iter: 1 - Err: 0.00041
+Iter 6 - Time: 0.60000 - dt 0.12500 - NR iter: 1 - Err: 0.00036
+Iter 7 - Time: 0.70000 - dt 0.12500 - NR iter: 1 - Err: 0.00032
+Iter 8 - Time: 0.80000 - dt 0.12500 - NR iter: 1 - Err: 0.00027
+Iter 9 - Time: 0.90000 - dt 0.12500 - NR iter: 1 - Err: 0.00023
+Iter 10 - Time: 1.00000 - dt 0.12500 - NR iter: 1 - Err: 0.00020
+Iter 11 - Time: 1.10000 - dt 0.12500 - NR iter: 1 - Err: 0.00017
+Iter 12 - Time: 1.20000 - dt 0.12500 - NR iter: 1 - Err: 0.00141
+Iter 13 - Time: 1.30000 - dt 0.12500 - NR iter: 1 - Err: 0.00118
+Iter 14 - Time: 1.40000 - dt 0.12500 - NR iter: 1 - Err: 0.00099
+Iter 15 - Time: 1.50000 - dt 0.12500 - NR iter: 1 - Err: 0.00083
+Iter 16 - Time: 1.60000 - dt 0.12500 - NR iter: 1 - Err: 0.00069
+Iter 17 - Time: 1.70000 - dt 0.12500 - NR iter: 1 - Err: 0.00058
+Iter 18 - Time: 1.80000 - dt 0.12500 - NR iter: 1 - Err: 0.00048
+Iter 19 - Time: 1.90000 - dt 0.12500 - NR iter: 1 - Err: 0.00040
+Iter 20 - Time: 2.00000 - dt 0.12500 - NR iter: 1 - Err: 0.00033
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.516 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-thermal-loading-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/2012afe031c603a4f5e47e0ed5798359/thermal_loading.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">thermal_loading.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/0f2c602313bc80f362c891cfbbaa13bd/thermal_loading.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">thermal_loading.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/133c8dec4ba8e61a24ccb5c8403b183f/thermal_loading.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">thermal_loading.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="neohookean_cantilever.html" class="btn btn-neutral float-left" title="Finite-strain Neo-Hookean cantilever (rigid cap)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tube_compression.html" class="btn btn-neutral float-right" title="Compression of a tube using 2D axisymmetric model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

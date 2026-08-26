@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.constraint.DistributedForce &mdash; Fedoo 1.0.0b1 (beta)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.constraint.DistributedForce.as_neumann" href="fedoo.constraint.DistributedForce.as_neumann.html" />
+    <link rel="prev" title="fedoo.MPC.name" href="fedoo.MPC.name.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fedoo.ListBC.html">fedoo.ListBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.core.BoundaryCondition.html">fedoo.core.BoundaryCondition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.MPC.html">fedoo.MPC</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.constraint.DistributedForce</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.as_neumann.html">fedoo.constraint.DistributedForce.as_neumann</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.assemble_global_mat.html">fedoo.constraint.DistributedForce.assemble_global_mat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.compute_elementary_operators.html">fedoo.constraint.DistributedForce.compute_elementary_operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.convert_data.html">fedoo.constraint.DistributedForce.convert_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.copy.html">fedoo.constraint.DistributedForce.copy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.create.html">fedoo.constraint.DistributedForce.create</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.delete_global_mat.html">fedoo.constraint.DistributedForce.delete_global_mat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.delete_memory.html">fedoo.constraint.DistributedForce.delete_memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.get_all.html">fedoo.constraint.DistributedForce.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.get_change_of_basis_mat.html">fedoo.constraint.DistributedForce.get_change_of_basis_mat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.get_element_results.html">fedoo.constraint.DistributedForce.get_element_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.get_global_matrix.html">fedoo.constraint.DistributedForce.get_global_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.get_global_vector.html">fedoo.constraint.DistributedForce.get_global_vector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.get_gp_results.html">fedoo.constraint.DistributedForce.get_gp_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.get_grad_disp.html">fedoo.constraint.DistributedForce.get_grad_disp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.get_int_forces.html">fedoo.constraint.DistributedForce.get_int_forces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.get_node_results.html">fedoo.constraint.DistributedForce.get_node_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.get_strain.html">fedoo.constraint.DistributedForce.get_strain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.initialize.html">fedoo.constraint.DistributedForce.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.integrate_field.html">fedoo.constraint.DistributedForce.integrate_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.iter_leaf.html">fedoo.constraint.DistributedForce.iter_leaf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.operator_apply.html">fedoo.constraint.DistributedForce.operator_apply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.register_global_dofs.html">fedoo.constraint.DistributedForce.register_global_dofs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.reset.html">fedoo.constraint.DistributedForce.reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.set_disp.html">fedoo.constraint.DistributedForce.set_disp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.set_start.html">fedoo.constraint.DistributedForce.set_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.sum.html">fedoo.constraint.DistributedForce.sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.to_start.html">fedoo.constraint.DistributedForce.to_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.update.html">fedoo.constraint.DistributedForce.update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.n_gauss_points.html">fedoo.constraint.DistributedForce.n_gauss_points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.name.html">fedoo.constraint.DistributedForce.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.space.html">fedoo.constraint.DistributedForce.space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.state_variables.html">fedoo.constraint.DistributedForce.state_variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.sv.html">fedoo.constraint.DistributedForce.sv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.current.html">fedoo.constraint.DistributedForce.current</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.DistributedForce.associated_assembly_sum.html">fedoo.constraint.DistributedForce.associated_assembly_sum</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.PeriodicBC.html">fedoo.constraint.PeriodicBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Contact.html">fedoo.constraint.Contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SelfContact.html">fedoo.constraint.SelfContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.IPCContact.html">fedoo.constraint.IPCContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.html">fedoo.constraint.IPCSelfContact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+      <li class="breadcrumb-item active">fedoo.constraint.DistributedForce</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.constraint.DistributedForce.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-constraint-distributedforce">
+<h1>fedoo.constraint.DistributedForce<a class="headerlink" href="#fedoo-constraint-distributedforce" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fedoo.constraint.DistributedForce">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DistributedForce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><span class="pre">Mesh</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">np.typing.ArrayLike</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.typing.ArrayLike</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.DistributedForce" title="Link to this definition"></a></dt>
+<dd><p>Distributed force (e.g gravity load).</p>
+<p>Assembly object that define a distributed force with fixed orientation.
+The physical nature of the force depend on the geometry dimension.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>2d problem with 1d mesh: line load for beams or
+surface force/stress for 2d plane element</p></li>
+<li><p>2d problem with 2d mesh: volume force</p></li>
+<li><p>3d problem with 1d mesh: line load</p></li>
+<li><p>3d problem with 2d mesh: surface force or stress</p></li>
+<li><p>3d porblem with 3d mesh: volume force</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><em>Mesh</em></a>) – Mesh over which the force will be appplied.</p></li>
+<li><p><strong>force</strong> (<em>list</em><em> or </em><em>array with len</em><em>(</em><em>force</em><em>)</em><em>==3</em>) – force[i] is the force along the ith dimension.
+if force[i] is an array, it is interpreted
+as gauss point, element or node values depending
+on the array dimension. In case the value type
+is confusing, gauss points will be choosen.</p></li>
+<li><p><strong>initial_force</strong> (<em>list</em><em> or </em><em>array with len</em><em>(</em><em>force</em><em>)</em><em>==3</em>) – Initial value of the force.
+Used only to define the initial force condition
+for non linear problems.</p></li>
+<li><p><strong>nlgeom</strong> (<em>bool</em><em>, </em><em>str in {'UL'</em><em>, </em><em>'TL'}</em>) – If True, the geometrical non linearities are activate when used in the
+context of NonLinearProblems (default updated lagrangian method)
+such as <code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem.NonLinearStatic</span></code> or
+<a class="reference internal" href="fedoo.problem.NonLinearNewmark.html#fedoo.problem.NonLinearNewmark" title="fedoo.problem.NonLinearNewmark"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem.NonLinearNewmark</span></code></a>
+If nlgeom == ‘UL’ the updated lagrangian method is used (same as True)
+If nlgeom == ‘TL’ the total lagrangian method is used</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the created assembly.</p></li>
+<li><p><strong>time_func</strong> (<em>callable</em><em>, </em><em>optional</em>) – Function that gives the temporal evolution of the distributed load when
+the assembly is converted to a Neumann boundary condition. By default,
+a linear evolution is considered.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>DistributedForce is an assembly and can still be combined directly with
+another assembly, for instance
+<code class="docutils literal notranslate"><span class="pre">fd.problem.Linear(solid_assembly</span> <span class="pre">+</span> <span class="pre">volume_force)</span></code>. It can also be used
+as an external Neumann boundary condition with <code class="docutils literal notranslate"><span class="pre">pb.bc.add(volume_force)</span></code>
+or <code class="docutils literal notranslate"><span class="pre">pb.bc.add(volume_force.as_neumann())</span></code>. This form is useful for
+nonlinear problems because the equivalent nodal force is included in the
+external load vector and in residual normalization. When geometrical
+nonlinearities are active, the load is updated during Newton iterations.</p>
+<p class="rubric">Example</p>
+<p>Apply a volume force on a cube.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s1">'3D'</span><span class="p">)</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">200e3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">()</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+<span class="n">solid_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+<span class="n">volume_force</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">DistributedForce</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">],</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># define a problem from the solid and volume-force assemblies</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">solid_assembly</span><span class="o">+</span><span class="n">volume_force</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="s1">'bottom'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="c1"># or add the same force as an external Neumann BC</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">volume_force</span><span class="p">)</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span><span class="s1">'Stress'</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">'Stress'</span><span class="p">,</span> <span class="s1">'XX'</span><span class="p">,</span> <span class="s1">'Node'</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.constraint.DistributedForce.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><span class="pre">Mesh</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">np.typing.ArrayLike</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.typing.ArrayLike</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.DistributedForce.__init__" title="Link to this definition"></a></dt>
+<dd><p><strong>Methods</strong></p>
+<blockquote>
+<div><table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.as_neumann.html#fedoo.constraint.DistributedForce.as_neumann" title="fedoo.constraint.DistributedForce.as_neumann"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.as_neumann</span></code></a>([name, time_func])</p></td>
+<td><p>Return this distributed load as a Neumann boundary condition.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.assemble_global_mat.html#fedoo.constraint.DistributedForce.assemble_global_mat" title="fedoo.constraint.DistributedForce.assemble_global_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.assemble_global_mat</span></code></a>([compute])</p></td>
+<td><p>Compute the global matrix and global vector related to the assembly if compute = 'all', compute the global matrix and vector if compute = 'matrix', compute only the matrix if compute = 'vector', compute only the vector if compute = 'none', compute nothing</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.compute_elementary_operators.html#fedoo.constraint.DistributedForce.compute_elementary_operators" title="fedoo.constraint.DistributedForce.compute_elementary_operators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.compute_elementary_operators</span></code></a>([...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.convert_data.html#fedoo.constraint.DistributedForce.convert_data" title="fedoo.constraint.DistributedForce.convert_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.convert_data</span></code></a>(data[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.copy.html#fedoo.constraint.DistributedForce.copy" title="fedoo.constraint.DistributedForce.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.copy</span></code></a>([new_id])</p></td>
+<td><p>Return a raw copy of the assembly without keeping current state (internal variable).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.create.html#fedoo.constraint.DistributedForce.create" title="fedoo.constraint.DistributedForce.create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.create</span></code></a>(weakform[, mesh, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.delete_global_mat.html#fedoo.constraint.DistributedForce.delete_global_mat" title="fedoo.constraint.DistributedForce.delete_global_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.delete_global_mat</span></code></a>()</p></td>
+<td><p>Delete Global Matrix and Global Vector related to the assembly.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.delete_memory.html#fedoo.constraint.DistributedForce.delete_memory" title="fedoo.constraint.DistributedForce.delete_memory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.delete_memory</span></code></a>()</p></td>
+<td><p>Static method of the Assembly class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.get_all.html#fedoo.constraint.DistributedForce.get_all" title="fedoo.constraint.DistributedForce.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.get_all</span></code></a>()</p></td>
+<td><p>Return a dict with all the known Assembly (with a name).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.get_change_of_basis_mat.html#fedoo.constraint.DistributedForce.get_change_of_basis_mat" title="fedoo.constraint.DistributedForce.get_change_of_basis_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.get_change_of_basis_mat</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.get_element_results.html#fedoo.constraint.DistributedForce.get_element_results" title="fedoo.constraint.DistributedForce.get_element_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.get_element_results</span></code></a>(operator, U)</p></td>
+<td><p>Return some element results based on the finite element discretization of a differential operator on a mesh being given the dof results and the type of elements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.get_global_matrix.html#fedoo.constraint.DistributedForce.get_global_matrix" title="fedoo.constraint.DistributedForce.get_global_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.get_global_matrix</span></code></a>()</p></td>
+<td><p>Get the last computed global matrix.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.get_global_vector.html#fedoo.constraint.DistributedForce.get_global_vector" title="fedoo.constraint.DistributedForce.get_global_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.get_global_vector</span></code></a>()</p></td>
+<td><p>Get the last computed global vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.get_gp_results.html#fedoo.constraint.DistributedForce.get_gp_results" title="fedoo.constraint.DistributedForce.get_gp_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.get_gp_results</span></code></a>(operator, U)</p></td>
+<td><p>Return some results at element Gauss points based on the finite element discretization of a differential operator on a mesh being given the dof results and the type of elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.get_grad_disp.html#fedoo.constraint.DistributedForce.get_grad_disp" title="fedoo.constraint.DistributedForce.get_grad_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.get_grad_disp</span></code></a>(U[, Type])</p></td>
+<td><p>Return the Gradient Tensor of a vector (generally displacement given by Problem.get_DofSolution('all') as a list of list of numpy array The total displacement field U has to be given as a flatten numpy array see get_node_results and get_element_resultss</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.get_int_forces.html#fedoo.constraint.DistributedForce.get_int_forces" title="fedoo.constraint.DistributedForce.get_int_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.get_int_forces</span></code></a>(U[, ...])</p></td>
+<td><p>Only available for 2 nodes beam element Return the element internal Forces and moments related to a specific assembly considering the DOF solution given in U.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.get_node_results.html#fedoo.constraint.DistributedForce.get_node_results" title="fedoo.constraint.DistributedForce.get_node_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.get_node_results</span></code></a>(operator, U)</p></td>
+<td><p>Return some node results based on the finite element discretization of a differential operator on a mesh being given the dof results and the type of elements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.get_strain.html#fedoo.constraint.DistributedForce.get_strain" title="fedoo.constraint.DistributedForce.get_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.get_strain</span></code></a>(U[, Type, nlgeom])</p></td>
+<td><p>Not a static method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.initialize.html#fedoo.constraint.DistributedForce.initialize" title="fedoo.constraint.DistributedForce.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.initialize</span></code></a>(pb)</p></td>
+<td><p>Initialize the associated weak form and assemble the global matrix with the elastic matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.integrate_field.html#fedoo.constraint.DistributedForce.integrate_field" title="fedoo.constraint.DistributedForce.integrate_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.integrate_field</span></code></a>(field[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.iter_leaf.html#fedoo.constraint.DistributedForce.iter_leaf" title="fedoo.constraint.DistributedForce.iter_leaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.iter_leaf</span></code></a>()</p></td>
+<td><p>Iterate over the leaf assemblies contained in this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.operator_apply.html#fedoo.constraint.DistributedForce.operator_apply" title="fedoo.constraint.DistributedForce.operator_apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.operator_apply</span></code></a>(wf, nodal_vector)</p></td>
+<td><p>Apply a discrete nodal vector to the trial space of a bilinear operator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.register_global_dofs.html#fedoo.constraint.DistributedForce.register_global_dofs" title="fedoo.constraint.DistributedForce.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.register_global_dofs</span></code></a>(pb)</p></td>
+<td><p>Register global DOFs required by the assembly on a problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.reset.html#fedoo.constraint.DistributedForce.reset" title="fedoo.constraint.DistributedForce.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.reset</span></code></a>()</p></td>
+<td><p>reset the assembly to it's initial state.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.set_disp.html#fedoo.constraint.DistributedForce.set_disp" title="fedoo.constraint.DistributedForce.set_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.set_disp</span></code></a>(disp)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.set_start.html#fedoo.constraint.DistributedForce.set_start" title="fedoo.constraint.DistributedForce.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.set_start</span></code></a>(pb[, t_fact])</p></td>
+<td><p>Start a new time increment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.sum.html#fedoo.constraint.DistributedForce.sum" title="fedoo.constraint.DistributedForce.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.sum</span></code></a>(*listAssembly[, name])</p></td>
+<td><p>Return a new assembly which is a sum of N assembly.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.to_start.html#fedoo.constraint.DistributedForce.to_start" title="fedoo.constraint.DistributedForce.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.to_start</span></code></a>(pb)</p></td>
+<td><p>Reset the assembly to the beginning of the time iteration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.update.html#fedoo.constraint.DistributedForce.update" title="fedoo.constraint.DistributedForce.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.update</span></code></a>(pb[, compute])</p></td>
+<td><p>Update the associated weak form and assemble the global matrix :param - pb: a Problem object containing the Dof values</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.n_gauss_points.html#fedoo.constraint.DistributedForce.n_gauss_points" title="fedoo.constraint.DistributedForce.n_gauss_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.n_gauss_points</span></code></a></p></td>
+<td><p>returns: The total number of integration points (ie Gauss points) associated to the assembly.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.name.html#fedoo.constraint.DistributedForce.name" title="fedoo.constraint.DistributedForce.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.name</span></code></a></p></td>
+<td><p>Name of the assembly if defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.space.html#fedoo.constraint.DistributedForce.space" title="fedoo.constraint.DistributedForce.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.space</span></code></a></p></td>
+<td><p>Modeling space associated to the assembly.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.state_variables.html#fedoo.constraint.DistributedForce.state_variables" title="fedoo.constraint.DistributedForce.state_variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.state_variables</span></code></a></p></td>
+<td><p>Alias for the sv dict containing the state variables.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.sv.html#fedoo.constraint.DistributedForce.sv" title="fedoo.constraint.DistributedForce.sv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.sv</span></code></a></p></td>
+<td><p>Dictionary of state variables associated to the current problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.current.html#fedoo.constraint.DistributedForce.current" title="fedoo.constraint.DistributedForce.current"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.current</span></code></a></p></td>
+<td><p>Assembly associated to the mesh of the deformed geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.DistributedForce.associated_assembly_sum.html#fedoo.constraint.DistributedForce.associated_assembly_sum" title="fedoo.constraint.DistributedForce.associated_assembly_sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DistributedForce.associated_assembly_sum</span></code></a></p></td>
+<td><p>AssemblySum object that contains the assembly.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.MPC.name.html" class="btn btn-neutral float-left" title="fedoo.MPC.name" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.constraint.DistributedForce.as_neumann.html" class="btn btn-neutral float-right" title="fedoo.constraint.DistributedForce.as_neumann" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

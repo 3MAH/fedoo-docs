@@ -1,0 +1,55 @@
+﻿fedoo.weakform.BeamEquilibrium
+==============================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: BeamEquilibrium
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamEquilibrium.get_all
+         BeamEquilibrium.get_dissipation
+         BeamEquilibrium.get_storage
+         BeamEquilibrium.get_weak_equation
+         BeamEquilibrium.initialize
+         BeamEquilibrium.iter_leaf
+         BeamEquilibrium.reset
+         BeamEquilibrium.set_damping
+         BeamEquilibrium.set_dissipation
+         BeamEquilibrium.set_inertia
+         BeamEquilibrium.set_start
+         BeamEquilibrium.set_storage
+         BeamEquilibrium.sum
+         BeamEquilibrium.to_start
+         BeamEquilibrium.update
+         BeamEquilibrium.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamEquilibrium.name
+         BeamEquilibrium.nvar
+         BeamEquilibrium.space
+         BeamEquilibrium.nlgeom
+  
+  

@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.time.GeneralizedAlpha &mdash; Fedoo 1.0.0b1 (beta)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.time.GeneralizedAlpha.compile_assembly" href="fedoo.time.GeneralizedAlpha.compile_assembly.html" />
+    <link rel="prev" title="fedoo.time.ExplicitNewmark" href="fedoo.time.ExplicitNewmark.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fedoo.time.BackwardEuler.html">fedoo.time.BackwardEuler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.time.CentralDifference.html">fedoo.time.CentralDifference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.html">fedoo.time.ExplicitGeneralizedAlpha</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.time.ExplicitNewmark.html">fedoo.time.ExplicitNewmark</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.time.GeneralizedAlpha</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.GeneralizedAlpha.compile_assembly.html">fedoo.time.GeneralizedAlpha.compile_assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.GeneralizedAlpha.compile_weakform.html">fedoo.time.GeneralizedAlpha.compile_weakform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.GeneralizedAlpha.evolution.html">fedoo.time.GeneralizedAlpha.evolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.GeneralizedAlpha.is_explicit.html">fedoo.time.GeneralizedAlpha.is_explicit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.time.Newmark.html">fedoo.time.Newmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.time.RayleighDamping.html">fedoo.time.RayleighDamping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.time.TimeEvolution.html">fedoo.time.TimeEvolution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+      <li class="breadcrumb-item active">fedoo.time.GeneralizedAlpha</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.time.GeneralizedAlpha.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-time-generalizedalpha">
+<h1>fedoo.time.GeneralizedAlpha<a class="headerlink" href="#fedoo-time-generalizedalpha" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fedoo.time.GeneralizedAlpha">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GeneralizedAlpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.time.GeneralizedAlpha" title="Link to this definition"></a></dt>
+<dd><p>Generalized-alpha time integrator for second-order evolutions.</p>
+<p>The internal force, stiffness, and damping are evaluated at the generalized
+mid-points <code class="docutils literal notranslate"><span class="pre">t_{n+1-alpha_f}</span></code> and the inertia at <code class="docutils literal notranslate"><span class="pre">t_{n+1-alpha_m}</span></code>. The
+classical endpoint Newmark scheme is the <code class="docutils literal notranslate"><span class="pre">alpha_m</span> <span class="pre">=</span> <span class="pre">alpha_f</span> <span class="pre">=</span> <span class="pre">0</span></code>
+specialization (see <a class="reference internal" href="fedoo.time.Newmark.html#fedoo.time.Newmark" title="fedoo.time.Newmark"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.time.Newmark</span></code></a>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>External loads (Neumann/Dirichlet) are applied by the problem at the
+step endpoint <code class="docutils literal notranslate"><span class="pre">t_{n+1}</span></code>, not at <code class="docutils literal notranslate"><span class="pre">t_{n+1-alpha_f}</span></code>. For
+<code class="docutils literal notranslate"><span class="pre">alpha_f</span> <span class="pre">!=</span> <span class="pre">0</span></code> combined with <strong>time-varying</strong> loads this leaves an
+<code class="docutils literal notranslate"><span class="pre">O(alpha_f*dt)</span></code> inconsistency in the forced response and degrades the
+designed spectral damping. With <code class="docutils literal notranslate"><span class="pre">alpha_f</span> <span class="pre">=</span> <span class="pre">0</span></code> (Newmark) or with loads
+that are constant over the step the scheme is consistent. Sampling the
+load factor at the alpha point is a known follow-up.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.time.GeneralizedAlpha.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.time.GeneralizedAlpha.__init__" title="Link to this definition"></a></dt>
+<dd><p><strong>Methods</strong></p>
+<blockquote>
+<div><table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.time.GeneralizedAlpha.compile_assembly.html#fedoo.time.GeneralizedAlpha.compile_assembly" title="fedoo.time.GeneralizedAlpha.compile_assembly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneralizedAlpha.compile_assembly</span></code></a>(assembly)</p></td>
+<td><p>Compile compatible weakforms in an assembly tree in place.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.time.GeneralizedAlpha.compile_weakform.html#fedoo.time.GeneralizedAlpha.compile_weakform" title="fedoo.time.GeneralizedAlpha.compile_weakform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneralizedAlpha.compile_weakform</span></code></a>(weakform)</p></td>
+<td><p>Return a time-integrated version of <code class="docutils literal notranslate"><span class="pre">weakform</span></code> when applicable.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.time.GeneralizedAlpha.evolution.html#fedoo.time.GeneralizedAlpha.evolution" title="fedoo.time.GeneralizedAlpha.evolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneralizedAlpha.evolution</span></code></a></p></td>
+<td><p>TimeEvolution category handled by this integrator (set by subclasses).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.time.GeneralizedAlpha.is_explicit.html#fedoo.time.GeneralizedAlpha.is_explicit" title="fedoo.time.GeneralizedAlpha.is_explicit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneralizedAlpha.is_explicit</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.time.ExplicitNewmark.html" class="btn btn-neutral float-left" title="fedoo.time.ExplicitNewmark" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.time.GeneralizedAlpha.compile_assembly.html" class="btn btn-neutral float-right" title="fedoo.time.GeneralizedAlpha.compile_assembly" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

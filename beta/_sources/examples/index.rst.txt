@@ -1,0 +1,544 @@
+:orphan:
+
+Examples
+==================
+
+Below are examples illustrating fedoo's main features. 
+These examples are desgined to serve as tutorials. 
+In that sense, an effort is made to keep the scripts simple and executable with 
+a low computational cost. The meshes, tolerances and time increment used are coarse 
+and the result obtained may not be accurate. 
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Uses RigidBody with Newmark integration built into the assembly, solved by Fedoo&#x27;s standard NonLinear solver.">
+
+.. only:: html
+
+  .. image:: /examples/images/thumb/sphx_glr_rigid_body_bounce_ipc_thumb.gif
+    :alt:
+
+  :doc:`/examples/rigid_body_bounce_ipc`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sphere bouncing on a plane — NonLinear + IPC contact + Rayleigh damping.</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Convex hull of Stanford bunny (watertight). Demonstrates tumbling on impact with asymmetric geometry.">
+
+.. only:: html
+
+  .. image:: /examples/images/thumb/sphx_glr_rigid_body_bunny_bounce_thumb.gif
+    :alt:
+
+  :doc:`/examples/rigid_body_bunny_bounce`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Bunny bouncing on a plane — NonLinear + IPC contact.</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The cow mesh from PyVista is watertight (2903 nodes), decimated for speed. Full rotation via quaternion, rotation vectors (no gimbal lock).">
+
+.. only:: html
+
+  .. image:: /examples/images/thumb/sphx_glr_rigid_body_cow_bounce_thumb.gif
+    :alt:
+
+  :doc:`/examples/rigid_body_cow_bounce`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cow bouncing on a plane — NonLinear + IPC contact.</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A rigid sphere falls under gravity. Compared with z(t) = z0 - 0.5gt^2. Uses RigidBody + NonLinear (Fedoo&#x27;s standard solver).">
+
+.. only:: html
+
+  .. image:: /examples/images/thumb/sphx_glr_rigid_body_freefall_thumb.png
+    :alt:
+
+  :doc:`/examples/rigid_body_freefall`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid body free fall — validation with NonLinear solver.</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/rigid_body_bounce_ipc
+   /examples/rigid_body_bunny_bounce
+   /examples/rigid_body_cow_bounce
+   /examples/rigid_body_freefall
+
+Simple examples to start
+---------------------------
+
+This section contains several very simple examples that illustrate 
+the basics feature of fedoo, like how to create simple meshes, 
+apply basics boundary conditions and get the results.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="3 points bending of an I-Shape beam">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_I_shape_beam_bending_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/I_shape_beam_bending`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3 points bending of an I-Shape beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple example of a plate with hole in tension with 2D plane stress assumption.">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_Plate_with_hole_in_tension_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/Plate_with_hole_in_tension`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">2D plate with hole in tension</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Beam Lattice Structure using beam model with geometric nonlinearities">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_lattice_beam_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/lattice_beam`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Beam Lattice Structure using beam model with geometric nonlinearities</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Define and solve user equation">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_poison_eq_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/poison_eq`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Define and solve user equation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple canteleaver beam example using different kind of elements">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simpleBeamElementExample_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/simpleBeamElementExample`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Beam Element Canteleaver Beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Canteleaver Beam using 3D hexahedral elements">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simple_cantilever_beam_3D_model_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/simple_cantilever_beam_3D_model`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Canteleaver Beam using 3D hexahedral elements</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="3D Canteleaver Beam with geometric nonlinearities">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simple_cantilever_beam_3D_model_nlgeom_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/simple_cantilever_beam_3D_model_nlgeom`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3D Canteleaver Beam with geometric nonlinearities</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example that show how to use plate elements with a pressure load.">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_spherical_shell_compression_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/spherical_shell_compression`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Compression of a ping pong ball</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example performs a displacement-driven shear test on a unit cube using a finite-strain formulation. Several post-processing and visualization options are demonstrated, including:">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_visualization_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/visualization`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Visualization tutoral - Shear test of a cube</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Apply constraints
+-------------------------------
+
+This section illustrates on some examples the advanced constraints
+that can be applied in fedoo. 
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="2D periodic boundary condition">
+
+.. only:: html
+
+  .. image:: /examples/02-constraints/images/thumb/sphx_glr_Periodic_BC_2D_Plate_with_hole_thumb.png
+    :alt:
+
+  :doc:`/examples/02-constraints/Periodic_BC_2D_Plate_with_hole`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">2D periodic boundary condition</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates contact between a disk and a rectangle using the IPC (Incremental Potential Contact) barrier method. The disk is pressed into the rectangle and then unloaded.">
+
+.. only:: html
+
+  .. image:: /examples/02-constraints/images/thumb/sphx_glr_disk_rectangle_contact_thumb.png
+    :alt:
+
+  :doc:`/examples/02-constraints/disk_rectangle_contact`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Contact between a disk and a rectangle (IPC)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compare two ways of imposing a torsion on the right face of a cube:">
+
+.. only:: html
+
+  .. image:: /examples/02-constraints/images/thumb/sphx_glr_mean_rigid_motion_torsion_thumb.png
+    :alt:
+
+  :doc:`/examples/02-constraints/mean_rigid_motion_torsion`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Mean motion torsion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrate the use the pressure constraint for the simulation of a pipe under internal pressure and external pressure. The problem is treated in 2D with plane strain assumption.">
+
+.. only:: html
+
+  .. image:: /examples/02-constraints/images/thumb/sphx_glr_pressurized_pipe_thumb.png
+    :alt:
+
+  :doc:`/examples/02-constraints/pressurized_pipe`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pressure constraint</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Rigid tie constraint">
+
+.. only:: html
+
+  .. image:: /examples/02-constraints/images/thumb/sphx_glr_rigid_tie_thumb.png
+    :alt:
+
+  :doc:`/examples/02-constraints/rigid_tie`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid tie constraint</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+Advanced problems
+-----------------
+
+This section show some advanced capabilities of fedoo.
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The periodic mesh of the Gyriod has been generated with microgen. This example show how to define periodic boundary conditions and to load the structure with prescribed strain in local coordinate system. After that, the mean stress and mean strain results are extracted in local and global coordinate system.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_3D_periodic_BC_off_axis_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/3D_periodic_BC_off_axis`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The model consists of two composite arms separated by a zero-thickness cohesive interface. Cohesive elements are inserted only after the prescribed starter-crack length. The initially unconnected part of the two arms therefore represents the pre-crack.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_composite_DCB_test_3D_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/composite_DCB_test_3D`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Composite double-cantilever beam with a cohesive interface</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The key points are:     - define two separated mesh that share to the same node       list with different elements.     - create two separated Assembly that are combined in a single AssemblySum       object.     - extract/save results separatedly for each elm_type.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_multi_mesh_example_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/multi_mesh_example`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Very simple example with multiple element type.</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A slender, nearly-incompressible cylinder is clamped at its base and bent by a transverse load applied to a rigid cap tied to its top face. It is loaded well into the large-deflection, finite-strain regime (tip deflection of order the cylinder length, ~40 % local strain at the clamped base).">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_neohookean_cantilever_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/neohookean_cantilever`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Finite-strain Neo-Hookean cantilever (rigid cap)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_thermal_loading_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/thermal_loading`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This model uses self-contact, elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_tube_compression_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/tube_compression`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /examples/01-simple/index.rst
+   /examples/02-constraints/index.rst
+   /examples/03-advanced/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: examples_python.zip </examples/examples_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: examples_jupyter.zip </examples/examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

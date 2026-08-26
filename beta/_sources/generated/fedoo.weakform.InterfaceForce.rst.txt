@@ -1,0 +1,54 @@
+﻿fedoo.weakform.InterfaceForce
+=============================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: InterfaceForce
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         InterfaceForce.get_all
+         InterfaceForce.get_dissipation
+         InterfaceForce.get_storage
+         InterfaceForce.get_weak_equation
+         InterfaceForce.initialize
+         InterfaceForce.iter_leaf
+         InterfaceForce.reset
+         InterfaceForce.set_damping
+         InterfaceForce.set_dissipation
+         InterfaceForce.set_inertia
+         InterfaceForce.set_start
+         InterfaceForce.set_storage
+         InterfaceForce.sum
+         InterfaceForce.to_start
+         InterfaceForce.update
+         InterfaceForce.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         InterfaceForce.name
+         InterfaceForce.nvar
+         InterfaceForce.space
+  
+  
