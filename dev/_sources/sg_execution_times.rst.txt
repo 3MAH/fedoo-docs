@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**08:53.223** total execution time for 24 files **from all galleries**:
+**07:58.270** total execution time for 24 files **from all galleries**:
 
 .. container::
 
@@ -33,74 +33,74 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_03-advanced_tube_compression.py` (``../examples/03-advanced/tube_compression.py``)
-     - 02:39.995
+     - 02:19.864
      - 0.0
    * - :ref:`sphx_glr_examples_rigid_body_cow_bounce.py` (``../examples/rigid_body_cow_bounce.py``)
-     - 02:03.102
+     - 01:49.282
      - 0.0
    * - :ref:`sphx_glr_examples_rigid_body_bunny_bounce.py` (``../examples/rigid_body_bunny_bounce.py``)
-     - 01:42.958
+     - 01:31.212
      - 0.0
    * - :ref:`sphx_glr_examples_rigid_body_bounce_ipc.py` (``../examples/rigid_body_bounce_ipc.py``)
-     - 01:04.230
+     - 00:59.046
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_visualization.py` (``../examples/01-simple/visualization.py``)
-     - 00:19.528
+     - 00:19.043
      - 0.0
    * - :ref:`sphx_glr_examples_02-constraints_mean_rigid_motion_torsion.py` (``../examples/02-constraints/mean_rigid_motion_torsion.py``)
-     - 00:18.635
+     - 00:17.873
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_neohookean_cantilever.py` (``../examples/03-advanced/neohookean_cantilever.py``)
-     - 00:13.392
+     - 00:12.843
      - 0.0
    * - :ref:`sphx_glr_examples_rigid_body_freefall.py` (``../examples/rigid_body_freefall.py``)
-     - 00:05.651
-     - 0.0
-   * - :ref:`sphx_glr_examples_02-constraints_disk_rectangle_contact.py` (``../examples/02-constraints/disk_rectangle_contact.py``)
-     - 00:05.374
+     - 00:05.033
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_3D_periodic_BC_off_axis.py` (``../examples/03-advanced/3D_periodic_BC_off_axis.py``)
-     - 00:04.921
+     - 00:04.952
+     - 0.0
+   * - :ref:`sphx_glr_examples_02-constraints_disk_rectangle_contact.py` (``../examples/02-constraints/disk_rectangle_contact.py``)
+     - 00:04.663
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_thermal_loading.py` (``../examples/03-advanced/thermal_loading.py``)
-     - 00:03.535
+     - 00:03.244
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_lattice_beam.py` (``../examples/01-simple/lattice_beam.py``)
-     - 00:03.497
+     - 00:03.217
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_composite_DCB_test_3D.py` (``../examples/03-advanced/composite_DCB_test_3D.py``)
-     - 00:02.316
+     - 00:02.228
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model_nlgeom.py` (``../examples/01-simple/simple_cantilever_beam_3D_model_nlgeom.py``)
-     - 00:02.276
+     - 00:02.172
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_I_shape_beam_bending.py` (``../examples/01-simple/I_shape_beam_bending.py``)
-     - 00:01.006
+     - 00:00.968
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_Plate_with_hole_in_tension.py` (``../examples/01-simple/Plate_with_hole_in_tension.py``)
-     - 00:00.657
+     - 00:00.625
      - 0.0
    * - :ref:`sphx_glr_examples_02-constraints_rigid_tie.py` (``../examples/02-constraints/rigid_tie.py``)
-     - 00:00.656
+     - 00:00.568
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model.py` (``../examples/01-simple/simple_cantilever_beam_3D_model.py``)
-     - 00:00.361
+     - 00:00.371
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_spherical_shell_compression.py` (``../examples/01-simple/spherical_shell_compression.py``)
-     - 00:00.291
-     - 0.0
-   * - :ref:`sphx_glr_examples_01-simple_poison_eq.py` (``../examples/01-simple/poison_eq.py``)
-     - 00:00.220
-     - 0.0
-   * - :ref:`sphx_glr_examples_02-constraints_Periodic_BC_2D_Plate_with_hole.py` (``../examples/02-constraints/Periodic_BC_2D_Plate_with_hole.py``)
-     - 00:00.211
+     - 00:00.283
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_multi_mesh_example.py` (``../examples/03-advanced/multi_mesh_example.py``)
-     - 00:00.208
+     - 00:00.206
+     - 0.0
+   * - :ref:`sphx_glr_examples_02-constraints_Periodic_BC_2D_Plate_with_hole.py` (``../examples/02-constraints/Periodic_BC_2D_Plate_with_hole.py``)
+     - 00:00.203
+     - 0.0
+   * - :ref:`sphx_glr_examples_01-simple_poison_eq.py` (``../examples/01-simple/poison_eq.py``)
+     - 00:00.183
      - 0.0
    * - :ref:`sphx_glr_examples_02-constraints_pressurized_pipe.py` (``../examples/02-constraints/pressurized_pipe.py``)
-     - 00:00.190
+     - 00:00.180
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_simpleBeamElementExample.py` (``../examples/01-simple/simpleBeamElementExample.py``)
-     - 00:00.013
+     - 00:00.011
      - 0.0
