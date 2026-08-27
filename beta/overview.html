@@ -104,41 +104,46 @@
 <section id="about">
 <h2>About<a class="headerlink" href="#about" title="Link to this heading"></a></h2>
 <img alt="_images/fedoo_logos.png" src="_images/fedoo_logos.png" />
-<p>Fedoo is a free open source Finite Element library developed in Python.
-It is mainly dedicated for mechanical problems but is easily developpable for other kind of problems (thermal laws already includes).
-One of the main application of fedoo is to simulate the mechanical response of heterogeneous materials.
-For that purpose, fedoo is part of the 3mah set that also include microgen for the CAD and meshing of heterogeneous materials
-and simcoon for the non linear material constitutive models in finite strain.</p>
+<p>Fedoo is an open-source finite element library written in Python. It is focused
+on solid and structural mechanics, with additional support for thermal
+problems. Its script-based interface gives direct access to meshes, elements,
+constitutive laws, weak forms, assemblies, and solution procedures, making it
+suitable for research, teaching, and the development of custom numerical
+models.</p>
+<p>Fedoo has a particular focus on heterogeneous materials and computational
+homogenization. <a class="reference external" href="https://github.com/3MAH/simcoon">Simcoon</a> is integrated into
+Fedoo as a dependency and provides high-performance nonlinear constitutive
+models. Fedoo can also be used alongside <a class="reference external" href="https://github.com/3MAH/microgen">Microgen</a>, another project from the 3MAH ecosystem,
+for geometry and mesh generation.</p>
 </section>
 <section id="main-features">
 <h2>Main features<a class="headerlink" href="#main-features" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><em>New</em> A full interactive viewer is now included to improve the results visualization.</p></li>
-<li><p>Entirely written in Python 3</p></li>
-<li><p>Implicit finite element Solver for Static and Dynamics poblems</p></li>
-<li><p>Finite strain constitutive laws based on the simcoon library (simcoon is developped in C++ allowing a fast execution)</p></li>
-<li><p>Geometrical non linearities based on the simcoon library</p></li>
-<li><p>Wide constitutive equation library including composites law, elasto-plastic law, …</p></li>
-<li><p>Include many types of elements like 2D, 3D, beam, plate, cohesive elements, …</p></li>
-<li><p>Homogeneisation: Easy application of periodic boundary conditions and fast automatic extraction of mean tangent matrices</p></li>
-<li><p>Embedded results visualization using the powerfull pyvista library (pyvista should be installed for that feature)</p></li>
-<li><p>Multi-point constraints</p></li>
-<li><p>Easy scripting</p></li>
-<li><p>Good compromise between a reasonable execution time and an open and lisible code. fedoo is not the fastest finite element software and doesn’t intend to be, but a particular attention is paid
-to the computational cost.</p></li>
-<li><p>Contact in 2D and 3D, Self contact</p></li>
-<li><p>And many other….</p></li>
+<li><p><strong>Static and transient analyses:</strong> linear and nonlinear solution procedures,
+implicit and explicit time integration, and thermal analyses.</p></li>
+<li><p><strong>Mechanical models:</strong> small and finite strain formulations, elasticity,
+plasticity, hyperelasticity, cohesive laws, beams, shells, solids, and rigid
+bodies.</p></li>
+<li><p><strong>Meshes and assemblies:</strong> 2D, axisymmetric, and 3D elements, mixed element
+families, reduced integration, and multi-mesh models.</p></li>
+<li><p><strong>Constraints and interactions:</strong> periodic boundary conditions, multi-point
+constraints, mean-value and mean-motion constraints, and 2D/3D contact.</p></li>
+<li><p><strong>Homogenization:</strong> tools for periodic and non-periodic boundary conditions
+and extraction of homogenized quantities.</p></li>
+<li><p><strong>Input and output:</strong> many standard mesh formats can be imported and exported
+through MeshIO. Results can be stored in Fedoo’s FDH5 format, which is based
+on HDF5 and designed for fast reading and writing from Fedoo.</p></li>
+<li><p><strong>Graphical results viewer:</strong> an integrated graphical interface based on
+PyVista provides interactive visualization and inspection of computed
+fields.</p></li>
+<li><p><strong>Extensibility:</strong> users can implement their own weak equations, as well as
+custom constitutive laws, elements, and solution workflows, through a
+readable Python architecture.</p></li>
 </ul>
-</section>
-<section id="road-map">
-<h2>Road map<a class="headerlink" href="#road-map" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>Improve contact formulation and add friction</p></li>
-<li><p>Support an efficient file format based on HDF5 to save and load data</p></li>
-<li><p>Improve the management of local frame</p></li>
-<li><p>Export results on several meshes</p></li>
-<li><p>Thermo-Mechanical problems</p></li>
-</ul>
+<p>Fedoo favors an open and inspectable implementation while still paying
+attention to computational cost. Performance-critical constitutive
+calculations are handled by Simcoon where applicable, while additional sparse
+linear solvers can be provided by optional compiled dependencies.</p>
 </section>
 </section>
 
