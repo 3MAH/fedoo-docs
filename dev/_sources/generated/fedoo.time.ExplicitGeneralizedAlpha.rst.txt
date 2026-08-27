@@ -1,0 +1,48 @@
+﻿fedoo.time.ExplicitGeneralizedAlpha
+===================================
+
+.. currentmodule:: fedoo.time
+
+.. autoclass:: ExplicitGeneralizedAlpha
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         ExplicitGeneralizedAlpha.acceleration
+         ExplicitGeneralizedAlpha.compile_assembly
+         ExplicitGeneralizedAlpha.compile_weakform
+         ExplicitGeneralizedAlpha.correct
+         ExplicitGeneralizedAlpha.effective_mass_factor
+         ExplicitGeneralizedAlpha.enforce_displacement
+         ExplicitGeneralizedAlpha.evaluation_state
+         ExplicitGeneralizedAlpha.mass_history
+         ExplicitGeneralizedAlpha.predict
+         ExplicitGeneralizedAlpha.prepare_step
+         ExplicitGeneralizedAlpha.state_from_displacement
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         ExplicitGeneralizedAlpha.evolution
+         ExplicitGeneralizedAlpha.is_explicit
+  
+  

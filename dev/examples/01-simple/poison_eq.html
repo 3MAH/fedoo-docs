@@ -1,0 +1,231 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Define and solve user equation &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Beam Element Canteleaver Beam" href="simpleBeamElementExample.html" />
+    <link rel="prev" title="Beam Lattice Structure using beam model with geometric nonlinearities" href="lattice_beam.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Simple examples to start</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="I_shape_beam_bending.html">3 points bending of an I-Shape beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="I_shape_beam_bending.html#geometry-and-mesh">Geometry and Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="I_shape_beam_bending.html#problem-definition">Problem définition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="I_shape_beam_bending.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="I_shape_beam_bending.html#solve-and-plot-results">Solve and plot results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Plate_with_hole_in_tension.html">2D plate with hole in tension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lattice_beam.html">Beam Lattice Structure using beam model with geometric nonlinearities</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Define and solve user equation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-equation-to-solve-on-a-weak-form">Set the equation to solve on a weak form.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simpleBeamElementExample.html">Beam Element Canteleaver Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simple_cantilever_beam_3D_model.html">Canteleaver Beam using 3D hexahedral elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simple_cantilever_beam_3D_model_nlgeom.html">3D Canteleaver Beam with geometric nonlinearities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spherical_shell_compression.html">Compression of a ping pong ball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html">Visualization tutoral - Shear test of a cube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#geometry-and-mesh">Geometry and mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#constitutive-law-and-weak-form">Constitutive law and weak form</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#problem-definition">Problem definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#solve-the-problem">Solve the problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#basic-visualization-von-mises-stress">Basic visualization: von Mises stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#side-by-side-linked-views">Side-by-side linked views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#clipping-with-a-plane">Clipping with a plane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#element-set-filtering-from-an-expression">Element-set filtering from an expression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#sampling-results-along-a-line">Sampling results along a line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualization.html#history-plot-at-selected-nodes">History plot at selected nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-advanced/index.html">Advanced problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Simple examples to start</a></li>
+      <li class="breadcrumb-item active">Define and solve user equation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/01-simple/poison_eq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-01-simple-poison-eq-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="define-and-solve-user-equation">
+<span id="sphx-glr-examples-01-simple-poison-eq-py"></span><h1>Define and solve user equation<a class="headerlink" href="#define-and-solve-user-equation" title="Link to this heading"></a></h1>
+<p>Basic example that show how to define the poisson equation and
+how to solve it with Dirichlet boundary conditions.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+</pre></div>
+</div>
+<p>Define a modeling space and add a variable “U” to this space
+A “2D” problem include by default the coordinates “X” and “Y”.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"U"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="set-the-equation-to-solve-on-a-weak-form">
+<h1>Set the equation to solve on a weak form.<a class="headerlink" href="#set-the-equation-to-solve-on-a-weak-form" title="Link to this heading"></a></h1>
+<p>The space.derivative or space.variable functions create a differatial equation that we
+can combine with the +, - and * operators to build the weak form.
+the virtual properties set the variable as virtuals
+(in the sense of weak equations)</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dU_dX</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">"U"</span><span class="p">,</span> <span class="s2">"X"</span><span class="p">)</span>
+<span class="n">dU_dY</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">"U"</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">)</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">WeakForm</span><span class="p">(</span><span class="n">dU_dX</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="n">dU_dX</span> <span class="o">+</span> <span class="n">dU_dY</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="n">dU_dY</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Poisson Equation"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Define the integration domain (mesh)</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Assembly the global matrix, define a linear problem,
+add boundary conditions and solve the problem</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"assembly"</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="s2">"assembly"</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"left"</span><span class="p">,</span> <span class="s2">"U"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">,</span> <span class="s2">"U"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="s2">"assembly"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"U"</span><span class="p">])</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"U"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_poison_eq_001.png" srcset="../../_images/sphx_glr_poison_eq_001.png" alt="poison eq" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.220 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-poison-eq-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/1709583c3dfb518a8f4124b2be33f0a6/poison_eq.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">poison_eq.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/b4d934889bd01486db33b24ef09f5973/poison_eq.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">poison_eq.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/bd21f7688c990863ec7546ac811141e0/poison_eq.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">poison_eq.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lattice_beam.html" class="btn btn-neutral float-left" title="Beam Lattice Structure using beam model with geometric nonlinearities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simpleBeamElementExample.html" class="btn btn-neutral float-right" title="Beam Element Canteleaver Beam" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

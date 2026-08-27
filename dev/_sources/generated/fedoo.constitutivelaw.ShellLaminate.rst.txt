@@ -1,0 +1,56 @@
+﻿fedoo.constitutivelaw.ShellLaminate
+===================================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: ShellLaminate
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         ShellLaminate.compute_area_density
+         ShellLaminate.compute_rotary_density
+         ShellLaminate.find_layer
+         ShellLaminate.get_all
+         ShellLaminate.get_shell_stiffness_matrix
+         ShellLaminate.get_shell_stiffness_matrix_FI
+         ShellLaminate.get_shell_stiffness_matrix_RI
+         ShellLaminate.get_strain
+         ShellLaminate.get_stress
+         ShellLaminate.get_stress_distribution
+         ShellLaminate.initialize
+         ShellLaminate.reset
+         ShellLaminate.set_start
+         ShellLaminate.to_start
+         ShellLaminate.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         ShellLaminate.area_density
+         ShellLaminate.name
+         ShellLaminate.rotary_density
+         ShellLaminate.thickness
+         ShellLaminate.k
+         ShellLaminate.is_initialized
+  
+  

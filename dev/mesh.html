@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geometry and Mesh (fedoo.mesh) &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="fedoo.Mesh" href="generated/fedoo.Mesh.html" />
+    <link rel="prev" title="Quick Start" href="quick_start.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.Mesh.html">fedoo.Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.stack.html">fedoo.mesh.stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.extrude.html">fedoo.mesh.extrude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.extract_surface.html">fedoo.mesh.extract_surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.extract_edges.html">fedoo.mesh.extract_edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.change_elm_type.html">fedoo.mesh.change_elm_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.quad2tri.html">fedoo.mesh.quad2tri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.import_file.html">fedoo.mesh.import_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.import_msh.html">fedoo.mesh.import_msh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.import_vtk.html">fedoo.mesh.import_vtk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.rectangle_mesh.html">fedoo.mesh.rectangle_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.box_mesh.html">fedoo.mesh.box_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.disk_mesh.html">fedoo.mesh.disk_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.hole_plate_mesh.html">fedoo.mesh.hole_plate_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.hollow_disk_mesh.html">fedoo.mesh.hollow_disk_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.I_shape_mesh.html">fedoo.mesh.I_shape_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.line_mesh_1D.html">fedoo.mesh.line_mesh_1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.line_mesh.html">fedoo.mesh.line_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.circle_mesh.html">fedoo.mesh.circle_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.structured_mesh_2D.html">fedoo.mesh.structured_mesh_2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.generate_nodes.html">fedoo.mesh.generate_nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mesh.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="geometry-and-mesh-fedoo-mesh">
+<span id="module-fedoo.mesh"></span><h1>Geometry and Mesh (<a class="reference internal" href="#module-fedoo.mesh" title="fedoo.mesh"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code></a>)<a class="headerlink" href="#geometry-and-mesh-fedoo-mesh" title="Link to this heading"></a></h1>
+<section id="class-mesh">
+<h2>Class Mesh<a class="headerlink" href="#class-mesh" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh</span></code></a>(nodes[, elements, elm_type, node_sets, ...])</p></td>
+<td><p>Fedoo Mesh object.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mesh-manipulation-functions">
+<h2>Mesh manipulation functions<a class="headerlink" href="#mesh-manipulation-functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.stack.html#fedoo.mesh.stack" title="fedoo.mesh.stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stack</span></code></a>(mesh1, mesh2[, name])</p></td>
+<td><p>Make the spatial stack of two mesh objects which have the same element shape.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.extrude.html#fedoo.mesh.extrude" title="fedoo.mesh.extrude"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extrude</span></code></a>(mesh, extrude_path[, n_nodes, ...])</p></td>
+<td><p>Build a volume or surface mesh from the extrusion of a surface or wire mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.extract_surface.html#fedoo.mesh.extract_surface" title="fedoo.mesh.extract_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_surface</span></code></a>(mesh[, reduce_order, ...])</p></td>
+<td><p>Build a mesh of the surface from a given 2D or 3D mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.extract_edges.html#fedoo.mesh.extract_edges" title="fedoo.mesh.extract_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_edges</span></code></a>(mesh[, reduce_order, ...])</p></td>
+<td><p>Extract edges from a given 2D or 3D mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.change_elm_type.html#fedoo.mesh.change_elm_type" title="fedoo.mesh.change_elm_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_elm_type</span></code></a>(mesh, elm_type[, name])</p></td>
+<td><p>Attempt to change the type of element of a mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.quad2tri.html#fedoo.mesh.quad2tri" title="fedoo.mesh.quad2tri"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quad2tri</span></code></a>(mesh)</p></td>
+<td><p>Change the type of element of a mesh from 'quad4' to 'tri3'.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="import-export-fedoo-mesh-object">
+<span id="importmesh"></span><h2>Import/Export Fedoo Mesh object<a class="headerlink" href="#import-export-fedoo-mesh-object" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.import_file.html#fedoo.mesh.import_file" title="fedoo.mesh.import_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_file</span></code></a>(filename[, name])</p></td>
+<td><p>Import a mesh from a file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.import_msh.html#fedoo.mesh.import_msh" title="fedoo.mesh.import_msh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_msh</span></code></a>(filename[, name, mesh_type])</p></td>
+<td><p>Import a mesh from a msh file (gmsh format).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.import_vtk.html#fedoo.mesh.import_vtk" title="fedoo.mesh.import_vtk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_vtk</span></code></a>(filename[, name])</p></td>
+<td><p>Import a mesh from a vtk file (gmsh format).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mesh-creation-functions">
+<span id="build-simple-mesh"></span><h2>Mesh Creation Functions<a class="headerlink" href="#mesh-creation-functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.rectangle_mesh.html#fedoo.mesh.rectangle_mesh" title="fedoo.mesh.rectangle_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rectangle_mesh</span></code></a>([nx, ny, x_min, x_max, ...])</p></td>
+<td><p>Create a rectangular Mesh</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.box_mesh.html#fedoo.mesh.box_mesh" title="fedoo.mesh.box_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">box_mesh</span></code></a>([nx, ny, nz, x_min, x_max, y_min, ...])</p></td>
+<td><p>Create the mesh of a box</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.disk_mesh.html#fedoo.mesh.disk_mesh" title="fedoo.mesh.disk_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disk_mesh</span></code></a>([radius, nr, nt, elm_type, ndim, name])</p></td>
+<td><p>Create a surface mesh of a disk or an ellipse</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.hole_plate_mesh.html#fedoo.mesh.hole_plate_mesh" title="fedoo.mesh.hole_plate_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hole_plate_mesh</span></code></a>([nr, nt, length, height, ...])</p></td>
+<td><p>Create a mesh of a 2D plate with a hole</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.hollow_disk_mesh.html#fedoo.mesh.hollow_disk_mesh" title="fedoo.mesh.hollow_disk_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hollow_disk_mesh</span></code></a>([radius, thickness, nr, ...])</p></td>
+<td><p>Create a surface mesh of an hollow disk or an ellipse</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.I_shape_mesh.html#fedoo.mesh.I_shape_mesh" title="fedoo.mesh.I_shape_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">I_shape_mesh</span></code></a>([height, width, web_thickness, ...])</p></td>
+<td><p>Create the mesh of a I.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.line_mesh_1D.html#fedoo.mesh.line_mesh_1D" title="fedoo.mesh.line_mesh_1D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line_mesh_1D</span></code></a>([n_nodes, x_min, x_max, ...])</p></td>
+<td><p>Create the Mesh of a straight line with corrdinates in 1D.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.line_mesh.html#fedoo.mesh.line_mesh" title="fedoo.mesh.line_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line_mesh</span></code></a>([n_nodes, x_min, x_max, elm_type, ...])</p></td>
+<td><p>Create the Mesh of a straight line</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.line_mesh_cylindric.html#fedoo.mesh.line_mesh_cylindric" title="fedoo.mesh.line_mesh_cylindric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line_mesh_cylindric</span></code></a>([nt, r, theta_min, ...])</p></td>
+<td><p>Create the mesh of a curved line based on cylindrical coordinates</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.circle_mesh.html#fedoo.mesh.circle_mesh" title="fedoo.mesh.circle_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_mesh</span></code></a>([n, r, elm_type, ...])</p></td>
+<td><p>Create the mesh of a cicle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.grid_mesh_cylindric.html#fedoo.mesh.grid_mesh_cylindric" title="fedoo.mesh.grid_mesh_cylindric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grid_mesh_cylindric</span></code></a>([nr, nt, r_min, r_max, ...])</p></td>
+<td><p>Create a mesh as a regular grid in cylindrical coordinate</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.structured_mesh_2D.html#fedoo.mesh.structured_mesh_2D" title="fedoo.mesh.structured_mesh_2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured_mesh_2D</span></code></a>(data, edge1, edge2, ...)</p></td>
+<td><p>Create a 2D structured grid from 4 edges.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.generate_nodes.html#fedoo.mesh.generate_nodes" title="fedoo.mesh.generate_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_nodes</span></code></a>(mesh, N, data[, type_gen])</p></td>
+<td><p>Add regularly espaced nodes to an existing mesh between to existing nodes.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quick_start.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/fedoo.Mesh.html" class="btn btn-neutral float-right" title="fedoo.Mesh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

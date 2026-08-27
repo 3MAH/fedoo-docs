@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.Problem &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.Problem.add_global_dof" href="fedoo.Problem.add_global_dof.html" />
+    <link rel="prev" title="fedoo.core.base.ProblemBase.bc" href="fedoo.core.base.ProblemBase.bc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.LinearNewmark.html">fedoo.problem.LinearNewmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.Problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.add_global_dof.html">fedoo.Problem.add_global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.add_output.html">fedoo.Problem.add_output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.apply_boundary_conditions.html">fedoo.Problem.apply_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.get_A.html">fedoo.Problem.get_A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.get_B.html">fedoo.Problem.get_B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.get_D.html">fedoo.Problem.get_D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.get_X.html">fedoo.Problem.get_X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.get_active.html">fedoo.Problem.get_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.get_all.html">fedoo.Problem.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.get_dof_solution.html">fedoo.Problem.get_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.get_ext_forces.html">fedoo.Problem.get_ext_forces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.get_results.html">fedoo.Problem.get_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.init_bc_start_value.html">fedoo.Problem.init_bc_start_value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.invalidate_factorization.html">fedoo.Problem.invalidate_factorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.make_active.html">fedoo.Problem.make_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.save_results.html">fedoo.Problem.save_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.set_A.html">fedoo.Problem.set_A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.set_B.html">fedoo.Problem.set_B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.set_D.html">fedoo.Problem.set_D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.set_X.html">fedoo.Problem.set_X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.set_active.html">fedoo.Problem.set_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.set_dof_solution.html">fedoo.Problem.set_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.set_reuse_factorization.html">fedoo.Problem.set_reuse_factorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.set_solver.html">fedoo.Problem.set_solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.solve.html">fedoo.Problem.solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.update_boundary_conditions.html">fedoo.Problem.update_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.active.html">fedoo.Problem.active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.global_dof.html">fedoo.Problem.global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.n_dof.html">fedoo.Problem.n_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.n_global_dof.html">fedoo.Problem.n_global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.n_node_dof.html">fedoo.Problem.n_node_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.name.html">fedoo.Problem.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.results.html">fedoo.Problem.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.solver.html">fedoo.Problem.solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.space.html">fedoo.Problem.space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Problem.bc.html">fedoo.Problem.bc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+      <li class="breadcrumb-item active">fedoo.Problem</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.Problem.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-problem">
+<h1>fedoo.Problem<a class="headerlink" href="#fedoo-problem" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fedoo.Problem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Problem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Problem" title="Link to this definition"></a></dt>
+<dd><p>Base class to define a problem that generate a linear system and to solve
+the linear system with some defined boundary conditions.</p>
+<p>The linear problem is written under the form:
+A*X = B+D
+where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>A is a square matrix build with the associated assembly object calling</dt><dd><p>assembly.get_global_matrix()</p>
+</dd>
+</dl>
+</li>
+<li><p>X is the column vector containing the degrees of freedom (solution after solving)</p></li>
+<li><p>B is a column vector used to set Neumann boundary conditions</p></li>
+<li><dl class="simple">
+<dt>D is a column vector build with the associated assembly object calling</dt><dd><p>assembly.get_global_vector()</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>scipy sparse matrix</em>) – Matrix that define the discretized linear system to solve.</p></li>
+<li><p><strong>B</strong> (<em>np.ndarray</em><em> or </em><em>0</em>) – if 0, B is initialized to a zeros array with de adequat shape.</p></li>
+<li><p><strong>D</strong> (<em>np.ndarray</em><em> or </em><em>0</em>) – if 0, D is ignored.</p></li>
+<li><p><strong>mesh</strong> (<em>fedoo Mesh</em>) – mesh associated to the problem.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the problem.</p></li>
+<li><p><strong>space</strong> (<em>ModelingSpace</em><em>(</em><em>Optional</em><em>)</em>) – ModelingSpace on which the problem is defined.</p></li>
+<li><p><strong>name</strong> – name of the problem.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Problem.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Problem.__init__" title="Link to this definition"></a></dt>
+<dd><p><strong>Methods</strong></p>
+<blockquote>
+<div><table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.add_global_dof.html#fedoo.Problem.add_global_dof" title="fedoo.Problem.add_global_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.add_global_dof</span></code></a>(variable_names[, ...])</p></td>
+<td><p>Add global degrees of freedom to the problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.add_output.html#fedoo.Problem.add_output" title="fedoo.Problem.add_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.add_output</span></code></a>(filename, assembly[, ...])</p></td>
+<td><p>Add output requirement for automatic saving during nlsolve.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.apply_boundary_conditions.html#fedoo.Problem.apply_boundary_conditions" title="fedoo.Problem.apply_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.apply_boundary_conditions</span></code></a>([t_fact, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.get_A.html#fedoo.Problem.get_A" title="fedoo.Problem.get_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.get_A</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.get_B.html#fedoo.Problem.get_B" title="fedoo.Problem.get_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.get_B</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.get_D.html#fedoo.Problem.get_D" title="fedoo.Problem.get_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.get_D</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.get_X.html#fedoo.Problem.get_X" title="fedoo.Problem.get_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.get_X</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.get_active.html#fedoo.Problem.get_active" title="fedoo.Problem.get_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.get_active</span></code></a>()</p></td>
+<td><p>Return the active Problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.get_all.html#fedoo.Problem.get_all" title="fedoo.Problem.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.get_all</span></code></a>()</p></td>
+<td><p>Return the list of all problems.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.get_dof_solution.html#fedoo.Problem.get_dof_solution" title="fedoo.Problem.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.get_dof_solution</span></code></a>([name])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.get_ext_forces.html#fedoo.Problem.get_ext_forces" title="fedoo.Problem.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.get_ext_forces</span></code></a>([name, include_mpc])</p></td>
+<td><p>Return the nodal Forces in global coordinates system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.get_results.html#fedoo.Problem.get_results" title="fedoo.Problem.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.get_results</span></code></a>(*args, **kargs)</p></td>
+<td><p>Extract some results from the current problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.init_bc_start_value.html#fedoo.Problem.init_bc_start_value" title="fedoo.Problem.init_bc_start_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.init_bc_start_value</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.invalidate_factorization.html#fedoo.Problem.invalidate_factorization" title="fedoo.Problem.invalidate_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.invalidate_factorization</span></code></a>()</p></td>
+<td><p>Invalidate any cached factorization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.make_active.html#fedoo.Problem.make_active" title="fedoo.Problem.make_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.make_active</span></code></a>()</p></td>
+<td><p>Define the problem instance as the active Problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.save_results.html#fedoo.Problem.save_results" title="fedoo.Problem.save_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.save_results</span></code></a>([iterOutput])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.set_A.html#fedoo.Problem.set_A" title="fedoo.Problem.set_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.set_A</span></code></a>(A)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.set_B.html#fedoo.Problem.set_B" title="fedoo.Problem.set_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.set_B</span></code></a>(B)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.set_D.html#fedoo.Problem.set_D" title="fedoo.Problem.set_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.set_D</span></code></a>(D)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.set_X.html#fedoo.Problem.set_X" title="fedoo.Problem.set_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.set_X</span></code></a>(value)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.set_active.html#fedoo.Problem.set_active" title="fedoo.Problem.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.set_active</span></code></a>(name)</p></td>
+<td><p>Define the active Problem from its name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.set_dof_solution.html#fedoo.Problem.set_dof_solution" title="fedoo.Problem.set_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.set_dof_solution</span></code></a>(name, value)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.set_reuse_factorization.html#fedoo.Problem.set_reuse_factorization" title="fedoo.Problem.set_reuse_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.set_reuse_factorization</span></code></a>([reuse])</p></td>
+<td><p>Enable or disable factorization reuse for repeated solves.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.set_solver.html#fedoo.Problem.set_solver" title="fedoo.Problem.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.set_solver</span></code></a>([solver])</p></td>
+<td><p>Define the solver for the linear system resolution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.solve.html#fedoo.Problem.solve" title="fedoo.Problem.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.solve</span></code></a>(**kargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.update_boundary_conditions.html#fedoo.Problem.update_boundary_conditions" title="fedoo.Problem.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.update_boundary_conditions</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.active.html#fedoo.Problem.active" title="fedoo.Problem.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.active</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.global_dof.html#fedoo.Problem.global_dof" title="fedoo.Problem.global_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.global_dof</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.n_dof.html#fedoo.Problem.n_dof" title="fedoo.Problem.n_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.n_dof</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.n_global_dof.html#fedoo.Problem.n_global_dof" title="fedoo.Problem.n_global_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.n_global_dof</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.n_node_dof.html#fedoo.Problem.n_node_dof" title="fedoo.Problem.n_node_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.n_node_dof</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.name.html#fedoo.Problem.name" title="fedoo.Problem.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.name</span></code></a></p></td>
+<td><p>Return the name of the Problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.results.html#fedoo.Problem.results" title="fedoo.Problem.results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.results</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.solver.html#fedoo.Problem.solver" title="fedoo.Problem.solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.solver</span></code></a></p></td>
+<td><p>Return the current solver used for the problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.Problem.space.html#fedoo.Problem.space" title="fedoo.Problem.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.space</span></code></a></p></td>
+<td><p>Return the ModelingSpace associated to the Problem if defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.Problem.bc.html#fedoo.Problem.bc" title="fedoo.Problem.bc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem.bc</span></code></a></p></td>
+<td><p>Boundary conditions defined on the problem.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.core.base.ProblemBase.bc.html" class="btn btn-neutral float-left" title="fedoo.core.base.ProblemBase.bc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.Problem.add_global_dof.html" class="btn btn-neutral float-right" title="fedoo.Problem.add_global_dof" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

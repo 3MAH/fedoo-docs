@@ -1,0 +1,55 @@
+﻿fedoo.weakform.HeatEquation
+===========================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: HeatEquation
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         HeatEquation.get_all
+         HeatEquation.get_dissipation
+         HeatEquation.get_storage
+         HeatEquation.get_weak_equation
+         HeatEquation.initialize
+         HeatEquation.iter_leaf
+         HeatEquation.reset
+         HeatEquation.set_damping
+         HeatEquation.set_dissipation
+         HeatEquation.set_inertia
+         HeatEquation.set_start
+         HeatEquation.set_storage
+         HeatEquation.sum
+         HeatEquation.to_start
+         HeatEquation.update
+         HeatEquation.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         HeatEquation.name
+         HeatEquation.nlgeom
+         HeatEquation.nvar
+         HeatEquation.space
+  
+  

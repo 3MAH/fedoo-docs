@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to FEDOO’s documentation! &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="#">
+            
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to FEDOO’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-fedoo-s-documentation">
+<h1>Welcome to FEDOO’s documentation!<a class="headerlink" href="#welcome-to-fedoo-s-documentation" title="Link to this heading"></a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Fedoo version:</strong> 1.0.0b1</p>
+<p><strong>Documentation state:</strong> dev</p>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#about">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#main-features">Main features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#road-map">Road map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#full-pip-install">Full pip install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#individual-optional-groups">Individual optional groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#sparse-solvers">Sparse solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id1">Simcoon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#steps-to-define-and-solve-a-problem">Steps to define and solve a Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#import-library">Import library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#create-the-modeling-space">Create the modeling space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#create-and-or-import-the-geometry-mesh">Create and/or import the geometry (mesh)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#create-weak-formulations">Create weak formulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#create-global-matrix-assemblies">Create global matrix assemblies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#set-the-problem-and-the-solver">Set the Problem and the solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#boundary-conditions">Boundary conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#solve-the-problem">Solve the Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_start.html#analyse-and-export-results">Analyse and export results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#class-mesh">Class Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#mesh-manipulation-functions">Mesh manipulation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#import-export-fedoo-mesh-object">Import/Export Fedoo Mesh object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html#mesh-creation-functions">Mesh Creation Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="constitutive_law.html#solid-mechanical-constitutive-laws">Solid mechanical constitutive laws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constitutive_law.html#interface-mechanical-constitutive-laws">Interface mechanical constitutive laws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constitutive_law.html#beam-constitutive-laws">Beam constitutive laws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constitutive_law.html#shell-constitutive-laws">Shell constitutive laws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constitutive_law.html#thermal-constitutive-law">Thermal constitutive law</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html">fedoo.weakform.StressEquilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.ImplicitDynamic.html">fedoo.weakform.ImplicitDynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumFbar.html">fedoo.weakform.StressEquilibriumFbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumBbar.html">fedoo.weakform.StressEquilibriumBbar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.HeatEquation.html">fedoo.weakform.HeatEquation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html">fedoo.weakform.BeamEquilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.SpringEquilibrium.html">fedoo.weakform.SpringEquilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibrium.html">fedoo.weakform.PlateEquilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibriumFI.html">fedoo.weakform.PlateEquilibriumFI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PlateKirchhoffLoveEquilibrium.html">fedoo.weakform.PlateKirchhoffLoveEquilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PlateShearEquilibrium.html">fedoo.weakform.PlateShearEquilibrium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PlateDrillingPenalty.html">fedoo.weakform.PlateDrillingPenalty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.Inertia.html">fedoo.weakform.Inertia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.RotaryInertia.html">fedoo.weakform.RotaryInertia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.InterfaceForce.html">fedoo.weakform.InterfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.DistributedLoad.html">fedoo.weakform.DistributedLoad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.ExternalPressure.html">fedoo.weakform.ExternalPressure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.HourglassStiffness.html">fedoo.weakform.HourglassStiffness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.ArtificialDamping.html">fedoo.weakform.ArtificialDamping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assembly.html#fedoo.Assembly"><code class="docutils literal notranslate"><span class="pre">Assembly</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="time.html#static-analysis">Static analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html#evolution-categories">Evolution categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html#integrators">Integrators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html#second-order-schemes">Second-order schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html#explicit-second-order-schemes">Explicit second-order schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html#dissipation">Dissipation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.LinearNewmark.html">fedoo.problem.LinearNewmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problem.html#time-integration">Time integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problem.html#non-linear-solver">Non-Linear Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problem.html#overcoming-simulation-instabilities">Overcoming Simulation Instabilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="boundary_conditions.html#basic-boundary-conditions">Basic boundary conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boundary_conditions.html#advanced-bc-and-constraints">Advanced BC and constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boundary_conditions.html#contact">Contact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post_processing.html#get-results-from-a-problem">Get results from a problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post_processing.html#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post_processing.html#basic-operations">Basic operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post_processing.html#advanced-operations">Advanced operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#simple-examples-to-start">Simple examples to start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#apply-constraints">Apply constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#advanced-problems">Advanced problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="heterogeneous.html#st-method">1st method:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heterogeneous.html#nd-method">2nd method:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heterogeneous.html#rd-method">3rd method:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heterogeneous.html#full-example">Full example:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

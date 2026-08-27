@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computation times &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Computation times</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/sg_execution_times.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="computation-times">
+<span id="sphx-glr-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Link to this heading"></a></h1>
+<p><strong>08:53.223</strong> total execution time for 24 files <strong>from all galleries</strong>:</p>
+<div class="docutils container">
+<style scoped>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+</style>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" class="init">
+$(document).ready( function () {
+    $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+} );
+</script><table class="table table-striped sg-datatable docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>Mem (MB)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/03-advanced/tube_compression.html#sphx-glr-examples-03-advanced-tube-compression-py"><span class="std std-ref">Compression of a tube using 2D axisymmetric model</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/03-advanced/tube_compression.py</span></code>)</p></td>
+<td><p>02:39.995</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="xref std std-ref">sphx_glr_examples_rigid_body_cow_bounce.py</span> (<code class="docutils literal notranslate"><span class="pre">../examples/rigid_body_cow_bounce.py</span></code>)</p></td>
+<td><p>02:03.102</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="xref std std-ref">sphx_glr_examples_rigid_body_bunny_bounce.py</span> (<code class="docutils literal notranslate"><span class="pre">../examples/rigid_body_bunny_bounce.py</span></code>)</p></td>
+<td><p>01:42.958</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="xref std std-ref">sphx_glr_examples_rigid_body_bounce_ipc.py</span> (<code class="docutils literal notranslate"><span class="pre">../examples/rigid_body_bounce_ipc.py</span></code>)</p></td>
+<td><p>01:04.230</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/01-simple/visualization.html#sphx-glr-examples-01-simple-visualization-py"><span class="std std-ref">Visualization tutoral - Shear test of a cube</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/01-simple/visualization.py</span></code>)</p></td>
+<td><p>00:19.528</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="examples/02-constraints/mean_rigid_motion_torsion.html#sphx-glr-examples-02-constraints-mean-rigid-motion-torsion-py"><span class="std std-ref">Mean motion torsion</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/02-constraints/mean_rigid_motion_torsion.py</span></code>)</p></td>
+<td><p>00:18.635</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/03-advanced/neohookean_cantilever.html#sphx-glr-examples-03-advanced-neohookean-cantilever-py"><span class="std std-ref">Finite-strain Neo-Hookean cantilever (rigid cap)</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/03-advanced/neohookean_cantilever.py</span></code>)</p></td>
+<td><p>00:13.392</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="xref std std-ref">sphx_glr_examples_rigid_body_freefall.py</span> (<code class="docutils literal notranslate"><span class="pre">../examples/rigid_body_freefall.py</span></code>)</p></td>
+<td><p>00:05.651</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/02-constraints/disk_rectangle_contact.html#sphx-glr-examples-02-constraints-disk-rectangle-contact-py"><span class="std std-ref">Contact between a disk and a rectangle (IPC)</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/02-constraints/disk_rectangle_contact.py</span></code>)</p></td>
+<td><p>00:05.374</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="examples/03-advanced/3D_periodic_BC_off_axis.html#sphx-glr-examples-03-advanced-3d-periodic-bc-off-axis-py"><span class="std std-ref">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/03-advanced/3D_periodic_BC_off_axis.py</span></code>)</p></td>
+<td><p>00:04.921</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/03-advanced/thermal_loading.html#sphx-glr-examples-03-advanced-thermal-loading-py"><span class="std std-ref">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/03-advanced/thermal_loading.py</span></code>)</p></td>
+<td><p>00:03.535</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="examples/01-simple/lattice_beam.html#sphx-glr-examples-01-simple-lattice-beam-py"><span class="std std-ref">Beam Lattice Structure using beam model with geometric nonlinearities</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/01-simple/lattice_beam.py</span></code>)</p></td>
+<td><p>00:03.497</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/03-advanced/composite_DCB_test_3D.html#sphx-glr-examples-03-advanced-composite-dcb-test-3d-py"><span class="std std-ref">Composite double-cantilever beam with a cohesive interface</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/03-advanced/composite_DCB_test_3D.py</span></code>)</p></td>
+<td><p>00:02.316</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="examples/01-simple/simple_cantilever_beam_3D_model_nlgeom.html#sphx-glr-examples-01-simple-simple-cantilever-beam-3d-model-nlgeom-py"><span class="std std-ref">3D Canteleaver Beam with geometric nonlinearities</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/01-simple/simple_cantilever_beam_3D_model_nlgeom.py</span></code>)</p></td>
+<td><p>00:02.276</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/01-simple/I_shape_beam_bending.html#sphx-glr-examples-01-simple-i-shape-beam-bending-py"><span class="std std-ref">3 points bending of an I-Shape beam</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/01-simple/I_shape_beam_bending.py</span></code>)</p></td>
+<td><p>00:01.006</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="examples/01-simple/Plate_with_hole_in_tension.html#sphx-glr-examples-01-simple-plate-with-hole-in-tension-py"><span class="std std-ref">2D plate with hole in tension</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/01-simple/Plate_with_hole_in_tension.py</span></code>)</p></td>
+<td><p>00:00.657</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/02-constraints/rigid_tie.html#sphx-glr-examples-02-constraints-rigid-tie-py"><span class="std std-ref">Rigid tie constraint</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/02-constraints/rigid_tie.py</span></code>)</p></td>
+<td><p>00:00.656</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="examples/01-simple/simple_cantilever_beam_3D_model.html#sphx-glr-examples-01-simple-simple-cantilever-beam-3d-model-py"><span class="std std-ref">Canteleaver Beam using 3D hexahedral elements</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/01-simple/simple_cantilever_beam_3D_model.py</span></code>)</p></td>
+<td><p>00:00.361</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/01-simple/spherical_shell_compression.html#sphx-glr-examples-01-simple-spherical-shell-compression-py"><span class="std std-ref">Compression of a ping pong ball</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/01-simple/spherical_shell_compression.py</span></code>)</p></td>
+<td><p>00:00.291</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="examples/01-simple/poison_eq.html#sphx-glr-examples-01-simple-poison-eq-py"><span class="std std-ref">Define and solve user equation</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/01-simple/poison_eq.py</span></code>)</p></td>
+<td><p>00:00.220</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/02-constraints/Periodic_BC_2D_Plate_with_hole.html#sphx-glr-examples-02-constraints-periodic-bc-2d-plate-with-hole-py"><span class="std std-ref">2D periodic boundary condition</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/02-constraints/Periodic_BC_2D_Plate_with_hole.py</span></code>)</p></td>
+<td><p>00:00.211</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="xref std std-ref">sphx_glr_examples_03-advanced_multi_mesh_example.py</span> (<code class="docutils literal notranslate"><span class="pre">../examples/03-advanced/multi_mesh_example.py</span></code>)</p></td>
+<td><p>00:00.208</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="examples/02-constraints/pressurized_pipe.html#sphx-glr-examples-02-constraints-pressurized-pipe-py"><span class="std std-ref">Pressure constraint</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/02-constraints/pressurized_pipe.py</span></code>)</p></td>
+<td><p>00:00.190</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="examples/01-simple/simpleBeamElementExample.html#sphx-glr-examples-01-simple-simplebeamelementexample-py"><span class="std std-ref">Beam Element Canteleaver Beam</span></a> (<code class="docutils literal notranslate"><span class="pre">../examples/01-simple/simpleBeamElementExample.py</span></code>)</p></td>
+<td><p>00:00.013</p></td>
+<td><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

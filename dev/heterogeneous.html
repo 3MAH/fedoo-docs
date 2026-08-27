@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heterogeneous structures &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Compression of a tube using 2D axisymmetric model" href="examples/03-advanced/tube_compression.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Heterogeneous structures</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/heterogeneous.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="heterogeneous-structures">
+<h1>Heterogeneous structures<a class="headerlink" href="#heterogeneous-structures" title="Link to this heading"></a></h1>
+<p>It is frequent that one needs to define a structure composed of
+several materials.
+The first step to define a heterogeneous material in fedoo is to
+get a mesh and the set of elements associated to each material.</p>
+<p>Such a mesh could be generated for instance with microgen from the set 3mah
+or using the gmsh library.</p>
+<p>As sake of example, lets build a simple heterogeneous mesh with fedoo functions:
+a 2D square with a round inclusion.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1">#Generate a mesh with a spherical inclusion inside</span>
+
+<span class="c1">#matrix</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hole_plate_mesh</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> \
+    <span class="n">elm_type</span> <span class="o">=</span> <span class="s1">'quad4'</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span><span class="s2">"Domain"</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">'matrix'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="c1">#inclusion</span>
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">'inclusion'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="c1">#glue the inclusion to the matrix</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span> <span class="o">+</span> <span class="n">mesh_disk</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">merge_nodes</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s1">'hole_edge'</span><span class="p">],</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s1">'boundary'</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Now we would like to assign different constitutive laws for the matrix and for the inclusion.</p>
+<p>There are 3 methods to do this in fedoo.</p>
+<section id="st-method">
+<h2>1st method:<a class="headerlink" href="#st-method" title="Link to this heading"></a></h2>
+<p>Most of constitutive laws accept to be given arrays of material properties
+instead of scalar values. The arrays of properties are interpreted depending on
+their dimensions as:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>gauss points values</p></li>
+<li><p>element values</p></li>
+<li><p>node values</p></li>
+</ul>
+</div></blockquote>
+<p>Of course the array shapes have to be consistend with the mesh dimensions when
+creating the Assembly.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dstress"</span><span class="p">)</span>
+
+<span class="c1">#Define an array of young modulus for each element</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+<span class="n">E</span><span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">'matrix'</span><span class="p">]]</span> <span class="o">=</span> <span class="mf">2e4</span>
+<span class="n">E</span><span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">'inclusion'</span><span class="p">]]</span> <span class="o">=</span> <span class="mf">1e5</span>
+
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method is propably the simpliest, but is restricted to cases where the
+material behavior is the same for all phases.</p>
+</section>
+<section id="nd-method">
+<h2>2nd method:<a class="headerlink" href="#nd-method" title="Link to this heading"></a></h2>
+<p>The classic way of defining heterogeneous constitutive laws is to
+define several distinct assemblies and to build an AssemblySum object containing the
+addition of the two assemblies.
+For that purpose, the mesh need to be splited into sub-meshes containing only
+the elements associated to one phase, but that point to the same nodes list.
+The Mesh class propose a method dedicated to this operation:
+<a class="reference internal" href="generated/fedoo.Mesh.extract_elements.html#fedoo.Mesh.extract_elements" title="fedoo.Mesh.extract_elements"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Mesh.extract_elements()</span></code></a>.</p>
+<p>Then we need to define one constitutivelaw, one weakform and one assembly for
+each phase before defining the global assembly with a simple addition of the
+assemblies (see <a class="reference internal" href="assembly.html#fedoo.Assembly.sum" title="fedoo.Assembly.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Assembly.sum()</span></code></a> for more details).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dstress"</span><span class="p">)</span>
+
+<span class="n">material1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">2e4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">material2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1">#Create the weak formulation of the mechanical equilibrium equation</span>
+<span class="n">wf1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material1</span><span class="p">)</span>
+<span class="n">wf2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material2</span><span class="p">)</span>
+
+<span class="c1">#Create a global assembly</span>
+<span class="n">assemb1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf1</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s1">'matrix'</span><span class="p">))</span>
+<span class="n">assemb2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf2</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s1">'inclusion'</span><span class="p">))</span>
+
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">assemb1</span> <span class="o">+</span> <span class="n">assemb2</span>
+</pre></div>
+</div>
+</section>
+<section id="rd-method">
+<h2>3rd method:<a class="headerlink" href="#rd-method" title="Link to this heading"></a></h2>
+<p>To allow for a more compact writting, and avoiding the sum of assemblies, fedoo propose
+a built-in constitutive law dedicated to heterogeneous material:
+<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.heterogeneous.Heterogeneous</span></code></p>
+<p>This class allows to define one material as the combination of several materials
+associated to sets of elements. The code is shorter and more easy to read.</p>
+<p>This methods seems to be very slightly less efficient than method 2 (to be confirmed), but the
+difference is barely visisble though and shouldn’t be a real matter for everyone.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dstress"</span><span class="p">)</span>
+
+<span class="n">material1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">2e4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">material2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Heterogeneous</span><span class="p">((</span><span class="n">material1</span><span class="p">,</span> <span class="n">material2</span><span class="p">),</span> <span class="p">(</span><span class="s1">'matrix'</span><span class="p">,</span> <span class="s1">'inclusion'</span><span class="p">))</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="full-example">
+<h2>Full example:<a class="headerlink" href="#full-example" title="Link to this heading"></a></h2>
+<p>Here is the full script with the 3rd method and the visualization:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1">#Generate a mesh with a spherical inclusion inside</span>
+
+<span class="c1">#matrix</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hole_plate_mesh</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> \
+    <span class="n">elm_type</span> <span class="o">=</span> <span class="s1">'quad4'</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span><span class="s2">"Domain"</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">'matrix'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="c1">#inclusion</span>
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s1">'inclusion'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="c1">#glue the inclusion to the matrix</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span> <span class="o">+</span> <span class="n">mesh_disk</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">merge_nodes</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s1">'hole_edge'</span><span class="p">],</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s1">'boundary'</span><span class="p">]])</span>
+
+<span class="c1">#Define the Modeling Space - Here 2D problem with plane stress assumption.</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dstress"</span><span class="p">)</span>
+
+<span class="c1">#define the materials and build the heterogeneous Assembly</span>
+<span class="n">material1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">2e4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">material2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Heterogeneous</span><span class="p">((</span><span class="n">material1</span><span class="p">,</span> <span class="n">material2</span><span class="p">),</span> <span class="p">(</span><span class="s1">'matrix'</span><span class="p">,</span> <span class="s1">'inclusion'</span><span class="p">))</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+
+<span class="c1">#Define a new static problem</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+
+<span class="c1">#Definition of the set of nodes for boundary conditions</span>
+<span class="n">left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X'</span><span class="p">,</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span><span class="p">)</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X'</span><span class="p">,</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmax</span><span class="p">)</span>
+
+<span class="c1">#Boundary conditions</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span>    <span class="mi">0</span> <span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">apply_boundary_conditions</span><span class="p">()</span>
+
+<span class="c1">#Solve problem</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="c1">#---------- Post-Treatment ----------</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s1">'Stress'</span><span class="p">,</span><span class="s1">'Strain'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">])</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">'Stress'</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">'vm'</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/heterogeneous.png" src="_images/heterogeneous.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="examples/03-advanced/tube_compression.html" class="btn btn-neutral float-left" title="Compression of a tube using 2D axisymmetric model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

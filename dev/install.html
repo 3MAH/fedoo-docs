@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quick Start" href="quick_start.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<p>Installation using conda with recommanded dependencies:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge -c set3mah fedoo
+</pre></div>
+</div>
+<p>Minimal installation with pip:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install fedoo
+</pre></div>
+</div>
+<p>The required dependencies that are automatically installed with fedoo are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/">Numpy</a></p></li>
+<li><p><a class="reference external" href="https://scipy.org/">Scipy</a> mainly for sparse matrices.</p></li>
+</ul>
+</div></blockquote>
+<p>In addition, the conda package also includes some recommended dependencies:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://simcoon.readthedocs.io/en/latest/">Simcoon</a>
+brings a lot of features (finite strain, non-linear constitutive
+laws, …). Simcoon can be installed using conda or pip.</p></li>
+<li><p><a class="reference external" href="https://docs.pyvista.org/version/stable/">PyVista</a>
+for results visualization and mesh utils.</p></li>
+<li><p>An efficient sparse matrix solver (pypardiso, python-mumps or
+petsc4py) depending on the processor as described below.</p></li>
+</ul>
+</div></blockquote>
+<section id="full-pip-install">
+<h2>Full pip install<a class="headerlink" href="#full-pip-install" title="Link to this heading"></a></h2>
+<p>It is also possible to install fedoo with all recommended dependencies
+(sparse solver, plotting, IPC contact) in one line:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install fedoo[all]
+</pre></div>
+</div>
+<p>This installs the following optional groups: <code class="docutils literal notranslate"><span class="pre">solver</span></code>, <code class="docutils literal notranslate"><span class="pre">plot</span></code>,
+<code class="docutils literal notranslate"><span class="pre">simcoon</span></code>, <code class="docutils literal notranslate"><span class="pre">test</span></code> and <code class="docutils literal notranslate"><span class="pre">ipc</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pyvistaqt</span></code>, which is required for the viewer, is not included in the all
+group. This allows you to choose your preferred Qt binding (<code class="docutils literal notranslate"><span class="pre">pyqt5</span></code>,
+<code class="docutils literal notranslate"><span class="pre">pyqt6</span></code> or <code class="docutils literal notranslate"><span class="pre">pyside6</span></code>). We recommend installing only one of these to avoid
+potential library conflicts.</p>
+<p>To enable the viewer, you can install the dependencies explicitly:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install fedoo[all] pyvistaqt pyqt5
+</pre></div>
+</div>
+<p>Alternatively, use the <code class="docutils literal notranslate"><span class="pre">gui</span></code> install group that includes <code class="docutils literal notranslate"><span class="pre">pyvistaqt</span></code>
+and <code class="docutils literal notranslate"><span class="pre">pyside6</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install fedoo[all, gui]
+</pre></div>
+</div>
+</section>
+<section id="individual-optional-groups">
+<h2>Individual optional groups<a class="headerlink" href="#individual-optional-groups" title="Link to this heading"></a></h2>
+<p>You can also install optional groups individually:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install fedoo[solver]      # fast sparse solver (pypardiso or python-mumps)
+$ pip install fedoo[plot]        # matplotlib + pyvista
+$ pip install fedoo[simcoon]     # simcoon
+$ pip install fedoo[ipc]         # IPC contact (ipctk)
+$ pip install fedoo[gui]         # pyvistaqt + pyside6
+</pre></div>
+</div>
+</section>
+<section id="sparse-solvers">
+<h2>Sparse solvers<a class="headerlink" href="#sparse-solvers" title="Link to this heading"></a></h2>
+<p>It is highly recommended to install a fast direct sparse matrix solver
+to improve performances. fedoo dispatches to the first one available in
+this priority order: pypardiso → python-mumps → petsc4py:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://pypi.org/project/pypardiso/">Pypardiso</a>
+for intel processors (binding to the pardiso solver).</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/python-mumps/">python-mumps</a>
+standalone Python bindings for the MUMPS direct solver. Recommended
+on arm64 (Apple Silicon, ARM Linux) where pypardiso is not available
+and as a lighter alternative to PETSc when only direct solving is
+needed.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/petsc4py/">Petsc4Py</a>
+mainly compatible with linux or macos including the MUMPS solver.
+Use this if you need PETSc’s iterative solvers or MPI parallelism.</p></li>
+<li><p><a class="reference external" href="https://scikit-umfpack.github.io/scikit-umfpack/">Scikit-umfpack</a>
+optional fallback to <code class="docutils literal notranslate"><span class="pre">python-mumps</span></code>. Detected automatically if
+installed, useful in very specific cases (e.g. very small problems,
+or as a serial backup). Not included in <code class="docutils literal notranslate"><span class="pre">[solver]</span></code> extras because
+its install can be tricky on some platforms; install it manually if
+you need it.</p></li>
+</ul>
+</div></blockquote>
+<p>To be able to launch the fedoo viewer, the module
+<a class="reference external" href="https://qtdocs.pyvista.org/">pyvistaqt</a> is also required.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On macOS (Apple Silicon especially), prefer <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span>
+<span class="pre">conda-forge</span> <span class="pre">python-mumps</span></code> over <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">python-mumps</span></code>: the
+PyPI sdist requires a system MUMPS lib via pkg-config, while the
+conda-forge package bundles <code class="docutils literal notranslate"><span class="pre">mumps-seq</span></code> directly. Pin the BLAS
+variant to Accelerate at the same time to route the dense block
+kernels through Apple’s vecLib:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge "libblas=*=*accelerate" python-mumps
+</pre></div>
+</div>
+<p>On Linux / AMD, the OpenBLAS variant is the equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge "libblas=*=*openblas" python-mumps
+</pre></div>
+</div>
+<p>You can verify which BLAS got linked with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -c "import numpy; numpy.show_config()"
+$ otool -L $(python -c 'import numpy.linalg._umath_linalg as m; print(m.__file__)')   # macOS
+$ ldd  $(python -c 'import numpy.linalg._umath_linalg as m; print(m.__file__)')      # Linux
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Simcoon<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>Many features (such as finite strain and non-linear constitutive laws) require
+Simcoon to be installed. Simcoon is available via both pip and conda.
+To install Simcoon individually, use either:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge -c set3mah simcoon
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install simcoon
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quick_start.html" class="btn btn-neutral float-right" title="Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

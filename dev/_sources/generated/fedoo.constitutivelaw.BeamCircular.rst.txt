@@ -1,0 +1,54 @@
+﻿fedoo.constitutivelaw.BeamCircular
+==================================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: BeamCircular
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamCircular.compute_linear_density
+         BeamCircular.compute_rotary_density
+         BeamCircular.get_all
+         BeamCircular.get_beam_rigidity
+         BeamCircular.initialize
+         BeamCircular.reset
+         BeamCircular.set_start
+         BeamCircular.to_start
+         BeamCircular.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamCircular.linear_density
+         BeamCircular.name
+         BeamCircular.rotary_density
+         BeamCircular.r
+         BeamCircular.A
+         BeamCircular.Jx
+         BeamCircular.Iyy
+         BeamCircular.Izz
+         BeamCircular.k
+         BeamCircular.is_initialized
+  
+  

@@ -1,0 +1,55 @@
+﻿fedoo.constitutivelaw.BeamPipe
+==============================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: BeamPipe
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamPipe.compute_linear_density
+         BeamPipe.compute_rotary_density
+         BeamPipe.get_all
+         BeamPipe.get_beam_rigidity
+         BeamPipe.initialize
+         BeamPipe.reset
+         BeamPipe.set_start
+         BeamPipe.to_start
+         BeamPipe.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamPipe.linear_density
+         BeamPipe.name
+         BeamPipe.rotary_density
+         BeamPipe.r_int
+         BeamPipe.r_ext
+         BeamPipe.A
+         BeamPipe.Jx
+         BeamPipe.Iyy
+         BeamPipe.Izz
+         BeamPipe.k
+         BeamPipe.is_initialized
+  
+  
