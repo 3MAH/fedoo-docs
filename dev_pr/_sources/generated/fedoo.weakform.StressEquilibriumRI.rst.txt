@@ -1,0 +1,59 @@
+﻿fedoo.weakform.StressEquilibriumRI
+==================================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: StressEquilibriumRI
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         StressEquilibriumRI.__getitem__
+         StressEquilibriumRI.copy
+         StressEquilibriumRI.get_all
+         StressEquilibriumRI.get_dissipation
+         StressEquilibriumRI.get_storage
+         StressEquilibriumRI.get_weak_equation
+         StressEquilibriumRI.initialize
+         StressEquilibriumRI.iter_leaf
+         StressEquilibriumRI.reset
+         StressEquilibriumRI.set_damping
+         StressEquilibriumRI.set_dissipation
+         StressEquilibriumRI.set_inertia
+         StressEquilibriumRI.set_start
+         StressEquilibriumRI.set_storage
+         StressEquilibriumRI.sum
+         StressEquilibriumRI.to_start
+         StressEquilibriumRI.update
+         StressEquilibriumRI.update_2
+      
+         StressEquilibriumRI.__getitem__
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         StressEquilibriumRI.corate
+         StressEquilibriumRI.list_weakform
+         StressEquilibriumRI.name
+         StressEquilibriumRI.nvar
+         StressEquilibriumRI.space
+  
+  

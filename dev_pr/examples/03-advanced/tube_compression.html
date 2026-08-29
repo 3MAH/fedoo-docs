@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compression of a tube using 2D axisymmetric model &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Heterogeneous structures" href="../../heterogeneous.html" />
+    <link rel="prev" title="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading" href="thermal_loading.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01-simple/index.html">Simple examples to start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Advanced problems</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="3D_periodic_BC_off_axis.html">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html">Composite double-cantilever beam with a cohesive interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#geometry-and-discretization">Geometry and discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#mesh-the-two-arms">Mesh the two arms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#construct-the-cohesive-interface">Construct the cohesive interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#constitutive-laws-and-assemblies">Constitutive laws and assemblies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#problem-and-boundary-conditions">Problem and boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#incremental-nonlinear-solution">Incremental nonlinear solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#cohesive-zone-response">Cohesive-zone response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#plot-the-deformed-dcb">Plot the deformed DCB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="neohookean_cantilever.html">Finite-strain Neo-Hookean cantilever (rigid cap)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#geometry-and-mesh">Geometry and Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#modeling-space-and-field-definitions">Modeling Space and Field Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#constitutive-laws-and-assembly">Constitutive Laws and Assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#problem-definition-and-boundary-conditions">Problem Definition and Boundary Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#solving-and-post-treatment">Solving and Post-Treatment</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Compression of a tube using 2D axisymmetric model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-with-pyvista">Plot with pyvista</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Advanced problems</a></li>
+      <li class="breadcrumb-item active">Compression of a tube using 2D axisymmetric model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/03-advanced/tube_compression.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-03-advanced-tube-compression-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="compression-of-a-tube-using-2d-axisymmetric-model">
+<span id="sphx-glr-examples-03-advanced-tube-compression-py"></span><h1>Compression of a tube using 2D axisymmetric model<a class="headerlink" href="#compression-of-a-tube-using-2d-axisymmetric-model" title="Link to this heading"></a></h1>
+<p>This model uses self-contact, elasto-plastic material law with finite strain
+assumption in a 2D axisymetric modeling space.
+The full 3D result is ploted during the post processing phase.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># sphinx_gallery_thumbnail_number = 3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</pre></div>
+</div>
+<p>The tube in the 2D axisymmetric space is modeled by a rectangle.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Daxi"</span><span class="p">)</span>  <span class="c1"># 2D axisymmetric space</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>  <span class="c1"># tube geometry</span>
+</pre></div>
+</div>
+<p>The elasto-plastic constitutive law “EPICP” from the Simcoon library is used.
+This law assume an isotropic hardening modeled with a power-law:</p>
+<div class="math notranslate nohighlight">
+\[\sigma = \sigma_y + k p^m\]</div>
+<dl class="simple">
+<dt>where</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> is the equivalent stress defining the yield surface,</p></li>
+<li><p><span class="math notranslate nohighlight">\(p\)</span> is the equivalent plastic strain,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_y\)</span> is the initial yield stress,</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> is the strain hardening constant,</p></li>
+<li><p><span class="math notranslate nohighlight">\(m\)</span> is the strain hardening exponent.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">sigma_y</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># Yield stress</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mf">200e3</span>  <span class="c1"># Elasticity modulus (for steel)</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># Poisson ratio</span>
+<span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">])</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>We build two assemblies for:</dt><dd><ul class="simple">
+<li><p>the mechanical static equilibrium</p></li>
+<li><p>the self contact</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+
+<span class="c1"># Add self contact....</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">contact</span><span class="o">.</span><span class="n">SelfContact</span><span class="p">(</span><span class="n">surf</span><span class="p">)</span>
+
+<span class="c1"># contact parameters</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">contact_search_once</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">eps_n</span> <span class="o">=</span> <span class="mf">1e4</span>  <span class="c1"># contact penalty</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">max_dist</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># max distance for the contact search</span>
+</pre></div>
+</div>
+<p>We define a non-linear problem including geometric nonlinearities using the
+Updated Lagrangian method (NLGEOM = ‘UL’), which is the default in fedoo
+(equivalent to NLGEOM = True).</p>
+<p>The Line Search method is activated to improve the convergence of the
+Newton-Raphson algorithm. This necessitates increasing the maximum
+sub-iterations (max_subiter from 10 to 20) to allow for step-length
+optimization. Additionally, ‘adaptive_stiffness’ is enabled to stabilize
+convergence during sharp elastic-to-plastic transitions.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">NLGEOM</span> <span class="o">=</span> <span class="s2">"UL"</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span> <span class="o">+</span> <span class="n">contact</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="n">NLGEOM</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span>
+    <span class="s2">"Displacement"</span><span class="p">,</span>
+    <span class="n">tol</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span>
+    <span class="n">max_subiter</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">adaptive_stiffness</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># create a 'result' folder and set the desired ouputs</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"results/tube_compressoin"</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"P"</span><span class="p">]</span>
+<span class="p">)</span>
+
+
+<span class="c1"># Node sets for boundary conditions</span>
+<span class="n">bottom</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"top"</span><span class="p">]</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">150</span><span class="p">])</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">add_line_search</span><span class="p">()</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">print_info</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dt_min</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="plot-with-pyvista">
+<h1>Plot with pyvista<a class="headerlink" href="#plot-with-pyvista" title="Link to this heading"></a></h1>
+<p>A simple 3D plot of the <span class="math notranslate nohighlight">\(\sigma_{zz}\)</span> field which coorespond to the
+<span class="math notranslate nohighlight">\(\sigma_{\theta \theta}\)</span> component since the axisymmetric model work in
+cylindrical coordinates.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"YY"</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_tube_compression_001.png" srcset="../../_images/sphx_glr_tube_compression_001.png" alt="tube compression" class = "sphx-glr-single-img"/><p>Write an animated gif of the equivalent plasticity <span class="math notranslate nohighlight">\(p\)</span>, with full 3D
+reconstruction using <code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.post_processing.axi_to_3d()</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The 3D reconstruction convert all fields to node_data. The fields are kept
+in the axisymmetric cylindrical coordinate system except for the ‘Disp’
+field (displacement) that is converted to the 3D global coordinate system.
+For instance, the ‘XX’ component of ‘Stress’ is the radial stress whereas
+the ‘X’ component of displacement is the true 3d displacement along x.</p>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">clim</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">get_all_frame_lim</span><span class="p">(</span><span class="s2">"P"</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># extract the min/max values</span>
+<span class="n">data_3d</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">post_processing</span><span class="o">.</span><span class="n">axi_to_3d</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>  <span class="c1"># recontructed 3d data</span>
+<span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">600</span><span class="p">],</span> <span class="n">off_screen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">open_gif</span><span class="p">(</span><span class="s2">"tube_compression.gif"</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data_3d</span><span class="o">.</span><span class="n">n_iter</span><span class="p">):</span>
+    <span class="n">data_3d</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">clear_actors</span><span class="p">()</span>
+    <span class="n">data_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="s2">"P"</span><span class="p">,</span>
+        <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">,</span>
+        <span class="n">clim</span><span class="o">=</span><span class="n">clim</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Iter: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="n">title_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">elevation</span><span class="o">=-</span><span class="mi">70</span><span class="p">,</span>
+        <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">hide_axes</span><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">write_frame</span><span class="p">()</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># We can also write a mp4 movie with:</span>
+<span class="c1"># data_3d.write_movie('tube_compression', 'P')</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_tube_compression_002.gif" srcset="../../_images/sphx_glr_tube_compression_002.gif" alt="tube compression" class = "sphx-glr-single-img"/><p>An example of how to do a realistic plot using the vtk physical based
+renderic availbale through pyvista.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="p">[</span><span class="mi">608</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span>
+<span class="n">data_3d</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="mi">62</span><span class="p">)</span>  <span class="c1"># load iteration 62</span>
+<span class="n">data_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">"Disp"</span><span class="p">,</span>
+    <span class="s2">"Z"</span><span class="p">,</span>
+    <span class="n">show_edges</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">pbr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">metallic</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">roughness</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">diffuse</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">elevation</span><span class="o">=-</span><span class="mi">70</span><span class="p">,</span>
+    <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_tube_compression_003.png" srcset="../../_images/sphx_glr_tube_compression_003.png" alt="tube compression" class = "sphx-glr-single-img"/><p>This example generate a realistic mp4 movie of the 3d deformation of the
+cylinder. It is commented because it is not possible to render the mp4 movie
+with sphinx-gallery.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pl = pv.Plotter(window_size=[608, 800], off_screen=True)</span>
+
+<span class="c1"># cubemap = pv.examples.download_sky_box_cube_map()</span>
+<span class="c1"># pl.add_actor(cubemap.to_skybox())</span>
+<span class="c1"># pl.set_environment_texture(cubemap)</span>
+<span class="c1"># pl.open_movie("tube_compression.mp4", quality=6)</span>
+
+<span class="c1"># for i in range(data_3d.n_iter):</span>
+<span class="c1">#     data_3d.load(i)</span>
+<span class="c1">#     data_3d.plot(</span>
+<span class="c1">#         show_edges=False,</span>
+<span class="c1">#         pbr=True,</span>
+<span class="c1">#         metallic=0.9,</span>
+<span class="c1">#         roughness=0.4,</span>
+<span class="c1">#         diffuse=0.8,</span>
+<span class="c1">#         azimuth=0,</span>
+<span class="c1">#         elevation=-70,</span>
+<span class="c1">#         color="orange",</span>
+<span class="c1">#         # clim=clim,</span>
+<span class="c1">#         show_scalar_bar=False,</span>
+<span class="c1">#         plotter=pl,</span>
+<span class="c1">#         name="mymesh",</span>
+<span class="c1">#     )</span>
+
+<span class="c1">#     pl.hide_axes()</span>
+<span class="c1">#     pl.write_frame()</span>
+<span class="c1">#     pl.remove_actor("mymesh")</span>
+
+<span class="c1"># pl.close()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 24.794 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-tube-compression-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/b2331f10973c6a609241146ff9537cf9/tube_compression.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">tube_compression.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/627e3ef97682caa2a93d21b661ff3bf2/tube_compression.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">tube_compression.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/4215a409c74de1efc5ed4bb794a1d0e4/tube_compression.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">tube_compression.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="thermal_loading.html" class="btn btn-neutral float-left" title="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../heterogeneous.html" class="btn btn-neutral float-right" title="Heterogeneous structures" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

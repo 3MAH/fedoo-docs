@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Start &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Geometry and Mesh (fedoo.mesh)" href="mesh.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quick Start</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quick_start.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h1>
+<section id="steps-to-define-and-solve-a-problem">
+<h2>Steps to define and solve a Problem<a class="headerlink" href="#steps-to-define-and-solve-a-problem" title="Link to this heading"></a></h2>
+<p>The main steps to define a problem are:</p>
+<ol class="arabic simple">
+<li><p>Import the fedoo library</p></li>
+<li><p>Define the space dimension</p></li>
+<li><p>Create and/or import the geometry (mesh)</p></li>
+<li><p>Define one or many weak formulations (including constitutive equations)</p></li>
+<li><p>Create the Assembly associated to the weak formulations and the mesh</p></li>
+<li><p>Define the type of Problem (Static, Dynamic, …) and the solver</p></li>
+<li><p>Solve the Problem</p></li>
+<li><p>Analyse and export results (vizualisation with Paraview recommanded)</p></li>
+</ol>
+</section>
+<section id="import-library">
+<h2>Import library<a class="headerlink" href="#import-library" title="Link to this heading"></a></h2>
+<p>The first step is to import the fedoo library. Obvisously, fedoo needs to be <a class="reference internal" href="install.html"><span class="doc">installed</span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span> <span class="c1">#Import all the fedoo library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> <span class="c1">#Numpy is often usefull</span>
+</pre></div>
+</div>
+</section>
+<section id="create-the-modeling-space">
+<h2>Create the modeling space<a class="headerlink" href="#create-the-modeling-space" title="Link to this heading"></a></h2>
+<p>In fedoo, most of objects are associated to a modeling space. The modeling space is a space in which the variables and coordinates are created.
+The dimension of the modeling space car be ‘3D’ or ‘2D’ (for planar problem). The dimension of the space may also be set to ‘2Dstress’ for planar problem based on the plane stress assumption.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="create-and-or-import-the-geometry-mesh">
+<h2>Create and/or import the geometry (mesh)<a class="headerlink" href="#create-and-or-import-the-geometry-mesh" title="Link to this heading"></a></h2>
+<p>The module <a class="reference internal" href="mesh.html#build-simple-mesh"><span class="std std-ref">mesh</span></a> contains several functions to build up simple meshes.
+For instance to build the mesh of a box (3d rectangle), we can use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">(</span><span class="n">nx</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">nz</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">z_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">z_max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">elm_type</span> <span class="o">=</span> <span class="s1">'hex8'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also import a Mesh by using one of the following Mesh constructor <a class="reference internal" href="generated/fedoo.Mesh.read.html#fedoo.Mesh.read" title="fedoo.Mesh.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Mesh.read()</span></code></a>, <a class="reference internal" href="generated/fedoo.Mesh.from_pyvista.html#fedoo.Mesh.from_pyvista" title="fedoo.Mesh.from_pyvista"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Mesh.from_pyvista()</span></code></a> or with the function fd.mesh.import_file (see <a class="reference internal" href="mesh.html#importmesh"><span class="std std-ref">Import/Export Fedoo Mesh object</span></a>) that allow to import meshes from the VTK or GMSH format.</p>
+</section>
+<section id="create-weak-formulations">
+<h2>Create weak formulations<a class="headerlink" href="#create-weak-formulations" title="Link to this heading"></a></h2>
+<p>We need to define one or several equations to solve.
+In a finite element analyses, the equations are written using a weak formulations.
+In fedoo, the equation is defined by creating a WeakForm object.</p>
+<p>The type of WeakForm may be related to a specific type of elements.</p>
+<p>For instance, a beam weak formulation should be associated to beam elements.
+The module <a class="reference internal" href="weak_form.html"><span class="doc">weakform</span></a> list the available types of weak formulation.
+Most of weak formulations needs the definition of a material constitutive law.
+The module <a class="reference internal" href="constitutive_law.html"><span class="doc">constitutivelaw</span></a> list the available ConstitutiveLaw.</p>
+<p>For instance a simple weak formulation may be defined by:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">200e3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">my_weakform</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="create-global-matrix-assemblies">
+<h2>Create global matrix assemblies<a class="headerlink" href="#create-global-matrix-assemblies" title="Link to this heading"></a></h2>
+<p>Once mesh and weak formulations have been created, we can now proceed to the assembly of the global matrices.
+For each weak formulation associated to a mesh, an Assembly object needs to be created. To combine several assembly, there is a dedicated constructor <a class="reference internal" href="assembly.html#fedoo.Assembly.sum" title="fedoo.Assembly.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Assembly.sum()</span></code></a>.</p>
+<p>For instance, a simple assembly for the previously defined weak formulation and mesh is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">my_weakform</span><span class="p">,</span> <span class="n">my_mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The Assembly object will automatically compute the assembled stiffness matrix using scipy sparse matrix format.
+To get the global stiffness matrix:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_assembly</span><span class="o">.</span><span class="n">get_matrix</span><span class="p">()</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="set-the-problem-and-the-solver">
+<h2>Set the Problem and the solver<a class="headerlink" href="#set-the-problem-and-the-solver" title="Link to this heading"></a></h2>
+<p>The problem should now be defined. Here a Linear problem is created based on the previously defined Assembly.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="s2">"MyAssembly"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The solver can be modified as follow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_solver</span><span class="p">(</span><span class="s1">'cg'</span><span class="p">)</span> <span class="c1">#for conjugate gradient solver</span>
+</pre></div>
+</div>
+<p>For direct solver, it is strongly recommended to install one of
+<code class="docutils literal notranslate"><span class="pre">pypardiso</span></code> (Intel CPUs), <code class="docutils literal notranslate"><span class="pre">python-mumps</span></code> (cross-platform, also
+required for <code class="xref py py-meth docutils literal notranslate"><span class="pre">Problem.set_reuse_factorization()</span></code>) or <code class="docutils literal notranslate"><span class="pre">petsc4py</span></code>
+for drastically improved computation performance. See
+<a class="reference internal" href="install.html"><span class="doc">Installation</span></a> for the recommended commands per platform.</p>
+</section>
+<section id="boundary-conditions">
+<h2>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading"></a></h2>
+<p>To apply the boundary conditions, we need to define some list of nodes indices for boundaries.
+The boundaries are automatically stored as set of nodes (‘left’, ‘right’, ‘top’, ‘bottom’, …) when the function Mesh.BoxMesh is used.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nodes_left</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">[</span><span class="s1">'Domain'</span><span class="p">]</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span>
+<span class="n">nodes_right</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">[</span><span class="s1">'Domain'</span><span class="p">]</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"right"</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>An easy way to get a set of nodes from the position of nodes is to use the <a class="reference internal" href="generated/fedoo.Mesh.find_nodes.html#fedoo.Mesh.find_nodes" title="fedoo.Mesh.find_nodes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Mesh.find_nodes()</span></code></a> method.
+For instance, to get the left and right list of nodes with a 1e-10 position tolerance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nodes_left</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">[</span><span class="s1">'Domain'</span><span class="p">]</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X'</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="n">nodes_right</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">[</span><span class="s1">'Domain'</span><span class="p">]</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X'</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmax</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once the list of nodes have been defined, the boundary conditions can be added to the problem.
+The boundary conditions associated to a problem are stored in the attribute pb.bc.
+We can add two type of boundary conditions: ‘Dirichlet’ to prescribed dof values at given nodes
+or ‘Neumann’ (nodal force for mechanical problems).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span><span class="n">nodes_left</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">#displacement vector set to 0 on the left</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span><span class="n">nodes_right</span><span class="p">,</span> <span class="s1">'DispY'</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span> <span class="c1">#displacement along y set to -10 on right</span>
+</pre></div>
+</div>
+</section>
+<section id="solve-the-problem">
+<h2>Solve the Problem<a class="headerlink" href="#solve-the-problem" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="analyse-and-export-results">
+<h2>Analyse and export results<a class="headerlink" href="#analyse-and-export-results" title="Link to this heading"></a></h2>
+<p>See the section <a class="reference internal" href="post_processing.html"><span class="doc">Post-Processing</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mesh.html" class="btn btn-neutral float-right" title="Geometry and Mesh (fedoo.mesh)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

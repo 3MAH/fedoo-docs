@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.constraint.RigidTie &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.constraint.RigidTie.generate" href="fedoo.constraint.RigidTie.generate.html" />
+    <link rel="prev" title="fedoo.constraint.MeanValueConstraint.associated_assembly_sum" href="fedoo.constraint.MeanValueConstraint.associated_assembly_sum.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fedoo.ListBC.html">fedoo.ListBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.core.BoundaryCondition.html">fedoo.core.BoundaryCondition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.MPC.html">fedoo.MPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.constraint.RigidTie</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.generate.html">fedoo.constraint.RigidTie.generate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.get_all.html">fedoo.constraint.RigidTie.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.initialize.html">fedoo.constraint.RigidTie.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.pre_update.html">fedoo.constraint.RigidTie.pre_update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.register_global_dofs.html">fedoo.constraint.RigidTie.register_global_dofs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.rotation_jacobian.html">fedoo.constraint.RigidTie.rotation_jacobian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html">fedoo.constraint.RigidTie.set_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html">fedoo.constraint.RigidTie.str_condensed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.to_start.html">fedoo.constraint.RigidTie.to_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.Q_total.html">fedoo.constraint.RigidTie.Q_total</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.RigidTie.name.html">fedoo.constraint.RigidTie.name</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.PeriodicBC.html">fedoo.constraint.PeriodicBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Contact.html">fedoo.constraint.Contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SelfContact.html">fedoo.constraint.SelfContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.IPCContact.html">fedoo.constraint.IPCContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.html">fedoo.constraint.IPCSelfContact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+      <li class="breadcrumb-item active">fedoo.constraint.RigidTie</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.constraint.RigidTie.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-constraint-rigidtie">
+<h1>fedoo.constraint.RigidTie<a class="headerlink" href="#fedoo-constraint-rigidtie" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fedoo.constraint.RigidTie">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RigidTie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_quaternion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Rigid</span> <span class="pre">Tie'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.RigidTie" title="Link to this definition"></a></dt>
+<dd><p>Constraint that eliminate dof assuming a rigid body tie between nodes.</p>
+<p>Create an object that defines a rigid tie coupling between some nodes using
+several multi-points constraints. Some constraint drivers (cd) dof are
+used to define rigid body displacement and rotation. By default, the center of
+rotation is located at the center of the bounding box defined by all nodes
+tied together. The rotation center move with the rigid displacement.
+RigidTie constraint add 6 global_dof to the problem:
+“RigidDispX”, “RigidDispY”, “RigidDispZ”, “RigidRotX”, “RigidRotY”, “RigidRotZ”
+and two global_dot vectors:</p>
+<ul class="simple">
+<li><p>“RigidDisp” = [“RigidDispX”, “RigidDispY”, “RigidDispZ”] for rigid displacement</p></li>
+<li><p>“RigidRot” = [“RigidRotX”, “RigidRotY”, “RigidRotZ”] for rigid rotation</p></li>
+</ul>
+<p>If several RigidTime constraints are used with the same problem, all the previous
+variables will contains several dof, the indice of the dof being associated to
+order in which the constraint has been added.
+For instance, pb.global_dof[‘RigidDispX’][0] will be associated to the first
+added RigidTie and dof[‘RigidDispX’][1] to the second one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_nodes</strong> (<em>list</em><em> (</em><em>int</em><em>) or </em><em>1d np.array</em>) – List of nodes that will be eliminated considering a rigid body tie.</p></li>
+<li><p><strong>center</strong> (<em>int</em><em> of </em><em>np.array</em><em>[</em><em>float</em><em>] </em><em>with shape =</em><em> (</em><em>3</em><em>)</em><em>, </em><em>optional</em>) – If center is an int, the rotation center will be initialized at the coordinates
+of the corresponding node in the mesh. If center is an array (or list, …)
+it contains the initial coordinates of the rotation center. By default, the
+center is set at the midle of the rigid sets.</p></li>
+<li><p><strong>use_quaternion</strong> (<em>bool</em><em>, </em><em>optional</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), the rotational DOFs describe an incremental
+rotation vector relative to the last converged orientation. The
+increment is composed multiplicatively and the converged orientation
+is stored as a quaternion. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the DOFs are interpreted as
+one total rotation vector.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the created boundary condition. The default is “Rigid Tie”.</p></li>
+</ul>
+</dd>
+</dl>
+<section id="definition-of-rotations">
+<h2>Definition of rotations<a class="headerlink" href="#definition-of-rotations" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">RigidRotX</span></code>, <code class="docutils literal notranslate"><span class="pre">RigidRotY</span></code> and <code class="docutils literal notranslate"><span class="pre">RigidRotZ</span></code> use a rotation-vector
+convention. The vector direction defines the rotation axis and its norm is
+the rotation angle. With <code class="docutils literal notranslate"><span class="pre">use_quaternion=True</span></code>, this rotation vector is
+the current increment and is composed with the last converged orientation;
+the quaternion is an orientation storage format, not a different DOF
+convention.</p>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The node given in list_nodes are eliminated from the system (slave nodes)
+and can’t be used in other boundary conditions. The boundary conditions should
+be enforce using the added global dof.</p></li>
+<li><p>The rigid coupling is highly non-linear and the multi-point constraints
+are modified at each iteration.</p></li>
+<li><p>Once created the RigidTie object needs to be associated to the problem
+using the Problem.add method.</p></li>
+</ul>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">()</span>
+
+<span class="n">left_face</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X'</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span><span class="p">)</span>
+<span class="n">right_face</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s1">'X'</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmax</span><span class="p">)</span>
+
+<span class="n">rigid_tie</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">RigidTie</span><span class="p">(</span><span class="n">right_face</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.constraint.RigidTie.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_quaternion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Rigid</span> <span class="pre">Tie'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.RigidTie.__init__" title="Link to this definition"></a></dt>
+<dd><p><strong>Methods</strong></p>
+<blockquote>
+<div><table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.generate.html#fedoo.constraint.RigidTie.generate" title="fedoo.constraint.RigidTie.generate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.generate</span></code></a>(problem[, t_fact, t_fact_old])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.get_all.html#fedoo.constraint.RigidTie.get_all" title="fedoo.constraint.RigidTie.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.get_all</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.initialize.html#fedoo.constraint.RigidTie.initialize" title="fedoo.constraint.RigidTie.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.initialize</span></code></a>(problem)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.pre_update.html#fedoo.constraint.RigidTie.pre_update" title="fedoo.constraint.RigidTie.pre_update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.pre_update</span></code></a>(problem)</p></td>
+<td><p>Refresh rigid slave positions before contact assemblies update.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.register_global_dofs.html#fedoo.constraint.RigidTie.register_global_dofs" title="fedoo.constraint.RigidTie.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.register_global_dofs</span></code></a>(problem)</p></td>
+<td><p>Register global DOFs required by this boundary condition.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.rotation_jacobian.html#fedoo.constraint.RigidTie.rotation_jacobian" title="fedoo.constraint.RigidTie.rotation_jacobian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.rotation_jacobian</span></code></a>(rotvec, points)</p></td>
+<td><p>Rotation matrix and per-point displacement/rotation derivatives.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.set_start.html#fedoo.constraint.RigidTie.set_start" title="fedoo.constraint.RigidTie.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.set_start</span></code></a>(problem)</p></td>
+<td><p>Commit a converged incremental rotation to the quaternion state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.str_condensed.html#fedoo.constraint.RigidTie.str_condensed" title="fedoo.constraint.RigidTie.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.str_condensed</span></code></a>()</p></td>
+<td><p>Return a condensed one line str describing the object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.to_start.html#fedoo.constraint.RigidTie.to_start" title="fedoo.constraint.RigidTie.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.to_start</span></code></a>(problem)</p></td>
+<td><p>Leave the last converged quaternion unchanged after a failed step.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.Q_total.html#fedoo.constraint.RigidTie.Q_total" title="fedoo.constraint.RigidTie.Q_total"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.Q_total</span></code></a></p></td>
+<td><p>Last converged quaternion orientation, or <code class="docutils literal notranslate"><span class="pre">None</span></code> in total mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.RigidTie.name.html#fedoo.constraint.RigidTie.name" title="fedoo.constraint.RigidTie.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RigidTie.name</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.constraint.MeanValueConstraint.associated_assembly_sum.html" class="btn btn-neutral float-left" title="fedoo.constraint.MeanValueConstraint.associated_assembly_sum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.constraint.RigidTie.generate.html" class="btn btn-neutral float-right" title="fedoo.constraint.RigidTie.generate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

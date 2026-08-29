@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.MPC &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.MPC.generate" href="fedoo.MPC.generate.html" />
+    <link rel="prev" title="fedoo.core.BoundaryCondition.name" href="fedoo.core.BoundaryCondition.name.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fedoo.ListBC.html">fedoo.ListBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.core.BoundaryCondition.html">fedoo.core.BoundaryCondition</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.MPC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.generate.html">fedoo.MPC.generate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.get_all.html">fedoo.MPC.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.get_generated_equations.html">fedoo.MPC.get_generated_equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.initialize.html">fedoo.MPC.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.register_global_dofs.html">fedoo.MPC.register_global_dofs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.str_condensed.html">fedoo.MPC.str_condensed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MPC.name.html">fedoo.MPC.name</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.PeriodicBC.html">fedoo.constraint.PeriodicBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Contact.html">fedoo.constraint.Contact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SelfContact.html">fedoo.constraint.SelfContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.IPCContact.html">fedoo.constraint.IPCContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.html">fedoo.constraint.IPCSelfContact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+      <li class="breadcrumb-item active">fedoo.MPC</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.MPC.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-mpc">
+<h1>fedoo.MPC<a class="headerlink" href="#fedoo-mpc" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fedoo.MPC">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MPC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_node_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_factors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MPC" title="Link to this definition"></a></dt>
+<dd><p>Class that define multi-point constraints</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.MPC.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_node_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_factors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MPC.__init__" title="Link to this definition"></a></dt>
+<dd><p>Create a linear multi-point constraint object
+To create a MPC of the equation
+4*Ux_12 - 2*Uz_15 = 7 (Ux_12 is the displacement along x of the 12th node)
+use the following MPC:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MPC</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="s1">'Disp_X'</span><span class="p">,</span> <span class="s1">'Disp_Z'</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_node_sets</strong> (<em>list</em><em> of </em><em>str</em><em> or </em><em>list</em><em> of </em><em>list</em><em> of </em><em>int</em><em> (or </em><em>array</em><em>)</em>) – List of node_set names (list of str) or list of node indexes (list of list of int)</p></li>
+<li><p><strong>list_variables</strong> (<em>list</em><em> of </em><em>str</em><em>, or </em><em>list</em><em> of </em><em>int</em>) – list of variable names (list of str) or list of variable ranks (list of int)</p></li>
+<li><p><strong>list_factors</strong> (<em>list</em><em> of </em><em>scalars</em><em> or </em><em>numpy array</em>) – list of factor (MPC).
+To define several mpc at once, it is possible to give an array of factors, where
+each line is associated to a signe mpc.</p></li>
+<li><p><strong>constant</strong> (<em>scalar</em><em>, </em><em>optional</em>) – constant value on the MPC equation
+if not specified, no constant value.</p></li>
+<li><p><strong>time_func</strong> (<em>function</em>) – <p>Function that gives the temporal evolution of the constant value.
+The function should be on the form:</p>
+<blockquote>
+<div><p>y=f(x) where x in [0,1] and y in [0,1].
+For x, 0 denote the begining of the step and 1 the end.</p>
+</div></blockquote>
+</p></li>
+<li><p><strong>start_constant</strong> (<em>float</em><em>, </em><em>array</em><em> or </em><em>None</em><em> (</em><em>default</em><em>)</em>) – if None, the start_constant is keep to the current state.
+if scalar value: The start_value is the same for all dof defined in BC
+if array: the len of the array should be = to the number of dof defined in the BC</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Define an name for the Boundary Conditions. Default is “”. The same name may be used for several BC.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>To define many MPC in one operation, use array where each line define a single MPC</p></li>
+<li><p>In fedoo, the mpc are applied with an elimination method.
+The first dof specified in list_node_sets[0] and list_variable[0]
+is the slave dof and will eliminated from the linear system. No other
+boundary conditions should be applied on this dof.</p></li>
+</ul>
+<p><strong>Methods</strong></p>
+<blockquote>
+<div><table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MPC.generate.html#fedoo.MPC.generate" title="fedoo.MPC.generate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.generate</span></code></a>(problem, t_fact[, t_fact_old])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MPC.get_all.html#fedoo.MPC.get_all" title="fedoo.MPC.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.get_all</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MPC.get_generated_equations.html#fedoo.MPC.get_generated_equations" title="fedoo.MPC.get_generated_equations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.get_generated_equations</span></code></a>()</p></td>
+<td><p>Return generated MPC equations with their original scaling.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MPC.initialize.html#fedoo.MPC.initialize" title="fedoo.MPC.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.initialize</span></code></a>(problem)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MPC.register_global_dofs.html#fedoo.MPC.register_global_dofs" title="fedoo.MPC.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.register_global_dofs</span></code></a>(problem)</p></td>
+<td><p>Register global DOFs required by this boundary condition.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MPC.str_condensed.html#fedoo.MPC.str_condensed" title="fedoo.MPC.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.str_condensed</span></code></a>()</p></td>
+<td><p>Return a condensed one line str describing the object</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MPC.name.html#fedoo.MPC.name" title="fedoo.MPC.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MPC.name</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.core.BoundaryCondition.name.html" class="btn btn-neutral float-left" title="fedoo.core.BoundaryCondition.name" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.MPC.generate.html" class="btn btn-neutral float-right" title="fedoo.MPC.generate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.constraint.SelfContact &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.constraint.SelfContact.assemble_global_mat" href="fedoo.constraint.SelfContact.assemble_global_mat.html" />
+    <link rel="prev" title="fedoo.constraint.Contact.associated_assembly_sum" href="fedoo.constraint.Contact.associated_assembly_sum.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fedoo.ListBC.html">fedoo.ListBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.core.BoundaryCondition.html">fedoo.core.BoundaryCondition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.MPC.html">fedoo.MPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.PeriodicBC.html">fedoo.constraint.PeriodicBC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.Contact.html">fedoo.constraint.Contact</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.constraint.SelfContact</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.assemble_global_mat.html">fedoo.constraint.SelfContact.assemble_global_mat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.contact_search.html">fedoo.constraint.SelfContact.contact_search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.delete_global_mat.html">fedoo.constraint.SelfContact.delete_global_mat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.get_all.html">fedoo.constraint.SelfContact.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.get_global_matrix.html">fedoo.constraint.SelfContact.get_global_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.get_global_vector.html">fedoo.constraint.SelfContact.get_global_vector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.global_search.html">fedoo.constraint.SelfContact.global_search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.initialize.html">fedoo.constraint.SelfContact.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.iter_leaf.html">fedoo.constraint.SelfContact.iter_leaf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.register_global_dofs.html">fedoo.constraint.SelfContact.register_global_dofs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.reset.html">fedoo.constraint.SelfContact.reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.run_normal_law.html">fedoo.constraint.SelfContact.run_normal_law</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.set_disp.html">fedoo.constraint.SelfContact.set_disp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.set_start.html">fedoo.constraint.SelfContact.set_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.to_start.html">fedoo.constraint.SelfContact.to_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.update.html">fedoo.constraint.SelfContact.update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.name.html">fedoo.constraint.SelfContact.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.space.html">fedoo.constraint.SelfContact.space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.eps_a.html">fedoo.constraint.SelfContact.eps_a</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.eps_n.html">fedoo.constraint.SelfContact.eps_n</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.max_dist.html">fedoo.constraint.SelfContact.max_dist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.clearance.html">fedoo.constraint.SelfContact.clearance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.tol.html">fedoo.constraint.SelfContact.tol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.contact_search_once.html">fedoo.constraint.SelfContact.contact_search_once</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.limit_soft_contact.html">fedoo.constraint.SelfContact.limit_soft_contact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.sv.html">fedoo.constraint.SelfContact.sv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.normal_law.html">fedoo.constraint.SelfContact.normal_law</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.current.html">fedoo.constraint.SelfContact.current</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SelfContact.associated_assembly_sum.html">fedoo.constraint.SelfContact.associated_assembly_sum</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.IPCContact.html">fedoo.constraint.IPCContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.constraint.IPCSelfContact.html">fedoo.constraint.IPCSelfContact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+      <li class="breadcrumb-item active">fedoo.constraint.SelfContact</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.constraint.SelfContact.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-constraint-selfcontact">
+<h1>fedoo.constraint.SelfContact<a class="headerlink" href="#fedoo-constraint-selfcontact" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fedoo.constraint.SelfContact">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SelfContact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.core.mesh.Mesh"><span class="pre">Mesh</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">normal_law</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_surface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'search_nearest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelingSpace</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Self</span> <span class="pre">contact'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.SelfContact" title="Link to this definition"></a></dt>
+<dd><p>Self contact Assembly (ie contact of a geomtry between itself) based on a node 2 surface formulation</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.constraint.SelfContact.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.core.mesh.Mesh"><span class="pre">Mesh</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">normal_law</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract_surface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'search_nearest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelingSpace</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Self</span> <span class="pre">contact'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constraint.SelfContact.__init__" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Assembly related to surface 2 surface contact, using a node 2 surface formulation
+with a penality method.</p>
+</div></blockquote>
+<dl>
+<dt>mesh: fedoo.Mesh</dt><dd><blockquote>
+<div><p>Mesh of the geometry where the self contact is created.
+Can be only the mesh of the surface or the mesh of the full object.
+If the full object mesh is given, the extract_surface argument should be set to True.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>normal_law: str in {‘linear’, ‘bilinear’}, default = ‘linear’</dt><dd><p>Type of contact law for the normal contact.</p>
+</dd>
+<dt>space: ModelingSpace</dt><dd><p>Modeling space associated to the weakform. If None is specified, the active ModelingSpace is considered.</p>
+</dd>
+<dt>name: str</dt><dd><p>The name of contact assembly</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Several attributes can be modified to change the contact behavior:</dt><dd><ul class="simple">
+<li><p>eps_n: contact penalty parameter. Need to be adjusted depending of the rigidity of the material in contact.</p></li>
+<li><p>clearance: Contact clearance to adjust the two surfaces.</p></li>
+<li><p>contact_search_once: If True (default) the elmement in contact are only searched at the begining of iteration.
+It avoid oscilations between contact and non contact state during the NR iterations.</p></li>
+<li><p>tol: Tolerance for possible slide of a node outside an element.</p></li>
+<li><p>max_dist: Max distance from nodes at which contact is considered.</p></li>
+<li><p>eps_a: Penalty parameter for soft contact in bilinear contact law (only used if bilinear law is choosen).</p></li>
+<li><p>limit_soft_contact: For bilinear contact law, define the penetration limit between soft contact
+(stiffness eps_a), and hard contact (stiffness eps_n) - only used if bilinear law is choosen.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Methods</strong></p>
+<blockquote>
+<div><table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.assemble_global_mat.html#fedoo.constraint.SelfContact.assemble_global_mat" title="fedoo.constraint.SelfContact.assemble_global_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.assemble_global_mat</span></code></a>([compute])</p></td>
+<td><p>Launch the assembly of global matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.contact_search.html#fedoo.constraint.SelfContact.contact_search" title="fedoo.constraint.SelfContact.contact_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.contact_search</span></code></a>([contact_list, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.delete_global_mat.html#fedoo.constraint.SelfContact.delete_global_mat" title="fedoo.constraint.SelfContact.delete_global_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.delete_global_mat</span></code></a>()</p></td>
+<td><p>Delete Global Matrix and Global Vector related to the assembly.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.get_all.html#fedoo.constraint.SelfContact.get_all" title="fedoo.constraint.SelfContact.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.get_all</span></code></a>()</p></td>
+<td><p>Return a dict with all the known Assembly (with a name).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.get_global_matrix.html#fedoo.constraint.SelfContact.get_global_matrix" title="fedoo.constraint.SelfContact.get_global_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.get_global_matrix</span></code></a>()</p></td>
+<td><p>Get the last computed global matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.get_global_vector.html#fedoo.constraint.SelfContact.get_global_vector" title="fedoo.constraint.SelfContact.get_global_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.get_global_vector</span></code></a>()</p></td>
+<td><p>Get the last computed global vector.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.global_search.html#fedoo.constraint.SelfContact.global_search" title="fedoo.constraint.SelfContact.global_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.global_search</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.initialize.html#fedoo.constraint.SelfContact.initialize" title="fedoo.constraint.SelfContact.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.initialize</span></code></a>(pb)</p></td>
+<td><p>Initialize the assembly for the current problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.iter_leaf.html#fedoo.constraint.SelfContact.iter_leaf" title="fedoo.constraint.SelfContact.iter_leaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.iter_leaf</span></code></a>()</p></td>
+<td><p>Iterate over the leaf assemblies contained in this object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.register_global_dofs.html#fedoo.constraint.SelfContact.register_global_dofs" title="fedoo.constraint.SelfContact.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.register_global_dofs</span></code></a>(pb)</p></td>
+<td><p>Register global DOFs required by the assembly on a problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.reset.html#fedoo.constraint.SelfContact.reset" title="fedoo.constraint.SelfContact.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.reset</span></code></a>()</p></td>
+<td><p>Reset the assembly.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.run_normal_law.html#fedoo.constraint.SelfContact.run_normal_law" title="fedoo.constraint.SelfContact.run_normal_law"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.run_normal_law</span></code></a>(g)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.set_disp.html#fedoo.constraint.SelfContact.set_disp" title="fedoo.constraint.SelfContact.set_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.set_disp</span></code></a>(disp)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.set_start.html#fedoo.constraint.SelfContact.set_start" title="fedoo.constraint.SelfContact.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.set_start</span></code></a>(problem)</p></td>
+<td><p>Begin a new time iteration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.to_start.html#fedoo.constraint.SelfContact.to_start" title="fedoo.constraint.SelfContact.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.to_start</span></code></a>(pb)</p></td>
+<td><p>Restart the current time iteration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.update.html#fedoo.constraint.SelfContact.update" title="fedoo.constraint.SelfContact.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.update</span></code></a>(pb[, compute])</p></td>
+<td><p>Update the assembly for the current problem state.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.name.html#fedoo.constraint.SelfContact.name" title="fedoo.constraint.SelfContact.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.name</span></code></a></p></td>
+<td><p>Name of the assembly if defined.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.space.html#fedoo.constraint.SelfContact.space" title="fedoo.constraint.SelfContact.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.space</span></code></a></p></td>
+<td><p>Modeling space associated to the assembly.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.eps_a.html#fedoo.constraint.SelfContact.eps_a" title="fedoo.constraint.SelfContact.eps_a"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.eps_a</span></code></a></p></td>
+<td><p>Penalty parameter for soft contact in bilinear contact law.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.eps_n.html#fedoo.constraint.SelfContact.eps_n" title="fedoo.constraint.SelfContact.eps_n"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.eps_n</span></code></a></p></td>
+<td><p>Contact penalty parameter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.max_dist.html#fedoo.constraint.SelfContact.max_dist" title="fedoo.constraint.SelfContact.max_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.max_dist</span></code></a></p></td>
+<td><p>Max distance from nodes at which contact is considered.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.clearance.html#fedoo.constraint.SelfContact.clearance" title="fedoo.constraint.SelfContact.clearance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.clearance</span></code></a></p></td>
+<td><p>Contact clearance to adjust the two surfaces.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.tol.html#fedoo.constraint.SelfContact.tol" title="fedoo.constraint.SelfContact.tol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.tol</span></code></a></p></td>
+<td><p>Tolerance for possible slide of a node outside an element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.contact_search_once.html#fedoo.constraint.SelfContact.contact_search_once" title="fedoo.constraint.SelfContact.contact_search_once"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.contact_search_once</span></code></a></p></td>
+<td><p>It True, only search contact at the begining of iteration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.limit_soft_contact.html#fedoo.constraint.SelfContact.limit_soft_contact" title="fedoo.constraint.SelfContact.limit_soft_contact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.limit_soft_contact</span></code></a></p></td>
+<td><p>For bilinear contact law, define the penetration limit between soft contact (stiffness eps_a), and hard contact (stiffness eps_n).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.sv.html#fedoo.constraint.SelfContact.sv" title="fedoo.constraint.SelfContact.sv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.sv</span></code></a></p></td>
+<td><p>Dictionary of state variables associated to the associated for the current problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.normal_law.html#fedoo.constraint.SelfContact.normal_law" title="fedoo.constraint.SelfContact.normal_law"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.normal_law</span></code></a></p></td>
+<td><p>Name of the contact law.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.current.html#fedoo.constraint.SelfContact.current" title="fedoo.constraint.SelfContact.current"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.current</span></code></a></p></td>
+<td><p>Assembly associated to the mesh of the deformed geometry.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SelfContact.associated_assembly_sum.html#fedoo.constraint.SelfContact.associated_assembly_sum" title="fedoo.constraint.SelfContact.associated_assembly_sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SelfContact.associated_assembly_sum</span></code></a></p></td>
+<td><p>AssemblySum object that contains the assembly.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.constraint.Contact.associated_assembly_sum.html" class="btn btn-neutral float-left" title="fedoo.constraint.Contact.associated_assembly_sum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.constraint.SelfContact.assemble_global_mat.html" class="btn btn-neutral float-right" title="fedoo.constraint.SelfContact.assemble_global_mat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

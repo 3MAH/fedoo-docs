@@ -1,0 +1,49 @@
+﻿fedoo.time.CentralDifference
+============================
+
+.. currentmodule:: fedoo.time
+
+.. autoclass:: CentralDifference
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         CentralDifference.acceleration
+         CentralDifference.compile_assembly
+         CentralDifference.compile_weakform
+         CentralDifference.correct
+         CentralDifference.effective_mass_factor
+         CentralDifference.enforce_displacement
+         CentralDifference.evaluation_state
+         CentralDifference.mass_history
+         CentralDifference.predict
+         CentralDifference.prepare_step
+         CentralDifference.state_from_displacement
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         CentralDifference.evolution
+         CentralDifference.is_explicit
+         CentralDifference.needs_end_step_acceleration
+  
+  

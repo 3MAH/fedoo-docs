@@ -1,0 +1,53 @@
+﻿fedoo.constitutivelaw.BeamProperties
+====================================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: BeamProperties
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamProperties.compute_linear_density
+         BeamProperties.compute_rotary_density
+         BeamProperties.get_all
+         BeamProperties.get_beam_rigidity
+         BeamProperties.initialize
+         BeamProperties.reset
+         BeamProperties.set_start
+         BeamProperties.to_start
+         BeamProperties.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamProperties.linear_density
+         BeamProperties.name
+         BeamProperties.rotary_density
+         BeamProperties.A
+         BeamProperties.Jx
+         BeamProperties.Iyy
+         BeamProperties.Izz
+         BeamProperties.k
+         BeamProperties.is_initialized
+  
+  

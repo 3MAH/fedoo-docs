@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="rigid_body_freefall.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="rigid_body_bunny_bounce.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Examples</a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/rigid_body_cow_bounce.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-rigid-body-cow-bounce-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<p class="sphx-glr-example-title" id="sphx-glr-examples-rigid-body-cow-bounce-py">Cow bouncing on a plane — NonLinear + IPC contact.</p>
+<p>The cow mesh from PyVista is watertight (2903 nodes), decimated for speed.
+Full rotation via quaternion, rotation vectors (no gimbal lock).</p>
+<img src="../_images/sphx_glr_rigid_body_cow_bounce_001.gif" srcset="../_images/sphx_glr_rigid_body_cow_bounce_001.gif" alt="rigid body cow bounce" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>============================================================
+COW BOUNCE — NonLinear + IPC contact
+============================================================
+  Cow: 292 nodes, mass=1.0kg
+    t=0.00s  z=0.549m  contacts=0
+    t=0.25s  z=0.276m  contacts=0
+    t=0.50s  z=0.147m  contacts=0
+    t=0.75s  z=0.127m  contacts=0
+    t=1.00s  z=0.150m  contacts=0
+    t=1.25s  z=0.082m  contacts=0
+    t=1.50s  z=0.120m  contacts=0
+    t=1.75s  z=0.099m  contacts=0
+
+  4001 steps in 98.9s (24.7ms/step)
+  z_min=0.0564m
+  Saved: /home/runner/work/fedoo/fedoo/examples/rigid_body_cow_bounce.gif
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simcoon</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span>  <span class="c1"># required dependency (fedoo imports it at load)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">5e-4</span>
+<span class="n">t_end</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"COW BOUNCE — NonLinear + IPC contact"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="n">space</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"DispX"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"DispY"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"DispZ"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_vector</span><span class="p">(</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="p">(</span><span class="s2">"DispX"</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="s2">"DispZ"</span><span class="p">))</span>
+
+<span class="c1"># Cow mesh</span>
+<span class="n">pv_cow</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">examples</span><span class="o">.</span><span class="n">download_cow</span><span class="p">()</span><span class="o">.</span><span class="n">triangulate</span><span class="p">()</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+<span class="n">size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+    <span class="n">pv_cow</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pv_cow</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">pv_cow</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">pv_cow</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">pv_cow</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">pv_cow</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">pv_cow</span> <span class="o">=</span> <span class="n">pv_cow</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mf">0.3</span> <span class="o">/</span> <span class="n">size</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pv_cow</span> <span class="o">=</span> <span class="n">pv_cow</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+    <span class="p">[</span><span class="o">-</span><span class="n">pv_cow</span><span class="o">.</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">pv_cow</span><span class="o">.</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">pv_cow</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">pv_cow</span> <span class="o">=</span> <span class="n">pv_cow</span><span class="o">.</span><span class="n">decimate</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span><span class="o">.</span><span class="n">triangulate</span><span class="p">()</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+<span class="n">cow_mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">from_pyvista</span><span class="p">(</span><span class="n">pv_cow</span><span class="p">)</span>
+
+<span class="c1"># Plane</span>
+<span class="n">pv_plane</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plane</span><span class="p">(</span>
+    <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">direction</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">i_size</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+    <span class="n">j_size</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+    <span class="n">i_resolution</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">j_resolution</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plane_mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">from_pyvista</span><span class="p">(</span><span class="n">pv_plane</span><span class="o">.</span><span class="n">triangulate</span><span class="p">())</span>
+
+<span class="c1"># Rigid body</span>
+<span class="n">mass</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">bb</span> <span class="o">=</span> <span class="n">pv_cow</span><span class="o">.</span><span class="n">bounds</span>
+<span class="n">lx</span><span class="p">,</span> <span class="n">ly</span><span class="p">,</span> <span class="n">lz</span> <span class="o">=</span> <span class="n">bb</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">bb</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bb</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">bb</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">bb</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">bb</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">I</span> <span class="o">=</span> <span class="p">(</span><span class="n">mass</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="n">ly</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">lz</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">lx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">lz</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">lx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ly</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">body</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">RigidBody</span><span class="p">(</span>
+    <span class="n">cow_mesh</span><span class="p">,</span>
+    <span class="n">mass</span><span class="o">=</span><span class="n">mass</span><span class="p">,</span>
+    <span class="n">inertia_tensor</span><span class="o">=</span><span class="n">I</span><span class="p">,</span>
+    <span class="n">center_of_mass</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pv_cow</span><span class="o">.</span><span class="n">center</span><span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"Cow"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">body</span><span class="o">.</span><span class="n">set_force</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">mass</span> <span class="o">*</span> <span class="n">g</span><span class="p">])</span>
+<span class="n">body</span><span class="o">.</span><span class="n">set_rayleigh_damping</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">body</span><span class="o">.</span><span class="n">set_static_obstacle</span><span class="p">(</span><span class="n">plane_mesh</span><span class="p">,</span> <span class="n">dhat</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Cow: </span><span class="si">{</span><span class="n">cow_mesh</span><span class="o">.</span><span class="n">n_nodes</span><span class="si">}</span><span class="s2"> nodes, mass=</span><span class="si">{</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg"</span><span class="p">)</span>
+
+<span class="c1"># Solve with NonLinear (manual stepping for trajectory)</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">SECOND_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Newmark</span><span class="p">())</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">_dof_indices</span>
+<span class="n">q_hist</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+<span class="n">t_hist</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">t_end</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">dtime</span> <span class="o">=</span> <span class="n">dt</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">solve_time_increment</span><span class="p">()</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">set_start</span><span class="p">()</span>
+    <span class="n">dof</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_dof_solution</span><span class="p">()</span>
+    <span class="n">q_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dof</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="n">t_hist</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n_c</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">_ipc_collisions</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">body</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">_ipc_collisions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="mi">0</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"    t=</span><span class="si">{</span><span class="p">(</span><span class="n">step</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s  z=</span><span class="si">{</span><span class="n">body</span><span class="o">.</span><span class="n">center_of_mass</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">dof</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">m  contacts=</span><span class="si">{</span><span class="n">n_c</span><span class="si">}</span><span class="s2">"</span>
+        <span class="p">)</span>
+
+<span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="n">t_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_hist</span><span class="p">)</span>
+<span class="n">q_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">q_hist</span><span class="p">)</span>
+<span class="n">z_hist</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">center_of_mass</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">q_hist</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">  </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">t_hist</span><span class="p">)</span><span class="si">}</span><span class="s2"> steps in </span><span class="si">{</span><span class="n">elapsed</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s (</span><span class="si">{</span><span class="n">elapsed</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">t_hist</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">ms/step)"</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  z_min=</span><span class="si">{</span><span class="n">z_hist</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">m"</span><span class="p">)</span>
+
+<span class="c1"># Animation</span>
+<span class="n">_here</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span> <span class="k">if</span> <span class="s2">"__file__"</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span> <span class="k">else</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">gif_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_here</span><span class="p">,</span> <span class="s2">"rigid_body_cow_bounce.gif"</span><span class="p">)</span>
+<span class="n">fps</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">frame_skip</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">fps</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)))</span>
+<span class="n">frame_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_hist</span><span class="p">),</span> <span class="n">frame_skip</span><span class="p">)</span>
+
+<span class="n">vis_cow</span> <span class="o">=</span> <span class="n">pv_cow</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">pts_ref</span> <span class="o">=</span> <span class="n">vis_cow</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">center</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">center_of_mass</span>
+<span class="n">vis_plane</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plane</span><span class="p">(</span>
+    <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">direction</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">i_size</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+    <span class="n">j_size</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+    <span class="n">i_resolution</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">j_resolution</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="p">[</span><span class="mi">900</span><span class="p">,</span> <span class="mi">600</span><span class="p">],</span> <span class="n">off_screen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">set_background</span><span class="p">(</span><span class="s2">"white"</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">vis_plane</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"lightgrey"</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">vis_cow</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"sandybrown"</span><span class="p">,</span> <span class="n">smooth_shading</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">camera_position</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">open_gif</span><span class="p">(</span><span class="n">gif_path</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="n">fps</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">frame_indices</span><span class="p">:</span>
+    <span class="n">qi</span> <span class="o">=</span> <span class="n">q_hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">Rotation</span><span class="o">.</span><span class="n">from_rotvec</span><span class="p">(</span><span class="n">qi</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
+    <span class="n">vis_cow</span><span class="o">.</span><span class="n">points</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">(</span><span class="n">pts_ref</span> <span class="o">-</span> <span class="n">center</span><span class="p">)</span> <span class="o">@</span> <span class="n">R</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">center</span> <span class="o">+</span> <span class="n">qi</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">vis_cow</span><span class="o">.</span><span class="n">GetPoints</span><span class="p">()</span><span class="o">.</span><span class="n">Modified</span><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"t=</span><span class="si">{</span><span class="n">t_hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s  z=</span><span class="si">{</span><span class="n">z_hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">m"</span><span class="p">,</span>
+        <span class="n">position</span><span class="o">=</span><span class="s2">"upper_edge"</span><span class="p">,</span>
+        <span class="n">font_size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"title"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">write_frame</span><span class="p">()</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Saved: </span><span class="si">{</span><span class="n">gif_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 50.898 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-rigid-body-cow-bounce-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/c33611c3b8e75e472b709eb6744646b7/rigid_body_cow_bounce.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">rigid_body_cow_bounce.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/e94795ea377e3a705b742b5e82996877/rigid_body_cow_bounce.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">rigid_body_cow_bounce.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/e4a22f9ccddf95387bf25ee2cdeaa2e9/rigid_body_cow_bounce.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">rigid_body_cow_bounce.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rigid_body_bunny_bounce.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rigid_body_freefall.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

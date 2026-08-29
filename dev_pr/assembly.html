@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class Assembly &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Time Integration (fedoo.time)" href="time.html" />
+    <link rel="prev" title="fedoo.weakform.ArtificialDamping.space" href="generated/fedoo.weakform.ArtificialDamping.space.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Class Assembly</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/assembly.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="class-assembly">
+<h1>Class Assembly<a class="headerlink" href="#class-assembly" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fedoo.Assembly">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Assembly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weakform</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elm_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly" title="Link to this definition"></a></dt>
+<dd><p>Fedoo Assembly object.</p>
+<p>This class is one of the main object of fedoo that is dedicated to all that
+is related to global matrices assembly. Basically, an Assembly object is
+build upon a weakform (equation written using a weak formulation), a mesh,
+a type of element and a number of integration points (gauss points).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weakform</strong> (<em>WeakForm instance</em>) – weakform associated to the assembly</p></li>
+<li><p><strong>mesh</strong> (<em>Mesh instance</em>) – domain over which the weakform should be integrated</p></li>
+<li><p><strong>elm_type</strong> (<em>str</em>) – Type of the element used for the field interpolation. This element may
+be different that the one used for the geometrical interpolation
+defined in mesh.elm_type.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The name of the assembly</p></li>
+<li><p><strong>n_elm_gp</strong> (<em>number</em><em> of </em><em>gauss points per element for the numerical integration.</em>) – To use with caution. By default, this value is set automatically for
+each element type. A non default number of integration points may be
+forced using this argument.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>To launch the assembling, use the method “assemble_global_mat()”
+Then, the assembled global matrix and global vector are stored in the
+attributes “global_matrix” and “global_vector”.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.assemble_global_mat">
+<span class="sig-name descname"><span class="pre">assemble_global_mat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.assemble_global_mat" title="Link to this definition"></a></dt>
+<dd><p>Compute the global matrix and global vector related to the assembly
+if compute = ‘all’, compute the global matrix and vector
+if compute = ‘matrix’, compute only the matrix
+if compute = ‘vector’, compute only the vector
+if compute = ‘none’, compute nothing</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.copy" title="Link to this definition"></a></dt>
+<dd><p>Return a raw copy of the assembly without keeping current state (internal variable).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>new_id</strong> (<em>TYPE</em><em>, </em><em>optional</em>) – The name of the created constitutive law. The default is “”.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>The copy of the assembly</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.delete_memory">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.delete_memory" title="Link to this definition"></a></dt>
+<dd><p>Static method of the Assembly class.
+Erase all the static variables of the Assembly object.
+Stored data, are data that are used to compute the global assembly in an
+efficient way.
+However, the stored data may cause errors if the mesh is modified. In this case, the data should be recomputed,
+but it is not done by default. In this case, deleting the memory should
+resolve the problem.</p>
+<p>Note: if the mesh_change argument is set to True when creating the Assembly object, the
+memory will be recomputed by default, which may cause a decrease in assembling performances</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.get_element_results">
+<span class="sig-name descname"><span class="pre">get_element_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.get_element_results" title="Link to this definition"></a></dt>
+<dd><p>Return some element results based on the finite element discretization of
+a differential operator on a mesh being given the dof results and the type of elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<em>string</em><em> or </em><a class="reference internal" href="generated/fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><em>Mesh</em></a>) – If mesh is a string, it should be a meshname.
+Define the mesh to get the results from</p></li>
+<li><p><strong>operator</strong> (<em>DiffOp</em>) – Differential operator defining the required results</p></li>
+<li><p><strong>U</strong> (<em>numpy.ndarray</em>) – Vector containing all the DoF solution</p></li>
+<li><p><strong>Return</strong> (<em>numpy.ndarray</em>) – A Vector containing the values on each element.
+It is computed using an arithmetic mean of the values from gauss points
+The vector lenght is the number of element in the mesh</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.get_gp_results">
+<span class="sig-name descname"><span class="pre">get_gp_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_elm_gp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_dof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.get_gp_results" title="Link to this definition"></a></dt>
+<dd><p>Return some results at element Gauss points based on the finite element discretization of
+a differential operator on a mesh being given the dof results and the type of elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>operator</strong> (<em>DiffOp</em>) – Differential operator defining the required results</p></li>
+<li><p><strong>U</strong> (<em>numpy.ndarray</em>) – Vector containing all the DoF solution</p></li>
+<li><p><strong>use_local_dof</strong> (<em>bool</em><em>, </em><em>default: False</em>) – if True, U is interpreted as local dof for each node in element
+The dof should be ordered so that U.reshape(mesh.n_elm_nodes, space.nvar, mesh.n_elements)[i,var,el]
+gives the value of the variable var (variable indice) for the ith nodes of the element el.</p></li>
+<li><p><strong>Return</strong> (<em>numpy.ndarray</em>) – A Vector containing the values on each point of gauss for each element.
+The vector lenght is the number of element time the number of Gauss points per element</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.get_grad_disp">
+<span class="sig-name descname"><span class="pre">get_grad_disp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Node'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.get_grad_disp" title="Link to this definition"></a></dt>
+<dd><p>Return the Gradient Tensor of a vector (generally displacement given by Problem.get_DofSolution(‘all’)
+as a list of list of numpy array
+The total displacement field U has to be given as a flatten numpy array
+see get_node_results and get_element_resultss</p>
+<p>Options :
+- Type :”Node”, “Element” or “GaussPoint” integration (default : “Node”)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.get_int_forces">
+<span class="sig-name descname"><span class="pre">get_int_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CoordinateSystem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'global'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.get_int_forces" title="Link to this definition"></a></dt>
+<dd><p>Only available for 2 nodes beam element
+Return the element internal Forces and moments related to a specific assembly considering the DOF solution given in U.
+Return array whose columns are Fx, Fy, Fz, Mx, My and Mz.</p>
+<dl class="simple">
+<dt>Parameter: if CoordinateSystem == ‘local’ the result is given in the local coordinate system</dt><dd><p>if CoordinateSystem == ‘global’ the result is given in the global coordinate system (default)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.get_node_results">
+<span class="sig-name descname"><span class="pre">get_node_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.get_node_results" title="Link to this definition"></a></dt>
+<dd><p>Return some node results based on the finite element discretization of
+a differential operator on a mesh being given the dof results and the type of elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>operator</strong> (<em>DiffOp</em>) – Differential operator defining the required results</p></li>
+<li><p><strong>U</strong> (<em>numpy.ndarray</em>) – Vector containing all the DoF solution</p></li>
+<li><p><strong>Return</strong> (<em>numpy.ndarray</em>) – A Vector containing the values on each node.
+An interpolation is used to get the node values from the gauss point values on each element.
+After that, an arithmetic mean is used to compute a single node value from all adjacent elements.
+The vector lenght is the number of nodes in the mesh</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.get_strain">
+<span class="sig-name descname"><span class="pre">get_strain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Node'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.get_strain" title="Link to this definition"></a></dt>
+<dd><p>Not a static method.
+Return the Green Lagrange Strain Tensor of an assembly using the Voigt notation as a python list.
+The total displacement field has to be given.
+see get_node_results and get_element_results</p>
+<p>Options :
+- Type :”Node”, “Element” or “GaussPoint” integration (default : “Node”)
+- nlgeom = True or False if the strain tensor account for geometrical non-linearities
+if nlgeom = False, the Strain Tensor is assumed linear (default : True)</p>
+<p>example :
+S = SpecificAssembly.get_strain(Problem.Problem.get_dof_solution(‘all’))</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.initialize" title="Link to this definition"></a></dt>
+<dd><p>Initialize the associated weak form and assemble the global matrix
+with the elastic matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pb</strong> (<em>-</em>) – the problem associated to the assembly</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="fedoo.Assembly.n_gauss_points">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_gauss_points</span></span><a class="headerlink" href="#fedoo.Assembly.n_gauss_points" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>returns: The total number of integration points (ie Gauss points) associated to the assembly.</dt><dd><p>n_gauss_points is the total number of Gauss points whereas n_elm_gp gives only he numbre of gauss points per element:
+n_gauss_points = mesh.n_elements + assembly.n_elm_gp.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.operator_apply">
+<span class="sig-name descname"><span class="pre">operator_apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodal_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_dof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.operator_apply" title="Link to this definition"></a></dt>
+<dd><p>Apply a discrete nodal vector to the trial space of a bilinear operator.</p>
+<p>This function performs a contraction of a bilinear form a(v, u*) with
+a known field ‘v’. It replaces the trial function (v) with the
+interpolated field defined by the nodal_vector, while keeping the
+virtual/test field (u*) symbolic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Args</strong></p></li>
+<li><p><strong>wf</strong> (<em>DiffOp</em>) – A bilinear opearator associated with a weakform that may be used
+to build a global matrix (e.g., stiffness or mass matrix).</p></li>
+<li><p><strong>nodal_vector</strong> (<em>array_like</em>) – The discrete values (Degrees of Freedom) used to instantiate
+the trial field. By default, the vector is interpreted in the
+global nodal basis.</p></li>
+<li><p><strong>use_local_dof</strong> (<em>bool</em><em>, </em><em>default: False</em>) – If True, nodal_vector is interpreted as local element dofs, ordered
+by variable blocks with <code class="docutils literal notranslate"><span class="pre">n_elements</span> <span class="pre">*</span> <span class="pre">n_elm_nodes</span></code> values each.</p></li>
+<li><p><strong>Return</strong> – <dl class="simple">
+<dt>DiffOp<span class="classifier">An operator containing only the virtual (test) operator,</span></dt><dd><p>ready for vector assembly.</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.reset" title="Link to this definition"></a></dt>
+<dd><p>reset the assembly to it’s initial state.
+Internal variable in the constitutive equation are reinitialized
+and stored global matrix and vector are deleted</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.set_start">
+<span class="sig-name descname"><span class="pre">set_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.set_start" title="Link to this definition"></a></dt>
+<dd><p>Apply the modification to the constitutive equation required at each new time increment.
+Generally used to increase non reversible internal variable
+Assemble the new global matrix.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="fedoo.Assembly.state_variables">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">state_variables</span></span><a class="headerlink" href="#fedoo.Assembly.state_variables" title="Link to this definition"></a></dt>
+<dd><p>Alias for the sv dict containing the state variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.sum">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">listAssembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.sum" title="Link to this definition"></a></dt>
+<dd><p>Return a new assembly which is a sum of N assembly.
+Assembly.sum(assembly1, assembly2, …, assemblyN, name =””, reload = [1,4] )</p>
+<p>The N first arguments are the assembly to be summed.
+name is the name of the created assembly:
+reload: a list of indices for subassembly that are recomputed at each time the summed assembly
+is Launched. Default is ‘all’ (equivalent to all indices).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fedoo.Assembly.sv">
+<span class="sig-name descname"><span class="pre">sv</span></span><a class="headerlink" href="#fedoo.Assembly.sv" title="Link to this definition"></a></dt>
+<dd><p>Dictionary of state variables associated to the current problem.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.to_start">
+<span class="sig-name descname"><span class="pre">to_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.to_start" title="Link to this definition"></a></dt>
+<dd><p>reset the current time increment (internal variable in the constitutive equation)
+Doesn’t assemble the new global matrix. Use the Update method for that purpose.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.update" title="Link to this definition"></a></dt>
+<dd><p>Update the associated weak form and assemble the global matrix
+:param - pb: a Problem object containing the Dof values</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="generated/fedoo.weakform.ArtificialDamping.space.html" class="btn btn-neutral float-left" title="fedoo.weakform.ArtificialDamping.space" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="time.html" class="btn btn-neutral float-right" title="Time Integration (fedoo.time)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

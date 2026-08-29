@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pressure constraint &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Rigid tie constraint" href="rigid_tie.html" />
+    <link rel="prev" title="Mean motion torsion" href="mean_rigid_motion_torsion.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01-simple/index.html">Simple examples to start</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Apply constraints</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Periodic_BC_2D_Plate_with_hole.html">2D periodic boundary condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="disk_rectangle_contact.html">Contact between a disk and a rectangle (IPC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mean_rigid_motion_torsion.html">Mean motion torsion</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Pressure constraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rigid_tie.html">Rigid tie constraint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../03-advanced/index.html">Advanced problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Apply constraints</a></li>
+      <li class="breadcrumb-item active">Pressure constraint</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/02-constraints/pressurized_pipe.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-02-constraints-pressurized-pipe-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="pressure-constraint">
+<span id="sphx-glr-examples-02-constraints-pressurized-pipe-py"></span><h1>Pressure constraint<a class="headerlink" href="#pressure-constraint" title="Link to this heading"></a></h1>
+<p>This example illustrate the use the pressure constraint for the simulation of
+a pipe under internal pressure and external pressure. The problem is treated
+in 2D with plane strain assumption.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="c1"># Pressure in MPa</span>
+<span class="n">external_pressure</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">internal_pressure</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">thickness</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>  <span class="c1"># plane strain assumption</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hollow_disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="n">thickness</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">41</span><span class="p">)</span>
+
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">200e3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+<span class="n">solid_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To find the nodes belonging to the boundary of the pipe, the
+<a class="reference internal" href="../../generated/fedoo.Mesh.find_nodes.html#fedoo.Mesh.find_nodes" title="fedoo.Mesh.find_nodes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Mesh.find_nodes()</span></code></a> method is used with the “Distance” criterion
+from the center of pipe whose coordinates is [0, 0].</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ext_nodes</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Distance"</span><span class="p">,</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">radius</span><span class="p">))</span>
+<span class="n">int_nodes</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Distance"</span><span class="p">,</span> <span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">radius</span> <span class="o">-</span> <span class="n">thickness</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The pressure requires to build a weaform over a surface Mesh. To
+automatically build the required surface mesh from a set of nodes, with use
+the <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.contraint.Pressure.from_nodes()</span></code> constructor.</p>
+<p>Alternatively, we can use the
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.contraint.Pressure.from_elements()</span></code> constructor from a set of
+element to extract the external surface.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The from_nodes and from_elements constructor can’t be used to apply a
+pressure over a shell structure because, as the shell mesh is a surface
+mesh, these constructors will extract linear mesh of the boundaries.
+To apply the mesh over a shell geometry, the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.contraint.Pressure</span></code> constructor needs to be called.
+See the example
+<span class="xref std std-ref">sphx_glr_examples_01_simple_spherical_shell_compression.py</span></p>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ext_pressure</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="o">.</span><span class="n">from_nodes</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">ext_nodes</span><span class="p">,</span> <span class="n">external_pressure</span><span class="p">)</span>
+<span class="n">int_pressure</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="o">.</span><span class="n">from_nodes</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">int_nodes</span><span class="p">,</span> <span class="n">internal_pressure</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Define a problem from the solid and pressure assemblies
+The 3 assemblies are sumed.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">solid_assembly</span> <span class="o">+</span> <span class="n">ext_pressure</span> <span class="o">+</span> <span class="n">int_pressure</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"pressure"</span><span class="p">,</span> <span class="s2">"Node"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_pressurized_pipe_001.png" srcset="../../_images/sphx_glr_pressurized_pipe_001.png" alt="pressurized pipe" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.187 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-constraints-pressurized-pipe-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/8e0150a40ce16f2eaf4dee581380da9d/pressurized_pipe.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">pressurized_pipe.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/82ad21da5aafd24fb220c94cba7dfb0d/pressurized_pipe.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">pressurized_pipe.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/8614cfe9edb8d493609873121d6e7e8c/pressurized_pipe.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">pressurized_pipe.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mean_rigid_motion_torsion.html" class="btn btn-neutral float-left" title="Mean motion torsion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rigid_tie.html" class="btn btn-neutral float-right" title="Rigid tie constraint" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.Mesh.find_coincident_nodes &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.Mesh.find_elements" href="fedoo.Mesh.find_elements.html" />
+    <link rel="prev" title="fedoo.Mesh.extract_elements" href="fedoo.Mesh.extract_elements.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="fedoo.Mesh.html">fedoo.Mesh</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.add_element_set.html">fedoo.Mesh.add_element_set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.add_internal_nodes.html">fedoo.Mesh.add_internal_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.add_node_set.html">fedoo.Mesh.add_node_set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.add_nodes.html">fedoo.Mesh.add_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.as_2d.html">fedoo.Mesh.as_2d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.as_3d.html">fedoo.Mesh.as_3d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.as_ndim.html">fedoo.Mesh.as_ndim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.convert_data.html">fedoo.Mesh.convert_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.copy.html">fedoo.Mesh.copy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.data_to_gausspoint.html">fedoo.Mesh.data_to_gausspoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.deepcopy.html">fedoo.Mesh.deepcopy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.determine_data_type.html">fedoo.Mesh.determine_data_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.extract_elements.html">fedoo.Mesh.extract_elements</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.Mesh.find_coincident_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.find_elements.html">fedoo.Mesh.find_elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.find_isolated_nodes.html">fedoo.Mesh.find_isolated_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.find_nodes.html">fedoo.Mesh.find_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.from_meshio.html">fedoo.Mesh.from_meshio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.from_pyvista.html">fedoo.Mesh.from_pyvista</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.gausspoint_coordinates.html">fedoo.Mesh.gausspoint_coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.get_all.html">fedoo.Mesh.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.get_element_local_frame.html">fedoo.Mesh.get_element_local_frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.get_element_volumes.html">fedoo.Mesh.get_element_volumes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.get_elements_from_nodes.html">fedoo.Mesh.get_elements_from_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.get_volume.html">fedoo.Mesh.get_volume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.init_interpolation.html">fedoo.Mesh.init_interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.integrate_field.html">fedoo.Mesh.integrate_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.is_periodic.html">fedoo.Mesh.is_periodic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.merge_coincident_nodes.html">fedoo.Mesh.merge_coincident_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.merge_nodes.html">fedoo.Mesh.merge_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.nearest_node.html">fedoo.Mesh.nearest_node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.plot.html">fedoo.Mesh.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.plot_normals.html">fedoo.Mesh.plot_normals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.read.html">fedoo.Mesh.read</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.remove_isolated_nodes.html">fedoo.Mesh.remove_isolated_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.remove_nodes.html">fedoo.Mesh.remove_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.reset_interpolation.html">fedoo.Mesh.reset_interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.save.html">fedoo.Mesh.save</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.stack.html">fedoo.Mesh.stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.to_pyvista.html">fedoo.Mesh.to_pyvista</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.translate.html">fedoo.Mesh.translate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.bounding_box.html">fedoo.Mesh.bounding_box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.element_centers.html">fedoo.Mesh.element_centers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.n_elements.html">fedoo.Mesh.n_elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.n_elm_nodes.html">fedoo.Mesh.n_elm_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.n_nodes.html">fedoo.Mesh.n_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.name.html">fedoo.Mesh.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.ndim.html">fedoo.Mesh.ndim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.nodes.html">fedoo.Mesh.nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.elements.html">fedoo.Mesh.elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.elm_type.html">fedoo.Mesh.elm_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.node_sets.html">fedoo.Mesh.node_sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.element_sets.html">fedoo.Mesh.element_sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.stack.html">fedoo.mesh.stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.extrude.html">fedoo.mesh.extrude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.extract_surface.html">fedoo.mesh.extract_surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.extract_edges.html">fedoo.mesh.extract_edges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.change_elm_type.html">fedoo.mesh.change_elm_type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.quad2tri.html">fedoo.mesh.quad2tri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.import_file.html">fedoo.mesh.import_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.import_msh.html">fedoo.mesh.import_msh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.import_vtk.html">fedoo.mesh.import_vtk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.rectangle_mesh.html">fedoo.mesh.rectangle_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.box_mesh.html">fedoo.mesh.box_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.disk_mesh.html">fedoo.mesh.disk_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.hole_plate_mesh.html">fedoo.mesh.hole_plate_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.hollow_disk_mesh.html">fedoo.mesh.hollow_disk_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.I_shape_mesh.html">fedoo.mesh.I_shape_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.line_mesh_1D.html">fedoo.mesh.line_mesh_1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.line_mesh.html">fedoo.mesh.line_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.circle_mesh.html">fedoo.mesh.circle_mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.structured_mesh_2D.html">fedoo.mesh.structured_mesh_2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.generate_nodes.html">fedoo.mesh.generate_nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+          <li class="breadcrumb-item"><a href="fedoo.Mesh.html">fedoo.Mesh</a></li>
+      <li class="breadcrumb-item active">fedoo.Mesh.find_coincident_nodes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.Mesh.find_coincident_nodes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-mesh-find-coincident-nodes">
+<h1>fedoo.Mesh.find_coincident_nodes<a class="headerlink" href="#fedoo-mesh-find-coincident-nodes" title="Link to this heading"></a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Mesh.find_coincident_nodes">
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">find_coincident_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#fedoo.Mesh.find_coincident_nodes" title="Link to this definition"></a></dt>
+<dd><p>Find some nodes with the same position considering a tolerance given by the argument tol.</p>
+<p>return an array of shape (number_coincident_nodes, 2) where each line is a pair of nodes that are at the same position.
+These pairs of nodes can be merged using :</p>
+<blockquote>
+<div><p>meshObject.merge_nodes(meshObject.find_coincident_nodes())</p>
+</div></blockquote>
+<p>where meshObject is the Mesh object containing merged coincidentNodes.</p>
+<p>Detection here uses a round-to-tolerance lexsort. For a distance-based
+(KDTree) detector that also collapses clusters of 3+ coincident nodes
+in one call, see <a class="reference internal" href="fedoo.Mesh.merge_coincident_nodes.html#fedoo.Mesh.merge_coincident_nodes" title="fedoo.Mesh.merge_coincident_nodes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">merge_coincident_nodes()</span></code></a>.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.Mesh.extract_elements.html" class="btn btn-neutral float-left" title="fedoo.Mesh.extract_elements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.Mesh.find_elements.html" class="btn btn-neutral float-right" title="fedoo.Mesh.find_elements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
