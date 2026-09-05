@@ -521,8 +521,13 @@ Newton-Raphson initial guess only. This is ideal for manually
 <h4>5. Eigenvalue Shifting<a class="headerlink" href="#eigenvalue-shifting" title="Link to this heading"></a></h4>
 <p>For strong instabilities (such as buckling or snap-through) where the tangent
 stiffness matrix becomes non-positive definite, the <strong>Eigenvalue Shift</strong> technique might
-be effective. Note that this method is computationally
-expensive with limited results, and should only be used as a last resort.</p>
+be effective. This feature is <strong>experimental</strong>: it is computationally expensive
+and, as measured, often has no effect at all. Two known limitations: the
+spectral estimate is computed on the <em>unreduced</em> matrix (it therefore sees the
+modes of the blocked and rigid-body degrees of freedom, not those of the system
+actually solved), and the shift is added before that reduction, which with
+multi-point constraints does not yield <code class="docutils literal notranslate"><span class="pre">reduced</span> <span class="pre">+</span> <span class="pre">alpha*I</span></code>. Use it only as a
+last resort, after <code class="docutils literal notranslate"><span class="pre">adaptive_stiffness</span></code> and a dynamic solver.</p>
 <ul class="simple">
 <li><p><strong>Mechanism</strong>: Adds a scaled identity matrix <span class="math notranslate nohighlight">\(\alpha \mathbf{I}\)</span> to the
 tangent stiffness <span class="math notranslate nohighlight">\(\mathbf{K_T}\)</span>.</p></li>

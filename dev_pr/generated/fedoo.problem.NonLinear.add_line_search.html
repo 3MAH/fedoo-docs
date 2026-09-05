@@ -177,7 +177,7 @@
 <h1>fedoo.problem.NonLinear.add_line_search<a class="headerlink" href="#fedoo-problem-nonlinear-add-line-search" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.NonLinear.add_line_search">
-<span class="sig-prename descclassname"><span class="pre">NonLinear.</span></span><span class="sig-name descname"><span class="pre">add_line_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Quadratic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinear.add_line_search" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">NonLinear.</span></span><span class="sig-name descname"><span class="pre">add_line_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Quadratic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'natural'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinear.add_line_search" title="Link to this definition"></a></dt>
 <dd><p>Add line search algorithm for the Newton-Raphson solver.</p>
 <p>Line search improves global convergence by scaling the displacement
 increment <span class="math notranslate nohighlight">\(dX\)</span> by a step size <span class="math notranslate nohighlight">\(\alpha \in (0, 1]\)</span>. This is
@@ -186,7 +186,35 @@ the initial guess is far from the equilibrium.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>method</strong> (<em>{'Armijo'</em><em>, </em><em>'Residual'</em><em>, </em><em>'Energy'</em><em>, </em><em>'Quadratic'}</em><em> or </em><em>callable</em><em>, </em><em>default 'Quadratic'</em>) – <p>The strategy used to determine or refine the step size:</p>
+<li><p><strong>mode</strong> (<em>{'natural'</em><em>, </em><em>'minimize'</em><em>, </em><em>'safeguard'}</em><em>, </em><em>default 'natural'</em>) – <p>The overall line search policy:</p>
+<ul>
+<li><p><strong>’natural’</strong> (default): validity filter, then the step is
+accepted when EITHER the classical Armijo test on
+<span class="math notranslate nohighlight">\(\|R\|\)</span> OR Deuflhard’s affine-invariant test on the
+simplified Newton correction <span class="math notranslate nohighlight">\(K^{-1} R(u + \alpha dX)\)</span>
+passes (see <code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.problem.line_search._natural_test()</span></code>).
+The first one throttles the overshoot of penalty contact and
+elastic-plastic transitions, the second one lets the
+legitimate large steps of soft modes under force control
+through. <code class="docutils literal notranslate"><span class="pre">method</span></code> is ignored. Factorization reuse
+(<a class="reference internal" href="fedoo.problem.NonLinear.set_reuse_factorization.html#fedoo.problem.NonLinear.set_reuse_factorization" title="fedoo.problem.NonLinear.set_reuse_factorization"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_reuse_factorization()</span></code></a>) is enabled automatically
+with a direct solver so that each trial costs one
+back-substitution.</p></li>
+<li><p><strong>’minimize’</strong>: classical residual-descent line search using
+<code class="docutils literal notranslate"><span class="pre">method</span></code> below. Throttles the step against overshoot but
+may strangle Newton on soft modes under force control.</p></li>
+<li><p><strong>’safeguard’</strong>: pure validity filter. The full Newton step
+is accepted whenever the trial state is kinematically valid;
+geometric backtracking is applied only on a degenerated
+trial state (<span class="math notranslate nohighlight">\(\det F \le 0\)</span>). This never throttles the
+legitimate large steps of soft modes (whose quadratic
+remainder inflates the residual norm as <span class="math notranslate nohighlight">\(\alpha^2\)</span>
+while remaining excellent steps), which any residual-monotone
+rule would strangle – the right choice for force control of
+soft (bending) modes. <code class="docutils literal notranslate"><span class="pre">method</span></code> is ignored.</p></li>
+</ul>
+</p></li>
+<li><p><strong>method</strong> (<em>{'Armijo'</em><em>, </em><em>'Residual'</em><em>, </em><em>'Energy'</em><em>, </em><em>'Quadratic'}</em><em> or </em><em>callable</em><em>, </em><em>default 'Quadratic'</em>) – <p>The residual-descent strategy used when <code class="docutils literal notranslate"><span class="pre">mode='minimize'</span></code>:</p>
 <ul>
 <li><p><strong>’Armijo’</strong>: Ensures a “sufficient decrease” in the residual
 using a least-square assumption. Standard for most nonlinear applications.</p></li>
@@ -198,7 +226,19 @@ onto the search direction). Ideal for snap-through/buckling.</p></li>
 function to jump directly to the estimated minimum.</p></li>
 <li><p><strong>callable</strong>: If a function is provided, it must follow the signature
 <code class="docutils literal notranslate"><span class="pre">user_line_search(pb,</span> <span class="pre">dX)</span> <span class="pre">-&gt;</span> <span class="pre">float</span></code> and will be assigned directly
-as the line search callback.</p></li>
+as the line search callback (<code class="docutils literal notranslate"><span class="pre">mode</span></code> is then ignored).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A custom callback MUST return exactly 1 while a Dirichlet
+increment is still pending (test
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_xbc_is_applied()</span></code>, as the built-in line search does).
+A returned <code class="docutils literal notranslate"><span class="pre">alpha</span> <span class="pre">&lt;</span> <span class="pre">1</span></code> defers the remaining
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">alpha</span></code> of the prescribed displacement to the next
+iterations, and convergence is only declared once nothing
+is left to apply: a callback that never returns 1 strands
+the increment and the time step collapses to <code class="docutils literal notranslate"><span class="pre">dt_min</span></code>.</p>
+</div>
+</li>
 </ul>
 </p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – A unique identifier for the line search. If not provided, it defaults
@@ -209,8 +249,9 @@ to ‘standard’ for built-in methods, or the function’s name for callables.<
 <p class="rubric">Notes</p>
 <ul>
 <li><p><strong>Implementation</strong>: This method sets the <cite>_step_size_callback</cite> attribute
-of the problem instance. Parameters like <cite>ls_max_iter</cite> and <cite>ls_method</cite>
-are stored within the <cite>self.nr_parameters</cite> dictionary.</p></li>
+of the problem instance. Parameters <cite>ls_mode</cite>, <cite>ls_method</cite> and
+<cite>ls_max_iter</cite> are stored within the <cite>self.nr_parameters</cite> dictionary
+(they may also be set through <a class="reference internal" href="fedoo.problem.NonLinear.set_nr_criterion.html#fedoo.problem.NonLinear.set_nr_criterion" title="fedoo.problem.NonLinear.set_nr_criterion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_nr_criterion()</span></code></a>).</p></li>
 <li><p><strong>Objective Function</strong>: For ‘Armijo’ and ‘Quadratic’ methods, the solver
 minimizes the squared L2-norm of the residual:</p>
 <div class="math notranslate nohighlight">
@@ -222,8 +263,12 @@ derivative of the potential energy (the external work).</p></li>
 clipped such that <span class="math notranslate nohighlight">\(\alpha_{new} \in [0.1\alpha, 0.5\alpha]\)</span>.</p></li>
 </ul>
 <p class="rubric">Example</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Using a built-in method</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">my_problem</span><span class="o">.</span><span class="n">add_line_search</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"Quadratic"</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Default: natural monotonicity test</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_problem</span><span class="o">.</span><span class="n">add_line_search</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Classical residual-descent line search</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_problem</span><span class="o">.</span><span class="n">add_line_search</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"minimize"</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"Quadratic"</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Validity safeguard only (soft-mode force control)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_problem</span><span class="o">.</span><span class="n">add_line_search</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"safeguard"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Using a custom function</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">my_ls</span><span class="p">(</span><span class="n">pb</span><span class="p">,</span> <span class="n">dX</span><span class="p">):</span> <span class="k">return</span> <span class="mf">0.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">my_problem</span><span class="o">.</span><span class="n">add_line_search</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">my_ls</span><span class="p">)</span>

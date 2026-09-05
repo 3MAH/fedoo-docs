@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics) &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading" href="thermal_loading.html" />
+    <link rel="prev" title="Finite-strain Neo-Hookean cantilever (rigid cap)" href="neohookean_cantilever.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../01-simple/index.html">Simple examples to start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Advanced problems</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="3D_periodic_BC_off_axis.html">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html">Composite double-cantilever beam with a cohesive interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#geometry-and-discretization">Geometry and discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#mesh-the-two-arms">Mesh the two arms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#construct-the-cohesive-interface">Construct the cohesive interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#constitutive-laws-and-assemblies">Constitutive laws and assemblies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#problem-and-boundary-conditions">Problem and boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#incremental-nonlinear-solution">Incremental nonlinear solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#cohesive-zone-response">Cohesive-zone response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#plot-the-deformed-dcb">Plot the deformed DCB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="neohookean_cantilever.html">Finite-strain Neo-Hookean cantilever (rigid cap)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#geometry-and-mesh">Geometry and Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#modeling-space-and-field-definitions">Modeling Space and Field Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#constitutive-laws-and-assembly">Constitutive Laws and Assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#problem-definition-and-boundary-conditions">Problem Definition and Boundary Conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#solving-and-post-treatment">Solving and Post-Treatment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tube_compression.html">Compression of a tube using 2D axisymmetric model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../identification/index.html">Inverse identification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Advanced problems</a></li>
+      <li class="breadcrumb-item active">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/03-advanced/neohookean_cantilever_force.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-03-advanced-neohookean-cantilever-force-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="force-driven-neo-hookean-cantilever-massive-rigid-cap-implicit-dynamics">
+<span id="sphx-glr-examples-03-advanced-neohookean-cantilever-force-py"></span><h1>Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)<a class="headerlink" href="#force-driven-neo-hookean-cantilever-massive-rigid-cap-implicit-dynamics" title="Link to this heading"></a></h1>
+<p>Companion of <span class="xref std std-ref">the displacement-driven cantilever example</span>: the same slender, nearly-incompressible NEOHC
+cylinder, but loaded by a <strong>transverse force</strong> applied to its rigid cap —
+the natural protocol when mirroring a dynamics engine such as ArtiSynth.</p>
+<p>Static force control is ill-posed here: the transverse stiffness of the
+cap is tiny (~40 N/m at the origin, rotational ~2.5e-2 N.m/rad), so a
+Newton step towards the distant equilibrium leaves any convergence basin
+(the classical remedies, arc-length continuation or Tikhonov
+stabilization, are not used in this example). The robust protocol is
+<strong>quasi-static-by-dynamics</strong>:</p>
+<ul class="simple">
+<li><p>the cap is a true rigid body — a <a class="reference internal" href="../../generated/fedoo.constraint.RigidTie.html#fedoo.constraint.RigidTie" title="fedoo.constraint.RigidTie"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.RigidTie</span></code></a> for
+the kinematics plus a <code class="xref py py-class docutils literal notranslate"><span class="pre">RigidBodyAssembly</span></code>
+carrying its 6x6 mass/inertia, so the Newmark term <code class="docutils literal notranslate"><span class="pre">M/(beta*dt^2)</span></code>
+regularizes the soft cap DOFs (this is exactly what makes the ArtiSynth
+mirror robust);</p></li>
+<li><p>a Newmark integrator attached at the problem level
+(<code class="docutils literal notranslate"><span class="pre">pb.set_time_integrator</span></code>) with an <strong>unconditionally stable</strong> pair:
+<code class="docutils literal notranslate"><span class="pre">gamma</span> <span class="pre">=</span> <span class="pre">0.6</span></code> for high-frequency damping requires
+<code class="docutils literal notranslate"><span class="pre">beta</span> <span class="pre">&gt;=</span> <span class="pre">gamma/2</span> <span class="pre">=</span> <span class="pre">0.30</span></code> — a violating pair (e.g. the
+default-looking <code class="docutils literal notranslate"><span class="pre">beta</span> <span class="pre">=</span> <span class="pre">0.25</span></code>) grows the high-frequency modes
+geometrically and collapses after a few tens of increments, whatever dt
+(fedoo now warns in that case);</p></li>
+<li><p>a slow force ramp (quadratic, gentle start) followed by a hold period so
+the response settles to the static equilibrium;</p></li>
+<li><p>the safeguard line search (<code class="docutils literal notranslate"><span class="pre">mode=&quot;safeguard&quot;</span></code>), which rejects only
+trial states with inverted elements and never throttles legitimate large
+soft-mode steps. The default <code class="docutils literal notranslate"><span class="pre">mode=&quot;natural&quot;</span></code> (affine-invariant test on
+the simplified Newton correction) handles them as well; a pure
+residual-descent line search (<code class="docutils literal notranslate"><span class="pre">mode=&quot;minimize&quot;</span></code>) would strangle them.</p></li>
+</ul>
+<p>Cross-check: the displacement-driven curve gives <code class="docutils literal notranslate"><span class="pre">ux(F</span> <span class="pre">=</span> <span class="pre">20</span> <span class="pre">N)</span> <span class="pre">=</span> <span class="pre">45.5</span> <span class="pre">mm</span>
+<span class="pre">=</span> <span class="pre">0.911</span> <span class="pre">L</span></code>; this run settles within ~2% of it (the difference is the
+residual numerical damping at the end of the hold).</p>
+<p>The tie is registered automatically when the <code class="docutils literal notranslate"><span class="pre">RigidBodyAssembly</span></code> is part
+of the problem assembly — do not add it again (fedoo now ignores the
+duplicate, which used to corrupt the MPC elimination).</p>
+<img src="../../_images/sphx_glr_neohookean_cantilever_force_001.png" srcset="../../_images/sphx_glr_neohookean_cantilever_force_001.png" alt="neohookean cantilever force" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.01000 - dt 0.01000 - NR iter: 1 - Err: 0.00018
+Iter 2 - Time: 0.02000 - dt 0.01000 - NR iter: 1 - Err: 0.00056
+Iter 3 - Time: 0.03000 - dt 0.01000 - NR iter: 2 - Err: 0.00083
+Iter 4 - Time: 0.04000 - dt 0.01000 - NR iter: 3 - Err: 0.00003
+Iter 5 - Time: 0.05000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 6 - Time: 0.06000 - dt 0.01000 - NR iter: 3 - Err: 0.00010
+Iter 7 - Time: 0.07000 - dt 0.01000 - NR iter: 3 - Err: 0.00014
+Iter 8 - Time: 0.08000 - dt 0.01000 - NR iter: 3 - Err: 0.00019
+Iter 9 - Time: 0.09000 - dt 0.01000 - NR iter: 3 - Err: 0.00022
+Iter 10 - Time: 0.10000 - dt 0.01000 - NR iter: 3 - Err: 0.00031
+Iter 11 - Time: 0.11000 - dt 0.01000 - NR iter: 3 - Err: 0.00038
+Iter 12 - Time: 0.12000 - dt 0.01000 - NR iter: 3 - Err: 0.00023
+Iter 13 - Time: 0.13000 - dt 0.01000 - NR iter: 3 - Err: 0.00025
+Iter 14 - Time: 0.14000 - dt 0.01000 - NR iter: 3 - Err: 0.00030
+Iter 15 - Time: 0.15000 - dt 0.01000 - NR iter: 3 - Err: 0.00059
+Iter 16 - Time: 0.16000 - dt 0.01000 - NR iter: 3 - Err: 0.00085
+Iter 17 - Time: 0.17000 - dt 0.01000 - NR iter: 3 - Err: 0.00050
+Iter 18 - Time: 0.18000 - dt 0.01000 - NR iter: 3 - Err: 0.00057
+Iter 19 - Time: 0.19000 - dt 0.01000 - NR iter: 3 - Err: 0.00066
+Iter 20 - Time: 0.20000 - dt 0.01000 - NR iter: 3 - Err: 0.00094
+Iter 21 - Time: 0.21000 - dt 0.01000 - NR iter: 5 - Err: 0.00002
+Iter 22 - Time: 0.22000 - dt 0.01000 - NR iter: 3 - Err: 0.00089
+Iter 23 - Time: 0.23000 - dt 0.01000 - NR iter: 3 - Err: 0.00049
+Iter 24 - Time: 0.24000 - dt 0.01000 - NR iter: 3 - Err: 0.00046
+Iter 25 - Time: 0.25000 - dt 0.01000 - NR iter: 5 - Err: 0.00001
+Iter 26 - Time: 0.26000 - dt 0.01000 - NR iter: 5 - Err: 0.00001
+Iter 27 - Time: 0.27000 - dt 0.01000 - NR iter: 5 - Err: 0.00001
+Iter 28 - Time: 0.28000 - dt 0.01000 - NR iter: 5 - Err: 0.00001
+Iter 29 - Time: 0.29000 - dt 0.01000 - NR iter: 5 - Err: 0.00001
+Iter 30 - Time: 0.30000 - dt 0.01000 - NR iter: 3 - Err: 0.00098
+Iter 31 - Time: 0.31000 - dt 0.01000 - NR iter: 4 - Err: 0.00087
+Iter 32 - Time: 0.32000 - dt 0.01000 - NR iter: 4 - Err: 0.00091
+Iter 33 - Time: 0.33000 - dt 0.01000 - NR iter: 5 - Err: 0.00001
+Iter 34 - Time: 0.34000 - dt 0.01000 - NR iter: 5 - Err: 0.00001
+Iter 35 - Time: 0.35000 - dt 0.01000 - NR iter: 5 - Err: 0.00001
+Iter 36 - Time: 0.36000 - dt 0.01000 - NR iter: 3 - Err: 0.00094
+Iter 37 - Time: 0.37000 - dt 0.01000 - NR iter: 3 - Err: 0.00051
+Iter 38 - Time: 0.38000 - dt 0.01000 - NR iter: 3 - Err: 0.00043
+Iter 39 - Time: 0.39000 - dt 0.01000 - NR iter: 3 - Err: 0.00051
+Iter 40 - Time: 0.40000 - dt 0.01000 - NR iter: 3 - Err: 0.00079
+Iter 41 - Time: 0.41000 - dt 0.01000 - NR iter: 3 - Err: 0.00089
+Iter 42 - Time: 0.42000 - dt 0.01000 - NR iter: 3 - Err: 0.00061
+Iter 43 - Time: 0.43000 - dt 0.01000 - NR iter: 3 - Err: 0.00047
+Iter 44 - Time: 0.44000 - dt 0.01000 - NR iter: 3 - Err: 0.00040
+Iter 45 - Time: 0.45000 - dt 0.01000 - NR iter: 3 - Err: 0.00047
+Iter 46 - Time: 0.46000 - dt 0.01000 - NR iter: 3 - Err: 0.00050
+Iter 47 - Time: 0.47000 - dt 0.01000 - NR iter: 3 - Err: 0.00054
+Iter 48 - Time: 0.48000 - dt 0.01000 - NR iter: 3 - Err: 0.00050
+Iter 49 - Time: 0.49000 - dt 0.01000 - NR iter: 3 - Err: 0.00043
+Iter 50 - Time: 0.50000 - dt 0.01000 - NR iter: 3 - Err: 0.00038
+Iter 51 - Time: 0.51000 - dt 0.01000 - NR iter: 3 - Err: 0.00032
+Iter 52 - Time: 0.52000 - dt 0.01000 - NR iter: 3 - Err: 0.00035
+Iter 53 - Time: 0.53000 - dt 0.01000 - NR iter: 3 - Err: 0.00039
+Iter 54 - Time: 0.54000 - dt 0.01000 - NR iter: 3 - Err: 0.00038
+Iter 55 - Time: 0.55000 - dt 0.01000 - NR iter: 3 - Err: 0.00031
+Iter 56 - Time: 0.56000 - dt 0.01000 - NR iter: 3 - Err: 0.00024
+Iter 57 - Time: 0.57000 - dt 0.01000 - NR iter: 3 - Err: 0.00024
+Iter 58 - Time: 0.58000 - dt 0.01000 - NR iter: 3 - Err: 0.00027
+Iter 59 - Time: 0.59000 - dt 0.01000 - NR iter: 3 - Err: 0.00028
+Iter 60 - Time: 0.60000 - dt 0.01000 - NR iter: 3 - Err: 0.00024
+Iter 61 - Time: 0.61000 - dt 0.01000 - NR iter: 3 - Err: 0.00019
+Iter 62 - Time: 0.62000 - dt 0.01000 - NR iter: 3 - Err: 0.00017
+Iter 63 - Time: 0.63000 - dt 0.01000 - NR iter: 3 - Err: 0.00019
+Iter 64 - Time: 0.64000 - dt 0.01000 - NR iter: 3 - Err: 0.00021
+Iter 65 - Time: 0.65000 - dt 0.01000 - NR iter: 3 - Err: 0.00018
+Iter 66 - Time: 0.66000 - dt 0.01000 - NR iter: 3 - Err: 0.00014
+Iter 67 - Time: 0.67000 - dt 0.01000 - NR iter: 3 - Err: 0.00013
+Iter 68 - Time: 0.68000 - dt 0.01000 - NR iter: 3 - Err: 0.00014
+Iter 69 - Time: 0.69000 - dt 0.01000 - NR iter: 3 - Err: 0.00015
+Iter 70 - Time: 0.70000 - dt 0.01000 - NR iter: 3 - Err: 0.00013
+Iter 71 - Time: 0.71000 - dt 0.01000 - NR iter: 3 - Err: 0.00011
+Iter 72 - Time: 0.72000 - dt 0.01000 - NR iter: 3 - Err: 0.00010
+Iter 73 - Time: 0.73000 - dt 0.01000 - NR iter: 3 - Err: 0.00011
+Iter 74 - Time: 0.74000 - dt 0.01000 - NR iter: 3 - Err: 0.00011
+Iter 75 - Time: 0.75000 - dt 0.01000 - NR iter: 3 - Err: 0.00010
+Iter 76 - Time: 0.76000 - dt 0.01000 - NR iter: 3 - Err: 0.00008
+Iter 77 - Time: 0.77000 - dt 0.01000 - NR iter: 3 - Err: 0.00009
+Iter 78 - Time: 0.78000 - dt 0.01000 - NR iter: 3 - Err: 0.00009
+Iter 79 - Time: 0.79000 - dt 0.01000 - NR iter: 3 - Err: 0.00009
+Iter 80 - Time: 0.80000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 81 - Time: 0.81000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 82 - Time: 0.82000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 83 - Time: 0.83000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 84 - Time: 0.84000 - dt 0.01000 - NR iter: 3 - Err: 0.00006
+Iter 85 - Time: 0.85000 - dt 0.01000 - NR iter: 3 - Err: 0.00006
+Iter 86 - Time: 0.86000 - dt 0.01000 - NR iter: 3 - Err: 0.00006
+Iter 87 - Time: 0.87000 - dt 0.01000 - NR iter: 3 - Err: 0.00006
+Iter 88 - Time: 0.88000 - dt 0.01000 - NR iter: 3 - Err: 0.00006
+Iter 89 - Time: 0.89000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 90 - Time: 0.90000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 91 - Time: 0.91000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 92 - Time: 0.92000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 93 - Time: 0.93000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 94 - Time: 0.94000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 95 - Time: 0.95000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 96 - Time: 0.96000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 97 - Time: 0.97000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 98 - Time: 0.98000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 99 - Time: 0.99000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 100 - Time: 1.00000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 101 - Time: 1.01000 - dt 0.01000 - NR iter: 1 - Err: 0.00015
+Iter 102 - Time: 1.02000 - dt 0.01000 - NR iter: 3 - Err: 0.00012
+Iter 103 - Time: 1.03000 - dt 0.01000 - NR iter: 1 - Err: 0.00021
+Iter 104 - Time: 1.04000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 105 - Time: 1.05000 - dt 0.01000 - NR iter: 1 - Err: 0.00016
+Iter 106 - Time: 1.06000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 107 - Time: 1.07000 - dt 0.01000 - NR iter: 1 - Err: 0.00014
+Iter 108 - Time: 1.08000 - dt 0.01000 - NR iter: 2 - Err: 0.00081
+Iter 109 - Time: 1.09000 - dt 0.01000 - NR iter: 1 - Err: 0.00011
+Iter 110 - Time: 1.10000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 111 - Time: 1.11000 - dt 0.01000 - NR iter: 1 - Err: 0.00008
+Iter 112 - Time: 1.12000 - dt 0.01000 - NR iter: 2 - Err: 0.00042
+Iter 113 - Time: 1.13000 - dt 0.01000 - NR iter: 1 - Err: 0.00006
+Iter 114 - Time: 1.14000 - dt 0.01000 - NR iter: 1 - Err: 0.00086
+Iter 115 - Time: 1.15000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 116 - Time: 1.16000 - dt 0.01000 - NR iter: 1 - Err: 0.00007
+Iter 117 - Time: 1.17000 - dt 0.01000 - NR iter: 2 - Err: 0.00037
+Iter 118 - Time: 1.18000 - dt 0.01000 - NR iter: 1 - Err: 0.00006
+Iter 119 - Time: 1.19000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 120 - Time: 1.20000 - dt 0.01000 - NR iter: 1 - Err: 0.00004
+Iter 121 - Time: 1.21000 - dt 0.01000 - NR iter: 2 - Err: 0.00054
+Iter 122 - Time: 1.22000 - dt 0.01000 - NR iter: 1 - Err: 0.00003
+Iter 123 - Time: 1.23000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 124 - Time: 1.24000 - dt 0.01000 - NR iter: 1 - Err: 0.00003
+Iter 125 - Time: 1.25000 - dt 0.01000 - NR iter: 2 - Err: 0.00066
+Iter 126 - Time: 1.26000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 127 - Time: 1.27000 - dt 0.01000 - NR iter: 1 - Err: 0.00099
+Iter 128 - Time: 1.28000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 129 - Time: 1.29000 - dt 0.01000 - NR iter: 1 - Err: 0.00006
+Iter 130 - Time: 1.30000 - dt 0.01000 - NR iter: 2 - Err: 0.00018
+Iter 131 - Time: 1.31000 - dt 0.01000 - NR iter: 1 - Err: 0.00005
+Iter 132 - Time: 1.32000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 133 - Time: 1.33000 - dt 0.01000 - NR iter: 1 - Err: 0.00004
+Iter 134 - Time: 1.34000 - dt 0.01000 - NR iter: 2 - Err: 0.00051
+Iter 135 - Time: 1.35000 - dt 0.01000 - NR iter: 1 - Err: 0.00003
+Iter 136 - Time: 1.36000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 137 - Time: 1.37000 - dt 0.01000 - NR iter: 1 - Err: 0.00003
+Iter 138 - Time: 1.38000 - dt 0.01000 - NR iter: 2 - Err: 0.00066
+Iter 139 - Time: 1.39000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 140 - Time: 1.40000 - dt 0.01000 - NR iter: 1 - Err: 0.00099
+Iter 141 - Time: 1.41000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 142 - Time: 1.42000 - dt 0.01000 - NR iter: 1 - Err: 0.00004
+Iter 143 - Time: 1.43000 - dt 0.01000 - NR iter: 2 - Err: 0.00035
+Iter 144 - Time: 1.44000 - dt 0.01000 - NR iter: 1 - Err: 0.00003
+Iter 145 - Time: 1.45000 - dt 0.01000 - NR iter: 3 - Err: 0.00006
+Iter 146 - Time: 1.46000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 147 - Time: 1.47000 - dt 0.01000 - NR iter: 2 - Err: 0.00065
+Iter 148 - Time: 1.48000 - dt 0.01000 - NR iter: 1 - Err: 0.00001
+Iter 149 - Time: 1.49000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 150 - Time: 1.50000 - dt 0.01000 - NR iter: 1 - Err: 0.00001
+Iter 151 - Time: 1.51000 - dt 0.01000 - NR iter: 2 - Err: 0.00077
+Iter 152 - Time: 1.52000 - dt 0.01000 - NR iter: 1 - Err: 0.00001
+Iter 153 - Time: 1.53000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 154 - Time: 1.54000 - dt 0.01000 - NR iter: 1 - Err: 0.00001
+Iter 155 - Time: 1.55000 - dt 0.01000 - NR iter: 2 - Err: 0.00080
+Iter 156 - Time: 1.56000 - dt 0.01000 - NR iter: 1 - Err: 0.00001
+Iter 157 - Time: 1.57000 - dt 0.01000 - NR iter: 1 - Err: 0.00099
+Iter 158 - Time: 1.58000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 159 - Time: 1.59000 - dt 0.01000 - NR iter: 1 - Err: 0.00005
+Iter 160 - Time: 1.60000 - dt 0.01000 - NR iter: 2 - Err: 0.00037
+Iter 161 - Time: 1.61000 - dt 0.01000 - NR iter: 1 - Err: 0.00003
+Iter 162 - Time: 1.62000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 163 - Time: 1.63000 - dt 0.01000 - NR iter: 1 - Err: 0.00003
+Iter 164 - Time: 1.64000 - dt 0.01000 - NR iter: 2 - Err: 0.00062
+Iter 165 - Time: 1.65000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 166 - Time: 1.66000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 167 - Time: 1.67000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 168 - Time: 1.68000 - dt 0.01000 - NR iter: 2 - Err: 0.00072
+Iter 169 - Time: 1.69000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 170 - Time: 1.70000 - dt 0.01000 - NR iter: 1 - Err: 0.00100
+Iter 171 - Time: 1.71000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 172 - Time: 1.72000 - dt 0.01000 - NR iter: 1 - Err: 0.00004
+Iter 173 - Time: 1.73000 - dt 0.01000 - NR iter: 2 - Err: 0.00055
+Iter 174 - Time: 1.74000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 175 - Time: 1.75000 - dt 0.01000 - NR iter: 3 - Err: 0.00006
+Iter 176 - Time: 1.76000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 177 - Time: 1.77000 - dt 0.01000 - NR iter: 2 - Err: 0.00075
+Iter 178 - Time: 1.78000 - dt 0.01000 - NR iter: 1 - Err: 0.00001
+Iter 179 - Time: 1.79000 - dt 0.01000 - NR iter: 3 - Err: 0.00005
+Iter 180 - Time: 1.80000 - dt 0.01000 - NR iter: 1 - Err: 0.00001
+Iter 181 - Time: 1.81000 - dt 0.01000 - NR iter: 2 - Err: 0.00083
+Iter 182 - Time: 1.82000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 183 - Time: 1.83000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 184 - Time: 1.84000 - dt 0.01000 - NR iter: 1 - Err: 0.00001
+Iter 185 - Time: 1.85000 - dt 0.01000 - NR iter: 2 - Err: 0.00084
+Iter 186 - Time: 1.86000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 187 - Time: 1.87000 - dt 0.01000 - NR iter: 3 - Err: 0.00003
+Iter 188 - Time: 1.88000 - dt 0.01000 - NR iter: 1 - Err: 0.00001
+Iter 189 - Time: 1.89000 - dt 0.01000 - NR iter: 1 - Err: 0.00100
+Iter 190 - Time: 1.90000 - dt 0.01000 - NR iter: 1 - Err: 0.00077
+Iter 191 - Time: 1.91000 - dt 0.01000 - NR iter: 3 - Err: 0.00011
+Iter 192 - Time: 1.92000 - dt 0.01000 - NR iter: 1 - Err: 0.00005
+Iter 193 - Time: 1.93000 - dt 0.01000 - NR iter: 2 - Err: 0.00087
+Iter 194 - Time: 1.94000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+Iter 195 - Time: 1.95000 - dt 0.01000 - NR iter: 3 - Err: 0.00009
+Iter 196 - Time: 1.96000 - dt 0.01000 - NR iter: 1 - Err: 0.00003
+Iter 197 - Time: 1.97000 - dt 0.01000 - NR iter: 3 - Err: 0.00004
+Iter 198 - Time: 1.98000 - dt 0.01000 - NR iter: 1 - Err: 0.00003
+Iter 199 - Time: 1.99000 - dt 0.01000 - NR iter: 3 - Err: 0.00007
+Iter 200 - Time: 2.00000 - dt 0.01000 - NR iter: 1 - Err: 0.00002
+
+F = 20.0 N -&gt; ux = 45.60 mm (0.912 L), rotY = 89.2 deg
+settlement drift over the last 10 steps: 0.0014 mm
+displacement-control cross-check: 45.5 mm (0.911 L)
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fedoo.constraint.rigid_body</span><span class="w"> </span><span class="kn">import</span> <span class="n">RigidBodyAssembly</span>
+
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="c1"># Parameters</span>
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0025</span>  <span class="c1"># cylinder length / radius [m]</span>
+<span class="n">E</span><span class="p">,</span> <span class="n">nu</span> <span class="o">=</span> <span class="mf">60e6</span><span class="p">,</span> <span class="mf">0.49</span>  <span class="c1"># Young's modulus [Pa], Poisson's ratio</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">))</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">nu</span><span class="p">))</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">1000.0</span>  <span class="c1"># cylinder density [kg/m^3]</span>
+
+<span class="n">F_CAP</span> <span class="o">=</span> <span class="mf">20.0</span>  <span class="c1"># transverse force on the cap [N]</span>
+<span class="n">RAMP</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># force ramp duration [s] (quadratic)</span>
+<span class="n">HOLD</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># settling period at constant force [s]</span>
+<span class="n">DT</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># time step [s] (kept constant: dt_max=DT)</span>
+
+<span class="c1"># a small physical cap: ~10 g, I ~ 1e-6 kg.m^2 — enough for the Newmark</span>
+<span class="c1"># inertia to regularize the soft cap DOFs at this time step</span>
+<span class="n">M_CAP</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">I_CAP</span> <span class="o">=</span> <span class="mf">1e-6</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># same Abaqus deck as the displacement-driven example (and as the</span>
+<span class="c1"># ArtiSynth mirror model)</span>
+<span class="n">MESH_FILE</span> <span class="o">=</span> <span class="s2">"../../util/meshes/cyl08_hexa_lin.inp"</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">MESH_FILE</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">bottom</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Z"</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>  <span class="c1"># clamped base</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Z"</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>  <span class="c1"># tied to the rigid cap</span>
+
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="c1"># Material, weak form, assemblies (FE + rigid cap inertia)</span>
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"NEOHC"</span><span class="p">,</span> <span class="p">[</span><span class="n">mu</span><span class="p">,</span> <span class="n">kappa</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">"neohookean"</span><span class="p">)</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_density</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibriumRI</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">"UL"</span><span class="p">)</span>
+<span class="n">wf</span><span class="o">.</span><span class="n">list_weakform</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">geometric_stiffness</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">assembly_fe</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"cylinder"</span><span class="p">)</span>
+
+<span class="n">tie</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">RigidTie</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">RigidBodyAssembly</span><span class="p">(</span>
+    <span class="n">mass</span><span class="o">=</span><span class="n">M_CAP</span><span class="p">,</span>
+    <span class="n">inertia_tensor</span><span class="o">=</span><span class="n">I_CAP</span><span class="p">,</span>
+    <span class="n">rigid_tie</span><span class="o">=</span><span class="n">tie</span><span class="p">,</span>
+    <span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"cap_inertia"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">assembly_fe</span> <span class="o">+</span> <span class="n">cap</span>
+
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="c1"># Problem: Newmark at the problem level, force ramp, safeguard line search</span>
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">SECOND_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Newmark</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.3025</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.6</span><span class="p">))</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Displacement"</span><span class="p">,</span> <span class="n">err0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">add_line_search</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"safeguard"</span><span class="p">)</span>  <span class="c1"># validity filter, never throttles</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"neohookean_cantilever_force"</span><span class="p">,</span> <span class="n">assembly_fe</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># NB: the tie is auto-registered by the RigidBodyAssembly — no pb.bc.add(tie)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># clamp the base</span>
+<span class="n">TMAX</span> <span class="o">=</span> <span class="n">RAMP</span> <span class="o">+</span> <span class="n">HOLD</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">"Neumann"</span><span class="p">,</span>
+    <span class="s2">"RigidDispX"</span><span class="p">,</span>
+    <span class="n">F_CAP</span><span class="p">,</span>
+    <span class="c1"># quadratic ramp on [0, RAMP], hold at F_CAP on [RAMP, TMAX]</span>
+    <span class="n">time_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">tf</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">tf</span> <span class="o">*</span> <span class="n">TMAX</span> <span class="o">/</span> <span class="n">RAMP</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">record</span><span class="p">(</span><span class="n">problem</span><span class="p">):</span>
+    <span class="n">ux</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">get_dof_solution</span><span class="p">(</span><span class="s2">"RigidDispX"</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">problem</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">ux</span><span class="p">))</span>
+
+
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
+    <span class="n">dt</span><span class="o">=</span><span class="n">DT</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="n">TMAX</span><span class="p">,</span>
+    <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dt_max</span><span class="o">=</span><span class="n">DT</span><span class="p">,</span>
+    <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">interval_output</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">callback</span><span class="o">=</span><span class="n">record</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="c1"># Post-processing: settlement and cross-check</span>
+<span class="c1"># --------------------------------------------------------------------------</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+<span class="n">ux_final</span> <span class="o">=</span> <span class="n">hist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">drift</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">hist</span><span class="p">[</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">11</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"nan"</span><span class="p">)</span>
+<span class="n">rot_y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">get_dof_solution</span><span class="p">(</span><span class="s2">"RigidRotY"</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">F = </span><span class="si">{</span><span class="n">F_CAP</span><span class="si">}</span><span class="s2"> N -&gt; ux = </span><span class="si">{</span><span class="n">ux_final</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm (</span><span class="si">{</span><span class="n">ux_final</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> L), "</span>
+    <span class="sa">f</span><span class="s2">"rotY = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">rot_y</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> deg"</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"settlement drift over the last 10 steps: </span><span class="si">{</span><span class="n">drift</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> mm"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"displacement-control cross-check: 45.5 mm (0.911 L)"</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span>
+    <span class="s2">"neohookean_cantilever_force_history.csv"</span><span class="p">,</span>
+    <span class="n">hist</span><span class="p">,</span>
+    <span class="n">delimiter</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span>
+    <span class="n">header</span><span class="o">=</span><span class="s2">"time[s],ux_cap[m]"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">results</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">n_iter</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"vm"</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 38.548 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-neohookean-cantilever-force-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/b18df1dda3d07f56e448eabccb0dae9d/neohookean_cantilever_force.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">neohookean_cantilever_force.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/479fbf062f6709f35bae08e031f5d034/neohookean_cantilever_force.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">neohookean_cantilever_force.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/edeb99e9d8d6877789512f812bb42243/neohookean_cantilever_force.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">neohookean_cantilever_force.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="neohookean_cantilever.html" class="btn btn-neutral float-left" title="Finite-strain Neo-Hookean cantilever (rigid cap)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="thermal_loading.html" class="btn btn-neutral float-right" title="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

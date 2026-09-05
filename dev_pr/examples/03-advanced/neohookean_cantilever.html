@@ -27,7 +27,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading" href="thermal_loading.html" />
+    <link rel="next" title="Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)" href="neohookean_cantilever_force.html" />
     <link rel="prev" title="&lt;no title&gt;" href="multi_mesh_example.html" /> 
 </head>
 
@@ -86,6 +86,7 @@
 <li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#cohesive-zone-response">Cohesive-zone response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#plot-the-deformed-dcb">Plot the deformed DCB</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Finite-strain Neo-Hookean cantilever (rigid cap)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="neohookean_cantilever_force.html">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thermal_loading.html">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#geometry-and-mesh">Geometry and Mesh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#modeling-space-and-field-definitions">Modeling Space and Field Definitions</a></li>
@@ -96,6 +97,7 @@
 <li class="toctree-l3"><a class="reference internal" href="tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../identification/index.html">Inverse identification</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
@@ -161,27 +163,27 @@ Loading by force is done through implicit dynamics
 (<a class="reference internal" href="../../generated/fedoo.weakform.ImplicitDynamic.html#fedoo.weakform.ImplicitDynamic" title="fedoo.weakform.ImplicitDynamic"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.ImplicitDynamic</span></code></a>), where the cap’s
 inertia/damping regularise that soft mode.</p>
 <img src="../../_images/sphx_glr_neohookean_cantilever_001.png" srcset="../../_images/sphx_glr_neohookean_cantilever_001.png" alt="neohookean cantilever" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00066
-Iter 2 - Time: 0.10000 - dt 0.06250 - NR iter: 2 - Err: 0.00068
-Iter 3 - Time: 0.15000 - dt 0.06250 - NR iter: 2 - Err: 0.00069
-Iter 4 - Time: 0.20000 - dt 0.06250 - NR iter: 2 - Err: 0.00070
-Iter 5 - Time: 0.25000 - dt 0.06250 - NR iter: 2 - Err: 0.00070
-Iter 6 - Time: 0.30000 - dt 0.06250 - NR iter: 2 - Err: 0.00072
-Iter 7 - Time: 0.35000 - dt 0.06250 - NR iter: 2 - Err: 0.00074
-Iter 8 - Time: 0.40000 - dt 0.06250 - NR iter: 2 - Err: 0.00076
-Iter 9 - Time: 0.45000 - dt 0.06250 - NR iter: 2 - Err: 0.00081
-Iter 10 - Time: 0.50000 - dt 0.06250 - NR iter: 2 - Err: 0.00086
+Iter 2 - Time: 0.10000 - dt 0.06250 - NR iter: 6 - Err: 0.00001
+Iter 3 - Time: 0.15000 - dt 0.06250 - NR iter: 2 - Err: 0.00068
+Iter 4 - Time: 0.20000 - dt 0.06250 - NR iter: 6 - Err: 0.00001
+Iter 5 - Time: 0.25000 - dt 0.06250 - NR iter: 2 - Err: 0.00072
+Iter 6 - Time: 0.30000 - dt 0.06250 - NR iter: 6 - Err: 0.00001
+Iter 7 - Time: 0.35000 - dt 0.06250 - NR iter: 2 - Err: 0.00077
+Iter 8 - Time: 0.40000 - dt 0.06250 - NR iter: 6 - Err: 0.00001
+Iter 9 - Time: 0.45000 - dt 0.06250 - NR iter: 2 - Err: 0.00085
+Iter 10 - Time: 0.50000 - dt 0.06250 - NR iter: 6 - Err: 0.00002
 Iter 11 - Time: 0.55000 - dt 0.06250 - NR iter: 2 - Err: 0.00095
-Iter 12 - Time: 0.60000 - dt 0.06250 - NR iter: 3 - Err: 0.00010
-Iter 13 - Time: 0.65000 - dt 0.06250 - NR iter: 3 - Err: 0.00007
-Iter 14 - Time: 0.70000 - dt 0.06250 - NR iter: 3 - Err: 0.00007
-Iter 15 - Time: 0.75000 - dt 0.06250 - NR iter: 3 - Err: 0.00006
-Iter 16 - Time: 0.80000 - dt 0.06250 - NR iter: 3 - Err: 0.00006
-Iter 17 - Time: 0.85000 - dt 0.06250 - NR iter: 3 - Err: 0.00009
-Iter 18 - Time: 0.90000 - dt 0.06250 - NR iter: 3 - Err: 0.00016
-Iter 19 - Time: 0.95000 - dt 0.06250 - NR iter: 3 - Err: 0.00029
-Iter 20 - Time: 1.00000 - dt 0.06250 - NR iter: 3 - Err: 0.00050
+Iter 12 - Time: 0.60000 - dt 0.06250 - NR iter: 6 - Err: 0.00003
+Iter 13 - Time: 0.65000 - dt 0.06250 - NR iter: 3 - Err: 0.00033
+Iter 14 - Time: 0.70000 - dt 0.06250 - NR iter: 3 - Err: 0.00028
+Iter 15 - Time: 0.75000 - dt 0.06250 - NR iter: 3 - Err: 0.00032
+Iter 16 - Time: 0.80000 - dt 0.06250 - NR iter: 3 - Err: 0.00036
+Iter 17 - Time: 0.85000 - dt 0.06250 - NR iter: 3 - Err: 0.00042
+Iter 18 - Time: 0.90000 - dt 0.06250 - NR iter: 3 - Err: 0.00048
+Iter 19 - Time: 0.95000 - dt 0.06250 - NR iter: 3 - Err: 0.00055
+Iter 20 - Time: 1.00000 - dt 0.06250 - NR iter: 3 - Err: 0.00064
 max |displacement| : 3.2793e-02 m  (L = 0.05)
-max von Mises stress: 5.2275e+06 Pa
+max von Mises stress: 5.2277e+06 Pa
 </pre></div>
 </div>
 <div class="line-block">
@@ -262,7 +264,7 @@ max von Mises stress: 5.2275e+06 Pa
 <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"vm"</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.605 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 19.815 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-neohookean-cantilever-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/609f1bb569bbe7204bcc004160256c61/neohookean_cantilever.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">neohookean_cantilever.ipynb</span></code></a></p>
@@ -282,7 +284,7 @@ max von Mises stress: 5.2275e+06 Pa
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="multi_mesh_example.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="thermal_loading.html" class="btn btn-neutral float-right" title="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="neohookean_cantilever_force.html" class="btn btn-neutral float-right" title="Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

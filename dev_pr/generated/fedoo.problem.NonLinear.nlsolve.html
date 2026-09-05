@@ -205,8 +205,8 @@ If omitted, the ‘max_subiter’ field in the nr_parameters
 attribute (ie nr_parameters[‘max_subiter’]) is considered
 (default = 10).</p></li>
 <li><p><strong>dt_increase_niter</strong> (<em>int</em><em>, </em><em>optional</em>) – When <code class="docutils literal notranslate"><span class="pre">update_dt</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the time increment is multiplied
-by 1.25 if the Newton–Raphson loop converges in fewer
-than <code class="docutils literal notranslate"><span class="pre">dt_increase_niter</span></code> iterations. If omitted, the
+by 1.25 if the Newton–Raphson loop converges in at most
+<code class="docutils literal notranslate"><span class="pre">dt_increase_niter</span></code> iterations. If omitted, the
 ‘dt_increase_niter’ field in the nr_parameters attribute
 (ie nr_parameters[‘dt_increase_niter’]) is considered
 (default = <code class="docutils literal notranslate"><span class="pre">max_subiter</span> <span class="pre">//</span> <span class="pre">3</span></code>).

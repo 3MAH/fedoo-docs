@@ -176,8 +176,12 @@
 <h1>fedoo.problem.NonLinear.elastic_prediction<a class="headerlink" href="#fedoo-problem-nonlinear-elastic-prediction" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.NonLinear.elastic_prediction">
-<span class="sig-prename descclassname"><span class="pre">NonLinear.</span></span><span class="sig-name descname"><span class="pre">elastic_prediction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinear.elastic_prediction" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">NonLinear.</span></span><span class="sig-name descname"><span class="pre">elastic_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep_tangent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinear.elastic_prediction" title="Link to this definition"></a></dt>
+<dd><p>Solve the elastic prediction of a new increment.</p>
+<p>keep_tangent: do not touch the tangent matrix. Used by the
+adaptive-stiffness restart, which has just installed the “safe”
+elastic matrix on purpose.</p>
+</dd></dl>
 
 </section>
 

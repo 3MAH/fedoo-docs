@@ -187,7 +187,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.add_global_dof.html#fedoo.problem.NonLinear.add_global_dof" title="fedoo.problem.NonLinear.add_global_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.add_global_dof</span></code></a>(variable_names[, ...])</p></td>
 <td><p>Add global degrees of freedom to the problem.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.add_line_search.html#fedoo.problem.NonLinear.add_line_search" title="fedoo.problem.NonLinear.add_line_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.add_line_search</span></code></a>([method, name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.add_line_search.html#fedoo.problem.NonLinear.add_line_search" title="fedoo.problem.NonLinear.add_line_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.add_line_search</span></code></a>([method, name, mode])</p></td>
 <td><p>Add line search algorithm for the Newton-Raphson solver.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.add_output.html#fedoo.problem.NonLinear.add_output" title="fedoo.problem.NonLinear.add_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.add_output</span></code></a>(filename, assembly[, ...])</p></td>
@@ -202,8 +202,8 @@
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.compute_nr_error.html#fedoo.problem.NonLinear.compute_nr_error" title="fedoo.problem.NonLinear.compute_nr_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.compute_nr_error</span></code></a>()</p></td>
 <td><p>Compute the error of the Newton-Raphson algorithm.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.elastic_prediction.html#fedoo.problem.NonLinear.elastic_prediction" title="fedoo.problem.NonLinear.elastic_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.elastic_prediction.html#fedoo.problem.NonLinear.elastic_prediction" title="fedoo.problem.NonLinear.elastic_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction</span></code></a>([keep_tangent])</p></td>
+<td><p>Solve the elastic prediction of a new increment.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinear.force_elastic_matrix_next_iter" title="fedoo.problem.NonLinear.force_elastic_matrix_next_iter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.force_elastic_matrix_next_iter</span></code></a>()</p></td>
 <td><p>Flags the solver to use the elastic stiffness matrix at the begining of the next new iteration.</p></td>

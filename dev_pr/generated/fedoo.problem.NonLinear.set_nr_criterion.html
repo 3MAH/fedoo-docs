@@ -198,7 +198,8 @@ Number of nr iterations before returning a convergence error.</p></li>
 <li><p>‘dt_increase_niter’: int or None, default = None.
 Number of nr iterations threshold that define an easy convergence.
 In problem allowing automatic convergence, if the Newton–Raphson
-loop converges in strictly fewer iterations, the time step is increased.
+loop converges in at most that many iterations, the time step is
+increased.
 If None, defaults to max_subiter//3.</p></li>
 <li><p>‘norm_type’: int or numpy.inf, default = 2.
 Define the norm used to test the criterion.</p></li>
@@ -221,10 +222,23 @@ WARNING: DANGEROUS PARAMETER. If True, assumes convergence when
 max_subiter iterations are reached, regardless of tolerance criterion.
 Use only for special cases requiring forced convergence. Skips
 convergence tolerance check when iteration limit is reached.</p></li>
-<li><p>‘eigenvalue_shift’: bool, default = False.
+<li><p>‘eigenvalue_shift’: bool, default = False. EXPERIMENTAL.
 If True, adds a shifted identity matrix to improve conditioning:
 A_eff = A + alpha*I where alpha = eigenvalue_shift_factor * R.
-R is estimated via Rayleigh quotient of the current stiffness.</p></li>
+R is estimated via Rayleigh quotient of the current stiffness.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Known limitations, measured: the spectral estimate is run on
+the <em>unreduced</em> matrix, so it sees the modes of the blocked
+and rigid-body degrees of freedom rather than those of the
+system actually solved; and <code class="docutils literal notranslate"><span class="pre">alpha*I</span></code> is added before that
+reduction, which with multi-point constraints does not give
+<code class="docutils literal notranslate"><span class="pre">reduced</span> <span class="pre">+</span> <span class="pre">alpha*I</span></code>. On a compressed buckling-prone plate
+the shift fired at 30 iterations without changing the
+iteration count at all. Treat it as a last resort, and
+prefer <code class="docutils literal notranslate"><span class="pre">adaptive_stiffness</span></code> or a dynamic solver.</p>
+</div>
+</li>
 <li><p>‘eigenvalue_shift_factor’: float, default = 1e-4.
 Scaling factor for the eigenvalue shift margin.
 Larger values = stronger stabilization but less accuracy.
@@ -238,7 +252,7 @@ If True, aborts the time step early if convergence trends are poor.
 A step is considered diverging if:
 1. The error remains “unproductive” (new_error &gt; 0.999 * previous_error)</p>
 <blockquote>
-<div><p>for 3 consecutive Newton-Raphson iterations.</p>
+<div><p>for 4 consecutive Newton-Raphson iterations.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p>The error spikes to more than 100 times the previous error.</p></li>

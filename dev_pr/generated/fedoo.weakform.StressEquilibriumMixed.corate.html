@@ -160,8 +160,13 @@
 corate can take the following str values:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>“log” (default): exact logarithmic strain (strain is recomputed
-at each iteration)</p></li>
+<li><p>“log_r” (default): exact logarithmic strain transported by the
+exact polar rotation increment (strain is recomputed at each
+iteration). This is the corate with an EXACT simcoon tangent
+transport, including across committed increments with plastic
+(or other rotated) history.</p></li>
+<li><p>“log”: exact logarithmic strain, XBM logarithmic spin
+transport (small tangent residual with rotated history)</p></li>
 <li><p>“jaumann”: Strain using the Jaumann derivative (strain is
 incremented)</p></li>
 <li><p>“green_nagdhi” or “gn”: Strain using the Green_Nagdhi derivative

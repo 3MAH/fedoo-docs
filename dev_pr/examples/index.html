@@ -75,6 +75,7 @@
 <li class="toctree-l2"><a class="reference internal" href="01-simple/index.html">Simple examples to start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02-constraints/index.html">Apply constraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-advanced/index.html">Advanced problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identification/index.html">Inverse identification</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
@@ -194,13 +195,23 @@ that can be applied in fedoo.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="A slender, nearly-incompressible cylinder is clamped at its base and bent by a transverse load applied to a rigid cap tied to its top face. It is loaded well into the large-deflection, finite-strain regime (tip deflection of order the cylinder length, ~40 % local strain at the clamped base)."><img alt="" src="../_images/sphx_glr_neohookean_cantilever_thumb.png" />
 <p><a class="reference internal" href="03-advanced/neohookean_cantilever.html"><span class="doc">Finite-strain Neo-Hookean cantilever (rigid cap)</span></a></p>
   <div class="sphx-glr-thumbnail-title">Finite-strain Neo-Hookean cantilever (rigid cap)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Companion of the displacement-driven cantilever example &lt;neohookean_cantilever&gt;: the same slender, nearly-incompressible NEOHC cylinder, but loaded by a transverse force applied to its rigid cap — the natural protocol when mirroring a dynamics engine such as ArtiSynth."><img alt="" src="../_images/sphx_glr_neohookean_cantilever_force_thumb.png" />
+<p><a class="reference internal" href="03-advanced/neohookean_cantilever_force.html"><span class="doc">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading"><img alt="" src="../_images/sphx_glr_thermal_loading_thumb.png" />
 <p><a class="reference internal" href="03-advanced/thermal_loading.html"><span class="doc">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</span></a></p>
   <div class="sphx-glr-thumbnail-title">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This model uses self-contact, elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase."><img alt="" src="../_images/sphx_glr_tube_compression_thumb.png" />
 <p><a class="reference internal" href="03-advanced/tube_compression.html"><span class="doc">Compression of a tube using 2D axisymmetric model</span></a></p>
   <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model</div>
-</div></div><div class="toctree-wrapper compound">
+</div></div></section>
+<section id="inverse-identification">
+<h2>Inverse identification<a class="headerlink" href="#inverse-identification" title="Link to this heading"></a></h2>
+<p>Identification of material parameters from experimental data (load cell
+force, displacement of tracked points) with a fedoo finite-element forward
+model, the identification tools of simcoon (<code class="docutils literal notranslate"><span class="pre">Parameter</span></code>,
+<code class="docutils literal notranslate"><span class="pre">identification</span></code>) and the differential-evolution optimizer of scipy.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div><div class="toctree-wrapper compound">
 </div>
 <div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
