@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Define user problems &mdash; Fedoo 1.0.0b1 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples/index.html" />
+    <link rel="prev" title="Heterogeneous structures" href="heterogeneous.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Define user problems</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/user_problems.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="define-user-problems">
+<h1>Define user problems<a class="headerlink" href="#define-user-problems" title="Link to this heading"></a></h1>
+<p>Fedoo can be extended at two complementary levels:</p>
+<ul class="simple">
+<li><p>a weak form defines the equation assembled on the mesh;</p></li>
+<li><p>a constitutive law defines the material response used by a mechanical weak
+form.</p></li>
+</ul>
+<p>For a linear equation, a <code class="xref py py-class docutils literal notranslate"><span class="pre">DiffOp</span></code> expression and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.WeakForm</span></code> are generally sufficient. For a nonlinear or
+history-dependent equation, derive from
+<code class="xref py py-class docutils literal notranslate"><span class="pre">WeakFormBase</span></code>. For a mechanical material,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MechanicalUMAT</span></code> is the recommended extension
+point; derive directly from <code class="xref py py-class docutils literal notranslate"><span class="pre">Mechanical3D</span></code>
+only when full control over the Fedoo constitutive lifecycle is required.</p>
+<section id="define-a-weak-form-from-differential-operators">
+<h2>Define a weak form from differential operators<a class="headerlink" href="#define-a-weak-form-from-differential-operators" title="Link to this heading"></a></h2>
+<p>A modeling space owns the unknown fields and creates their differential
+operators. The <code class="docutils literal notranslate"><span class="pre">virtual</span></code> property selects the test-function side of a weak
+term. Ordinary Python arithmetic combines these objects into a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DiffOp</span></code> expression.</p>
+<p>The following example defines the weak form of the Poisson equation</p>
+<div class="math notranslate nohighlight">
+\[\int_\Omega \nabla \delta u \mathbin{\cdot} \nabla u\,d\Omega = 0.\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="n">space</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"U"</span><span class="p">)</span>
+
+<span class="n">dU_dX</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">"U"</span><span class="p">,</span> <span class="s2">"X"</span><span class="p">)</span>
+<span class="n">dU_dY</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">"U"</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">)</span>
+
+<span class="n">equation</span> <span class="o">=</span> <span class="n">dU_dX</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="n">dU_dX</span> <span class="o">+</span> <span class="n">dU_dY</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="n">dU_dY</span>
+<span class="n">weakform</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">WeakForm</span><span class="p">(</span><span class="n">equation</span><span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">()</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">weakform</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+
+<span class="n">problem</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"left"</span><span class="p">,</span> <span class="s2">"U"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">,</span> <span class="s2">"U"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The same construction applies to systems of equations. Declare every scalar
+unknown with <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ModelingSpace.new_variable()</span></code>, group components with
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ModelingSpace.new_vector()</span></code> when useful, and add the weak terms.
+Mixed formulations may assign different element interpolations to different
+variables.</p>
+<p>Complete examples are available in
+<a class="reference download internal" download="" href="_downloads/eaeb7088eb53567d0ce9ebb995aafd00/poison_eq.py"><code class="xref download docutils literal notranslate"><span class="pre">poison_eq.py</span></code></a> and
+<a class="reference download internal" download="" href="_downloads/5870f5ae4b181f411f663eb85f76e345/fluid_mechanics.py"><code class="xref download docutils literal notranslate"><span class="pre">fluid_mechanics.py</span></code></a>.</p>
+<section id="state-dependent-weak-forms">
+<h3>State-dependent weak forms<a class="headerlink" href="#state-dependent-weak-forms" title="Link to this heading"></a></h3>
+<p>When coefficients or residual terms depend on the current solution, derive a
+class from <code class="xref py py-class docutils literal notranslate"><span class="pre">WeakFormBase</span></code>. Its principal methods
+are:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">initialize(assembly,</span> <span class="pre">problem)</span></code></dt><dd><p>Allocate values required by the formulation in <code class="docutils literal notranslate"><span class="pre">assembly.sv</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">update(assembly,</span> <span class="pre">problem)</span></code></dt><dd><p>Evaluate the current fields and update the residual state before assembly.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">get_weak_equation(assembly,</span> <span class="pre">problem)</span></code></dt><dd><p>Return the linearized <code class="xref py py-class docutils literal notranslate"><span class="pre">DiffOp</span></code>, including the
+tangent and current residual terms.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">set_start(assembly,</span> <span class="pre">problem)</span></code></dt><dd><p>Commit the state at the beginning of a new time increment.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">to_start(assembly,</span> <span class="pre">problem)</span></code></dt><dd><p>Restore the beginning-of-increment state after a rejected increment.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">reset()</span></code></dt><dd><p>Clear the complete problem history when necessary.</p>
+</dd>
+</dl>
+<p>The problem may have <code class="docutils literal notranslate"><span class="pre">problem.dtime</span> <span class="pre">==</span> <span class="pre">0</span></code> during initialization. A custom
+weak form must not divide by <code class="docutils literal notranslate"><span class="pre">dtime</span></code> in that state. Time-dependent terms can
+be omitted until a positive increment is supplied. See
+<a class="reference download internal" download="" href="_downloads/a95fe3ac84c3ba9d38638e49e7a96968/navier_stokes.py"><code class="xref download docutils literal notranslate"><span class="pre">navier_stokes.py</span></code></a> for
+a complete nonlinear example.</p>
+</section>
+</section>
+<section id="define-a-mechanical-constitutive-law">
+<h2>Define a mechanical constitutive law<a class="headerlink" href="#define-a-mechanical-constitutive-law" title="Link to this heading"></a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">MechanicalUMAT</span></code> for a conventional material-point update. It handles
+the Fedoo lifecycle, state allocation, temperature lookup, material local
+frames, finite-rotation increments, and the transformations of strains,
+stresses, and tangents. The callback only integrates the constitutive equation
+in the supplied corotational material coordinates.</p>
+<section id="recommended-mechanicalumat">
+<h3>Recommended: <code class="docutils literal notranslate"><span class="pre">MechanicalUMAT</span></code><a class="headerlink" href="#recommended-mechanicalumat" title="Link to this heading"></a></h3>
+<p>The callback has the following signature:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">umat</span><span class="p">(</span>
+    <span class="n">strain</span><span class="p">,</span>
+    <span class="n">dstrain</span><span class="p">,</span>
+    <span class="n">F0</span><span class="p">,</span>
+    <span class="n">F1</span><span class="p">,</span>
+    <span class="n">stress</span><span class="p">,</span>
+    <span class="n">DR</span><span class="p">,</span>
+    <span class="n">props</span><span class="p">,</span>
+    <span class="n">statev_start</span><span class="p">,</span>
+    <span class="n">time</span><span class="p">,</span>
+    <span class="n">dtime</span><span class="p">,</span>
+    <span class="n">wm_start</span><span class="p">,</span>
+    <span class="n">temperature</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">ndi</span><span class="p">,</span>
+    <span class="n">tangent_mode</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="n">stress_new</span><span class="p">,</span> <span class="n">statev_new</span><span class="p">,</span> <span class="n">wm_new</span><span class="p">,</span> <span class="n">tangent</span>
+</pre></div>
+</div>
+<p>Its arguments follow these conventions:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Argument</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">strain</span></code></p></td>
+<td><p>Total strain at the beginning of the increment, shape
+<code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_points)</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dstrain</span></code></p></td>
+<td><p>Current strain increment, shape <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_points)</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">F0</span></code>, <code class="docutils literal notranslate"><span class="pre">F1</span></code></p></td>
+<td><p>Beginning and current deformation gradients, shape
+<code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">3,</span> <span class="pre">n_points)</span></code> in a finite-strain analysis. They
+are empty in a small-strain analysis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stress</span></code></p></td>
+<td><p>Stress at the beginning of the increment, shape
+<code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_points)</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DR</span></code></p></td>
+<td><p>Objective incremental rotation, shape
+<code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">3,</span> <span class="pre">n_points)</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">props</span></code></p></td>
+<td><p>Material properties stored as a Fortran-contiguous
+column.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">statev_start</span></code></p></td>
+<td><p>Private state at the beginning of the increment, shape
+<code class="docutils literal notranslate"><span class="pre">(n_statev,</span> <span class="pre">n_points)</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code>, <code class="docutils literal notranslate"><span class="pre">dtime</span></code></p></td>
+<td><p>Current problem time and time increment.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wm_start</span></code></p></td>
+<td><p>Beginning-of-increment work variables, shape
+<code class="docutils literal notranslate"><span class="pre">(4,</span> <span class="pre">n_points)</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">temperature</span></code></p></td>
+<td><p>Gauss-point temperatures, or <code class="docutils literal notranslate"><span class="pre">None</span></code> when no
+temperature field is available.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ndi</span></code></p></td>
+<td><p>Number of direct components: 3 normally and 2 for the
+plane-stress interface.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tangent_mode</span></code></p></td>
+<td><p>User-defined tangent selector forwarded unchanged by
+Fedoo.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Stress and strain use engineering Voigt notation. The component ordering,
+including the axisymmetric convention, is documented by
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Mechanical3D</span></code>.</p>
+<p>The callback returns the updated stress, state variables, work variables, and
+the material tangent. A tangent can have shape <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">6)</span></code> when it is uniform,
+or <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">6,</span> <span class="pre">n_points)</span></code> when it varies between material points. Do not modify
+<code class="docutils literal notranslate"><span class="pre">statev_start</span></code> or <code class="docutils literal notranslate"><span class="pre">wm_start</span></code> in place: they represent the committed state
+and must remain available if the global increment is rejected.</p>
+<section id="initialization-call">
+<h4>Initialization call<a class="headerlink" href="#initialization-call" title="Link to this heading"></a></h4>
+<p>Fedoo calls the UMAT once during initialization with:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span> <span class="pre">==</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">dtime</span> <span class="pre">==</span> <span class="pre">0</span></code>;</p></li>
+<li><p>zero strain, strain increment, stress, state, and work arrays;</p></li>
+<li><p>identity <code class="docutils literal notranslate"><span class="pre">DR</span></code>;</p></li>
+<li><p>identity <code class="docutils literal notranslate"><span class="pre">F0</span></code> and <code class="docutils literal notranslate"><span class="pre">F1</span></code> for finite strain, or empty deformation-gradient
+arrays for small strain.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">dtime</span> <span class="pre">==</span> <span class="pre">0</span></code> call is not a physical material increment. It must return
+the initial elastic tangent without advancing irreversible state, accumulating
+work, or evaluating expressions that divide by <code class="docutils literal notranslate"><span class="pre">dtime</span></code>. This tangent is
+stored as <code class="docutils literal notranslate"><span class="pre">ElasticMatrix</span></code> when <code class="docutils literal notranslate"><span class="pre">use_elastic_tangent=True</span></code> and is restored
+at the beginning of each increment for the elastic predictor.</p>
+</section>
+<section id="minimal-elastic-callback">
+<h4>Minimal elastic callback<a class="headerlink" href="#minimal-elastic-callback" title="Link to this heading"></a></h4>
+<p>This small 3D example illustrates the callback contract. Production laws
+should also validate their parameters and supported dimensional assumptions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fedoo.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">MechanicalUMAT</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">elastic_umat</span><span class="p">(</span>
+    <span class="n">strain</span><span class="p">,</span> <span class="n">dstrain</span><span class="p">,</span> <span class="n">F0</span><span class="p">,</span> <span class="n">F1</span><span class="p">,</span> <span class="n">stress</span><span class="p">,</span> <span class="n">DR</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span>
+    <span class="n">statev_start</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dtime</span><span class="p">,</span> <span class="n">wm_start</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span> <span class="n">ndi</span><span class="p">,</span> <span class="n">tangent_mode</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">E</span><span class="p">,</span> <span class="n">nu</span> <span class="o">=</span> <span class="n">props</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">shear</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">))</span>
+    <span class="n">lame</span> <span class="o">=</span> <span class="n">E</span> <span class="o">*</span> <span class="n">nu</span> <span class="o">/</span> <span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">nu</span><span class="p">))</span>
+
+    <span class="n">tangent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">tangent</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">lame</span>
+    <span class="n">tangent</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">shear</span>
+    <span class="n">tangent</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">shear</span>
+    <span class="n">tangent</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">shear</span>
+    <span class="n">tangent</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">shear</span>
+    <span class="n">tangent</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">shear</span>
+    <span class="n">tangent</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">shear</span>
+
+    <span class="n">stress_new</span> <span class="o">=</span> <span class="n">stress</span> <span class="o">+</span> <span class="n">tangent</span> <span class="o">@</span> <span class="n">dstrain</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">stress_new</span><span class="p">,</span>
+        <span class="n">statev_start</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+        <span class="n">wm_start</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+        <span class="n">tangent</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="n">material</span> <span class="o">=</span> <span class="n">MechanicalUMAT</span><span class="p">(</span>
+    <span class="n">elastic_umat</span><span class="p">,</span>
+    <span class="n">props</span><span class="o">=</span><span class="p">[</span><span class="mf">210_000.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+    <span class="n">props_label</span><span class="o">=</span><span class="p">{</span><span class="s2">"E"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"nu"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="n">is_isotropic</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The constructor also accepts:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">n_statev</span></code> and <code class="docutils literal notranslate"><span class="pre">statev_label</span></code></dt><dd><p>Allocate private history and expose selected components to post-processing.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">density</span></code></dt><dd><p>Define the mass density for dynamic mechanical problems.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tangent_from_F</span></code></dt><dd><p>Mark a finite-strain law whose tangent is derived from deformation-gradient
+kinematics instead of the default corotational strain measure. Such a law
+requires a geometrically nonlinear formulation; <code class="docutils literal notranslate"><span class="pre">F0</span></code> and <code class="docutils literal notranslate"><span class="pre">F1</span></code> remain
+empty in small strain.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">use_elastic_tangent</span></code></dt><dd><p>Control whether the initialization tangent is restored at the beginning of
+each increment.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tangent_mode</span></code></dt><dd><p>Select the tangent requested from the callback.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">is_isotropic</span></code></dt><dd><p>Avoid unnecessary frame transformations for an invariant response.</p>
+</dd>
+</dl>
+</section>
+<section id="local-frames-and-finite-rotations">
+<h4>Local frames and finite rotations<a class="headerlink" href="#local-frames-and-finite-rotations" title="Link to this heading"></a></h4>
+<p>Assigning a frame with <code class="docutils literal notranslate"><span class="pre">material.set_local_frame(...)</span></code> defines the initial
+material coordinates. <code class="docutils literal notranslate"><span class="pre">MechanicalUMAT</span></code> transforms the strain, deformation
+gradient, starting stress, and incremental rotation into those coordinates,
+then transforms the returned stress and tangent back to the global frame.
+Uniform, nodal, elemental, and Gauss-point material frames are supported as
+described in <a class="reference internal" href="constitutive_law.html"><span class="doc">Constitutive Law (fedoo.constitutivelaw)</span></a>.</p>
+<p>Private state variables are opaque to Fedoo because their tensorial meaning is
+law-dependent. The callback must apply <code class="docutils literal notranslate"><span class="pre">DR</span></code> to any tensor-valued history that
+requires objective transport. Scalar history variables require no rotation.</p>
+<p>The objective-rate formulation is selected on
+<a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a> through <code class="docutils literal notranslate"><span class="pre">weakform.corate</span></code>. A UMAT
+subclass with a strict requirement can set, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyUMAT</span><span class="p">(</span><span class="n">MechanicalUMAT</span><span class="p">):</span>
+    <span class="n">required_corate</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"log_r"</span><span class="p">,</span> <span class="s2">"log_r_inc"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Fedoo then validates the selected formulation when the material is initialized.</p>
+</section>
+</section>
+<section id="advanced-derive-directly-from-mechanical3d">
+<h3>Advanced: derive directly from <code class="docutils literal notranslate"><span class="pre">Mechanical3D</span></code><a class="headerlink" href="#advanced-derive-directly-from-mechanical3d" title="Link to this heading"></a></h3>
+<p>Deriving from <code class="docutils literal notranslate"><span class="pre">Mechanical3D</span></code> provides complete control but also transfers
+the constitutive lifecycle to the implementation. This route is appropriate
+when the response cannot be expressed by the UMAT contract, needs custom
+assembly state, or uses a specialized tangent representation.</p>
+<p>A derived law is generally responsible for:</p>
+<ul class="simple">
+<li><p>calling <code class="docutils literal notranslate"><span class="pre">super().__init__(name=name,</span> <span class="pre">density=density)</span></code>;</p></li>
+<li><p>declaring <code class="docutils literal notranslate"><span class="pre">is_isotropic</span></code> correctly;</p></li>
+<li><p>allocating its state and initial <code class="docutils literal notranslate"><span class="pre">assembly.sv[&quot;TangentMatrix&quot;]</span></code> in
+<code class="docutils literal notranslate"><span class="pre">initialize</span></code>;</p></li>
+<li><p>reading <code class="docutils literal notranslate"><span class="pre">assembly.sv[&quot;Strain&quot;]</span></code> and <code class="docutils literal notranslate"><span class="pre">assembly.sv[&quot;DStrain&quot;]</span></code> and writing
+<code class="docutils literal notranslate"><span class="pre">assembly.sv[&quot;Stress&quot;]</span></code> and <code class="docutils literal notranslate"><span class="pre">assembly.sv[&quot;TangentMatrix&quot;]</span></code> in <code class="docutils literal notranslate"><span class="pre">update</span></code>;</p></li>
+<li><p>implementing commit, rollback, and reset behavior through <code class="docutils literal notranslate"><span class="pre">set_start</span></code>,
+<code class="docutils literal notranslate"><span class="pre">to_start</span></code>, and <code class="docutils literal notranslate"><span class="pre">reset</span></code> when it owns history variables;</p></li>
+<li><p>handling plane stress explicitly when that assumption is supported;</p></li>
+<li><p>using the frame-transformation helpers supplied by <code class="docutils literal notranslate"><span class="pre">Mechanical3D</span></code> when
+the law is anisotropic;</p></li>
+<li><p>setting <code class="docutils literal notranslate"><span class="pre">_Lt_from_F</span></code> only when the tangent follows deformation-gradient
+rather than strain-increment kinematics.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">assembly.sv_start</span></code> is a shallow beginning-of-increment snapshot. Do not
+modify arrays shared with it in place during a trial iteration. Replace trial
+arrays in <code class="docutils literal notranslate"><span class="pre">assembly.sv</span></code> or make explicit copies so that <code class="docutils literal notranslate"><span class="pre">to_start</span></code> can
+restore the committed state.</p>
+<p>Direct <code class="docutils literal notranslate"><span class="pre">Mechanical3D</span></code> laws must also tolerate initialization before a
+positive time increment exists. They should always provide the initial
+tangent required to assemble the first global system. The implementations of
+<a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticAnisotropic.html#fedoo.constitutivelaw.ElasticAnisotropic" title="fedoo.constitutivelaw.ElasticAnisotropic"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.ElasticAnisotropic</span></code></a> and the pedagogical
+<a class="reference internal" href="generated/fedoo.constitutivelaw.ElastoPlasticity.html#fedoo.constitutivelaw.ElastoPlasticity" title="fedoo.constitutivelaw.ElastoPlasticity"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.ElastoPlasticity</span></code></a> provide useful references; the
+latter uses <code class="docutils literal notranslate"><span class="pre">MechanicalUMAT</span></code> for its lifecycle.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="heterogeneous.html" class="btn btn-neutral float-left" title="Heterogeneous structures" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples/index.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

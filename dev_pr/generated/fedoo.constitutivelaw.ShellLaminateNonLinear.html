@@ -82,12 +82,14 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.compute_area_density.html">fedoo.constitutivelaw.ShellLaminateNonLinear.compute_area_density</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.compute_rotary_density.html">fedoo.constitutivelaw.ShellLaminateNonLinear.compute_rotary_density</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_all.html">fedoo.constitutivelaw.ShellLaminateNonLinear.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_local_frame.html">fedoo.constitutivelaw.ShellLaminateNonLinear.get_local_frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_shell_stiffness_matrix.html">fedoo.constitutivelaw.ShellLaminateNonLinear.get_shell_stiffness_matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_strain.html">fedoo.constitutivelaw.ShellLaminateNonLinear.get_strain</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress.html">fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress_distribution.html">fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress_distribution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.initialize.html">fedoo.constitutivelaw.ShellLaminateNonLinear.initialize</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.reset.html">fedoo.constitutivelaw.ShellLaminateNonLinear.reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.set_local_frame.html">fedoo.constitutivelaw.ShellLaminateNonLinear.set_local_frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.set_start.html">fedoo.constitutivelaw.ShellLaminateNonLinear.set_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.to_start.html">fedoo.constitutivelaw.ShellLaminateNonLinear.to_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.update.html">fedoo.constitutivelaw.ShellLaminateNonLinear.update</a></li>
@@ -110,8 +112,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 </ul>
 
 
@@ -183,23 +186,29 @@ from the bottom to the top surface.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_all.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_all" title="fedoo.constitutivelaw.ShellLaminateNonLinear.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.get_all</span></code></a>()</p></td>
 <td><p>Return a dict with all the known ConstitutiveLaw (with a name).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_shell_stiffness_matrix.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_shell_stiffness_matrix" title="fedoo.constitutivelaw.ShellLaminateNonLinear.get_shell_stiffness_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.get_shell_stiffness_matrix</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_local_frame.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_local_frame" title="fedoo.constitutivelaw.ShellLaminateNonLinear.get_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.get_local_frame</span></code></a>([...])</p></td>
+<td><p>Return material frames, resolved at <code class="docutils literal notranslate"><span class="pre">assembly</span></code> Gauss points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_shell_stiffness_matrix.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_shell_stiffness_matrix" title="fedoo.constitutivelaw.ShellLaminateNonLinear.get_shell_stiffness_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.get_shell_stiffness_matrix</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_strain.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_strain" title="fedoo.constitutivelaw.ShellLaminateNonLinear.get_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.get_strain</span></code></a>(assembly, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_strain.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_strain" title="fedoo.constitutivelaw.ShellLaminateNonLinear.get_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.get_strain</span></code></a>(assembly, ...)</p></td>
 <td><p>Return the last computed strain associated to the given assembly.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress" title="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.get_stress</span></code></a>(**kargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress" title="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.get_stress</span></code></a>(**kargs)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress_distribution.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress_distribution" title="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.get_stress_distribution</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress_distribution.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress_distribution" title="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.get_stress_distribution</span></code></a>(...)</p></td>
 <td><p>Return layerwise stresses at one shell Gauss point.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.initialize.html#fedoo.constitutivelaw.ShellLaminateNonLinear.initialize" title="fedoo.constitutivelaw.ShellLaminateNonLinear.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.initialize</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.initialize.html#fedoo.constitutivelaw.ShellLaminateNonLinear.initialize" title="fedoo.constitutivelaw.ShellLaminateNonLinear.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.initialize</span></code></a>(assembly, pb)</p></td>
 <td><p>Initialize the constitutive law for the current problem.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.reset.html#fedoo.constitutivelaw.ShellLaminateNonLinear.reset" title="fedoo.constitutivelaw.ShellLaminateNonLinear.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.reset.html#fedoo.constitutivelaw.ShellLaminateNonLinear.reset" title="fedoo.constitutivelaw.ShellLaminateNonLinear.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.reset</span></code></a>()</p></td>
 <td><p>Reset the constitutive law.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.set_local_frame.html#fedoo.constitutivelaw.ShellLaminateNonLinear.set_local_frame" title="fedoo.constitutivelaw.ShellLaminateNonLinear.set_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.set_local_frame</span></code></a>(...)</p></td>
+<td><p>Define the material coordinate frame.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ShellLaminateNonLinear.set_start.html#fedoo.constitutivelaw.ShellLaminateNonLinear.set_start" title="fedoo.constitutivelaw.ShellLaminateNonLinear.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear.set_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Begin a new time iteration.</p></td>

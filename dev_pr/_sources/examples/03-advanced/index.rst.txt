@@ -88,18 +88,18 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Companion of the displacement-driven cantilever example &lt;neohookean_cantilever&gt;: the same slender, nearly-incompressible NEOHC cylinder, but loaded by a transverse force applied to its rigid cap — the natural protocol when mirroring a dynamics engine such as ArtiSynth.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example lets a rigid sphere fall under gravity and bounce on a fixed plane.  It illustrates the rigid-body constraint, Newmark time integration, and IPC contact with a deliberately coarse model suitable for the online example gallery.">
 
 .. only:: html
 
-  .. image:: /examples/03-advanced/images/thumb/sphx_glr_neohookean_cantilever_force_thumb.png
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_rigid_body_bounce_thumb.gif
     :alt:
 
-  :doc:`/examples/03-advanced/neohookean_cantilever_force`
+  :doc:`/examples/03-advanced/rigid_body_bounce`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</div>
+      <div class="sphx-glr-thumbnail-title">Rigid-body bounce with IPC contact</div>
     </div>
 
 
@@ -151,7 +151,7 @@ This section show some advanced capabilities of fedoo.
    /examples/03-advanced/composite_DCB_test_3D
    /examples/03-advanced/multi_mesh_example
    /examples/03-advanced/neohookean_cantilever
-   /examples/03-advanced/neohookean_cantilever_force
+   /examples/03-advanced/rigid_body_bounce
    /examples/03-advanced/thermal_loading
    /examples/03-advanced/tube_compression
 

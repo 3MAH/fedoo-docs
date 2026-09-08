@@ -22,18 +22,30 @@
          ElastoPlasticity.compute_stress
          ElastoPlasticity.get_H_plane_stress
          ElastoPlasticity.get_all
+         ElastoPlasticity.get_current_local_frame
          ElastoPlasticity.get_elastic_matrix
+         ElastoPlasticity.get_local_frame
+         ElastoPlasticity.get_local_rotation
          ElastoPlasticity.get_plastic_strain
          ElastoPlasticity.get_plasticity
          ElastoPlasticity.get_stress
          ElastoPlasticity.get_tangent_matrix
+         ElastoPlasticity.get_temp_gp
+         ElastoPlasticity.global2local_H
+         ElastoPlasticity.global2local_rotation_increment
+         ElastoPlasticity.global2local_strain
+         ElastoPlasticity.global2local_stress
+         ElastoPlasticity.global2local_tensor
          ElastoPlasticity.hardening_function
          ElastoPlasticity.hardening_function_derivative
          ElastoPlasticity.initialize
          ElastoPlasticity.local2global_H
+         ElastoPlasticity.local2global_strain
+         ElastoPlasticity.local2global_stress
          ElastoPlasticity.reset
          ElastoPlasticity.set_density
          ElastoPlasticity.set_hardening_function
+         ElastoPlasticity.set_local_frame
          ElastoPlasticity.set_return_mapping_tolerance
          ElastoPlasticity.set_start
          ElastoPlasticity.to_start
@@ -52,7 +64,10 @@
          :toctree:
          
       
+         ElastoPlasticity.is_isotropic
+         ElastoPlasticity.manages_material_frame
          ElastoPlasticity.name
+         ElastoPlasticity.required_corate
          ElastoPlasticity.shear_modulus
          ElastoPlasticity.is_initialized
   

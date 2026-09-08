@@ -87,6 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.from_nodes.html">fedoo.constraint.SurfaceForce.from_nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_all.html">fedoo.constraint.SurfaceForce.get_all</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_change_of_basis_mat.html">fedoo.constraint.SurfaceForce.get_change_of_basis_mat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_element_local_frame.html">fedoo.constraint.SurfaceForce.get_element_local_frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_element_results.html">fedoo.constraint.SurfaceForce.get_element_results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_global_matrix.html">fedoo.constraint.SurfaceForce.get_global_matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_global_vector.html">fedoo.constraint.SurfaceForce.get_global_vector</a></li>
@@ -102,6 +103,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.register_global_dofs.html">fedoo.constraint.SurfaceForce.register_global_dofs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.reset.html">fedoo.constraint.SurfaceForce.reset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_disp.html">fedoo.constraint.SurfaceForce.set_disp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_element_local_frame.html">fedoo.constraint.SurfaceForce.set_element_local_frame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_start.html">fedoo.constraint.SurfaceForce.set_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.sum.html">fedoo.constraint.SurfaceForce.sum</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constraint.SurfaceForce.to_start.html">fedoo.constraint.SurfaceForce.to_start</a></li>
@@ -128,8 +130,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 </ul>
 
 
@@ -211,50 +214,56 @@ from_nodes or from_elements constructors.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_change_of_basis_mat.html#fedoo.constraint.SurfaceForce.get_change_of_basis_mat" title="fedoo.constraint.SurfaceForce.get_change_of_basis_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_change_of_basis_mat</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_element_results.html#fedoo.constraint.SurfaceForce.get_element_results" title="fedoo.constraint.SurfaceForce.get_element_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_element_results</span></code></a>(operator, U)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_element_local_frame.html#fedoo.constraint.SurfaceForce.get_element_local_frame" title="fedoo.constraint.SurfaceForce.get_element_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_element_local_frame</span></code></a>()</p></td>
+<td><p>Return the current rigid frame, one rotation matrix per element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_element_results.html#fedoo.constraint.SurfaceForce.get_element_results" title="fedoo.constraint.SurfaceForce.get_element_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_element_results</span></code></a>(operator, U)</p></td>
 <td><p>Return some element results based on the finite element discretization of a differential operator on a mesh being given the dof results and the type of elements.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_global_matrix.html#fedoo.constraint.SurfaceForce.get_global_matrix" title="fedoo.constraint.SurfaceForce.get_global_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_global_matrix</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_global_matrix.html#fedoo.constraint.SurfaceForce.get_global_matrix" title="fedoo.constraint.SurfaceForce.get_global_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_global_matrix</span></code></a>()</p></td>
 <td><p>Get the last computed global matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_global_vector.html#fedoo.constraint.SurfaceForce.get_global_vector" title="fedoo.constraint.SurfaceForce.get_global_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_global_vector</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_global_vector.html#fedoo.constraint.SurfaceForce.get_global_vector" title="fedoo.constraint.SurfaceForce.get_global_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_global_vector</span></code></a>()</p></td>
 <td><p>Get the last computed global vector.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_gp_results.html#fedoo.constraint.SurfaceForce.get_gp_results" title="fedoo.constraint.SurfaceForce.get_gp_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_gp_results</span></code></a>(operator, U[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_gp_results.html#fedoo.constraint.SurfaceForce.get_gp_results" title="fedoo.constraint.SurfaceForce.get_gp_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_gp_results</span></code></a>(operator, U[, ...])</p></td>
 <td><p>Return some results at element Gauss points based on the finite element discretization of a differential operator on a mesh being given the dof results and the type of elements.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_grad_disp.html#fedoo.constraint.SurfaceForce.get_grad_disp" title="fedoo.constraint.SurfaceForce.get_grad_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_grad_disp</span></code></a>(U[, Type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_grad_disp.html#fedoo.constraint.SurfaceForce.get_grad_disp" title="fedoo.constraint.SurfaceForce.get_grad_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_grad_disp</span></code></a>(U[, Type])</p></td>
 <td><p>Return the Gradient Tensor of a vector (generally displacement given by Problem.get_DofSolution('all') as a list of list of numpy array The total displacement field U has to be given as a flatten numpy array see get_node_results and get_element_resultss</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_int_forces.html#fedoo.constraint.SurfaceForce.get_int_forces" title="fedoo.constraint.SurfaceForce.get_int_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_int_forces</span></code></a>(U[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_int_forces.html#fedoo.constraint.SurfaceForce.get_int_forces" title="fedoo.constraint.SurfaceForce.get_int_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_int_forces</span></code></a>(U[, ...])</p></td>
 <td><p>Only available for 2 nodes beam element Return the element internal Forces and moments related to a specific assembly considering the DOF solution given in U.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_node_results.html#fedoo.constraint.SurfaceForce.get_node_results" title="fedoo.constraint.SurfaceForce.get_node_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_node_results</span></code></a>(operator, U)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_node_results.html#fedoo.constraint.SurfaceForce.get_node_results" title="fedoo.constraint.SurfaceForce.get_node_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_node_results</span></code></a>(operator, U)</p></td>
 <td><p>Return some node results based on the finite element discretization of a differential operator on a mesh being given the dof results and the type of elements.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_strain.html#fedoo.constraint.SurfaceForce.get_strain" title="fedoo.constraint.SurfaceForce.get_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_strain</span></code></a>(U[, Type, nlgeom])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.get_strain.html#fedoo.constraint.SurfaceForce.get_strain" title="fedoo.constraint.SurfaceForce.get_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.get_strain</span></code></a>(U[, Type, nlgeom])</p></td>
 <td><p>Not a static method.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.initialize.html#fedoo.constraint.SurfaceForce.initialize" title="fedoo.constraint.SurfaceForce.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.initialize</span></code></a>(pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.initialize.html#fedoo.constraint.SurfaceForce.initialize" title="fedoo.constraint.SurfaceForce.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.initialize</span></code></a>(pb)</p></td>
 <td><p>Initialize the associated weak form and assemble the global matrix with the elastic matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.integrate_field.html#fedoo.constraint.SurfaceForce.integrate_field" title="fedoo.constraint.SurfaceForce.integrate_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.integrate_field</span></code></a>(field[, type_field])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.integrate_field.html#fedoo.constraint.SurfaceForce.integrate_field" title="fedoo.constraint.SurfaceForce.integrate_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.integrate_field</span></code></a>(field[, type_field])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.iter_leaf.html#fedoo.constraint.SurfaceForce.iter_leaf" title="fedoo.constraint.SurfaceForce.iter_leaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.iter_leaf</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.iter_leaf.html#fedoo.constraint.SurfaceForce.iter_leaf" title="fedoo.constraint.SurfaceForce.iter_leaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.iter_leaf</span></code></a>()</p></td>
 <td><p>Iterate over the leaf assemblies contained in this object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.operator_apply.html#fedoo.constraint.SurfaceForce.operator_apply" title="fedoo.constraint.SurfaceForce.operator_apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.operator_apply</span></code></a>(wf, nodal_vector)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.operator_apply.html#fedoo.constraint.SurfaceForce.operator_apply" title="fedoo.constraint.SurfaceForce.operator_apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.operator_apply</span></code></a>(wf, nodal_vector)</p></td>
 <td><p>Apply a discrete nodal vector to the trial space of a bilinear operator.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.register_global_dofs.html#fedoo.constraint.SurfaceForce.register_global_dofs" title="fedoo.constraint.SurfaceForce.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.register_global_dofs</span></code></a>(pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.register_global_dofs.html#fedoo.constraint.SurfaceForce.register_global_dofs" title="fedoo.constraint.SurfaceForce.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.register_global_dofs</span></code></a>(pb)</p></td>
 <td><p>Register global DOFs required by the assembly on a problem.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.reset.html#fedoo.constraint.SurfaceForce.reset" title="fedoo.constraint.SurfaceForce.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.reset</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.reset.html#fedoo.constraint.SurfaceForce.reset" title="fedoo.constraint.SurfaceForce.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.reset</span></code></a>()</p></td>
 <td><p>reset the assembly to it's initial state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_disp.html#fedoo.constraint.SurfaceForce.set_disp" title="fedoo.constraint.SurfaceForce.set_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.set_disp</span></code></a>(disp)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_disp.html#fedoo.constraint.SurfaceForce.set_disp" title="fedoo.constraint.SurfaceForce.set_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.set_disp</span></code></a>(disp)</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_element_local_frame.html#fedoo.constraint.SurfaceForce.set_element_local_frame" title="fedoo.constraint.SurfaceForce.set_element_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.set_element_local_frame</span></code></a>([...])</p></td>
+<td><p>Define the initial local frame of beam or shell elements.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constraint.SurfaceForce.set_start.html#fedoo.constraint.SurfaceForce.set_start" title="fedoo.constraint.SurfaceForce.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SurfaceForce.set_start</span></code></a>(pb[, t_fact])</p></td>
 <td><p>Start a new time increment.</p></td>

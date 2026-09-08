@@ -23,8 +23,10 @@
          BeamCircular.compute_rotary_density
          BeamCircular.get_all
          BeamCircular.get_beam_rigidity
+         BeamCircular.get_local_frame
          BeamCircular.initialize
          BeamCircular.reset
+         BeamCircular.set_local_frame
          BeamCircular.set_start
          BeamCircular.to_start
          BeamCircular.update

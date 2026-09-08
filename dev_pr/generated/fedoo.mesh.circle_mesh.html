@@ -66,6 +66,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.Mesh.html">fedoo.Mesh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.stack.html">fedoo.mesh.stack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.extrude.html">fedoo.mesh.extrude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.thicken.html">fedoo.mesh.thicken</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.extract_surface.html">fedoo.mesh.extract_surface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.extract_edges.html">fedoo.mesh.extract_edges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.change_elm_type.html">fedoo.mesh.change_elm_type</a></li>
@@ -84,6 +85,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.mesh.circle_mesh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.generate_cylindrical_local_frame.html">fedoo.mesh.generate_cylindrical_local_frame</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.structured_mesh_2D.html">fedoo.mesh.structured_mesh_2D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.generate_nodes.html">fedoo.mesh.generate_nodes</a></li>
 </ul>
@@ -95,8 +97,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 </ul>
 
 
@@ -129,7 +132,7 @@
 <h1>fedoo.mesh.circle_mesh<a class="headerlink" href="#fedoo-mesh-circle-mesh" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="fedoo.mesh.circle_mesh">
-<span class="sig-name descname"><span class="pre">circle_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elm_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lin2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_local_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.mesh.circle_mesh" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">circle_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elm_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lin2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.mesh.circle_mesh" title="Link to this definition"></a></dt>
 <dd><p>Create the mesh of a cicle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -140,7 +143,6 @@
 * ‘lin2’ – 2-node line
 * ‘lin3’ – 3-node line
 * ‘lin4’ – 4-node line</p></li>
-<li><p><strong>init_local_frame</strong> (<em>bool</em><em>, </em><em>default=False</em>) – If True, initializes the local frame using a cylindrical basis</p></li>
 <li><p><strong>ndim</strong> (<em>int</em><em>, </em><em>default=2</em>) – Dimension of the mesh.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the mesh.</p></li>
 </ul>
@@ -167,6 +169,9 @@
 </dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>Use <a class="reference internal" href="fedoo.mesh.generate_cylindrical_local_frame.html#fedoo.mesh.generate_cylindrical_local_frame" title="fedoo.mesh.generate_cylindrical_local_frame"><code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.mesh.generate_cylindrical_local_frame()</span></code></a> to generate
+cylindrical local frames from the returned mesh.</p>
 </dd></dl>
 
 </section>

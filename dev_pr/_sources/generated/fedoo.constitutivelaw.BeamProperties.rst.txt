@@ -23,8 +23,10 @@
          BeamProperties.compute_rotary_density
          BeamProperties.get_all
          BeamProperties.get_beam_rigidity
+         BeamProperties.get_local_frame
          BeamProperties.initialize
          BeamProperties.reset
+         BeamProperties.set_local_frame
          BeamProperties.set_start
          BeamProperties.to_start
          BeamProperties.update
