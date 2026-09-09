@@ -21,24 +21,13 @@
       
          ElasticOrthotropic.get_H_plane_stress
          ElasticOrthotropic.get_all
-         ElasticOrthotropic.get_current_local_frame
          ElasticOrthotropic.get_elastic_matrix
-         ElasticOrthotropic.get_local_frame
-         ElasticOrthotropic.get_local_rotation
          ElasticOrthotropic.get_stress_from_strain
          ElasticOrthotropic.get_tangent_matrix
-         ElasticOrthotropic.global2local_H
-         ElasticOrthotropic.global2local_rotation_increment
-         ElasticOrthotropic.global2local_strain
-         ElasticOrthotropic.global2local_stress
-         ElasticOrthotropic.global2local_tensor
          ElasticOrthotropic.initialize
          ElasticOrthotropic.local2global_H
-         ElasticOrthotropic.local2global_strain
-         ElasticOrthotropic.local2global_stress
          ElasticOrthotropic.reset
          ElasticOrthotropic.set_density
-         ElasticOrthotropic.set_local_frame
          ElasticOrthotropic.set_start
          ElasticOrthotropic.to_start
          ElasticOrthotropic.update
@@ -54,8 +43,6 @@
          :toctree:
          
       
-         ElasticOrthotropic.is_isotropic
-         ElasticOrthotropic.manages_material_frame
          ElasticOrthotropic.name
          ElasticOrthotropic.is_initialized
   

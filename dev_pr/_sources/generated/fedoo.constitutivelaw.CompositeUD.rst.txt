@@ -21,25 +21,14 @@
       
          CompositeUD.get_H_plane_stress
          CompositeUD.get_all
-         CompositeUD.get_current_local_frame
          CompositeUD.get_elastic_matrix
          CompositeUD.get_engineering_constants
-         CompositeUD.get_local_frame
-         CompositeUD.get_local_rotation
          CompositeUD.get_stress_from_strain
          CompositeUD.get_tangent_matrix
-         CompositeUD.global2local_H
-         CompositeUD.global2local_rotation_increment
-         CompositeUD.global2local_strain
-         CompositeUD.global2local_stress
-         CompositeUD.global2local_tensor
          CompositeUD.initialize
          CompositeUD.local2global_H
-         CompositeUD.local2global_strain
-         CompositeUD.local2global_stress
          CompositeUD.reset
          CompositeUD.set_density
-         CompositeUD.set_local_frame
          CompositeUD.set_start
          CompositeUD.to_start
          CompositeUD.update
@@ -55,8 +44,6 @@
          :toctree:
          
       
-         CompositeUD.is_isotropic
-         CompositeUD.manages_material_frame
          CompositeUD.name
          CompositeUD.is_initialized
   

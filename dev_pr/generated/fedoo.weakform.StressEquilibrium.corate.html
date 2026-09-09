@@ -118,9 +118,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
 </ul>
 
 
@@ -161,8 +160,13 @@
 corate can take the following str values:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>“log” (default): exact logarithmic strain (strain is recomputed
-at each iteration)</p></li>
+<li><p>“log_r” (default): exact logarithmic strain transported by the
+exact polar rotation increment (strain is recomputed at each
+iteration). This is the corate with an EXACT simcoon tangent
+transport, including across committed increments with plastic
+(or other rotated) history.</p></li>
+<li><p>“log”: exact logarithmic strain, XBM logarithmic spin
+transport (small tangent residual with rotated history)</p></li>
 <li><p>“jaumann”: Strain using the Jaumann derivative (strain is
 incremented)</p></li>
 <li><p>“green_nagdhi” or “gn”: Strain using the Green_Nagdhi derivative

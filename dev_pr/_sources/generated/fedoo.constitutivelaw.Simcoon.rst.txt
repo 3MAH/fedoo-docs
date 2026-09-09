@@ -19,26 +19,14 @@
          :toctree:
          
       
-         Simcoon.from_modular
          Simcoon.get_H_plane_stress
          Simcoon.get_all
-         Simcoon.get_current_local_frame
-         Simcoon.get_local_frame
-         Simcoon.get_local_rotation
          Simcoon.get_tangent_matrix
          Simcoon.get_temp_gp
-         Simcoon.global2local_H
-         Simcoon.global2local_rotation_increment
-         Simcoon.global2local_strain
-         Simcoon.global2local_stress
-         Simcoon.global2local_tensor
          Simcoon.initialize
          Simcoon.local2global_H
-         Simcoon.local2global_strain
-         Simcoon.local2global_stress
          Simcoon.reset
          Simcoon.set_density
-         Simcoon.set_local_frame
          Simcoon.set_start
          Simcoon.to_start
          Simcoon.update
@@ -54,10 +42,7 @@
          :toctree:
          
       
-         Simcoon.is_isotropic
-         Simcoon.manages_material_frame
          Simcoon.name
-         Simcoon.required_corate
          Simcoon.is_initialized
   
   

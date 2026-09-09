@@ -26,7 +26,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.mesh.thicken" href="fedoo.mesh.thicken.html" />
+    <link rel="next" title="fedoo.mesh.extract_surface" href="fedoo.mesh.extract_surface.html" />
     <link rel="prev" title="fedoo.mesh.stack" href="fedoo.mesh.stack.html" /> 
 </head>
 
@@ -66,7 +66,6 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.Mesh.html">fedoo.Mesh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.stack.html">fedoo.mesh.stack</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.mesh.extrude</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.thicken.html">fedoo.mesh.thicken</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.extract_surface.html">fedoo.mesh.extract_surface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.extract_edges.html">fedoo.mesh.extract_edges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.change_elm_type.html">fedoo.mesh.change_elm_type</a></li>
@@ -85,7 +84,6 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.circle_mesh.html">fedoo.mesh.circle_mesh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.generate_cylindrical_local_frame.html">fedoo.mesh.generate_cylindrical_local_frame</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.structured_mesh_2D.html">fedoo.mesh.structured_mesh_2D</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.mesh.generate_nodes.html">fedoo.mesh.generate_nodes</a></li>
 </ul>
@@ -97,9 +95,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
 </ul>
 
 
@@ -132,7 +129,7 @@
 <h1>fedoo.mesh.extrude<a class="headerlink" href="#fedoo-mesh-extrude" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="fedoo.mesh.extrude">
-<span class="sig-name descname"><span class="pre">extrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrude_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.mesh.extrude" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">extrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrude_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_local_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.mesh.extrude" title="Link to this definition"></a></dt>
 <dd><p>Build a volume or surface mesh from the extrusion of a surface or wire mesh.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -144,15 +141,8 @@ extrude_path can either be:
 - a tuple: extrude_path is the min and max coordinates values along the thickness.
 - a fedoo.Mesh with line elements: define the path along which the mesh is extruded.</p></li>
 <li><p><strong>n_nodes</strong> (<em>int</em>) – number of nodes in the extrusion direction. n_nodes is ignored if extrude_path is a Mesh.</p></li>
-<li><p><strong>ndim</strong> (<em>int</em><em>, </em><em>optional</em>) – Spatial dimension of an ordinary extrusion. With <code class="docutils literal notranslate"><span class="pre">local_frame</span></code>, the
-frame dimension determines the output dimension; an explicitly given
-<code class="docutils literal notranslate"><span class="pre">ndim</span></code> must match it.</p></li>
-<li><p><strong>local_frame</strong> (<em>array_like</em><em> or </em><em>scipy/simcoon Rotation</em><em>, </em><em>optional</em>) – Smooth local frames along the extrusion path. One frame is broadcast
-to all path nodes; otherwise one frame per path node is required.
-Frame rows are the local basis vectors expressed in global coordinates.
-For a conventional sweep along a curved path, the first frame axis
-generally follows the path tangent. Other orientations may be used to
-create an oblique sweep.</p></li>
+<li><p><strong>use_local_frame</strong> (<em>bool</em>) – If True, the extrusion use the nodal local_frame of the extrude_path Mesh
+(if available). The default is False.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the final Mesh.</p></li>
 </ul>
 </dd>
@@ -169,7 +159,7 @@ create an oblique sweep.</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="fedoo.mesh.stack.html" class="btn btn-neutral float-left" title="fedoo.mesh.stack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.mesh.thicken.html" class="btn btn-neutral float-right" title="fedoo.mesh.thicken" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.mesh.extract_surface.html" class="btn btn-neutral float-right" title="fedoo.mesh.extract_surface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

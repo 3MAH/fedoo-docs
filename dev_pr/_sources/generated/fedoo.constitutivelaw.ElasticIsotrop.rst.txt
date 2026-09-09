@@ -21,24 +21,13 @@
       
          ElasticIsotrop.get_H_plane_stress
          ElasticIsotrop.get_all
-         ElasticIsotrop.get_current_local_frame
          ElasticIsotrop.get_elastic_matrix
-         ElasticIsotrop.get_local_frame
-         ElasticIsotrop.get_local_rotation
          ElasticIsotrop.get_stress_from_strain
          ElasticIsotrop.get_tangent_matrix
-         ElasticIsotrop.global2local_H
-         ElasticIsotrop.global2local_rotation_increment
-         ElasticIsotrop.global2local_strain
-         ElasticIsotrop.global2local_stress
-         ElasticIsotrop.global2local_tensor
          ElasticIsotrop.initialize
          ElasticIsotrop.local2global_H
-         ElasticIsotrop.local2global_strain
-         ElasticIsotrop.local2global_stress
          ElasticIsotrop.reset
          ElasticIsotrop.set_density
-         ElasticIsotrop.set_local_frame
          ElasticIsotrop.set_start
          ElasticIsotrop.to_start
          ElasticIsotrop.update
@@ -55,8 +44,6 @@
          
       
          ElasticIsotrop.G
-         ElasticIsotrop.is_isotropic
-         ElasticIsotrop.manages_material_frame
          ElasticIsotrop.name
          ElasticIsotrop.E
          ElasticIsotrop.nu

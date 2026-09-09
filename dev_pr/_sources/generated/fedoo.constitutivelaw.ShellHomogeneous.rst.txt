@@ -22,14 +22,12 @@
          ShellHomogeneous.compute_area_density
          ShellHomogeneous.compute_rotary_density
          ShellHomogeneous.get_all
-         ShellHomogeneous.get_local_frame
          ShellHomogeneous.get_shell_stiffness_matrix
          ShellHomogeneous.get_strain
          ShellHomogeneous.get_stress
          ShellHomogeneous.get_stress_distribution
          ShellHomogeneous.initialize
          ShellHomogeneous.reset
-         ShellHomogeneous.set_local_frame
          ShellHomogeneous.set_start
          ShellHomogeneous.to_start
          ShellHomogeneous.update

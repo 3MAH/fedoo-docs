@@ -31,7 +31,6 @@
          SurfaceForce.from_nodes
          SurfaceForce.get_all
          SurfaceForce.get_change_of_basis_mat
-         SurfaceForce.get_element_local_frame
          SurfaceForce.get_element_results
          SurfaceForce.get_global_matrix
          SurfaceForce.get_global_vector
@@ -47,7 +46,6 @@
          SurfaceForce.register_global_dofs
          SurfaceForce.reset
          SurfaceForce.set_disp
-         SurfaceForce.set_element_local_frame
          SurfaceForce.set_start
          SurfaceForce.sum
          SurfaceForce.to_start

@@ -141,9 +141,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
 </ul>
 
 
@@ -199,7 +198,8 @@ Number of nr iterations before returning a convergence error.</p></li>
 <li><p>‘dt_increase_niter’: int or None, default = None.
 Number of nr iterations threshold that define an easy convergence.
 In problem allowing automatic convergence, if the Newton–Raphson
-loop converges in strictly fewer iterations, the time step is increased.
+loop converges in at most that many iterations, the time step is
+increased.
 If None, defaults to max_subiter//3.</p></li>
 <li><p>‘norm_type’: int or numpy.inf, default = 2.
 Define the norm used to test the criterion.</p></li>
@@ -222,24 +222,12 @@ WARNING: DANGEROUS PARAMETER. If True, assumes convergence when
 max_subiter iterations are reached, regardless of tolerance criterion.
 Use only for special cases requiring forced convergence. Skips
 convergence tolerance check when iteration limit is reached.</p></li>
-<li><p>‘eigenvalue_shift’: bool, default = False.
-If True, adds a shifted identity matrix to improve conditioning:
-A_eff = A + alpha*I where alpha = eigenvalue_shift_factor * R.
-R is estimated via Rayleigh quotient of the current stiffness.</p></li>
-<li><p>‘eigenvalue_shift_factor’: float, default = 1e-4.
-Scaling factor for the eigenvalue shift margin.
-Larger values = stronger stabilization but less accuracy.
-Smaller values = more accurate but weaker stabilization.</p></li>
-<li><p>‘eigenvalue_assume_sym’: bool, default = True.
-If True, uses the symmetric Lanczos solver (eigsh) for efficiency.
-If False, uses the general Arnoldi solver (eigs) to account for
-non-symmetric tangent terms.</p></li>
 <li><p>‘check_early_divergence’: bool, default = True.
 If True, aborts the time step early if convergence trends are poor.
 A step is considered diverging if:
 1. The error remains “unproductive” (new_error &gt; 0.999 * previous_error)</p>
 <blockquote>
-<div><p>for 3 consecutive Newton-Raphson iterations.</p>
+<div><p>for 4 consecutive Newton-Raphson iterations.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p>The error spikes to more than 100 times the previous error.</p></li>

@@ -70,8 +70,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../01-simple/index.html">Simple examples to start</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Apply constraints</a><ul class="current">
@@ -83,8 +81,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../03-advanced/index.html">Advanced problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../identification/index.html">Inverse identification</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
 </ul>
 
 
@@ -127,12 +127,12 @@ rotation is imposed on the top face.</p>
 <img src="../../_images/sphx_glr_rigid_tie_001.png" srcset="../../_images/sphx_glr_rigid_tie_001.png" alt="rigid tie" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.20000 - dt 0.20000 - NR iter: 3 - Err: 0.00133
 Iter 2 - Time: 0.40000 - dt 0.20000 - NR iter: 3 - Err: 0.00481
 Iter 3 - Time: 0.60000 - dt 0.20000 - NR iter: 4 - Err: 0.00200
-Iter 4 - Time: 0.80000 - dt 0.20000 - NR iter: 4 - Err: 0.00491
-Convergence Failed - dt 0.20000 - NR iter: 5 - Err: 0.01020
-Iter 5 - Time: 0.85000 - dt 0.05000 - NR iter: 4 - Err: 0.00632
-Iter 6 - Time: 0.90000 - dt 0.05000 - NR iter: 3 - Err: 0.00774
-Iter 7 - Time: 0.95000 - dt 0.05000 - NR iter: 3 - Err: 0.00698
-Iter 8 - Time: 1.00000 - dt 0.05000 - NR iter: 3 - Err: 0.00858
+Iter 4 - Time: 0.80000 - dt 0.20000 - NR iter: 4 - Err: 0.00493
+Convergence Failed - dt 0.20000 - NR iter: 5 - Err: 0.01025
+Iter 5 - Time: 0.85000 - dt 0.05000 - NR iter: 4 - Err: 0.00636
+Iter 6 - Time: 0.90000 - dt 0.05000 - NR iter: 3 - Err: 0.00776
+Iter 7 - Time: 0.95000 - dt 0.05000 - NR iter: 3 - Err: 0.00694
+Iter 8 - Time: 1.00000 - dt 0.05000 - NR iter: 3 - Err: 0.00861
 </pre></div>
 </div>
 <div class="line-block">
@@ -187,7 +187,7 @@ Iter 8 - Time: 1.00000 - dt 0.05000 - NR iter: 3 - Err: 0.00858
 <span class="c1"># results.write_movie('rigid_tie_example', 'Stress', 'vm', 'Node', framerate = 12, quality = 5)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.611 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.568 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-02-constraints-rigid-tie-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e30a9babf2e2467242c7d04b15ff61f8/rigid_tie.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">rigid_tie.ipynb</span></code></a></p>

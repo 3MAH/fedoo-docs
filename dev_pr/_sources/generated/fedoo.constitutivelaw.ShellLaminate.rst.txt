@@ -23,7 +23,6 @@
          ShellLaminate.compute_rotary_density
          ShellLaminate.find_layer
          ShellLaminate.get_all
-         ShellLaminate.get_local_frame
          ShellLaminate.get_shell_stiffness_matrix
          ShellLaminate.get_shell_stiffness_matrix_FI
          ShellLaminate.get_shell_stiffness_matrix_RI
@@ -32,7 +31,6 @@
          ShellLaminate.get_stress_distribution
          ShellLaminate.initialize
          ShellLaminate.reset
-         ShellLaminate.set_local_frame
          ShellLaminate.set_start
          ShellLaminate.to_start
          ShellLaminate.update

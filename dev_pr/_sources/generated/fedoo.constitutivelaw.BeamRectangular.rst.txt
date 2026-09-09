@@ -23,10 +23,8 @@
          BeamRectangular.compute_rotary_density
          BeamRectangular.get_all
          BeamRectangular.get_beam_rigidity
-         BeamRectangular.get_local_frame
          BeamRectangular.initialize
          BeamRectangular.reset
-         BeamRectangular.set_local_frame
          BeamRectangular.set_start
          BeamRectangular.to_start
          BeamRectangular.update

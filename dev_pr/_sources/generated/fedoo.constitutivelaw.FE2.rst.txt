@@ -21,21 +21,10 @@
       
          FE2.get_H_plane_stress
          FE2.get_all
-         FE2.get_current_local_frame
-         FE2.get_local_frame
-         FE2.get_local_rotation
-         FE2.global2local_H
-         FE2.global2local_rotation_increment
-         FE2.global2local_strain
-         FE2.global2local_stress
-         FE2.global2local_tensor
          FE2.initialize
          FE2.local2global_H
-         FE2.local2global_strain
-         FE2.local2global_stress
          FE2.reset
          FE2.set_density
-         FE2.set_local_frame
          FE2.set_start
          FE2.to_start
          FE2.update
@@ -51,8 +40,6 @@
          :toctree:
          
       
-         FE2.is_isotropic
-         FE2.manages_material_frame
          FE2.name
          FE2.is_initialized
   

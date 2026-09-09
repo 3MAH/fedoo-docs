@@ -71,8 +71,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../01-simple/index.html">Simple examples to start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a></li>
@@ -88,7 +86,7 @@
 <li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#cohesive-zone-response">Cohesive-zone response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="composite_DCB_test_3D.html#plot-the-deformed-dcb">Plot the deformed DCB</a></li>
 <li class="toctree-l3"><a class="reference internal" href="neohookean_cantilever.html">Finite-strain Neo-Hookean cantilever (rigid cap)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rigid_body_bounce.html">Rigid-body bounce with IPC contact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="neohookean_cantilever_force.html">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thermal_loading.html">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#geometry-and-mesh">Geometry and Mesh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#modeling-space-and-field-definitions">Modeling Space and Field Definitions</a></li>
@@ -99,8 +97,10 @@
 <li class="toctree-l3"><a class="reference internal" href="tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../identification/index.html">Inverse identification</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
 </ul>
 
 
@@ -144,9 +144,9 @@
 </div><div class="sphx-glr-thumbcontainer" tooltip="A slender, nearly-incompressible cylinder is clamped at its base and bent by a transverse load applied to a rigid cap tied to its top face. It is loaded well into the large-deflection, finite-strain regime (tip deflection of order the cylinder length, ~40 % local strain at the clamped base)."><img alt="" src="../../_images/sphx_glr_neohookean_cantilever_thumb.png" />
 <p><a class="reference internal" href="neohookean_cantilever.html"><span class="doc">Finite-strain Neo-Hookean cantilever (rigid cap)</span></a></p>
   <div class="sphx-glr-thumbnail-title">Finite-strain Neo-Hookean cantilever (rigid cap)</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example lets a rigid sphere fall under gravity and bounce on a fixed plane.  It illustrates the rigid-body constraint, Newmark time integration, and IPC contact with a deliberately coarse model suitable for the online example gallery."><img alt="" src="../../_images/sphx_glr_rigid_body_bounce_thumb.gif" />
-<p><a class="reference internal" href="rigid_body_bounce.html"><span class="doc">Rigid-body bounce with IPC contact</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Rigid-body bounce with IPC contact</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Companion of the displacement-driven cantilever example &lt;neohookean_cantilever&gt;: the same slender, nearly-incompressible NEOHC cylinder, but loaded by a transverse force applied to its rigid cap — the natural protocol when mirroring a dynamics engine such as ArtiSynth."><img alt="" src="../../_images/sphx_glr_neohookean_cantilever_force_thumb.png" />
+<p><a class="reference internal" href="neohookean_cantilever_force.html"><span class="doc">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading"><img alt="" src="../../_images/sphx_glr_thermal_loading_thumb.png" />
 <p><a class="reference internal" href="thermal_loading.html"><span class="doc">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</span></a></p>
   <div class="sphx-glr-thumbnail-title">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</div>
