@@ -70,22 +70,28 @@
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Boundary conditions and constraints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.ListBC.html">fedoo.ListBC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.core.BoundaryCondition.html">fedoo.core.BoundaryCondition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MPC.html">fedoo.MPC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.DistributedForce.html">fedoo.constraint.DistributedForce</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.Pressure.html">fedoo.constraint.Pressure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.SurfaceForce.html">fedoo.constraint.SurfaceForce</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.LagrangeMultiplierAssembly.html">fedoo.LagrangeMultiplierAssembly</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.MeanValueConstraint.html">fedoo.constraint.MeanValueConstraint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.RigidTie.html">fedoo.constraint.RigidTie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.RigidTie2D.html">fedoo.constraint.RigidTie2D</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.MeanMotion.html">fedoo.constraint.MeanMotion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.PeriodicBC.html">fedoo.constraint.PeriodicBC</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.Contact.html">fedoo.constraint.Contact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.SelfContact.html">fedoo.constraint.SelfContact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.IPCContact.html">fedoo.constraint.IPCContact</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constraint.IPCSelfContact.html">fedoo.constraint.IPCSelfContact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-boundary-conditions">Basic boundary conditions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.ListBC.html">fedoo.ListBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dirichlet-and-neumann-boundary-conditions">Dirichlet and Neumann Boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-point-constraints">Multi Point Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-bc-and-constraints">Advanced BC and constraints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#distributed-loads">Distributed loads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generic-lagrange-multiplier-constraints">Generic Lagrange-multiplier constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mean-value-constraint">Mean-value constraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kinematic-mpc-constraints">Kinematic MPC constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#periodic-boundary-conditions">Periodic boundary conditions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#contact">Contact</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#penalty-based-contact">Penalty-based contact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ipc-contact">IPC contact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#penalty-contact-example">Penalty contact example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ipc-contact-example">IPC contact example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ipc-self-contact-example">IPC self-contact example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>

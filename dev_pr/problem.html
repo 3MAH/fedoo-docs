@@ -76,6 +76,21 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-integration">Time integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linear-transient-problems">Linear transient problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nonlinear-transient-problems">Nonlinear transient problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explicit-transient-problems">Explicit transient problems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#non-linear-solver">Non-Linear Solver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#newton-raphson-algorithm">Newton-Raphson Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-nlsolve-method">The <code class="docutils literal notranslate"><span class="pre">nlsolve</span></code> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overcoming-simulation-instabilities">Overcoming Simulation Instabilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#numerical-stabilization-techniques">Numerical Stabilization Techniques</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
@@ -472,11 +487,12 @@ the residual-descent methods, and <code class="docutils literal notranslate"><sp
 kinematics. If geometric backtracking finds no valid trial, the current
 increment fails and follows the solver’s normal time-step reduction path.</p></li>
 <li><p><strong>Dirichlet increments</strong>: By default, <code class="docutils literal notranslate"><span class="pre">apply_to_bc=True</span></code> also scales a
-prescribed displacement increment. Its unapplied part is retained for the
-following Newton corrections, and convergence is accepted only once the
-complete prescribed increment has been applied. Set <code class="docutils literal notranslate"><span class="pre">apply_to_bc=False</span></code>
-to apply prescribed displacements in one full step before line search acts
-on the remaining equilibrium corrections.</p></li>
+prescribed displacement increment when required to keep its trial state
+kinematically valid. Its unapplied part is retained for the following Newton
+corrections, and convergence is accepted only once the complete prescribed
+increment has been applied. Residual and natural acceptance tests start only
+after that remainder reaches zero. Set <code class="docutils literal notranslate"><span class="pre">apply_to_bc=False</span></code> to apply
+prescribed displacements in one full step without the validity safeguard.</p></li>
 </ul>
 </section>
 <section id="stiffness-strategies-blending-elastic-overrides">
