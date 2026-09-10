@@ -14,6 +14,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=26864b79" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
@@ -160,8 +161,13 @@
 corate can take the following str values:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>“log” (default): exact logarithmic strain (strain is recomputed
-at each iteration)</p></li>
+<li><p>“log_r” (default): exact logarithmic strain transported by the
+exact polar rotation increment (strain is recomputed at each
+iteration). This is the corate with an EXACT simcoon tangent
+transport, including across committed increments with plastic
+(or other rotated) history.</p></li>
+<li><p>“log”: exact logarithmic strain, XBM logarithmic spin
+transport (small tangent residual with rotated history)</p></li>
 <li><p>“jaumann”: Strain using the Jaumann derivative (strain is
 incremented)</p></li>
 <li><p>“green_nagdhi” or “gn”: Strain using the Green_Nagdhi derivative

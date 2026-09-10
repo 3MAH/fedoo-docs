@@ -44,5 +44,6 @@
       
          CentralDifference.evolution
          CentralDifference.is_explicit
+         CentralDifference.needs_end_step_acceleration
   
   

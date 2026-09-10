@@ -14,6 +14,7 @@
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=26864b79" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -70,29 +71,27 @@
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Post-Processing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.html">fedoo.DataSet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html">fedoo.MultiFrameDataSet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiMeshData.html">fedoo.MultiMeshData</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.get_history.html">fedoo.MultiFrameDataSet.get_history</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot.html">fedoo.MultiFrameDataSet.plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot_history.html">fedoo.MultiFrameDataSet.plot_history</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.write_movie.html">fedoo.MultiFrameDataSet.write_movie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.save.html">fedoo.DataSet.save</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.savez.html">fedoo.DataSet.savez</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.savez_compressed.html">fedoo.DataSet.savez_compressed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.save_mesh.html">fedoo.DataSet.save_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.to_csv.html">fedoo.DataSet.to_csv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.to_excel.html">fedoo.DataSet.to_excel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.to_vtk.html">fedoo.DataSet.to_vtk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.to_msh.html">fedoo.DataSet.to_msh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.to_fdh5.html">fedoo.DataSet.to_fdh5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.save_all.html">fedoo.MultiFrameDataSet.save_all</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.read_data.html">fedoo.read_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.read.html">fedoo.DataSet.read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.load.html">fedoo.DataSet.load</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.load.html">fedoo.MultiFrameDataSet.load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-results-from-a-problem">Get results from a problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#class-dataset">Class DataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-multiframedataset">Class MultiFrameDataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multimesh-results">MultiMesh results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#save-data-to-disk">Save data to disk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read-data-from-disk">Read data from disk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-operations">Basic operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extract-data">Extract data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting-results">Plotting results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#save-results">Save results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read-results">Read results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-operations">Advanced operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#write-movies">Write Movies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiplot-feature">Multiplot feature</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>

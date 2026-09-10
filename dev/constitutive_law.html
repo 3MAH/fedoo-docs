@@ -14,6 +14,7 @@
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=26864b79" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -64,24 +65,39 @@
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticIsotrop.html">fedoo.constitutivelaw.ElasticIsotrop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticOrthotropic.html">fedoo.constitutivelaw.ElasticOrthotropic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticAnisotropic.html">fedoo.constitutivelaw.ElasticAnisotropic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.CompositeUD.html">fedoo.constitutivelaw.CompositeUD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.ElastoPlasticity.html">fedoo.constitutivelaw.ElastoPlasticity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.FE2.html">fedoo.constitutivelaw.FE2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.Simcoon.html">fedoo.constitutivelaw.Simcoon</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.CohesiveLaw.html">fedoo.constitutivelaw.CohesiveLaw</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.Spring.html">fedoo.constitutivelaw.Spring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamProperties.html">fedoo.constitutivelaw.BeamProperties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamCircular.html">fedoo.constitutivelaw.BeamCircular</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamPipe.html">fedoo.constitutivelaw.BeamPipe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamRectangular.html">fedoo.constitutivelaw.BeamRectangular</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellLaminate.html">fedoo.constitutivelaw.ShellLaminate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellLaminateNonLinear.html">fedoo.constitutivelaw.ShellLaminateNonLinear</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellHomogeneous.html">fedoo.constitutivelaw.ShellHomogeneous</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellHomogeneousNonLinear.html">fedoo.constitutivelaw.ShellHomogeneousNonLinear</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.constitutivelaw.ThermalProperties.html">fedoo.constitutivelaw.ThermalProperties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solid-mechanical-constitutive-laws">Solid mechanical constitutive laws</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticIsotrop.html">fedoo.constitutivelaw.ElasticIsotrop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticOrthotropic.html">fedoo.constitutivelaw.ElasticOrthotropic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticAnisotropic.html">fedoo.constitutivelaw.ElasticAnisotropic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.CompositeUD.html">fedoo.constitutivelaw.CompositeUD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ElastoPlasticity.html">fedoo.constitutivelaw.ElastoPlasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.FE2.html">fedoo.constitutivelaw.FE2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.Simcoon.html">fedoo.constitutivelaw.Simcoon</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#interface-mechanical-constitutive-laws">Interface mechanical constitutive laws</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.CohesiveLaw.html">fedoo.constitutivelaw.CohesiveLaw</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.Spring.html">fedoo.constitutivelaw.Spring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#beam-constitutive-laws">Beam constitutive laws</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamProperties.html">fedoo.constitutivelaw.BeamProperties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamCircular.html">fedoo.constitutivelaw.BeamCircular</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamPipe.html">fedoo.constitutivelaw.BeamPipe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamRectangular.html">fedoo.constitutivelaw.BeamRectangular</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#shell-constitutive-laws">Shell constitutive laws</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellLaminate.html">fedoo.constitutivelaw.ShellLaminate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellLaminateNonLinear.html">fedoo.constitutivelaw.ShellLaminateNonLinear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellHomogeneous.html">fedoo.constitutivelaw.ShellHomogeneous</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellHomogeneousNonLinear.html">fedoo.constitutivelaw.ShellHomogeneousNonLinear</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#thermal-constitutive-law">Thermal constitutive law</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ThermalProperties.html">fedoo.constitutivelaw.ThermalProperties</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>

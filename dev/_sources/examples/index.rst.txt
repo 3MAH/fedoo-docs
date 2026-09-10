@@ -475,6 +475,23 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Companion of the displacement-driven cantilever example &lt;neohookean_cantilever&gt;: the same slender, nearly-incompressible NEOHC cylinder, but loaded by a transverse force applied to its rigid cap — the natural protocol when mirroring a dynamics engine such as ArtiSynth.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_neohookean_cantilever_force_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/neohookean_cantilever_force`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading">
 
 .. only:: html
@@ -513,6 +530,32 @@ This section show some advanced capabilities of fedoo.
 
     </div>
 
+Inverse identification
+----------------------
+
+Identification of material parameters from experimental data (load cell
+force, displacement of tracked points) with a fedoo finite-element forward
+model, the identification tools of simcoon (``Parameter``,
+``identification``) and the differential-evolution optimizer of scipy.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
 
 .. toctree::
    :hidden:
@@ -522,6 +565,7 @@ This section show some advanced capabilities of fedoo.
    /examples/01-simple/index.rst
    /examples/02-constraints/index.rst
    /examples/03-advanced/index.rst
+   /examples/identification/index.rst
 
 
 .. only:: html

@@ -14,6 +14,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=26864b79" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
@@ -137,6 +138,9 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#time-integration">Time integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#non-linear-solver">Non-Linear Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#overcoming-simulation-instabilities">Overcoming Simulation Instabilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
@@ -203,10 +207,10 @@ increment has no upper bound other than output and end times.</p></li>
 increment, after the initial linear guess.
 If omitted, the ‘max_subiter’ field in the nr_parameters
 attribute (ie nr_parameters[‘max_subiter’]) is considered
-(default = 10).</p></li>
+(default = 16).</p></li>
 <li><p><strong>dt_increase_niter</strong> (<em>int</em><em>, </em><em>optional</em>) – When <code class="docutils literal notranslate"><span class="pre">update_dt</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the time increment is multiplied
-by 1.25 if the Newton–Raphson loop converges in fewer
-than <code class="docutils literal notranslate"><span class="pre">dt_increase_niter</span></code> iterations. If omitted, the
+by 1.25 if the Newton–Raphson loop converges in at most
+<code class="docutils literal notranslate"><span class="pre">dt_increase_niter</span></code> iterations. If omitted, the
 ‘dt_increase_niter’ field in the nr_parameters attribute
 (ie nr_parameters[‘dt_increase_niter’]) is considered
 (default = <code class="docutils literal notranslate"><span class="pre">max_subiter</span> <span class="pre">//</span> <span class="pre">3</span></code>).

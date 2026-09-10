@@ -14,6 +14,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=26864b79" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
@@ -75,6 +76,9 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#time-integration">Time integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#non-linear-solver">Non-Linear Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#overcoming-simulation-instabilities">Overcoming Simulation Instabilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
@@ -113,19 +117,29 @@
 <h1>fedoo.problem.NonLinearNewmark<a class="headerlink" href="#fedoo-problem-nonlinearnewmark" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.problem.NonLinearNewmark">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NonLinearNewmark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_order_integrator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinearNewmark" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NonLinearNewmark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_order_integrator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinearNewmark" title="Link to this definition"></a></dt>
 <dd><p>Create a nonlinear Newmark problem with default time integrators.</p>
 <p>This is a convenience factory around <a class="reference internal" href="fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonLinear</span></code></a>. It attaches a
 Newmark integrator for second-order evolutions and a Backward-Euler
 integrator for first-order evolutions.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The signature changed: the mass is now derived from the material
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assembly</strong> (<em>Assembly-like object</em><em> or </em><em>str</em>) – Assembly used by the nonlinear problem, or its registered name.</p></li>
+<li><p><strong>beta</strong> (<em>float</em><em>, </em><em>default=0.25</em>) – Newmark acceleration parameter.</p></li>
+<li><p><strong>gamma</strong> (<em>float</em><em>, </em><em>default=0.5</em>) – Newmark velocity parameter.</p></li>
+<li><p><strong>nlgeom</strong> (<em>bool</em><em> or </em><em>str</em><em>, </em><em>default=False</em>) – Geometric-nonlinearity option forwarded to <a class="reference internal" href="fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonLinear</span></code></a>.</p></li>
+<li><p><strong>first_order_integrator</strong> (<a class="reference internal" href="fedoo.time.BackwardEuler.html#fedoo.time.BackwardEuler" title="fedoo.time.BackwardEuler"><em>fedoo.time.BackwardEuler</em></a><em>, </em><em>optional</em>) – Integrator for first-order evolution terms. A default Backward-Euler
+integrator is created when omitted.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>default=&quot;MainProblem&quot;</em>) – Name of the problem.</p></li>
+<li><p><strong>note::</strong> (<em>..</em>) – The signature changed: the mass is now derived from the material
 density (<code class="docutils literal notranslate"><span class="pre">material.set_density(rho)</span></code>) or <code class="docutils literal notranslate"><span class="pre">weakform.set_inertia(...)</span></code>,
 so a separate mass assembly is no longer passed. The legacy
 <code class="docutils literal notranslate"><span class="pre">NonLinearNewmark(stiffness,</span> <span class="pre">mass,</span> <span class="pre">beta,</span> <span class="pre">gamma)</span></code> form is rejected with
-an explicit error.</p>
-</div>
+an explicit error.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.NonLinearNewmark.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinearNewmark.__init__" title="Link to this definition"></a></dt>

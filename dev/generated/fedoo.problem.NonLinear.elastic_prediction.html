@@ -14,6 +14,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=26864b79" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
@@ -137,6 +138,9 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#time-integration">Time integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#non-linear-solver">Non-Linear Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#overcoming-simulation-instabilities">Overcoming Simulation Instabilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
@@ -176,8 +180,12 @@
 <h1>fedoo.problem.NonLinear.elastic_prediction<a class="headerlink" href="#fedoo-problem-nonlinear-elastic-prediction" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.NonLinear.elastic_prediction">
-<span class="sig-prename descclassname"><span class="pre">NonLinear.</span></span><span class="sig-name descname"><span class="pre">elastic_prediction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinear.elastic_prediction" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">NonLinear.</span></span><span class="sig-name descname"><span class="pre">elastic_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep_tangent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinear.elastic_prediction" title="Link to this definition"></a></dt>
+<dd><p>Solve the elastic prediction of a new increment.</p>
+<p>keep_tangent: do not touch the tangent matrix. Used by the
+adaptive-stiffness restart, which has just installed the “safe”
+elastic matrix on purpose.</p>
+</dd></dl>
 
 </section>
 
