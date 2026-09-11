@@ -27,7 +27,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.constitutivelaw.Simcoon.initialize" href="fedoo.constitutivelaw.Simcoon.initialize.html" />
+    <link rel="next" title="fedoo.constitutivelaw.Simcoon.global2local_H" href="fedoo.constitutivelaw.Simcoon.global2local_H.html" />
     <link rel="prev" title="fedoo.constitutivelaw.Simcoon.get_tangent_matrix" href="fedoo.constitutivelaw.Simcoon.get_tangent_matrix.html" /> 
 </head>
 
@@ -79,6 +79,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../constitutive_law.html#beam-constitutive-laws">Beam constitutive laws</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../constitutive_law.html#shell-constitutive-laws">Shell constitutive laws</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../constitutive_law.html#thermal-constitutive-law">Thermal constitutive law</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constitutive_law.html#manage-local-frames">Manage local frames</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
@@ -87,8 +88,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 </ul>
 
 
@@ -123,14 +125,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.Simcoon.get_temp_gp">
 <span class="sig-prename descclassname"><span class="pre">Simcoon.</span></span><span class="sig-name descname"><span class="pre">get_temp_gp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.get_temp_gp" title="Link to this definition"></a></dt>
-<dd><p>Get the current temperature field at Gauss Point.</p>
-<p>An explicitly set ‘Temp’ field in the assembly.sv dict takes precedence:
-it is used as is (it is already defined at Gauss Points). This is the
-historical way to impose a temperature (e.g. a constant field, or a weak
-thermo-mechanical coupling that copies the thermal solution into sv).
-Otherwise, if ‘Temp’ is a variable of the ModelingSpace, the nodal dof
-solution is extracted from the problem and converted to Gauss Points.
-If no temperature is found or if it is set to 0, return None.</p>
+<dd><p>Return the current temperature field at Gauss points, if any.</p>
 </dd></dl>
 
 </section>
@@ -140,7 +135,7 @@ If no temperature is found or if it is set to 0, return None.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="fedoo.constitutivelaw.Simcoon.get_tangent_matrix.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.Simcoon.get_tangent_matrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.constitutivelaw.Simcoon.initialize.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.Simcoon.initialize" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.constitutivelaw.Simcoon.global2local_H.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.Simcoon.global2local_H" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
