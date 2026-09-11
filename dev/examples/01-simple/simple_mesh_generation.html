@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creating simple meshes and swept geometries &mdash; Fedoo 1.0.0b2 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=3e281a96"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Compression of a ping pong ball" href="spherical_shell_compression.html" />
+    <link rel="prev" title="3D Canteleaver Beam with geometric nonlinearities" href="simple_cantilever_beam_3D_model_nlgeom.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Simple examples to start</a></li>
+      <li class="breadcrumb-item active">Creating simple meshes and swept geometries</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/01-simple/simple_mesh_generation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-01-simple-simple-mesh-generation-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="creating-simple-meshes-and-swept-geometries">
+<span id="sphx-glr-examples-01-simple-simple-mesh-generation-py"></span><h1>Creating simple meshes and swept geometries<a class="headerlink" href="#creating-simple-meshes-and-swept-geometries" title="Link to this heading"></a></h1>
+<p>Fedoo provides structured mesh generators for common shapes as well as
+operations for building new geometries from existing meshes. This example
+starts with a few built-in meshes, then creates solids and curved structures
+using extrusion, local frames, and surface thickening.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+</pre></div>
+</div>
+<section id="built-in-two-dimensional-meshes">
+<h2>Built-in two-dimensional meshes<a class="headerlink" href="#built-in-two-dimensional-meshes" title="Link to this heading"></a></h2>
+<p>Rectangles, disks, plates with holes, and I-shaped profiles can be generated
+directly. Here, a plate with a circular hole and a hollow disk illustrate
+two of the available structured generators.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plate</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hole_plate_mesh</span><span class="p">(</span>
+    <span class="n">nr</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">nt</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">length</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">annulus</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hollow_disk_mesh</span><span class="p">(</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">thickness</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span>
+    <span class="n">nr</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">nt</span><span class="o">=</span><span class="mi">33</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="straight-extrusion">
+<h2>Straight extrusion<a class="headerlink" href="#straight-extrusion" title="Link to this heading"></a></h2>
+<p>Extruding a surface mesh along a scalar distance creates a volume mesh. The
+number of nodes controls the discretization through the extrusion direction.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">)</span>
+<span class="n">cylinder</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extrude</span><span class="p">(</span><span class="n">disk</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="n">n_nodes</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="sweep-along-a-curved-path">
+<h2>Sweep along a curved path<a class="headerlink" href="#sweep-along-a-curved-path" title="Link to this heading"></a></h2>
+<p>When the extrusion path is a line mesh, one local frame can be supplied at
+every path node. The frame axes orient the profile as it travels along the
+path. Cylindrical frames conveniently orient a straight profile around a
+circular path, producing a smooth cylindrical surface.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">line_mesh</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"lin2"</span><span class="p">)</span>
+<span class="n">circle_path</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">circle_mesh</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">circle_frames</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">generate_cylindrical_local_frame</span><span class="p">(</span><span class="n">circle_path</span><span class="p">)</span>
+
+<span class="n">curved_surface</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extrude</span><span class="p">(</span>
+    <span class="n">profile</span><span class="p">,</span>
+    <span class="n">circle_path</span><span class="p">,</span>
+    <span class="n">local_frame</span><span class="o">=</span><span class="n">circle_frames</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="surface-thickening">
+<h2>Surface thickening<a class="headerlink" href="#surface-thickening" title="Link to this heading"></a></h2>
+<p>A shell-like surface can be converted into a solid using area-weighted nodal
+normals computed automatically by <a class="reference internal" href="../../generated/fedoo.mesh.thicken.html#fedoo.mesh.thicken" title="fedoo.mesh.thicken"><code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.mesh.thicken()</span></code></a>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">thick_ring</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">thicken</span><span class="p">(</span><span class="n">curved_surface</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span> <span class="n">n_nodes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="helicoidal-extrusion">
+<h2>Helicoidal extrusion<a class="headerlink" href="#helicoidal-extrusion" title="Link to this heading"></a></h2>
+<p>For a spatial curve, a custom frame gives direct control over the profile
+orientation. The first axis below follows the helix tangent, the second is
+radial, and the third completes a right-handed orthonormal frame.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">i_profile</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">I_shape_mesh</span><span class="p">(</span>
+    <span class="n">height</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">web_thickness</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span>
+    <span class="n">flange_thickness</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span>
+    <span class="n">size_elm</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">theta_max</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">helix_height</span> <span class="o">=</span> <span class="mf">2.8</span>
+<span class="n">helix_radius</span> <span class="o">=</span> <span class="mf">1.15</span>
+<span class="n">helix_path</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">line_mesh_cylindric</span><span class="p">(</span>
+    <span class="mi">56</span><span class="p">,</span>
+    <span class="n">helix_radius</span><span class="p">,</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="n">theta_max</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">as_3d</span><span class="p">()</span>
+<span class="n">helix_path</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">helix_height</span><span class="p">,</span> <span class="n">helix_path</span><span class="o">.</span><span class="n">n_nodes</span><span class="p">)</span>
+
+<span class="n">cylindrical_frame</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">generate_cylindrical_local_frame</span><span class="p">(</span><span class="n">helix_path</span><span class="p">)</span>
+<span class="n">radial</span> <span class="o">=</span> <span class="n">cylindrical_frame</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">azimuthal</span> <span class="o">=</span> <span class="n">cylindrical_frame</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">axial</span> <span class="o">=</span> <span class="n">cylindrical_frame</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">pitch</span> <span class="o">=</span> <span class="n">helix_height</span> <span class="o">/</span> <span class="n">theta_max</span>
+<span class="n">tangent</span> <span class="o">=</span> <span class="n">helix_radius</span> <span class="o">*</span> <span class="n">azimuthal</span> <span class="o">+</span> <span class="n">pitch</span> <span class="o">*</span> <span class="n">axial</span>
+<span class="n">tangent</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">tangent</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">profile_normal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">tangent</span><span class="p">,</span> <span class="n">radial</span><span class="p">)</span>
+<span class="n">helix_frame</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">tangent</span><span class="p">,</span> <span class="n">radial</span><span class="p">,</span> <span class="n">profile_normal</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">helicoidal_beam</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extrude</span><span class="p">(</span>
+    <span class="n">i_profile</span><span class="p">,</span>
+    <span class="n">helix_path</span><span class="p">,</span>
+    <span class="n">local_frame</span><span class="o">=</span><span class="n">helix_frame</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="visualize-the-generated-meshes">
+<h2>Visualize the generated meshes<a class="headerlink" href="#visualize-the-generated-meshes" title="Link to this heading"></a></h2>
+<p>Fedoo meshes convert directly to PyVista datasets. Displaying the geometries
+together highlights how the same small set of generators and transformations
+can produce surfaces, solids, and smoothly swept structures.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plotter</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">760</span><span class="p">))</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">set_background</span><span class="p">(</span><span class="s2">"white"</span><span class="p">)</span>
+
+<span class="n">geometries</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">plate</span><span class="p">,</span> <span class="s2">"Plate with a hole"</span><span class="p">,</span> <span class="s2">"#4C78A8"</span><span class="p">,</span> <span class="s2">"xy"</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">annulus</span><span class="p">,</span> <span class="s2">"Hollow disk"</span><span class="p">,</span> <span class="s2">"#72B7B2"</span><span class="p">,</span> <span class="s2">"xy"</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">cylinder</span><span class="p">,</span> <span class="s2">"Extruded disk"</span><span class="p">,</span> <span class="s2">"#F2CF5B"</span><span class="p">,</span> <span class="s2">"iso"</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">curved_surface</span><span class="p">,</span> <span class="s2">"Profile swept on a circle"</span><span class="p">,</span> <span class="s2">"#B279A2"</span><span class="p">,</span> <span class="s2">"iso"</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">thick_ring</span><span class="p">,</span> <span class="s2">"Thickened curved surface"</span><span class="p">,</span> <span class="s2">"#F28E2B"</span><span class="p">,</span> <span class="s2">"iso"</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">helicoidal_beam</span><span class="p">,</span> <span class="s2">"Helicoidal I-beam"</span><span class="p">,</span> <span class="s2">"#E15759"</span><span class="p">,</span> <span class="s2">"iso"</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">view</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">geometries</span><span class="p">):</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="o">*</span><span class="nb">divmod</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span>
+        <span class="n">mesh</span><span class="o">.</span><span class="n">to_pyvista</span><span class="p">(),</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+        <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">edge_color</span><span class="o">=</span><span class="s2">"#303030"</span><span class="p">,</span>
+        <span class="n">line_width</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#202020"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">view</span> <span class="o">==</span> <span class="s2">"xy"</span><span class="p">:</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">view_xy</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">view_isometric</span><span class="p">()</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="mf">1.2</span><span class="p">)</span>
+
+<span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_simple_mesh_generation_001.png" srcset="../../_images/sphx_glr_simple_mesh_generation_001.png" alt="simple mesh generation" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.405 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-simple-mesh-generation-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/13a42c74f8fd48828edbf84b069ec7cc/simple_mesh_generation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">simple_mesh_generation.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/589598f1ef8646515a462bcb8838be75/simple_mesh_generation.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">simple_mesh_generation.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/6dc7007e2681bf2c636eac20f78a00ee/simple_mesh_generation.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">simple_mesh_generation.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simple_cantilever_beam_3D_model_nlgeom.html" class="btn btn-neutral float-left" title="3D Canteleaver Beam with geometric nonlinearities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="spherical_shell_compression.html" class="btn btn-neutral float-right" title="Compression of a ping pong ball" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
