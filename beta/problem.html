@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Problem (fedoo.problem) &mdash; Fedoo 1.0.0b1 (beta)</title>
+  <title>Problem (fedoo.problem) &mdash; Fedoo 1.0.0b2 (beta)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -14,11 +14,12 @@
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=26864b79" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/documentation_options.js?v=3e281a96"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -76,12 +77,28 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-integration">Time integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linear-transient-problems">Linear transient problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nonlinear-transient-problems">Nonlinear transient problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explicit-transient-problems">Explicit transient problems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#non-linear-solver">Non-Linear Solver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#newton-raphson-algorithm">Newton-Raphson Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-nlsolve-method">The <code class="docutils literal notranslate"><span class="pre">nlsolve</span></code> Method</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overcoming-simulation-instabilities">Overcoming Simulation Instabilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#numerical-stabilization-techniques">Numerical Stabilization Techniques</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
 </ul>
 
 
@@ -116,7 +133,7 @@
 <p>To create a new Problem, use one of the following function:</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.Linear.html#fedoo.problem.Linear" title="fedoo.problem.Linear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear</span></code></a>(assembly[, name, time_step, integrator])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.Linear.html#fedoo.problem.Linear" title="fedoo.problem.Linear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear</span></code></a>(assembly[, time_step, integrator, name])</p></td>
 <td><p>Class that defines linear problems.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.problem.LinearNewmark.html#fedoo.problem.LinearNewmark" title="fedoo.problem.LinearNewmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearNewmark</span></code></a></p></td>
@@ -275,18 +292,18 @@ integration schemes.</p>
 <span id="stabilization-strategies"></span><h2>Non-Linear Solver<a class="headerlink" href="#non-linear-solver" title="Link to this heading"></a></h2>
 <p>Fedoo provides a robust framework for solving non-linear system, arising from structural
 mechanics or similar field problems, using a modified Newton-Raphson (NR) approach.
-The class <code class="xref py py-class docutils literal notranslate"><span class="pre">NonLinear</span></code> is deticated to the resolution of such complicated
+The class <a class="reference internal" href="generated/fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonLinear</span></code></a> is deticated to the resolution of such complicated
 problems.</p>
 <section id="newton-raphson-algorithm">
 <h3>Newton-Raphson Algorithm<a class="headerlink" href="#newton-raphson-algorithm" title="Link to this heading"></a></h3>
 <p>The Newton-Raphson algorithm is an iterative process used to find the equilibrium state
 of a non-linear system. Starting from an initial guess from
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction()</span></code>,
+<a class="reference internal" href="generated/fedoo.problem.NonLinear.elastic_prediction.html#fedoo.problem.NonLinear.elastic_prediction" title="fedoo.problem.NonLinear.elastic_prediction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction()</span></code></a>,
 the solver iteratively updates the displacement increment until the internal and
 external forces are balanced within a specified tolerance.</p>
 <section id="available-convergence-criteria">
 <h4>Available Convergence Criteria<a class="headerlink" href="#available-convergence-criteria" title="Link to this heading"></a></h4>
-<p>You can define how the solver determines convergence via <code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_nr_criterion()</span></code>.
+<p>You can define how the solver determines convergence via <a class="reference internal" href="generated/fedoo.problem.NonLinear.set_nr_criterion.html#fedoo.problem.NonLinear.set_nr_criterion" title="fedoo.problem.NonLinear.set_nr_criterion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_nr_criterion()</span></code></a>.
 Three criteria are available:</p>
 <ul class="simple">
 <li><p><strong>Force</strong> (default): Measures the residual (out-of-balance) forces relative to the
@@ -299,7 +316,7 @@ the initial work increment.</p></li>
 </section>
 <section id="key-newton-raphson-parameters">
 <h4>Key Newton-Raphson Parameters<a class="headerlink" href="#key-newton-raphson-parameters" title="Link to this heading"></a></h4>
-<p>The following parameters can be adjusted via <code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_nr_criterion()</span></code> or the
+<p>The following parameters can be adjusted via <a class="reference internal" href="generated/fedoo.problem.NonLinear.set_nr_criterion.html#fedoo.problem.NonLinear.set_nr_criterion" title="fedoo.problem.NonLinear.set_nr_criterion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_nr_criterion()</span></code></a> or the
 <code class="docutils literal notranslate"><span class="pre">nr_parameters</span></code> dictionary:</p>
 <ul>
 <li><p><strong>tol</strong>: The convergence tolerance (default: <code class="docutils literal notranslate"><span class="pre">5e-3</span></code>). A smaller value increases
@@ -331,7 +348,7 @@ consecutive iterations.</p></li>
 </section>
 <section id="the-nlsolve-method">
 <h3>The <code class="docutils literal notranslate"><span class="pre">nlsolve</span></code> Method<a class="headerlink" href="#the-nlsolve-method" title="Link to this heading"></a></h3>
-<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.nlsolve()</span></code> method manages the time-steering logic, calling the NR
+<p>The <a class="reference internal" href="generated/fedoo.problem.NonLinear.nlsolve.html#fedoo.problem.NonLinear.nlsolve" title="fedoo.problem.NonLinear.nlsolve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.nlsolve()</span></code></a> method manages the time-steering logic, calling the NR
 loop for each increment and handling time-step adaptations.</p>
 <section id="time-steering-parameters">
 <h4>Time-Steering Parameters<a class="headerlink" href="#time-steering-parameters" title="Link to this heading"></a></h4>
@@ -464,10 +481,20 @@ setting <code class="docutils literal notranslate"><span class="pre">energy_frac
 <p>Line search prevents the solver from taking steps that are too large, which can
 lead to non-physical states or divergence.</p>
 <ul class="simple">
-<li><p><strong>Usage</strong>: Enable via the <code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.add_line_search()</span></code> method.</p></li>
+<li><p><strong>Usage</strong>: Enable via the <a class="reference internal" href="generated/fedoo.problem.NonLinear.add_line_search.html#fedoo.problem.NonLinear.add_line_search" title="fedoo.problem.NonLinear.add_line_search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.add_line_search()</span></code></a> method.</p></li>
 <li><p><strong>Mechanism</strong>: Scales the displacement increment <span class="math notranslate nohighlight">\(d\mathbf{U}\)</span> by a
-factor <span class="math notranslate nohighlight">\(\eta \in (0, 1]\)</span> to minimize the residual norm along the
-search direction.</p></li>
+factor <span class="math notranslate nohighlight">\(\eta \in (0, 1]\)</span>. The <code class="docutils literal notranslate"><span class="pre">natural</span></code> mode combines residual
+decrease with an affine-invariant correction test, <code class="docutils literal notranslate"><span class="pre">minimize</span></code> provides
+the residual-descent methods, and <code class="docutils literal notranslate"><span class="pre">safeguard</span></code> only rejects invalid
+kinematics. If geometric backtracking finds no valid trial, the current
+increment fails and follows the solver’s normal time-step reduction path.</p></li>
+<li><p><strong>Dirichlet increments</strong>: By default, <code class="docutils literal notranslate"><span class="pre">apply_to_bc=True</span></code> also scales a
+prescribed displacement increment when required to keep its trial state
+kinematically valid. Its unapplied part is retained for the following Newton
+corrections, and convergence is accepted only once the complete prescribed
+increment has been applied. Residual and natural acceptance tests start only
+after that remainder reaches zero. Set <code class="docutils literal notranslate"><span class="pre">apply_to_bc=False</span></code> to apply
+prescribed displacements in one full step without the validity safeguard.</p></li>
 </ul>
 </section>
 <section id="stiffness-strategies-blending-elastic-overrides">
@@ -483,7 +510,7 @@ initial elastic matrix <span class="math notranslate nohighlight">\(\mathbf{K_E}
 \[\mathbf{K} = (1-\xi)\mathbf{K_T} + \xi\mathbf{K_E}\]</div>
 </li>
 <li><p><strong>Usage</strong>: Enable <code class="docutils literal notranslate"><span class="pre">adaptive_stiffness=True</span></code> in the Newton-Raphson
-parameters via <code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_nr_criterion()</span></code>.</p></li>
+parameters via <a class="reference internal" href="generated/fedoo.problem.NonLinear.set_nr_criterion.html#fedoo.problem.NonLinear.set_nr_criterion" title="fedoo.problem.NonLinear.set_nr_criterion"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.set_nr_criterion()</span></code></a>.</p></li>
 <li><p><strong>Benefit</strong>: If the tangent prediction diverges, the solver automatically
 increases <span class="math notranslate nohighlight">\(\xi\)</span> (shifting toward the elastic matrix) to restore
 stability. It then attempts to decrease <span class="math notranslate nohighlight">\(\xi\)</span> back to 0 as
@@ -507,7 +534,7 @@ initial direction.</p></li>
 </li>
 <li><dl class="simple">
 <dt><strong>One-Time Manual Override</strong>:</dt><dd><ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.force_elastic_matrix_next_iter()</span></code>: Use this method to flag the
+<li><p><a class="reference internal" href="generated/fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinear.force_elastic_matrix_next_iter" title="fedoo.problem.NonLinear.force_elastic_matrix_next_iter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">NonLinear.force_elastic_matrix_next_iter()</span></code></a>: Use this method to flag the
 solver to recompute and use the elastic stiffness matrix for the <strong>very next</strong>
 Newton-Raphson initial guess only. This is ideal for manually
 “restarting” a stalled increment.</p></li>
@@ -517,27 +544,13 @@ Newton-Raphson initial guess only. This is ideal for manually
 </li>
 </ul>
 </section>
-<section id="eigenvalue-shifting">
-<h4>5. Eigenvalue Shifting<a class="headerlink" href="#eigenvalue-shifting" title="Link to this heading"></a></h4>
-<p>For strong instabilities (such as buckling or snap-through) where the tangent
-stiffness matrix becomes non-positive definite, the <strong>Eigenvalue Shift</strong> technique might
-be effective. Note that this method is computationally
-expensive with limited results, and should only be used as a last resort.</p>
-<ul class="simple">
-<li><p><strong>Mechanism</strong>: Adds a scaled identity matrix <span class="math notranslate nohighlight">\(\alpha \mathbf{I}\)</span> to the
-tangent stiffness <span class="math notranslate nohighlight">\(\mathbf{K_T}\)</span>.</p></li>
-<li><p><strong>Usage</strong>: Enable <code class="docutils literal notranslate"><span class="pre">eigenvalue_shift=True</span></code> in the Newton-Raphson parameters.</p></li>
-<li><p><strong>Benefit</strong>: Forces the matrix to remain positive definite, ensuring the
-solver always finds a descent direction.</p></li>
-</ul>
-</section>
 <section id="static-vs-dynamic-fallback">
-<h4>6. Static vs. Dynamic Fallback<a class="headerlink" href="#static-vs-dynamic-fallback" title="Link to this heading"></a></h4>
+<h4>5. Static vs. Dynamic Fallback<a class="headerlink" href="#static-vs-dynamic-fallback" title="Link to this heading"></a></h4>
 <p>If a static simulation fails despite the above techniques, the problem may be
 inherently dynamic (e.g., rapid snap-through or post-buckling).</p>
 <ul class="simple">
 <li><p><strong>Strategy</strong>: Switch to a <strong>Dynamic Solver</strong> by adding a second-order time
-integrator from <a class="reference internal" href="time.html#module-fedoo.time" title="fedoo.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code></a> to a <code class="xref py py-class docutils literal notranslate"><span class="pre">NonLinear</span></code> problem, for
+integrator from <a class="reference internal" href="time.html#module-fedoo.time" title="fedoo.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code></a> to a <a class="reference internal" href="generated/fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonLinear</span></code></a> problem, for
 instance <a class="reference internal" href="generated/fedoo.time.Newmark.html#fedoo.time.Newmark" title="fedoo.time.Newmark"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.time.Newmark</span></code></a> or
 <a class="reference internal" href="generated/fedoo.time.GeneralizedAlpha.html#fedoo.time.GeneralizedAlpha" title="fedoo.time.GeneralizedAlpha"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.time.GeneralizedAlpha</span></code></a>.</p></li>
 <li><p><strong>Stabilization</strong>: Add <strong>Rayleigh Damping</strong>

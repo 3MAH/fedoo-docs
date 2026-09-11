@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geometry and Mesh (fedoo.mesh) &mdash; Fedoo 1.0.0b1 (beta)</title>
+  <title>Geometry and Mesh (fedoo.mesh) &mdash; Fedoo 1.0.0b2 (beta)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -14,11 +14,12 @@
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=26864b79" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/documentation_options.js?v=3e281a96"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -63,29 +64,43 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.Mesh.html">fedoo.Mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.stack.html">fedoo.mesh.stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.extrude.html">fedoo.mesh.extrude</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.extract_surface.html">fedoo.mesh.extract_surface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.extract_edges.html">fedoo.mesh.extract_edges</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.change_elm_type.html">fedoo.mesh.change_elm_type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.quad2tri.html">fedoo.mesh.quad2tri</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.import_file.html">fedoo.mesh.import_file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.import_msh.html">fedoo.mesh.import_msh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.import_vtk.html">fedoo.mesh.import_vtk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.rectangle_mesh.html">fedoo.mesh.rectangle_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.box_mesh.html">fedoo.mesh.box_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.disk_mesh.html">fedoo.mesh.disk_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.hole_plate_mesh.html">fedoo.mesh.hole_plate_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.hollow_disk_mesh.html">fedoo.mesh.hollow_disk_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.I_shape_mesh.html">fedoo.mesh.I_shape_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.line_mesh_1D.html">fedoo.mesh.line_mesh_1D</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.line_mesh.html">fedoo.mesh.line_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.circle_mesh.html">fedoo.mesh.circle_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.structured_mesh_2D.html">fedoo.mesh.structured_mesh_2D</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.mesh.generate_nodes.html">fedoo.mesh.generate_nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#class-mesh">Class Mesh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.Mesh.html">fedoo.Mesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mesh-manipulation-functions">Mesh manipulation functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.stack.html">fedoo.mesh.stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.extrude.html">fedoo.mesh.extrude</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.thicken.html">fedoo.mesh.thicken</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.extract_surface.html">fedoo.mesh.extract_surface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.extract_edges.html">fedoo.mesh.extract_edges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.change_elm_type.html">fedoo.mesh.change_elm_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.quad2tri.html">fedoo.mesh.quad2tri</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#import-export-fedoo-mesh-object">Import/Export Fedoo Mesh object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.import_file.html">fedoo.mesh.import_file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.import_msh.html">fedoo.mesh.import_msh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.import_vtk.html">fedoo.mesh.import_vtk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mesh-creation-functions">Mesh Creation Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.rectangle_mesh.html">fedoo.mesh.rectangle_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.box_mesh.html">fedoo.mesh.box_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.disk_mesh.html">fedoo.mesh.disk_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.hole_plate_mesh.html">fedoo.mesh.hole_plate_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.hollow_disk_mesh.html">fedoo.mesh.hollow_disk_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.I_shape_mesh.html">fedoo.mesh.I_shape_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.line_mesh_1D.html">fedoo.mesh.line_mesh_1D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.line_mesh.html">fedoo.mesh.line_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.line_mesh_cylindric.html">fedoo.mesh.line_mesh_cylindric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.circle_mesh.html">fedoo.mesh.circle_mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.grid_mesh_cylindric.html">fedoo.mesh.grid_mesh_cylindric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.generate_cylindrical_local_frame.html">fedoo.mesh.generate_cylindrical_local_frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.structured_mesh_2D.html">fedoo.mesh.structured_mesh_2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.generate_nodes.html">fedoo.mesh.generate_nodes</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
@@ -95,8 +110,9 @@
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
 </ul>
 
 
@@ -143,19 +159,22 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.stack.html#fedoo.mesh.stack" title="fedoo.mesh.stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stack</span></code></a>(mesh1, mesh2[, name])</p></td>
 <td><p>Make the spatial stack of two mesh objects which have the same element shape.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.extrude.html#fedoo.mesh.extrude" title="fedoo.mesh.extrude"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extrude</span></code></a>(mesh, extrude_path[, n_nodes, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.extrude.html#fedoo.mesh.extrude" title="fedoo.mesh.extrude"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extrude</span></code></a>(mesh, extrude_path[, n_nodes, ndim, ...])</p></td>
 <td><p>Build a volume or surface mesh from the extrusion of a surface or wire mesh.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.extract_surface.html#fedoo.mesh.extract_surface" title="fedoo.mesh.extract_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_surface</span></code></a>(mesh[, reduce_order, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.thicken.html#fedoo.mesh.thicken" title="fedoo.mesh.thicken"><code class="xref py py-obj docutils literal notranslate"><span class="pre">thicken</span></code></a>(mesh, thickness[, n_nodes, normal, name])</p></td>
+<td><p>Create a solid by thickening a surface mesh along nodal normals.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.extract_surface.html#fedoo.mesh.extract_surface" title="fedoo.mesh.extract_surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_surface</span></code></a>(mesh[, reduce_order, ...])</p></td>
 <td><p>Build a mesh of the surface from a given 2D or 3D mesh.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.extract_edges.html#fedoo.mesh.extract_edges" title="fedoo.mesh.extract_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_edges</span></code></a>(mesh[, reduce_order, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.extract_edges.html#fedoo.mesh.extract_edges" title="fedoo.mesh.extract_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_edges</span></code></a>(mesh[, reduce_order, ...])</p></td>
 <td><p>Extract edges from a given 2D or 3D mesh.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.change_elm_type.html#fedoo.mesh.change_elm_type" title="fedoo.mesh.change_elm_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_elm_type</span></code></a>(mesh, elm_type[, name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.change_elm_type.html#fedoo.mesh.change_elm_type" title="fedoo.mesh.change_elm_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_elm_type</span></code></a>(mesh, elm_type[, name])</p></td>
 <td><p>Attempt to change the type of element of a mesh.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.quad2tri.html#fedoo.mesh.quad2tri" title="fedoo.mesh.quad2tri"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quad2tri</span></code></a>(mesh)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.quad2tri.html#fedoo.mesh.quad2tri" title="fedoo.mesh.quad2tri"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quad2tri</span></code></a>(mesh)</p></td>
 <td><p>Change the type of element of a mesh from 'quad4' to 'tri3'.</p></td>
 </tr>
 </tbody>
@@ -208,16 +227,19 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.line_mesh_cylindric.html#fedoo.mesh.line_mesh_cylindric" title="fedoo.mesh.line_mesh_cylindric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line_mesh_cylindric</span></code></a>([nt, r, theta_min, ...])</p></td>
 <td><p>Create the mesh of a curved line based on cylindrical coordinates</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.circle_mesh.html#fedoo.mesh.circle_mesh" title="fedoo.mesh.circle_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_mesh</span></code></a>([n, r, elm_type, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.circle_mesh.html#fedoo.mesh.circle_mesh" title="fedoo.mesh.circle_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_mesh</span></code></a>([n, r, elm_type, ndim, name])</p></td>
 <td><p>Create the mesh of a cicle.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.grid_mesh_cylindric.html#fedoo.mesh.grid_mesh_cylindric" title="fedoo.mesh.grid_mesh_cylindric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grid_mesh_cylindric</span></code></a>([nr, nt, r_min, r_max, ...])</p></td>
 <td><p>Create a mesh as a regular grid in cylindrical coordinate</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.structured_mesh_2D.html#fedoo.mesh.structured_mesh_2D" title="fedoo.mesh.structured_mesh_2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured_mesh_2D</span></code></a>(data, edge1, edge2, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.generate_cylindrical_local_frame.html#fedoo.mesh.generate_cylindrical_local_frame" title="fedoo.mesh.generate_cylindrical_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_cylindrical_local_frame</span></code></a>(crd[, ...])</p></td>
+<td><p>Generate cylindrical local frames (er, etheta, ez) at each node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.structured_mesh_2D.html#fedoo.mesh.structured_mesh_2D" title="fedoo.mesh.structured_mesh_2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">structured_mesh_2D</span></code></a>(data, edge1, edge2, ...)</p></td>
 <td><p>Create a 2D structured grid from 4 edges.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.generate_nodes.html#fedoo.mesh.generate_nodes" title="fedoo.mesh.generate_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_nodes</span></code></a>(mesh, N, data[, type_gen])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.generate_nodes.html#fedoo.mesh.generate_nodes" title="fedoo.mesh.generate_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_nodes</span></code></a>(mesh, N, data[, type_gen])</p></td>
 <td><p>Add regularly espaced nodes to an existing mesh between to existing nodes.</p></td>
 </tr>
 </tbody>

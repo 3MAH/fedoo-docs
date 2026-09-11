@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Composite double-cantilever beam with a cohesive interface &mdash; Fedoo 1.0.0b1 (beta)</title>
+  <title>Composite double-cantilever beam with a cohesive interface &mdash; Fedoo 1.0.0b2 (beta)</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
@@ -14,11 +14,12 @@
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../../_static/documentation_options.js?v=3e281a96"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -58,7 +59,7 @@
 <hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
 
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
@@ -70,34 +71,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../01-simple/index.html">Simple examples to start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../02-constraints/index.html">Apply constraints</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Advanced problems</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="3D_periodic_BC_off_axis.html">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Composite double-cantilever beam with a cohesive interface</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#geometry-and-discretization">Geometry and discretization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mesh-the-two-arms">Mesh the two arms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#construct-the-cohesive-interface">Construct the cohesive interface</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#constitutive-laws-and-assemblies">Constitutive laws and assemblies</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#problem-and-boundary-conditions">Problem and boundary conditions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#incremental-nonlinear-solution">Incremental nonlinear solution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cohesive-zone-response">Cohesive-zone response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#plot-the-deformed-dcb">Plot the deformed DCB</a></li>
-<li class="toctree-l3"><a class="reference internal" href="neohookean_cantilever.html">Finite-strain Neo-Hookean cantilever (rigid cap)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</a></li>
-<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#geometry-and-mesh">Geometry and Mesh</a></li>
-<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#modeling-space-and-field-definitions">Modeling Space and Field Definitions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#constitutive-laws-and-assembly">Constitutive Laws and Assembly</a></li>
-<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#problem-definition-and-boundary-conditions">Problem Definition and Boundary Conditions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="thermal_loading.html#solving-and-post-treatment">Solving and Post-Treatment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tube_compression.html">Compression of a tube using 2D axisymmetric model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tube_compression.html#plot-with-pyvista">Plot with pyvista</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
 </ul>
 
 
@@ -171,7 +147,7 @@ remains fast enough for the documentation gallery.</p>
 <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;fedoo.core.modelingspace.ModelingSpace object at 0x7f7308ccd2d0&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;fedoo.core.modelingspace.ModelingSpace object at 0x7f5a4402dae0&gt;
 </pre></div>
 </div>
 </section>
@@ -385,7 +361,7 @@ n_cohesive_elements: 60
 max_damage: 1.0
 damaged_gauss_points: 112
 failed_gauss_points: 112
-max_opening: 5.589760930506991
+max_opening: 5.58976093050678
 </pre></div>
 </div>
 </section>
@@ -421,7 +397,7 @@ VTK/PyVista cell equivalent.</p>
 <span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_composite_DCB_test_3D_001.png" srcset="../../_images/sphx_glr_composite_DCB_test_3D_001.png" alt="composite DCB test 3D" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.241 seconds)</p>
+<img src="../../_images/sphx_glr_composite_DCB_test_3D_001.png" srcset="../../_images/sphx_glr_composite_DCB_test_3D_001.png" alt="composite DCB test 3D" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.286 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-composite-dcb-test-3d-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/240963c1254c2b1919147325afbce7fd/composite_DCB_test_3D.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">composite_DCB_test_3D.ipynb</span></code></a></p>

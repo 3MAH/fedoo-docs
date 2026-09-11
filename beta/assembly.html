@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Class Assembly &mdash; Fedoo 1.0.0b1 (beta)</title>
+  <title>Class Assembly &mdash; Fedoo 1.0.0b2 (beta)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -14,11 +14,12 @@
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=26864b79" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=09d090fc"></script>
+      <script src="_static/documentation_options.js?v=3e281a96"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -70,8 +71,9 @@
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
 </ul>
 
 
@@ -164,6 +166,12 @@ but it is not done by default. In this case, deleting the memory should
 resolve the problem.</p>
 <p>Note: if the mesh_change argument is set to True when creating the Assembly object, the
 memory will be recomputed by default, which may cause a decrease in assembling performances</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.get_element_local_frame">
+<span class="sig-name descname"><span class="pre">get_element_local_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.get_element_local_frame" title="Link to this definition"></a></dt>
+<dd><p>Return the current rigid frame, one rotation matrix per element.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -325,6 +333,29 @@ by variable blocks with <code class="docutils literal notranslate"><span class="
 <dd><p>reset the assembly to it’s initial state.
 Internal variable in the constitutive equation are reinitialized
 and stored global matrix and vector are deleted</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.Assembly.set_element_local_frame">
+<span class="sig-name descname"><span class="pre">set_element_local_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Element'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">guide_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Assembly.set_element_local_frame" title="Link to this definition"></a></dt>
+<dd><p>Define the initial local frame of beam or shell elements.</p>
+<p>The element geometry fixes one axis of the frame. For a beam, the
+local x axis is aligned with the element tangent. For a shell, the
+local z axis is aligned with the surface normal. Consequently, a
+supplied frame does not override these geometrical directions; it
+determines the rotation of the remaining two axes around them.</p>
+<p><code class="docutils literal notranslate"><span class="pre">guide</span></code> provides a simpler way to define this remaining orientation.
+For beams it approximates the local y axis by default, or the local z
+axis with <code class="docutils literal notranslate"><span class="pre">guide_direction=&quot;z&quot;</span></code>. For shells it approximates the
+local x axis. The guide is projected onto the plane perpendicular to
+the geometrically fixed axis, and the last axis is then completed to
+form an orthonormal, right-handed frame.</p>
+<p><code class="docutils literal notranslate"><span class="pre">frames</span></code> and <code class="docutils literal notranslate"><span class="pre">guide</span></code> may be uniform, elemental, or nodal. Nodal
+values are interpolated to the element centres before the geometrical
+projection is applied.</p>
+<p>This method must be called before problem initialization. A Gauss-point
+field is intentionally not accepted because an element rigid frame is
+independent of the integration rule.</p>
 </dd></dl>
 
 <dl class="py method">

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.DataSet.to_dict &mdash; Fedoo 1.0.0b1 (beta)</title>
+  <title>fedoo.DataSet.to_dict &mdash; Fedoo 1.0.0b2 (beta)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -14,11 +14,12 @@
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=26864b79" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/documentation_options.js?v=3e281a96"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -70,63 +71,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../post_processing.html">Post-Processing</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="fedoo.DataSet.html">fedoo.DataSet</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.__getitem__.html">fedoo.DataSet.__getitem__</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.add_data.html">fedoo.DataSet.add_data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.copy.html">fedoo.DataSet.copy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.deepcopy.html">fedoo.DataSet.deepcopy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.field_names.html">fedoo.DataSet.field_names</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.global_element_id.html">fedoo.DataSet.global_element_id</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.global_element_location.html">fedoo.DataSet.global_element_location</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.load.html">fedoo.DataSet.load</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.load_dict.html">fedoo.DataSet.load_dict</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.read.html">fedoo.DataSet.read</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.save.html">fedoo.DataSet.save</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.save_mesh.html">fedoo.DataSet.save_mesh</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.savez.html">fedoo.DataSet.savez</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.savez_compressed.html">fedoo.DataSet.savez_compressed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.split_global_element_indices.html">fedoo.DataSet.split_global_element_indices</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_csv.html">fedoo.DataSet.to_csv</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.DataSet.to_dict</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_excel.html">fedoo.DataSet.to_excel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_fdh5.html">fedoo.DataSet.to_fdh5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_fdz.html">fedoo.DataSet.to_fdz</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_msh.html">fedoo.DataSet.to_msh</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_pandas.html">fedoo.DataSet.to_pandas</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_pyvista.html">fedoo.DataSet.to_pyvista</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.to_vtk.html">fedoo.DataSet.to_vtk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.dict_data.html">fedoo.DataSet.dict_data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.DataSet.active_submesh.html">fedoo.DataSet.active_submesh</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../post_processing.html#get-results-from-a-problem">Get results from a problem</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../post_processing.html#class-dataset">Class DataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../post_processing.html#class-multiframedataset">Class MultiFrameDataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../post_processing.html#multimesh-results">MultiMesh results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../post_processing.html#save-data-to-disk">Save data to disk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../post_processing.html#read-data-from-disk">Read data from disk</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.html">fedoo.MultiFrameDataSet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.MultiMeshData.html">fedoo.MultiMeshData</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.get_history.html">fedoo.MultiFrameDataSet.get_history</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.plot.html">fedoo.MultiFrameDataSet.plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.plot_history.html">fedoo.MultiFrameDataSet.plot_history</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.write_movie.html">fedoo.MultiFrameDataSet.write_movie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.save.html">fedoo.DataSet.save</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.savez.html">fedoo.DataSet.savez</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.savez_compressed.html">fedoo.DataSet.savez_compressed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.save_mesh.html">fedoo.DataSet.save_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_csv.html">fedoo.DataSet.to_csv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_excel.html">fedoo.DataSet.to_excel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_vtk.html">fedoo.DataSet.to_vtk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_msh.html">fedoo.DataSet.to_msh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.to_fdh5.html">fedoo.DataSet.to_fdh5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.save_all.html">fedoo.MultiFrameDataSet.save_all</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.read_data.html">fedoo.read_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.read.html">fedoo.DataSet.read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.DataSet.load.html">fedoo.DataSet.load</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.MultiFrameDataSet.load.html">fedoo.MultiFrameDataSet.load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post_processing.html#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post_processing.html#basic-operations">Basic operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../post_processing.html#advanced-operations">Advanced operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 </ul>
 
 

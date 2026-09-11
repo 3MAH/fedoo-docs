@@ -40,7 +40,7 @@
          Problem.set_D
          Problem.set_X
          Problem.set_active
-         Problem.set_dof_solution
+         Problem.set_dof
          Problem.set_reuse_factorization
          Problem.set_solver
          Problem.solve

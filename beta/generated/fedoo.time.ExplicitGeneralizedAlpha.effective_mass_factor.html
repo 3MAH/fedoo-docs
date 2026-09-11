@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.time.ExplicitGeneralizedAlpha.effective_mass_factor &mdash; Fedoo 1.0.0b1 (beta)</title>
+  <title>fedoo.time.ExplicitGeneralizedAlpha.effective_mass_factor &mdash; Fedoo 1.0.0b2 (beta)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -14,11 +14,12 @@
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=26864b79" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/documentation_options.js?v=3e281a96"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -67,36 +68,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="fedoo.time.BackwardEuler.html">fedoo.time.BackwardEuler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.time.CentralDifference.html">fedoo.time.CentralDifference</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.html">fedoo.time.ExplicitGeneralizedAlpha</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.acceleration.html">fedoo.time.ExplicitGeneralizedAlpha.acceleration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.compile_assembly.html">fedoo.time.ExplicitGeneralizedAlpha.compile_assembly</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.compile_weakform.html">fedoo.time.ExplicitGeneralizedAlpha.compile_weakform</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.correct.html">fedoo.time.ExplicitGeneralizedAlpha.correct</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.time.ExplicitGeneralizedAlpha.effective_mass_factor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.enforce_displacement.html">fedoo.time.ExplicitGeneralizedAlpha.enforce_displacement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.evaluation_state.html">fedoo.time.ExplicitGeneralizedAlpha.evaluation_state</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.mass_history.html">fedoo.time.ExplicitGeneralizedAlpha.mass_history</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.predict.html">fedoo.time.ExplicitGeneralizedAlpha.predict</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.prepare_step.html">fedoo.time.ExplicitGeneralizedAlpha.prepare_step</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.state_from_displacement.html">fedoo.time.ExplicitGeneralizedAlpha.state_from_displacement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.evolution.html">fedoo.time.ExplicitGeneralizedAlpha.evolution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.is_explicit.html">fedoo.time.ExplicitGeneralizedAlpha.is_explicit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html#static-analysis">Static analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html#evolution-categories">Evolution categories</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../time.html#integrators">Integrators</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.BackwardEuler.html">fedoo.time.BackwardEuler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.CentralDifference.html">fedoo.time.CentralDifference</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="fedoo.time.ExplicitGeneralizedAlpha.html">fedoo.time.ExplicitGeneralizedAlpha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.ExplicitNewmark.html">fedoo.time.ExplicitNewmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.GeneralizedAlpha.html">fedoo.time.GeneralizedAlpha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.Newmark.html">fedoo.time.Newmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.RayleighDamping.html">fedoo.time.RayleighDamping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.time.TimeEvolution.html">fedoo.time.TimeEvolution</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.time.ExplicitNewmark.html">fedoo.time.ExplicitNewmark</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.time.GeneralizedAlpha.html">fedoo.time.GeneralizedAlpha</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.time.Newmark.html">fedoo.time.Newmark</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.time.RayleighDamping.html">fedoo.time.RayleighDamping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.time.TimeEvolution.html">fedoo.time.TimeEvolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html#second-order-schemes">Second-order schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html#explicit-second-order-schemes">Explicit second-order schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html#dissipation">Dissipation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 </ul>
 
 

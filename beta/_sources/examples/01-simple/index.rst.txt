@@ -142,6 +142,23 @@ apply basics boundary conditions and get the results.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Fedoo provides structured mesh generators for common shapes as well as operations for building new geometries from existing meshes. This example starts with a few built-in meshes, then creates solids and curved structures using extrusion, local frames, and surface thickening.">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simple_mesh_generation_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/simple_mesh_generation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Creating simple meshes and swept geometries</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Example that show how to use plate elements with a pressure load.">
 
 .. only:: html
@@ -191,6 +208,7 @@ apply basics boundary conditions and get the results.
    /examples/01-simple/simpleBeamElementExample
    /examples/01-simple/simple_cantilever_beam_3D_model
    /examples/01-simple/simple_cantilever_beam_3D_model_nlgeom
+   /examples/01-simple/simple_mesh_generation
    /examples/01-simple/spherical_shell_compression
    /examples/01-simple/visualization
 

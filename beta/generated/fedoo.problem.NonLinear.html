@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.problem.NonLinear &mdash; Fedoo 1.0.0b1 (beta)</title>
+  <title>fedoo.problem.NonLinear &mdash; Fedoo 1.0.0b2 (beta)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -14,11 +14,12 @@
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=26864b79" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/documentation_options.js?v=3e281a96"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -105,7 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_D.html">fedoo.problem.NonLinear.set_D</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_X.html">fedoo.problem.NonLinear.set_X</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_active.html">fedoo.problem.NonLinear.set_active</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_dof_solution.html">fedoo.problem.NonLinear.set_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_dof.html">fedoo.problem.NonLinear.set_dof</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_nr_criterion.html">fedoo.problem.NonLinear.set_nr_criterion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_reuse_factorization.html">fedoo.problem.NonLinear.set_reuse_factorization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.NonLinear.set_solver.html">fedoo.problem.NonLinear.set_solver</a></li>
@@ -138,12 +139,16 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#time-integration">Time integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#non-linear-solver">Non-Linear Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#overcoming-simulation-instabilities">Overcoming Simulation Instabilities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 </ul>
 
 
@@ -187,7 +192,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.add_global_dof.html#fedoo.problem.NonLinear.add_global_dof" title="fedoo.problem.NonLinear.add_global_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.add_global_dof</span></code></a>(variable_names[, ...])</p></td>
 <td><p>Add global degrees of freedom to the problem.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.add_line_search.html#fedoo.problem.NonLinear.add_line_search" title="fedoo.problem.NonLinear.add_line_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.add_line_search</span></code></a>([method, name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.add_line_search.html#fedoo.problem.NonLinear.add_line_search" title="fedoo.problem.NonLinear.add_line_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.add_line_search</span></code></a>([method, mode, ...])</p></td>
 <td><p>Add line search algorithm for the Newton-Raphson solver.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.add_output.html#fedoo.problem.NonLinear.add_output" title="fedoo.problem.NonLinear.add_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.add_output</span></code></a>(filename, assembly[, ...])</p></td>
@@ -202,8 +207,8 @@
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.compute_nr_error.html#fedoo.problem.NonLinear.compute_nr_error" title="fedoo.problem.NonLinear.compute_nr_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.compute_nr_error</span></code></a>()</p></td>
 <td><p>Compute the error of the Newton-Raphson algorithm.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.elastic_prediction.html#fedoo.problem.NonLinear.elastic_prediction" title="fedoo.problem.NonLinear.elastic_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction</span></code></a>()</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.elastic_prediction.html#fedoo.problem.NonLinear.elastic_prediction" title="fedoo.problem.NonLinear.elastic_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.elastic_prediction</span></code></a>([keep_tangent])</p></td>
+<td><p>Solve the elastic prediction of a new increment.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.force_elastic_matrix_next_iter.html#fedoo.problem.NonLinear.force_elastic_matrix_next_iter" title="fedoo.problem.NonLinear.force_elastic_matrix_next_iter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.force_elastic_matrix_next_iter</span></code></a>()</p></td>
 <td><p>Flags the solver to use the elastic stiffness matrix at the begining of the next new iteration.</p></td>
@@ -283,8 +288,8 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.set_active.html#fedoo.problem.NonLinear.set_active" title="fedoo.problem.NonLinear.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.set_active</span></code></a>(name)</p></td>
 <td><p>Define the active Problem from its name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.set_dof_solution.html#fedoo.problem.NonLinear.set_dof_solution" title="fedoo.problem.NonLinear.set_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.set_dof_solution</span></code></a>(name, value)</p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.set_dof.html#fedoo.problem.NonLinear.set_dof" title="fedoo.problem.NonLinear.set_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.set_dof</span></code></a>(name, value)</p></td>
+<td><p>Set the initial converged degree-of-freedom field.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.NonLinear.set_nr_criterion.html#fedoo.problem.NonLinear.set_nr_criterion" title="fedoo.problem.NonLinear.set_nr_criterion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear.set_nr_criterion</span></code></a>([criterion])</p></td>
 <td><p>Define the convergence criterion of the newton raphson algorithm.</p></td>

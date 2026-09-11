@@ -29,6 +29,7 @@
          DistributedForce.delete_memory
          DistributedForce.get_all
          DistributedForce.get_change_of_basis_mat
+         DistributedForce.get_element_local_frame
          DistributedForce.get_element_results
          DistributedForce.get_global_matrix
          DistributedForce.get_global_vector
@@ -44,6 +45,7 @@
          DistributedForce.register_global_dofs
          DistributedForce.reset
          DistributedForce.set_disp
+         DistributedForce.set_element_local_frame
          DistributedForce.set_start
          DistributedForce.sum
          DistributedForce.to_start

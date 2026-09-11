@@ -20,88 +20,11 @@ and the result obtained may not be accurate.
 
 .. thumbnail-parent-div-open
 
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Uses RigidBody with Newmark integration built into the assembly, solved by Fedoo&#x27;s standard NonLinear solver.">
-
-.. only:: html
-
-  .. image:: /examples/images/thumb/sphx_glr_rigid_body_bounce_ipc_thumb.gif
-    :alt:
-
-  :doc:`/examples/rigid_body_bounce_ipc`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Sphere bouncing on a plane — NonLinear + IPC contact + Rayleigh damping.</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Convex hull of Stanford bunny (watertight). Demonstrates tumbling on impact with asymmetric geometry.">
-
-.. only:: html
-
-  .. image:: /examples/images/thumb/sphx_glr_rigid_body_bunny_bounce_thumb.gif
-    :alt:
-
-  :doc:`/examples/rigid_body_bunny_bounce`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Bunny bouncing on a plane — NonLinear + IPC contact.</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="The cow mesh from PyVista is watertight (2903 nodes), decimated for speed. Full rotation via quaternion, rotation vectors (no gimbal lock).">
-
-.. only:: html
-
-  .. image:: /examples/images/thumb/sphx_glr_rigid_body_cow_bounce_thumb.gif
-    :alt:
-
-  :doc:`/examples/rigid_body_cow_bounce`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Cow bouncing on a plane — NonLinear + IPC contact.</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="A rigid sphere falls under gravity. Compared with z(t) = z0 - 0.5gt^2. Uses RigidBody + NonLinear (Fedoo&#x27;s standard solver).">
-
-.. only:: html
-
-  .. image:: /examples/images/thumb/sphx_glr_rigid_body_freefall_thumb.png
-    :alt:
-
-  :doc:`/examples/rigid_body_freefall`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Rigid body free fall — validation with NonLinear solver.</div>
-    </div>
-
-
 .. thumbnail-parent-div-close
 
 .. raw:: html
 
     </div>
-
-
-.. toctree::
-   :hidden:
-
-   /examples/rigid_body_bounce_ipc
-   /examples/rigid_body_bunny_bounce
-   /examples/rigid_body_cow_bounce
-   /examples/rigid_body_freefall
 
 Simple examples to start
 ---------------------------
@@ -238,6 +161,23 @@ apply basics boundary conditions and get the results.
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">3D Canteleaver Beam with geometric nonlinearities</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fedoo provides structured mesh generators for common shapes as well as operations for building new geometries from existing meshes. This example starts with a few built-in meshes, then creates solids and curved structures using extrusion, local frames, and surface thickening.">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_simple_mesh_generation_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/simple_mesh_generation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Creating simple meshes and swept geometries</div>
     </div>
 
 
@@ -470,6 +410,40 @@ This section show some advanced capabilities of fedoo.
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Finite-strain Neo-Hookean cantilever (rigid cap)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Companion of the displacement-driven cantilever example &lt;neohookean_cantilever&gt;: the same slender, nearly-incompressible NEOHC cylinder, but loaded by a transverse force applied to its rigid cap — the natural protocol when mirroring a dynamics engine such as ArtiSynth.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_neohookean_cantilever_force_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/neohookean_cantilever_force`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example lets a rigid sphere fall under gravity and bounce on a fixed plane.  It illustrates the rigid-body constraint, Newmark time integration, and IPC contact with a deliberately coarse model suitable for the online example gallery.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_rigid_body_bounce_thumb.gif
+    :alt:
+
+  :doc:`/examples/03-advanced/rigid_body_bounce`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid-body bounce with IPC contact</div>
     </div>
 
 

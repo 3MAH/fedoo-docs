@@ -31,6 +31,7 @@
          Pressure.from_nodes
          Pressure.get_all
          Pressure.get_change_of_basis_mat
+         Pressure.get_element_local_frame
          Pressure.get_element_results
          Pressure.get_global_matrix
          Pressure.get_global_vector
@@ -46,6 +47,7 @@
          Pressure.register_global_dofs
          Pressure.reset
          Pressure.set_disp
+         Pressure.set_element_local_frame
          Pressure.set_start
          Pressure.sum
          Pressure.to_start

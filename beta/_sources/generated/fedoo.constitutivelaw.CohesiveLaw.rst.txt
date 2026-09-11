@@ -21,12 +21,14 @@
       
          CohesiveLaw.get_K
          CohesiveLaw.get_all
+         CohesiveLaw.get_local_frame
          CohesiveLaw.get_secant_matrix
          CohesiveLaw.get_tangent_matrix
          CohesiveLaw.initialize
          CohesiveLaw.local2global_K
          CohesiveLaw.reset
          CohesiveLaw.set_damage
+         CohesiveLaw.set_local_frame
          CohesiveLaw.set_start
          CohesiveLaw.to_start
          CohesiveLaw.update
