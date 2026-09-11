@@ -28,8 +28,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="rigid_body_bounce_ipc.html" />
-    <link rel="prev" title="fedoo.read_data" href="../generated/fedoo.read_data.html" /> 
+    <link rel="next" title="Simple examples to start" href="01-simple/index.html" />
+    <link rel="prev" title="Define user problems" href="../user_problems.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -72,14 +72,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#simple-examples-to-start">Simple examples to start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#apply-constraints">Apply constraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#advanced-problems">Advanced problems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inverse-identification">Inverse identification</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
 </ul>
 
 
@@ -114,21 +114,7 @@ These examples are desgined to serve as tutorials.
 In that sense, an effort is made to keep the scripts simple and executable with
 a low computational cost. The meshes, tolerances and time increment used are coarse
 and the result obtained may not be accurate.</p>
-<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Uses RigidBody with Newmark integration built into the assembly, solved by Fedoo&#x27;s standard NonLinear solver."><img alt="" src="../_images/sphx_glr_rigid_body_bounce_ipc_thumb.gif" />
-<p><a class="reference internal" href="rigid_body_bounce_ipc.html"><span class="doc">&lt;no title&gt;</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Sphere bouncing on a plane — NonLinear + IPC contact + Rayleigh damping.</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Convex hull of Stanford bunny (watertight). Demonstrates tumbling on impact with asymmetric geometry."><img alt="" src="../_images/sphx_glr_rigid_body_bunny_bounce_thumb.gif" />
-<p><a class="reference internal" href="rigid_body_bunny_bounce.html"><span class="doc">&lt;no title&gt;</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Bunny bouncing on a plane — NonLinear + IPC contact.</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The cow mesh from PyVista is watertight (2903 nodes), decimated for speed. Full rotation via quaternion, rotation vectors (no gimbal lock)."><img alt="" src="../_images/sphx_glr_rigid_body_cow_bounce_thumb.gif" />
-<p><a class="reference internal" href="rigid_body_cow_bounce.html"><span class="doc">&lt;no title&gt;</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Cow bouncing on a plane — NonLinear + IPC contact.</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="A rigid sphere falls under gravity. Compared with z(t) = z0 - 0.5gt^2. Uses RigidBody + NonLinear (Fedoo&#x27;s standard solver)."><img alt="" src="../_images/sphx_glr_rigid_body_freefall_thumb.png" />
-<p><a class="reference internal" href="rigid_body_freefall.html"><span class="doc">&lt;no title&gt;</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Rigid body free fall — validation with NonLinear solver.</div>
-</div></div><div class="toctree-wrapper compound">
-</div>
-<section id="simple-examples-to-start">
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div><section id="simple-examples-to-start">
 <h2>Simple examples to start<a class="headerlink" href="#simple-examples-to-start" title="Link to this heading"></a></h2>
 <p>This section contains several very simple examples that illustrate
 the basics feature of fedoo, like how to create simple meshes,
@@ -199,20 +185,16 @@ that can be applied in fedoo.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Companion of the displacement-driven cantilever example &lt;neohookean_cantilever&gt;: the same slender, nearly-incompressible NEOHC cylinder, but loaded by a transverse force applied to its rigid cap — the natural protocol when mirroring a dynamics engine such as ArtiSynth."><img alt="" src="../_images/sphx_glr_neohookean_cantilever_force_thumb.png" />
 <p><a class="reference internal" href="03-advanced/neohookean_cantilever_force.html"><span class="doc">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</span></a></p>
   <div class="sphx-glr-thumbnail-title">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example lets a rigid sphere fall under gravity and bounce on a fixed plane.  It illustrates the rigid-body constraint, Newmark time integration, and IPC contact with a deliberately coarse model suitable for the online example gallery."><img alt="" src="../_images/sphx_glr_rigid_body_bounce_thumb.gif" />
+<p><a class="reference internal" href="03-advanced/rigid_body_bounce.html"><span class="doc">Rigid-body bounce with IPC contact</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rigid-body bounce with IPC contact</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading"><img alt="" src="../_images/sphx_glr_thermal_loading_thumb.png" />
 <p><a class="reference internal" href="03-advanced/thermal_loading.html"><span class="doc">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</span></a></p>
   <div class="sphx-glr-thumbnail-title">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This model uses self-contact, elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase."><img alt="" src="../_images/sphx_glr_tube_compression_thumb.png" />
 <p><a class="reference internal" href="03-advanced/tube_compression.html"><span class="doc">Compression of a tube using 2D axisymmetric model</span></a></p>
   <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model</div>
-</div></div></section>
-<section id="inverse-identification">
-<h2>Inverse identification<a class="headerlink" href="#inverse-identification" title="Link to this heading"></a></h2>
-<p>Identification of material parameters from experimental data (load cell
-force, displacement of tracked points) with a fedoo finite-element forward
-model, the identification tools of simcoon (<code class="docutils literal notranslate"><span class="pre">Parameter</span></code>,
-<code class="docutils literal notranslate"><span class="pre">identification</span></code>) and the differential-evolution optimizer of scipy.</p>
-<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div><div class="toctree-wrapper compound">
+</div></div><div class="toctree-wrapper compound">
 </div>
 <div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
@@ -230,8 +212,8 @@ model, the identification tools of simcoon (<code class="docutils literal notran
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../generated/fedoo.read_data.html" class="btn btn-neutral float-left" title="fedoo.read_data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="rigid_body_bounce_ipc.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../user_problems.html" class="btn btn-neutral float-left" title="Define user problems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="01-simple/index.html" class="btn btn-neutral float-right" title="Simple examples to start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

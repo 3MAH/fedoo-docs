@@ -98,6 +98,10 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ThermalProperties.html">fedoo.constitutivelaw.ThermalProperties</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#manage-local-frames">Manage local frames</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#beam-and-shell-frames">Beam and shell frames</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
@@ -106,8 +110,9 @@
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
 </ul>
 
 
@@ -147,7 +152,7 @@ constitutive laws. These laws are required to create some weak formulations.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticIsotrop.html#fedoo.constitutivelaw.ElasticIsotrop" title="fedoo.constitutivelaw.ElasticIsotrop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticIsotrop</span></code></a>(E, nu[, name])</p></td>
-<td><p>A simple linear elastic isotropic constitutive law defined from a Yound Modulus and a Poisson Ratio.</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticOrthotropic.html#fedoo.constitutivelaw.ElasticOrthotropic" title="fedoo.constitutivelaw.ElasticOrthotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic</span></code></a>(Ex, Ey, Ez, Gyz, Gxz, ...)</p></td>
 <td><p>Linear Orthotropic constitutive law defined from the engineering coefficients in local material coordinates.</p></td>
@@ -164,7 +169,7 @@ constitutive laws. These laws are required to create some weak formulations.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.FE2.html#fedoo.constitutivelaw.FE2" title="fedoo.constitutivelaw.FE2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FE2</span></code></a>(assemb[, name])</p></td>
 <td><p>FE² constitutive law based on periodic microscopic problems.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.Simcoon.html#fedoo.constitutivelaw.Simcoon" title="fedoo.constitutivelaw.Simcoon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon</span></code></a>(umat_name, props[, name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.Simcoon.html#fedoo.constitutivelaw.Simcoon" title="fedoo.constitutivelaw.Simcoon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon</span></code></a>(umat_name, props[, tangent_mode, name])</p></td>
 <td><p>Constitutive laws from the simcoon library.</p></td>
 </tr>
 </tbody>
@@ -209,7 +214,7 @@ constitutive laws. These laws are required to create some weak formulations.</p>
 <p>These laws should be associated with <a class="reference internal" href="generated/fedoo.weakform.PlateEquilibrium.html#fedoo.weakform.PlateEquilibrium" title="fedoo.weakform.PlateEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PlateEquilibrium</span></code></a></p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellLaminate.html#fedoo.constitutivelaw.ShellLaminate" title="fedoo.constitutivelaw.ShellLaminate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminate</span></code></a>(listMat, list_thickness[, k, name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellLaminate.html#fedoo.constitutivelaw.ShellLaminate" title="fedoo.constitutivelaw.ShellLaminate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminate</span></code></a>(list_mat, list_thickness[, k, ...])</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ShellLaminateNonLinear.html#fedoo.constitutivelaw.ShellLaminateNonLinear" title="fedoo.constitutivelaw.ShellLaminateNonLinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShellLaminateNonLinear</span></code></a>(list_mat, list_thickness)</p></td>
@@ -234,6 +239,57 @@ constitutive laws. These laws are required to create some weak formulations.</p>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="manage-local-frames">
+<h2>Manage local frames<a class="headerlink" href="#manage-local-frames" title="Link to this heading"></a></h2>
+<p>Three-dimensional mechanical constitutive laws can be defined in a material
+coordinate system with <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ConstitutiveLaw.set_local_frame()</span></code>. A
+frame is a proper orthogonal rotation matrix whose rows are the material axes
+expressed in global coordinates. SciPy and Simcoon rotation objects are also
+accepted directly.</p>
+<p>For example, one uniform initial material orientation can be assigned with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span>
+
+<span class="n">frame</span> <span class="o">=</span> <span class="n">Rotation</span><span class="o">.</span><span class="n">from_euler</span><span class="p">(</span><span class="s2">"z"</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">degrees</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_local_frame</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Several frames can be supplied at nodes, elements, or Gauss points. Use the
+canonical location names <code class="docutils literal notranslate"><span class="pre">&quot;Node&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Element&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;GaussPoint&quot;</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">material</span><span class="o">.</span><span class="n">set_local_frame</span><span class="p">(</span><span class="n">nodal_frames</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">)</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_local_frame</span><span class="p">(</span><span class="n">element_frames</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">"Element"</span><span class="p">)</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_local_frame</span><span class="p">(</span><span class="n">gauss_point_frames</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">"GaussPoint"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Nodal rotations are smoothly interpolated to the Gauss points using the
+finite-element shape functions and a local rotation-vector interpolation.
+Element frames are repeated at every Gauss point of their element. A
+Gauss-point field must contain exactly the number of points used by the
+associated assembly. When <code class="docutils literal notranslate"><span class="pre">location</span></code> is omitted, Fedoo infers it from the
+number of frames if the choice is unambiguous.</p>
+<p>For small-strain analyses, the prescribed material orientation remains fixed.
+In finite-strain analyses, it defines the initial material orientation and the
+constitutive-law machinery updates the current orientation with the material
+rotation. Isotropic laws do not perform unnecessary frame transformations.</p>
+<section id="beam-and-shell-frames">
+<h3>Beam and shell frames<a class="headerlink" href="#beam-and-shell-frames" title="Link to this heading"></a></h3>
+<p>For beams and shells, the element frame is also a geometrical coordinate
+system used by the weak form. This frame should be defined on the assembly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">assembly</span><span class="o">.</span><span class="n">set_element_local_frame</span><span class="p">(</span><span class="n">guide</span><span class="o">=</span><span class="n">guide</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">"Element"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For a beam, the first axis is projected onto the element tangent and the guide
+sets the cross-section orientation. For a shell, the third axis remains the
+surface normal and the guide sets the in-plane orientation. Guides may be
+uniform, elemental, or nodal. The assembly element-frame API is intentionally
+limited to beams and shells; anisotropic solid orientations belong to the
+constitutive law.</p>
+<p>For shell constitutive laws that support an additional material orientation,
+that orientation is interpreted relative to the geometrical shell frame
+defined on the assembly. Beam constitutive laws currently use isotropic
+materials only, so material orientations are ignored. The assembly element
+frame defines the beam cross-section orientation.</p>
+</section>
 </section>
 </section>
 

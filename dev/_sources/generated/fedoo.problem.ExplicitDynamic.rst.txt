@@ -50,7 +50,7 @@
          ExplicitDynamic.set_D
          ExplicitDynamic.set_X
          ExplicitDynamic.set_active
-         ExplicitDynamic.set_dof_solution
+         ExplicitDynamic.set_dof
          ExplicitDynamic.set_initial_acceleration
          ExplicitDynamic.set_initial_displacement
          ExplicitDynamic.set_initial_velocity

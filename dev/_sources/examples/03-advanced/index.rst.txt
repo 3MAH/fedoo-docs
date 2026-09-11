@@ -105,6 +105,23 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="This example lets a rigid sphere fall under gravity and bounce on a fixed plane.  It illustrates the rigid-body constraint, Newmark time integration, and IPC contact with a deliberately coarse model suitable for the online example gallery.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_rigid_body_bounce_thumb.gif
+    :alt:
+
+  :doc:`/examples/03-advanced/rigid_body_bounce`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid-body bounce with IPC contact</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading">
 
 .. only:: html
@@ -152,6 +169,7 @@ This section show some advanced capabilities of fedoo.
    /examples/03-advanced/multi_mesh_example
    /examples/03-advanced/neohookean_cantilever
    /examples/03-advanced/neohookean_cantilever_force
+   /examples/03-advanced/rigid_body_bounce
    /examples/03-advanced/thermal_loading
    /examples/03-advanced/tube_compression
 
