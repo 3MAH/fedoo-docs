@@ -52,7 +52,7 @@
          LinearNewmark.set_D
          LinearNewmark.set_X
          LinearNewmark.set_active
-         LinearNewmark.set_dof_solution
+         LinearNewmark.set_dof
          LinearNewmark.set_initial_acceleration
          LinearNewmark.set_initial_displacement
          LinearNewmark.set_initial_velocity

@@ -52,7 +52,7 @@
          Linear.set_D
          Linear.set_X
          Linear.set_active
-         Linear.set_dof_solution
+         Linear.set_dof
          Linear.set_initial_acceleration
          Linear.set_initial_displacement
          Linear.set_initial_velocity

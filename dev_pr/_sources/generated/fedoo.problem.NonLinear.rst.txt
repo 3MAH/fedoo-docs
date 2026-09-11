@@ -52,7 +52,7 @@
          NonLinear.set_D
          NonLinear.set_X
          NonLinear.set_active
-         NonLinear.set_dof_solution
+         NonLinear.set_dof
          NonLinear.set_nr_criterion
          NonLinear.set_reuse_factorization
          NonLinear.set_solver

@@ -470,32 +470,6 @@ This section show some advanced capabilities of fedoo.
 
     </div>
 
-Inverse identification
-----------------------
-
-Identification of material parameters from experimental data (load cell
-force, displacement of tracked points) with a fedoo finite-element forward
-model, the identification tools of simcoon (``Parameter``,
-``identification``) and the differential-evolution optimizer of scipy.
-
-
-.. raw:: html
-
-  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbnails">
-
-.. thumbnail-parent-div-open
-
-.. thumbnail-parent-div-close
-
-.. raw:: html
-
-    </div>
-
 
 .. toctree::
    :hidden:
@@ -505,7 +479,6 @@ model, the identification tools of simcoon (``Parameter``,
    /examples/01-simple/index.rst
    /examples/02-constraints/index.rst
    /examples/03-advanced/index.rst
-   /examples/identification/index.rst
 
 
 .. only:: html

@@ -45,6 +45,7 @@
          ElastoPlasticity.reset
          ElastoPlasticity.set_density
          ElastoPlasticity.set_hardening_function
+         ElastoPlasticity.set_initial_statev
          ElastoPlasticity.set_local_frame
          ElastoPlasticity.set_return_mapping_tolerance
          ElastoPlasticity.set_start
