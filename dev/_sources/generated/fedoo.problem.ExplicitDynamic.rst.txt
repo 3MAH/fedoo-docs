@@ -22,6 +22,7 @@
          ExplicitDynamic.add_global_dof
          ExplicitDynamic.add_output
          ExplicitDynamic.apply_boundary_conditions
+         ExplicitDynamic.clear_outputs
          ExplicitDynamic.evaluate
          ExplicitDynamic.get_A
          ExplicitDynamic.get_B

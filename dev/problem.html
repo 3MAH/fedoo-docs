@@ -71,12 +71,20 @@
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.Modal.html">fedoo.problem.Modal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.LinearBuckling.html">fedoo.problem.LinearBuckling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.LinearNewmark.html">fedoo.problem.LinearNewmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#result-output">Result output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eigenvalue-analyses">Eigenvalue analyses</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modal-analysis">Modal analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-buckling-analysis">Linear buckling analysis</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#time-integration">Time integration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#linear-transient-problems">Linear transient problems</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nonlinear-transient-problems">Nonlinear transient problems</a></li>
@@ -136,6 +144,12 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.Linear.html#fedoo.problem.Linear" title="fedoo.problem.Linear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear</span></code></a>(assembly[, time_step, integrator, name])</p></td>
 <td><p>Class that defines linear problems.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.problem.Modal.html#fedoo.problem.Modal" title="fedoo.problem.Modal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Modal</span></code></a>(assembly[, name])</p></td>
+<td><p>Compute natural frequencies and mode shapes of a linear model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.LinearBuckling.html#fedoo.problem.LinearBuckling" title="fedoo.problem.LinearBuckling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling</span></code></a>(assembly[, ...])</p></td>
+<td><p>Compute linear buckling modes about a prestressed equilibrium state.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.problem.LinearNewmark.html#fedoo.problem.LinearNewmark" title="fedoo.problem.LinearNewmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearNewmark</span></code></a></p></td>
 <td><p>alias of <a class="reference internal" href="generated/fedoo.problem.Linear.html#fedoo.problem.Linear" title="fedoo.problem.linear.Linear"><code class="xref py py-class docutils literal notranslate"><span class="pre">Linear</span></code></a></p></td>
 </tr>
@@ -164,6 +178,79 @@
 </tr>
 </tbody>
 </table>
+<section id="result-output">
+<h2>Result output<a class="headerlink" href="#result-output" title="Link to this heading"></a></h2>
+<p>For every problem type, calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_output()</span></code>
+enables automatic result writing during the corresponding high-level solution
+procedure (<code class="docutils literal notranslate"><span class="pre">solve</span></code>, <code class="docutils literal notranslate"><span class="pre">solve_history</span></code> or <code class="docutils literal notranslate"><span class="pre">nlsolve</span></code>). With no registered
+output, these procedures do not write files automatically. Output registrations
+can be removed between analysis stages with
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">clear_outputs()</span></code>; existing files and in-memory
+frames are retained. <code class="xref py py-meth docutils literal notranslate"><span class="pre">save_results()</span></code> remains
+available for user-managed solution loops.</p>
+<p>For the multiframe <code class="docutils literal notranslate"><span class="pre">fdh5</span></code> format, <code class="docutils literal notranslate"><span class="pre">add_output</span></code> accepts a <code class="docutils literal notranslate"><span class="pre">write_mode</span></code>.
+Its default, <code class="docutils literal notranslate"><span class="pre">&quot;overwrite&quot;</span></code>, starts a new file; <code class="docutils literal notranslate"><span class="pre">&quot;append&quot;</span></code> continues an
+existing file after its highest stored iteration, including when it was
+produced by another problem; and <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code> refuses to reuse an existing
+file. Other formats, including <code class="docutils literal notranslate"><span class="pre">fdz</span></code>, retain their existing overwrite
+behavior. This makes staged output explicit, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">preload</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"history.fdh5"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">])</span>
+<span class="n">preload</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="n">continuation</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"history.fdh5"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">],</span> <span class="n">write_mode</span><span class="o">=</span><span class="s2">"append"</span>
+<span class="p">)</span>
+<span class="n">continuation</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="eigenvalue-analyses">
+<h2>Eigenvalue analyses<a class="headerlink" href="#eigenvalue-analyses" title="Link to this heading"></a></h2>
+<section id="modal-analysis">
+<h3>Modal analysis<a class="headerlink" href="#modal-analysis" title="Link to this heading"></a></h3>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">Modal</span></code> computes the natural frequencies and mass-normalized mode
+shapes of an undamped linear mechanical model. The stiffness and consistent
+mass matrices are obtained from the same assembly/storage declarations as
+linear transient dynamics. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">modal</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Modal</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">modal</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">fixed_nodes</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">modal</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"modes.fdh5"</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">])</span>
+<span class="n">modal</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">n_modes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">modal</span><span class="o">.</span><span class="n">frequencies</span><span class="p">)</span>
+<span class="n">modal</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># expose the first mode through get_disp/get_results</span>
+</pre></div>
+</div>
+<p>Dirichlet and multi-point constraints are applied to both operators. Prescribed
+displacements must be homogeneous. Registered outputs are written automatically
+by <code class="xref py py-meth docutils literal notranslate"><span class="pre">Modal.solve()</span></code>, with one frame per mode and its mode number, eigenvalue
+and frequency included as scalar metadata. To defer output, solve before
+calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">Modal.add_output()</span></code>, then register the desired fields and call
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">Modal.save_modes()</span></code> explicitly.</p>
+</section>
+<section id="linear-buckling-analysis">
+<h3>Linear buckling analysis<a class="headerlink" href="#linear-buckling-analysis" title="Link to this heading"></a></h3>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearBuckling</span></code> computes critical load factors and buckling modes from
+the converged state of a prestressed assembly. It separates the material and
+initial-stress stiffnesses by assembling shallow weak-form copies with
+geometric stiffness disabled and enabled, respectively. When possible, the
+matrix already assembled by the preload problem is reused:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">preload</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">"TL"</span><span class="p">)</span>
+<span class="n">preload</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">fixed_nodes</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">preload</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">()</span>
+
+<span class="n">buckling</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">LinearBuckling</span><span class="p">(</span><span class="n">preload</span><span class="p">)</span>
+<span class="n">buckling</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">fixed_nodes</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">buckling</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">n_modes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">buckling</span><span class="o">.</span><span class="n">load_factors</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Set <code class="docutils literal notranslate"><span class="pre">reuse_assembled_matrix=False</span></code> to rebuild both stiffness matrices. The
+first implementation supports fixed-geometry and total-Lagrangian preload
+states; updated-Lagrangian states are rejected.</p>
+</section>
+</section>
 <section id="time-integration">
 <h2>Time integration<a class="headerlink" href="#time-integration" title="Link to this heading"></a></h2>
 <p>Fedoo separates the spatial formulation from the time-integration scheme.

@@ -54,7 +54,7 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The key points are:     - define two separated mesh that share to the same node       list with different elements.     - create two separated Assembly that are combined in a single AssemblySum       object.     - extract/save results separatedly for each elm_type.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example combines quadrilateral and triangular elements that share the same node array. Each element block has its own assembly, while their sum is used to solve a single mechanical problem.">
 
 .. only:: html
 
@@ -65,7 +65,7 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Very simple example with multiple element type.</div>
+      <div class="sphx-glr-thumbnail-title">Analysis and visualization of a multi-mesh model</div>
     </div>
 
 

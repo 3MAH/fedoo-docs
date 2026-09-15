@@ -74,6 +74,40 @@ apply basics boundary conditions and get the results.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="This example predicts the critical compressive loads and buckling modes of a straight elastic beam. Linear buckling is a perturbation analysis performed about a preloaded reference state. Fedoo solves">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_linear_buckling_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/linear_buckling`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Linear buckling of a pinned beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example computes the natural frequencies and mode shapes of a square plate clamped along its entire boundary. A modal analysis solves the generalized eigenvalue problem">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_modal_analysis_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/modal_analysis`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Free vibration of a clamped square plate</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Define and solve user equation">
 
 .. only:: html
@@ -204,6 +238,8 @@ apply basics boundary conditions and get the results.
    /examples/01-simple/I_shape_beam_bending
    /examples/01-simple/Plate_with_hole_in_tension
    /examples/01-simple/lattice_beam
+   /examples/01-simple/linear_buckling
+   /examples/01-simple/modal_analysis
    /examples/01-simple/poison_eq
    /examples/01-simple/simpleBeamElementExample
    /examples/01-simple/simple_cantilever_beam_3D_model

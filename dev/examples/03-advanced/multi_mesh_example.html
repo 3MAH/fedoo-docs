@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; Fedoo 1.0.0b2 (dev)</title>
+  <title>Analysis and visualization of a multi-mesh model &mdash; Fedoo 1.0.0b2 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
@@ -93,7 +93,7 @@
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
           <li class="breadcrumb-item"><a href="index.html">Advanced problems</a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">Analysis and visualization of a multi-mesh model</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/examples/03-advanced/multi_mesh_example.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -108,32 +108,42 @@
 <p><a class="reference internal" href="#sphx-glr-download-examples-03-advanced-multi-mesh-example-py"><span class="std std-ref">Go to the end</span></a>
 to download the full example code.</p>
 </div>
-<p class="sphx-glr-example-title" id="sphx-glr-examples-03-advanced-multi-mesh-example-py">Very simple example with multiple element type.</p>
-<dl class="simple">
-<dt>The key points are:</dt><dd><ul class="simple">
-<li><p>define two separated mesh that share to the same node
-list with different elements.</p></li>
-<li><p>create two separated Assembly that are combined in a single AssemblySum
-object.</p></li>
-<li><p>extract/save results separatedly for each elm_type.</p></li>
-</ul>
-</dd>
-</dl>
-<p>Extract and plot results:
-For now, the DataSet class is only available for a single element type.
-To plot the results, we need to extract two separated solution and plot
-two separted meshes.</p>
+<section class="sphx-glr-example-title" id="analysis-and-visualization-of-a-multi-mesh-model">
+<span id="sphx-glr-examples-03-advanced-multi-mesh-example-py"></span><h1>Analysis and visualization of a multi-mesh model<a class="headerlink" href="#analysis-and-visualization-of-a-multi-mesh-model" title="Link to this heading"></a></h1>
+<p>This example combines quadrilateral and triangular elements that share the
+same node array. Each element block has its own assembly, while their sum is
+used to solve a single mechanical problem.</p>
+<p>Results requested from the assembly sum are stored in a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MultiMesh</span></code>. Fedoo can therefore visualize all element blocks
+directly with one <a class="reference internal" href="../../generated/fedoo.DataSet.plot.html#fedoo.DataSet.plot" title="fedoo.DataSet.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.DataSet.plot()</span></code></a> call.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="c1"># Generate a mesh with a 'quad4' element</span>
-<span class="n">mesh1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">)</span>
-
-<span class="c1"># Add a new node not connected to the quad mesh</span>
-<span class="n">mesh1</span><span class="o">.</span><span class="n">add_nodes</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.866</span><span class="p">])</span>
-
-<span class="c1"># Generate a new 'tri3' mesh with the same list of nodes (important)</span>
-<span class="n">mesh2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">mesh1</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span> <span class="n">elements</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]),</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"tri3"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="build-a-mesh-containing-different-element-types">
+<h1>Build a mesh containing different element types<a class="headerlink" href="#build-a-mesh-containing-different-element-types" title="Link to this heading"></a></h1>
+<p>A <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code> owns one common node array and an ordered collection of
+element blocks. Named entries make each submesh easy to retrieve later. The
+tuple associated with each name contains its element type and connectivity.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.866</span><span class="p">],</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">MultiMesh</span><span class="p">(</span>
+    <span class="n">nodes</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s2">"quadrilateral"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"quad4"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])),</span>
+        <span class="s2">"triangle"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"tri3"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])),</span>
+    <span class="p">},</span>
+    <span class="n">node_sets</span><span class="o">=</span><span class="p">{</span><span class="s2">"left"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="s2">"right"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])},</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"mixed_mesh"</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="c1"># Define equations as usual (constitutivelaw + weakform)</span>
 <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dstress"</span><span class="p">)</span>
@@ -141,42 +151,45 @@ two separted meshes.</p>
 <span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
 
 <span class="c1"># Create a global assembly</span>
-<span class="n">assembly1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh1</span><span class="p">)</span>
-<span class="n">assembly2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh2</span><span class="p">)</span>
+<span class="c1"># Assemblies are created on the individual element blocks and then combined</span>
+<span class="c1"># into the assembly used by the problem.</span>
+<span class="n">assembly1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">[</span><span class="s2">"quadrilateral"</span><span class="p">])</span>
+<span class="n">assembly2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">[</span><span class="s2">"triangle"</span><span class="p">])</span>
 <span class="n">assembly</span> <span class="o">=</span> <span class="n">assembly1</span> <span class="o">+</span> <span class="n">assembly2</span>
 
 <span class="c1"># Define a new static problem</span>
 <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
 
-<span class="c1"># Extract set of nodes for boundary conditions (here an use mesh1 or mesh2</span>
-<span class="c1"># because they share the same nodes)</span>
-<span class="n">left</span> <span class="o">=</span> <span class="n">mesh1</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">mesh1</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span><span class="p">)</span>
-<span class="n">right</span> <span class="o">=</span> <span class="n">mesh1</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">mesh1</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmax</span><span class="p">)</span>
-
-<span class="c1"># displacement on left (ux=-0.1mm)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"left"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="c1"># displacement on right (ux=0.1mm)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">,</span> <span class="s2">"DispX"</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="c1"># Clamp the left side and prescribe a horizontal displacement on the right.</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"left"</span><span class="p">],</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"right"</span><span class="p">],</span> <span class="s2">"DispX"</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 
 
 <span class="c1"># Solve problem</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Extract and plot results:
-For now, the DataSet class is only available for a single element type.
-To plot the results, we need to extract two separated solution and plot
-two separted meshes.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract the results from the two assembly objects</span>
-<span class="n">results1</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly1</span><span class="p">,</span> <span class="n">output_list</span><span class="o">=</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">])</span>
-<span class="n">results2</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly2</span><span class="p">,</span> <span class="n">output_list</span><span class="o">=</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">])</span>
-
-<span class="n">plotter</span> <span class="o">=</span> <span class="n">results1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"vm"</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">results2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"vm"</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">plotter</span><span class="p">)</span>
+</section>
+<section id="extract-and-plot-multi-mesh-results">
+<h1>Extract and plot multi-mesh results<a class="headerlink" href="#extract-and-plot-multi-mesh-results" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">get_results</span></code> collects the fields from both elementary assemblies. The
+resulting dataset retains the quadrilateral and triangular submeshes and
+their element data independently. Nevertheless, the complete model can be
+drawn directly with the usual Fedoo plotting function.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">([</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">])</span>
+<span class="n">plotter</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">"Stress"</span><span class="p">,</span>
+    <span class="n">component</span><span class="o">=</span><span class="s2">"vm"</span><span class="p">,</span>
+    <span class="n">data_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show_nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"Von Mises stress on a MultiMesh"</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_multi_mesh_example_001.png" srcset="../../_images/sphx_glr_multi_mesh_example_001.png" alt="multi mesh example" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.194 seconds)</p>
+<img src="../../_images/sphx_glr_multi_mesh_example_001.png" srcset="../../_images/sphx_glr_multi_mesh_example_001.png" alt="multi mesh example" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.200 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-multi-mesh-example-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/d98c184910db03193cdd7a1376fbfdb7/multi_mesh_example.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">multi_mesh_example.ipynb</span></code></a></p>
@@ -189,6 +202,7 @@ two separted meshes.</p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
 
 
            </div>

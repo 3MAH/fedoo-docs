@@ -1,0 +1,84 @@
+﻿fedoo.problem.LinearBuckling
+============================
+
+.. currentmodule:: fedoo.problem
+
+.. autoclass:: LinearBuckling
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         LinearBuckling.add_global_dof
+         LinearBuckling.add_output
+         LinearBuckling.apply_boundary_conditions
+         LinearBuckling.clear_outputs
+         LinearBuckling.get_A
+         LinearBuckling.get_B
+         LinearBuckling.get_D
+         LinearBuckling.get_X
+         LinearBuckling.get_active
+         LinearBuckling.get_all
+         LinearBuckling.get_disp
+         LinearBuckling.get_dof_solution
+         LinearBuckling.get_ext_forces
+         LinearBuckling.get_output_scalars
+         LinearBuckling.get_results
+         LinearBuckling.get_rot
+         LinearBuckling.init_bc_start_value
+         LinearBuckling.invalidate_factorization
+         LinearBuckling.make_active
+         LinearBuckling.save_modes
+         LinearBuckling.save_results
+         LinearBuckling.set_A
+         LinearBuckling.set_B
+         LinearBuckling.set_D
+         LinearBuckling.set_X
+         LinearBuckling.set_active
+         LinearBuckling.set_dof
+         LinearBuckling.set_mode
+         LinearBuckling.set_reuse_factorization
+         LinearBuckling.set_solver
+         LinearBuckling.solve
+         LinearBuckling.update_boundary_conditions
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         LinearBuckling.active
+         LinearBuckling.assembly
+         LinearBuckling.current_mode
+         LinearBuckling.geometric_stiffness_matrix
+         LinearBuckling.global_dof
+         LinearBuckling.material_assembly
+         LinearBuckling.material_stiffness_matrix
+         LinearBuckling.n_dof
+         LinearBuckling.n_global_dof
+         LinearBuckling.n_node_dof
+         LinearBuckling.name
+         LinearBuckling.results
+         LinearBuckling.solver
+         LinearBuckling.space
+         LinearBuckling.total_assembly
+         LinearBuckling.total_stiffness_matrix
+         LinearBuckling.bc
+  
+  

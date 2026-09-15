@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free vibration of a clamped square plate &mdash; Fedoo 1.0.0b2 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=3e281a96"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Define and solve user equation" href="poison_eq.html" />
+    <link rel="prev" title="Linear buckling of a pinned beam" href="linear_buckling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Simple examples to start</a></li>
+      <li class="breadcrumb-item active">Free vibration of a clamped square plate</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/01-simple/modal_analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-01-simple-modal-analysis-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="free-vibration-of-a-clamped-square-plate">
+<span id="sphx-glr-examples-01-simple-modal-analysis-py"></span><h1>Free vibration of a clamped square plate<a class="headerlink" href="#free-vibration-of-a-clamped-square-plate" title="Link to this heading"></a></h1>
+<p>This example computes the natural frequencies and mode shapes of a square
+plate clamped along its entire boundary. A modal analysis solves the
+generalized eigenvalue problem</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{K}\boldsymbol{\phi} = \omega^2
+\mathbf{M}\boldsymbol{\phi},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> are the stiffness and mass
+matrices, <span class="math notranslate nohighlight">\(\omega\)</span> is an angular frequency, and
+<span class="math notranslate nohighlight">\(\boldsymbol{\phi}\)</span> is a mode shape. Because no external load is needed,
+this analysis is also called a <em>free-vibration</em> analysis.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+</pre></div>
+</div>
+</section>
+<section id="geometry-and-mesh">
+<h1>Geometry and mesh<a class="headerlink" href="#geometry-and-mesh" title="Link to this heading"></a></h1>
+<p>The one-metre square mid-surface is discretized with quadrilateral shell
+elements. Its thickness is small compared with its in-plane dimensions.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+
+<span class="n">length</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">thickness</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">ny</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="n">length</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="n">length</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span>
+    <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="material-shell-section-and-assembly">
+<h1>Material, shell section, and assembly<a class="headerlink" href="#material-shell-section-and-assembly" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">ShellHomogeneous</span></code> integrates the elastic material through the specified
+thickness. The material density supplies the translational and rotary
+inertia used to assemble the shell mass matrix.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">steel</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">210e9</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">steel</span><span class="o">.</span><span class="n">set_density</span><span class="p">(</span><span class="mf">7800.0</span><span class="p">)</span>
+<span class="n">shell</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ShellHomogeneous</span><span class="p">(</span><span class="n">steel</span><span class="p">,</span> <span class="n">thickness</span><span class="p">)</span>
+<span class="n">weakform</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">PlateEquilibrium</span><span class="p">(</span><span class="n">shell</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">weakform</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="modal-problem">
+<h1>Modal problem<a class="headerlink" href="#modal-problem" title="Link to this heading"></a></h1>
+<p>A clamped shell boundary has zero translations and zero rotations. The four
+edge node sets are combined so that this condition is applied around the
+complete perimeter. <code class="docutils literal notranslate"><span class="pre">sigma=0</span></code> asks the sparse eigensolver for the four
+modes closest to zero frequency.</p>
+<p>Registering an output writes one frame per mode to the <code class="docutils literal notranslate"><span class="pre">fdh5</span></code> file. Each
+frame also contains the mode number, eigenvalue, angular frequency, and
+frequency as scalar metadata.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">boundary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">,</span> <span class="s2">"bottom"</span><span class="p">,</span> <span class="s2">"top"</span><span class="p">)]</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">modal</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Modal</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">modal</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">boundary</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Rot"</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">modal</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"clamped_plate_modes.fdh5"</span><span class="p">,</span>
+    <span class="n">assembly</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Rot"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">modal</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">n_modes</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Natural frequencies [Hz]:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">mode</span><span class="p">,</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">modal</span><span class="o">.</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">frequency</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Natural frequencies [Hz]:
+  mode 1: 91.041
+  mode 2: 189.619
+  mode 3: 189.619
+  mode 4: 279.734
+</pre></div>
+</div>
+</section>
+<section id="plot-the-first-four-mode-shapes">
+<h1>Plot the first four mode shapes<a class="headerlink" href="#plot-the-first-four-mode-shapes" title="Link to this heading"></a></h1>
+<p>Eigenvectors have no physical amplitude. Each mode is therefore scaled so
+that its maximum transverse displacement is 15% of the plate width. The
+four saved frames are drawn in a shared 2-by-2 PyVista plotter through the
+standard <a class="reference internal" href="../../generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.DataSet</span></code></a> plotting interface. <code class="docutils literal notranslate"><span class="pre">multiplot=True</span></code> gives
+every subplot its own mesh actor and scalar bar.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plotter</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">window_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">900</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">mode_index</span><span class="p">,</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">modal</span><span class="o">.</span><span class="n">frequencies</span><span class="p">):</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">mode_index</span><span class="p">)</span>
+    <span class="n">transverse_displacement</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"Disp"</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">amplitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">transverse_displacement</span><span class="p">))</span>
+    <span class="n">display_scale</span> <span class="o">=</span> <span class="mf">0.15</span> <span class="o">*</span> <span class="n">length</span> <span class="o">/</span> <span class="n">amplitude</span>
+
+    <span class="n">plotter</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="o">*</span><span class="nb">divmod</span><span class="p">(</span><span class="n">mode_index</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="s2">"Disp"</span><span class="p">,</span>
+        <span class="n">component</span><span class="o">=</span><span class="s2">"Z"</span><span class="p">,</span>
+        <span class="n">iteration</span><span class="o">=</span><span class="n">mode_index</span><span class="p">,</span>
+        <span class="n">scale</span><span class="o">=</span><span class="n">display_scale</span><span class="p">,</span>
+        <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">],</span>
+        <span class="n">plotter</span><span class="o">=</span><span class="n">plotter</span><span class="p">,</span>
+        <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">multiplot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Mode </span><span class="si">{</span><span class="n">mode_index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">frequency</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz"</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="n">plotter</span><span class="o">.</span><span class="n">link_views</span><span class="p">()</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">view_isometric</span><span class="p">()</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_modal_analysis_001.png" srcset="../../_images/sphx_glr_modal_analysis_001.png" alt="modal analysis" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.406 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-modal-analysis-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/67c3110c6e0c06a1b2034177142ceb66/modal_analysis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">modal_analysis.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/b851a0793669fe3daacc05f3e838f88f/modal_analysis.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">modal_analysis.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/b9b9b744cbd79c16a543a57592394d4e/modal_analysis.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">modal_analysis.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="linear_buckling.html" class="btn btn-neutral float-left" title="Linear buckling of a pinned beam" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="poison_eq.html" class="btn btn-neutral float-right" title="Define and solve user equation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -98,6 +98,40 @@ apply basics boundary conditions and get the results.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="This example predicts the critical compressive loads and buckling modes of a straight elastic beam. Linear buckling is a perturbation analysis performed about a preloaded reference state. Fedoo solves">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_linear_buckling_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/linear_buckling`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Linear buckling of a pinned beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example computes the natural frequencies and mode shapes of a square plate clamped along its entire boundary. A modal analysis solves the generalized eigenvalue problem">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_modal_analysis_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/modal_analysis`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Free vibration of a clamped square plate</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Define and solve user equation">
 
 .. only:: html
@@ -381,7 +415,7 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The key points are:     - define two separated mesh that share to the same node       list with different elements.     - create two separated Assembly that are combined in a single AssemblySum       object.     - extract/save results separatedly for each elm_type.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example combines quadrilateral and triangular elements that share the same node array. Each element block has its own assembly, while their sum is used to solve a single mechanical problem.">
 
 .. only:: html
 
@@ -392,7 +426,7 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Very simple example with multiple element type.</div>
+      <div class="sphx-glr-thumbnail-title">Analysis and visualization of a multi-mesh model</div>
     </div>
 
 

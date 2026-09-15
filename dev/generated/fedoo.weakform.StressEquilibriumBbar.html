@@ -27,7 +27,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.weakform.StressEquilibriumBbar.get_all" href="fedoo.weakform.StressEquilibriumBbar.get_all.html" />
+    <link rel="next" title="fedoo.weakform.StressEquilibriumBbar.copy" href="fedoo.weakform.StressEquilibriumBbar.copy.html" />
     <link rel="prev" title="fedoo.weakform.StressEquilibriumFbar.nlgeom" href="fedoo.weakform.StressEquilibriumFbar.nlgeom.html" /> 
 </head>
 
@@ -72,6 +72,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumFbar.html">fedoo.weakform.StressEquilibriumFbar</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.weakform.StressEquilibriumBbar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.copy.html">fedoo.weakform.StressEquilibriumBbar.copy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_all.html">fedoo.weakform.StressEquilibriumBbar.get_all</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_dissipation.html">fedoo.weakform.StressEquilibriumBbar.get_dissipation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_storage.html">fedoo.weakform.StressEquilibriumBbar.get_storage</a></li>
@@ -198,52 +199,55 @@ the active ModelingSpace is considered.</p></li>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_all.html#fedoo.weakform.StressEquilibriumBbar.get_all" title="fedoo.weakform.StressEquilibriumBbar.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.get_all</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.copy.html#fedoo.weakform.StressEquilibriumBbar.copy" title="fedoo.weakform.StressEquilibriumBbar.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.copy</span></code></a>()</p></td>
+<td><p>Return a shallow copy sharing the weak form's model objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_all.html#fedoo.weakform.StressEquilibriumBbar.get_all" title="fedoo.weakform.StressEquilibriumBbar.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.get_all</span></code></a>()</p></td>
 <td><p>Return the list of all weak forms.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_dissipation.html#fedoo.weakform.StressEquilibriumBbar.get_dissipation" title="fedoo.weakform.StressEquilibriumBbar.get_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.get_dissipation</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_dissipation.html#fedoo.weakform.StressEquilibriumBbar.get_dissipation" title="fedoo.weakform.StressEquilibriumBbar.get_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.get_dissipation</span></code></a>()</p></td>
 <td><p>Return the optional dissipative provider for a time integrator.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_storage.html#fedoo.weakform.StressEquilibriumBbar.get_storage" title="fedoo.weakform.StressEquilibriumBbar.get_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.get_storage</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_storage.html#fedoo.weakform.StressEquilibriumBbar.get_storage" title="fedoo.weakform.StressEquilibriumBbar.get_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.get_storage</span></code></a>()</p></td>
 <td><p>Return the optional storage weakform for a time integrator.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_weak_equation.html#fedoo.weakform.StressEquilibriumBbar.get_weak_equation" title="fedoo.weakform.StressEquilibriumBbar.get_weak_equation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.get_weak_equation</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_weak_equation.html#fedoo.weakform.StressEquilibriumBbar.get_weak_equation" title="fedoo.weakform.StressEquilibriumBbar.get_weak_equation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.get_weak_equation</span></code></a>(...)</p></td>
 <td><p>Get the weak equation related to the current problem state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.initialize.html#fedoo.weakform.StressEquilibriumBbar.initialize" title="fedoo.weakform.StressEquilibriumBbar.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.initialize</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.initialize.html#fedoo.weakform.StressEquilibriumBbar.initialize" title="fedoo.weakform.StressEquilibriumBbar.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.initialize</span></code></a>(assembly, pb)</p></td>
 <td><p>Initialize the weakform at the begining of a problem.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.iter_leaf.html#fedoo.weakform.StressEquilibriumBbar.iter_leaf" title="fedoo.weakform.StressEquilibriumBbar.iter_leaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.iter_leaf</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.iter_leaf.html#fedoo.weakform.StressEquilibriumBbar.iter_leaf" title="fedoo.weakform.StressEquilibriumBbar.iter_leaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.iter_leaf</span></code></a>()</p></td>
 <td><p>Iterate over the leaf weakforms contained in this object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.reset.html#fedoo.weakform.StressEquilibriumBbar.reset" title="fedoo.weakform.StressEquilibriumBbar.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.reset.html#fedoo.weakform.StressEquilibriumBbar.reset" title="fedoo.weakform.StressEquilibriumBbar.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.reset</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_damping.html#fedoo.weakform.StressEquilibriumBbar.set_damping" title="fedoo.weakform.StressEquilibriumBbar.set_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.set_damping</span></code></a>([damping])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_damping.html#fedoo.weakform.StressEquilibriumBbar.set_damping" title="fedoo.weakform.StressEquilibriumBbar.set_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.set_damping</span></code></a>([damping])</p></td>
 <td><p>Mechanical alias for <code class="docutils literal notranslate"><span class="pre">set_dissipation</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_dissipation.html#fedoo.weakform.StressEquilibriumBbar.set_dissipation" title="fedoo.weakform.StressEquilibriumBbar.set_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.set_dissipation</span></code></a>([...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_dissipation.html#fedoo.weakform.StressEquilibriumBbar.set_dissipation" title="fedoo.weakform.StressEquilibriumBbar.set_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.set_dissipation</span></code></a>([...])</p></td>
 <td><p>Attach a dissipative contribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_inertia.html#fedoo.weakform.StressEquilibriumBbar.set_inertia" title="fedoo.weakform.StressEquilibriumBbar.set_inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.set_inertia</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_inertia.html#fedoo.weakform.StressEquilibriumBbar.set_inertia" title="fedoo.weakform.StressEquilibriumBbar.set_inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.set_inertia</span></code></a>(...)</p></td>
 <td><p>Mechanical alias for <code class="docutils literal notranslate"><span class="pre">set_storage</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_start.html#fedoo.weakform.StressEquilibriumBbar.set_start" title="fedoo.weakform.StressEquilibriumBbar.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.set_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_start.html#fedoo.weakform.StressEquilibriumBbar.set_start" title="fedoo.weakform.StressEquilibriumBbar.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.set_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Start a new time increment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_storage.html#fedoo.weakform.StressEquilibriumBbar.set_storage" title="fedoo.weakform.StressEquilibriumBbar.set_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.set_storage</span></code></a>(storage[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_storage.html#fedoo.weakform.StressEquilibriumBbar.set_storage" title="fedoo.weakform.StressEquilibriumBbar.set_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.set_storage</span></code></a>(storage[, ...])</p></td>
 <td><p>Attach a time-storage weakform to this static weakform.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.sum.html#fedoo.weakform.StressEquilibriumBbar.sum" title="fedoo.weakform.StressEquilibriumBbar.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.sum</span></code></a>(wf1, wf2)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.sum.html#fedoo.weakform.StressEquilibriumBbar.sum" title="fedoo.weakform.StressEquilibriumBbar.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.sum</span></code></a>(wf1, wf2)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.to_start.html#fedoo.weakform.StressEquilibriumBbar.to_start" title="fedoo.weakform.StressEquilibriumBbar.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.to_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.to_start.html#fedoo.weakform.StressEquilibriumBbar.to_start" title="fedoo.weakform.StressEquilibriumBbar.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.to_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Reset the current time increment.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.update.html#fedoo.weakform.StressEquilibriumBbar.update" title="fedoo.weakform.StressEquilibriumBbar.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.update</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.update.html#fedoo.weakform.StressEquilibriumBbar.update" title="fedoo.weakform.StressEquilibriumBbar.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.update</span></code></a>(assembly, pb)</p></td>
 <td><p>Update the weakform to the current state.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.update_2.html#fedoo.weakform.StressEquilibriumBbar.update_2" title="fedoo.weakform.StressEquilibriumBbar.update_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.update_2</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.update_2.html#fedoo.weakform.StressEquilibriumBbar.update_2" title="fedoo.weakform.StressEquilibriumBbar.update_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.update_2</span></code></a>(assembly, pb)</p></td>
 <td><p>Update the weakform to the current state.</p></td>
 </tr>
 </tbody>
@@ -285,7 +289,7 @@ the active ModelingSpace is considered.</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="fedoo.weakform.StressEquilibriumFbar.nlgeom.html" class="btn btn-neutral float-left" title="fedoo.weakform.StressEquilibriumFbar.nlgeom" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.weakform.StressEquilibriumBbar.get_all.html" class="btn btn-neutral float-right" title="fedoo.weakform.StressEquilibriumBbar.get_all" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.weakform.StressEquilibriumBbar.copy.html" class="btn btn-neutral float-right" title="fedoo.weakform.StressEquilibriumBbar.copy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
