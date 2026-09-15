@@ -27,7 +27,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.weakform.StressEquilibriumMixed.get_all" href="fedoo.weakform.StressEquilibriumMixed.get_all.html" />
+    <link rel="next" title="fedoo.weakform.StressEquilibriumMixed.copy" href="fedoo.weakform.StressEquilibriumMixed.copy.html" />
     <link rel="prev" title="fedoo.weakform.StressEquilibriumRI.space" href="fedoo.weakform.StressEquilibriumRI.space.html" /> 
 </head>
 
@@ -70,6 +70,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.ImplicitDynamic.html">fedoo.weakform.ImplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.weakform.StressEquilibriumMixed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.copy.html">fedoo.weakform.StressEquilibriumMixed.copy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_all.html">fedoo.weakform.StressEquilibriumMixed.get_all</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_dissipation.html">fedoo.weakform.StressEquilibriumMixed.get_dissipation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_storage.html">fedoo.weakform.StressEquilibriumMixed.get_storage</a></li>
@@ -195,52 +196,55 @@ If False, a single projection (P:H) is used. Default is True.</p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_all.html#fedoo.weakform.StressEquilibriumMixed.get_all" title="fedoo.weakform.StressEquilibriumMixed.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_all</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.copy.html#fedoo.weakform.StressEquilibriumMixed.copy" title="fedoo.weakform.StressEquilibriumMixed.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.copy</span></code></a>()</p></td>
+<td><p>Return a shallow copy sharing the weak form's model objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_all.html#fedoo.weakform.StressEquilibriumMixed.get_all" title="fedoo.weakform.StressEquilibriumMixed.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_all</span></code></a>()</p></td>
 <td><p>Return the list of all weak forms.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_dissipation.html#fedoo.weakform.StressEquilibriumMixed.get_dissipation" title="fedoo.weakform.StressEquilibriumMixed.get_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_dissipation</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_dissipation.html#fedoo.weakform.StressEquilibriumMixed.get_dissipation" title="fedoo.weakform.StressEquilibriumMixed.get_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_dissipation</span></code></a>()</p></td>
 <td><p>Return the optional dissipative provider for a time integrator.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_storage.html#fedoo.weakform.StressEquilibriumMixed.get_storage" title="fedoo.weakform.StressEquilibriumMixed.get_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_storage</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_storage.html#fedoo.weakform.StressEquilibriumMixed.get_storage" title="fedoo.weakform.StressEquilibriumMixed.get_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_storage</span></code></a>()</p></td>
 <td><p>Return the optional storage weakform for a time integrator.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_weak_equation.html#fedoo.weakform.StressEquilibriumMixed.get_weak_equation" title="fedoo.weakform.StressEquilibriumMixed.get_weak_equation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_weak_equation</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_weak_equation.html#fedoo.weakform.StressEquilibriumMixed.get_weak_equation" title="fedoo.weakform.StressEquilibriumMixed.get_weak_equation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.get_weak_equation</span></code></a>(...)</p></td>
 <td><p>Get the weak equation related to the current problem state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.initialize.html#fedoo.weakform.StressEquilibriumMixed.initialize" title="fedoo.weakform.StressEquilibriumMixed.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.initialize</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.initialize.html#fedoo.weakform.StressEquilibriumMixed.initialize" title="fedoo.weakform.StressEquilibriumMixed.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.initialize</span></code></a>(assembly, pb)</p></td>
 <td><p>Initialize the weakform at the begining of a problem.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.iter_leaf.html#fedoo.weakform.StressEquilibriumMixed.iter_leaf" title="fedoo.weakform.StressEquilibriumMixed.iter_leaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.iter_leaf</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.iter_leaf.html#fedoo.weakform.StressEquilibriumMixed.iter_leaf" title="fedoo.weakform.StressEquilibriumMixed.iter_leaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.iter_leaf</span></code></a>()</p></td>
 <td><p>Iterate over the leaf weakforms contained in this object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.reset.html#fedoo.weakform.StressEquilibriumMixed.reset" title="fedoo.weakform.StressEquilibriumMixed.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.reset.html#fedoo.weakform.StressEquilibriumMixed.reset" title="fedoo.weakform.StressEquilibriumMixed.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.reset</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_damping.html#fedoo.weakform.StressEquilibriumMixed.set_damping" title="fedoo.weakform.StressEquilibriumMixed.set_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.set_damping</span></code></a>([damping])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_damping.html#fedoo.weakform.StressEquilibriumMixed.set_damping" title="fedoo.weakform.StressEquilibriumMixed.set_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.set_damping</span></code></a>([damping])</p></td>
 <td><p>Mechanical alias for <code class="docutils literal notranslate"><span class="pre">set_dissipation</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_dissipation.html#fedoo.weakform.StressEquilibriumMixed.set_dissipation" title="fedoo.weakform.StressEquilibriumMixed.set_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.set_dissipation</span></code></a>([...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_dissipation.html#fedoo.weakform.StressEquilibriumMixed.set_dissipation" title="fedoo.weakform.StressEquilibriumMixed.set_dissipation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.set_dissipation</span></code></a>([...])</p></td>
 <td><p>Attach a dissipative contribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_inertia.html#fedoo.weakform.StressEquilibriumMixed.set_inertia" title="fedoo.weakform.StressEquilibriumMixed.set_inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.set_inertia</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_inertia.html#fedoo.weakform.StressEquilibriumMixed.set_inertia" title="fedoo.weakform.StressEquilibriumMixed.set_inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.set_inertia</span></code></a>(...)</p></td>
 <td><p>Mechanical alias for <code class="docutils literal notranslate"><span class="pre">set_storage</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_start.html#fedoo.weakform.StressEquilibriumMixed.set_start" title="fedoo.weakform.StressEquilibriumMixed.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.set_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_start.html#fedoo.weakform.StressEquilibriumMixed.set_start" title="fedoo.weakform.StressEquilibriumMixed.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.set_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Start a new time increment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_storage.html#fedoo.weakform.StressEquilibriumMixed.set_storage" title="fedoo.weakform.StressEquilibriumMixed.set_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.set_storage</span></code></a>(storage)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_storage.html#fedoo.weakform.StressEquilibriumMixed.set_storage" title="fedoo.weakform.StressEquilibriumMixed.set_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.set_storage</span></code></a>(storage)</p></td>
 <td><p>Attach a time-storage weakform to this static weakform.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.sum.html#fedoo.weakform.StressEquilibriumMixed.sum" title="fedoo.weakform.StressEquilibriumMixed.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.sum</span></code></a>(wf1, wf2)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.sum.html#fedoo.weakform.StressEquilibriumMixed.sum" title="fedoo.weakform.StressEquilibriumMixed.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.sum</span></code></a>(wf1, wf2)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.to_start.html#fedoo.weakform.StressEquilibriumMixed.to_start" title="fedoo.weakform.StressEquilibriumMixed.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.to_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.to_start.html#fedoo.weakform.StressEquilibriumMixed.to_start" title="fedoo.weakform.StressEquilibriumMixed.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.to_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Reset the current time increment.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.update.html#fedoo.weakform.StressEquilibriumMixed.update" title="fedoo.weakform.StressEquilibriumMixed.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.update</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.update.html#fedoo.weakform.StressEquilibriumMixed.update" title="fedoo.weakform.StressEquilibriumMixed.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.update</span></code></a>(assembly, pb)</p></td>
 <td><p>Update the weakform to the current state.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.update_2.html#fedoo.weakform.StressEquilibriumMixed.update_2" title="fedoo.weakform.StressEquilibriumMixed.update_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.update_2</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.update_2.html#fedoo.weakform.StressEquilibriumMixed.update_2" title="fedoo.weakform.StressEquilibriumMixed.update_2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.update_2</span></code></a>(assembly, pb)</p></td>
 <td><p>Update the weakform to the current state.</p></td>
 </tr>
 </tbody>
@@ -282,7 +286,7 @@ If False, a single projection (P:H) is used. Default is True.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="fedoo.weakform.StressEquilibriumRI.space.html" class="btn btn-neutral float-left" title="fedoo.weakform.StressEquilibriumRI.space" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.weakform.StressEquilibriumMixed.get_all.html" class="btn btn-neutral float-right" title="fedoo.weakform.StressEquilibriumMixed.get_all" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.weakform.StressEquilibriumMixed.copy.html" class="btn btn-neutral float-right" title="fedoo.weakform.StressEquilibriumMixed.copy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; Fedoo 1.0.0b2 (dev)</title>
+  <title>Free vibration of a cantilever &mdash; Fedoo 1.0.0b2 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
@@ -24,11 +24,12 @@
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
       <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Define and solve user equation" href="poison_eq.html" />
-    <link rel="prev" title="Beam Lattice Structure using beam model with geometric nonlinearities" href="lattice_beam.html" /> 
+    <link rel="prev" title="Linear buckling of a pinned beam" href="linear_buckling.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -93,7 +94,7 @@
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
           <li class="breadcrumb-item"><a href="index.html">Simple examples to start</a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">Free vibration of a cantilever</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/examples/01-simple/modal_analysis.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -108,7 +109,77 @@
 <p><a class="reference internal" href="#sphx-glr-download-examples-01-simple-modal-analysis-py"><span class="std std-ref">Go to the end</span></a>
 to download the full example code.</p>
 </div>
-<p class="sphx-glr-example-title" id="sphx-glr-examples-01-simple-modal-analysis-py">Natural frequencies and mode shapes of a cantilever.</p>
+<section class="sphx-glr-example-title" id="free-vibration-of-a-cantilever">
+<span id="sphx-glr-examples-01-simple-modal-analysis-py"></span><h1>Free vibration of a cantilever<a class="headerlink" href="#free-vibration-of-a-cantilever" title="Link to this heading"></a></h1>
+<p>This example computes the natural frequencies and mode shapes of an elastic
+cantilever. A modal analysis solves the generalized eigenvalue problem</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{K}\boldsymbol{\phi} = \omega^2
+\mathbf{M}\boldsymbol{\phi},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> are the stiffness and mass
+matrices, <span class="math notranslate nohighlight">\(\omega\)</span> is an angular frequency, and
+<span class="math notranslate nohighlight">\(\boldsymbol{\phi}\)</span> is a mode shape. Because no external load is needed,
+this analysis is also called a <em>free-vibration</em> analysis.
+r</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+</pre></div>
+</div>
+</section>
+<section id="geometry-and-mesh">
+<h1>Geometry and mesh<a class="headerlink" href="#geometry-and-mesh" title="Link to this heading"></a></h1>
+<p>A slender rectangular cantilever is represented with plane-strain
+quadrilateral elements. The dimensions are expressed in metres.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dplane"</span><span class="p">)</span>
+
+<span class="n">length</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+    <span class="n">ny</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="n">length</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="o">=-</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="material-and-assembly">
+<h1>Material and assembly<a class="headerlink" href="#material-and-assembly" title="Link to this heading"></a></h1>
+<p>Both elastic properties and mass density are required. The density is used
+by Fedoo to assemble the consistent mass matrix of the model.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">steel</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">210e9</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">steel</span><span class="o">.</span><span class="n">set_density</span><span class="p">(</span><span class="mf">7800.0</span><span class="p">)</span>
+<span class="n">weakform</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">steel</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">weakform</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="modal-problem">
+<h1>Modal problem<a class="headerlink" href="#modal-problem" title="Link to this heading"></a></h1>
+<p>The left edge is clamped. <code class="docutils literal notranslate"><span class="pre">Modal.solve</span></code> then extracts the six modes with
+the lowest eigenvalues. <code class="docutils literal notranslate"><span class="pre">sigma=0</span></code> explicitly asks the sparse eigensolver
+to search around zero frequency.</p>
+<p>Registering an output writes one frame per mode to the <code class="docutils literal notranslate"><span class="pre">fdh5</span></code> file. Each
+frame contains the requested fields as well as the mode number, eigenvalue,
+angular frequency, and frequency as scalar metadata.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">modal</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Modal</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">clamped</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span><span class="p">)</span>
+<span class="n">modal</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">clamped</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">modal</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"cantilever_modes.fdh5"</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">modal</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">n_modes</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Natural frequencies [Hz]:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">mode</span><span class="p">,</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">modal</span><span class="o">.</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">frequency</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Natural frequencies [Hz]:
   mode 1: 91.9532
   mode 2: 552.194
@@ -118,49 +189,28 @@ to download the full example code.</p>
   mode 6: 4100.96
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
-
-
-<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dplane"</span><span class="p">)</span>
-
-<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
-    <span class="n">nx</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
-    <span class="n">ny</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">x_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-    <span class="n">x_max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-    <span class="n">y_min</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span>
-    <span class="n">y_max</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
-    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span>
+</section>
+<section id="plot-a-mode-shape">
+<h1>Plot a mode shape<a class="headerlink" href="#plot-a-mode-shape" title="Link to this heading"></a></h1>
+<p>Modal amplitudes have no physical magnitude: only their relative values and
+signs define the shape. The deformation scale is therefore chosen so that
+the largest displayed displacement is 15% of the beam length. The first
+frame is plotted and coloured by displacement magnitude using the standard
+<a class="reference internal" href="../../generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.DataSet</span></code></a> plotting interface.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">max_displacement</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">"Disp"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">display_scale</span> <span class="o">=</span> <span class="mf">0.15</span> <span class="o">*</span> <span class="n">length</span> <span class="o">/</span> <span class="n">max_displacement</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">"Disp"</span><span class="p">,</span>
+    <span class="n">component</span><span class="o">=</span><span class="s2">"norm"</span><span class="p">,</span>
+    <span class="n">iteration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="n">display_scale</span><span class="p">,</span>
+    <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"First bending mode - </span><span class="si">{</span><span class="n">modal</span><span class="o">.</span><span class="n">frequencies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz"</span><span class="p">,</span>
 <span class="p">)</span>
-
-<span class="n">steel</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">210e9</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
-<span class="n">steel</span><span class="o">.</span><span class="n">set_density</span><span class="p">(</span><span class="mf">7800.0</span><span class="p">)</span>
-<span class="n">weakform</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">steel</span><span class="p">)</span>
-<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">weakform</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
-
-<span class="n">modal</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Modal</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
-<span class="n">clamped</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span><span class="p">)</span>
-<span class="n">modal</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">clamped</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">modal</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
-    <span class="s2">"cantilever_modes.fdh5"</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">]</span>
-<span class="p">)</span>
-<span class="n">modal</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">n_modes</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Natural frequencies [Hz]:"</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">mode</span><span class="p">,</span> <span class="n">frequency</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">modal</span><span class="o">.</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">frequency</span><span class="si">:</span><span class="s2">.6g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-
-<span class="c1"># The selected mode is exposed through the usual problem result API.</span>
-<span class="n">modal</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
-<span class="n">first_mode</span> <span class="o">=</span> <span class="n">modal</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">])</span>
-
-<span class="c1"># Open the multi-frame result with fd.viewer(results). Each frame is one mode.</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.030 seconds)</p>
+<img src="../../_images/sphx_glr_modal_analysis_001.png" srcset="../../_images/sphx_glr_modal_analysis_001.png" alt="modal analysis" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.207 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-modal-analysis-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/67c3110c6e0c06a1b2034177142ceb66/modal_analysis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">modal_analysis.ipynb</span></code></a></p>
@@ -173,12 +223,13 @@ to download the full example code.</p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="lattice_beam.html" class="btn btn-neutral float-left" title="Beam Lattice Structure using beam model with geometric nonlinearities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="linear_buckling.html" class="btn btn-neutral float-left" title="Linear buckling of a pinned beam" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="poison_eq.html" class="btn btn-neutral float-right" title="Define and solve user equation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

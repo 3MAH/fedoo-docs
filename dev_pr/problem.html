@@ -72,6 +72,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.Modal.html">fedoo.problem.Modal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.LinearBuckling.html">fedoo.problem.LinearBuckling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.LinearNewmark.html">fedoo.problem.LinearNewmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
@@ -81,6 +82,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#result-output">Result output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#eigenvalue-analyses">Eigenvalue analyses</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#modal-analysis">Modal analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-buckling-analysis">Linear buckling analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#time-integration">Time integration</a><ul>
@@ -145,16 +147,19 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.problem.Modal.html#fedoo.problem.Modal" title="fedoo.problem.Modal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Modal</span></code></a>(assembly[, name])</p></td>
 <td><p>Compute natural frequencies and mode shapes of a linear model.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.LinearNewmark.html#fedoo.problem.LinearNewmark" title="fedoo.problem.LinearNewmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearNewmark</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.LinearBuckling.html#fedoo.problem.LinearBuckling" title="fedoo.problem.LinearBuckling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling</span></code></a>(assembly[, ...])</p></td>
+<td><p>Compute linear buckling modes about a prestressed equilibrium state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.problem.LinearNewmark.html#fedoo.problem.LinearNewmark" title="fedoo.problem.LinearNewmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearNewmark</span></code></a></p></td>
 <td><p>alias of <a class="reference internal" href="generated/fedoo.problem.Linear.html#fedoo.problem.Linear" title="fedoo.problem.linear.Linear"><code class="xref py py-class docutils literal notranslate"><span class="pre">Linear</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear</span></code></a>(assembly[, nlgeom, name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinear</span></code></a>(assembly[, nlgeom, name])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.html#fedoo.problem.NonLinearNewmark" title="fedoo.problem.NonLinearNewmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark</span></code></a>(assembly[, beta, gamma, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.problem.NonLinearNewmark.html#fedoo.problem.NonLinearNewmark" title="fedoo.problem.NonLinearNewmark"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonLinearNewmark</span></code></a>(assembly[, beta, gamma, ...])</p></td>
 <td><p>Create a nonlinear Newmark problem with default time integrators.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.problem.ExplicitDynamic.html#fedoo.problem.ExplicitDynamic" title="fedoo.problem.ExplicitDynamic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic</span></code></a>(assembly, time_step[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.problem.ExplicitDynamic.html#fedoo.problem.ExplicitDynamic" title="fedoo.problem.ExplicitDynamic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic</span></code></a>(assembly, time_step[, ...])</p></td>
 <td><p>Explicit structural dynamics with a user-controlled increment loop.</p></td>
 </tr>
 </tbody>
@@ -222,6 +227,28 @@ by <code class="xref py py-meth docutils literal notranslate"><span class="pre">
 and frequency included as scalar metadata. To defer output, solve before
 calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">Modal.add_output()</span></code>, then register the desired fields and call
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">Modal.save_modes()</span></code> explicitly.</p>
+</section>
+<section id="linear-buckling-analysis">
+<h3>Linear buckling analysis<a class="headerlink" href="#linear-buckling-analysis" title="Link to this heading"></a></h3>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearBuckling</span></code> computes critical load factors and buckling modes from
+the converged state of a prestressed assembly. It separates the material and
+initial-stress stiffnesses by assembling shallow weak-form copies with
+geometric stiffness disabled and enabled, respectively. When possible, the
+matrix already assembled by the preload problem is reused:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">preload</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">"TL"</span><span class="p">)</span>
+<span class="n">preload</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">fixed_nodes</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">preload</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">()</span>
+
+<span class="n">buckling</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">LinearBuckling</span><span class="p">(</span><span class="n">preload</span><span class="p">)</span>
+<span class="n">buckling</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">fixed_nodes</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">buckling</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">n_modes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">buckling</span><span class="o">.</span><span class="n">load_factors</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Set <code class="docutils literal notranslate"><span class="pre">reuse_assembled_matrix=False</span></code> to rebuild both stiffness matrices. The
+first implementation supports fixed-geometry and total-Lagrangian preload
+states; updated-Lagrangian states are rejected.</p>
 </section>
 </section>
 <section id="time-integration">

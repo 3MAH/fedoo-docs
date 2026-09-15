@@ -98,7 +98,24 @@ apply basics boundary conditions and get the results.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Natural frequencies and mode shapes of a cantilever.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example predicts the critical compressive loads and buckling modes of a straight elastic beam. Linear buckling is a perturbation analysis performed about a preloaded reference state. Fedoo solves">
+
+.. only:: html
+
+  .. image:: /examples/01-simple/images/thumb/sphx_glr_linear_buckling_thumb.png
+    :alt:
+
+  :doc:`/examples/01-simple/linear_buckling`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Linear buckling of a pinned beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example computes the natural frequencies and mode shapes of an elastic cantilever. A modal analysis solves the generalized eigenvalue problem">
 
 .. only:: html
 
@@ -109,7 +126,7 @@ apply basics boundary conditions and get the results.
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Natural frequencies and mode shapes of a cantilever.</div>
+      <div class="sphx-glr-thumbnail-title">Free vibration of a cantilever</div>
     </div>
 
 
