@@ -25,6 +25,7 @@
          LinearNewmark.add_output
          LinearNewmark.apply_boundary_conditions
          LinearNewmark.change_assembly
+         LinearNewmark.clear_outputs
          LinearNewmark.get_A
          LinearNewmark.get_B
          LinearNewmark.get_D

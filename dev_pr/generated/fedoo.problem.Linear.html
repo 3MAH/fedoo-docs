@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.problem.Linear &mdash; Fedoo 1.0.0b1 (dev)</title>
+  <title>fedoo.problem.Linear &mdash; Fedoo 1.0.0b2 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/documentation_options.js?v=3e281a96"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -76,6 +76,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.add_output.html">fedoo.problem.Linear.add_output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.apply_boundary_conditions.html">fedoo.problem.Linear.apply_boundary_conditions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.change_assembly.html">fedoo.problem.Linear.change_assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.clear_outputs.html">fedoo.problem.Linear.clear_outputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_A.html">fedoo.problem.Linear.get_A</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_B.html">fedoo.problem.Linear.get_B</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_D.html">fedoo.problem.Linear.get_D</a></li>
@@ -130,12 +131,15 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.bc.html">fedoo.problem.Linear.bc</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Modal.html">fedoo.problem.Modal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.LinearNewmark.html">fedoo.problem.LinearNewmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#result-output">Result output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#eigenvalue-analyses">Eigenvalue analyses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../problem.html#time-integration">Time integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../problem.html#non-linear-solver">Non-Linear Solver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../problem.html#overcoming-simulation-instabilities">Overcoming Simulation Instabilities</a></li>
@@ -216,7 +220,7 @@ every constant-size increment. Only the right-hand side is rebuilt.</p></li>
 <td><p>Add global degrees of freedom to the problem.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.add_output.html#fedoo.problem.Linear.add_output" title="fedoo.problem.Linear.add_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.add_output</span></code></a>(filename, assembly[, ...])</p></td>
-<td><p>Add output requirement for automatic saving during nlsolve.</p></td>
+<td><p>Register an output for automatic saving managed by solve methods.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.apply_boundary_conditions.html#fedoo.problem.Linear.apply_boundary_conditions" title="fedoo.problem.Linear.apply_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.apply_boundary_conditions</span></code></a>([t_fact, ...])</p></td>
 <td><p></p></td>
@@ -224,121 +228,124 @@ every constant-size increment. Only the right-hand side is rebuilt.</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.change_assembly.html#fedoo.problem.Linear.change_assembly" title="fedoo.problem.Linear.change_assembly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.change_assembly</span></code></a>(assembling[, update])</p></td>
 <td><p>Modify the assembly associated to the problem and update the problem (see Assembly.update for more information)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_A.html#fedoo.problem.Linear.get_A" title="fedoo.problem.Linear.get_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_A</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.clear_outputs.html#fedoo.problem.Linear.clear_outputs" title="fedoo.problem.Linear.clear_outputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.clear_outputs</span></code></a>()</p></td>
+<td><p>Stop automatic output by removing all registered requests.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_A.html#fedoo.problem.Linear.get_A" title="fedoo.problem.Linear.get_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_A</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_B.html#fedoo.problem.Linear.get_B" title="fedoo.problem.Linear.get_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_B</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_B.html#fedoo.problem.Linear.get_B" title="fedoo.problem.Linear.get_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_B</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_D.html#fedoo.problem.Linear.get_D" title="fedoo.problem.Linear.get_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_D</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_D.html#fedoo.problem.Linear.get_D" title="fedoo.problem.Linear.get_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_D</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_X.html#fedoo.problem.Linear.get_X" title="fedoo.problem.Linear.get_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_X</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_X.html#fedoo.problem.Linear.get_X" title="fedoo.problem.Linear.get_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_X</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_acceleration.html#fedoo.problem.Linear.get_acceleration" title="fedoo.problem.Linear.get_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_acceleration</span></code></a>([name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_acceleration.html#fedoo.problem.Linear.get_acceleration" title="fedoo.problem.Linear.get_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_acceleration</span></code></a>([name])</p></td>
 <td><p>Return the current transient acceleration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_active.html#fedoo.problem.Linear.get_active" title="fedoo.problem.Linear.get_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_active</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_active.html#fedoo.problem.Linear.get_active" title="fedoo.problem.Linear.get_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_active</span></code></a>()</p></td>
 <td><p>Return the active Problem.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_all.html#fedoo.problem.Linear.get_all" title="fedoo.problem.Linear.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_all</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_all.html#fedoo.problem.Linear.get_all" title="fedoo.problem.Linear.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_all</span></code></a>()</p></td>
 <td><p>Return the list of all problems.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_disp.html#fedoo.problem.Linear.get_disp" title="fedoo.problem.Linear.get_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_disp</span></code></a>([name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_disp.html#fedoo.problem.Linear.get_disp" title="fedoo.problem.Linear.get_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_disp</span></code></a>([name])</p></td>
 <td><p>Return the displacement components.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_dof_solution.html#fedoo.problem.Linear.get_dof_solution" title="fedoo.problem.Linear.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_dof_solution</span></code></a>([name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_dof_solution.html#fedoo.problem.Linear.get_dof_solution" title="fedoo.problem.Linear.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_dof_solution</span></code></a>([name])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_elastic_energy.html#fedoo.problem.Linear.get_elastic_energy" title="fedoo.problem.Linear.get_elastic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_elastic_energy</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_elastic_energy.html#fedoo.problem.Linear.get_elastic_energy" title="fedoo.problem.Linear.get_elastic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_elastic_energy</span></code></a>()</p></td>
 <td><p>returns : sum (0.5 * U.transposed * K * U)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_ext_forces.html#fedoo.problem.Linear.get_ext_forces" title="fedoo.problem.Linear.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_ext_forces</span></code></a>([name, include_mpc])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_ext_forces.html#fedoo.problem.Linear.get_ext_forces" title="fedoo.problem.Linear.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_ext_forces</span></code></a>([name, include_mpc])</p></td>
 <td><p>Return the nodal Forces in global coordinates system.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_kinetic_energy.html#fedoo.problem.Linear.get_kinetic_energy" title="fedoo.problem.Linear.get_kinetic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_kinetic_energy</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_kinetic_energy.html#fedoo.problem.Linear.get_kinetic_energy" title="fedoo.problem.Linear.get_kinetic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_kinetic_energy</span></code></a>()</p></td>
 <td><p>Return <code class="docutils literal notranslate"><span class="pre">0.5</span> <span class="pre">*</span> <span class="pre">velocity.T</span> <span class="pre">*</span> <span class="pre">M</span> <span class="pre">*</span> <span class="pre">velocity</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_nodal_elastic_energy.html#fedoo.problem.Linear.get_nodal_elastic_energy" title="fedoo.problem.Linear.get_nodal_elastic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_nodal_elastic_energy</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_nodal_elastic_energy.html#fedoo.problem.Linear.get_nodal_elastic_energy" title="fedoo.problem.Linear.get_nodal_elastic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_nodal_elastic_energy</span></code></a>()</p></td>
 <td><p>returns : 0.5 * K * U .</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_results.html#fedoo.problem.Linear.get_results" title="fedoo.problem.Linear.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_results</span></code></a>(*args, **kargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_results.html#fedoo.problem.Linear.get_results" title="fedoo.problem.Linear.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_results</span></code></a>(*args, **kargs)</p></td>
 <td><p>Extract some results from the current problem.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_rot.html#fedoo.problem.Linear.get_rot" title="fedoo.problem.Linear.get_rot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_rot</span></code></a>([name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_rot.html#fedoo.problem.Linear.get_rot" title="fedoo.problem.Linear.get_rot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_rot</span></code></a>([name])</p></td>
 <td><p>Return the rotation components.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_velocity.html#fedoo.problem.Linear.get_velocity" title="fedoo.problem.Linear.get_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_velocity</span></code></a>([name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.get_velocity.html#fedoo.problem.Linear.get_velocity" title="fedoo.problem.Linear.get_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.get_velocity</span></code></a>([name])</p></td>
 <td><p>Return the current transient velocity.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.init_bc_start_value.html#fedoo.problem.Linear.init_bc_start_value" title="fedoo.problem.Linear.init_bc_start_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.init_bc_start_value</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.init_bc_start_value.html#fedoo.problem.Linear.init_bc_start_value" title="fedoo.problem.Linear.init_bc_start_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.init_bc_start_value</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.initialize.html#fedoo.problem.Linear.initialize" title="fedoo.problem.Linear.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.initialize</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.initialize.html#fedoo.problem.Linear.initialize" title="fedoo.problem.Linear.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.initialize</span></code></a>()</p></td>
 <td><p>Initialize and cache the optional linear transient operators.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.invalidate_factorization.html#fedoo.problem.Linear.invalidate_factorization" title="fedoo.problem.Linear.invalidate_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.invalidate_factorization</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.invalidate_factorization.html#fedoo.problem.Linear.invalidate_factorization" title="fedoo.problem.Linear.invalidate_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.invalidate_factorization</span></code></a>()</p></td>
 <td><p>Invalidate any cached factorization.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.make_active.html#fedoo.problem.Linear.make_active" title="fedoo.problem.Linear.make_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.make_active</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.make_active.html#fedoo.problem.Linear.make_active" title="fedoo.problem.Linear.make_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.make_active</span></code></a>()</p></td>
 <td><p>Define the problem instance as the active Problem.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.reset.html#fedoo.problem.Linear.reset" title="fedoo.problem.Linear.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.reset.html#fedoo.problem.Linear.reset" title="fedoo.problem.Linear.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.reset</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.save_results.html#fedoo.problem.Linear.save_results" title="fedoo.problem.Linear.save_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.save_results</span></code></a>([iterOutput])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.save_results.html#fedoo.problem.Linear.save_results" title="fedoo.problem.Linear.save_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.save_results</span></code></a>([iterOutput])</p></td>
+<td><p>Write the current state to every registered output.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_A.html#fedoo.problem.Linear.set_A" title="fedoo.problem.Linear.set_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_A</span></code></a>(A)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_A.html#fedoo.problem.Linear.set_A" title="fedoo.problem.Linear.set_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_A</span></code></a>(A)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_B.html#fedoo.problem.Linear.set_B" title="fedoo.problem.Linear.set_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_B</span></code></a>(B)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_B.html#fedoo.problem.Linear.set_B" title="fedoo.problem.Linear.set_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_B</span></code></a>(B)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_D.html#fedoo.problem.Linear.set_D" title="fedoo.problem.Linear.set_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_D</span></code></a>(D)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_D.html#fedoo.problem.Linear.set_D" title="fedoo.problem.Linear.set_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_D</span></code></a>(D)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_X.html#fedoo.problem.Linear.set_X" title="fedoo.problem.Linear.set_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_X</span></code></a>(value)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_X.html#fedoo.problem.Linear.set_X" title="fedoo.problem.Linear.set_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_X</span></code></a>(value)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_active.html#fedoo.problem.Linear.set_active" title="fedoo.problem.Linear.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_active</span></code></a>(name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_active.html#fedoo.problem.Linear.set_active" title="fedoo.problem.Linear.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_active</span></code></a>(name)</p></td>
 <td><p>Define the active Problem from its name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_dof.html#fedoo.problem.Linear.set_dof" title="fedoo.problem.Linear.set_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_dof</span></code></a>(name, value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_dof.html#fedoo.problem.Linear.set_dof" title="fedoo.problem.Linear.set_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_dof</span></code></a>(name, value)</p></td>
 <td><p>Set a static solution field or the current dynamic displacement.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_initial_acceleration.html#fedoo.problem.Linear.set_initial_acceleration" title="fedoo.problem.Linear.set_initial_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_initial_acceleration</span></code></a>(name, value)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_initial_acceleration.html#fedoo.problem.Linear.set_initial_acceleration" title="fedoo.problem.Linear.set_initial_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_initial_acceleration</span></code></a>(name, value)</p></td>
 <td><p>Set a transient initial acceleration component.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_initial_displacement.html#fedoo.problem.Linear.set_initial_displacement" title="fedoo.problem.Linear.set_initial_displacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_initial_displacement</span></code></a>(name, value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_initial_displacement.html#fedoo.problem.Linear.set_initial_displacement" title="fedoo.problem.Linear.set_initial_displacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_initial_displacement</span></code></a>(name, value)</p></td>
 <td><p>Set a transient initial displacement component.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_initial_velocity.html#fedoo.problem.Linear.set_initial_velocity" title="fedoo.problem.Linear.set_initial_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_initial_velocity</span></code></a>(name, value)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_initial_velocity.html#fedoo.problem.Linear.set_initial_velocity" title="fedoo.problem.Linear.set_initial_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_initial_velocity</span></code></a>(name, value)</p></td>
 <td><p>Set a transient initial velocity component.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_reuse_factorization.html#fedoo.problem.Linear.set_reuse_factorization" title="fedoo.problem.Linear.set_reuse_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_reuse_factorization</span></code></a>([reuse])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_reuse_factorization.html#fedoo.problem.Linear.set_reuse_factorization" title="fedoo.problem.Linear.set_reuse_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_reuse_factorization</span></code></a>([reuse])</p></td>
 <td><p>Enable or disable factorization reuse for repeated solves.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_solver.html#fedoo.problem.Linear.set_solver" title="fedoo.problem.Linear.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_solver</span></code></a>([solver])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_solver.html#fedoo.problem.Linear.set_solver" title="fedoo.problem.Linear.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_solver</span></code></a>([solver])</p></td>
 <td><p>Define the solver for the linear system resolution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_time_integrator.html#fedoo.problem.Linear.set_time_integrator" title="fedoo.problem.Linear.set_time_integrator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_time_integrator</span></code></a>(evolution, integrator)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.set_time_integrator.html#fedoo.problem.Linear.set_time_integrator" title="fedoo.problem.Linear.set_time_integrator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.set_time_integrator</span></code></a>(evolution, integrator)</p></td>
 <td><p>Attach a linear implicit second-order time integrator.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.solve.html#fedoo.problem.Linear.solve" title="fedoo.problem.Linear.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.solve</span></code></a>(**kargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.solve.html#fedoo.problem.Linear.solve" title="fedoo.problem.Linear.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.solve</span></code></a>(**kargs)</p></td>
 <td><p>Solve the linear problem and optionally update assembly fields.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.solve_history.html#fedoo.problem.Linear.solve_history" title="fedoo.problem.Linear.solve_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.solve_history</span></code></a>(tmax[, dt, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.solve_history.html#fedoo.problem.Linear.solve_history" title="fedoo.problem.Linear.solve_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.solve_history</span></code></a>(tmax[, dt, ...])</p></td>
 <td><p>Solve a complete cached linear transient history.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.solve_time_increment.html#fedoo.problem.Linear.solve_time_increment" title="fedoo.problem.Linear.solve_time_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.solve_time_increment</span></code></a>([...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.solve_time_increment.html#fedoo.problem.Linear.solve_time_increment" title="fedoo.problem.Linear.solve_time_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.solve_time_increment</span></code></a>([...])</p></td>
 <td><p>Solve and advance one complete linear transient increment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.update.html#fedoo.problem.Linear.update" title="fedoo.problem.Linear.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.update</span></code></a>([dtime, compute, update_weakform])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.update.html#fedoo.problem.Linear.update" title="fedoo.problem.Linear.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.update</span></code></a>([dtime, compute, update_weakform])</p></td>
 <td><p>Assemble the matrix including the following modification:</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Linear.update_boundary_conditions.html#fedoo.problem.Linear.update_boundary_conditions" title="fedoo.problem.Linear.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.update_boundary_conditions</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Linear.update_boundary_conditions.html#fedoo.problem.Linear.update_boundary_conditions" title="fedoo.problem.Linear.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Linear.update_boundary_conditions</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>

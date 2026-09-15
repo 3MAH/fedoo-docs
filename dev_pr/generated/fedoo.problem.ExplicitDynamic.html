@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.problem.ExplicitDynamic &mdash; Fedoo 1.0.0b1 (dev)</title>
+  <title>fedoo.problem.ExplicitDynamic &mdash; Fedoo 1.0.0b2 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=09d090fc"></script>
+      <script src="../_static/documentation_options.js?v=3e281a96"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -70,6 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Modal.html">fedoo.problem.Modal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.LinearNewmark.html">fedoo.problem.LinearNewmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
@@ -77,6 +78,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.add_global_dof.html">fedoo.problem.ExplicitDynamic.add_global_dof</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.add_output.html">fedoo.problem.ExplicitDynamic.add_output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.apply_boundary_conditions.html">fedoo.problem.ExplicitDynamic.apply_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.clear_outputs.html">fedoo.problem.ExplicitDynamic.clear_outputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.evaluate.html">fedoo.problem.ExplicitDynamic.evaluate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_A.html">fedoo.problem.ExplicitDynamic.get_A</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_B.html">fedoo.problem.ExplicitDynamic.get_B</a></li>
@@ -136,6 +138,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#result-output">Result output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#eigenvalue-analyses">Eigenvalue analyses</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../problem.html#time-integration">Time integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../problem.html#non-linear-solver">Non-Linear Solver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../problem.html#overcoming-simulation-instabilities">Overcoming Simulation Instabilities</a></li>
@@ -231,138 +235,141 @@ changing geometry, contact, or other state-dependent contributions.</p>
 <td><p>Add global degrees of freedom to the problem.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.add_output.html#fedoo.problem.ExplicitDynamic.add_output" title="fedoo.problem.ExplicitDynamic.add_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.add_output</span></code></a>(filename, assembly)</p></td>
-<td><p>Add output requirement for automatic saving during nlsolve.</p></td>
+<td><p>Register an output for automatic saving managed by solve methods.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.apply_boundary_conditions.html#fedoo.problem.ExplicitDynamic.apply_boundary_conditions" title="fedoo.problem.ExplicitDynamic.apply_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.apply_boundary_conditions</span></code></a>([...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.evaluate.html#fedoo.problem.ExplicitDynamic.evaluate" title="fedoo.problem.ExplicitDynamic.evaluate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.evaluate</span></code></a>([update_weakform, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.clear_outputs.html#fedoo.problem.ExplicitDynamic.clear_outputs" title="fedoo.problem.ExplicitDynamic.clear_outputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.clear_outputs</span></code></a>()</p></td>
+<td><p>Stop automatic output by removing all registered requests.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.evaluate.html#fedoo.problem.ExplicitDynamic.evaluate" title="fedoo.problem.ExplicitDynamic.evaluate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.evaluate</span></code></a>([update_weakform, ...])</p></td>
 <td><p>Prepare the integrator's force-evaluation state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_A.html#fedoo.problem.ExplicitDynamic.get_A" title="fedoo.problem.ExplicitDynamic.get_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_A</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_A.html#fedoo.problem.ExplicitDynamic.get_A" title="fedoo.problem.ExplicitDynamic.get_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_A</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_B.html#fedoo.problem.ExplicitDynamic.get_B" title="fedoo.problem.ExplicitDynamic.get_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_B</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_B.html#fedoo.problem.ExplicitDynamic.get_B" title="fedoo.problem.ExplicitDynamic.get_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_B</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_D.html#fedoo.problem.ExplicitDynamic.get_D" title="fedoo.problem.ExplicitDynamic.get_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_D</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_D.html#fedoo.problem.ExplicitDynamic.get_D" title="fedoo.problem.ExplicitDynamic.get_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_D</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_X.html#fedoo.problem.ExplicitDynamic.get_X" title="fedoo.problem.ExplicitDynamic.get_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_X</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_X.html#fedoo.problem.ExplicitDynamic.get_X" title="fedoo.problem.ExplicitDynamic.get_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_X</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_acceleration.html#fedoo.problem.ExplicitDynamic.get_acceleration" title="fedoo.problem.ExplicitDynamic.get_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_acceleration</span></code></a>([name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_acceleration.html#fedoo.problem.ExplicitDynamic.get_acceleration" title="fedoo.problem.ExplicitDynamic.get_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_acceleration</span></code></a>([name])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_active.html#fedoo.problem.ExplicitDynamic.get_active" title="fedoo.problem.ExplicitDynamic.get_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_active</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_active.html#fedoo.problem.ExplicitDynamic.get_active" title="fedoo.problem.ExplicitDynamic.get_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_active</span></code></a>()</p></td>
 <td><p>Return the active Problem.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_all.html#fedoo.problem.ExplicitDynamic.get_all" title="fedoo.problem.ExplicitDynamic.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_all</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_all.html#fedoo.problem.ExplicitDynamic.get_all" title="fedoo.problem.ExplicitDynamic.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_all</span></code></a>()</p></td>
 <td><p>Return the list of all problems.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_damping_power.html#fedoo.problem.ExplicitDynamic.get_damping_power" title="fedoo.problem.ExplicitDynamic.get_damping_power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_damping_power</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_damping_power.html#fedoo.problem.ExplicitDynamic.get_damping_power" title="fedoo.problem.ExplicitDynamic.get_damping_power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_damping_power</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_disp.html#fedoo.problem.ExplicitDynamic.get_disp" title="fedoo.problem.ExplicitDynamic.get_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_disp</span></code></a>([name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_disp.html#fedoo.problem.ExplicitDynamic.get_disp" title="fedoo.problem.ExplicitDynamic.get_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_disp</span></code></a>([name])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_dof_solution.html#fedoo.problem.ExplicitDynamic.get_dof_solution" title="fedoo.problem.ExplicitDynamic.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_dof_solution</span></code></a>([name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_dof_solution.html#fedoo.problem.ExplicitDynamic.get_dof_solution" title="fedoo.problem.ExplicitDynamic.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_dof_solution</span></code></a>([name])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_elastic_energy.html#fedoo.problem.ExplicitDynamic.get_elastic_energy" title="fedoo.problem.ExplicitDynamic.get_elastic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_elastic_energy</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_elastic_energy.html#fedoo.problem.ExplicitDynamic.get_elastic_energy" title="fedoo.problem.ExplicitDynamic.get_elastic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_elastic_energy</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_ext_forces.html#fedoo.problem.ExplicitDynamic.get_ext_forces" title="fedoo.problem.ExplicitDynamic.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_ext_forces</span></code></a>([name, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_ext_forces.html#fedoo.problem.ExplicitDynamic.get_ext_forces" title="fedoo.problem.ExplicitDynamic.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_ext_forces</span></code></a>([name, ...])</p></td>
 <td><p>Return the nodal Forces in global coordinates system.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_kinetic_energy.html#fedoo.problem.ExplicitDynamic.get_kinetic_energy" title="fedoo.problem.ExplicitDynamic.get_kinetic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_kinetic_energy</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_kinetic_energy.html#fedoo.problem.ExplicitDynamic.get_kinetic_energy" title="fedoo.problem.ExplicitDynamic.get_kinetic_energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_kinetic_energy</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_results.html#fedoo.problem.ExplicitDynamic.get_results" title="fedoo.problem.ExplicitDynamic.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_results</span></code></a>(*args, **kargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_results.html#fedoo.problem.ExplicitDynamic.get_results" title="fedoo.problem.ExplicitDynamic.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_results</span></code></a>(*args, **kargs)</p></td>
 <td><p>Extract some results from the current problem.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_velocity.html#fedoo.problem.ExplicitDynamic.get_velocity" title="fedoo.problem.ExplicitDynamic.get_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_velocity</span></code></a>([name])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.get_velocity.html#fedoo.problem.ExplicitDynamic.get_velocity" title="fedoo.problem.ExplicitDynamic.get_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.get_velocity</span></code></a>([name])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.init_bc_start_value.html#fedoo.problem.ExplicitDynamic.init_bc_start_value" title="fedoo.problem.ExplicitDynamic.init_bc_start_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.init_bc_start_value</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.init_bc_start_value.html#fedoo.problem.ExplicitDynamic.init_bc_start_value" title="fedoo.problem.ExplicitDynamic.init_bc_start_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.init_bc_start_value</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.initialize.html#fedoo.problem.ExplicitDynamic.initialize" title="fedoo.problem.ExplicitDynamic.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.initialize</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.initialize.html#fedoo.problem.ExplicitDynamic.initialize" title="fedoo.problem.ExplicitDynamic.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.initialize</span></code></a>()</p></td>
 <td><p>Initialize constitutive data and cache stiffness and mass.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.invalidate_factorization.html#fedoo.problem.ExplicitDynamic.invalidate_factorization" title="fedoo.problem.ExplicitDynamic.invalidate_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.invalidate_factorization</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.invalidate_factorization.html#fedoo.problem.ExplicitDynamic.invalidate_factorization" title="fedoo.problem.ExplicitDynamic.invalidate_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.invalidate_factorization</span></code></a>()</p></td>
 <td><p>Invalidate any cached factorization.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.make_active.html#fedoo.problem.ExplicitDynamic.make_active" title="fedoo.problem.ExplicitDynamic.make_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.make_active</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.make_active.html#fedoo.problem.ExplicitDynamic.make_active" title="fedoo.problem.ExplicitDynamic.make_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.make_active</span></code></a>()</p></td>
 <td><p>Define the problem instance as the active Problem.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.prepare_time_increment.html#fedoo.problem.ExplicitDynamic.prepare_time_increment" title="fedoo.problem.ExplicitDynamic.prepare_time_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.prepare_time_increment</span></code></a>([...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.prepare_time_increment.html#fedoo.problem.ExplicitDynamic.prepare_time_increment" title="fedoo.problem.ExplicitDynamic.prepare_time_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.prepare_time_increment</span></code></a>([...])</p></td>
 <td><p>Prepare <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">D</span></code> for one subsequent call to <code class="docutils literal notranslate"><span class="pre">solve()</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.reset.html#fedoo.problem.ExplicitDynamic.reset" title="fedoo.problem.ExplicitDynamic.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.reset</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.reset.html#fedoo.problem.ExplicitDynamic.reset" title="fedoo.problem.ExplicitDynamic.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.reset</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.save_results.html#fedoo.problem.ExplicitDynamic.save_results" title="fedoo.problem.ExplicitDynamic.save_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.save_results</span></code></a>([iterOutput])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.save_results.html#fedoo.problem.ExplicitDynamic.save_results" title="fedoo.problem.ExplicitDynamic.save_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.save_results</span></code></a>([iterOutput])</p></td>
+<td><p>Write the current state to every registered output.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_A.html#fedoo.problem.ExplicitDynamic.set_A" title="fedoo.problem.ExplicitDynamic.set_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_A</span></code></a>(A)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_A.html#fedoo.problem.ExplicitDynamic.set_A" title="fedoo.problem.ExplicitDynamic.set_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_A</span></code></a>(A)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_B.html#fedoo.problem.ExplicitDynamic.set_B" title="fedoo.problem.ExplicitDynamic.set_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_B</span></code></a>(B)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_B.html#fedoo.problem.ExplicitDynamic.set_B" title="fedoo.problem.ExplicitDynamic.set_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_B</span></code></a>(B)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_D.html#fedoo.problem.ExplicitDynamic.set_D" title="fedoo.problem.ExplicitDynamic.set_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_D</span></code></a>(D)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_D.html#fedoo.problem.ExplicitDynamic.set_D" title="fedoo.problem.ExplicitDynamic.set_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_D</span></code></a>(D)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_X.html#fedoo.problem.ExplicitDynamic.set_X" title="fedoo.problem.ExplicitDynamic.set_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_X</span></code></a>(value)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_X.html#fedoo.problem.ExplicitDynamic.set_X" title="fedoo.problem.ExplicitDynamic.set_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_X</span></code></a>(value)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_active.html#fedoo.problem.ExplicitDynamic.set_active" title="fedoo.problem.ExplicitDynamic.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_active</span></code></a>(name)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_active.html#fedoo.problem.ExplicitDynamic.set_active" title="fedoo.problem.ExplicitDynamic.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_active</span></code></a>(name)</p></td>
 <td><p>Define the active Problem from its name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_dof.html#fedoo.problem.ExplicitDynamic.set_dof" title="fedoo.problem.ExplicitDynamic.set_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_dof</span></code></a>(name, value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_dof.html#fedoo.problem.ExplicitDynamic.set_dof" title="fedoo.problem.ExplicitDynamic.set_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_dof</span></code></a>(name, value)</p></td>
 <td><p>Set the current displacement outside an active explicit step.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_acceleration.html#fedoo.problem.ExplicitDynamic.set_initial_acceleration" title="fedoo.problem.ExplicitDynamic.set_initial_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_initial_acceleration</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_acceleration.html#fedoo.problem.ExplicitDynamic.set_initial_acceleration" title="fedoo.problem.ExplicitDynamic.set_initial_acceleration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_initial_acceleration</span></code></a>(...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_displacement.html#fedoo.problem.ExplicitDynamic.set_initial_displacement" title="fedoo.problem.ExplicitDynamic.set_initial_displacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_initial_displacement</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_displacement.html#fedoo.problem.ExplicitDynamic.set_initial_displacement" title="fedoo.problem.ExplicitDynamic.set_initial_displacement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_initial_displacement</span></code></a>(...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_velocity.html#fedoo.problem.ExplicitDynamic.set_initial_velocity" title="fedoo.problem.ExplicitDynamic.set_initial_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_initial_velocity</span></code></a>(name, value)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_initial_velocity.html#fedoo.problem.ExplicitDynamic.set_initial_velocity" title="fedoo.problem.ExplicitDynamic.set_initial_velocity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_initial_velocity</span></code></a>(name, value)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_rayleigh_damping.html#fedoo.problem.ExplicitDynamic.set_rayleigh_damping" title="fedoo.problem.ExplicitDynamic.set_rayleigh_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_rayleigh_damping</span></code></a>(alpha, beta)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_rayleigh_damping.html#fedoo.problem.ExplicitDynamic.set_rayleigh_damping" title="fedoo.problem.ExplicitDynamic.set_rayleigh_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_rayleigh_damping</span></code></a>(alpha, beta)</p></td>
 <td><p>Override weakform damping with <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">=</span> <span class="pre">alpha*M</span> <span class="pre">+</span> <span class="pre">beta*K</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_reuse_factorization.html#fedoo.problem.ExplicitDynamic.set_reuse_factorization" title="fedoo.problem.ExplicitDynamic.set_reuse_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_reuse_factorization</span></code></a>([reuse])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_reuse_factorization.html#fedoo.problem.ExplicitDynamic.set_reuse_factorization" title="fedoo.problem.ExplicitDynamic.set_reuse_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_reuse_factorization</span></code></a>([reuse])</p></td>
 <td><p>Enable or disable factorization reuse for repeated solves.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_solver.html#fedoo.problem.ExplicitDynamic.set_solver" title="fedoo.problem.ExplicitDynamic.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_solver</span></code></a>([solver])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_solver.html#fedoo.problem.ExplicitDynamic.set_solver" title="fedoo.problem.ExplicitDynamic.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_solver</span></code></a>([solver])</p></td>
 <td><p>Define the solver for the linear system resolution.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_start.html#fedoo.problem.ExplicitDynamic.set_start" title="fedoo.problem.ExplicitDynamic.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_start</span></code></a>([save_results, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_start.html#fedoo.problem.ExplicitDynamic.set_start" title="fedoo.problem.ExplicitDynamic.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_start</span></code></a>([save_results, ...])</p></td>
 <td><p>Commit assembly history and optionally save the accepted state.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_time_integrator.html#fedoo.problem.ExplicitDynamic.set_time_integrator" title="fedoo.problem.ExplicitDynamic.set_time_integrator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_time_integrator</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_time_integrator.html#fedoo.problem.ExplicitDynamic.set_time_integrator" title="fedoo.problem.ExplicitDynamic.set_time_integrator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.set_time_integrator</span></code></a>(...)</p></td>
 <td><p>Attach an explicit second-order time integrator.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve.html#fedoo.problem.ExplicitDynamic.solve" title="fedoo.problem.ExplicitDynamic.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.solve</span></code></a>(**kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve.html#fedoo.problem.ExplicitDynamic.solve" title="fedoo.problem.ExplicitDynamic.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.solve</span></code></a>(**kwargs)</p></td>
 <td><p>Solve the current effective system using <code class="xref py py-class docutils literal notranslate"><span class="pre">Problem</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve_history.html#fedoo.problem.ExplicitDynamic.solve_history" title="fedoo.problem.ExplicitDynamic.solve_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.solve_history</span></code></a>(tmax[, dt, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve_history.html#fedoo.problem.ExplicitDynamic.solve_history" title="fedoo.problem.ExplicitDynamic.solve_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.solve_history</span></code></a>(tmax[, dt, ...])</p></td>
 <td><p>Solve a complete explicit-dynamic time history.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve_time_increment.html#fedoo.problem.ExplicitDynamic.solve_time_increment" title="fedoo.problem.ExplicitDynamic.solve_time_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.solve_time_increment</span></code></a>([...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.solve_time_increment.html#fedoo.problem.ExplicitDynamic.solve_time_increment" title="fedoo.problem.ExplicitDynamic.solve_time_increment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.solve_time_increment</span></code></a>([...])</p></td>
 <td><p>Prepare, solve and update one complete explicit increment.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.to_start.html#fedoo.problem.ExplicitDynamic.to_start" title="fedoo.problem.ExplicitDynamic.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.to_start</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.to_start.html#fedoo.problem.ExplicitDynamic.to_start" title="fedoo.problem.ExplicitDynamic.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.to_start</span></code></a>()</p></td>
 <td><p>Restore the last state committed by <a class="reference internal" href="fedoo.problem.ExplicitDynamic.set_start.html#fedoo.problem.ExplicitDynamic.set_start" title="fedoo.problem.ExplicitDynamic.set_start"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_start()</span></code></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update.html#fedoo.problem.ExplicitDynamic.update" title="fedoo.problem.ExplicitDynamic.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.update</span></code></a>([compute, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update.html#fedoo.problem.ExplicitDynamic.update" title="fedoo.problem.ExplicitDynamic.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.update</span></code></a>([compute, ...])</p></td>
 <td><p>Advance kinematics and optionally update the assembly.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update_boundary_conditions.html#fedoo.problem.ExplicitDynamic.update_boundary_conditions" title="fedoo.problem.ExplicitDynamic.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.update_boundary_conditions</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.ExplicitDynamic.update_boundary_conditions.html#fedoo.problem.ExplicitDynamic.update_boundary_conditions" title="fedoo.problem.ExplicitDynamic.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ExplicitDynamic.update_boundary_conditions</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>

@@ -24,6 +24,7 @@
          NonLinear.add_output
          NonLinear.apply_boundary_conditions
          NonLinear.change_assembly
+         NonLinear.clear_outputs
          NonLinear.compute_nr_error
          NonLinear.elastic_prediction
          NonLinear.force_elastic_matrix_next_iter

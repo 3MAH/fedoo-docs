@@ -1,0 +1,82 @@
+﻿fedoo.problem.Modal
+===================
+
+.. currentmodule:: fedoo.problem
+
+.. autoclass:: Modal
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         Modal.add_global_dof
+         Modal.add_output
+         Modal.apply_boundary_conditions
+         Modal.clear_outputs
+         Modal.get_A
+         Modal.get_B
+         Modal.get_D
+         Modal.get_X
+         Modal.get_active
+         Modal.get_all
+         Modal.get_disp
+         Modal.get_dof_solution
+         Modal.get_ext_forces
+         Modal.get_output_scalars
+         Modal.get_results
+         Modal.get_rot
+         Modal.init_bc_start_value
+         Modal.invalidate_factorization
+         Modal.make_active
+         Modal.save_modes
+         Modal.save_results
+         Modal.set_A
+         Modal.set_B
+         Modal.set_D
+         Modal.set_X
+         Modal.set_active
+         Modal.set_dof
+         Modal.set_mode
+         Modal.set_reuse_factorization
+         Modal.set_solver
+         Modal.solve
+         Modal.update_boundary_conditions
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         Modal.active
+         Modal.assembly
+         Modal.current_mode
+         Modal.global_dof
+         Modal.mass_assembly
+         Modal.mass_matrix
+         Modal.n_dof
+         Modal.n_global_dof
+         Modal.n_node_dof
+         Modal.name
+         Modal.results
+         Modal.solver
+         Modal.space
+         Modal.stiffness_matrix
+         Modal.bc
+  
+  

@@ -22,6 +22,7 @@
          Problem.add_global_dof
          Problem.add_output
          Problem.apply_boundary_conditions
+         Problem.clear_outputs
          Problem.get_A
          Problem.get_B
          Problem.get_D
