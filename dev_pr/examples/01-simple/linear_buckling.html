@@ -28,7 +28,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Free vibration of a cantilever" href="modal_analysis.html" />
+    <link rel="next" title="Free vibration of a clamped square plate" href="modal_analysis.html" />
     <link rel="prev" title="Beam Lattice Structure using beam model with geometric nonlinearities" href="lattice_beam.html" /> 
 </head>
 
@@ -137,11 +137,12 @@ rigid-body translation along the beam axis.</p>
 <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">young_modulus</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
 <span class="n">properties</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">BeamCircular</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
-<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">))),</span>
-    <span class="s2">"lin2"</span><span class="p">,</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">line_mesh</span><span class="p">(</span>
+    <span class="n">n_nodes</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="n">length</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"lin2"</span><span class="p">,</span>
+    <span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">weakform</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">BeamEquilibrium</span><span class="p">(</span><span class="n">properties</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">weakform</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
@@ -151,17 +152,19 @@ rigid-body translation along the beam axis.</p>
 <section id="reference-preload">
 <h1>Reference preload<a class="headerlink" href="#reference-preload" title="Link to this heading"></a></h1>
 <p>The geometric stiffness depends on the current stress state, so a preload
-problem must be solved first. Here the reference compressive force is one
-newton. Consequently, the buckling load factors obtained below also equal
-the critical forces in newtons.</p>
+problem must be solved first. A linear static problem is sufficient here
+because the reference response is linear. A nonlinear problem could instead
+supply the preload when the reference equilibrium requires it.</p>
+<p>The reference compressive force is one newton. Consequently, the buckling
+load factors obtained below also equal the critical forces in newtons.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">right</span> <span class="o">=</span> <span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_nodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
 
-<span class="n">preload</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">preload</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
 <span class="n">preload</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="p">[</span><span class="s2">"DispX"</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
 <span class="n">preload</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 <span class="n">preload</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Neumann"</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="s2">"DispX"</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">preload</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">print_info</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">preload</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -210,7 +213,7 @@ a maximum deflection equal to 15% of the beam length, then use the standard
 <span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_linear_buckling_001.png" srcset="../../_images/sphx_glr_linear_buckling_001.png" alt="linear buckling" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.273 seconds)</p>
+<img src="../../_images/sphx_glr_linear_buckling_001.png" srcset="../../_images/sphx_glr_linear_buckling_001.png" alt="linear buckling" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.261 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-linear-buckling-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/f7c95807f5cd90e47930e61b5a7ffb66/linear_buckling.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">linear_buckling.ipynb</span></code></a></p>
@@ -230,7 +233,7 @@ a maximum deflection equal to 15% of the beam length, then use the standard
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="lattice_beam.html" class="btn btn-neutral float-left" title="Beam Lattice Structure using beam model with geometric nonlinearities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="modal_analysis.html" class="btn btn-neutral float-right" title="Free vibration of a cantilever" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="modal_analysis.html" class="btn btn-neutral float-right" title="Free vibration of a clamped square plate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

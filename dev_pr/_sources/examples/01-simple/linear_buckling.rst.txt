@@ -57,7 +57,7 @@ A one-metre-long circular beam is discretized with 20 linear beam elements.
 Both ends are pinned for transverse motion, while the left end also prevents
 rigid-body translation along the beam axis.
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-46
+.. GENERATED FROM PYTHON SOURCE LINES 28-47
 
 .. code-block:: Python
 
@@ -70,11 +70,12 @@ rigid-body translation along the beam axis.
     material = fd.constitutivelaw.ElasticIsotrop(young_modulus, 0.3)
     properties = fd.constitutivelaw.BeamCircular(material, radius, k=0.5)
 
-    x = np.linspace(0.0, length, 21)
-    mesh = fd.Mesh(
-        np.column_stack((x, np.zeros_like(x))),
-        np.column_stack((np.arange(20), np.arange(1, 21))),
-        "lin2",
+    mesh = fd.mesh.line_mesh(
+        n_nodes=21,
+        x_min=0.0,
+        x_max=length,
+        elm_type="lin2",
+        ndim=2,
     )
     weakform = fd.weakform.BeamEquilibrium(properties, nlgeom=False)
     assembly = fd.Assembly.create(weakform, mesh)
@@ -86,16 +87,19 @@ rigid-body translation along the beam axis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-53
+.. GENERATED FROM PYTHON SOURCE LINES 48-57
 
 Reference preload
 ~~~~~~~~~~~~~~~~~
 The geometric stiffness depends on the current stress state, so a preload
-problem must be solved first. Here the reference compressive force is one
-newton. Consequently, the buckling load factors obtained below also equal
-the critical forces in newtons.
+problem must be solved first. A linear static problem is sufficient here
+because the reference response is linear. A nonlinear problem could instead
+supply the preload when the reference equilibrium requires it.
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-63
+The reference compressive force is one newton. Consequently, the buckling
+load factors obtained below also equal the critical forces in newtons.
+
+.. GENERATED FROM PYTHON SOURCE LINES 57-67
 
 .. code-block:: Python
 
@@ -103,11 +107,11 @@ the critical forces in newtons.
     left = [0]
     right = [mesh.n_nodes - 1]
 
-    preload = fd.problem.NonLinear(assembly, nlgeom=False)
+    preload = fd.problem.Linear(assembly)
     preload.bc.add("Dirichlet", left, ["DispX", "DispY"], 0.0)
     preload.bc.add("Dirichlet", right, "DispY", 0.0)
     preload.bc.add("Neumann", right, "DispX", -1.0)
-    preload.nlsolve(dt=1.0, tmax=1.0, update_dt=False, print_info=0)
+    preload.solve()
 
 
 
@@ -116,7 +120,7 @@ the critical forces in newtons.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-70
+.. GENERATED FROM PYTHON SOURCE LINES 68-74
 
 Linear buckling problem
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -125,7 +129,7 @@ problem. Its boundary conditions describe perturbations about that state
 and must therefore be homogeneous. As for modal analysis, the registered
 output contains one frame per buckling mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-85
+.. GENERATED FROM PYTHON SOURCE LINES 74-89
 
 .. code-block:: Python
 
@@ -158,7 +162,7 @@ output contains one frame per buckling mode.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-91
+.. GENERATED FROM PYTHON SOURCE LINES 90-95
 
 Plot the first buckling mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -166,7 +170,7 @@ Eigenvectors have an arbitrary amplitude. We scale the first one to display
 a maximum deflection equal to 15% of the beam length, then use the standard
 :class:`fedoo.DataSet` plotting interface to draw the deformed beam.
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-104
+.. GENERATED FROM PYTHON SOURCE LINES 95-108
 
 .. code-block:: Python
 
@@ -201,7 +205,7 @@ a maximum deflection equal to 15% of the beam length, then use the standard
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.273 seconds)
+   **Total running time of the script:** (0 minutes 0.261 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_linear_buckling.py:

@@ -111,21 +111,6 @@ to download the full example code.</p>
 <section class="sphx-glr-example-title" id="beam-element-canteleaver-beam">
 <span id="sphx-glr-examples-01-simple-simplebeamelementexample-py"></span><h1>Beam Element Canteleaver Beam<a class="headerlink" href="#beam-element-canteleaver-beam" title="Link to this heading"></a></h1>
 <p>Simple canteleaver beam example using different kind of elements</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Reaction RX at the clamped extermity: 0.0
-Reaction RY at the clamped extermity: 2.0000000000000053
-Reaction RZ at the clamped extermity: 0.0
-Moment MX at the clamped extermity: 0.0
-Moment MY at the clamped extermity: 0.0
-Moment MZ at the clamped extermity: 20.000000000000114
-RX at the free extremity: 0.0
-RZ at the free extremity: 0.0
-Analytical deflection:  -0.008695165057587216
-[ 0.         -0.00869517  0.        ]
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -214,7 +199,37 @@ Analytical deflection:  -0.008695165057587216
 <span class="n">M</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="p">[</span><span class="s2">"beam"</span><span class="p">]</span><span class="o">.</span><span class="n">global_matrix</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.011 seconds)</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Reaction RX at the clamped extermity: 0.0
+Reaction RY at the clamped extermity: 2.0000000000000053
+Reaction RZ at the clamped extermity: 0.0
+Moment MX at the clamped extermity: 0.0
+Moment MY at the clamped extermity: 0.0
+Moment MZ at the clamped extermity: 20.000000000000114
+RX at the free extremity: 0.0
+RZ at the free extremity: 0.0
+Analytical deflection:  -0.008695165057587216
+[ 0.         -0.00869517  0.        ]
+</pre></div>
+</div>
+</section>
+<section id="plot-the-deformed-beam">
+<h1>Plot the deformed beam<a class="headerlink" href="#plot-the-deformed-beam" title="Link to this heading"></a></h1>
+<p>The displacement is magnified so that the bending of the slender beam is
+clearly visible. Colors represent the transverse displacement.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="s2">"beam"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">)</span>
+<span class="n">max_displacement</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">plot_results</span><span class="p">[</span><span class="s2">"Disp"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">display_scale</span> <span class="o">=</span> <span class="mf">0.15</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="n">max_displacement</span>
+<span class="n">plot_results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">"Disp"</span><span class="p">,</span>
+    <span class="n">component</span><span class="o">=</span><span class="s2">"Y"</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="n">display_scale</span><span class="p">,</span>
+    <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show_nodes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"Transverse displacement of the cantilever beam"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_simpleBeamElementExample_001.png" srcset="../../_images/sphx_glr_simpleBeamElementExample_001.png" alt="simpleBeamElementExample" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.136 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-simplebeamelementexample-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/a423a972b4c5f27a8e9ec685eba8305c/simpleBeamElementExample.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">simpleBeamElementExample.ipynb</span></code></a></p>
