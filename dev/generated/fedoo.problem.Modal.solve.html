@@ -173,7 +173,7 @@
 <h1>fedoo.problem.Modal.solve<a class="headerlink" href="#fedoo-problem-modal-solve" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.Modal.solve">
-<span class="sig-prename descclassname"><span class="pre">Modal.</span></span><span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_modes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">which</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.Modal.solve" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Modal.</span></span><span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_modes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.Modal.solve" title="Link to this definition"></a></dt>
 <dd><p>Solve the generalized eigenvalue problem.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -182,11 +182,6 @@
 <li><p><strong>sigma</strong> (<em>float</em><em>, </em><em>optional</em>) – Target eigenvalue <span class="math notranslate nohighlight">\(\omega^2\)</span>. When supplied, shift-invert
 mode finds eigenvalues nearest <code class="docutils literal notranslate"><span class="pre">sigma</span></code>. Leaving it unset avoids
 factorizing a potentially singular free-free stiffness matrix.</p></li>
-<li><p><strong>which</strong> (<em>str</em><em>, </em><em>optional</em>) – ARPACK eigenvalue selection. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;SM&quot;</span></code> without a
-shift and <code class="docutils literal notranslate"><span class="pre">&quot;LM&quot;</span></code> with a shift.</p></li>
-<li><p><strong>tol</strong> (<em>optional</em>) – Parameters forwarded to <code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.sparse.linalg.eigsh()</span></code>.</p></li>
-<li><p><strong>maxiter</strong> (<em>optional</em>) – Parameters forwarded to <code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.sparse.linalg.eigsh()</span></code>.</p></li>
-<li><p><strong>ncv</strong> (<em>optional</em>) – Parameters forwarded to <code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.sparse.linalg.eigsh()</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

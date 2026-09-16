@@ -288,10 +288,10 @@ are expressed in radians per unit of time.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Modal.set_reuse_factorization.html#fedoo.problem.Modal.set_reuse_factorization" title="fedoo.problem.Modal.set_reuse_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Modal.set_reuse_factorization</span></code></a>([reuse])</p></td>
 <td><p>Enable or disable factorization reuse for repeated solves.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Modal.set_solver.html#fedoo.problem.Modal.set_solver" title="fedoo.problem.Modal.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Modal.set_solver</span></code></a>([solver])</p></td>
-<td><p>Define the solver for the linear system resolution.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Modal.set_solver.html#fedoo.problem.Modal.set_solver" title="fedoo.problem.Modal.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Modal.set_solver</span></code></a>([solver, which, tol, ...])</p></td>
+<td><p>Configure the symmetric generalized eigensolver.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Modal.solve.html#fedoo.problem.Modal.solve" title="fedoo.problem.Modal.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Modal.solve</span></code></a>([n_modes, sigma, which, tol, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Modal.solve.html#fedoo.problem.Modal.solve" title="fedoo.problem.Modal.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Modal.solve</span></code></a>([n_modes, sigma])</p></td>
 <td><p>Solve the generalized eigenvalue problem.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Modal.update_boundary_conditions.html#fedoo.problem.Modal.update_boundary_conditions" title="fedoo.problem.Modal.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Modal.update_boundary_conditions</span></code></a>()</p></td>
@@ -335,7 +335,7 @@ are expressed in radians per unit of time.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.Modal.solver.html#fedoo.problem.Modal.solver" title="fedoo.problem.Modal.solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Modal.solver</span></code></a></p></td>
-<td><p>Return the current solver used for the problem.</p></td>
+<td><p>Configured eigensolver function, or <code class="docutils literal notranslate"><span class="pre">None</span></code> in automatic mode.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.Modal.space.html#fedoo.problem.Modal.space" title="fedoo.problem.Modal.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Modal.space</span></code></a></p></td>
 <td><p>Return the ModelingSpace associated to the Problem if defined.</p></td>
