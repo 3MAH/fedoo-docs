@@ -92,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.corate.html">fedoo.weakform.StressEquilibriumBbar.corate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.fbar.html">fedoo.weakform.StressEquilibriumBbar.fbar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.geometric_stiffness.html">fedoo.weakform.StressEquilibriumBbar.geometric_stiffness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.incompressibility.html">fedoo.weakform.StressEquilibriumBbar.incompressibility</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.name.html">fedoo.weakform.StressEquilibriumBbar.name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.nvar.html">fedoo.weakform.StressEquilibriumBbar.nvar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.space.html">fedoo.weakform.StressEquilibriumBbar.space</a></li>
@@ -263,16 +264,19 @@ the active ModelingSpace is considered.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.geometric_stiffness.html#fedoo.weakform.StressEquilibriumBbar.geometric_stiffness" title="fedoo.weakform.StressEquilibriumBbar.geometric_stiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.geometric_stiffness</span></code></a></p></td>
 <td><p>Set to True to add the geometric effects to the stiffness matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.name.html#fedoo.weakform.StressEquilibriumBbar.name" title="fedoo.weakform.StressEquilibriumBbar.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.name</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.incompressibility.html#fedoo.weakform.StressEquilibriumBbar.incompressibility" title="fedoo.weakform.StressEquilibriumBbar.incompressibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.incompressibility</span></code></a></p></td>
+<td><p>Method used to avoid volumetric locking.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.name.html#fedoo.weakform.StressEquilibriumBbar.name" title="fedoo.weakform.StressEquilibriumBbar.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.name</span></code></a></p></td>
 <td><p>Return the name of the WeakForm.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.nvar.html#fedoo.weakform.StressEquilibriumBbar.nvar" title="fedoo.weakform.StressEquilibriumBbar.nvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.nvar</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.nvar.html#fedoo.weakform.StressEquilibriumBbar.nvar" title="fedoo.weakform.StressEquilibriumBbar.nvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.nvar</span></code></a></p></td>
 <td><p>Number of variables in the modeling space associated to the WeakForm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.space.html#fedoo.weakform.StressEquilibriumBbar.space" title="fedoo.weakform.StressEquilibriumBbar.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.space</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.space.html#fedoo.weakform.StressEquilibriumBbar.space" title="fedoo.weakform.StressEquilibriumBbar.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.space</span></code></a></p></td>
 <td><p>Return the ModelingSpace associated to the WeakForm if defined.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.nlgeom.html#fedoo.weakform.StressEquilibriumBbar.nlgeom" title="fedoo.weakform.StressEquilibriumBbar.nlgeom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.nlgeom</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.nlgeom.html#fedoo.weakform.StressEquilibriumBbar.nlgeom" title="fedoo.weakform.StressEquilibriumBbar.nlgeom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumBbar.nlgeom</span></code></a></p></td>
 <td><p>Method used to treat the geometric non linearities. * Set to False if geometric non linarities are ignored. * Set to True or 'UL' to use the updated lagrangian method   (update the mesh) * Set to 'TL' to use the total lagrangian method (base on the   initial mesh with initial displacement effet).</p></td>
 </tr>
 </tbody>

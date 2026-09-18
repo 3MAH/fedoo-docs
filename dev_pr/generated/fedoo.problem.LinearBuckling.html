@@ -292,10 +292,10 @@ describe perturbations and must therefore be homogeneous.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_reuse_factorization.html#fedoo.problem.LinearBuckling.set_reuse_factorization" title="fedoo.problem.LinearBuckling.set_reuse_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_reuse_factorization</span></code></a>([reuse])</p></td>
 <td><p>Enable or disable factorization reuse for repeated solves.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_solver.html#fedoo.problem.LinearBuckling.set_solver" title="fedoo.problem.LinearBuckling.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_solver</span></code></a>([solver])</p></td>
-<td><p>Define the solver for the linear system resolution.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_solver.html#fedoo.problem.LinearBuckling.set_solver" title="fedoo.problem.LinearBuckling.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_solver</span></code></a>([solver, which, ...])</p></td>
+<td><p>Configure the symmetric generalized eigensolver.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.solve.html#fedoo.problem.LinearBuckling.solve" title="fedoo.problem.LinearBuckling.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.solve</span></code></a>([n_modes, sigma, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.solve.html#fedoo.problem.LinearBuckling.solve" title="fedoo.problem.LinearBuckling.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.solve</span></code></a>([n_modes, sigma])</p></td>
 <td><p>Solve for positive critical load factors and buckling modes.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.update_boundary_conditions.html#fedoo.problem.LinearBuckling.update_boundary_conditions" title="fedoo.problem.LinearBuckling.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.update_boundary_conditions</span></code></a>()</p></td>
@@ -342,7 +342,7 @@ describe perturbations and must therefore be homogeneous.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.solver.html#fedoo.problem.LinearBuckling.solver" title="fedoo.problem.LinearBuckling.solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.solver</span></code></a></p></td>
-<td><p>Return the current solver used for the problem.</p></td>
+<td><p>Configured eigensolver function, or <code class="docutils literal notranslate"><span class="pre">None</span></code> in automatic mode.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.space.html#fedoo.problem.LinearBuckling.space" title="fedoo.problem.LinearBuckling.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.space</span></code></a></p></td>
 <td><p>Return the ModelingSpace associated to the Problem if defined.</p></td>

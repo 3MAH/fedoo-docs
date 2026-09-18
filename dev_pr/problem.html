@@ -206,6 +206,22 @@ behavior. This makes staged output explicit, for example:</p>
 </section>
 <section id="eigenvalue-analyses">
 <h2>Eigenvalue analyses<a class="headerlink" href="#eigenvalue-analyses" title="Link to this heading"></a></h2>
+<p>Eigenvalue problems support solver choices tailored to symmetric generalized
+eigenproblems:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>: Automatically selects between a dense or sparse solver based on
+problem size.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;eigsh&quot;</span></code>: Forces the SciPy sparse solver (ARPACK).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;eigh&quot;</span></code>: Forces the SciPy dense solver.</p></li>
+</ul>
+<p>Solver options (such as tolerance or workspace settings) are configured using
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">set_solver()</span></code> and persistent across solves. Solve-specific parameters, such as
+the number of requested modes (<code class="docutils literal notranslate"><span class="pre">n_modes</span></code>) and the optional shift target (<code class="docutils literal notranslate"><span class="pre">sigma</span></code>),
+are specified directly during the solve phase.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">modal</span><span class="o">.</span><span class="n">set_solver</span><span class="p">(</span><span class="s2">"eigsh"</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">ncv</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">modal</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">n_modes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
 <section id="modal-analysis">
 <h3>Modal analysis<a class="headerlink" href="#modal-analysis" title="Link to this heading"></a></h3>
 <p><code class="xref py py-class docutils literal notranslate"><span class="pre">Modal</span></code> computes the natural frequencies and mass-normalized mode
@@ -489,17 +505,42 @@ several strategies to stabilize these problems.</p>
 <h4>1. Handling Incompressibility<a class="headerlink" href="#handling-incompressibility" title="Link to this heading"></a></h4>
 <p>For nearly incompressible materials encountered in solid mechanics (Poisson’s
 ratio <span class="math notranslate nohighlight">\(\nu \approx 0.5\)</span>), standard elements may suffer from
-<strong>volumetric locking</strong>. Fedoo offers three primary solutions:</p>
+<strong>volumetric locking</strong>. Fedoo offers the following solutions:</p>
 <ul>
-<li><dl class="simple">
-<dt><strong>F-bar Method</strong>:</dt><dd><ul class="simple">
-<li><p>Set the <code class="docutils literal notranslate"><span class="pre">fbar</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">True</span></code> in the
-<a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a> weak form.</p></li>
-<li><p>For higher accuracy in the consistent tangent matrix, use the specialized
-<a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumFbar.html#fedoo.weakform.StressEquilibriumFbar" title="fedoo.weakform.StressEquilibriumFbar"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumFbar</span></code></a> weak form.</p></li>
+<li><p><strong>Element-level methods</strong>: set the <code class="docutils literal notranslate"><span class="pre">incompressibility</span></code> attribute of the
+<a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a> weak form (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+standard displacement formulation). The problem keeps only the displacement
+unknowns.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">incompressibility</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>: most suitable method for each type of element (currently
+<code class="docutils literal notranslate"><span class="pre">&quot;mean_dilatation&quot;</span></code> where available).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;mean_dilatation&quot;</span></code>: B-bar method based on the volume weighted projection
+of the dilatation over each element. It is equivalent to a mixed
+formulation with element-wise discontinuous pressure and dilatation,
+eliminated at the element level, and gives a symmetric tangent matrix.
+One pressure value per element is used for <code class="docutils literal notranslate"><span class="pre">quad4</span></code>, <code class="docutils literal notranslate"><span class="pre">hex8</span></code>, <code class="docutils literal notranslate"><span class="pre">wed6</span></code>,
+<code class="docutils literal notranslate"><span class="pre">tri6</span></code> and <code class="docutils literal notranslate"><span class="pre">tet10</span></code> elements, a linear pressure for <code class="docutils literal notranslate"><span class="pre">quad8</span></code>, <code class="docutils literal notranslate"><span class="pre">quad9</span></code>,
+<code class="docutils literal notranslate"><span class="pre">hex20</span></code>, <code class="docutils literal notranslate"><span class="pre">wed15</span></code> and <code class="docutils literal notranslate"><span class="pre">wed18</span></code> elements. Available for small strain and
+for the updated lagrangian method (‘3D’ and ‘2Dplane’). In finite strain,
+set <code class="docutils literal notranslate"><span class="pre">geometric_stiffness</span> <span class="pre">=</span> <span class="pre">True</span></code> to get the consistent tangent matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;sri&quot;</span></code>: B-bar method with the dilatation evaluated at the element
+center (selective reduced integration), for <code class="docutils literal notranslate"><span class="pre">quad4</span></code> and <code class="docutils literal notranslate"><span class="pre">hex8</span></code> only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;fbar&quot;</span></code>: F-bar method (same as <code class="docutils literal notranslate"><span class="pre">fbar</span> <span class="pre">=</span> <span class="pre">True</span></code>), with the volume change
+evaluated at the element center. The consistent tangent matrix is non
+symmetric (<code class="docutils literal notranslate"><span class="pre">quad4</span></code> and <code class="docutils literal notranslate"><span class="pre">hex8</span></code> elements, not available in ‘2Daxi’ nor
+with the total lagrangian method, for which the standard tangent is kept).</p></li>
 </ul>
-</dd>
-</dl>
+<p>These methods require full integration: they have no effect when the number
+of gauss points is not higher than the number of pressure values, nor for
+constant strain elements (<code class="docutils literal notranslate"><span class="pre">tri3</span></code>, <code class="docutils literal notranslate"><span class="pre">tet4</span></code>), for which quadratic elements
+or the mixed formulation should be preferred. Quadratic elements with
+reduced integration (<code class="docutils literal notranslate"><span class="pre">hex20r</span></code>, <code class="docutils literal notranslate"><span class="pre">tet10r</span></code>) are already weakly sensitive to
+volumetric locking. With one pressure value per <code class="docutils literal notranslate"><span class="pre">quad4</span></code> or <code class="docutils literal notranslate"><span class="pre">hex8</span></code>
+element, the displacement is accurate but the pressure field may exhibit
+checkerboard oscillations.</p>
 </li>
 <li><p><strong>Reduced Integration</strong>: Use the <a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumRI.html#fedoo.weakform.StressEquilibriumRI" title="fedoo.weakform.StressEquilibriumRI"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumRI</span></code></a>
 weak form. This evaluates volumetric terms at fewer integration points to
