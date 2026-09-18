@@ -85,7 +85,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.update.html">fedoo.weakform.StressEquilibrium.update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.update_2.html">fedoo.weakform.StressEquilibrium.update_2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.corate.html">fedoo.weakform.StressEquilibrium.corate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.fbar.html">fedoo.weakform.StressEquilibrium.fbar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.geometric_stiffness.html">fedoo.weakform.StressEquilibrium.geometric_stiffness</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.weakform.StressEquilibrium.incompressibility</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.name.html">fedoo.weakform.StressEquilibrium.name</a></li>
@@ -97,8 +96,6 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.ImplicitDynamic.html">fedoo.weakform.ImplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumFbar.html">fedoo.weakform.StressEquilibriumFbar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.html">fedoo.weakform.StressEquilibriumBbar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.HeatEquation.html">fedoo.weakform.HeatEquation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.BeamEquilibrium.html">fedoo.weakform.BeamEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.SpringEquilibrium.html">fedoo.weakform.SpringEquilibrium</a></li>
@@ -181,21 +178,23 @@ pressure values (no effect with reduced integration).
 Available in small strain and with the updated lagrangian
 method. The geometric_stiffness attribute should be set to True
 to get the consistent tangent matrix in finite strain.</p></li>
-<li><p>“sri”: B-bar method where the dilatation is evaluated at the
-element center (selective reduced integration), for “quad4”
-and “hex8” elements only.</p></li>
+<li><p>“sri”: legacy small-strain B-bar method where the dilatation is
+evaluated at the element center, for “quad4” and “hex8”
+elements only. Its use with updated-Lagrangian finite strains
+emits a warning because the formulation is not consistent.</p></li>
 <li><p>“fbar”: F-bar method where the volume change is evaluated at the
 element center. The consistent non symmetric tangent matrix is
 used for “quad4” and “hex8” elements (not available for ‘2Daxi’
-and with the total lagrangian method). The method has no effect
-for linear problems.</p></li>
+and with the total lagrangian method). In small strain, it
+reduces to a center-based B-bar volumetric correction.</p></li>
 </ul>
 </div></blockquote>
 <p>This attribute should be defined before the creation of the associated
 assembly. Elements with constant strain (“tri3”, “tet4”) or
 reduced integration elements are not improved by these methods: see
 <a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.html#fedoo.weakform.StressEquilibriumMixed" title="fedoo.weakform.StressEquilibriumMixed"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumMixed</span></code></a> or
-<a class="reference internal" href="fedoo.weakform.StressEquilibriumRI.html#fedoo.weakform.StressEquilibriumRI" title="fedoo.weakform.StressEquilibriumRI"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumRI</span></code></a>.</p>
+<a class="reference internal" href="fedoo.weakform.StressEquilibriumRI.html#fedoo.weakform.StressEquilibriumRI" title="fedoo.weakform.StressEquilibriumRI"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumRI</span></code></a>. Incompressibility
+treatments are ignored with the plane-stress assumption.</p>
 </dd></dl>
 
 </section>
