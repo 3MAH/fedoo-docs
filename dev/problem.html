@@ -505,23 +505,51 @@ several strategies to stabilize these problems.</p>
 <h4>1. Handling Incompressibility<a class="headerlink" href="#handling-incompressibility" title="Link to this heading"></a></h4>
 <p>For nearly incompressible materials encountered in solid mechanics (Poisson’s
 ratio <span class="math notranslate nohighlight">\(\nu \approx 0.5\)</span>), standard elements may suffer from
-<strong>volumetric locking</strong>. Fedoo offers three primary solutions:</p>
+<strong>volumetric locking</strong>. Fedoo offers the following solutions:</p>
 <ul>
-<li><dl class="simple">
-<dt><strong>F-bar Method</strong>:</dt><dd><ul class="simple">
-<li><p>Set the <code class="docutils literal notranslate"><span class="pre">fbar</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">True</span></code> in the
-<a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a> weak form.</p></li>
-<li><p>For higher accuracy in the consistent tangent matrix, use the specialized
-<a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumFbar.html#fedoo.weakform.StressEquilibriumFbar" title="fedoo.weakform.StressEquilibriumFbar"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumFbar</span></code></a> weak form.</p></li>
+<li><p><strong>Element-level methods</strong>: pass <code class="docutils literal notranslate"><span class="pre">incompressibility</span></code> to
+<a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>, standard
+displacement formulation). These methods introduce no additional global
+unknowns.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">incompressibility</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>: select <code class="docutils literal notranslate"><span class="pre">&quot;mean_dilatation&quot;</span></code> where it is available and retain
+the standard formulation otherwise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;mean_dilatation&quot;</span></code>: recommended B-bar method, based on a
+volume-weighted projection of the element dilatation. It gives a symmetric
+tangent matrix and supports both low- and high-order elements.
+One pressure value per element is used for <code class="docutils literal notranslate"><span class="pre">quad4</span></code>, <code class="docutils literal notranslate"><span class="pre">hex8</span></code>, <code class="docutils literal notranslate"><span class="pre">wed6</span></code>,
+<code class="docutils literal notranslate"><span class="pre">tri6</span></code> and <code class="docutils literal notranslate"><span class="pre">tet10</span></code> elements, a linear pressure for <code class="docutils literal notranslate"><span class="pre">quad8</span></code>, <code class="docutils literal notranslate"><span class="pre">quad9</span></code>,
+<code class="docutils literal notranslate"><span class="pre">hex20</span></code>, <code class="docutils literal notranslate"><span class="pre">wed15</span></code> and <code class="docutils literal notranslate"><span class="pre">wed18</span></code> elements. It is available for small
+strain and updated-Lagrangian analyses in <code class="docutils literal notranslate"><span class="pre">3D</span></code> and <code class="docutils literal notranslate"><span class="pre">2Dplane</span></code>. In
+finite strain, set <code class="docutils literal notranslate"><span class="pre">geometric_stiffness</span> <span class="pre">=</span> <span class="pre">True</span></code> to get the consistent
+tangent matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;sri&quot;</span></code>: legacy low-order B-bar method, with the dilatation evaluated at
+the element center. It is available for <code class="docutils literal notranslate"><span class="pre">quad4</span></code> and <code class="docutils literal notranslate"><span class="pre">hex8</span></code>. It is most
+appropriate for small-strain analyses. Its finite-strain formulation is
+not consistent and emits a warning with updated Lagrangian; prefer
+<code class="docutils literal notranslate"><span class="pre">&quot;mean_dilatation&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;fbar&quot;</span></code>. The total-Lagrangian formulation is
+not supported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;fbar&quot;</span></code>: F-bar method with the volume change evaluated at the element
+center. For <code class="docutils literal notranslate"><span class="pre">quad4</span></code> and <code class="docutils literal notranslate"><span class="pre">hex8</span></code> in <code class="docutils literal notranslate"><span class="pre">3D</span></code> or
+<code class="docutils literal notranslate"><span class="pre">2Dplane</span></code>, its consistent tangent matrix is nonsymmetric. In small
+strain, it reduces to a center-based B-bar correction. Other elements,
+<code class="docutils literal notranslate"><span class="pre">2Daxi</span></code>, and total-Lagrangian analyses retain the F-bar kinematic
+correction but use the standard tangent, with a warning.</p></li>
 </ul>
-</dd>
-</dl>
+<p>In plane stress (<code class="docutils literal notranslate"><span class="pre">2Dstress</span></code>), these options are ignored and the standard
+plane-stress formulation is used. They require full integration and do not
+improve constant-strain elements such as <code class="docutils literal notranslate"><span class="pre">tri3</span></code> and <code class="docutils literal notranslate"><span class="pre">tet4</span></code>; use
+quadratic elements or the mixed formulation instead. With one pressure
+value per <code class="docutils literal notranslate"><span class="pre">quad4</span></code> or <code class="docutils literal notranslate"><span class="pre">hex8</span></code> element, displacement results are generally
+accurate but the recovered pressure may exhibit checkerboard oscillations.</p>
 </li>
 <li><p><strong>Reduced Integration</strong>: Use the <a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumRI.html#fedoo.weakform.StressEquilibriumRI" title="fedoo.weakform.StressEquilibriumRI"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumRI</span></code></a>
-weak form. This evaluates volumetric terms at fewer integration points to
-relax the incompressibility constraint. Reduced integration is known to be
-prone to <strong>hourglass</strong> instabilities; this weak form includes an hourglass
-control stiffness to mitigate this.</p></li>
+weak form for one-point integration of <code class="docutils literal notranslate"><span class="pre">quad4</span></code> or <code class="docutils literal notranslate"><span class="pre">hex8</span></code> elements. It
+includes hourglass control to suppress the zero-energy modes introduced by
+reduced integration.</p></li>
 <li><p><strong>Mixed Displacement/Pressure</strong>: For hybrid strategies introducing
 additional “Pressure” DOFs, use the
 <a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumMixed.html#fedoo.weakform.StressEquilibriumMixed" title="fedoo.weakform.StressEquilibriumMixed"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumMixed</span></code></a> weak form. The field

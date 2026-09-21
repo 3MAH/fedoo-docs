@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.weakform.StressEquilibriumBbar.set_start &mdash; Fedoo 1.0.0b2 (dev)</title>
+  <title>fedoo.weakform.StressEquilibriumMixed.incompressibility &mdash; Fedoo 1.0.0b2 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -27,8 +27,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.weakform.StressEquilibriumBbar.set_storage" href="fedoo.weakform.StressEquilibriumBbar.set_storage.html" />
-    <link rel="prev" title="fedoo.weakform.StressEquilibriumBbar.set_inertia" href="fedoo.weakform.StressEquilibriumBbar.set_inertia.html" /> 
+    <link rel="next" title="fedoo.weakform.StressEquilibriumMixed.name" href="fedoo.weakform.StressEquilibriumMixed.name.html" />
+    <link rel="prev" title="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness" href="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -69,33 +69,31 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.html">fedoo.weakform.StressEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.ImplicitDynamic.html">fedoo.weakform.ImplicitDynamic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumFbar.html">fedoo.weakform.StressEquilibriumFbar</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.html">fedoo.weakform.StressEquilibriumBbar</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.copy.html">fedoo.weakform.StressEquilibriumBbar.copy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_all.html">fedoo.weakform.StressEquilibriumBbar.get_all</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_dissipation.html">fedoo.weakform.StressEquilibriumBbar.get_dissipation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_storage.html">fedoo.weakform.StressEquilibriumBbar.get_storage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.get_weak_equation.html">fedoo.weakform.StressEquilibriumBbar.get_weak_equation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.initialize.html">fedoo.weakform.StressEquilibriumBbar.initialize</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.iter_leaf.html">fedoo.weakform.StressEquilibriumBbar.iter_leaf</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.reset.html">fedoo.weakform.StressEquilibriumBbar.reset</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_damping.html">fedoo.weakform.StressEquilibriumBbar.set_damping</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_dissipation.html">fedoo.weakform.StressEquilibriumBbar.set_dissipation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_inertia.html">fedoo.weakform.StressEquilibriumBbar.set_inertia</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.weakform.StressEquilibriumBbar.set_start</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.set_storage.html">fedoo.weakform.StressEquilibriumBbar.set_storage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.sum.html">fedoo.weakform.StressEquilibriumBbar.sum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.to_start.html">fedoo.weakform.StressEquilibriumBbar.to_start</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.update.html">fedoo.weakform.StressEquilibriumBbar.update</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.update_2.html">fedoo.weakform.StressEquilibriumBbar.update_2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.corate.html">fedoo.weakform.StressEquilibriumBbar.corate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.fbar.html">fedoo.weakform.StressEquilibriumBbar.fbar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.geometric_stiffness.html">fedoo.weakform.StressEquilibriumBbar.geometric_stiffness</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.name.html">fedoo.weakform.StressEquilibriumBbar.name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.nvar.html">fedoo.weakform.StressEquilibriumBbar.nvar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.space.html">fedoo.weakform.StressEquilibriumBbar.space</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumBbar.nlgeom.html">fedoo.weakform.StressEquilibriumBbar.nlgeom</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.copy.html">fedoo.weakform.StressEquilibriumMixed.copy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_all.html">fedoo.weakform.StressEquilibriumMixed.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_dissipation.html">fedoo.weakform.StressEquilibriumMixed.get_dissipation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_storage.html">fedoo.weakform.StressEquilibriumMixed.get_storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.get_weak_equation.html">fedoo.weakform.StressEquilibriumMixed.get_weak_equation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.initialize.html">fedoo.weakform.StressEquilibriumMixed.initialize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.iter_leaf.html">fedoo.weakform.StressEquilibriumMixed.iter_leaf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.reset.html">fedoo.weakform.StressEquilibriumMixed.reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_damping.html">fedoo.weakform.StressEquilibriumMixed.set_damping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_dissipation.html">fedoo.weakform.StressEquilibriumMixed.set_dissipation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_inertia.html">fedoo.weakform.StressEquilibriumMixed.set_inertia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_start.html">fedoo.weakform.StressEquilibriumMixed.set_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.set_storage.html">fedoo.weakform.StressEquilibriumMixed.set_storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.sum.html">fedoo.weakform.StressEquilibriumMixed.sum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.to_start.html">fedoo.weakform.StressEquilibriumMixed.to_start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.update.html">fedoo.weakform.StressEquilibriumMixed.update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.update_2.html">fedoo.weakform.StressEquilibriumMixed.update_2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.corate.html">fedoo.weakform.StressEquilibriumMixed.corate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness.html">fedoo.weakform.StressEquilibriumMixed.geometric_stiffness</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.weakform.StressEquilibriumMixed.incompressibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.name.html">fedoo.weakform.StressEquilibriumMixed.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.nvar.html">fedoo.weakform.StressEquilibriumMixed.nvar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.space.html">fedoo.weakform.StressEquilibriumMixed.space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.nlgeom.html">fedoo.weakform.StressEquilibriumMixed.nlgeom</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.HeatEquation.html">fedoo.weakform.HeatEquation</a></li>
@@ -141,10 +139,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
-          <li class="breadcrumb-item"><a href="fedoo.weakform.StressEquilibriumBbar.html">fedoo.weakform.StressEquilibriumBbar</a></li>
-      <li class="breadcrumb-item active">fedoo.weakform.StressEquilibriumBbar.set_start</li>
+          <li class="breadcrumb-item"><a href="fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
+      <li class="breadcrumb-item active">fedoo.weakform.StressEquilibriumMixed.incompressibility</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/generated/fedoo.weakform.StressEquilibriumBbar.set_start.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/fedoo.weakform.StressEquilibriumMixed.incompressibility.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -152,12 +150,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="fedoo-weakform-stressequilibriumbbar-set-start">
-<h1>fedoo.weakform.StressEquilibriumBbar.set_start<a class="headerlink" href="#fedoo-weakform-stressequilibriumbbar-set-start" title="Link to this heading"></a></h1>
-<dl class="py method">
-<dt class="sig sig-object py" id="fedoo.weakform.StressEquilibriumBbar.set_start">
-<span class="sig-prename descclassname"><span class="pre">StressEquilibriumBbar.</span></span><span class="sig-name descname"><span class="pre">set_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.StressEquilibriumBbar.set_start" title="Link to this definition"></a></dt>
-<dd><p>Start a new time increment.</p>
+  <section id="fedoo-weakform-stressequilibriummixed-incompressibility">
+<h1>fedoo.weakform.StressEquilibriumMixed.incompressibility<a class="headerlink" href="#fedoo-weakform-stressequilibriummixed-incompressibility" title="Link to this heading"></a></h1>
+<dl class="py property">
+<dt class="sig sig-object py" id="fedoo.weakform.StressEquilibriumMixed.incompressibility">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">StressEquilibriumMixed.</span></span><span class="sig-name descname"><span class="pre">incompressibility</span></span><a class="headerlink" href="#fedoo.weakform.StressEquilibriumMixed.incompressibility" title="Link to this definition"></a></dt>
+<dd><p>the mixed formulation already avoids volumetric locking.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Not used</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -166,8 +169,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.weakform.StressEquilibriumBbar.set_inertia.html" class="btn btn-neutral float-left" title="fedoo.weakform.StressEquilibriumBbar.set_inertia" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.weakform.StressEquilibriumBbar.set_storage.html" class="btn btn-neutral float-right" title="fedoo.weakform.StressEquilibriumBbar.set_storage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness.html" class="btn btn-neutral float-left" title="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.weakform.StressEquilibriumMixed.name.html" class="btn btn-neutral float-right" title="fedoo.weakform.StressEquilibriumMixed.name" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
