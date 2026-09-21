@@ -24,6 +24,7 @@
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
       <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -73,6 +74,7 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ElastoPlasticity.html">fedoo.constitutivelaw.ElastoPlasticity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.FE2.html">fedoo.constitutivelaw.FE2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.Simcoon.html">fedoo.constitutivelaw.Simcoon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.Heterogeneous.html">fedoo.constitutivelaw.Heterogeneous</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#interface-mechanical-constitutive-laws">Interface mechanical constitutive laws</a><ul>
@@ -149,10 +151,15 @@ constitutive laws. These laws are required to create some weak formulations.</p>
 <section id="solid-mechanical-constitutive-laws">
 <h2>Solid mechanical constitutive laws<a class="headerlink" href="#solid-mechanical-constitutive-laws" title="Link to this heading"></a></h2>
 <p>These laws should be associated with <a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a></p>
+<p>In a finite-strain analysis they all follow the same convention: the law
+returns the true Cauchy stress and an unnormalized corotational Kirchhoff
+tangent, and the weak form converts that tangent to the one required by the
+selected formulation. The convention is detailed on
+<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.mechanical3d.Mechanical3D</span></code>.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticIsotrop.html#fedoo.constitutivelaw.ElasticIsotrop" title="fedoo.constitutivelaw.ElasticIsotrop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticIsotrop</span></code></a>(E, nu[, name])</p></td>
-<td><p></p></td>
+<td><p>A simple linear elastic isotropic constitutive law defined from a Yound Modulus and a Poisson Ratio.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticOrthotropic.html#fedoo.constitutivelaw.ElasticOrthotropic" title="fedoo.constitutivelaw.ElasticOrthotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic</span></code></a>(Ex, Ey, Ez, Gyz, Gxz, ...)</p></td>
 <td><p>Linear Orthotropic constitutive law defined from the engineering coefficients in local material coordinates.</p></td>
@@ -171,6 +178,9 @@ constitutive laws. These laws are required to create some weak formulations.</p>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.Simcoon.html#fedoo.constitutivelaw.Simcoon" title="fedoo.constitutivelaw.Simcoon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon</span></code></a>(umat_name, props[, tangent_mode, name])</p></td>
 <td><p>Constitutive laws from the simcoon library.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.Heterogeneous.html#fedoo.constitutivelaw.Heterogeneous" title="fedoo.constitutivelaw.Heterogeneous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Heterogeneous</span></code></a>(tup_cl, tup_elset[, name])</p></td>
+<td><p>Constitutive Law that allowing to define an heterogeneous constitutive laws.</p></td>
 </tr>
 </tbody>
 </table>

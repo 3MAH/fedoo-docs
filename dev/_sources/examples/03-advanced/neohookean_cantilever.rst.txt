@@ -53,7 +53,7 @@ Loading by force is done through implicit dynamics
 (:class:`fedoo.weakform.ImplicitDynamic`), where the cap's
 inertia/damping regularise that soft mode.
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-111
+.. GENERATED FROM PYTHON SOURCE LINES 37-109
 
 
 
@@ -144,12 +144,10 @@ inertia/damping regularise that soft mode.
     if mesh.elm_type == "hex8":
         # reduced integration + hourglass control avoids volumetric locking
         wf = fd.weakform.StressEquilibriumRI(material, nlgeom="UL")
-        stress_wf = wf.list_weakform[0]
     else:  # hex20: full integration
         wf = fd.weakform.StressEquilibrium(material, nlgeom="UL")
-        stress_wf = wf
-    # initial-stress stiffness, needed in the tangent under large rotations
-    stress_wf.geometric_stiffness = True
+    # the initial-stress stiffness is part of the tangent under large rotations;
+    # it is assembled by default in finite strain (geometric_stiffness=None)
 
     assembly = fd.Assembly.create(wf, mesh, name="assembly")
 
@@ -180,7 +178,7 @@ inertia/damping regularise that soft mode.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 19.469 seconds)
+   **Total running time of the script:** (0 minutes 20.138 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_neohookean_cantilever.py:

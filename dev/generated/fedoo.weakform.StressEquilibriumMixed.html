@@ -87,6 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.to_start.html">fedoo.weakform.StressEquilibriumMixed.to_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.update.html">fedoo.weakform.StressEquilibriumMixed.update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.update_2.html">fedoo.weakform.StressEquilibriumMixed.update_2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.convert_tangent.html">fedoo.weakform.StressEquilibriumMixed.convert_tangent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.corate.html">fedoo.weakform.StressEquilibriumMixed.corate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness.html">fedoo.weakform.StressEquilibriumMixed.geometric_stiffness</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.incompressibility.html">fedoo.weakform.StressEquilibriumMixed.incompressibility</a></li>
@@ -153,7 +154,7 @@
 <h1>fedoo.weakform.StressEquilibriumMixed<a class="headerlink" href="#fedoo-weakform-stressequilibriummixed" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.weakform.StressEquilibriumMixed">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">StressEquilibriumMixed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bulk_modulus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.StressEquilibriumMixed" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">StressEquilibriumMixed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bulk_modulus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert_tangent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.StressEquilibriumMixed" title="Link to this definition"></a></dt>
 <dd><p>Mixed displacement/pressure weak formulation for solid mechanics.</p>
 <p>This weak formulation is suitable for nearly incompressible materials.
 It introduces a pressure variable to treat the volumetric behavior
@@ -169,6 +170,8 @@ P1+/P1).</p>
 <li><p><strong>bulk_modulus</strong> (<em>float</em><em>, </em><em>optional</em>) – Bulk modulus used for scaling the pressure equation. If None, it
 is estimated from the tangent matrix trace.
 Note: This is used for scaling the pressure constraint equation.</p></li>
+<li><p><strong>convert_tangent</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Convert the constitutive corotational Kirchhoff tangent to the
+formulation tangent.</p></li>
 <li><p><strong>space</strong> (<em>ModelingSpace</em><em>, </em><em>optional</em>) – Modeling space.</p></li>
 </ul>
 </dd>
@@ -189,7 +192,7 @@ If False, a single projection (P:H) is used. Default is True.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.weakform.StressEquilibriumMixed.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bulk_modulus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.StressEquilibriumMixed.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bulk_modulus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert_tangent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.StressEquilibriumMixed.__init__" title="Link to this definition"></a></dt>
 <dd><p><strong>Methods</strong></p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
@@ -249,25 +252,28 @@ If False, a single projection (P:H) is used. Default is True.</p>
 </table>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.corate.html#fedoo.weakform.StressEquilibriumMixed.corate" title="fedoo.weakform.StressEquilibriumMixed.corate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.corate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.convert_tangent.html#fedoo.weakform.StressEquilibriumMixed.convert_tangent" title="fedoo.weakform.StressEquilibriumMixed.convert_tangent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.convert_tangent</span></code></a></p></td>
+<td><p>Whether Fedoo converts the finite-strain constitutive tangent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.corate.html#fedoo.weakform.StressEquilibriumMixed.corate" title="fedoo.weakform.StressEquilibriumMixed.corate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.corate</span></code></a></p></td>
 <td><p>Corotational strain mesure for strain.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness.html#fedoo.weakform.StressEquilibriumMixed.geometric_stiffness" title="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.geometric_stiffness</span></code></a></p></td>
-<td><p>Set to True to add the geometric effects to the stiffness matrix.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness.html#fedoo.weakform.StressEquilibriumMixed.geometric_stiffness" title="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.geometric_stiffness</span></code></a></p></td>
+<td><p>Whether to add geometric effects to the stiffness matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.incompressibility.html#fedoo.weakform.StressEquilibriumMixed.incompressibility" title="fedoo.weakform.StressEquilibriumMixed.incompressibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.incompressibility</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.incompressibility.html#fedoo.weakform.StressEquilibriumMixed.incompressibility" title="fedoo.weakform.StressEquilibriumMixed.incompressibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.incompressibility</span></code></a></p></td>
 <td><p>the mixed formulation already avoids volumetric locking.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.name.html#fedoo.weakform.StressEquilibriumMixed.name" title="fedoo.weakform.StressEquilibriumMixed.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.name</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.name.html#fedoo.weakform.StressEquilibriumMixed.name" title="fedoo.weakform.StressEquilibriumMixed.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.name</span></code></a></p></td>
 <td><p>Return the name of the WeakForm.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.nvar.html#fedoo.weakform.StressEquilibriumMixed.nvar" title="fedoo.weakform.StressEquilibriumMixed.nvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.nvar</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.nvar.html#fedoo.weakform.StressEquilibriumMixed.nvar" title="fedoo.weakform.StressEquilibriumMixed.nvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.nvar</span></code></a></p></td>
 <td><p>Number of variables in the modeling space associated to the WeakForm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.space.html#fedoo.weakform.StressEquilibriumMixed.space" title="fedoo.weakform.StressEquilibriumMixed.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.space</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.space.html#fedoo.weakform.StressEquilibriumMixed.space" title="fedoo.weakform.StressEquilibriumMixed.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.space</span></code></a></p></td>
 <td><p>Return the ModelingSpace associated to the WeakForm if defined.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.nlgeom.html#fedoo.weakform.StressEquilibriumMixed.nlgeom" title="fedoo.weakform.StressEquilibriumMixed.nlgeom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.nlgeom</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.nlgeom.html#fedoo.weakform.StressEquilibriumMixed.nlgeom" title="fedoo.weakform.StressEquilibriumMixed.nlgeom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibriumMixed.nlgeom</span></code></a></p></td>
 <td><p>Method used to treat the geometric non linearities. * Set to False if geometric non linarities are ignored. * Set to True or 'UL' to use the updated lagrangian method   (update the mesh) * Set to 'TL' to use the total lagrangian method (base on the   initial mesh with initial displacement effet).</p></td>
 </tr>
 </tbody>

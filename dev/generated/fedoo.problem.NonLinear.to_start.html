@@ -187,7 +187,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.NonLinear.to_start">
 <span class="sig-prename descclassname"><span class="pre">NonLinear.</span></span><span class="sig-name descname"><span class="pre">to_start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinear.to_start" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Restore the state of the last converged increment.</p>
+<p>Called when the Newton-Raphson algorithm fails to converge: the
+displacement increment, the minimal number of sub-iterations, the
+load-factor increment and the initial error are reset, then the
+assembly and the constraints are brought back to their committed
+state. The tangent matrix is re-assembled at the restored state, so
+that the next attempt (with a smaller time increment, see
+<a class="reference internal" href="fedoo.problem.NonLinear.nlsolve.html#fedoo.problem.NonLinear.nlsolve" title="fedoo.problem.NonLinear.nlsolve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">nlsolve()</span></code></a>) starts its elastic prediction from the same matrix
+as the increment that has just been cancelled.</p>
+</dd></dl>
 
 </section>
 

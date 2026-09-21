@@ -233,7 +233,9 @@ in the supplied corotational material coordinates.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">strain</span></code></p></td>
 <td><p>Total strain at the beginning of the increment, shape
-<code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_points)</span></code>.</p></td>
+<code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_points)</span></code>. In a finite-strain analysis this is
+the logarithmic strain in the corotational material
+frame, and the infinitesimal strain otherwise.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dstrain</span></code></p></td>
 <td><p>Current strain increment, shape <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_points)</span></code>.</p></td>
@@ -244,7 +246,7 @@ in the supplied corotational material coordinates.</p>
 are empty in a small-strain analysis.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stress</span></code></p></td>
-<td><p>Stress at the beginning of the increment, shape
+<td><p>Cauchy stress at the beginning of the increment, shape
 <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_points)</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DR</span></code></p></td>
@@ -288,6 +290,44 @@ the material tangent. A tangent can have shape <code class="docutils literal not
 or <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">6,</span> <span class="pre">n_points)</span></code> when it varies between material points. Do not modify
 <code class="docutils literal notranslate"><span class="pre">statev_start</span></code> or <code class="docutils literal notranslate"><span class="pre">wm_start</span></code> in place: they represent the committed state
 and must remain available if the global increment is rejected.</p>
+<section id="finite-strain-stress-and-tangent-convention">
+<h4>Finite-strain stress and tangent convention<a class="headerlink" href="#finite-strain-stress-and-tangent-convention" title="Link to this heading"></a></h4>
+<p>Fedoo follows the convention used by the Simcoon UMAT interface. A solid
+constitutive law returns the true Cauchy stress</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\sigma},\]</div>
+<p>and an unnormalized corotational Kirchhoff (<code class="docutils literal notranslate"><span class="pre">box</span></code>) tangent</p>
+<div class="math notranslate nohighlight">
+\[\overset{\Box}{\boldsymbol{\tau}}
+= \mathbb{C}^{\Box}:\boldsymbol{D},
+\qquad
+\boldsymbol{\tau}=J\boldsymbol{\sigma}.\]</div>
+<p>Thus, a law written in terms of Kirchhoff stress must divide the updated
+stress by <code class="docutils literal notranslate"><span class="pre">J</span> <span class="pre">=</span> <span class="pre">det(F1)</span></code> before returning it. At small strain <code class="docutils literal notranslate"><span class="pre">J</span></code> tends to
+one, so this convention reduces to the usual stress–strain tangent.</p>
+<p>The constitutive law does not transform its tangent for the selected finite
+element formulation. <a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a> performs the
+conversion centrally:</p>
+<ul class="simple">
+<li><p>in TL, <code class="docutils literal notranslate"><span class="pre">TangentMatrix</span></code> is converted to the material tangent <code class="docutils literal notranslate"><span class="pre">dS/dE</span></code>;</p></li>
+<li><p>in UL, it is converted to the spatial Lie tangent consistent with the
+Cauchy-stress residual;</p></li>
+<li><p>the corresponding initial-stress geometric stiffness is enabled by
+default in finite strain.</p></li>
+</ul>
+<p>This convention applies to continuum solid laws used by
+<code class="docutils literal notranslate"><span class="pre">StressEquilibrium</span></code>. Beam and shell laws use their own generalized forces,
+moments, strains, and curvatures.</p>
+<p>The low-level <code class="docutils literal notranslate"><span class="pre">convert_tangent=False</span></code> option disables these transformations.
+It is intended only for a custom weak-form implementation that already
+provides <code class="docutils literal notranslate"><span class="pre">dS/dE</span></code> in TL or the spatial Lie tangent in UL. When conversion is
+disabled, geometric stiffness is not enabled automatically.</p>
+<p><a class="reference internal" href="generated/fedoo.constitutivelaw.ElastoPlasticity.html#fedoo.constitutivelaw.ElastoPlasticity" title="fedoo.constitutivelaw.ElastoPlasticity"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.ElastoPlasticity</span></code></a> is a readable Python
+reference for this convention: it integrates its radial return in the
+Kirchhoff measure and divides by <code class="docutils literal notranslate"><span class="pre">J</span></code> before returning the stress.</p>
+<p>See the <a class="reference external" href="https://3mah.github.io/simcoon-docs/simulation/umat_tutorial.html">Simcoon UMAT documentation</a> for the
+material-update interface from which this convention is taken.</p>
+</section>
 <section id="initialization-call">
 <h4>Initialization call<a class="headerlink" href="#initialization-call" title="Link to this heading"></a></h4>
 <p>Fedoo calls the UMAT once during initialization with:</p>
@@ -367,7 +407,13 @@ should also validate their parameters and supported dimensional assumptions.</p>
     <span class="n">tangent</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">shear</span>
     <span class="n">tangent</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">shear</span>
 
-    <span class="n">stress_new</span> <span class="o">=</span> <span class="n">stress</span> <span class="o">+</span> <span class="n">tangent</span> <span class="o">@</span> <span class="n">dstrain</span>
+    <span class="k">if</span> <span class="n">F1</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+        <span class="n">J0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">F0</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">J1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">F1</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">tau</span> <span class="o">=</span> <span class="n">J0</span> <span class="o">*</span> <span class="n">stress</span> <span class="o">+</span> <span class="n">tangent</span> <span class="o">@</span> <span class="n">dstrain</span>
+        <span class="n">stress_new</span> <span class="o">=</span> <span class="n">tau</span> <span class="o">/</span> <span class="n">J1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">stress_new</span> <span class="o">=</span> <span class="n">stress</span> <span class="o">+</span> <span class="n">tangent</span> <span class="o">@</span> <span class="n">dstrain</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="n">stress_new</span><span class="p">,</span>
         <span class="n">statev_start</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>

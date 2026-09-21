@@ -1,0 +1,59 @@
+﻿fedoo.constitutivelaw.Heterogeneous
+===================================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: Heterogeneous
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         Heterogeneous.get_H_plane_stress
+         Heterogeneous.get_all
+         Heterogeneous.get_current_local_frame
+         Heterogeneous.get_local_frame
+         Heterogeneous.get_local_rotation
+         Heterogeneous.global2local_H
+         Heterogeneous.global2local_rotation_increment
+         Heterogeneous.global2local_strain
+         Heterogeneous.global2local_stress
+         Heterogeneous.global2local_tensor
+         Heterogeneous.initialize
+         Heterogeneous.local2global_H
+         Heterogeneous.local2global_strain
+         Heterogeneous.local2global_stress
+         Heterogeneous.reset
+         Heterogeneous.set_density
+         Heterogeneous.set_local_frame
+         Heterogeneous.set_start
+         Heterogeneous.to_start
+         Heterogeneous.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         Heterogeneous.is_isotropic
+         Heterogeneous.manages_material_frame
+         Heterogeneous.name
+         Heterogeneous.is_initialized
+  
+  

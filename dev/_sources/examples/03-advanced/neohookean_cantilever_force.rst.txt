@@ -61,7 +61,7 @@ The tie is registered automatically when the ``RigidBodyAssembly`` is part
 of the problem assembly — do not add it again (fedoo now ignores the
 duplicate, which used to corrupt the MPC elimination).
 
-.. GENERATED FROM PYTHON SOURCE LINES 45-165
+.. GENERATED FROM PYTHON SOURCE LINES 45-164
 
 
 
@@ -334,7 +334,6 @@ duplicate, which used to corrupt the MPC elimination).
     material.set_density(rho)
 
     wf = fd.weakform.StressEquilibriumRI(material, nlgeom="UL")
-    wf.list_weakform[0].geometric_stiffness = True
     assembly_fe = fd.Assembly.create(wf, mesh, name="cylinder")
 
     tie = fd.constraint.RigidTie(top)
@@ -416,7 +415,7 @@ duplicate, which used to corrupt the MPC elimination).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (2 minutes 30.112 seconds)
+   **Total running time of the script:** (2 minutes 42.994 seconds)
 
 
 .. _sphx_glr_download_examples_03-advanced_neohookean_cantilever_force.py:
