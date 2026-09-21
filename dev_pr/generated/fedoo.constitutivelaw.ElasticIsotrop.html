@@ -73,6 +73,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElastoPlasticity.html">fedoo.constitutivelaw.ElastoPlasticity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.FE2.html">fedoo.constitutivelaw.FE2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.html">fedoo.constitutivelaw.Simcoon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Heterogeneous.html">fedoo.constitutivelaw.Heterogeneous</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../constitutive_law.html#interface-mechanical-constitutive-laws">Interface mechanical constitutive laws</a></li>
@@ -124,7 +125,20 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.ElasticIsotrop">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ElasticIsotrop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ElasticIsotrop" title="Link to this definition"></a></dt>
-<dd><dl class="py method">
+<dd><p>A simple linear elastic isotropic constitutive law defined from a Yound
+Modulus and a Poisson Ratio.</p>
+<p>The constitutive Law should be associated with
+<a class="reference internal" href="fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>E</strong> (<em>scalars</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values.</em>) – The Young Modulus of the elastic isotropic material</p></li>
+<li><p><strong>nu</strong> (<em>scalars</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values.</em>) – The Poisson Ratio of the elastic isotropic material</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the constitutive law</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.ElasticIsotrop.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">E</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ElasticIsotrop.__init__" title="Link to this definition"></a></dt>
 <dd><p><strong>Methods</strong></p>
@@ -208,7 +222,7 @@
 <td><p>Shear modulus of the material</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticIsotrop.is_isotropic.html#fedoo.constitutivelaw.ElasticIsotrop.is_isotropic" title="fedoo.constitutivelaw.ElasticIsotrop.is_isotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticIsotrop.is_isotropic</span></code></a></p></td>
-<td><p>A simple linear elastic isotropic constitutive law defined from a Yound Modulus and a Poisson Ratio.</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticIsotrop.manages_material_frame.html#fedoo.constitutivelaw.ElasticIsotrop.manages_material_frame" title="fedoo.constitutivelaw.ElasticIsotrop.manages_material_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticIsotrop.manages_material_frame</span></code></a></p></td>
 <td><p></p></td>

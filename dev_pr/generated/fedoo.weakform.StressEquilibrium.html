@@ -84,6 +84,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.to_start.html">fedoo.weakform.StressEquilibrium.to_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.update.html">fedoo.weakform.StressEquilibrium.update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.update_2.html">fedoo.weakform.StressEquilibrium.update_2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.convert_tangent.html">fedoo.weakform.StressEquilibrium.convert_tangent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.corate.html">fedoo.weakform.StressEquilibrium.corate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.geometric_stiffness.html">fedoo.weakform.StressEquilibrium.geometric_stiffness</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibrium.incompressibility.html">fedoo.weakform.StressEquilibrium.incompressibility</a></li>
@@ -153,7 +154,7 @@
 <h1>fedoo.weakform.StressEquilibrium<a class="headerlink" href="#fedoo-weakform-stressequilibrium" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.weakform.StressEquilibrium">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">StressEquilibrium</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incompressibility</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.StressEquilibrium" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">StressEquilibrium</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incompressibility</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert_tangent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.StressEquilibrium" title="Link to this definition"></a></dt>
 <dd><p>Mechanical equilibrium equation for solids.</p>
 <dl class="simple">
 <dt>The main point to consider are:</dt><dd><ul class="simple">
@@ -167,9 +168,9 @@ the initial displacement is also considered and several different
 corotational formulation may be used by setting the corate attribute.</p></li>
 <li><p>For nearly incompressible material, a method to avoid the volumetric
 locking should be selected with the incompressibility attribute.</p></li>
-<li><p>For problems involving geometrical instabilities, the geometrical
-stiffness should be used by setting the geometric_stiffness attribute
-to True.</p></li>
+<li><p>The consistent geometric stiffness is enabled automatically for
+finite-strain tangent conversion. Set <code class="docutils literal notranslate"><span class="pre">geometric_stiffness</span></code>
+explicitly to override that default.</p></li>
 </ul>
 </dd>
 </dl>
@@ -180,6 +181,10 @@ to True.</p></li>
 <li><p><strong>incompressibility</strong> (<em>str</em><em>, </em><em>optional</em>) – Method used to avoid the volumetric locking of nearly incompressible
 materials. See the <a class="reference internal" href="fedoo.weakform.StressEquilibrium.incompressibility.html#fedoo.weakform.StressEquilibrium.incompressibility" title="fedoo.weakform.StressEquilibrium.incompressibility"><code class="xref py py-attr docutils literal notranslate"><span class="pre">incompressibility</span></code></a> attribute.
 By default (None), the standard displacement formulation is used.</p></li>
+<li><p><strong>convert_tangent</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Convert the constitutive corotational Kirchhoff tangent to the
+formulation tangent (<code class="docutils literal notranslate"><span class="pre">dS/dE</span></code> for TL, spatial Lie for UL). Set to
+False only when the constitutive law already returns that final
+formulation-dependent tangent.</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – name of the WeakForm</p></li>
 <li><p><strong>nlgeom</strong> (<em>bool</em><em>, </em><em>'UL'</em><em> or </em><em>'TL'</em><em>, </em><em>optional</em>) – If True, the geometrical non linearities are activate based on the
 updated lagrangian method. This parameters is used only in the
@@ -196,7 +201,7 @@ the active ModelingSpace is considered.</p></li>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.weakform.StressEquilibrium.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incompressibility</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.StressEquilibrium.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incompressibility</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert_tangent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.StressEquilibrium.__init__" title="Link to this definition"></a></dt>
 <dd><p><strong>Methods</strong></p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
@@ -256,25 +261,28 @@ the active ModelingSpace is considered.</p></li>
 </table>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.corate.html#fedoo.weakform.StressEquilibrium.corate" title="fedoo.weakform.StressEquilibrium.corate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.corate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.convert_tangent.html#fedoo.weakform.StressEquilibrium.convert_tangent" title="fedoo.weakform.StressEquilibrium.convert_tangent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.convert_tangent</span></code></a></p></td>
+<td><p>Whether Fedoo converts the finite-strain constitutive tangent.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.corate.html#fedoo.weakform.StressEquilibrium.corate" title="fedoo.weakform.StressEquilibrium.corate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.corate</span></code></a></p></td>
 <td><p>Corotational strain mesure for strain.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.geometric_stiffness.html#fedoo.weakform.StressEquilibrium.geometric_stiffness" title="fedoo.weakform.StressEquilibrium.geometric_stiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.geometric_stiffness</span></code></a></p></td>
-<td><p>Set to True to add the geometric effects to the stiffness matrix.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.geometric_stiffness.html#fedoo.weakform.StressEquilibrium.geometric_stiffness" title="fedoo.weakform.StressEquilibrium.geometric_stiffness"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.geometric_stiffness</span></code></a></p></td>
+<td><p>Whether to add geometric effects to the stiffness matrix.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.incompressibility.html#fedoo.weakform.StressEquilibrium.incompressibility" title="fedoo.weakform.StressEquilibrium.incompressibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.incompressibility</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.incompressibility.html#fedoo.weakform.StressEquilibrium.incompressibility" title="fedoo.weakform.StressEquilibrium.incompressibility"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.incompressibility</span></code></a></p></td>
 <td><p>Method used to avoid volumetric locking.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.name.html#fedoo.weakform.StressEquilibrium.name" title="fedoo.weakform.StressEquilibrium.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.name</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.name.html#fedoo.weakform.StressEquilibrium.name" title="fedoo.weakform.StressEquilibrium.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.name</span></code></a></p></td>
 <td><p>Return the name of the WeakForm.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.nvar.html#fedoo.weakform.StressEquilibrium.nvar" title="fedoo.weakform.StressEquilibrium.nvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.nvar</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.nvar.html#fedoo.weakform.StressEquilibrium.nvar" title="fedoo.weakform.StressEquilibrium.nvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.nvar</span></code></a></p></td>
 <td><p>Number of variables in the modeling space associated to the WeakForm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.space.html#fedoo.weakform.StressEquilibrium.space" title="fedoo.weakform.StressEquilibrium.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.space</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.space.html#fedoo.weakform.StressEquilibrium.space" title="fedoo.weakform.StressEquilibrium.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.space</span></code></a></p></td>
 <td><p>Return the ModelingSpace associated to the WeakForm if defined.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.nlgeom.html#fedoo.weakform.StressEquilibrium.nlgeom" title="fedoo.weakform.StressEquilibrium.nlgeom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.nlgeom</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.StressEquilibrium.nlgeom.html#fedoo.weakform.StressEquilibrium.nlgeom" title="fedoo.weakform.StressEquilibrium.nlgeom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StressEquilibrium.nlgeom</span></code></a></p></td>
 <td><p>Method used to treat the geometric non linearities. * Set to False if geometric non linarities are ignored. * Set to True or 'UL' to use the updated lagrangian method   (update the mesh) * Set to 'TL' to use the total lagrangian method (base on the   initial mesh with initial displacement effet).</p></td>
 </tr>
 </tbody>

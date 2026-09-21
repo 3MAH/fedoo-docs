@@ -87,6 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.to_start.html">fedoo.weakform.StressEquilibriumMixed.to_start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.update.html">fedoo.weakform.StressEquilibriumMixed.update</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.update_2.html">fedoo.weakform.StressEquilibriumMixed.update_2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.convert_tangent.html">fedoo.weakform.StressEquilibriumMixed.convert_tangent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.corate.html">fedoo.weakform.StressEquilibriumMixed.corate</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.weakform.StressEquilibriumMixed.geometric_stiffness</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.incompressibility.html">fedoo.weakform.StressEquilibriumMixed.incompressibility</a></li>
@@ -155,13 +156,10 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">StressEquilibriumMixed.</span></span><span class="sig-name descname"><span class="pre">geometric_stiffness</span></span><a class="headerlink" href="#fedoo.weakform.StressEquilibriumMixed.geometric_stiffness" title="Link to this definition"></a></dt>
-<dd><p>Set to True to add the geometric effects to the stiffness matrix.</p>
-<p>The use of a geometric stiffness matrix usually don’t improve the
-convergence and may even require smaller time step.
-However, geometric_stiffness should be included to reach convergence
-when the problem involve geometrical instabilities like buckling or
-when using very large strain (with hyperelastic materials for
-instance).</p>
+<dd><p>Whether to add geometric effects to the stiffness matrix.</p>
+<p><code class="docutils literal notranslate"><span class="pre">None</span></code> selects the consistent default: enabled for finite-strain
+tangent conversion and disabled otherwise. Set a boolean explicitly
+to override this behavior.</p>
 </dd></dl>
 
 </section>

@@ -166,6 +166,8 @@ the constraint reduction matrix).</p>
 regardless of the solver previously set with <a class="reference internal" href="fedoo.core.base.ProblemBase.set_solver.html#fedoo.core.base.ProblemBase.set_solver" title="fedoo.core.base.ProblemBase.set_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_solver()</span></code></a>. The
 reuse path is direct LU only; if an iterative solver was set with
 <a class="reference internal" href="fedoo.core.base.ProblemBase.set_solver.html#fedoo.core.base.ProblemBase.set_solver" title="fedoo.core.base.ProblemBase.set_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_solver()</span></code></a>, it is silently bypassed while reuse is enabled.
+For pypardiso and python-mumps, the <code class="docutils literal notranslate"><span class="pre">symmetric</span></code> choice passed to
+<a class="reference internal" href="fedoo.core.base.ProblemBase.set_solver.html#fedoo.core.base.ProblemBase.set_solver" title="fedoo.core.base.ProblemBase.set_solver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_solver()</span></code></a> is also applied to the reused factorization.
 Disable reuse with <code class="docutils literal notranslate"><span class="pre">set_reuse_factorization(False)</span></code> to restore the
 normal solver dispatch.</p>
 <p class="rubric">Examples</p>

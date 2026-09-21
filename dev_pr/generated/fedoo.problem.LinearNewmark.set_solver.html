@@ -103,7 +103,7 @@
 <h1>fedoo.problem.LinearNewmark.set_solver<a class="headerlink" href="#fedoo-problem-linearnewmark-set-solver" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.LinearNewmark.set_solver">
-<span class="sig-prename descclassname"><span class="pre">LinearNewmark.</span></span><span class="sig-name descname"><span class="pre">set_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.LinearNewmark.set_solver" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">LinearNewmark.</span></span><span class="sig-name descname"><span class="pre">set_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.LinearNewmark.set_solver" title="Link to this definition"></a></dt>
 <dd><p>Define the solver for the linear system resolution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -138,6 +138,11 @@ where A is a scipy sparse matrix and B a 1d numpy array.
 kargs may contains optional parameters.</p></li>
 </ul>
 </p></li>
+<li><p><strong>symmetric</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Use a symmetric-indefinite direct factorization when supported.
+Pardiso uses <code class="docutils literal notranslate"><span class="pre">mtype=-2</span></code> and standalone MUMPS uses <code class="docutils literal notranslate"><span class="pre">sym=2</span></code>.
+SciPy/UMFPACK, PETSc and user-supplied solvers keep their usual
+general path. The caller is responsible for ensuring that the
+reduced system matrix is symmetric.</p></li>
 <li><p><strong>kargs</strong> (<em>optional parameters depending on the type</em><em> of </em><em>solver</em>) – <dl class="simple">
 <dt>precond: bool</dt><dd><p>Use precond = False to desactivate the diagonal matrix
 preconditionning for scipy iterative methods.
@@ -188,6 +193,9 @@ this method should be avoid for problem with moderate size.</p>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use the MUMPS direct solver with petsc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">set_solver</span><span class="p">(</span><span class="s1">'petsc'</span><span class="p">,</span> <span class="n">solver_type</span><span class="o">=</span><span class="s1">'preonly'</span><span class="p">,</span> <span class="n">pc_type</span><span class="o">=</span><span class="s1">'lu'</span><span class="p">,</span> <span class="n">pc_factor_mat_solver_type</span><span class="o">=</span><span class="s1">'mumps'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use the symmetric-indefinite Pardiso or standalone MUMPS path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">set_solver</span><span class="p">(</span><span class="s1">'direct'</span><span class="p">,</span> <span class="n">symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>

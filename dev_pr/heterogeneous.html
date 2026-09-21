@@ -200,7 +200,7 @@ assemblies (see <a class="reference internal" href="assembly.html#fedoo.Assembly
 <h2>3rd method:<a class="headerlink" href="#rd-method" title="Link to this heading"></a></h2>
 <p>To allow for a more compact writting, and avoiding the sum of assemblies, fedoo propose
 a built-in constitutive law dedicated to heterogeneous material:
-<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.heterogeneous.Heterogeneous</span></code></p>
+<a class="reference internal" href="generated/fedoo.constitutivelaw.Heterogeneous.html#fedoo.constitutivelaw.Heterogeneous" title="fedoo.constitutivelaw.Heterogeneous"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.Heterogeneous</span></code></a></p>
 <p>This class allows to define one material as the combination of several materials
 associated to sets of elements. The code is shorter and more easy to read.</p>
 <p>This methods seems to be very slightly less efficient than method 2 (to be confirmed), but the
@@ -216,6 +216,10 @@ difference is barely visisble though and shouldn’t be a real matter for everyo
 <span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>In a finite-strain analysis, the geometric non-linearity is forwarded to each
+phase, which therefore behaves exactly as it would in a homogeneous problem.
+Every phase law must follow the finite-strain convention described in
+<a class="reference internal" href="generated/fedoo.constitutivelaw.Heterogeneous.html#fedoo.constitutivelaw.Heterogeneous" title="fedoo.constitutivelaw.Heterogeneous"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.Heterogeneous</span></code></a>.</p>
 </section>
 <section id="full-example">
 <h2>Full example:<a class="headerlink" href="#full-example" title="Link to this heading"></a></h2>
