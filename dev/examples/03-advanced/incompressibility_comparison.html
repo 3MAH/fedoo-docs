@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nearly incompressible plasticity: four element formulations &mdash; Fedoo 1.0.0b2 (dev)</title>
+  <title>Nearly incompressible plasticity: four element formulations &mdash; Fedoo 1.0.0 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=3e281a96"></script>
+      <script src="../../_static/documentation_options.js?v=8d563738"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -317,10 +317,10 @@ analysis.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Final response of Cook's membrane
 -------------------------------------------------------------------
 Formulation               tip displacement        max P   time [s]
-Full integration                   0.87896      0.00137      0.948
-Mean dilatation                    2.00988      0.01090      1.368
-F-bar                              2.01025      0.01090      1.233
-Reduced integration                1.81188      0.00569      0.561
+Full integration                   0.87896      0.00137      0.694
+Mean dilatation                    2.00988      0.01090      0.919
+F-bar                              2.01025      0.01090      0.884
+Reduced integration                1.81188      0.00569      0.375
 </pre></div>
 </div>
 </section>
@@ -350,7 +350,7 @@ locking.  Mean dilatation and F-bar are almost indistinguishable here.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_incompressibility_comparison_001.png" srcset="../../_images/sphx_glr_incompressibility_comparison_001.png" alt="Volumetric locking makes the untreated element too stiff" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend object at 0x7f1e91760a90&gt;
+<img src="../../_images/sphx_glr_incompressibility_comparison_001.png" srcset="../../_images/sphx_glr_incompressibility_comparison_001.png" alt="Volumetric locking makes the untreated element too stiff" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend object at 0x7faa4700aad0&gt;
 </pre></div>
 </div>
 </section>
@@ -446,7 +446,7 @@ monotonic loading path.  F-bar becomes especially useful for larger and more
 heterogeneous finite strains.  Reduced integration is often the fastest
 choice for <code class="docutils literal notranslate"><span class="pre">quad4</span></code>/<code class="docutils literal notranslate"><span class="pre">hex8</span></code> meshes, but its hourglass coefficient should be
 checked when the deformation contains strong bending or localization.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 5.232 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.620 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-incompressibility-comparison-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e0054c9eaebf125ce673b30050f734a6/incompressibility_comparison.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">incompressibility_comparison.ipynb</span></code></a></p>
