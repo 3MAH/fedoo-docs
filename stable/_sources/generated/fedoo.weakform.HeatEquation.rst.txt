@@ -19,10 +19,13 @@
          :toctree:
          
       
+         HeatEquation.copy
          HeatEquation.get_all
+         HeatEquation.get_dissipation
+         HeatEquation.get_storage
          HeatEquation.get_weak_equation
          HeatEquation.initialize
-         HeatEquation.nvar
+         HeatEquation.iter_leaf
          HeatEquation.reset
          HeatEquation.set_damping
          HeatEquation.set_dissipation
@@ -47,6 +50,7 @@
       
          HeatEquation.name
          HeatEquation.nlgeom
+         HeatEquation.nvar
          HeatEquation.space
   
   

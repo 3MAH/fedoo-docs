@@ -29,6 +29,7 @@
          ListBC.initialize
          ListBC.list_all
          ListBC.mpc
+         ListBC.register_global_dofs
          ListBC.remove
          ListBC.str_condensed
       

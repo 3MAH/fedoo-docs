@@ -19,12 +19,15 @@
          :toctree:
          
       
+         PlateShearEquilibrium.copy
          PlateShearEquilibrium.drill_constraint_operator
          PlateShearEquilibrium.generalized_strain_operator
          PlateShearEquilibrium.get_all
+         PlateShearEquilibrium.get_dissipation
+         PlateShearEquilibrium.get_storage
          PlateShearEquilibrium.get_weak_equation
          PlateShearEquilibrium.initialize
-         PlateShearEquilibrium.nvar
+         PlateShearEquilibrium.iter_leaf
          PlateShearEquilibrium.reset
          PlateShearEquilibrium.set_damping
          PlateShearEquilibrium.set_dissipation
@@ -48,6 +51,7 @@
          
       
          PlateShearEquilibrium.name
+         PlateShearEquilibrium.nvar
          PlateShearEquilibrium.space
   
   

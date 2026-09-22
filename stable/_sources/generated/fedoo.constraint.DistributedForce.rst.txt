@@ -19,6 +19,7 @@
          :toctree:
          
       
+         DistributedForce.as_neumann
          DistributedForce.assemble_global_mat
          DistributedForce.compute_elementary_operators
          DistributedForce.convert_data
@@ -28,6 +29,7 @@
          DistributedForce.delete_memory
          DistributedForce.get_all
          DistributedForce.get_change_of_basis_mat
+         DistributedForce.get_element_local_frame
          DistributedForce.get_element_results
          DistributedForce.get_global_matrix
          DistributedForce.get_global_vector
@@ -38,9 +40,12 @@
          DistributedForce.get_strain
          DistributedForce.initialize
          DistributedForce.integrate_field
+         DistributedForce.iter_leaf
          DistributedForce.operator_apply
+         DistributedForce.register_global_dofs
          DistributedForce.reset
          DistributedForce.set_disp
+         DistributedForce.set_element_local_frame
          DistributedForce.set_start
          DistributedForce.sum
          DistributedForce.to_start

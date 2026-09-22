@@ -19,12 +19,15 @@
          :toctree:
          
       
+         PlateDrillingPenalty.copy
          PlateDrillingPenalty.drill_constraint_operator
          PlateDrillingPenalty.generalized_strain_operator
          PlateDrillingPenalty.get_all
+         PlateDrillingPenalty.get_dissipation
+         PlateDrillingPenalty.get_storage
          PlateDrillingPenalty.get_weak_equation
          PlateDrillingPenalty.initialize
-         PlateDrillingPenalty.nvar
+         PlateDrillingPenalty.iter_leaf
          PlateDrillingPenalty.reset
          PlateDrillingPenalty.set_damping
          PlateDrillingPenalty.set_dissipation
@@ -48,6 +51,7 @@
          
       
          PlateDrillingPenalty.name
+         PlateDrillingPenalty.nvar
          PlateDrillingPenalty.space
   
   

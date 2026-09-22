@@ -22,6 +22,7 @@
          PeriodicBC.generate
          PeriodicBC.get_all
          PeriodicBC.initialize
+         PeriodicBC.register_global_dofs
          PeriodicBC.str_condensed
       
       

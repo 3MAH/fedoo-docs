@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Post-Processing &mdash; fedoo  documentation</title>
+  <title>Post-Processing &mdash; Fedoo 1.0.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -14,11 +14,12 @@
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=26864b79" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -40,7 +41,7 @@
           
           <a href="index.html">
             
-              <img src="_static/fedOOLogos_ss_fond.png" class="logo" alt="Logo"/>
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -59,42 +60,43 @@
 
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Quick_Start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ConstitutiveLaw.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="WeakForm.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Assembly.html">Class Assembly</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Post-Processing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.html">fedoo.DataSet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html">fedoo.MultiFrameDataSet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.get_data.html">fedoo.DataSet.get_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.get_history.html">fedoo.MultiFrameDataSet.get_history</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.plot.html">fedoo.DataSet.plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot.html">fedoo.MultiFrameDataSet.plot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot_history.html">fedoo.MultiFrameDataSet.plot_history</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.write_movie.html">fedoo.MultiFrameDataSet.write_movie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.save.html">fedoo.DataSet.save</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.savez.html">fedoo.DataSet.savez</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.savez_compressed.html">fedoo.DataSet.savez_compressed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.save_mesh.html">fedoo.DataSet.save_mesh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.to_csv.html">fedoo.DataSet.to_csv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.to_excel.html">fedoo.DataSet.to_excel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.to_vtk.html">fedoo.DataSet.to_vtk</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.to_msh.html">fedoo.DataSet.to_msh</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.save_all.html">fedoo.MultiFrameDataSet.save_all</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.read_data.html">fedoo.read_data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.read.html">fedoo.DataSet.read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.DataSet.load.html">fedoo.DataSet.load</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.load.html">fedoo.MultiFrameDataSet.load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-results-from-a-problem">Get results from a problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#class-dataset">Class DataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-multiframedataset">Class MultiFrameDataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multimesh-results">MultiMesh results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#save-data-to-disk">Save data to disk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read-data-from-disk">Read data from disk</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-operations">Basic operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extract-data">Extract data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting-results">Plotting results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#save-results">Save results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read-results">Read results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-operations">Advanced operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#write-movies">Write Movies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiplot-feature">Multiplot feature</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
 </ul>
 
 
@@ -129,7 +131,9 @@
 <p>In fedoo, most of the standard results are easily exportable using the
 <a class="reference internal" href="generated/fedoo.Problem.get_results.html#fedoo.Problem.get_results" title="fedoo.Problem.get_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Problem.get_results()</span></code></a> method of the problem class.</p>
 <p>The get_results method returns a <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.DataSet</span></code></a> object which comes
-with several methods for plotting, saving and loading mesh dependent results.</p>
+with several methods for plotting, saving and loading mesh-dependent results.
+A dataset can be associated with either a <a class="reference internal" href="generated/fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.Mesh</span></code></a> or a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MultiMesh</span></code>.</p>
 <p>To avoid a redundent call of the get_results function, especially for time
 dependent problems, one can simply add some required output with the
 <a class="reference internal" href="generated/fedoo.Problem.add_output.html#fedoo.Problem.add_output" title="fedoo.Problem.add_output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Problem.add_output()</span></code></a> method. This create a
@@ -140,8 +144,8 @@ fields on disk using the choosen file format, and associate the saved file to
 an iteration of the <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a>. For non linear problems
 solved using <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Problem.nlsolve()</span></code>, results are automatically saved at
 some iterations dependending on the choosen parameters.</p>
-<p>The <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> store the path of the saved files for each
-iteration in the MultiFrameDataSet.list_data attribute. The method
+<p>The <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> stores references to the saved iterations in
+the MultiFrameDataSet.list_data attribute. The method
 <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.load.html#fedoo.MultiFrameDataSet.load" title="fedoo.MultiFrameDataSet.load"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MultiFrameDataSet.load()</span></code></a> is called to read the data
 of a given iteration.</p>
 <section id="class-dataset">
@@ -164,14 +168,62 @@ of a given iteration.</p>
 </tbody>
 </table>
 </section>
+<section id="multimesh-results">
+<h3>MultiMesh results<a class="headerlink" href="#multimesh-results" title="Link to this heading"></a></h3>
+<p>A <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSet</span></code></a> or <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> associated with a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code> can contain submeshes with different element types.
+Node fields use the common global node numbering. Element and Gauss-point
+fields returned by <a class="reference internal" href="generated/fedoo.DataSet.get_data.html#fedoo.DataSet.get_data" title="fedoo.DataSet.get_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataSet.get_data()</span></code></a> are stored in a
+<a class="reference internal" href="generated/fedoo.MultiMeshData.html#fedoo.MultiMeshData" title="fedoo.MultiMeshData"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMeshData</span></code></a> object, with one data block per submesh.</p>
+<p>Global element ids use the concatenated submesh order: all elements of
+submesh 0, then all elements of submesh 1, and so on. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stress</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"vm"</span><span class="p">,</span> <span class="s2">"Element"</span><span class="p">)</span>
+
+<span class="c1"># Access data by submesh or by global element id</span>
+<span class="n">shell_stress</span> <span class="o">=</span> <span class="n">stress</span><span class="o">.</span><span class="n">submesh</span><span class="p">(</span><span class="s2">"tri3"</span><span class="p">)</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">stress</span><span class="o">.</span><span class="n">global_element_value</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">stress</span><span class="o">.</span><span class="n">global_element_values</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">42</span><span class="p">])</span>
+
+<span class="c1"># Build one NumPy array using the global element order</span>
+<span class="n">global_stress</span> <span class="o">=</span> <span class="n">stress</span><span class="o">.</span><span class="n">to_global</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Normal NumPy-style access to a <a class="reference internal" href="generated/fedoo.MultiMeshData.html#fedoo.MultiMeshData" title="fedoo.MultiMeshData"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMeshData</span></code></a> object refers to its
+active submesh. Use <a class="reference internal" href="generated/fedoo.MultiMeshData.to_global.html#fedoo.MultiMeshData.to_global" title="fedoo.MultiMeshData.to_global"><code class="xref py py-meth docutils literal notranslate"><span class="pre">MultiMeshData.to_global()</span></code></a> when a globally ordered
+array is required. A global selection spanning several submeshes can be
+plotted directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">"Stress"</span><span class="p">,</span>
+    <span class="n">component</span><span class="o">=</span><span class="s2">"vm"</span><span class="p">,</span>
+    <span class="n">data_type</span><span class="o">=</span><span class="s2">"Element"</span><span class="p">,</span>
+    <span class="n">element_set</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">42</span><span class="p">],</span>
+    <span class="n">global_element_set</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.MultiMeshData.html#fedoo.MultiMeshData" title="fedoo.MultiMeshData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMeshData</span></code></a>(mesh, data[, active_submesh])</p></td>
+<td><p>Array-like data container associated with a <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="save-data-to-disk">
 <h3>Save data to disk<a class="headerlink" href="#save-data-to-disk" title="Link to this heading"></a></h3>
 <p>Once a DataSet is created using for instance the
 <a class="reference internal" href="generated/fedoo.Problem.get_results.html#fedoo.Problem.get_results" title="fedoo.Problem.get_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Problem.get_results()</span></code></a> method, the data can easily be saved on
 disk using for instance the <a class="reference internal" href="generated/fedoo.DataSet.save.html#fedoo.DataSet.save" title="fedoo.DataSet.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.DataSet.save()</span></code></a> method.</p>
+<p>FDH5 is the default and recommended format. If <code class="docutils literal notranslate"><span class="pre">DataSet.save</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MultiFrameDataSet.save_all</span></code>, or <code class="docutils literal notranslate"><span class="pre">read_data</span></code> is called with a filename
+without an extension, the <code class="docutils literal notranslate"><span class="pre">.fdh5</span></code> extension is assumed.</p>
 <dl class="simple">
 <dt>The available file types are:</dt><dd><ul class="simple">
-<li><p>‘fdz’: A zipped archive containing the mesh using the ‘vtk’ format
+<li><p>‘fdh5’: The native HDF5-based Fedoo format. It stores the mesh, node and
+element sets, node/element/Gauss-point fields, and multiple iterations
+in one file. It also preserves the complete MultiMesh structure and its
+per-submesh fields. This is the default format.</p></li>
+<li><p>‘fdz’: A legacy zipped archive containing the mesh using the ‘vtk’ format
 named ‘_mesh_.vtk’, and data from several iterations named ‘iter_x.npz’
 where x is the iteration number (x=0 for the 1st iteration).</p></li>
 <li><p>‘vtk’: The vtk format contains the mesh and the data in a single files.
@@ -199,12 +251,13 @@ The mesh is not included and may be saved beside in a vtk file.</p></li>
 <h3>Read data from disk<a class="headerlink" href="#read-data-from-disk" title="Link to this heading"></a></h3>
 <p>To read data saved on disk, use the function <a class="reference internal" href="generated/fedoo.read_data.html#fedoo.read_data" title="fedoo.read_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_data()</span></code></a>.
 The data are imported as <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSet</span></code></a> or
-<a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> objects depending on the imported file(s).</p>
+<a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> objects depending on the imported file(s).
+FDH5 is used by default when the filename has no extension.</p>
 <p class="rubric" id="very-simple-problem">Example</p>
 <p>For example, defining and solving a very simple problem :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 
-<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">&quot;2Dstress&quot;</span><span class="p">)</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dstress"</span><span class="p">)</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">()</span>
 <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">2e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
 <span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
@@ -214,17 +267,17 @@ The data are imported as <a class="reference internal" href="generated/fedoo.Dat
 <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
 
 <span class="c1"># Boundary conditions</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dirichlet&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;Disp&#39;</span><span class="p">,</span>    <span class="mi">0</span> <span class="p">)</span>
-<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;Dirichlet&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;Disp&#39;</span><span class="p">,</span>  <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="s1">'left'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span>    <span class="mi">0</span> <span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="s1">'right'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span>  <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
 
 <span class="c1"># Solve problem</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Then, we can catch the Stress, Displacement and Strain fields using:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="s2">&quot;Strain&quot;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">])</span>
 <span class="c1"># plot the sigma_xx averaged at nodes</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">&#39;XX&#39;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;Node&#39;</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">'XX'</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">'Node'</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="_images/example_plot_dataset.png" src="_images/example_plot_dataset.png" />
@@ -237,12 +290,12 @@ time interval (here the results are saved on a file).</p>
 <span class="c1"># Boundary conditions</span>
 <span class="n">pb_nl</span><span class="o">.</span><span class="n">bc</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">bc</span>
 
-<span class="n">results_nl</span> <span class="o">=</span> <span class="n">pb_nl</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s1">&#39;nl_results&#39;</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="s2">&quot;Disp&quot;</span><span class="p">,</span> <span class="s2">&quot;Strain&quot;</span><span class="p">])</span>
+<span class="n">results_nl</span> <span class="o">=</span> <span class="n">pb_nl</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s1">'nl_results'</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">])</span>
 
 <span class="n">pb_nl</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">interval_output</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
 
 <span class="c1"># plot the sigma_xx averaged at nodes at the last increment</span>
-<span class="n">results_nl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Stress&quot;</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">&#39;XX&#39;</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;Node&#39;</span><span class="p">)</span>
+<span class="n">results_nl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s1">'XX'</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s1">'Node'</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="_images/example_plot_dataset_nl.png" src="_images/example_plot_dataset_nl.png" />
@@ -261,11 +314,11 @@ command line:</p>
 <p>or from a python code. The code below show different ways to start the viewer
 inside a python code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s1">&#39;myfile.fdz&#39;</span><span class="p">)</span>  <span class="c1"># load a DataSet from file</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s1">'myfile.fdh5'</span><span class="p">)</span>  <span class="c1"># load a DataSet from file</span>
 
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">()</span>  <span class="c1"># start the viewer with no file opened</span>
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># start the viewer and open the result DataSet</span>
-<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="s1">&#39;myfile.fdz&#39;</span><span class="p">)</span>  <span class="c1"># start the viewer with the data from a file</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="s1">'myfile.fdh5'</span><span class="p">)</span>  <span class="c1"># start the viewer with the data from a file</span>
 </pre></div>
 </div>
 <p>The viewer includes the following tools and features:</p>
@@ -347,7 +400,10 @@ result data are listed in this section.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.DataSet.to_msh.html#fedoo.DataSet.to_msh" title="fedoo.DataSet.to_msh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_msh</span></code></a>(filename)</p></td>
 <td><p>Write a msh (gmsh format) file with mesh and associated data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.save_all.html#fedoo.MultiFrameDataSet.save_all" title="fedoo.MultiFrameDataSet.save_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.save_all</span></code></a>(filename[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.DataSet.to_fdh5.html#fedoo.DataSet.to_fdh5" title="fedoo.DataSet.to_fdh5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_fdh5</span></code></a>(filename[, iteration, overwrite])</p></td>
+<td><p>Write the dataset to a FDH5 file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.save_all.html#fedoo.MultiFrameDataSet.save_all" title="fedoo.MultiFrameDataSet.save_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.save_all</span></code></a>(filename[, ...])</p></td>
 <td><p>Save all data from MultiFrameDataSet.</p></td>
 </tr>
 </tbody>
@@ -388,23 +444,23 @@ scale_factor applied to the displacement (using the <em>scale</em> argument) and
 the stress field (modifiying the results data).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="s1">&#39;Disp&#39;</span><span class="p">],</span> <span class="s1">&#39;Node&#39;</span><span class="p">)</span>
-<span class="n">stress</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">node_data</span><span class="p">[</span><span class="s1">&#39;Stress&#39;</span><span class="p">]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s1">'Stress'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">],</span> <span class="s1">'Node'</span><span class="p">)</span>
+<span class="n">stress</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">node_data</span><span class="p">[</span><span class="s1">'Stress'</span><span class="p">]</span>
 <span class="n">clim</span> <span class="o">=</span> <span class="p">[</span><span class="n">stress</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">stress</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>  <span class="c1"># 3 -&gt; xy in voigt notation</span>
 
 <span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">window_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">600</span><span class="p">,</span><span class="mi">400</span><span class="p">])</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">open_gif</span><span class="p">(</span><span class="s2">&quot;my_movie.gif&quot;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">open_gif</span><span class="p">(</span><span class="s2">"my_movie.gif"</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">sargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span> <span class="n">position_x</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">position_y</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">48</span><span class="p">):</span>
     <span class="n">scale_factor</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">48</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">node_data</span><span class="p">[</span><span class="s2">&quot;Stress&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">stress</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">node_data</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">]</span> <span class="o">=</span> <span class="n">scale_factor</span> <span class="o">*</span> <span class="n">stress</span>
     <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-        <span class="s2">&quot;Stress&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;XY&quot;</span><span class="p">,</span>
+        <span class="s2">"Stress"</span><span class="p">,</span>
+        <span class="s2">"XY"</span><span class="p">,</span>
         <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">,</span>
         <span class="n">scale</span><span class="o">=</span><span class="n">scale_factor</span><span class="p">,</span>
         <span class="n">clim</span><span class="o">=</span><span class="n">clim</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Iter: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Iter: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
         <span class="n">title_size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
         <span class="n">scalar_bar_args</span><span class="o">=</span><span class="n">sargs</span><span class="p">,</span>
     <span class="p">)</span>
@@ -422,20 +478,20 @@ the stress field (modifiying the results data).</p>
 This allow for instance to use the pyvista multiplot capability.
 For instance,
 we can plot the stress results after the example
-<a class="reference internal" href="simple_examples.html#example-plate-with-hole"><span class="std std-ref">Plate with hole in tension</span></a>:</p>
+<span class="xref std std-ref">example_plate_with_hole</span>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
 
 <span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="c1"># or using the backgroundplotter:</span>
 <span class="c1"># from pyvistaqt import BackgroundPlotter</span>
 <span class="c1"># pl = BackgroundPlotter(shape = (2,2))</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="s1">&#39;vm&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">'Stress'</span><span class="p">,</span> <span class="s1">'vm'</span><span class="p">,</span> <span class="s1">'Node'</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="s1">&#39;XX&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">'Stress'</span><span class="p">,</span> <span class="s1">'XX'</span><span class="p">,</span> <span class="s1">'Node'</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="s1">&#39;YY&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">'Stress'</span><span class="p">,</span> <span class="s1">'YY'</span><span class="p">,</span> <span class="s1">'Node'</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;Stress&#39;</span><span class="p">,</span> <span class="s1">&#39;XY&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">'Stress'</span><span class="p">,</span> <span class="s1">'XY'</span><span class="p">,</span> <span class="s1">'Node'</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>

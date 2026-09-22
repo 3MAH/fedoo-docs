@@ -19,10 +19,14 @@
          :toctree:
          
       
+         BeamPipe.compute_linear_density
+         BeamPipe.compute_rotary_density
          BeamPipe.get_all
          BeamPipe.get_beam_rigidity
+         BeamPipe.get_local_frame
          BeamPipe.initialize
          BeamPipe.reset
+         BeamPipe.set_local_frame
          BeamPipe.set_start
          BeamPipe.to_start
          BeamPipe.update
@@ -38,7 +42,9 @@
          :toctree:
          
       
+         BeamPipe.linear_density
          BeamPipe.name
+         BeamPipe.rotary_density
          BeamPipe.r_int
          BeamPipe.r_ext
          BeamPipe.A

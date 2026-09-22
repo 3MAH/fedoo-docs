@@ -19,10 +19,13 @@
          :toctree:
          
       
+         InterfaceForce.copy
          InterfaceForce.get_all
+         InterfaceForce.get_dissipation
+         InterfaceForce.get_storage
          InterfaceForce.get_weak_equation
          InterfaceForce.initialize
-         InterfaceForce.nvar
+         InterfaceForce.iter_leaf
          InterfaceForce.reset
          InterfaceForce.set_damping
          InterfaceForce.set_dissipation
@@ -46,7 +49,7 @@
          
       
          InterfaceForce.name
+         InterfaceForce.nvar
          InterfaceForce.space
-         InterfaceForce.nlgeom
   
   

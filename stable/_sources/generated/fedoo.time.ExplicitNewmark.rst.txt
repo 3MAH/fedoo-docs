@@ -1,0 +1,49 @@
+﻿fedoo.time.ExplicitNewmark
+==========================
+
+.. currentmodule:: fedoo.time
+
+.. autoclass:: ExplicitNewmark
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         ExplicitNewmark.acceleration
+         ExplicitNewmark.compile_assembly
+         ExplicitNewmark.compile_weakform
+         ExplicitNewmark.correct
+         ExplicitNewmark.effective_mass_factor
+         ExplicitNewmark.enforce_displacement
+         ExplicitNewmark.evaluation_state
+         ExplicitNewmark.mass_history
+         ExplicitNewmark.predict
+         ExplicitNewmark.prepare_step
+         ExplicitNewmark.state_from_displacement
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         ExplicitNewmark.evolution
+         ExplicitNewmark.is_explicit
+         ExplicitNewmark.needs_end_step_acceleration
+  
+  

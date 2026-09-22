@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.problem.LinearBuckling &mdash; Fedoo 1.0.0 (stable)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.problem.LinearBuckling.add_global_dof" href="fedoo.problem.LinearBuckling.add_global_dof.html" />
+    <link rel="prev" title="fedoo.problem.Modal.bc" href="fedoo.problem.Modal.bc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Modal.html">fedoo.problem.Modal</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.problem.LinearBuckling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.add_global_dof.html">fedoo.problem.LinearBuckling.add_global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.add_output.html">fedoo.problem.LinearBuckling.add_output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.apply_boundary_conditions.html">fedoo.problem.LinearBuckling.apply_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.clear_outputs.html">fedoo.problem.LinearBuckling.clear_outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_A.html">fedoo.problem.LinearBuckling.get_A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_B.html">fedoo.problem.LinearBuckling.get_B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_D.html">fedoo.problem.LinearBuckling.get_D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_X.html">fedoo.problem.LinearBuckling.get_X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_active.html">fedoo.problem.LinearBuckling.get_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_all.html">fedoo.problem.LinearBuckling.get_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_disp.html">fedoo.problem.LinearBuckling.get_disp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_dof_solution.html">fedoo.problem.LinearBuckling.get_dof_solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_ext_forces.html">fedoo.problem.LinearBuckling.get_ext_forces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_output_scalars.html">fedoo.problem.LinearBuckling.get_output_scalars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_results.html">fedoo.problem.LinearBuckling.get_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.get_rot.html">fedoo.problem.LinearBuckling.get_rot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.init_bc_start_value.html">fedoo.problem.LinearBuckling.init_bc_start_value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.invalidate_factorization.html">fedoo.problem.LinearBuckling.invalidate_factorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.make_active.html">fedoo.problem.LinearBuckling.make_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.save_modes.html">fedoo.problem.LinearBuckling.save_modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.save_results.html">fedoo.problem.LinearBuckling.save_results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.set_A.html">fedoo.problem.LinearBuckling.set_A</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.set_B.html">fedoo.problem.LinearBuckling.set_B</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.set_D.html">fedoo.problem.LinearBuckling.set_D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.set_X.html">fedoo.problem.LinearBuckling.set_X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.set_active.html">fedoo.problem.LinearBuckling.set_active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.set_dof.html">fedoo.problem.LinearBuckling.set_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.set_mode.html">fedoo.problem.LinearBuckling.set_mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.set_reuse_factorization.html">fedoo.problem.LinearBuckling.set_reuse_factorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.set_solver.html">fedoo.problem.LinearBuckling.set_solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.solve.html">fedoo.problem.LinearBuckling.solve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.update_boundary_conditions.html">fedoo.problem.LinearBuckling.update_boundary_conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.active.html">fedoo.problem.LinearBuckling.active</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.assembly.html">fedoo.problem.LinearBuckling.assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.current_mode.html">fedoo.problem.LinearBuckling.current_mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.geometric_stiffness_matrix.html">fedoo.problem.LinearBuckling.geometric_stiffness_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.global_dof.html">fedoo.problem.LinearBuckling.global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.material_assembly.html">fedoo.problem.LinearBuckling.material_assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.material_stiffness_matrix.html">fedoo.problem.LinearBuckling.material_stiffness_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.n_dof.html">fedoo.problem.LinearBuckling.n_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.n_global_dof.html">fedoo.problem.LinearBuckling.n_global_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.n_node_dof.html">fedoo.problem.LinearBuckling.n_node_dof</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.name.html">fedoo.problem.LinearBuckling.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.results.html">fedoo.problem.LinearBuckling.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.solver.html">fedoo.problem.LinearBuckling.solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.space.html">fedoo.problem.LinearBuckling.space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.total_assembly.html">fedoo.problem.LinearBuckling.total_assembly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.total_stiffness_matrix.html">fedoo.problem.LinearBuckling.total_stiffness_matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.LinearBuckling.bc.html">fedoo.problem.LinearBuckling.bc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.LinearNewmark.html">fedoo.problem.LinearNewmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinear.html">fedoo.problem.NonLinear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.NonLinearNewmark.html">fedoo.problem.NonLinearNewmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.problem.ExplicitDynamic.html">fedoo.problem.ExplicitDynamic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.core.base.ProblemBase.html">fedoo.core.base.ProblemBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.Problem.html">fedoo.Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#result-output">Result output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#eigenvalue-analyses">Eigenvalue analyses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#time-integration">Time integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#non-linear-solver">Non-Linear Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html#overcoming-simulation-instabilities">Overcoming Simulation Instabilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+      <li class="breadcrumb-item active">fedoo.problem.LinearBuckling</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.problem.LinearBuckling.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-problem-linearbuckling">
+<h1>fedoo.problem.LinearBuckling<a class="headerlink" href="#fedoo-problem-linearbuckling" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fedoo.problem.LinearBuckling">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LinearBuckling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_assembled_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.LinearBuckling" title="Link to this definition"></a></dt>
+<dd><p>Compute linear buckling modes about a prestressed equilibrium state.</p>
+<p>The problem solved is</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{K}_M\boldsymbol{\phi}
+= -\lambda\mathbf{K}_G\boldsymbol{\phi},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{K}_M\)</span> is the material tangent stiffness and
+<span class="math notranslate nohighlight">\(\mathbf{K}_G\)</span> is the initial-stress stiffness. The supplied
+assembly must already contain the converged preload state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>assembly</strong> (<em>Assembly-like</em><em>, </em><a class="reference internal" href="fedoo.Problem.html#fedoo.Problem" title="fedoo.Problem"><em>Problem</em></a><em> or </em><em>str</em>) – Prestressed assembly, a problem exposing it through <code class="docutils literal notranslate"><span class="pre">assembly</span></code>, or
+the name of a registered assembly.</p></li>
+<li><p><strong>reuse_assembled_matrix</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Reuse the cached preload matrix when all contributing weak forms agree
+on whether geometric stiffness was enabled. If False, independently
+assemble both required matrices.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>default=&quot;MainProblem&quot;</em>) – Name of the problem.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Updated-Lagrangian preload states are not supported. Boundary conditions
+describe perturbations and must therefore be homogeneous.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.problem.LinearBuckling.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_assembled_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.LinearBuckling.__init__" title="Link to this definition"></a></dt>
+<dd><p><strong>Methods</strong></p>
+<blockquote>
+<div><table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.add_global_dof.html#fedoo.problem.LinearBuckling.add_global_dof" title="fedoo.problem.LinearBuckling.add_global_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.add_global_dof</span></code></a>(variable_names)</p></td>
+<td><p>Add global degrees of freedom to the problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.add_output.html#fedoo.problem.LinearBuckling.add_output" title="fedoo.problem.LinearBuckling.add_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.add_output</span></code></a>(filename, assembly)</p></td>
+<td><p>Register an output for automatic saving managed by solve methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.apply_boundary_conditions.html#fedoo.problem.LinearBuckling.apply_boundary_conditions" title="fedoo.problem.LinearBuckling.apply_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.apply_boundary_conditions</span></code></a>([...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.clear_outputs.html#fedoo.problem.LinearBuckling.clear_outputs" title="fedoo.problem.LinearBuckling.clear_outputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.clear_outputs</span></code></a>()</p></td>
+<td><p>Stop automatic output by removing all registered requests.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_A.html#fedoo.problem.LinearBuckling.get_A" title="fedoo.problem.LinearBuckling.get_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_A</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_B.html#fedoo.problem.LinearBuckling.get_B" title="fedoo.problem.LinearBuckling.get_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_B</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_D.html#fedoo.problem.LinearBuckling.get_D" title="fedoo.problem.LinearBuckling.get_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_D</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_X.html#fedoo.problem.LinearBuckling.get_X" title="fedoo.problem.LinearBuckling.get_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_X</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_active.html#fedoo.problem.LinearBuckling.get_active" title="fedoo.problem.LinearBuckling.get_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_active</span></code></a>()</p></td>
+<td><p>Return the active Problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_all.html#fedoo.problem.LinearBuckling.get_all" title="fedoo.problem.LinearBuckling.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_all</span></code></a>()</p></td>
+<td><p>Return the list of all problems.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_disp.html#fedoo.problem.LinearBuckling.get_disp" title="fedoo.problem.LinearBuckling.get_disp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_disp</span></code></a>([name])</p></td>
+<td><p>Return displacement components of the selected buckling mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_dof_solution.html#fedoo.problem.LinearBuckling.get_dof_solution" title="fedoo.problem.LinearBuckling.get_dof_solution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_dof_solution</span></code></a>([name])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_ext_forces.html#fedoo.problem.LinearBuckling.get_ext_forces" title="fedoo.problem.LinearBuckling.get_ext_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_ext_forces</span></code></a>([name, ...])</p></td>
+<td><p>Return the nodal Forces in global coordinates system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_output_scalars.html#fedoo.problem.LinearBuckling.get_output_scalars" title="fedoo.problem.LinearBuckling.get_output_scalars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_output_scalars</span></code></a>()</p></td>
+<td><p>Return metadata attached to the currently selected mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_results.html#fedoo.problem.LinearBuckling.get_results" title="fedoo.problem.LinearBuckling.get_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_results</span></code></a>(*args, **kargs)</p></td>
+<td><p>Extract some results from the current problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.get_rot.html#fedoo.problem.LinearBuckling.get_rot" title="fedoo.problem.LinearBuckling.get_rot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.get_rot</span></code></a>([name])</p></td>
+<td><p>Return rotation components of the selected buckling mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.init_bc_start_value.html#fedoo.problem.LinearBuckling.init_bc_start_value" title="fedoo.problem.LinearBuckling.init_bc_start_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.init_bc_start_value</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.invalidate_factorization.html#fedoo.problem.LinearBuckling.invalidate_factorization" title="fedoo.problem.LinearBuckling.invalidate_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.invalidate_factorization</span></code></a>()</p></td>
+<td><p>Invalidate any cached factorization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.make_active.html#fedoo.problem.LinearBuckling.make_active" title="fedoo.problem.LinearBuckling.make_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.make_active</span></code></a>()</p></td>
+<td><p>Define the problem instance as the active Problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.save_modes.html#fedoo.problem.LinearBuckling.save_modes" title="fedoo.problem.LinearBuckling.save_modes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.save_modes</span></code></a>([modes, scale])</p></td>
+<td><p>Save selected modes through outputs registered with <code class="docutils literal notranslate"><span class="pre">add_output</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.save_results.html#fedoo.problem.LinearBuckling.save_results" title="fedoo.problem.LinearBuckling.save_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.save_results</span></code></a>([iterOutput])</p></td>
+<td><p>Write the current state to every registered output.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_A.html#fedoo.problem.LinearBuckling.set_A" title="fedoo.problem.LinearBuckling.set_A"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_A</span></code></a>(A)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_B.html#fedoo.problem.LinearBuckling.set_B" title="fedoo.problem.LinearBuckling.set_B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_B</span></code></a>(B)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_D.html#fedoo.problem.LinearBuckling.set_D" title="fedoo.problem.LinearBuckling.set_D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_D</span></code></a>(D)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_X.html#fedoo.problem.LinearBuckling.set_X" title="fedoo.problem.LinearBuckling.set_X"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_X</span></code></a>(value)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_active.html#fedoo.problem.LinearBuckling.set_active" title="fedoo.problem.LinearBuckling.set_active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_active</span></code></a>(name)</p></td>
+<td><p>Define the active Problem from its name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_dof.html#fedoo.problem.LinearBuckling.set_dof" title="fedoo.problem.LinearBuckling.set_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_dof</span></code></a>(name, value)</p></td>
+<td><p>Set values in the current degree-of-freedom vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_mode.html#fedoo.problem.LinearBuckling.set_mode" title="fedoo.problem.LinearBuckling.set_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_mode</span></code></a>(index[, scale])</p></td>
+<td><p>Install one zero-based buckling mode as the current solution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_reuse_factorization.html#fedoo.problem.LinearBuckling.set_reuse_factorization" title="fedoo.problem.LinearBuckling.set_reuse_factorization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_reuse_factorization</span></code></a>([reuse])</p></td>
+<td><p>Enable or disable factorization reuse for repeated solves.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.set_solver.html#fedoo.problem.LinearBuckling.set_solver" title="fedoo.problem.LinearBuckling.set_solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.set_solver</span></code></a>([solver, which, ...])</p></td>
+<td><p>Configure the symmetric generalized eigensolver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.solve.html#fedoo.problem.LinearBuckling.solve" title="fedoo.problem.LinearBuckling.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.solve</span></code></a>([n_modes, sigma])</p></td>
+<td><p>Solve for positive critical load factors and buckling modes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.update_boundary_conditions.html#fedoo.problem.LinearBuckling.update_boundary_conditions" title="fedoo.problem.LinearBuckling.update_boundary_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.update_boundary_conditions</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.active.html#fedoo.problem.LinearBuckling.active" title="fedoo.problem.LinearBuckling.active"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.active</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.assembly.html#fedoo.problem.LinearBuckling.assembly" title="fedoo.problem.LinearBuckling.assembly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.assembly</span></code></a></p></td>
+<td><p>Prestressed source assembly.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.current_mode.html#fedoo.problem.LinearBuckling.current_mode" title="fedoo.problem.LinearBuckling.current_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.current_mode</span></code></a></p></td>
+<td><p>Zero-based index of the mode installed as the current solution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.geometric_stiffness_matrix.html#fedoo.problem.LinearBuckling.geometric_stiffness_matrix" title="fedoo.problem.LinearBuckling.geometric_stiffness_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.geometric_stiffness_matrix</span></code></a></p></td>
+<td><p>Full unconstrained initial-stress stiffness.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.global_dof.html#fedoo.problem.LinearBuckling.global_dof" title="fedoo.problem.LinearBuckling.global_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.global_dof</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.material_assembly.html#fedoo.problem.LinearBuckling.material_assembly" title="fedoo.problem.LinearBuckling.material_assembly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.material_assembly</span></code></a></p></td>
+<td><p>Assembly built for material stiffness, or the reused source.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.material_stiffness_matrix.html#fedoo.problem.LinearBuckling.material_stiffness_matrix" title="fedoo.problem.LinearBuckling.material_stiffness_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.material_stiffness_matrix</span></code></a></p></td>
+<td><p>Full unconstrained material tangent stiffness.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.n_dof.html#fedoo.problem.LinearBuckling.n_dof" title="fedoo.problem.LinearBuckling.n_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.n_dof</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.n_global_dof.html#fedoo.problem.LinearBuckling.n_global_dof" title="fedoo.problem.LinearBuckling.n_global_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.n_global_dof</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.n_node_dof.html#fedoo.problem.LinearBuckling.n_node_dof" title="fedoo.problem.LinearBuckling.n_node_dof"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.n_node_dof</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.name.html#fedoo.problem.LinearBuckling.name" title="fedoo.problem.LinearBuckling.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.name</span></code></a></p></td>
+<td><p>Return the name of the Problem.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.results.html#fedoo.problem.LinearBuckling.results" title="fedoo.problem.LinearBuckling.results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.results</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.solver.html#fedoo.problem.LinearBuckling.solver" title="fedoo.problem.LinearBuckling.solver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.solver</span></code></a></p></td>
+<td><p>Configured eigensolver function, or <code class="docutils literal notranslate"><span class="pre">None</span></code> in automatic mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.space.html#fedoo.problem.LinearBuckling.space" title="fedoo.problem.LinearBuckling.space"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.space</span></code></a></p></td>
+<td><p>Return the ModelingSpace associated to the Problem if defined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.total_assembly.html#fedoo.problem.LinearBuckling.total_assembly" title="fedoo.problem.LinearBuckling.total_assembly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.total_assembly</span></code></a></p></td>
+<td><p>Assembly built for total tangent stiffness, or the reused source.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.total_stiffness_matrix.html#fedoo.problem.LinearBuckling.total_stiffness_matrix" title="fedoo.problem.LinearBuckling.total_stiffness_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.total_stiffness_matrix</span></code></a></p></td>
+<td><p>Full unconstrained material-plus-geometric tangent stiffness.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.problem.LinearBuckling.bc.html#fedoo.problem.LinearBuckling.bc" title="fedoo.problem.LinearBuckling.bc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearBuckling.bc</span></code></a></p></td>
+<td><p>Boundary conditions defined on the problem.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.problem.Modal.bc.html" class="btn btn-neutral float-left" title="fedoo.problem.Modal.bc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.problem.LinearBuckling.add_global_dof.html" class="btn btn-neutral float-right" title="fedoo.problem.LinearBuckling.add_global_dof" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿fedoo.constraint.MeanMotion
+===========================
+
+.. currentmodule:: fedoo.constraint
+
+.. autoclass:: MeanMotion
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         MeanMotion.generate
+         MeanMotion.get_all
+         MeanMotion.initialize
+         MeanMotion.register_global_dofs
+         MeanMotion.str_condensed
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         MeanMotion.name
+         MeanMotion.node_by_variable
+  
+  

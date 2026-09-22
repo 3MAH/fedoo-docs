@@ -37,7 +37,41 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The key points are:     - define two separated mesh that share to the same node       list with different elements.     - create two separated Assembly that are combined in a single AssemblySum       object.     - extract/save results separatedly for each elm_type.">
+    <div class="sphx-glr-thumbcontainer" tooltip="The model consists of two composite arms separated by a zero-thickness cohesive interface. Cohesive elements are inserted only after the prescribed starter-crack length. The initially unconnected part of the two arms therefore represents the pre-crack.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_composite_DCB_test_3D_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/composite_DCB_test_3D`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Composite double-cantilever beam with a cohesive interface</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Nearly incompressible materials are difficult for low-order displacement elements.  A fully integrated quad4 element constrains the volume change at four Gauss points although its displacement field cannot satisfy all these constraints independently.  The resulting volumetric locking makes a coarse mesh much too stiff.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_incompressibility_comparison_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/incompressibility_comparison`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nearly incompressible plasticity: four element formulations</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example combines quadrilateral and triangular elements that share the same node array. Each element block has its own assembly, while their sum is used to solve a single mechanical problem.">
 
 .. only:: html
 
@@ -48,7 +82,58 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Very simple example with multiple element type.</div>
+      <div class="sphx-glr-thumbnail-title">Analysis and visualization of a multi-mesh model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A slender, nearly-incompressible cylinder is clamped at its base and bent by a transverse load applied to a rigid cap tied to its top face. It is loaded well into the large-deflection, finite-strain regime (tip deflection of order the cylinder length, ~40 % local strain at the clamped base).">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_neohookean_cantilever_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/neohookean_cantilever`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Finite-strain Neo-Hookean cantilever (rigid cap)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Companion of the displacement-driven cantilever example &lt;neohookean_cantilever&gt;: the same slender, nearly-incompressible NEOHC cylinder, but loaded by a transverse force applied to its rigid cap — the natural protocol when mirroring a dynamics engine such as ArtiSynth.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_neohookean_cantilever_force_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/neohookean_cantilever_force`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example lets a rigid sphere fall under gravity and bounce on a fixed plane.  It illustrates the rigid-body constraint, Newmark time integration, and IPC contact with a deliberately coarse model suitable for the online example gallery.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_rigid_body_bounce_thumb.gif
+    :alt:
+
+  :doc:`/examples/03-advanced/rigid_body_bounce`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid-body bounce with IPC contact</div>
     </div>
 
 
@@ -97,7 +182,12 @@ This section show some advanced capabilities of fedoo.
    :hidden:
 
    /examples/03-advanced/3D_periodic_BC_off_axis
+   /examples/03-advanced/composite_DCB_test_3D
+   /examples/03-advanced/incompressibility_comparison
    /examples/03-advanced/multi_mesh_example
+   /examples/03-advanced/neohookean_cantilever
+   /examples/03-advanced/neohookean_cantilever_force
+   /examples/03-advanced/rigid_body_bounce
    /examples/03-advanced/thermal_loading
    /examples/03-advanced/tube_compression
 

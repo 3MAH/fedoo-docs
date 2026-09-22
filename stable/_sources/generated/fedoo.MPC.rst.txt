@@ -21,7 +21,9 @@
       
          MPC.generate
          MPC.get_all
+         MPC.get_generated_equations
          MPC.initialize
+         MPC.register_global_dofs
          MPC.str_condensed
       
       

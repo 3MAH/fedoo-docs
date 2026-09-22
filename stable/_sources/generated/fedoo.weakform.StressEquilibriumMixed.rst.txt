@@ -19,10 +19,13 @@
          :toctree:
          
       
+         StressEquilibriumMixed.copy
          StressEquilibriumMixed.get_all
+         StressEquilibriumMixed.get_dissipation
+         StressEquilibriumMixed.get_storage
          StressEquilibriumMixed.get_weak_equation
          StressEquilibriumMixed.initialize
-         StressEquilibriumMixed.nvar
+         StressEquilibriumMixed.iter_leaf
          StressEquilibriumMixed.reset
          StressEquilibriumMixed.set_damping
          StressEquilibriumMixed.set_dissipation
@@ -45,10 +48,12 @@
          :toctree:
          
       
+         StressEquilibriumMixed.convert_tangent
          StressEquilibriumMixed.corate
-         StressEquilibriumMixed.fbar
          StressEquilibriumMixed.geometric_stiffness
+         StressEquilibriumMixed.incompressibility
          StressEquilibriumMixed.name
+         StressEquilibriumMixed.nvar
          StressEquilibriumMixed.space
          StressEquilibriumMixed.nlgeom
   

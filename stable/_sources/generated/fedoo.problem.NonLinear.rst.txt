@@ -24,6 +24,7 @@
          NonLinear.add_output
          NonLinear.apply_boundary_conditions
          NonLinear.change_assembly
+         NonLinear.clear_outputs
          NonLinear.compute_nr_error
          NonLinear.elastic_prediction
          NonLinear.force_elastic_matrix_next_iter
@@ -52,7 +53,7 @@
          NonLinear.set_D
          NonLinear.set_X
          NonLinear.set_active
-         NonLinear.set_dof_solution
+         NonLinear.set_dof
          NonLinear.set_nr_criterion
          NonLinear.set_reuse_factorization
          NonLinear.set_solver
@@ -63,8 +64,6 @@
          NonLinear.solve_time_increment
          NonLinear.to_start
          NonLinear.update
-         NonLinear.updateA
-         NonLinear.updateD
          NonLinear.update_boundary_conditions
       
       

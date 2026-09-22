@@ -23,32 +23,7 @@ Beam Element Canteleaver Beam
 
 Simple canteleaver beam example using different kind of elements
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-94
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Reaction RX at the clamped extermity: 0.0
-    Reaction RY at the clamped extermity: 2.0000000000000053
-    Reaction RZ at the clamped extermity: 0.0
-    Moment MX at the clamped extermity: 0.0
-    Moment MY at the clamped extermity: 0.0
-    Moment MZ at the clamped extermity: 20.000000000000114
-    RX at the free extremity: 0.0
-    RZ at the free extremity: 0.0
-    Analytical deflection:  -0.008695165057587216
-    [ 0.         -0.00869517  0.        ]
-
-
-
-
-
-
-|
+.. GENERATED FROM PYTHON SOURCE LINES 7-95
 
 .. code-block:: Python
 
@@ -141,9 +116,69 @@ Simple canteleaver beam example using different kind of elements
     M = fd.Assembly["beam"].global_matrix.todense()
 
 
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Reaction RX at the clamped extermity: 0.0
+    Reaction RY at the clamped extermity: 2.0000000000000053
+    Reaction RZ at the clamped extermity: 0.0
+    Moment MX at the clamped extermity: 0.0
+    Moment MY at the clamped extermity: 0.0
+    Moment MZ at the clamped extermity: 20.000000000000114
+    RX at the free extremity: 0.0
+    RZ at the free extremity: 0.0
+    Analytical deflection:  -0.008695165057587216
+    [ 0.         -0.00869517  0.        ]
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 96-100
+
+Plot the deformed beam
+~~~~~~~~~~~~~~~~~~~~~~
+The displacement is magnified so that the bending of the slender beam is
+clearly visible. Colors represent the transverse displacement.
+
+.. GENERATED FROM PYTHON SOURCE LINES 100-112
+
+.. code-block:: Python
+
+
+    plot_results = pb.get_results("beam", "Disp")
+    max_displacement = np.max(np.linalg.norm(plot_results["Disp"], axis=0))
+    display_scale = 0.15 * L / max_displacement
+    plot_results.plot(
+        "Disp",
+        component="Y",
+        scale=display_scale,
+        show_edges=True,
+        show_nodes=True,
+        title="Transverse displacement of the cantilever beam",
+    )
+
+
+
+
+.. image-sg:: /examples/01-simple/images/sphx_glr_simpleBeamElementExample_001.png
+   :alt: simpleBeamElementExample
+   :srcset: /examples/01-simple/images/sphx_glr_simpleBeamElementExample_001.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+
+
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.013 seconds)
+   **Total running time of the script:** (0 minutes 0.184 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_simpleBeamElementExample.py:

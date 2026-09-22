@@ -19,10 +19,13 @@
          :toctree:
          
       
+         SpringEquilibrium.copy
          SpringEquilibrium.get_all
+         SpringEquilibrium.get_dissipation
+         SpringEquilibrium.get_storage
          SpringEquilibrium.get_weak_equation
          SpringEquilibrium.initialize
-         SpringEquilibrium.nvar
+         SpringEquilibrium.iter_leaf
          SpringEquilibrium.reset
          SpringEquilibrium.set_damping
          SpringEquilibrium.set_dissipation
@@ -46,6 +49,7 @@
          
       
          SpringEquilibrium.name
+         SpringEquilibrium.nvar
          SpringEquilibrium.space
          SpringEquilibrium.nlgeom
   

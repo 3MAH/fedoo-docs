@@ -36,6 +36,7 @@
          Mesh.find_elements
          Mesh.find_isolated_nodes
          Mesh.find_nodes
+         Mesh.from_meshio
          Mesh.from_pyvista
          Mesh.gausspoint_coordinates
          Mesh.get_all
@@ -46,6 +47,7 @@
          Mesh.init_interpolation
          Mesh.integrate_field
          Mesh.is_periodic
+         Mesh.merge_coincident_nodes
          Mesh.merge_nodes
          Mesh.nearest_node
          Mesh.plot

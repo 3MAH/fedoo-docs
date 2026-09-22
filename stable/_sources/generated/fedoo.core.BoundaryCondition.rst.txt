@@ -26,6 +26,7 @@
          BoundaryCondition.get_true_value
          BoundaryCondition.get_value
          BoundaryCondition.initialize
+         BoundaryCondition.register_global_dofs
          BoundaryCondition.str_condensed
       
       
