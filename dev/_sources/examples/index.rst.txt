@@ -415,6 +415,23 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Nearly incompressible materials are difficult for low-order displacement elements.  A fully integrated quad4 element constrains the volume change at four Gauss points although its displacement field cannot satisfy all these constraints independently.  The resulting volumetric locking makes a coarse mesh much too stiff.">
+
+.. only:: html
+
+  .. image:: /examples/03-advanced/images/thumb/sphx_glr_incompressibility_comparison_thumb.png
+    :alt:
+
+  :doc:`/examples/03-advanced/incompressibility_comparison`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nearly incompressible plasticity: four element formulations</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="This example combines quadrilateral and triangular elements that share the same node array. Each element block has its own assembly, while their sum is used to solve a single mechanical problem.">
 
 .. only:: html
