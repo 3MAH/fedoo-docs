@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:37.298** total execution time for 12 files **from examples/01-simple**:
+**00:40.936** total execution time for 12 files **from examples/01-simple**:
 
 .. container::
 
@@ -33,38 +33,38 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_01-simple_visualization.py` (``visualization.py``)
-     - 00:23.676
-     - 0.0
-   * - :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model_nlgeom.py` (``simple_cantilever_beam_3D_model_nlgeom.py``)
-     - 00:04.382
-     - 0.0
-   * - :ref:`sphx_glr_examples_01-simple_lattice_beam.py` (``lattice_beam.py``)
-     - 00:03.423
+     - 00:23.761
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_I_shape_beam_bending.py` (``I_shape_beam_bending.py``)
-     - 00:02.923
+     - 00:06.531
+     - 0.0
+   * - :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model_nlgeom.py` (``simple_cantilever_beam_3D_model_nlgeom.py``)
+     - 00:04.324
+     - 0.0
+   * - :ref:`sphx_glr_examples_01-simple_lattice_beam.py` (``lattice_beam.py``)
+     - 00:03.503
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_Plate_with_hole_in_tension.py` (``Plate_with_hole_in_tension.py``)
-     - 00:00.618
+     - 00:00.598
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_simple_mesh_generation.py` (``simple_mesh_generation.py``)
-     - 00:00.457
+     - 00:00.436
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_modal_analysis.py` (``modal_analysis.py``)
-     - 00:00.435
+     - 00:00.411
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model.py` (``simple_cantilever_beam_3D_model.py``)
-     - 00:00.373
+     - 00:00.376
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_spherical_shell_compression.py` (``spherical_shell_compression.py``)
-     - 00:00.318
+     - 00:00.357
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_linear_buckling.py` (``linear_buckling.py``)
-     - 00:00.283
+     - 00:00.274
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_poison_eq.py` (``poison_eq.py``)
-     - 00:00.213
+     - 00:00.202
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_simpleBeamElementExample.py` (``simpleBeamElementExample.py``)
-     - 00:00.196
+     - 00:00.164
      - 0.0
