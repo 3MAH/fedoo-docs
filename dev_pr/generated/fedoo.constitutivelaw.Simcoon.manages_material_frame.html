@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.constitutivelaw.Simcoon.manages_material_frame &mdash; Fedoo 1.0.0b2 (dev)</title>
+  <title>fedoo.constitutivelaw.Simcoon.manages_material_frame &mdash; Fedoo 1.0.0 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=3e281a96"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -123,10 +123,13 @@
              
   <section id="fedoo-constitutivelaw-simcoon-manages-material-frame">
 <h1>fedoo.constitutivelaw.Simcoon.manages_material_frame<a class="headerlink" href="#fedoo-constitutivelaw-simcoon-manages-material-frame" title="Link to this heading"></a></h1>
-<dl class="py attribute">
+<dl class="py property">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.Simcoon.manages_material_frame">
-<span class="sig-prename descclassname"><span class="pre">Simcoon.</span></span><span class="sig-name descname"><span class="pre">manages_material_frame</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.manages_material_frame" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Simcoon.</span></span><span class="sig-name descname"><span class="pre">manages_material_frame</span></span><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.manages_material_frame" title="Link to this definition"></a></dt>
+<dd><p>Hyperelastic kernels built from F (<code class="docutils literal notranslate"><span class="pre">_Lt_from_F</span></code>) are objective by construction
+and keep the initial material basis; the other simcoon laws are run by fedoo in the
+frame that follows the material, since <code class="docutils literal notranslate"><span class="pre">sim.umat</span></code> does not convect it.</p>
+</dd></dl>
 
 </section>
 
