@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:34.146** total execution time for 12 files **from examples/01-simple**:
+**00:23.134** total execution time for 12 files **from examples/01-simple**:
 
 .. container::
 
@@ -33,38 +33,38 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_01-simple_visualization.py` (``visualization.py``)
-     - 00:15.323
+     - 00:13.285
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_I_shape_beam_bending.py` (``I_shape_beam_bending.py``)
-     - 00:10.646
+     - 00:03.691
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model_nlgeom.py` (``simple_cantilever_beam_3D_model_nlgeom.py``)
-     - 00:03.009
+     - 00:02.432
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_lattice_beam.py` (``lattice_beam.py``)
-     - 00:02.991
+     - 00:01.913
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_Plate_with_hole_in_tension.py` (``Plate_with_hole_in_tension.py``)
-     - 00:00.472
-     - 0.0
-   * - :ref:`sphx_glr_examples_01-simple_modal_analysis.py` (``modal_analysis.py``)
-     - 00:00.322
+     - 00:00.357
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_simple_mesh_generation.py` (``simple_mesh_generation.py``)
-     - 00:00.321
+     - 00:00.348
+     - 0.0
+   * - :ref:`sphx_glr_examples_01-simple_modal_analysis.py` (``modal_analysis.py``)
+     - 00:00.251
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_simple_cantilever_beam_3D_model.py` (``simple_cantilever_beam_3D_model.py``)
-     - 00:00.285
+     - 00:00.235
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_spherical_shell_compression.py` (``spherical_shell_compression.py``)
-     - 00:00.244
+     - 00:00.201
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_linear_buckling.py` (``linear_buckling.py``)
-     - 00:00.217
+     - 00:00.171
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_poison_eq.py` (``poison_eq.py``)
-     - 00:00.170
+     - 00:00.135
      - 0.0
    * - :ref:`sphx_glr_examples_01-simple_simpleBeamElementExample.py` (``simpleBeamElementExample.py``)
-     - 00:00.145
+     - 00:00.114
      - 0.0
