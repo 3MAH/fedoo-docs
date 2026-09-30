@@ -127,8 +127,10 @@
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.Simcoon.manages_material_frame">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Simcoon.</span></span><span class="sig-name descname"><span class="pre">manages_material_frame</span></span><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.manages_material_frame" title="Link to this definition"></a></dt>
 <dd><p>Hyperelastic kernels built from F (<code class="docutils literal notranslate"><span class="pre">_Lt_from_F</span></code>) are objective by construction
-and keep the initial material basis; the other simcoon laws are run by fedoo in the
-frame that follows the material, since <code class="docutils literal notranslate"><span class="pre">sim.umat</span></code> does not convect it.</p>
+and keep the initial material basis. Other Simcoon UMATs transport material history
+through DR and return the corotational box tangent d(tau_hat)/dD, but <code class="docutils literal notranslate"><span class="pre">sim.umat</span></code>
+does not convect their material axes. Fedoo runs them in the frame that follows the
+material.</p>
 </dd></dl>
 
 </section>

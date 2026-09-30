@@ -468,7 +468,10 @@ subclass with a strict requirement can set, for example:</p>
     <span class="n">required_corate</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"log_r"</span><span class="p">,</span> <span class="s2">"log_r_inc"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Fedoo then validates the selected formulation when the material is initialized.</p>
+<p>Fedoo then validates the selected formulation when the material is initialized.
+The comparison is case-insensitive and applies only in finite strain. The
+default <code class="docutils literal notranslate"><span class="pre">required_corate</span> <span class="pre">=</span> <span class="pre">None</span></code> accepts any formulation. This attribute
+does not change <code class="docutils literal notranslate"><span class="pre">weakform.corate</span></code> or add an argument to the UMAT callback.</p>
 </section>
 </section>
 <section id="advanced-derive-directly-from-mechanical3d">
