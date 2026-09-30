@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.problem.ExplicitDynamic &mdash; Fedoo 1.0.0 (dev)</title>
+  <title>fedoo.problem.ExplicitDynamic &mdash; Fedoo 1.0.1 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/documentation_options.js?v=292eb321"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -225,6 +225,12 @@ they define <code class="docutils literal notranslate"><span class="pre">storage
 describes the internal force, for example linear elasticity with fixed
 geometry. Use <code class="docutils literal notranslate"><span class="pre">update_weakform=True</span></code> for nonlinear constitutive laws,
 changing geometry, contact, or other state-dependent contributions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_ext_forces()</span></code> evaluates the solved effective-system balance on
+demand, without storing a force snapshot. Extract it after <code class="docutils literal notranslate"><span class="pre">solve()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">update()</span></code>, before the next <code class="docutils literal notranslate"><span class="pre">prepare_time_increment()</span></code>. It represents
+the integrator’s solve evaluation point, which is often the end of the
+step but can differ, for example with generalized-alpha. Rollback restores kinematics,
+but does not restore the previous solved effective system or its forces.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.ExplicitDynamic.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass_lumping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MainProblem'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.ExplicitDynamic.__init__" title="Link to this definition"></a></dt>
