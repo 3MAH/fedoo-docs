@@ -123,10 +123,15 @@
              
   <section id="fedoo-constitutivelaw-simcoon-manages-material-frame">
 <h1>fedoo.constitutivelaw.Simcoon.manages_material_frame<a class="headerlink" href="#fedoo-constitutivelaw-simcoon-manages-material-frame" title="Link to this heading"></a></h1>
-<dl class="py attribute">
+<dl class="py property">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.Simcoon.manages_material_frame">
-<span class="sig-prename descclassname"><span class="pre">Simcoon.</span></span><span class="sig-name descname"><span class="pre">manages_material_frame</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.manages_material_frame" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Simcoon.</span></span><span class="sig-name descname"><span class="pre">manages_material_frame</span></span><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.manages_material_frame" title="Link to this definition"></a></dt>
+<dd><p>Hyperelastic kernels built from F (<code class="docutils literal notranslate"><span class="pre">_Lt_from_F</span></code>) are objective by construction
+and keep the initial material basis. Other Simcoon UMATs transport material history
+through DR and return the corotational box tangent d(tau_hat)/dD, but <code class="docutils literal notranslate"><span class="pre">sim.umat</span></code>
+does not convect their material axes. Fedoo runs them in the frame that follows the
+material.</p>
+</dd></dl>
 
 </section>
 
