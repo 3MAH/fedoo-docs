@@ -133,7 +133,10 @@ Gauss points. A complete field uses the Fedoo layout
 <code class="docutils literal notranslate"><span class="pre">(n_components,</span> <span class="pre">n_gauss_points)</span></code>. For a scalar label, a vector of
 length <code class="docutils literal notranslate"><span class="pre">n_gauss_points</span></code> supplies one value per point.</p>
 <p>This method must be called before the associated problem initializes.
-Repeated calls preserve components initialized previously.</p>
+Repeated calls preserve components initialized previously.
+Assembly.reset() deletes these values; reapply them before the next
+initialization. Use this method rather than assigning Statev directly
+so the components are preserved during material initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
