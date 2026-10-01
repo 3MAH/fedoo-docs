@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.constitutivelaw.ElastoPlasticity.set_initial_statev &mdash; Fedoo 1.0.0 (stable)</title>
+  <title>fedoo.constitutivelaw.ElastoPlasticity.set_initial_statev &mdash; Fedoo 1.0.1 (stable)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/documentation_options.js?v=292eb321"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -133,7 +133,10 @@ Gauss points. A complete field uses the Fedoo layout
 <code class="docutils literal notranslate"><span class="pre">(n_components,</span> <span class="pre">n_gauss_points)</span></code>. For a scalar label, a vector of
 length <code class="docutils literal notranslate"><span class="pre">n_gauss_points</span></code> supplies one value per point.</p>
 <p>This method must be called before the associated problem initializes.
-Repeated calls preserve components initialized previously.</p>
+Repeated calls preserve components initialized previously.
+Assembly.reset() deletes these values; reapply them before the next
+initialization. Use this method rather than assigning Statev directly
+so the components are preserved during material initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Problem (fedoo.problem) &mdash; Fedoo 1.0.0 (stable)</title>
+  <title>Problem (fedoo.problem) &mdash; Fedoo 1.0.1 (stable)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/documentation_options.js?v=292eb321"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -410,7 +410,7 @@ external forces are balanced within a specified tolerance.</p>
 Three criteria are available:</p>
 <ul class="simple">
 <li><p><strong>Force</strong> (default): Measures the residual (out-of-balance) forces relative to the
-external applied forces.</p></li>
+current total force norm, recomputed at each Newton iteration.</p></li>
 <li><p><strong>Displacement</strong>: Measures the norm of the displacement increment relative to the
 initial increment of the step.</p></li>
 <li><p><strong>Work</strong>: Evaluates the energy (dot product of displacement and residual) relative to
@@ -432,7 +432,8 @@ it is assessed based on the criterion:</p>
 <ul class="simple">
 <li><p><strong>Displacement</strong>: Calculated from the current increment norm, adjusted by
 1% of total displacement for numerical stability.</p></li>
-<li><p><strong>Force</strong>: Calculated from the norm of the current external forces.</p></li>
+<li><p><strong>Force</strong>: Recalculated from the current total force norm at each iteration,
+including reactions and imbalance.</p></li>
 <li><p><strong>Work</strong>: Initialized once at the start of the increment and stored.</p></li>
 </ul>
 <p>If the calculated reference is zero, it defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code> to prevent
