@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.problem.LinearBuckling.get_ext_forces &mdash; Fedoo 1.0.0 (dev)</title>
+  <title>fedoo.problem.LinearBuckling.get_ext_forces &mdash; Fedoo 1.0.1 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/documentation_options.js?v=292eb321"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -206,6 +206,16 @@ to separated components by using: pb.get_ext_forces().reshape(pb.space.nvar,-1)<
 The true physical meanings of the “external forces” depends
 on the problem and the nature of the dof (for instance moment for rotational dof or
 heat flux for temperature).</p>
+<p>NonLinear returns the latest evaluated residual balance: custom loops
+must update the vector after applying a correction. Linear implicit
+dynamics retain the completed integrator balance. ExplicitDynamic
+evaluates A &#64; X - D on demand (A * X - D for a diagonal operator);
+extract its forces after solve or update, before the next preparation.
+Explicit rollback does not restore the previous solved system’s forces.
+Generalized-alpha enforces equilibrium at its evaluation point, so the
+recovered balance need not represent the end-step state. This getter does not
+update constitutive history. The returned vector contains both nodal
+loads and reactions, rather than constraint reactions alone.</p>
 </dd></dl>
 
 </section>
