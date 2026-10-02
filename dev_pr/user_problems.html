@@ -218,8 +218,6 @@ in the supplied corotational material coordinates.</p>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">ndi</span><span class="p">,</span>
     <span class="n">tangent_mode</span><span class="p">,</span>
-    <span class="n">start</span><span class="p">,</span>
-    <span class="n">corate</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="o">...</span>
     <span class="k">return</span> <span class="n">stress_new</span><span class="p">,</span> <span class="n">statev_new</span><span class="p">,</span> <span class="n">wm_new</span><span class="p">,</span> <span class="n">tangent</span>
@@ -282,16 +280,6 @@ plane-stress interface.</p></td>
 <td><p>User-defined tangent selector forwarded unchanged by
 Fedoo.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start</span></code></p></td>
-<td><p>True during initialization; False for every material
-increment, including corrections at time zero.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">corate</span></code></p></td>
-<td><p>Objective-rate name as a string, as selected by
-<code class="docutils literal notranslate"><span class="pre">weakform.corate</span></code> in finite strain (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;log_r&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&quot;log&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;jaumann&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;green_naghdi&quot;</span></code>).
-In small strain it is <code class="docutils literal notranslate"><span class="pre">&quot;log_r&quot;</span></code>.</p></td>
-</tr>
 </tbody>
 </table>
 <p>Stress and strain use engineering Voigt notation. The component ordering,
@@ -344,7 +332,6 @@ material-update interface from which this convention is taken.</p>
 <h4>Initialization call<a class="headerlink" href="#initialization-call" title="Link to this heading"></a></h4>
 <p>Fedoo calls the UMAT once during initialization with:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">start=True</span></code>;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">time</span> <span class="pre">==</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">dtime</span> <span class="pre">==</span> <span class="pre">0</span></code>;</p></li>
 <li><p>zero strain, strain increment, stress, and work arrays;</p></li>
 <li><p>the assembly’s initial state-variable values, or zeros when none were
@@ -358,11 +345,6 @@ the initial elastic tangent without advancing irreversible state, accumulating
 work, or evaluating expressions that divide by <code class="docutils literal notranslate"><span class="pre">dtime</span></code>. This tangent is
 stored as <code class="docutils literal notranslate"><span class="pre">ElasticMatrix</span></code> when <code class="docutils literal notranslate"><span class="pre">use_elastic_tangent=True</span></code> and is restored
 at the beginning of each increment for the elastic predictor.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">start</span></code> to distinguish initialization from integration. All subsequent
-calls pass <code class="docutils literal notranslate"><span class="pre">start=False</span></code>, including Newton corrections of the first
-increment at <code class="docutils literal notranslate"><span class="pre">time</span> <span class="pre">==</span> <span class="pre">0</span></code>. Return the material’s initialized state in
-<code class="docutils literal notranslate"><span class="pre">statev_new</span></code>; Fedoo stores it, with components set through
-<code class="docutils literal notranslate"><span class="pre">set_initial_statev()</span></code> taking precedence.</p>
 </section>
 <section id="initial-state-variables">
 <h4>Initial state variables<a class="headerlink" href="#initial-state-variables" title="Link to this heading"></a></h4>
@@ -390,10 +372,11 @@ component vector is broadcast over the Gauss points, while a complete field
 has shape <code class="docutils literal notranslate"><span class="pre">(n_components,</span> <span class="pre">assembly.n_gauss_points)</span></code>. For a scalar label, a
 one-dimensional array of length <code class="docutils literal notranslate"><span class="pre">assembly.n_gauss_points</span></code> supplies spatially
 varying values. Node and element fields are not converted implicitly.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">set_initial_statev()</span></code> rather than assigning <code class="docutils literal notranslate"><span class="pre">assembly.sv[&quot;Statev&quot;]</span></code>
-directly: it records which components must be preserved during material
-initialization. The initial state is passed to the <code class="docutils literal notranslate"><span class="pre">start=True</span></code> UMAT call,
-so it may affect the initial tangent.</p>
+<p>Advanced users may instead assign the complete
+<code class="docutils literal notranslate"><span class="pre">assembly.sv[&quot;Statev&quot;]</span></code> array manually before initialization. Its shape must
+be exactly <code class="docutils literal notranslate"><span class="pre">(material.n_statev,</span> <span class="pre">assembly.n_gauss_points)</span></code>. In either case,
+the initial state is passed to the <code class="docutils literal notranslate"><span class="pre">dtime</span> <span class="pre">==</span> <span class="pre">0</span></code> UMAT call, so it may affect
+the initial tangent.</p>
 <p>Calling <code class="docutils literal notranslate"><span class="pre">assembly.reset()</span></code> clears runtime state, including these initial
 values. Call <code class="docutils literal notranslate"><span class="pre">set_initial_statev</span></code> again before reinitializing a reset
 assembly.</p>
@@ -409,7 +392,7 @@ should also validate their parameters and supported dimensional assumptions.</p>
 <span class="k">def</span><span class="w"> </span><span class="nf">elastic_umat</span><span class="p">(</span>
     <span class="n">strain</span><span class="p">,</span> <span class="n">dstrain</span><span class="p">,</span> <span class="n">F0</span><span class="p">,</span> <span class="n">F1</span><span class="p">,</span> <span class="n">stress</span><span class="p">,</span> <span class="n">DR</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span>
     <span class="n">statev_start</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dtime</span><span class="p">,</span> <span class="n">wm_start</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span>
-    <span class="o">*</span><span class="p">,</span> <span class="n">ndi</span><span class="p">,</span> <span class="n">tangent_mode</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">corate</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span> <span class="n">ndi</span><span class="p">,</span> <span class="n">tangent_mode</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="n">E</span><span class="p">,</span> <span class="n">nu</span> <span class="o">=</span> <span class="n">props</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">shear</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">nu</span><span class="p">))</span>
@@ -488,8 +471,7 @@ subclass with a strict requirement can set, for example:</p>
 <p>Fedoo then validates the selected formulation when the material is initialized.
 The comparison is case-insensitive and applies only in finite strain. The
 default <code class="docutils literal notranslate"><span class="pre">required_corate</span> <span class="pre">=</span> <span class="pre">None</span></code> accepts any formulation. This attribute
-does not change <code class="docutils literal notranslate"><span class="pre">weakform.corate</span></code>; the selected name is passed as the
-callback’s <code class="docutils literal notranslate"><span class="pre">corate</span></code> argument regardless of this validation setting.</p>
+does not change <code class="docutils literal notranslate"><span class="pre">weakform.corate</span></code> or add an argument to the UMAT callback.</p>
 </section>
 </section>
 <section id="advanced-derive-directly-from-mechanical3d">

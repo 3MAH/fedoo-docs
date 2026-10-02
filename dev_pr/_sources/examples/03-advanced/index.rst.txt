@@ -156,7 +156,7 @@ This section show some advanced capabilities of fedoo.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This model uses self-contact, elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This model uses IPC self-contact (requires ipctk &gt;= 1.6), elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase.">
 
 .. only:: html
 
