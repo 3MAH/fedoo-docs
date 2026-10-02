@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.Mesh.from_meshio &mdash; Fedoo 1.0.1 (dev)</title>
+  <title>fedoo.constitutivelaw.Simcoon.supports_tangent_output &mdash; Fedoo 1.0.1 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -27,8 +27,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.Mesh.from_pyvista" href="fedoo.Mesh.from_pyvista.html" />
-    <link rel="prev" title="fedoo.Mesh.find_nodes" href="fedoo.Mesh.find_nodes.html" /> 
+    <link rel="next" title="fedoo.constitutivelaw.Simcoon.is_initialized" href="fedoo.constitutivelaw.Simcoon.is_initialized.html" />
+    <link rel="prev" title="fedoo.constitutivelaw.Simcoon.required_corate" href="fedoo.constitutivelaw.Simcoon.required_corate.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -63,17 +63,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#class-mesh">Class Mesh</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="fedoo.Mesh.html">fedoo.Mesh</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../constitutive_law.html#solid-mechanical-constitutive-laws">Solid mechanical constitutive laws</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElasticIsotrop.html">fedoo.constitutivelaw.ElasticIsotrop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.html">fedoo.constitutivelaw.ElasticOrthotropic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElasticAnisotropic.html">fedoo.constitutivelaw.ElasticAnisotropic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.html">fedoo.constitutivelaw.CompositeUD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.ElastoPlasticity.html">fedoo.constitutivelaw.ElastoPlasticity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.FE2.html">fedoo.constitutivelaw.FE2</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.html">fedoo.constitutivelaw.Simcoon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.constitutivelaw.Heterogeneous.html">fedoo.constitutivelaw.Heterogeneous</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-manipulation-functions">Mesh manipulation functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mesh.html#import-export-fedoo-mesh-object">Import/Export Fedoo Mesh object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-creation-functions">Mesh Creation Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constitutive_law.html#interface-mechanical-constitutive-laws">Interface mechanical constitutive laws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constitutive_law.html#beam-constitutive-laws">Beam constitutive laws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constitutive_law.html#shell-constitutive-laws">Shell constitutive laws</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constitutive_law.html#thermal-constitutive-law">Thermal constitutive law</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constitutive_law.html#manage-local-frames">Manage local frames</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
@@ -100,11 +109,11 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
-          <li class="breadcrumb-item"><a href="fedoo.Mesh.html">fedoo.Mesh</a></li>
-      <li class="breadcrumb-item active">fedoo.Mesh.from_meshio</li>
+          <li class="breadcrumb-item"><a href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+          <li class="breadcrumb-item"><a href="fedoo.constitutivelaw.Simcoon.html">fedoo.constitutivelaw.Simcoon</a></li>
+      <li class="breadcrumb-item active">fedoo.constitutivelaw.Simcoon.supports_tangent_output</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/generated/fedoo.Mesh.from_meshio.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/fedoo.constitutivelaw.Simcoon.supports_tangent_output.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -112,27 +121,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="fedoo-mesh-from-meshio">
-<h1>fedoo.Mesh.from_meshio<a class="headerlink" href="#fedoo-mesh-from-meshio" title="Link to this heading"></a></h1>
-<dl class="py method">
-<dt class="sig sig-object py" id="fedoo.Mesh.from_meshio">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">from_meshio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">io_mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.core.mesh.Mesh"><span class="pre">Mesh</span></a></span></span><a class="headerlink" href="#fedoo.Mesh.from_meshio" title="Link to this definition"></a></dt>
-<dd><p>Build a Mesh from a meshlane or meshio mesh object.</p>
-<p>Node coordinates, element connectivity, node sets (<code class="docutils literal notranslate"><span class="pre">point_sets</span></code>,
-e.g. Abaqus <code class="docutils literal notranslate"><span class="pre">*NSET</span></code>) and element sets (<code class="docutils literal notranslate"><span class="pre">cell_sets</span></code>, e.g. Abaqus
-<code class="docutils literal notranslate"><span class="pre">*ELSET</span></code>) are imported. Meshes holding several element types are
-returned as a <code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code>; element sets are then split per
-element type.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>io_mesh</strong> (<em>meshlane.Mesh</em><em> or </em><em>meshio.Mesh</em>) – Mesh object returned by <code class="docutils literal notranslate"><span class="pre">meshlane.read</span></code> or <code class="docutils literal notranslate"><span class="pre">meshio.read</span></code>.</p></li>
-<li><p><strong>name</strong> (<em>str</em>) – name of the new created Mesh. If specified, this Mesh is added to
-the dict containing all the loaded Mesh (Mesh.get_all()).</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
+  <section id="fedoo-constitutivelaw-simcoon-supports-tangent-output">
+<h1>fedoo.constitutivelaw.Simcoon.supports_tangent_output<a class="headerlink" href="#fedoo-constitutivelaw-simcoon-supports-tangent-output" title="Link to this heading"></a></h1>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fedoo.constitutivelaw.Simcoon.supports_tangent_output">
+<span class="sig-prename descclassname"><span class="pre">Simcoon.</span></span><span class="sig-name descname"><span class="pre">supports_tangent_output</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.supports_tangent_output" title="Link to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 
@@ -140,8 +134,8 @@ the dict containing all the loaded Mesh (Mesh.get_all()).</p></li>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.Mesh.find_nodes.html" class="btn btn-neutral float-left" title="fedoo.Mesh.find_nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.Mesh.from_pyvista.html" class="btn btn-neutral float-right" title="fedoo.Mesh.from_pyvista" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.constitutivelaw.Simcoon.required_corate.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.Simcoon.required_corate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.constitutivelaw.Simcoon.is_initialized.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.Simcoon.is_initialized" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
