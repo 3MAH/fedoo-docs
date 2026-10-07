@@ -452,19 +452,47 @@ configurations.  It supports both 2D and 3D problems, friction, and optional
 CCD (Continuous Collision Detection) line search.</p>
 <p>Unlike the penalty method, IPC does <strong>not</strong> require tuning a penalty
 parameter.  The barrier stiffness <span class="math notranslate nohighlight">\(\kappa\)</span> is automatically computed
-and adaptively updated to balance the elastic and contact forces.  The only
-physical parameter is <code class="docutils literal notranslate"><span class="pre">dhat</span></code> — the barrier activation distance that
-controls the minimum gap between surfaces (default: 0.1% of the bounding
-box diagonal).</p>
+and adaptively updated to balance the elastic and contact forces. <code class="docutils literal notranslate"><span class="pre">dhat</span></code>
+sets the barrier activation range (default: 0.1% of the bounding-box
+diagonal); <code class="docutils literal notranslate"><span class="pre">dmin</span></code> optionally sets a physical minimum separation.</p>
 <p><strong>Choosing dhat</strong> — The default <code class="docutils literal notranslate"><span class="pre">dhat=1e-3</span></code> (relative) means the
 barrier activates when surfaces are within 0.1 % of the bounding-box
 diagonal.  For problems with a very small initial gap, increase <code class="docutils literal notranslate"><span class="pre">dhat</span></code>
 (e.g. <code class="docutils literal notranslate"><span class="pre">1e-2</span></code>) so the barrier catches contact early.  For tight-fitting
 assemblies where a visible gap is unacceptable, decrease it (e.g.
 <code class="docutils literal notranslate"><span class="pre">1e-4</span></code>), but expect more Newton–Raphson iterations.</p>
+<p><strong>Contact thickness / offset</strong> — <code class="docutils literal notranslate"><span class="pre">dmin=0</span></code> preserves zero-thickness
+contact. A positive <code class="docutils literal notranslate"><span class="pre">dmin</span></code> sets the minimum distance between collision
+primitives: the barrier activates when the distance is below
+<code class="docutils literal notranslate"><span class="pre">dmin</span> <span class="pre">+</span> <span class="pre">dhat</span></code> and diverges as it approaches <code class="docutils literal notranslate"><span class="pre">dmin</span></code>. <code class="docutils literal notranslate"><span class="pre">dmin</span></code> is always
+in absolute model length units, even with <code class="docutils literal notranslate"><span class="pre">dhat_is_relative=True</span></code>.
+Increasing <code class="docutils literal notranslate"><span class="pre">dhat</span></code> alone does not impose a physical thickness.</p>
+<p>For 2D beam centerlines with a common radius of 0.2 mm, use a minimum
+centerline separation of 0.4 mm:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">IPCContact</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">,</span> <span class="n">surface_mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span>
+    <span class="n">dmin</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">dhat</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">dhat_is_relative</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_ccd</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">beam_assembly</span><span class="p">,</span> <span class="n">contact</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The initial geometry must have separation strictly greater than <code class="docutils literal notranslate"><span class="pre">dmin</span></code>
+for every eligible collision pair. IPC excludes primitives sharing a
+vertex, but nearby segments around connected joints can still require
+additional collision exclusions. The offset is uniform across the mesh;
+it does not model section deformation or automatically add periodic-image
+contact. <code class="docutils literal notranslate"><span class="pre">IPCSelfContact</span></code> accepts the same <code class="docutils literal notranslate"><span class="pre">dmin</span></code> argument.
+Nonzero offsets are not supported with <code class="docutils literal notranslate"><span class="pre">use_ogc=True</span></code>.</p>
+<p>Rigid-body contact also accepts <code class="docutils literal notranslate"><span class="pre">dmin</span></code> through
+<code class="docutils literal notranslate"><span class="pre">RigidBody.set_static_obstacle(...,</span> <span class="pre">dmin=...)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">RigidBody.set_static_plane(...,</span> <span class="pre">dmin=...)</span></code>. All analytic planes attached
+to one body must use the same <code class="docutils literal notranslate"><span class="pre">dmin</span></code>, <code class="docutils literal notranslate"><span class="pre">dhat</span></code> and <code class="docutils literal notranslate"><span class="pre">kappa</span></code>.</p>
 <p><strong>CCD line search</strong> — Enabling <code class="docutils literal notranslate"><span class="pre">use_ccd=True</span></code> is recommended for
 problems where first contact occurs suddenly (e.g. a punch hitting a
-plate) or where self-contact can cause rapid topology changes.</p>
+plate) or where self-contact can cause rapid topology changes.
+CCD uses the same <code class="docutils literal notranslate"><span class="pre">dmin</span></code> as the barrier so Newton corrections preserve
+the minimum separation. Disabling CCD removes this swept-path protection.</p>
 <p><strong>Energy-based backtracking</strong> — When <code class="docutils literal notranslate"><span class="pre">use_ccd=True</span></code>, an
 energy-based backtracking phase is automatically enabled after CCD
 filtering: the step is halved until total energy (exact barrier +

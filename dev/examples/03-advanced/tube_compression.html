@@ -110,8 +110,8 @@ to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="compression-of-a-tube-using-2d-axisymmetric-model">
 <span id="sphx-glr-examples-03-advanced-tube-compression-py"></span><h1>Compression of a tube using 2D axisymmetric model<a class="headerlink" href="#compression-of-a-tube-using-2d-axisymmetric-model" title="Link to this heading"></a></h1>
-<p>This model uses self-contact, elasto-plastic material law with finite strain
-assumption in a 2D axisymetric modeling space.
+<p>This model uses IPC self-contact (requires <code class="docutils literal notranslate"><span class="pre">ipctk</span> <span class="pre">&gt;=</span> <span class="pre">1.6</span></code>), elasto-plastic
+material law with finite strain assumption in a 2D axisymetric modeling space.
 The full 3D result is ploted during the post processing phase.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># sphinx_gallery_thumbnail_number = 3</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
@@ -155,17 +155,26 @@ This law assume an isotropic hardening modeled with a power-law:</p>
 </ul>
 </dd>
 </dl>
+<p>The self contact is treated with the IPC (Incremental Potential Contact)
+method from the ipctk library: a barrier potential is activated when two
+parts of the surface get closer than <code class="docutils literal notranslate"><span class="pre">dhat</span></code> (here relative to the size of
+the model), and a continuous collision detection (CCD) line search
+guarantees that the folds never interpenetrate. The barrier stiffness is
+tuned automatically.</p>
+<p>ipctk works on the planar (r, z) outline of the tube. In the “2Daxi” space,
+fedoo weights each collision by the circumference <span class="math notranslate nohighlight">\(2 \pi r\)</span> of the
+ring it represents. The option <code class="docutils literal notranslate"><span class="pre">use_area_weighting=True</span></code> (convergent
+formulation) can be added to weight each collision by the area of the ring,
+so that the contact response does not depend on the mesh density, at the
+price of a few more increments.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
-<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+<span class="n">solid_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
 
-<span class="c1"># Add self contact....</span>
-<span class="n">surf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
-<span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">contact</span><span class="o">.</span><span class="n">SelfContact</span><span class="p">(</span><span class="n">surf</span><span class="p">)</span>
-
-<span class="c1"># contact parameters</span>
-<span class="n">contact</span><span class="o">.</span><span class="n">contact_search_once</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">contact</span><span class="o">.</span><span class="n">eps_n</span> <span class="o">=</span> <span class="mf">1e4</span>  <span class="c1"># contact penalty</span>
-<span class="n">contact</span><span class="o">.</span><span class="n">max_dist</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># max distance for the contact search</span>
+<span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">IPCSelfContact</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">,</span>
+    <span class="n">dhat</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>  <span class="c1"># barrier activation distance / bounding box diagonal</span>
+<span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="n">contact</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We define a non-linear problem including geometric nonlinearities using the
@@ -177,7 +186,7 @@ sub-iterations (max_subiter from 10 to 20) to allow for step-length
 optimization. Additionally, ‘adaptive_stiffness’ is enabled to stabilize
 convergence during sharp elastic-to-plastic transitions.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">NLGEOM</span> <span class="o">=</span> <span class="s2">"UL"</span>
-<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span> <span class="o">+</span> <span class="n">contact</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="n">NLGEOM</span><span class="p">)</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="n">NLGEOM</span><span class="p">)</span>
 <span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span>
     <span class="s2">"Displacement"</span><span class="p">,</span>
     <span class="n">tol</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span>
@@ -189,7 +198,7 @@ convergence during sharp elastic-to-plastic transitions.</p>
 <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)):</span>
     <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
-    <span class="s2">"results/tube_compression"</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"P"</span><span class="p">]</span>
+    <span class="s2">"results/tube_compression"</span><span class="p">,</span> <span class="n">solid_assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"P"</span><span class="p">]</span>
 <span class="p">)</span>
 
 
@@ -252,7 +261,7 @@ the ‘X’ component of displacement is the true 3d displacement along x.</p>
 <img src="../../_images/sphx_glr_tube_compression_002.gif" srcset="../../_images/sphx_glr_tube_compression_002.gif" alt="tube compression" class = "sphx-glr-single-img"/><p>An example of how to do a realistic plot using the vtk physical based
 renderic availbale through pyvista.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="p">[</span><span class="mi">608</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span>
-<span class="n">data_3d</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="mi">62</span><span class="p">)</span>  <span class="c1"># load iteration 62</span>
+<span class="n">data_3d</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.6</span> <span class="o">*</span> <span class="n">data_3d</span><span class="o">.</span><span class="n">n_iter</span><span class="p">))</span>  <span class="c1"># load an intermediate iteration</span>
 <span class="n">data_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="s2">"Disp"</span><span class="p">,</span>
     <span class="s2">"Z"</span><span class="p">,</span>
@@ -303,7 +312,7 @@ with sphinx-gallery.</p>
 <span class="c1"># pl.close()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 15.279 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 49.595 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-03-advanced-tube-compression-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/b2331f10973c6a609241146ff9537cf9/tube_compression.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">tube_compression.ipynb</span></code></a></p>
