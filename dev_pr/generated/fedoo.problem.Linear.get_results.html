@@ -76,7 +76,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.add_output.html">fedoo.problem.Linear.add_output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.apply_boundary_conditions.html">fedoo.problem.Linear.apply_boundary_conditions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.change_assembly.html">fedoo.problem.Linear.change_assembly</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.check_boundary_conditions.html">fedoo.problem.Linear.check_boundary_conditions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.clear_outputs.html">fedoo.problem.Linear.clear_outputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_A.html">fedoo.problem.Linear.get_A</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.problem.Linear.get_B.html">fedoo.problem.Linear.get_B</a></li>
@@ -201,9 +200,9 @@ If assemb is not specified, the assembly associated to the problem,
 <li><p><strong>output_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – list of result labels.</p></li>
 <li><p><strong>output_type</strong> (<em>'Node'</em><em>, </em><em>'Element'</em><em> or </em><em>'GaussPoint'</em><em>, </em><em>optional</em>) – Type of results. If None, the type of output is not converted.
 Scalar results are not concerned by this parameter.</p></li>
-<li><p><strong>position</strong> (<em>float in</em><em> [</em><em>-1</em><em>, </em><em>1</em><em>]</em><em>, </em><em>optional</em>) – Normalized position in the section for shell output.
-For instance, 1 is top face define by the local z direction,
--1 is the bottom face and 0 is the midplane</p></li>
+<li><p><strong>position</strong> (<em>None</em><em>, </em><em>scalar</em><em>, </em><em>coordinate pair</em><em> or </em><em>array</em><em>, </em><em>optional</em>) – Normalized section coordinates: (y, z) pairs for beams, scalar or
+vector in [-1, 1] for shells. Shell -1/0/1 means bottom/middle/top.
+None extracts all configured section output points.</p></li>
 <li><p><strong>element_set</strong> (<em>str</em><em> or </em><em>list</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – set of element indices or name of an element set associated to the mesh.
 If specified, only the results restriced to the set of elements
 are extracted.</p></li>

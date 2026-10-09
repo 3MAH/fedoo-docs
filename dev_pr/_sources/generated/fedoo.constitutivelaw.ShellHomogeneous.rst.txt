@@ -23,12 +23,15 @@
          ShellHomogeneous.compute_rotary_density
          ShellHomogeneous.get_all
          ShellHomogeneous.get_local_frame
+         ShellHomogeneous.get_output_tensors
          ShellHomogeneous.get_shell_stiffness_matrix
          ShellHomogeneous.get_strain
          ShellHomogeneous.get_stress
          ShellHomogeneous.get_stress_distribution
          ShellHomogeneous.initialize
+         ShellHomogeneous.integration_stresses
          ShellHomogeneous.reset
+         ShellHomogeneous.section_description
          ShellHomogeneous.set_local_frame
          ShellHomogeneous.set_start
          ShellHomogeneous.to_start
@@ -47,6 +50,7 @@
       
          ShellHomogeneous.area_density
          ShellHomogeneous.name
+         ShellHomogeneous.output_points
          ShellHomogeneous.rotary_density
          ShellHomogeneous.thickness
          ShellHomogeneous.k

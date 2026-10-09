@@ -21,14 +21,29 @@
       
          BeamRectangular.compute_linear_density
          BeamRectangular.compute_rotary_density
+         BeamRectangular.from_section_description
          BeamRectangular.get_all
          BeamRectangular.get_beam_rigidity
          BeamRectangular.get_local_frame
+         BeamRectangular.get_strain
+         BeamRectangular.get_stress
          BeamRectangular.initialize
+         BeamRectangular.normalize_section_coordinates
+         BeamRectangular.normalized_output_points
+         BeamRectangular.normalized_section_coordinates
          BeamRectangular.reset
+         BeamRectangular.sample_points
+         BeamRectangular.scale_section_points
+         BeamRectangular.section_bounds
+         BeamRectangular.section_coordinates
+         BeamRectangular.section_description
+         BeamRectangular.section_mesh
          BeamRectangular.set_local_frame
          BeamRectangular.set_start
+         BeamRectangular.shear_stress
          BeamRectangular.to_start
+         BeamRectangular.torsion_strain
+         BeamRectangular.torsion_stress
          BeamRectangular.update
       
       
@@ -44,7 +59,13 @@
       
          BeamRectangular.linear_density
          BeamRectangular.name
+         BeamRectangular.output_points
+         BeamRectangular.recovery
+         BeamRectangular.reference_bounds
          BeamRectangular.rotary_density
+         BeamRectangular.section_dimensions
+         BeamRectangular.section_registry
+         BeamRectangular.section_type
          BeamRectangular.a
          BeamRectangular.b
          BeamRectangular.A

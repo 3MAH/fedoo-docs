@@ -21,14 +21,29 @@
       
          BeamProperties.compute_linear_density
          BeamProperties.compute_rotary_density
+         BeamProperties.from_section_description
          BeamProperties.get_all
          BeamProperties.get_beam_rigidity
          BeamProperties.get_local_frame
+         BeamProperties.get_strain
+         BeamProperties.get_stress
          BeamProperties.initialize
+         BeamProperties.normalize_section_coordinates
+         BeamProperties.normalized_output_points
+         BeamProperties.normalized_section_coordinates
          BeamProperties.reset
+         BeamProperties.sample_points
+         BeamProperties.scale_section_points
+         BeamProperties.section_bounds
+         BeamProperties.section_coordinates
+         BeamProperties.section_description
+         BeamProperties.section_mesh
          BeamProperties.set_local_frame
          BeamProperties.set_start
+         BeamProperties.shear_stress
          BeamProperties.to_start
+         BeamProperties.torsion_strain
+         BeamProperties.torsion_stress
          BeamProperties.update
       
       
@@ -44,7 +59,12 @@
       
          BeamProperties.linear_density
          BeamProperties.name
+         BeamProperties.output_points
+         BeamProperties.recovery
          BeamProperties.rotary_density
+         BeamProperties.section_dimensions
+         BeamProperties.section_registry
+         BeamProperties.section_type
          BeamProperties.A
          BeamProperties.Jx
          BeamProperties.Iyy

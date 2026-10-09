@@ -21,14 +21,29 @@
       
          BeamPipe.compute_linear_density
          BeamPipe.compute_rotary_density
+         BeamPipe.from_section_description
          BeamPipe.get_all
          BeamPipe.get_beam_rigidity
          BeamPipe.get_local_frame
+         BeamPipe.get_strain
+         BeamPipe.get_stress
          BeamPipe.initialize
+         BeamPipe.normalize_section_coordinates
+         BeamPipe.normalized_output_points
+         BeamPipe.normalized_section_coordinates
          BeamPipe.reset
+         BeamPipe.sample_points
+         BeamPipe.scale_section_points
+         BeamPipe.section_bounds
+         BeamPipe.section_coordinates
+         BeamPipe.section_description
+         BeamPipe.section_mesh
          BeamPipe.set_local_frame
          BeamPipe.set_start
+         BeamPipe.shear_stress
          BeamPipe.to_start
+         BeamPipe.torsion_strain
+         BeamPipe.torsion_stress
          BeamPipe.update
       
       
@@ -44,7 +59,13 @@
       
          BeamPipe.linear_density
          BeamPipe.name
+         BeamPipe.output_points
+         BeamPipe.recovery
+         BeamPipe.reference_bounds
          BeamPipe.rotary_density
+         BeamPipe.section_dimensions
+         BeamPipe.section_registry
+         BeamPipe.section_type
          BeamPipe.r_int
          BeamPipe.r_ext
          BeamPipe.A
