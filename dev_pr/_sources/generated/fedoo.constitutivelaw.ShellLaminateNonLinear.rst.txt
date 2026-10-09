@@ -23,15 +23,12 @@
          ShellLaminateNonLinear.compute_rotary_density
          ShellLaminateNonLinear.get_all
          ShellLaminateNonLinear.get_local_frame
-         ShellLaminateNonLinear.get_output_tensors
          ShellLaminateNonLinear.get_shell_stiffness_matrix
          ShellLaminateNonLinear.get_strain
          ShellLaminateNonLinear.get_stress
          ShellLaminateNonLinear.get_stress_distribution
          ShellLaminateNonLinear.initialize
-         ShellLaminateNonLinear.integration_stresses
          ShellLaminateNonLinear.reset
-         ShellLaminateNonLinear.section_description
          ShellLaminateNonLinear.set_local_frame
          ShellLaminateNonLinear.set_start
          ShellLaminateNonLinear.to_start
@@ -50,7 +47,6 @@
       
          ShellLaminateNonLinear.area_density
          ShellLaminateNonLinear.name
-         ShellLaminateNonLinear.output_points
          ShellLaminateNonLinear.rotary_density
          ShellLaminateNonLinear.thickness
          ShellLaminateNonLinear.k

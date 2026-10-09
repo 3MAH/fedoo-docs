@@ -120,10 +120,10 @@
 <h1>fedoo.constitutivelaw.BeamPipe<a class="headerlink" href="#fedoo-constitutivelaw-beampipe" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.BeamPipe">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BeamPipe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_ext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.BeamPipe" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BeamPipe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_ext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.BeamPipe" title="Link to this definition"></a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.BeamPipe.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_ext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.BeamPipe.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_ext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.BeamPipe.__init__" title="Link to this definition"></a></dt>
 <dd><p>Properties for a beam with pipe cross section.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -154,56 +154,20 @@ cross-section orientation is defined by the assembly element frame.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.compute_rotary_density.html#fedoo.constitutivelaw.BeamPipe.compute_rotary_density" title="fedoo.constitutivelaw.BeamPipe.compute_rotary_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.compute_rotary_density</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.from_section_description.html#fedoo.constitutivelaw.BeamPipe.from_section_description" title="fedoo.constitutivelaw.BeamPipe.from_section_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.from_section_description</span></code></a>(description)</p></td>
-<td><p>Restore a recovery-only section without a material/solver registry.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.get_all.html#fedoo.constitutivelaw.BeamPipe.get_all" title="fedoo.constitutivelaw.BeamPipe.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.get_all</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.get_all.html#fedoo.constitutivelaw.BeamPipe.get_all" title="fedoo.constitutivelaw.BeamPipe.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.get_all</span></code></a>()</p></td>
 <td><p>Return a dict with all the known ConstitutiveLaw (with a name).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.get_beam_rigidity.html#fedoo.constitutivelaw.BeamPipe.get_beam_rigidity" title="fedoo.constitutivelaw.BeamPipe.get_beam_rigidity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.get_beam_rigidity</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.get_beam_rigidity.html#fedoo.constitutivelaw.BeamPipe.get_beam_rigidity" title="fedoo.constitutivelaw.BeamPipe.get_beam_rigidity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.get_beam_rigidity</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.get_local_frame.html#fedoo.constitutivelaw.BeamPipe.get_local_frame" title="fedoo.constitutivelaw.BeamPipe.get_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.get_local_frame</span></code></a>(assembly)</p></td>
-<td><p>Current local basis rows in global coordinates, in Gauss-point order.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.get_local_frame.html#fedoo.constitutivelaw.BeamPipe.get_local_frame" title="fedoo.constitutivelaw.BeamPipe.get_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.get_local_frame</span></code></a>([assembly])</p></td>
+<td><p>Return material frames, resolved at <code class="docutils literal notranslate"><span class="pre">assembly</span></code> Gauss points.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.get_strain.html#fedoo.constitutivelaw.BeamPipe.get_strain" title="fedoo.constitutivelaw.BeamPipe.get_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.get_strain</span></code></a>(assembly[, position])</p></td>
-<td><p>Recover local kinematic section strain without elastic properties.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.get_stress.html#fedoo.constitutivelaw.BeamPipe.get_stress" title="fedoo.constitutivelaw.BeamPipe.get_stress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.get_stress</span></code></a>(assembly[, position])</p></td>
-<td><p>Recover local stress at normalized points, defaulting to output_points.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.initialize.html#fedoo.constitutivelaw.BeamPipe.initialize" title="fedoo.constitutivelaw.BeamPipe.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.initialize</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.initialize.html#fedoo.constitutivelaw.BeamPipe.initialize" title="fedoo.constitutivelaw.BeamPipe.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.initialize</span></code></a>(assembly, pb)</p></td>
 <td><p>Initialize the constitutive law for the current problem.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.normalize_section_coordinates.html#fedoo.constitutivelaw.BeamPipe.normalize_section_coordinates" title="fedoo.constitutivelaw.BeamPipe.normalize_section_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.normalize_section_coordinates</span></code></a>(position)</p></td>
-<td><p>Inverse centroid-preserving map, including heterogeneous dimensions.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.normalized_output_points.html#fedoo.constitutivelaw.BeamPipe.normalized_output_points" title="fedoo.constitutivelaw.BeamPipe.normalized_output_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.normalized_output_points</span></code></a>([n_points])</p></td>
-<td><p>Sampling coordinates; varying pipe radii may yield (points, 2, GP).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.normalized_section_coordinates.html#fedoo.constitutivelaw.BeamPipe.normalized_section_coordinates" title="fedoo.constitutivelaw.BeamPipe.normalized_section_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.normalized_section_coordinates</span></code></a>(position)</p></td>
-<td><p>Map normalized (y,z) toward each bounding face about the centroid.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.reset.html#fedoo.constitutivelaw.BeamPipe.reset" title="fedoo.constitutivelaw.BeamPipe.reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.reset</span></code></a>()</p></td>
 <td><p>Reset the constitutive law.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.sample_points.html#fedoo.constitutivelaw.BeamPipe.sample_points" title="fedoo.constitutivelaw.BeamPipe.sample_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.sample_points</span></code></a>([n_points])</p></td>
-<td><p>Normalized section points; default to section-mesh nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.scale_section_points.html#fedoo.constitutivelaw.BeamPipe.scale_section_points" title="fedoo.constitutivelaw.BeamPipe.scale_section_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.scale_section_points</span></code></a>(points)</p></td>
-<td><p>Yield physical points, broadcasting varying dimensions along beams.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.section_bounds.html#fedoo.constitutivelaw.BeamPipe.section_bounds" title="fedoo.constitutivelaw.BeamPipe.section_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.section_bounds</span></code></a>()</p></td>
-<td><p>Physical bounding-box bounds relative to the section centroid.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.section_coordinates.html#fedoo.constitutivelaw.BeamPipe.section_coordinates" title="fedoo.constitutivelaw.BeamPipe.section_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.section_coordinates</span></code></a>(position)</p></td>
-<td><p>Resolve normalized coordinates; scalar positions are ambiguous.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.section_description.html#fedoo.constitutivelaw.BeamPipe.section_description" title="fedoo.constitutivelaw.BeamPipe.section_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.section_description</span></code></a>()</p></td>
-<td><p>Portable section schema; arrays retain their beam data association.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.section_mesh.html#fedoo.constitutivelaw.BeamPipe.section_mesh" title="fedoo.constitutivelaw.BeamPipe.section_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.section_mesh</span></code></a>([n_points])</p></td>
-<td><p>Mesh in normalized centroid-relative (y,z) coordinates.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.set_local_frame.html#fedoo.constitutivelaw.BeamPipe.set_local_frame" title="fedoo.constitutivelaw.BeamPipe.set_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.set_local_frame</span></code></a>(local_frame[, location])</p></td>
 <td><p>Define the material coordinate frame.</p></td>
@@ -211,19 +175,10 @@ cross-section orientation is defined by the assembly element frame.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.set_start.html#fedoo.constitutivelaw.BeamPipe.set_start" title="fedoo.constitutivelaw.BeamPipe.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.set_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Begin a new time iteration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.shear_stress.html#fedoo.constitutivelaw.BeamPipe.shear_stress" title="fedoo.constitutivelaw.BeamPipe.shear_stress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.shear_stress</span></code></a>(force_y, force_z, y, z)</p></td>
-<td><p>Average transverse shear; subclasses may supply section distributions.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.to_start.html#fedoo.constitutivelaw.BeamPipe.to_start" title="fedoo.constitutivelaw.BeamPipe.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.to_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.to_start.html#fedoo.constitutivelaw.BeamPipe.to_start" title="fedoo.constitutivelaw.BeamPipe.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.to_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Restart the current time iteration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.torsion_strain.html#fedoo.constitutivelaw.BeamPipe.torsion_strain" title="fedoo.constitutivelaw.BeamPipe.torsion_strain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.torsion_strain</span></code></a>(twist, y, z)</p></td>
-<td><p>Circular-section torsion kinematics, independent of material stiffness.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.torsion_stress.html#fedoo.constitutivelaw.BeamPipe.torsion_stress" title="fedoo.constitutivelaw.BeamPipe.torsion_stress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.torsion_stress</span></code></a>(torque, y, z)</p></td>
-<td><p>Circular-section torsion, or no torsion for generic sections.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.update.html#fedoo.constitutivelaw.BeamPipe.update" title="fedoo.constitutivelaw.BeamPipe.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.update</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.update.html#fedoo.constitutivelaw.BeamPipe.update" title="fedoo.constitutivelaw.BeamPipe.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.update</span></code></a>(assembly, pb)</p></td>
 <td><p>Update the constitutive law for the current problem state.</p></td>
 </tr>
 </tbody>
@@ -236,26 +191,8 @@ cross-section orientation is defined by the assembly element frame.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.name.html#fedoo.constitutivelaw.BeamPipe.name" title="fedoo.constitutivelaw.BeamPipe.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.name</span></code></a></p></td>
 <td><p>Name of the constitutive law.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.output_points.html#fedoo.constitutivelaw.BeamPipe.output_points" title="fedoo.constitutivelaw.BeamPipe.output_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.output_points</span></code></a></p></td>
-<td><p>Configured normalized output coordinates, or None without sampling.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.recovery.html#fedoo.constitutivelaw.BeamPipe.recovery" title="fedoo.constitutivelaw.BeamPipe.recovery"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.recovery</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.reference_bounds.html#fedoo.constitutivelaw.BeamPipe.reference_bounds" title="fedoo.constitutivelaw.BeamPipe.reference_bounds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.reference_bounds</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.rotary_density.html#fedoo.constitutivelaw.BeamPipe.rotary_density" title="fedoo.constitutivelaw.BeamPipe.rotary_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.rotary_density</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.rotary_density.html#fedoo.constitutivelaw.BeamPipe.rotary_density" title="fedoo.constitutivelaw.BeamPipe.rotary_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.rotary_density</span></code></a></p></td>
 <td><p>Mass moments of inertia per unit beam length.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.section_dimensions.html#fedoo.constitutivelaw.BeamPipe.section_dimensions" title="fedoo.constitutivelaw.BeamPipe.section_dimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.section_dimensions</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.section_registry.html#fedoo.constitutivelaw.BeamPipe.section_registry" title="fedoo.constitutivelaw.BeamPipe.section_registry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.section_registry</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.section_type.html#fedoo.constitutivelaw.BeamPipe.section_type" title="fedoo.constitutivelaw.BeamPipe.section_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.section_type</span></code></a></p></td>
-<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.r_int.html#fedoo.constitutivelaw.BeamPipe.r_int" title="fedoo.constitutivelaw.BeamPipe.r_int"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamPipe.r_int</span></code></a></p></td>
 <td><p>Internal radius of the beam section.</p></td>

@@ -21,8 +21,6 @@
       
          MultiFrameDataSet.__getitem__
          MultiFrameDataSet.add_data
-         MultiFrameDataSet.beam_derived_fields
-         MultiFrameDataSet.beam_section_description
          MultiFrameDataSet.copy
          MultiFrameDataSet.deepcopy
          MultiFrameDataSet.field_names
@@ -41,11 +39,6 @@
          MultiFrameDataSet.save_mesh
          MultiFrameDataSet.savez
          MultiFrameDataSet.savez_compressed
-         MultiFrameDataSet.section_derived_fields
-         MultiFrameDataSet.set_beam_section
-         MultiFrameDataSet.shell_derived_fields
-         MultiFrameDataSet.shell_section_description
-         MultiFrameDataSet.shell_sources
          MultiFrameDataSet.split_global_element_indices
          MultiFrameDataSet.to_csv
          MultiFrameDataSet.to_dict
@@ -69,10 +62,8 @@
          :toctree:
          
       
-         MultiFrameDataSet.beam_options
          MultiFrameDataSet.dict_data
          MultiFrameDataSet.n_iter
-         MultiFrameDataSet.shell_options
          MultiFrameDataSet.active_submesh
   
   

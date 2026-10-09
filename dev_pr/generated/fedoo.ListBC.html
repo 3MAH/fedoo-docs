@@ -73,6 +73,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../boundary_conditions.html#basic-boundary-conditions">Basic boundary conditions</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.ListBC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../boundary_conditions.html#dirichlet-and-neumann-boundary-conditions">Dirichlet and Neumann Boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../boundary_conditions.html#boundary-conditions-sharing-some-dof">Boundary conditions sharing some dof</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../boundary_conditions.html#multi-point-constraints">Multi Point Constraints</a></li>
 </ul>
 </li>
@@ -120,6 +121,20 @@
 <dd><p>List of boundary conditions.</p>
 <p>Class that define a list of ordered elementary boundary conditions (the bc are applied in the list order).
 Derived from the python list object.</p>
+<p class="rubric">Notes</p>
+<p>Several boundary conditions may share some dof:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The generalized forces of the Neumann bc are summed.</p></li>
+<li><p>For Dirichlet bc, the last one in the list is applied. This is
+reported if the prescribed values are different (see <a class="reference internal" href="fedoo.ListBC.check.html#fedoo.ListBC.check" title="fedoo.ListBC.check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check()</span></code></a>).</p></li>
+</ul>
+</div></blockquote>
+<p>The attribute <code class="docutils literal notranslate"><span class="pre">check_mode</span></code> defines what is done when incompatible
+boundary conditions are found the first time the list is applied to a
+problem: <code class="docutils literal notranslate"><span class="pre">&quot;warn&quot;</span></code> (default) emits a <code class="xref py py-class docutils literal notranslate"><span class="pre">BoundaryConditionWarning</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;raise&quot;</span></code> raises a <code class="xref py py-class docutils literal notranslate"><span class="pre">BoundaryConditionConflict</span></code> error and
+<code class="docutils literal notranslate"><span class="pre">&quot;ignore&quot;</span></code> disables the check.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.ListBC.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.ListBC.__init__" title="Link to this definition"></a></dt>
@@ -139,38 +154,44 @@ Derived from the python list object.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.append.html#fedoo.ListBC.append" title="fedoo.ListBC.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.append</span></code></a>(bc)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.extend.html#fedoo.ListBC.extend" title="fedoo.ListBC.extend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.extend</span></code></a>(iterable)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.check.html#fedoo.ListBC.check" title="fedoo.ListBC.check"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.check</span></code></a>([problem, t_fact])</p></td>
+<td><p>Look for boundary conditions applied twice on the same dof.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.extend.html#fedoo.ListBC.extend" title="fedoo.ListBC.extend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.extend</span></code></a>(iterable)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.generate.html#fedoo.ListBC.generate" title="fedoo.ListBC.generate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.generate</span></code></a>(problem[, t_fact, t_fact_old])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.generate.html#fedoo.ListBC.generate" title="fedoo.ListBC.generate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.generate</span></code></a>(problem[, t_fact, t_fact_old])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.get_all.html#fedoo.ListBC.get_all" title="fedoo.ListBC.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.get_all</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.get_all.html#fedoo.ListBC.get_all" title="fedoo.ListBC.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.get_all</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.initialize.html#fedoo.ListBC.initialize" title="fedoo.ListBC.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.initialize</span></code></a>(problem)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.initialize.html#fedoo.ListBC.initialize" title="fedoo.ListBC.initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.initialize</span></code></a>(problem)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.list_all.html#fedoo.ListBC.list_all" title="fedoo.ListBC.list_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.list_all</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.list_all.html#fedoo.ListBC.list_all" title="fedoo.ListBC.list_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.list_all</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.mpc.html#fedoo.ListBC.mpc" title="fedoo.ListBC.mpc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.mpc</span></code></a>(*args, **kargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.mpc.html#fedoo.ListBC.mpc" title="fedoo.ListBC.mpc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.mpc</span></code></a>(*args, **kargs)</p></td>
 <td><p>Add a linear multi-point constraint to the list of boundary conditions.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.register_global_dofs.html#fedoo.ListBC.register_global_dofs" title="fedoo.ListBC.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.register_global_dofs</span></code></a>(problem)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.register_global_dofs.html#fedoo.ListBC.register_global_dofs" title="fedoo.ListBC.register_global_dofs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.register_global_dofs</span></code></a>(problem)</p></td>
 <td><p>Register global DOFs required by this boundary condition.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.remove.html#fedoo.ListBC.remove" title="fedoo.ListBC.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.remove</span></code></a>(bc)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.remove.html#fedoo.ListBC.remove" title="fedoo.ListBC.remove"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.remove</span></code></a>(bc)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.str_condensed.html#fedoo.ListBC.str_condensed" title="fedoo.ListBC.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.str_condensed</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.str_condensed.html#fedoo.ListBC.str_condensed" title="fedoo.ListBC.str_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.str_condensed</span></code></a>()</p></td>
 <td><p>Return a condensed one line str describing the object</p></td>
 </tr>
 </tbody>
 </table>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.name.html#fedoo.ListBC.name" title="fedoo.ListBC.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.name</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.ListBC.check_mode.html#fedoo.ListBC.check_mode" title="fedoo.ListBC.check_mode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.check_mode</span></code></a></p></td>
+<td><p>&quot;warn&quot;, &quot;raise&quot; or &quot;ignore&quot;.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.ListBC.name.html#fedoo.ListBC.name" title="fedoo.ListBC.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ListBC.name</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
