@@ -121,11 +121,12 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.MPC.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_node_sets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_factors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_constant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MPC.__init__" title="Link to this definition"></a></dt>
-<dd><p>Create a linear multi-point constraint object
+<dd><p>Create a linear multi-point constraint object.
+The constraint equation is: sum(factor * dof) + constant = 0.
 To create a MPC of the equation
-4*Ux_12 - 2*Uz_15 = 7 (Ux_12 is the displacement along x of the 12th node)
+4*Ux_12 - 2*Uz_15 + 7 = 0 (Ux_12 is the displacement along x of the 12th node)
 use the following MPC:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MPC</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="s1">'Disp_X'</span><span class="p">,</span> <span class="s1">'Disp_Z'</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="mi">7</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MPC</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="s1">'DispX'</span><span class="p">,</span> <span class="s1">'DispZ'</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="mi">7</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -136,7 +137,8 @@ use the following MPC:</p>
 <li><p><strong>list_factors</strong> (<em>list</em><em> of </em><em>scalars</em><em> or </em><em>numpy array</em>) – list of factor (MPC).
 To define several mpc at once, it is possible to give an array of factors, where
 each line is associated to a signe mpc.</p></li>
-<li><p><strong>constant</strong> (<em>scalar</em><em>, </em><em>optional</em>) – constant value on the MPC equation
+<li><p><strong>constant</strong> (<em>scalar</em><em>, </em><em>optional</em>) – constant value added to the left hand side of the MPC equation
+(sum(factor * dof) + constant = 0).
 if not specified, no constant value.</p></li>
 <li><p><strong>time_func</strong> (<em>function</em>) – <p>Function that gives the temporal evolution of the constant value.
 The function should be on the form:</p>
