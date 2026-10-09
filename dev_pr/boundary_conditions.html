@@ -74,6 +74,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#basic-boundary-conditions">Basic boundary conditions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.ListBC.html">fedoo.ListBC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dirichlet-and-neumann-boundary-conditions">Dirichlet and Neumann Boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boundary-conditions-sharing-some-dof">Boundary conditions sharing some dof</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multi-point-constraints">Multi Point Constraints</a></li>
 </ul>
 </li>
@@ -209,6 +210,39 @@ factor to the prescribed value and should be between 0 and 1.</p>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">t_fact</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="s1">'nodeset'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">time_func</span> <span class="o">=</span> <span class="n">step_function</span><span class="p">)])</span>
+</pre></div>
+</div>
+</section>
+<section id="boundary-conditions-sharing-some-dof">
+<h3>Boundary conditions sharing some dof<a class="headerlink" href="#boundary-conditions-sharing-some-dof" title="Link to this heading"></a></h3>
+<p>A displacement and a generalized force may be prescribed on the same node as
+long as the dof are different. When several boundary conditions are defined
+on the same dof:</p>
+<ul class="simple">
+<li><p>The generalized forces of the Neumann boundary conditions are summed. This
+includes the distributed loads (e.g. <a class="reference internal" href="generated/fedoo.constraint.Pressure.html#fedoo.constraint.Pressure" title="fedoo.constraint.Pressure"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.Pressure</span></code></a>),
+whose equivalent nodal forces are computed over the whole surface as if no
+dof was blocked.</p></li>
+<li><p>A Dirichlet boundary condition prevails over a Neumann one: the prescribed
+force is ignored and the nodal force is the reaction.</p></li>
+<li><p>For several Dirichlet boundary conditions, the last one in the list is
+applied.</p></li>
+</ul>
+<p>The boundary conditions that can’t be applied together are reported the
+first time they are applied to the problem: Dirichlet boundary conditions
+with different values on a dof, Dirichlet boundary condition on a dof
+eliminated by a multi point constraint, or dof eliminated by several multi
+point constraints. A non zero nodal force ignored on a blocked dof is also
+reported. By default a warning is emitted. The attribute <code class="docutils literal notranslate"><span class="pre">check_mode</span></code>
+allows to raise an error for the incompatible boundary conditions, or to
+disable the check:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">check_mode</span> <span class="o">=</span> <span class="s2">"raise"</span>  <span class="c1"># or "warn" (default), "ignore"</span>
+</pre></div>
+</div>
+<p>The report is also available as a list with
+<a class="reference internal" href="generated/fedoo.ListBC.check.html#fedoo.ListBC.check" title="fedoo.ListBC.check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ListBC.check()</span></code></a>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">pb</span><span class="o">.</span><span class="n">check_boundary_conditions</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"kind"</span><span class="p">],</span> <span class="n">record</span><span class="p">[</span><span class="s2">"node"</span><span class="p">],</span> <span class="n">record</span><span class="p">[</span><span class="s2">"variable"</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
