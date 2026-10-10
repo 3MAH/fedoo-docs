@@ -23,7 +23,6 @@
          ListBC.__len__
          ListBC.add
          ListBC.append
-         ListBC.check
          ListBC.extend
          ListBC.generate
          ListBC.get_all
@@ -45,7 +44,6 @@
          :toctree:
          
       
-         ListBC.check_mode
          ListBC.name
   
   

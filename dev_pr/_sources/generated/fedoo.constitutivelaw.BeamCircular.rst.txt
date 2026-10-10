@@ -21,14 +21,29 @@
       
          BeamCircular.compute_linear_density
          BeamCircular.compute_rotary_density
+         BeamCircular.from_section_description
          BeamCircular.get_all
          BeamCircular.get_beam_rigidity
          BeamCircular.get_local_frame
+         BeamCircular.get_strain
+         BeamCircular.get_stress
          BeamCircular.initialize
+         BeamCircular.normalize_section_coordinates
+         BeamCircular.normalized_output_points
+         BeamCircular.normalized_section_coordinates
          BeamCircular.reset
+         BeamCircular.sample_points
+         BeamCircular.scale_section_points
+         BeamCircular.section_bounds
+         BeamCircular.section_coordinates
+         BeamCircular.section_description
+         BeamCircular.section_mesh
          BeamCircular.set_local_frame
          BeamCircular.set_start
+         BeamCircular.shear_stress
          BeamCircular.to_start
+         BeamCircular.torsion_strain
+         BeamCircular.torsion_stress
          BeamCircular.update
       
       
@@ -44,7 +59,13 @@
       
          BeamCircular.linear_density
          BeamCircular.name
+         BeamCircular.output_points
+         BeamCircular.recovery
+         BeamCircular.reference_bounds
          BeamCircular.rotary_density
+         BeamCircular.section_dimensions
+         BeamCircular.section_registry
+         BeamCircular.section_type
          BeamCircular.r
          BeamCircular.A
          BeamCircular.Jx
