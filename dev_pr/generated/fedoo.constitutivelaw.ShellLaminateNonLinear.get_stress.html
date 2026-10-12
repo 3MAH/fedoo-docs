@@ -121,8 +121,16 @@
 <h1>fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress<a class="headerlink" href="#fedoo-constitutivelaw-shelllaminatenonlinear-get-stress" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress">
-<span class="sig-prename descclassname"><span class="pre">ShellLaminateNonLinear.</span></span><span class="sig-name descname"><span class="pre">get_stress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">ShellLaminateNonLinear.</span></span><span class="sig-name descname"><span class="pre">get_stress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress" title="Link to this definition"></a></dt>
+<dd><p>Recover local stress at normalized thickness position(s).</p>
+<p>The default position is +1 (top face); position=None uses configured
+output points. This method does not reduce points. Dataset reads use
+<code class="docutils literal notranslate"><span class="pre">shell_options</span></code> and default to signed componentwise absolute extrema
+for full tensors. Components can come from different thickness points.
+Scalar invariants are evaluated before reduction; computing invariants
+from an envelope instead is not guaranteed conservative. These selection
+rules also apply to dataset Strain fields.</p>
+</dd></dl>
 
 </section>
 

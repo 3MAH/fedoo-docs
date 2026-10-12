@@ -140,7 +140,7 @@ to download the full example code.</p>
 <span class="n">nodes_left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span><span class="p">)</span>
 <span class="n">nodes_right</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmax</span><span class="p">)</span>
 
-<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">BeamEquilibrium</span><span class="p">(</span><span class="n">beam_props</span><span class="p">)</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">BeamEquilibrium</span><span class="p">(</span><span class="n">beam_props</span><span class="p">,</span> <span class="n">consistent_tangent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
 
@@ -158,7 +158,7 @@ to download the full example code.</p>
 <span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"BeamStress"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.551 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.415 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-lattice-beam-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/d6a656418e98c8a49622e91fec2fe844/lattice_beam.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">lattice_beam.ipynb</span></code></a></p>
