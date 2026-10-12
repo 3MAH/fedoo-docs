@@ -24,7 +24,6 @@
          ShellLaminate.find_layer
          ShellLaminate.get_all
          ShellLaminate.get_local_frame
-         ShellLaminate.get_output_tensors
          ShellLaminate.get_shell_stiffness_matrix
          ShellLaminate.get_shell_stiffness_matrix_FI
          ShellLaminate.get_shell_stiffness_matrix_RI
@@ -32,9 +31,7 @@
          ShellLaminate.get_stress
          ShellLaminate.get_stress_distribution
          ShellLaminate.initialize
-         ShellLaminate.integration_stresses
          ShellLaminate.reset
-         ShellLaminate.section_description
          ShellLaminate.set_local_frame
          ShellLaminate.set_start
          ShellLaminate.to_start
@@ -53,7 +50,6 @@
       
          ShellLaminate.area_density
          ShellLaminate.name
-         ShellLaminate.output_points
          ShellLaminate.rotary_density
          ShellLaminate.thickness
          ShellLaminate.k
