@@ -249,8 +249,10 @@ use element/Gauss-point tensors or recompute before converting to nodes.</p>
 </div>
 <p>The default source is <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>: prefer stored tensors, otherwise recover or
 interpolate. <code class="docutils literal notranslate"><span class="pre">&quot;stored&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;recomputed&quot;</span></code> explicitly require that source.
-The default <code class="docutils literal notranslate"><span class="pre">&quot;abs_max&quot;</span></code> reduction selects the largest absolute component
-value, retaining its sign; <code class="docutils literal notranslate"><span class="pre">&quot;max&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;min&quot;</span></code> are also supported. Invariants
+The default reads the top face (<code class="docutils literal notranslate"><span class="pre">reduction=None</span></code>, <code class="docutils literal notranslate"><span class="pre">position=1</span></code>). The
+<code class="docutils literal notranslate"><span class="pre">&quot;abs_max&quot;</span></code> reduction selects the largest absolute component value, retaining
+its sign, the first thickness point winning equal magnitudes; <code class="docutils literal notranslate"><span class="pre">&quot;max&quot;</span></code> and
+<code class="docutils literal notranslate"><span class="pre">&quot;min&quot;</span></code> are also supported. Invariants
 and principal values are evaluated at each point before reduction. A reduction
 ignores point selection; without a reduction, give <code class="docutils literal notranslate"><span class="pre">position</span></code> or
 <code class="docutils literal notranslate"><span class="pre">point_index</span></code>, not both. Updating either selector clears the other.

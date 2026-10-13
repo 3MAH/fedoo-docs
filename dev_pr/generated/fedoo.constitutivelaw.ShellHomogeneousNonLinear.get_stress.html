@@ -125,11 +125,11 @@
 <dd><p>Recover local stress at normalized thickness position(s).</p>
 <p>The default position is +1 (top face); position=None uses configured
 output points. This method does not reduce points. Dataset reads use
-<code class="docutils literal notranslate"><span class="pre">shell_options</span></code> and default to signed componentwise absolute extrema
-for full tensors. Components can come from different thickness points.
-Scalar invariants are evaluated before reduction; computing invariants
-from an envelope instead is not guaranteed conservative. These selection
-rules also apply to dataset Strain fields.</p>
+<code class="docutils literal notranslate"><span class="pre">shell_options</span></code> and default to the top face. With a reduction, full
+tensors are reduced componentwise and components can come from different
+thickness points. Scalar invariants are evaluated before reduction;
+computing invariants from an envelope instead is not guaranteed
+conservative. These selection rules also apply to dataset Strain fields.</p>
 </dd></dl>
 
 </section>

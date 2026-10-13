@@ -123,10 +123,10 @@
 <dt class="sig sig-object py" id="fedoo.DataSet.shell_options">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">DataSet.</span></span><span class="sig-name descname"><span class="pre">shell_options</span></span><a class="headerlink" href="#fedoo.DataSet.shell_options" title="Link to this definition"></a></dt>
 <dd><p>Thickness options; see <code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.util.shell_recovery.ShellOptions</span></code>.</p>
-<p>Default full-tensor reads return signed componentwise absolute extrema,
-potentially from different thickness points. Scalar invariants are computed
-before reduction. Set reduction=None with position or point_index to
-obtain a tensor at one physical point instead.
+<p>Default reads return the tensor at the top face (reduction=None,
+position=1). With a reduction, full-tensor reads return componentwise
+extrema, potentially from different thickness points, and scalar
+invariants are computed before reduction.
 For nonlinear stress recovery, extrapolate=True (default) extends the
 outermost linear segments to layer boundaries. False retains nearest-IP
 values. Stored-point reductions are unaffected; see ShellOptions for
