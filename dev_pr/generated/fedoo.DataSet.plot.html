@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.DataSet.plot &mdash; Fedoo 1.0.1 (dev)</title>
+  <title>fedoo.DataSet.plot &mdash; Fedoo 1.1.0 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=292eb321"></script>
+      <script src="../_static/documentation_options.js?v=fc837d61"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -219,6 +219,11 @@ modified. In this mode, any view‑modifying arguments such as
 Index of the iteration to plot. If None, the current iteration is
 plotted. If no current iteration is defined, the last iteration
 is loaded and plotted.</p></li>
+<li><p><strong>shell_thickness</strong> (<em>bool</em><em>, </em><em>default = False</em>) – Display the saved shell section thickness for <code class="docutils literal notranslate"><span class="pre">tri3</span></code>/<code class="docutils literal notranslate"><span class="pre">quad4</span></code>
+surfaces along deformed midsurface normals. The
+selected field is repeated through the thickness, without extra
+section recovery. Other element types and submeshes without saved
+shell section metadata keep their original geometry.</p></li>
 <li><p><strong>**kwargs</strong> (<em>dict</em>) – See pyvista.Plotter.add_mesh() in the document of pyvista for
 additional usefull options.</p></li>
 </ul>

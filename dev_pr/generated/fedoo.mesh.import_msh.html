@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.mesh.import_msh &mdash; Fedoo 1.0.1 (dev)</title>
+  <title>fedoo.mesh.import_msh &mdash; Fedoo 1.1.0 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=292eb321"></script>
+      <script src="../_static/documentation_options.js?v=fc837d61"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -66,7 +66,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../mesh.html#class-mesh">Class Mesh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-manipulation-functions">Mesh manipulation functions</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#import-export-fedoo-mesh-object">Import/Export Fedoo Mesh object</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#import-and-export-meshes">Import and export meshes</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.import_file.html">fedoo.mesh.import_file</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.mesh.import_msh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.import_vtk.html">fedoo.mesh.import_vtk</a></li>
@@ -119,11 +119,12 @@
 <dt class="sig sig-object py" id="fedoo.mesh.import_msh">
 <span class="sig-name descname"><span class="pre">import_msh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">['curve',</span> <span class="pre">'surface',</span> <span class="pre">'volume']</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.core.mesh.Mesh"><span class="pre">Mesh</span></a></span></span><a class="headerlink" href="#fedoo.mesh.import_msh" title="Link to this definition"></a></dt>
 <dd><p>Import a mesh from a msh file (gmsh format).</p>
-<p>Mesh.read should be prefered in most cases.</p>
+<p>Legacy ASCII Gmsh reader. Prefer <a class="reference internal" href="fedoo.Mesh.read.html#fedoo.Mesh.read" title="fedoo.Mesh.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Mesh.read()</span></code></a> or
+<a class="reference internal" href="fedoo.Mesh.from_meshio.html#fedoo.Mesh.from_meshio" title="fedoo.Mesh.from_meshio"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Mesh.from_meshio()</span></code></a> for new workflows.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<em>str</em>) – Name of file to import. Should be a “.msh” or a “.vtk” ascii files.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the ASCII Gmsh <code class="docutils literal notranslate"><span class="pre">.msh</span></code> file to import.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the imported Mesh. The default is “”.</p></li>
 <li><p><strong>mesh_type</strong> (<em>list</em><em> of </em><em>str in {'curve'</em><em>, </em><em>'surface'</em><em>, </em><em>'volume'}</em>) – Type of geometries to import. Default = [‘curve’, ‘surface’, ‘volume’],
 ie import all meshes.</p></li>

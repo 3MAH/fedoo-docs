@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geometry and Mesh (fedoo.mesh) &mdash; Fedoo 1.0.1 (dev)</title>
+  <title>Geometry and Mesh (fedoo.mesh) &mdash; Fedoo 1.1.0 (dev)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=292eb321"></script>
+      <script src="_static/documentation_options.js?v=fc837d61"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -78,7 +78,7 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.quad2tri.html">fedoo.mesh.quad2tri</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#import-export-fedoo-mesh-object">Import/Export Fedoo Mesh object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import-and-export-meshes">Import and export meshes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.import_file.html">fedoo.mesh.import_file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.import_msh.html">fedoo.mesh.import_msh</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.import_vtk.html">fedoo.mesh.import_vtk</a></li>
@@ -180,8 +180,44 @@
 </tbody>
 </table>
 </section>
-<section id="import-export-fedoo-mesh-object">
-<span id="importmesh"></span><h2>Import/Export Fedoo Mesh object<a class="headerlink" href="#import-export-fedoo-mesh-object" title="Link to this heading"></a></h2>
+<section id="import-and-export-meshes">
+<span id="importmesh"></span><h2>Import and export meshes<a class="headerlink" href="#import-and-export-meshes" title="Link to this heading"></a></h2>
+<p>Use <a class="reference internal" href="generated/fedoo.Mesh.read.html#fedoo.Mesh.read" title="fedoo.Mesh.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Mesh.read()</span></code></a> to import mesh geometry and connectivity:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"model.inp"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Domain"</span><span class="p">)</span>
+<span class="c1"># VTK meshes can be read in the same way:</span>
+<span class="c1"># mesh = fd.Mesh.read("model.vtu")</span>
+</pre></div>
+</div>
+<p>Abaqus <code class="docutils literal notranslate"><span class="pre">.inp</span></code> files use meshlane, with meshio as a fallback. Install the
+recommended reader with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;fedoo[io]&quot;</span></code>. Supported first- and
+second-order element types are converted to Fedoo elements. <code class="docutils literal notranslate"><span class="pre">*NSET</span></code> and
+<code class="docutils literal notranslate"><span class="pre">*ELSET</span></code> definitions become <code class="docutils literal notranslate"><span class="pre">mesh.node_sets</span></code> and <code class="docutils literal notranslate"><span class="pre">mesh.element_sets</span></code>.
+Several element types produce a <code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MultiMesh</span></code>, with element
+sets stored on the corresponding submeshes. Unsupported cell types are
+skipped with a warning; isolated vertex cells are ignored.</p>
+<p>Other formats use PyVista’s readers when available
+(<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;fedoo[plot]&quot;</span></code>), otherwise meshlane/meshio. To explicitly
+use meshlane for a supported format such as Gmsh, use its mesh object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">meshlane</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">from_meshio</span><span class="p">(</span><span class="n">meshlane</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"model.msh"</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Mesh.from_meshio</span></code> accepts both meshlane and meshio objects and preserves
+their point/cell sets. <a class="reference internal" href="generated/fedoo.Mesh.from_pyvista.html#fedoo.Mesh.from_pyvista" title="fedoo.Mesh.from_pyvista"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Mesh.from_pyvista()</span></code></a> accepts PyVista
+<code class="docutils literal notranslate"><span class="pre">UnstructuredGrid</span></code> and <code class="docutils literal notranslate"><span class="pre">PolyData</span></code> objects, including mixed cell types.
+It imports geometry and Fedoo’s <code class="docutils literal notranslate"><span class="pre">_nset_</span></code>/<code class="docutils literal notranslate"><span class="pre">_eset_</span></code> field-data conventions,
+but not ordinary point/cell result arrays. Element sets are not imported
+through the PyVista path for mixed meshes.</p>
+<p>Importing an Abaqus deck does not create its materials, loads or analysis
+steps; define those in Fedoo after importing the mesh. Export mesh geometry
+with <a class="reference internal" href="generated/fedoo.Mesh.save.html#fedoo.Mesh.save" title="fedoo.Mesh.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Mesh.save()</span></code></a>, for example <code class="docutils literal notranslate"><span class="pre">mesh.save(&quot;model.vtk&quot;)</span></code>.
+Use <a class="reference internal" href="generated/fedoo.read_data.html#fedoo.read_data" title="fedoo.read_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.read_data()</span></code></a> for saved simulation results, including FDH5,
+rather than <code class="docutils literal notranslate"><span class="pre">Mesh.read</span></code>.</p>
+<p>The following legacy readers handle specific ASCII VTK/Gmsh formats.
+Prefer <code class="docutils literal notranslate"><span class="pre">Mesh.read</span></code> or <code class="docutils literal notranslate"><span class="pre">Mesh.from_meshio</span></code> for new workflows.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.import_file.html#fedoo.mesh.import_file" title="fedoo.mesh.import_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_file</span></code></a>(filename[, name])</p></td>
@@ -191,7 +227,7 @@
 <td><p>Import a mesh from a msh file (gmsh format).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.import_vtk.html#fedoo.mesh.import_vtk" title="fedoo.mesh.import_vtk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">import_vtk</span></code></a>(filename[, name])</p></td>
-<td><p>Import a mesh from a vtk file (gmsh format).</p></td>
+<td><p>Import a mesh from a legacy ASCII VTK file.</p></td>
 </tr>
 </tbody>
 </table>

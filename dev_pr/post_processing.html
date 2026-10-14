@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Post-Processing &mdash; Fedoo 1.0.1 (dev)</title>
+  <title>Post-Processing &mdash; Fedoo 1.1.0 (dev)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=292eb321"></script>
+      <script src="_static/documentation_options.js?v=fc837d61"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -574,10 +574,8 @@ disk using for instance the <a class="reference internal" href="generated/fedoo.
 without an extension, the <code class="docutils literal notranslate"><span class="pre">.fdh5</span></code> extension is assumed.</p>
 <dl class="simple">
 <dt>The available file types are:</dt><dd><ul class="simple">
-<li><p>‘fdh5’: The native HDF5-based Fedoo format. It stores the mesh, node and
-element sets, node/element/Gauss-point fields, and multiple iterations
-in one file. It also preserves the complete MultiMesh structure and its
-per-submesh fields. This is the default format.</p></li>
+<li><p>‘fdh5’: Fedoo’s native HDF5 result format (default). See
+<a class="reference internal" href="#fdh5-format"><span class="std std-ref">FDH5 format</span></a> for its contents and write policies.</p></li>
 <li><p>‘fdz’: A legacy zipped archive containing the mesh using the ‘vtk’ format
 named ‘_mesh_.vtk’, and data from several iterations named ‘iter_x.npz’
 where x is the iteration number (x=0 for the 1st iteration).</p></li>
@@ -601,6 +599,43 @@ The mesh is not included and may be saved beside in a vtk file.</p></li>
 </ul>
 </dd>
 </dl>
+<section id="fdh5-format">
+<span id="id1"></span><h4>FDH5 format<a class="headerlink" href="#fdh5-format" title="Link to this heading"></a></h4>
+<p>FDH5 stores the mesh, node and element sets, node/element/Gauss-point fields,
+scalar outputs such as Time, and multiple saved frames in one file. It
+preserves the complete MultiMesh structure and its per-submesh fields.
+Beam/shell section descriptions and output-point coordinates are saved when
+available, and local frames can be saved for recovery in global coordinates.
+No conversion to nodal fields is required for storage.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Opening an FDH5 file in the viewer while its simulation is running is
+supported and should normally work: temporary read/write lock conflicts
+are retried. Persistent contention can still exceed the retry timeout and
+interrupt simulation output. Keep HDF5 file locking enabled; for critical
+runs, wait until the simulation finishes before opening the results.</p>
+</div>
+<p>The <span class="xref std std-doc">FDH5 file layout</span> describes the HDF5 groups and array
+conventions. That page is generated from the <code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.util.fdh5</span></code> module
+docstring, keeping the detailed format description alongside its implementation.</p>
+<p>FDH5 section tensors retain their point axis: stored Stress/Strain arrays
+have shape <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_section_points,</span> <span class="pre">n_locations)</span></code> when multiple section points
+are saved. Use <code class="docutils literal notranslate"><span class="pre">results.get_data</span></code> with <code class="docutils literal notranslate"><span class="pre">beam_options</span></code> or <code class="docutils literal notranslate"><span class="pre">shell_options</span></code>
+to select one point or reduce across points. Field descriptions are saved
+per frame and per submesh, so recovery can be performed after reopening the
+file without the original material object. Global recovery additionally
+requires the corresponding saved local-frame field.</p>
+<p>The file stores the requested outputs and recovery metadata, rather than a
+complete solver state for restarting an analysis. Dataset selection options
+and viewer settings are not saved; read-time defaults apply after reopening.
+Older files without section descriptions remain readable, but may only
+provide their original fields.</p>
+<p>For automatic simulation output, <code class="docutils literal notranslate"><span class="pre">Problem.add_output</span></code> accepts
+<code class="docutils literal notranslate"><span class="pre">write_mode=&quot;overwrite&quot;</span></code> (default), <code class="docutils literal notranslate"><span class="pre">&quot;append&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code> for FDH5.
+Appending adds saved frames to an existing compatible mesh file; it does not
+resume the solver. In contrast, <code class="docutils literal notranslate"><span class="pre">DataSet.to_fdh5(...,</span> <span class="pre">overwrite=True)</span></code>
+replaces the whole file, not only an existing iteration.</p>
+</section>
 </section>
 <section id="read-data-from-disk">
 <h3>Read data from disk<a class="headerlink" href="#read-data-from-disk" title="Link to this heading"></a></h3>
@@ -608,6 +643,25 @@ The mesh is not included and may be saved beside in a vtk file.</p></li>
 The data are imported as <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSet</span></code></a> or
 <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> objects depending on the imported file(s).
 FDH5 is used by default when the filename has no extension.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s2">"simulation.fdh5"</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">MultiFrameDataSet</span><span class="p">):</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># load the last saved frame</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>One saved frame returns a DataSet; several frames return a MultiFrameDataSet
+whose frame fields are loaded on demand. <code class="docutils literal notranslate"><span class="pre">load(i)</span></code> selects the zero-based
+index in the list of saved frames, not a Newton iteration number.
+The viewer discovers new FDH5 frames during navigation; Reload also rereads
+the current frame. Existing all-frame color limits and history plots are not
+automatically recomputed. Reapply the limits or recreate the plot to include
+new frames. If the simulation temporarily locks the file, retry after it
+finishes writing the frame.
+FDH5 writes retry temporary reader lock conflicts for up to 10 seconds, so a
+brief viewer read does not abort output. Eager frame reads release their handle
+before plotting. Keep HDF5 file locking enabled; read-only access still needs
+protection against a writer changing the file. Explicit lazy-reader contexts
+must be closed promptly to let the simulation write.</p>
 <p class="rubric" id="very-simple-problem">Example</p>
 <p>For example, defining and solving a very simple problem :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
@@ -658,9 +712,8 @@ time interval (here the results are saved on a file).</p>
 </section>
 <section id="fedoo-interactive-viewer">
 <h2>Fedoo interactive viewer<a class="headerlink" href="#fedoo-interactive-viewer" title="Link to this heading"></a></h2>
-<p>Fedoo includes a graphical application to visulize a result file or
-a DataSet like object. To be able to launch the viewer, the
-package pyvistaqt has to be installed.</p>
+<p>Fedoo includes a graphical viewer for result files and DataSet objects.
+Install the plotting and GUI dependencies with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;fedoo[plot,gui]&quot;</span></code>.</p>
 <p>Then the viewer can either be launched as a standalone application from
 command line:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python -m fedoo.viewer
@@ -680,7 +733,19 @@ inside a python code:</p>
 <ul class="simple">
 <li><p>Management of multiple independent windows, which can be linked together.</p></li>
 <li><p>Field and iteration selectors for data exploration.</p></li>
+<li><p>Automatic discovery of new FDH5 frames when navigating an ongoing simulation.
+The Reload button also rereads the current frame. A file temporarily locked
+by the writer can be retried on the next navigation or Reload.
+Existing all-frame color limits and history plots are kept: reapply
+All frames Min/Max or recreate the history plot to include new frames.</p></li>
 <li><p>A wide range of plotting options.</p></li>
+<li><p>Show saved shell thickness in Shell options (disabled by default).
+Each <code class="docutils literal notranslate"><span class="pre">tri3</span></code>/<code class="docutils literal notranslate"><span class="pre">quad4</span></code> shell submesh uses its saved section thickness,
+including varying thickness, along normals of the deformed midsurface.
+Beams and solids retain their own geometry. The selected field is repeated
+through the display thickness; this does not recover distinct face stresses
+or change the simulation mesh. Save shell stress/strain or generalized
+shell fields to include the section metadata needed for this display.</p></li>
 <li><p>Show or hide elements from predefined sets, rectangular selections,
 or arbitrary expressions.</p></li>
 <li><p>Plot results along an interactively defined line.</p></li>
@@ -854,6 +919,8 @@ we can plot the stress results after the example
 </section>
 </section>
 </section>
+<div class="toctree-wrapper compound">
+</div>
 
 
            </div>
