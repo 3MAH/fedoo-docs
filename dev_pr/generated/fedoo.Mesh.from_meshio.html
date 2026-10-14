@@ -64,8 +64,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#class-mesh">Class Mesh</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#mesh-classes">Mesh classes</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="fedoo.Mesh.html">fedoo.Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MultiMesh.html">fedoo.MultiMesh</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-manipulation-functions">Mesh manipulation functions</a></li>
@@ -121,7 +122,7 @@
 <p>Node coordinates, element connectivity, node sets (<code class="docutils literal notranslate"><span class="pre">point_sets</span></code>,
 e.g. Abaqus <code class="docutils literal notranslate"><span class="pre">*NSET</span></code>) and element sets (<code class="docutils literal notranslate"><span class="pre">cell_sets</span></code>, e.g. Abaqus
 <code class="docutils literal notranslate"><span class="pre">*ELSET</span></code>) are imported. Meshes holding several element types are
-returned as a <code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code>; element sets are then split per
+returned as a <a class="reference internal" href="fedoo.MultiMesh.html#fedoo.MultiMesh" title="fedoo.MultiMesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code></a>; element sets are then split per
 element type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

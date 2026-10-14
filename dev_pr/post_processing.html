@@ -134,7 +134,7 @@
 <p>The get_results method returns a <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.DataSet</span></code></a> object which comes
 with several methods for plotting, saving and loading mesh-dependent results.
 A dataset can be associated with either a <a class="reference internal" href="generated/fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.Mesh</span></code></a> or a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MultiMesh</span></code>.</p>
+<a class="reference internal" href="generated/fedoo.MultiMesh.html#fedoo.MultiMesh" title="fedoo.MultiMesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MultiMesh</span></code></a>.</p>
 <p>To avoid a redundent call of the get_results function, especially for time
 dependent problems, one can simply add some required output with the
 <a class="reference internal" href="generated/fedoo.Problem.add_output.html#fedoo.Problem.add_output" title="fedoo.Problem.add_output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Problem.add_output()</span></code></a> method. This create a
@@ -172,7 +172,7 @@ of a given iteration.</p>
 <section id="multimesh-results">
 <h3>MultiMesh results<a class="headerlink" href="#multimesh-results" title="Link to this heading"></a></h3>
 <p>A <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSet</span></code></a> or <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> associated with a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code> can contain submeshes with different element types.
+<a class="reference internal" href="generated/fedoo.MultiMesh.html#fedoo.MultiMesh" title="fedoo.MultiMesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code></a> can contain submeshes with different element types.
 Node fields use the common global node numbering. Element and Gauss-point
 fields returned by <a class="reference internal" href="generated/fedoo.DataSet.get_data.html#fedoo.DataSet.get_data" title="fedoo.DataSet.get_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataSet.get_data()</span></code></a> are stored in a
 <a class="reference internal" href="generated/fedoo.MultiMeshData.html#fedoo.MultiMeshData" title="fedoo.MultiMeshData"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMeshData</span></code></a> object, with one data block per submesh.</p>
@@ -618,6 +618,53 @@ runs, wait until the simulation finishes before opening the results.</p>
 <p>The <span class="xref std std-doc">FDH5 file layout</span> describes the HDF5 groups and array
 conventions. That page is generated from the <code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.util.fdh5</span></code> module
 docstring, keeping the detailed format description alongside its implementation.</p>
+<p>The file structure below is illustrative: optional field and metadata groups
+are present only when the corresponding outputs have been saved.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mesh/
+├── nodes
+├── node_sets/
+├── submesh_0/
+│     ├── elements
+│     ├── element_sets/
+│     └── metadata/
+│           └── element_type = "tri3"
+├── submesh_1/
+│     ├── elements
+│     ├── element_sets/
+│     └── metadata/
+│           └── element_type = "tri3"
+├── submesh_2/
+│     ├── elements
+│     ├── element_sets/
+│     └── metadata/
+│           └── element_type = "quad4"
+└── ...
+
+results/
+├── iter_0/
+│   ├── node_data/
+│   ├── element_data/
+│   │     ├── submesh_0/
+│   │     │    ├── stress
+│   │     │    ├── plasticity
+│   │     │    └── ...
+│   │     ├── submesh_1/
+│   │     └── ...
+│   ├── gausspoint_data/
+│   │     ├── submesh_0/
+│   │     ├── submesh_1/
+│   │     └── ...
+│   ├── scalars/
+│   ├── section_metadata/
+│   │     ├── submesh_0/       (shared beam section description)
+│   │     │    └── properties/
+│   │     └── ...
+│   ├── field_metadata/       (shell/field descriptions and output points)
+│   └── metadata/
+├── iter_1/
+└── ...
+</pre></div>
+</div>
 <p>FDH5 section tensors retain their point axis: stored Stress/Strain arrays
 have shape <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_section_points,</span> <span class="pre">n_locations)</span></code> when multiple section points
 are saved. Use <code class="docutils literal notranslate"><span class="pre">results.get_data</span></code> with <code class="docutils literal notranslate"><span class="pre">beam_options</span></code> or <code class="docutils literal notranslate"><span class="pre">shell_options</span></code>
@@ -745,7 +792,11 @@ including varying thickness, along normals of the deformed midsurface.
 Beams and solids retain their own geometry. The selected field is repeated
 through the display thickness; this does not recover distinct face stresses
 or change the simulation mesh. Save shell stress/strain or generalized
-shell fields to include the section metadata needed for this display.</p></li>
+shell fields to include the section metadata needed for this display.
+Clicking a top/bottom display node reports its original node ID and the
+displayed field under the current section selection. Gauss-point displays
+retain element discontinuities; Element displays report adjacent element
+values at a shared node.</p></li>
 <li><p>Show or hide elements from predefined sets, rectangular selections,
 or arbitrary expressions.</p></li>
 <li><p>Plot results along an interactively defined line.</p></li>

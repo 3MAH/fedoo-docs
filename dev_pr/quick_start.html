@@ -234,19 +234,29 @@ or ‘Neumann’ (nodal force for mechanical problems).</p>
 </section>
 <section id="analyse-and-export-results">
 <h2>Analyse and export results<a class="headerlink" href="#analyse-and-export-results" title="Link to this heading"></a></h2>
-<p>Retrieve the fields from the solved problem and open them in the Fedoo viewer:</p>
+<p>Install the viewer dependencies once with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;fedoo[plot,gui]&quot;</span></code>.
+After solving, retrieve the fields, save them if needed, and launch the viewer
+directly from Python:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">my_assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">])</span>
+<span class="n">results</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"cantilever.fdh5"</span><span class="p">)</span>  <span class="c1"># optional: save before launching the GUI</span>
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Install the viewer dependencies with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;fedoo[plot,gui]&quot;</span></code>.
-The viewer provides field/component selection, deformation scaling and
-image export. It can also open saved results:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"cantilever.fdh5"</span><span class="p">)</span>
-<span class="c1"># In a later session:</span>
+<p>The viewer provides field/component selection, deformation scaling and
+image export. In a later Python session, open the saved file directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="s2">"cantilever.fdh5"</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>To launch the viewer independently from a terminal, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python -m fedoo.viewer</span>
+</pre></div>
+</div>
+<p>Then use <strong>File &gt; Open</strong> to select <code class="docutils literal notranslate"><span class="pre">cantilever.fdh5</span></code>. Calling <code class="docutils literal notranslate"><span class="pre">fd.viewer()</span></code>
+from Python also opens an empty viewer. In a standalone script, the viewer
+runs until its window is closed; perform saving or other computations before
+launching it.</p>
 <p>For external tools such as ParaView, export a VTK file with
 <code class="docutils literal notranslate"><span class="pre">results.save(&quot;cantilever.vtk&quot;)</span></code>. See
 <a class="reference internal" href="post_processing.html"><span class="doc">Post-Processing</span></a> for nonlinear time histories,

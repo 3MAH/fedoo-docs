@@ -64,8 +64,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#class-mesh">Class Mesh</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#mesh-classes">Mesh classes</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="fedoo.Mesh.html">fedoo.Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MultiMesh.html">fedoo.MultiMesh</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-manipulation-functions">Mesh manipulation functions</a></li>
@@ -122,7 +123,7 @@
 are read with the meshlane library (or meshio if meshlane is not
 installed); this supports second-order
 (quadratic) elements, multiple element types (returned as a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code>) and node/element sets (<code class="docutils literal notranslate"><span class="pre">*NSET</span></code>/<code class="docutils literal notranslate"><span class="pre">*ELSET</span></code>).
+<a class="reference internal" href="fedoo.MultiMesh.html#fedoo.MultiMesh" title="fedoo.MultiMesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code></a>) and node/element sets (<code class="docutils literal notranslate"><span class="pre">*NSET</span></code>/<code class="docutils literal notranslate"><span class="pre">*ELSET</span></code>).
 Other formats are read with pyvista, which relies on the native VTK
 readers, or with meshlane/meshio when pyvista is unavailable. Use
 <a class="reference internal" href="fedoo.Mesh.from_meshio.html#fedoo.Mesh.from_meshio" title="fedoo.Mesh.from_meshio"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_meshio()</span></code></a> to choose meshlane/meshio explicitly for other
