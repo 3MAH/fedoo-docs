@@ -21,6 +21,8 @@
       
          DataSet.__getitem__
          DataSet.add_data
+         DataSet.beam_derived_fields
+         DataSet.beam_section_description
          DataSet.copy
          DataSet.deepcopy
          DataSet.field_names
@@ -35,6 +37,11 @@
          DataSet.save_mesh
          DataSet.savez
          DataSet.savez_compressed
+         DataSet.section_derived_fields
+         DataSet.set_beam_section
+         DataSet.shell_derived_fields
+         DataSet.shell_section_description
+         DataSet.shell_sources
          DataSet.split_global_element_indices
          DataSet.to_csv
          DataSet.to_dict
@@ -57,7 +64,9 @@
          :toctree:
          
       
+         DataSet.beam_options
          DataSet.dict_data
+         DataSet.shell_options
          DataSet.active_submesh
   
   
