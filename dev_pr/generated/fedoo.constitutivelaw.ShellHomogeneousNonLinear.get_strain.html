@@ -135,8 +135,13 @@ position = -1 for the bottom face
 position = 0 for the mid-plane</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>StrainTensorList object containing the strain at integration point</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>StrainTensorList object containing the strain at integration point</em></p></li>
+<li><p><em>The in-plane strain is epsilon0 - z*kappa, with z positive along</em></p></li>
+<li><p><em>the local shell normal and kappa_xx = -d(RotY)/dx.</em></p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>

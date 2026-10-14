@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**06:32.206** total execution time for 9 files **from examples/03-advanced**:
+**04:30.189** total execution time for 9 files **from examples/03-advanced**:
 
 .. container::
 
@@ -32,30 +32,30 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_examples_03-advanced_tube_compression.py` (``tube_compression.py``)
-     - 03:09.180
-     - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_neohookean_cantilever_force.py` (``neohookean_cantilever_force.py``)
-     - 02:36.036
+     - 02:13.590
+     - 0.0
+   * - :ref:`sphx_glr_examples_03-advanced_tube_compression.py` (``tube_compression.py``)
+     - 01:38.343
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_neohookean_cantilever.py` (``neohookean_cantilever.py``)
-     - 00:19.723
+     - 00:16.501
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_rigid_body_bounce.py` (``rigid_body_bounce.py``)
-     - 00:11.311
-     - 0.0
-   * - :ref:`sphx_glr_examples_03-advanced_incompressibility_comparison.py` (``incompressibility_comparison.py``)
-     - 00:04.884
-     - 0.0
-   * - :ref:`sphx_glr_examples_03-advanced_thermal_loading.py` (``thermal_loading.py``)
-     - 00:04.393
+     - 00:08.714
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_3D_periodic_BC_off_axis.py` (``3D_periodic_BC_off_axis.py``)
-     - 00:04.222
+     - 00:03.864
+     - 0.0
+   * - :ref:`sphx_glr_examples_03-advanced_incompressibility_comparison.py` (``incompressibility_comparison.py``)
+     - 00:03.725
+     - 0.0
+   * - :ref:`sphx_glr_examples_03-advanced_thermal_loading.py` (``thermal_loading.py``)
+     - 00:03.508
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_composite_DCB_test_3D.py` (``composite_DCB_test_3D.py``)
-     - 00:02.257
+     - 00:01.766
      - 0.0
    * - :ref:`sphx_glr_examples_03-advanced_multi_mesh_example.py` (``multi_mesh_example.py``)
-     - 00:00.200
+     - 00:00.178
      - 0.0
