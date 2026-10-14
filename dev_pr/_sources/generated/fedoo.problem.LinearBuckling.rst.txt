@@ -22,7 +22,6 @@
          LinearBuckling.add_global_dof
          LinearBuckling.add_output
          LinearBuckling.apply_boundary_conditions
-         LinearBuckling.check_boundary_conditions
          LinearBuckling.clear_outputs
          LinearBuckling.get_A
          LinearBuckling.get_B

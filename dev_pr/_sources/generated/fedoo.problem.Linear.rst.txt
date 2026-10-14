@@ -25,7 +25,6 @@
          Linear.add_output
          Linear.apply_boundary_conditions
          Linear.change_assembly
-         Linear.check_boundary_conditions
          Linear.clear_outputs
          Linear.get_A
          Linear.get_B

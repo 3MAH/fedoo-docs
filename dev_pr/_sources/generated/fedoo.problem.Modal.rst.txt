@@ -22,7 +22,6 @@
          Modal.add_global_dof
          Modal.add_output
          Modal.apply_boundary_conditions
-         Modal.check_boundary_conditions
          Modal.clear_outputs
          Modal.get_A
          Modal.get_B
