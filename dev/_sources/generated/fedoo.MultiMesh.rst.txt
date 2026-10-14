@@ -1,0 +1,93 @@
+﻿fedoo.MultiMesh
+===============
+
+.. currentmodule:: fedoo
+
+.. autoclass:: MultiMesh
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         MultiMesh.__getitem__
+         MultiMesh.add_element_set
+         MultiMesh.add_internal_nodes
+         MultiMesh.add_node_set
+         MultiMesh.add_nodes
+         MultiMesh.as_2d
+         MultiMesh.as_3d
+         MultiMesh.as_ndim
+         MultiMesh.convert_data
+         MultiMesh.copy
+         MultiMesh.data_to_gausspoint
+         MultiMesh.deepcopy
+         MultiMesh.determine_data_type
+         MultiMesh.extract_elements
+         MultiMesh.find_coincident_nodes
+         MultiMesh.find_elements
+         MultiMesh.find_isolated_nodes
+         MultiMesh.find_nodes
+         MultiMesh.from_mesh_list
+         MultiMesh.from_meshio
+         MultiMesh.from_pyvista
+         MultiMesh.gausspoint_coordinates
+         MultiMesh.get_all
+         MultiMesh.get_element_local_frame
+         MultiMesh.get_element_volumes
+         MultiMesh.get_elements_from_nodes
+         MultiMesh.get_volume
+         MultiMesh.init_interpolation
+         MultiMesh.integrate_field
+         MultiMesh.is_periodic
+         MultiMesh.merge_coincident_nodes
+         MultiMesh.merge_nodes
+         MultiMesh.nearest_node
+         MultiMesh.plot
+         MultiMesh.plot_normals
+         MultiMesh.read
+         MultiMesh.remove_isolated_nodes
+         MultiMesh.remove_nodes
+         MultiMesh.reset_interpolation
+         MultiMesh.save
+         MultiMesh.stack
+         MultiMesh.to_pyvista
+         MultiMesh.translate
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         MultiMesh.bounding_box
+         MultiMesh.element_centers
+         MultiMesh.element_sets
+         MultiMesh.elm_types
+         MultiMesh.mesh_dict
+         MultiMesh.n_elements
+         MultiMesh.n_elm_nodes
+         MultiMesh.n_nodes
+         MultiMesh.name
+         MultiMesh.ndim
+         MultiMesh.submeshes
+         MultiMesh.nodes
+         MultiMesh.node_sets
+         MultiMesh.elements
+         MultiMesh.elm_type
+  
+  
