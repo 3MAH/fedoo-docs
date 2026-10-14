@@ -70,7 +70,7 @@ Beam Lattice Structure using beam model with geometric nonlinearities
     nodes_left = mesh.find_nodes("X", mesh.bounding_box.xmin)
     nodes_right = mesh.find_nodes("X", mesh.bounding_box.xmax)
 
-    wf = fd.weakform.BeamEquilibrium(beam_props, consistent_tangent=True)
+    wf = fd.weakform.BeamEquilibrium(beam_props)
 
     assembly = fd.Assembly.create(wf, mesh)
 
@@ -90,7 +90,7 @@ Beam Lattice Structure using beam model with geometric nonlinearities
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.908 seconds)
+   **Total running time of the script:** (0 minutes 3.420 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_lattice_beam.py:
