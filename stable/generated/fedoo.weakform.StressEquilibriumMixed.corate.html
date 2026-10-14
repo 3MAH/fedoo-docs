@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.weakform.StressEquilibriumMixed.corate &mdash; Fedoo 1.0.1 (stable)</title>
+  <title>fedoo.weakform.StressEquilibriumMixed.corate &mdash; Fedoo 1.1.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=292eb321"></script>
+      <script src="../_static/documentation_options.js?v=fc837d61"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -91,6 +91,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.weakform.StressEquilibriumMixed.corate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.geometric_stiffness.html">fedoo.weakform.StressEquilibriumMixed.geometric_stiffness</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.incompressibility.html">fedoo.weakform.StressEquilibriumMixed.incompressibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.kinematic_form.html">fedoo.weakform.StressEquilibriumMixed.kinematic_form</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.name.html">fedoo.weakform.StressEquilibriumMixed.name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.nvar.html">fedoo.weakform.StressEquilibriumMixed.nvar</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.space.html">fedoo.weakform.StressEquilibriumMixed.space</a></li>
@@ -156,12 +157,9 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="fedoo.weakform.StressEquilibriumMixed.corate">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">StressEquilibriumMixed.</span></span><span class="sig-name descname"><span class="pre">corate</span></span><a class="headerlink" href="#fedoo.weakform.StressEquilibriumMixed.corate" title="Link to this definition"></a></dt>
-<dd><p>Corotational strain mesure for strain.</p>
-<p>Properties defining the way strain is treated in finite strain problem
-(using a weakform with nlgeom = True)
-corate can take the following str values:</p>
-<blockquote>
-<div><ul class="simple">
+<dd><p>Objective rate of the updated-Lagrangian method (<code class="docutils literal notranslate"><span class="pre">nlgeom=&quot;UL&quot;</span></code>).</p>
+<dl class="simple">
+<dt>corate can take the following str values:</dt><dd><ul class="simple">
 <li><p>“log_r” (default): exact logarithmic strain transported by the
 exact polar rotation increment (strain is recomputed at each
 iteration). This is the corate with an EXACT simcoon tangent
@@ -174,8 +172,12 @@ incremented)</p></li>
 <li><p>“green_nagdhi” or “gn”: Strain using the Green_Nagdhi derivative
 (strain is incremented)</p></li>
 </ul>
-</div></blockquote>
-<p>if nlgeom is False, this property has no effect.</p>
+</dd>
+</dl>
+<p>The total formulation (<code class="docutils literal notranslate"><span class="pre">nlgeom=&quot;TL&quot;</span></code> with a law that supports it,
+see <code class="docutils literal notranslate"><span class="pre">kinematic_form</span></code>) is not a rate formulation: it takes no corate
+(setting one raises at initialization) and this property is then None.
+if nlgeom is False, this property has no effect.</p>
 </dd></dl>
 
 </section>

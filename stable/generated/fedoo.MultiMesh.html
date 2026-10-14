@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fedoo.MultiMesh &mdash; Fedoo 1.1.0 (stable)</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fedoo.MultiMesh.__getitem__" href="fedoo.MultiMesh.__getitem__.html" />
+    <link rel="prev" title="fedoo.Mesh.element_sets" href="fedoo.Mesh.element_sets.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#mesh-classes">Mesh classes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.html">fedoo.Mesh</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.MultiMesh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-manipulation-functions">Mesh manipulation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mesh.html#import-and-export-meshes">Import and export meshes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-creation-functions">Mesh Creation Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+      <li class="breadcrumb-item active">fedoo.MultiMesh</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/fedoo.MultiMesh.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fedoo-multimesh">
+<h1>fedoo.MultiMesh<a class="headerlink" href="#fedoo-multimesh" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fedoo.MultiMesh">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultiMesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elements_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_sets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.MultiMesh" title="Link to this definition"></a></dt>
+<dd><p>Fedoo mesh made of several ordered submeshes sharing one node table.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code> is useful when a mesh contains several element blocks,
+possibly with different element types or with several blocks using the
+same element type. All submeshes share <code class="docutils literal notranslate"><span class="pre">nodes</span></code>. Internally, submeshes
+are stored in order; this order defines integer indexing and FDH5
+<code class="docutils literal notranslate"><span class="pre">submesh_X</span></code> ids.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code> can be created in three ways:</p>
+<blockquote>
+<div><ul>
+<li><p>With a simple element-type dictionary, when each element type appears
+once:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">MultiMesh</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="p">{</span><span class="s2">"tri3"</span><span class="p">:</span> <span class="n">tri_elements</span><span class="p">,</span> <span class="s2">"quad4"</span><span class="p">:</span> <span class="n">quad_elements</span><span class="p">})</span>
+</pre></div>
+</div>
+</li>
+<li><p>With an explicit submesh-name dictionary, when several submeshes may
+share the same element type:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">MultiMesh</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">nodes</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">"part_a"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"tri3"</span><span class="p">,</span> <span class="n">tri_elements_a</span><span class="p">),</span>
+<span class="gp">... </span>        <span class="s2">"part_b"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"tri3"</span><span class="p">,</span> <span class="n">tri_elements_b</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The dictionary key is stored as the submesh name, but internal
+submeshes are not registered in <code class="docutils literal notranslate"><span class="pre">MeshBase.get_all()</span></code>.</p>
+</li>
+<li><p>From an existing list of <code class="docutils literal notranslate"><span class="pre">Mesh</span></code> objects:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">MultiMesh</span><span class="o">.</span><span class="n">from_mesh_list</span><span class="p">([</span><span class="n">tri_mesh</span><span class="p">,</span> <span class="n">quad_mesh</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<p>Submeshes can be retrieved by integer id, submesh name, or element type.
+Integer indexing always returns a concrete <code class="docutils literal notranslate"><span class="pre">Mesh</span></code>. String indexing first
+tries exact submesh names, then element types. Element-type indexing
+returns a <code class="docutils literal notranslate"><span class="pre">Mesh</span></code> if only one submesh matches, or a view-like
+<code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code> if several submeshes share that element type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nodes</strong> (<em>numpy.ndarray</em>) – Shared node coordinates.</p></li>
+<li><p><strong>elements_dict</strong> (<em>dict</em><em>, </em><em>optional</em>) – Submesh definitions. Values may be connectivity arrays, <code class="docutils literal notranslate"><span class="pre">Mesh</span></code>
+objects, <code class="docutils literal notranslate"><span class="pre">(elm_type,</span> <span class="pre">elements)</span></code> tuples, or
+<code class="docutils literal notranslate"><span class="pre">(elm_type,</span> <span class="pre">elements,</span> <span class="pre">element_sets)</span></code> tuples.</p></li>
+<li><p><strong>node_sets</strong> (<em>dict</em><em>, </em><em>optional</em>) – Node sets associated with the shared node table.</p></li>
+<li><p><strong>ndim</strong> (<em>int</em><em>, </em><em>optional</em>) – Dimension of the mesh. By default, deduced from <code class="docutils literal notranslate"><span class="pre">nodes.shape[1]</span></code>.</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code>. If non-empty and <code class="docutils literal notranslate"><span class="pre">register_name</span></code> is True,
+the <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code> is registered in <code class="docutils literal notranslate"><span class="pre">MeshBase.get_all()</span></code>.</p></li>
+<li><p><strong>register_name</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If False, the <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code> name is kept locally but not registered in
+<code class="docutils literal notranslate"><span class="pre">MeshBase.get_all()</span></code>. This is used for internal filtered views.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fedoo.MultiMesh.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elements_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_sets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">register_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#fedoo.MultiMesh.__init__" title="Link to this definition"></a></dt>
+<dd><p><strong>Methods</strong></p>
+<blockquote>
+<div><table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.__getitem__.html#fedoo.MultiMesh.__getitem__" title="fedoo.MultiMesh.__getitem__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.__getitem__</span></code></a>(item)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.add_element_set.html#fedoo.MultiMesh.add_element_set" title="fedoo.MultiMesh.add_element_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.add_element_set</span></code></a>(element_indices, name)</p></td>
+<td><p>Add a set of elements to the Mesh</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.add_internal_nodes.html#fedoo.MultiMesh.add_internal_nodes" title="fedoo.MultiMesh.add_internal_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.add_internal_nodes</span></code></a>(nb_added)</p></td>
+<td><p>Add some nodes to the node list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.add_node_set.html#fedoo.MultiMesh.add_node_set" title="fedoo.MultiMesh.add_node_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.add_node_set</span></code></a>(node_indices, name)</p></td>
+<td><p>Add a set of nodes to the Mesh</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.add_nodes.html#fedoo.MultiMesh.add_nodes" title="fedoo.MultiMesh.add_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.add_nodes</span></code></a>(*args)</p></td>
+<td><p>Add some nodes to the node list.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.as_2d.html#fedoo.MultiMesh.as_2d" title="fedoo.MultiMesh.as_2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.as_2d</span></code></a>([inplace])</p></td>
+<td><p>Return a view of the current MultiMesh in 2D.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.as_3d.html#fedoo.MultiMesh.as_3d" title="fedoo.MultiMesh.as_3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.as_3d</span></code></a>([inplace])</p></td>
+<td><p>Return a view of the current MultiMesh in 3D.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.as_ndim.html#fedoo.MultiMesh.as_ndim" title="fedoo.MultiMesh.as_ndim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.as_ndim</span></code></a>(ndim[, inplace])</p></td>
+<td><p>Return a MultiMesh view with node coordinates in <code class="docutils literal notranslate"><span class="pre">ndim</span></code> dimensions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.convert_data.html#fedoo.MultiMesh.convert_data" title="fedoo.MultiMesh.convert_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.convert_data</span></code></a>(data[, convert_from, ...])</p></td>
+<td><p>Convert a field between node, element and Gauss-point storage.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.copy.html#fedoo.MultiMesh.copy" title="fedoo.MultiMesh.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.copy</span></code></a>([name])</p></td>
+<td><p>Make a shallow copy of the MultiMesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.data_to_gausspoint.html#fedoo.MultiMesh.data_to_gausspoint" title="fedoo.MultiMesh.data_to_gausspoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.data_to_gausspoint</span></code></a>(data[, n_elm_gp])</p></td>
+<td><p>Convert a field array (node values or element values) to gauss points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.deepcopy.html#fedoo.MultiMesh.deepcopy" title="fedoo.MultiMesh.deepcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.deepcopy</span></code></a>([name])</p></td>
+<td><p>Make a deep copy of the node and element arrays.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.determine_data_type.html#fedoo.MultiMesh.determine_data_type" title="fedoo.MultiMesh.determine_data_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.determine_data_type</span></code></a>(data[, n_elm_gp])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.extract_elements.html#fedoo.MultiMesh.extract_elements" title="fedoo.MultiMesh.extract_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.extract_elements</span></code></a>(element_set[, name])</p></td>
+<td><p>Return a new mesh from the set of elements defined by element_set</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.find_coincident_nodes.html#fedoo.MultiMesh.find_coincident_nodes" title="fedoo.MultiMesh.find_coincident_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.find_coincident_nodes</span></code></a>([tol])</p></td>
+<td><p>Find some nodes with the same position considering a tolerance given by the argument tol.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.find_elements.html#fedoo.MultiMesh.find_elements" title="fedoo.MultiMesh.find_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.find_elements</span></code></a>(selection_criterion)</p></td>
+<td><p>Return global element ids matching a selection criterion.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.find_isolated_nodes.html#fedoo.MultiMesh.find_isolated_nodes" title="fedoo.MultiMesh.find_isolated_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.find_isolated_nodes</span></code></a>()</p></td>
+<td><p>Return the nodes that are not associated with any element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.find_nodes.html#fedoo.MultiMesh.find_nodes" title="fedoo.MultiMesh.find_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.find_nodes</span></code></a>(selection_criterion[, ...])</p></td>
+<td><p>Return a list of nodes from a given selection criterion</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.from_mesh_list.html#fedoo.MultiMesh.from_mesh_list" title="fedoo.MultiMesh.from_mesh_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.from_mesh_list</span></code></a>(mesh_list[, name, ...])</p></td>
+<td><p>Build a MultiMesh from an ordered list of Mesh objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.from_meshio.html#fedoo.MultiMesh.from_meshio" title="fedoo.MultiMesh.from_meshio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.from_meshio</span></code></a>(io_mesh[, name])</p></td>
+<td><p>Build a Mesh from a meshlane or meshio mesh object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.from_pyvista.html#fedoo.MultiMesh.from_pyvista" title="fedoo.MultiMesh.from_pyvista"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.from_pyvista</span></code></a>(pvmesh[, name])</p></td>
+<td><p>Build a Mesh from a pyvista UnstructuredGrid or PolyData mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.gausspoint_coordinates.html#fedoo.MultiMesh.gausspoint_coordinates" title="fedoo.MultiMesh.gausspoint_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.gausspoint_coordinates</span></code></a>([n_elm_gp])</p></td>
+<td><p>Return the coordinates of the integration points</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.get_all.html#fedoo.MultiMesh.get_all" title="fedoo.MultiMesh.get_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.get_all</span></code></a>()</p></td>
+<td><p>Return a dict with all the known Mesh (with a name).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.get_element_local_frame.html#fedoo.MultiMesh.get_element_local_frame" title="fedoo.MultiMesh.get_element_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.get_element_local_frame</span></code></a>([...])</p></td>
+<td><p>Return geometrical local frames at element evaluation points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.get_element_volumes.html#fedoo.MultiMesh.get_element_volumes" title="fedoo.MultiMesh.get_element_volumes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.get_element_volumes</span></code></a>([n_elm_gp])</p></td>
+<td><p>Compute the volume of each element (or surface for 2D meshes).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.get_elements_from_nodes.html#fedoo.MultiMesh.get_elements_from_nodes" title="fedoo.MultiMesh.get_elements_from_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.get_elements_from_nodes</span></code></a>(node_set)</p></td>
+<td><p>Return a list of elements that are build with the nodes given in node_set</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.get_volume.html#fedoo.MultiMesh.get_volume" title="fedoo.MultiMesh.get_volume"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.get_volume</span></code></a>([n_elm_gp])</p></td>
+<td><p>Compute the total volume of the mesh (or surface for 2D meshes).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.init_interpolation.html#fedoo.MultiMesh.init_interpolation" title="fedoo.MultiMesh.init_interpolation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.init_interpolation</span></code></a>([n_elm_gp])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.integrate_field.html#fedoo.MultiMesh.integrate_field" title="fedoo.MultiMesh.integrate_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.integrate_field</span></code></a>(field[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.is_periodic.html#fedoo.MultiMesh.is_periodic" title="fedoo.MultiMesh.is_periodic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.is_periodic</span></code></a>([tol, dim])</p></td>
+<td><p>Test if the mesh is periodic (have nodes at the same positions on adjacent faces)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.merge_coincident_nodes.html#fedoo.MultiMesh.merge_coincident_nodes" title="fedoo.MultiMesh.merge_coincident_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.merge_coincident_nodes</span></code></a>(tol)</p></td>
+<td><p>Find and merge node pairs whose Euclidean distance is below <code class="docutils literal notranslate"><span class="pre">tol</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.merge_nodes.html#fedoo.MultiMesh.merge_nodes" title="fedoo.MultiMesh.merge_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.merge_nodes</span></code></a>(node_couples)</p></td>
+<td><p>Merge some nodes The total number and the id of nodes are modified</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.nearest_node.html#fedoo.MultiMesh.nearest_node" title="fedoo.MultiMesh.nearest_node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.nearest_node</span></code></a>(X)</p></td>
+<td><p>Return the index of the nearst node from the given position X</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.plot.html#fedoo.MultiMesh.plot" title="fedoo.MultiMesh.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.plot</span></code></a>([show_edges])</p></td>
+<td><p>Simple plot function using pyvista.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.plot_normals.html#fedoo.MultiMesh.plot_normals" title="fedoo.MultiMesh.plot_normals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.plot_normals</span></code></a>([mag, show_mesh])</p></td>
+<td><p>Simple functions to plot the normals of a surface Mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.read.html#fedoo.MultiMesh.read" title="fedoo.MultiMesh.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.read</span></code></a>(filename[, name])</p></td>
+<td><p>Build a Mesh from a file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.remove_isolated_nodes.html#fedoo.MultiMesh.remove_isolated_nodes" title="fedoo.MultiMesh.remove_isolated_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.remove_isolated_nodes</span></code></a>()</p></td>
+<td><p>Remove the nodes that are not associated with any element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.remove_nodes.html#fedoo.MultiMesh.remove_nodes" title="fedoo.MultiMesh.remove_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.remove_nodes</span></code></a>(index_nodes)</p></td>
+<td><p>Remove some nodes and associated element.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.reset_interpolation.html#fedoo.MultiMesh.reset_interpolation" title="fedoo.MultiMesh.reset_interpolation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.reset_interpolation</span></code></a>()</p></td>
+<td><p>Remove all the saved data related to field interpolation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.save.html#fedoo.MultiMesh.save" title="fedoo.MultiMesh.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.save</span></code></a>(filename[, binary])</p></td>
+<td><p>Save the mesh object to file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.stack.html#fedoo.MultiMesh.stack" title="fedoo.MultiMesh.stack"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.stack</span></code></a>(mesh1, mesh2[, name])</p></td>
+<td><p>Add two mesh together to make a new mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.to_pyvista.html#fedoo.MultiMesh.to_pyvista" title="fedoo.MultiMesh.to_pyvista"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.to_pyvista</span></code></a>([include_sets])</p></td>
+<td><p>Wrap the current multimesh to a pyvista UnstructuredGrid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.translate.html#fedoo.MultiMesh.translate" title="fedoo.MultiMesh.translate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.translate</span></code></a>(disp)</p></td>
+<td><p>Translate the mesh using the given displacement vector The disp vector should be on the form [u, v, w]</p></td>
+</tr>
+</tbody>
+</table>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.bounding_box.html#fedoo.MultiMesh.bounding_box" title="fedoo.MultiMesh.bounding_box"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.bounding_box</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.element_centers.html#fedoo.MultiMesh.element_centers" title="fedoo.MultiMesh.element_centers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.element_centers</span></code></a></p></td>
+<td><p>Coordinates of the element centers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.element_sets.html#fedoo.MultiMesh.element_sets" title="fedoo.MultiMesh.element_sets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.element_sets</span></code></a></p></td>
+<td><p>Element sets using the global MultiMesh cell numbering.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.elm_types.html#fedoo.MultiMesh.elm_types" title="fedoo.MultiMesh.elm_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.elm_types</span></code></a></p></td>
+<td><p>Element type of each submesh, in submesh id order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.mesh_dict.html#fedoo.MultiMesh.mesh_dict" title="fedoo.MultiMesh.mesh_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.mesh_dict</span></code></a></p></td>
+<td><p>Element-type indexed view kept for backward compatibility.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.n_elements.html#fedoo.MultiMesh.n_elements" title="fedoo.MultiMesh.n_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.n_elements</span></code></a></p></td>
+<td><p>Total number of elements in all submeshes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.n_elm_nodes.html#fedoo.MultiMesh.n_elm_nodes" title="fedoo.MultiMesh.n_elm_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.n_elm_nodes</span></code></a></p></td>
+<td><p>Number of nodes associated to each element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.n_nodes.html#fedoo.MultiMesh.n_nodes" title="fedoo.MultiMesh.n_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.n_nodes</span></code></a></p></td>
+<td><p>Total number of nodes in the Mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.name.html#fedoo.MultiMesh.name" title="fedoo.MultiMesh.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.name</span></code></a></p></td>
+<td><p>Name of the mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.ndim.html#fedoo.MultiMesh.ndim" title="fedoo.MultiMesh.ndim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.ndim</span></code></a></p></td>
+<td><p>Dimension of the mesh.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.submeshes.html#fedoo.MultiMesh.submeshes" title="fedoo.MultiMesh.submeshes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.submeshes</span></code></a></p></td>
+<td><p>Ordered view of the submeshes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.nodes.html#fedoo.MultiMesh.nodes" title="fedoo.MultiMesh.nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.nodes</span></code></a></p></td>
+<td><p>nodes[i] gives the coordinates of the ith node.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.node_sets.html#fedoo.MultiMesh.node_sets" title="fedoo.MultiMesh.node_sets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.node_sets</span></code></a></p></td>
+<td><p>Dict containing node sets associated to the mesh</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiMesh.elements.html#fedoo.MultiMesh.elements" title="fedoo.MultiMesh.elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.elements</span></code></a></p></td>
+<td><p>List of elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiMesh.elm_type.html#fedoo.MultiMesh.elm_type" title="fedoo.MultiMesh.elm_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiMesh.elm_type</span></code></a></p></td>
+<td><p>Type of the element (str).</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fedoo.Mesh.element_sets.html" class="btn btn-neutral float-left" title="fedoo.Mesh.element_sets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.MultiMesh.__getitem__.html" class="btn btn-neutral float-right" title="fedoo.MultiMesh.__getitem__" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

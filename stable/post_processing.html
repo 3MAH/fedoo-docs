@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Post-Processing &mdash; Fedoo 1.0.1 (stable)</title>
+  <title>Post-Processing &mdash; Fedoo 1.1.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=292eb321"></script>
+      <script src="_static/documentation_options.js?v=fc837d61"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -75,6 +75,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#class-dataset">Class DataSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#class-multiframedataset">Class MultiFrameDataSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multimesh-results">MultiMesh results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beam-and-shell-section-fields">Beam and shell section fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#save-data-to-disk">Save data to disk</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#read-data-from-disk">Read data from disk</a></li>
 </ul>
@@ -133,7 +134,7 @@
 <p>The get_results method returns a <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.DataSet</span></code></a> object which comes
 with several methods for plotting, saving and loading mesh-dependent results.
 A dataset can be associated with either a <a class="reference internal" href="generated/fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.Mesh</span></code></a> or a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MultiMesh</span></code>.</p>
+<a class="reference internal" href="generated/fedoo.MultiMesh.html#fedoo.MultiMesh" title="fedoo.MultiMesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.MultiMesh</span></code></a>.</p>
 <p>To avoid a redundent call of the get_results function, especially for time
 dependent problems, one can simply add some required output with the
 <a class="reference internal" href="generated/fedoo.Problem.add_output.html#fedoo.Problem.add_output" title="fedoo.Problem.add_output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Problem.add_output()</span></code></a> method. This create a
@@ -171,7 +172,7 @@ of a given iteration.</p>
 <section id="multimesh-results">
 <h3>MultiMesh results<a class="headerlink" href="#multimesh-results" title="Link to this heading"></a></h3>
 <p>A <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSet</span></code></a> or <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> associated with a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code> can contain submeshes with different element types.
+<a class="reference internal" href="generated/fedoo.MultiMesh.html#fedoo.MultiMesh" title="fedoo.MultiMesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code></a> can contain submeshes with different element types.
 Node fields use the common global node numbering. Element and Gauss-point
 fields returned by <a class="reference internal" href="generated/fedoo.DataSet.get_data.html#fedoo.DataSet.get_data" title="fedoo.DataSet.get_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataSet.get_data()</span></code></a> are stored in a
 <a class="reference internal" href="generated/fedoo.MultiMeshData.html#fedoo.MultiMeshData" title="fedoo.MultiMeshData"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMeshData</span></code></a> object, with one data block per submesh.</p>
@@ -209,6 +210,360 @@ plotted directly:</p>
 </tbody>
 </table>
 </section>
+<section id="beam-and-shell-section-fields">
+<h3>Beam and shell section fields<a class="headerlink" href="#beam-and-shell-section-fields" title="Link to this heading"></a></h3>
+<p>Requesting only <code class="docutils literal notranslate"><span class="pre">Stress</span></code> with <code class="docutils literal notranslate"><span class="pre">position=None</span></code> is sufficient for min/max and
+largest-magnitude reductions over the saved section points. Generalized <code class="docutils literal notranslate"><span class="pre">BeamStress</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ShellStress</span></code> are not required for these stored reductions. Mixed meshes retain
+ordinary continuum stress fields alongside recovered beam/shell fields, including
+von Mises and principal components.</p>
+<p>These are extrema over the saved sampling, not guaranteed continuous section
+extrema. Restricting the saved output to one point restricts stored reductions to
+that point. Refining elastic beam sampling later requires the generalized
+resultants. Homogeneous linear shell tensors at two distinct thickness points
+determine their linear distribution and allow later resampling without saved
+resultants; nonlinear/laminate shell files already retain the underlying thickness
+stresses for interpolation.</p>
+<p>Shell constitutive laws already recover <code class="docutils literal notranslate"><span class="pre">Stress</span></code> and <code class="docutils literal notranslate"><span class="pre">Strain</span></code> through
+<code class="docutils literal notranslate"><span class="pre">get_results</span></code> and <code class="docutils literal notranslate"><span class="pre">add_output</span></code>. For shells, <code class="docutils literal notranslate"><span class="pre">position</span></code> is the normalized
+through-thickness coordinate: -1 is the bottom face, 0 the midsurface, and 1
+the top face. A scalar selects one point; a one-dimensional array selects
+several points. <code class="docutils literal notranslate"><span class="pre">position=None</span></code> saves all <code class="docutils literal notranslate"><span class="pre">shell.output_points</span></code>. Homogeneous
+linear shells default to three equally spaced points (bottom, middle, top),
+controlled by <code class="docutils literal notranslate"><span class="pre">n_points</span></code>. Nonlinear shells default to their actual thickness
+integration points. Linear laminates save both sides of every layer interface.</p>
+<p>Shell tensors have shape <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_thickness_points,</span> <span class="pre">n_shell_gauss_points)</span></code>.
+Their coordinates and layer identities are stored as native FDH5 metadata.
+<code class="docutils literal notranslate"><span class="pre">ShellLocalFrame</span></code> is included automatically for shell outputs and enables
+global tensor components. Stored nodal tensors cannot be rotated unambiguously;
+use element/Gauss-point tensors or recompute before converting to nodes.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">res.shell_options</span></code> to select the source and thickness value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"shell_results"</span><span class="p">,</span> <span class="n">shell_assembly</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">"ShellStress"</span><span class="p">,</span> <span class="s2">"ShellStrain"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">])</span>
+<span class="n">res</span><span class="o">.</span><span class="n">shell_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">stress</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"XX"</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">shell_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">point_index</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">shell_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">"recomputed"</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s2">"abs_max"</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">von_mises</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">"Stress_global"</span><span class="p">,</span> <span class="s2">"vm"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The default source is <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>: prefer stored tensors, otherwise recover or
+interpolate. <code class="docutils literal notranslate"><span class="pre">&quot;stored&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;recomputed&quot;</span></code> explicitly require that source.
+With <code class="docutils literal notranslate"><span class="pre">reduction=None</span></code> and no position/index, the default reads the sole saved
+thickness point, or the top face if multiple points or only generalized fields
+are available. Explicit positions are respected. The
+<code class="docutils literal notranslate"><span class="pre">&quot;abs_max&quot;</span></code> reduction returns the largest absolute component value, without
+its sign. <code class="docutils literal notranslate"><span class="pre">&quot;signed_abs_max&quot;</span></code> retains the selected sign, choosing the first
+point for magnitudes tied within relative tolerance 1e-9. Both propagate NaNs;
+<code class="docutils literal notranslate"><span class="pre">&quot;max&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;min&quot;</span></code> select algebraic extrema. Invariants
+and principal values are evaluated at each point before reduction. A reduction
+ignores point selection; without a reduction, an explicit <code class="docutils literal notranslate"><span class="pre">position</span></code> or
+<code class="docutils literal notranslate"><span class="pre">point_index</span></code> overrides automatic selection. Updating either clears the other.
+With a reduction, full-tensor reads reduce each component independently and return
+<code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_locations)</span></code>. These components may come from different thickness points;
+the envelope is not a tensor at one physical point. Invariants computed from
+this envelope differ from pointwise invariant extrema and are not guaranteed
+conservative.</p>
+<p>Only homogeneous <strong>linear</strong> shell stresses can be recovered from <code class="docutils literal notranslate"><span class="pre">ShellStress</span></code>
+and the thickness/shear factor. Transverse shear uses the existing constant
+distribution, <code class="docutils literal notranslate"><span class="pre">Q/(k*h)</span></code>. <code class="docutils literal notranslate"><span class="pre">ShellStrain</span></code> recovers the Reissner–Mindlin strain
+kinematics for all supported shell laws, including the existing zero normal
+strain component.
+If the respective generalized field is absent, two distinct saved thickness
+points reconstruct the homogeneous linear stress distribution or linear strain
+kinematics. The linear reconstruction can also evaluate positions beyond the
+saved thickness interval, within [-1,1]. One saved point is insufficient.
+Stored nodal tensors remain unsuitable for global rotation, including when
+resampling their linear distribution.</p>
+<p>Shell thickness recovery and material-point kinematics use
+<code class="docutils literal notranslate"><span class="pre">epsilon(z)</span> <span class="pre">=</span> <span class="pre">epsilon0</span> <span class="pre">-</span> <span class="pre">z*kappa</span></code>, with <code class="docutils literal notranslate"><span class="pre">kappa_xx</span> <span class="pre">=</span> <span class="pre">-d(RotY)/dx</span></code>.
+Positive thickness is along the local shell normal. Generalized bending
+moments are <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">=</span> <span class="pre">-integral(z*sigma)</span></code>.
+Previously computed asymmetric-laminate and nonlinear responses may need to
+be recomputed with the corrected kinematics.</p>
+<p>Nonlinear shells and laminates save private <code class="docutils literal notranslate"><span class="pre">_ShellStress</span></code> tensors at their
+actual material points whenever <code class="docutils literal notranslate"><span class="pre">Stress</span></code> or <code class="docutils literal notranslate"><span class="pre">ShellStress</span></code> is requested.
+Linear laminates instead save the exact stress limits at both faces of each
+layer. This permits later piecewise linear interpolation independently within
+each layer, preserving stress jumps. Interpolation also works for stored tensors
+with multiple thickness points. At positions outside the layer’s integration
+points, nonlinear stresses are linearly extrapolated by default from the two
+outermost points in the same layer to its boundary. Set
+<code class="docutils literal notranslate"><span class="pre">shell_options.update(extrapolate=False)</span></code> to retain the nearest-IP value.
+Extrapolated plastic stresses are estimates and may exceed the yield surface;
+material states and equilibrium are unchanged. Stored-point reductions still
+use only the saved values; recomputed reductions include recovered boundary
+values. Exact/nearest stored selection remains unchanged, and positions outside
+[-1, 1] are rejected. One thickness integration point gives
+a constant approximation within that layer. A coordinate exactly on an interface
+selects the lower layer; point indices can select either saved side.</p>
+<p><code class="docutils literal notranslate"><span class="pre">samples</span></code> sets the generated point count per layer for recomputed reductions
+and index selection. Actual integration points are also retained to capture
+extrema. Stored sampling is fixed, so <code class="docutils literal notranslate"><span class="pre">samples</span></code> is ignored for that source.
+The viewer’s <strong>Options → Shell…</strong> dialog combines normalized position, point
+index and extrema in <strong>Value</strong>, with <strong>Coordinate system</strong> at the end. A shell
+submesh selector lists only compatible submeshes. Stored/Recomputed is required
+on the reference submesh and is a preference, with fallback, on other submeshes.
+A reference point index supplies its normalized position to other submeshes;
+on the reference it retains the exact index, including either side of a laminate
+interface. Stored coordinates in the viewer use the nearest point within the
+requested layer. The API keeps interpolation as the default stored selection;
+<code class="docutils literal notranslate"><span class="pre">stored_position=&quot;nearest&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;exact&quot;</span></code> selects other policies. Source
+fallback is opt-in through <code class="docutils literal notranslate"><span class="pre">source_fallback=True</span></code> and <code class="docutils literal notranslate"><span class="pre">reference_submesh</span></code>.
+The dialog respects <strong>Apply options to</strong>.
+Beam and shell viewer components default to global coordinates when the local
+frame is available; otherwise the viewer uses local coordinates. Section tensors
+remain stored locally and the results API retains its existing local defaults.</p>
+<p>Beam <code class="docutils literal notranslate"><span class="pre">BeamStress</span></code> and <code class="docutils literal notranslate"><span class="pre">BeamStrain</span></code> fields are generalized quantities in
+the local element frame, not continuum tensors. Their component orders are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BeamStress</span><span class="p">:</span> <span class="n">N</span><span class="p">,</span> <span class="n">QY</span><span class="p">,</span> <span class="n">QZ</span><span class="p">,</span> <span class="n">MX</span><span class="p">,</span> <span class="n">MY</span><span class="p">,</span> <span class="n">MZ</span>
+<span class="n">BeamStrain</span><span class="p">:</span> <span class="n">epsX</span><span class="p">,</span> <span class="n">gammaY</span><span class="p">,</span> <span class="n">gammaZ</span><span class="p">,</span> <span class="n">kappaX</span><span class="p">,</span> <span class="n">kappaY</span><span class="p">,</span> <span class="n">kappaZ</span>
+</pre></div>
+</div>
+<p>Beam sections also recover continuum <code class="docutils literal notranslate"><span class="pre">Stress</span></code> and <code class="docutils literal notranslate"><span class="pre">Strain</span></code> at normalized
+<code class="docutils literal notranslate"><span class="pre">(y,</span> <span class="pre">z)</span></code> coordinates. Scalar beam positions are rejected. Pass one pair or
+an array with shape <code class="docutils literal notranslate"><span class="pre">(n_section_points,</span> <span class="pre">2)</span></code>. <code class="docutils literal notranslate"><span class="pre">position=None</span></code> (the default)
+extracts every configured section output point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">section</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">BeamRectangular</span><span class="p">(</span>
+    <span class="n">material</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">output_points</span><span class="o">=</span><span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"beam_results"</span><span class="p">,</span> <span class="n">beam_assembly</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"BeamStress"</span><span class="p">,</span> <span class="s2">"BeamStrain"</span><span class="p">,</span> <span class="s2">"BeamLocalFrame"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">],</span>
+    <span class="n">position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Raw stored beam tensors have shape
+<code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_section_points,</span> <span class="pre">n_beam_gauss_points)</span></code>. Section points remain a separate
+axis from beam integration points. Their normalized coordinates are saved with
+the field, including per-Gauss-point coordinates when a pipe’s radius ratio
+varies. Node and Element output retain the section-point axis.</p>
+<p>The continuum fields obtained this way are expressed in the <strong>local beam
+frame</strong>. <code class="docutils literal notranslate"><span class="pre">BeamLocalFrame</span></code> stores nine components at each Gauss point, in
+row-major order; each row of its 3-by-3 matrix is a local basis vector expressed
+in global coordinates. It follows the current element frame during a nonlinear
+solve. Keep this output at Gauss points for later tensor recovery: averaging
+frames at nodes shared by differently oriented beams loses the section axes.
+Stored nodal tensors therefore support local extraction but reject global
+rotation. Stored element tensors support local extraction and global rotation
+when the Gauss-point frames agree within each element. Otherwise use stored
+Gauss-point tensors, or recompute and rotate before nodal/element averaging.</p>
+<p>Post-processing saved generalized fields requires the section properties used
+in the analysis, but does not require the original problem or assembly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fedoo.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeamStressList</span><span class="p">,</span> <span class="n">BeamStrainList</span>
+
+<span class="c1"># Load a frame first if results is a MultiFrameDataSet.</span>
+<span class="n">force</span> <span class="o">=</span> <span class="n">BeamStressList</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">"BeamStress"</span><span class="p">])</span>
+<span class="n">stress</span> <span class="o">=</span> <span class="n">force</span><span class="o">.</span><span class="n">get_stress</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+<span class="n">strain</span> <span class="o">=</span> <span class="n">BeamStrainList</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">"BeamStrain"</span><span class="p">])</span><span class="o">.</span><span class="n">get_strain</span><span class="p">(</span>
+    <span class="n">section</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">stress_global</span> <span class="o">=</span> <span class="n">force</span><span class="o">.</span><span class="n">get_stress</span><span class="p">(</span>
+    <span class="n">section</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="n">local_frame</span><span class="o">=</span><span class="n">results</span><span class="p">[</span><span class="s2">"BeamLocalFrame"</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">gausspoint_data</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">]</span> <span class="o">=</span> <span class="n">stress_global</span><span class="o">.</span><span class="n">asarray</span><span class="p">()</span>
+<span class="c1"># The standard viewer can now display XX, YY, XY, vm, etc.</span>
+</pre></div>
+</div>
+<p>Recovery assumes isotropic linear elasticity and a centroidal section with
+principal y/z axes. The local axial stress is
+<code class="docutils literal notranslate"><span class="pre">N/A</span> <span class="pre">+</span> <span class="pre">z*MY/Iyy</span> <span class="pre">-</span> <span class="pre">y*MZ/Izz</span></code>. Transverse shear uses parabolic Jourawski
+approximations for rectangles and solid disks, with peak factors 3/2 and 4/3
+relative to <code class="docutils literal notranslate"><span class="pre">Q/A</span></code>. The disk expression is a chord-average approximation,
+not the complete two-dimensional elasticity distribution. Pipes and generic
+sections retain the section-average <code class="docutils literal notranslate"><span class="pre">Q/A</span></code> approximation.
+Circular, pipe and rectangular sections include Saint-Venant torsion. The
+rectangle uses 128 odd Fourier harmonics for both stress and strain recovery,
+with a consistent series-based torsion constant replacing the previous
+polynomial approximation. This describes free warping, not restrained-warping
+axial stresses. Nonzero torsion in other section shapes raises
+<code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> because a torsion constant
+alone does not specify the pointwise stress distribution. Recovered strain
+is recovered directly from <code class="docutils literal notranslate"><span class="pre">BeamStrain</span></code> using beam kinematics, without
+<code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">G</span></code> or Poisson’s ratio. Its axial component is
+<code class="docutils literal notranslate"><span class="pre">epsX</span> <span class="pre">+</span> <span class="pre">z*kappaY</span> <span class="pre">-</span> <span class="pre">y*kappaZ</span></code>. Engineering shear uses the generalized
+<code class="docutils literal notranslate"><span class="pre">gammaY</span></code> and <code class="docutils literal notranslate"><span class="pre">gammaZ</span></code> without multiplying by the shear correction factor.
+Circular and pipe sections add <code class="docutils literal notranslate"><span class="pre">-z*kappaX</span></code> to <code class="docutils literal notranslate"><span class="pre">gammaXY</span></code> and
+<code class="docutils literal notranslate"><span class="pre">y*kappaX</span></code> to <code class="docutils literal notranslate"><span class="pre">gammaXZ</span></code>; other sections require a warping model for
+nonzero twist. <code class="docutils literal notranslate"><span class="pre">epsYY</span></code>, <code class="docutils literal notranslate"><span class="pre">epsZZ</span></code> and <code class="docutils literal notranslate"><span class="pre">gammaYZ</span></code> are zero under these beam
+kinematics. No isotropic Poisson contraction is inferred. These kinematic
+strains are distinct from a full three-dimensional constitutive strain recovery.</p>
+<p>The dataset and viewer share the predefined field/component dictionary
+<code class="docutils literal notranslate"><span class="pre">fedoo.util.field_components.FIELD_COMPONENTS</span></code>. Beam components therefore
+have physical labels rather than numerical indices, and named extraction such
+as <code class="docutils literal notranslate"><span class="pre">results[&quot;BeamStress&quot;,</span> <span class="pre">&quot;MY&quot;]</span></code> uses the same labels. Unknown user fields
+retain numerical component labels.</p>
+<section id="automatic-recovery-from-fdh5-beam-results">
+<h4>Automatic recovery from FDH5 beam results<a class="headerlink" href="#automatic-recovery-from-fdh5-beam-results" title="Link to this heading"></a></h4>
+<p>Gauss-point outputs of <code class="docutils literal notranslate"><span class="pre">BeamStress</span></code> or <code class="docutils literal notranslate"><span class="pre">BeamStrain</span></code> automatically
+include section metadata shared by both fields, associated with their submesh.
+FDH5 writes typed HDF5 datasets under
+<code class="docutils literal notranslate"><span class="pre">results/iter_N/section_metadata/submesh_I</span></code> instead of JSON. Uniform properties
+are scalars in this group; varying properties are private <code class="docutils literal notranslate"><span class="pre">_Section_*</span></code> fields
+with an explicit Node, Element or GaussPoint association. Metadata references
+these fields. Definitions are preserved per frame and per submesh.
+A reloaded file therefore needs no live solver
+or constitutive-law object to display section tensors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"beam_results"</span><span class="p">,</span> <span class="n">beam_assembly</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"BeamStress"</span><span class="p">,</span> <span class="s2">"BeamStrain"</span><span class="p">,</span> <span class="s2">"BeamLocalFrame"</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="c1"># Later, after reading the FDH5 file and loading the desired frame:</span>
+<span class="n">local_vm</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"Stress_local"</span><span class="p">,</span> <span class="s2">"vm"</span><span class="p">]</span>
+<span class="n">global_xx</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"Stress_global"</span><span class="p">,</span> <span class="s2">"XX"</span><span class="p">]</span>
+<span class="n">local_strain</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"Strain_local"</span><span class="p">,</span> <span class="s2">"XX"</span><span class="p">]</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Native recovery follows <code class="docutils literal notranslate"><span class="pre">BeamStress</span></code> → <code class="docutils literal notranslate"><span class="pre">Stress</span></code> and <code class="docutils literal notranslate"><span class="pre">BeamStrain</span></code> →
+<code class="docutils literal notranslate"><span class="pre">Strain</span></code>. Neither path needs elastic constants in the saved section
+description. Older descriptions containing isotropic constants are still read,
+but these constants do not influence kinematic strain recovery.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Stress</span></code>, <code class="docutils literal notranslate"><span class="pre">Stress_local</span></code> and <code class="docutils literal notranslate"><span class="pre">Stress_global</span></code> share one selection policy
+(likewise for strain). Global components require <code class="docutils literal notranslate"><span class="pre">BeamLocalFrame</span></code>. The viewer
+shows one Stress and one Strain entry. <strong>Options → Beam…</strong> selects the source,
+coordinate system, section position/index and reduction. Its optional Beam
+toolbar is hidden by default.</p>
+<p>For mixed meshes, Beam options lists compatible beam submeshes as sampling
+references. Choosing an index resolves its normalized coordinates on that
+reference section; the same coordinate request applies to every beam submesh.
+The preview highlights the nearest stored point when stored data is selected.
+The viewer requires Stored/Recomputed on the selected reference submesh. On
+other beam submeshes it uses that source when available and falls back to the
+other source otherwise. Stored fallback uses the nearest normalized point;
+recomputed fallback evaluates the requested normalized coordinates. These
+preferences remain active when changing result frames.</p>
+<p><code class="docutils literal notranslate"><span class="pre">results.beam_options.update(...)</span></code> validates updates atomically:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">source=&quot;auto&quot;</span></code> (default) prefers stored tensors when available, otherwise
+recomputes from the respective generalized field. Explicit <code class="docutils literal notranslate"><span class="pre">&quot;stored&quot;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">&quot;recomputed&quot;</span></code> raises an error if the required data is unavailable.
+The viewer enables <code class="docutils literal notranslate"><span class="pre">source_fallback=True</span></code> for mixed meshes and sets
+<code class="docutils literal notranslate"><span class="pre">reference_submesh</span></code> to its sampling reference. The reference remains strict;
+other submeshes use the preferred source when available, otherwise the other
+source. API selections remain strict by default (<code class="docutils literal notranslate"><span class="pre">source_fallback=False</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reduction=&quot;abs_max&quot;</span></code> (default) returns the largest absolute magnitude as a
+nonnegative value. <code class="docutils literal notranslate"><span class="pre">&quot;signed_abs_max&quot;</span></code> retains the selected sign, choosing
+the first point for magnitudes tied within relative tolerance 1e-9. Both
+propagate NaNs. <code class="docutils literal notranslate"><span class="pre">&quot;max&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;min&quot;</span></code> use algebraic
+extrema and retain the sign (largest tension and largest compression for a
+normal stress).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reduction=None</span></code> selects one point using normalized <code class="docutils literal notranslate"><span class="pre">position=(y,z)</span></code> or
+zero-based <code class="docutils literal notranslate"><span class="pre">point_index</span></code>. Supplying both non-None in one update is rejected.
+Selecting either clears the other. A reduction ignores both selectors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stored_position=&quot;nearest&quot;</span></code> (default) chooses the closest saved point in
+normalized (y,z), independently on each submesh and at each saved beam
+location. Equal-distance ties choose the first point. This selects a saved
+value without interpolation. <code class="docutils literal notranslate"><span class="pre">stored_position=&quot;exact&quot;</span></code> requires a matching
+point at every location. Recomputed positions can be any coordinates supported by the
+recovery model, including coordinates beyond the bounding box.</p></li>
+<li><p>Section metadata declares <code class="docutils literal notranslate"><span class="pre">recovery=&quot;linear&quot;</span></code> (the default for existing
+sections and legacy files) or <code class="docutils literal notranslate"><span class="pre">&quot;stored_only&quot;</span></code>. Set <code class="docutils literal notranslate"><span class="pre">section.recovery</span></code> or
+override it in a section subclass. <code class="docutils literal notranslate"><span class="pre">stored_only</span></code> disables recovery from
+generalized fields even when those fields are saved; stored tensors remain
+available for point selection and reductions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">samples</span></code> changes generated recomputed sampling only. Stored points and
+explicitly supplied output points remain fixed.</p></li>
+</ul>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">beam_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">"stored"</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">point_index</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">stress_at_point</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"XX"</span><span class="p">]</span>
+<span class="n">results</span><span class="o">.</span><span class="n">beam_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">),</span> <span class="n">stored_position</span><span class="o">=</span><span class="s2">"nearest"</span><span class="p">)</span>
+<span class="n">stress_at_nearest_saved_point</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"XX"</span><span class="p">]</span>
+<span class="n">results</span><span class="o">.</span><span class="n">beam_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">"recomputed"</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">))</span>
+<span class="n">stress_at_position</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"XX"</span><span class="p">]</span>
+<span class="n">results</span><span class="o">.</span><span class="n">beam_options</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s2">"abs_max"</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+<span class="n">largest_magnitude</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"XX"</span><span class="p">]</span>
+<span class="n">maximum_vm</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"vm"</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Zero is the section origin; -1 and +1 select the respective negative and
+positive bounding faces. Asymmetric sections have separate scales on each
+side. Bounds describe the geometry, not merely the extent of output points.
+Generic sections without supplied bounds use <code class="docutils literal notranslate"><span class="pre">(-1,1,-1,1)</span></code>, giving identity
+mapping and thus physical coordinates. Bounding-box coordinates need not lie
+in the material, for example inside a pipe hole.</p>
+<p>Section reductions evaluate the requested scalar (including invariants) at
+each point before selecting an extremum, and before nodal/element averaging.
+With no scalar component requested, each tensor component is reduced
+independently, returning <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_locations)</span></code>. Components may originate at
+different section points; the result is an envelope, not a tensor at one
+physical location. Computing Mises or principal values from that envelope is
+not equivalent to reducing pointwise invariants and is not guaranteed
+conservative. Use <code class="docutils literal notranslate"><span class="pre">reduction=None</span></code> with a position or index for a physical
+point tensor. Extrema are sampled estimates; saving and viewer defaults are
+unchanged.</p>
+<p>Standard sections generate output points using <code class="docutils literal notranslate"><span class="pre">n_points=32</span></code> by default,
+an approximate total point budget including boundaries and interiors. Pipes
+exclude the hole. Increasing <code class="docutils literal notranslate"><span class="pre">samples</span></code> refines recomputed grids. A custom
+section’s fixed point set is not resampled. In the viewer, <strong>Sample points number</strong>
+snaps to the closest supported count when editing finishes; fixed point counts
+are displayed without allowing edits. For equal distances, the lower count wins.
+An unsampled custom
+section without supplied points or a sampling method requires a direct
+position with <code class="docutils literal notranslate"><span class="pre">reduction=None</span></code>; the viewer disables indices and reductions.
+Recomputation still requires the recovery model for the requested stresses.</p>
+</section>
+<section id="section-classes-own-storage-and-geometry">
+<h4>Section classes own storage and geometry<a class="headerlink" href="#section-classes-own-storage-and-geometry" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">BeamProperties.section_description()</span></code> defines the portable section schema.
+Subclasses declare a unique <code class="docutils literal notranslate"><span class="pre">section_type</span></code> and their <code class="docutils literal notranslate"><span class="pre">section_dimensions</span></code>;
+they are registered automatically. Implement <code class="docutils literal notranslate"><span class="pre">sample_points(n_points=32)</span></code>,
+<code class="docutils literal notranslate"><span class="pre">scale_section_points(points)</span></code> and optionally <code class="docutils literal notranslate"><span class="pre">section_mesh(n_points=32)</span></code>
+to extend recovery without adding shape-specific code to FDH5 or the viewer.
+The section class must be imported when recovering its saved results.</p>
+<p><code class="docutils literal notranslate"><span class="pre">section_mesh</span></code> wraps existing mesh generators and accepts their optional
+arguments. It returns a reference mesh in the centroid-relative local section
+plane. <code class="docutils literal notranslate"><span class="pre">n_points</span></code> is an approximate total point budget for sampling and
+meshing; their discretizations need not be identical. Rectangles sample mesh
+nodes; circles and pipes retain analytical polar sampling.</p>
+<p>Generic <code class="docutils literal notranslate"><span class="pre">BeamProperties</span></code> accepts optional <code class="docutils literal notranslate"><span class="pre">section_points</span></code> or
+<code class="docutils literal notranslate"><span class="pre">section_mesh</span></code> and <code class="docutils literal notranslate"><span class="pre">section_scale=(scale_y,</span> <span class="pre">scale_z)</span></code>. Optional <code class="docutils literal notranslate"><span class="pre">output_points</span></code> are normalized pairs; <code class="docutils literal notranslate"><span class="pre">n_points</span></code> controls generated
+output sampling. Supply true <code class="docutils literal notranslate"><span class="pre">section_bounds=(ymin,ymax,zmin,zmax)</span></code> for custom
+geometry; bounds are never inferred from output points. Supplied section-mesh coordinates
+must already be centred on the area centroid and aligned with principal axes.
+Points are scaled about that origin, not the bounding-box centre. Only output
+points and reference bounds are saved for custom meshes, not their connectivity.
+Section stiffness properties must still be provided explicitly; a supplied
+mesh does not compute a warping solution or enable noncircular torsion recovery.</p>
+<p>Variable dimensions/properties default to GaussPoint storage after conversion
+by the assembly. To retain another association, set, for example,
+<code class="docutils literal notranslate"><span class="pre">section.section_property_associations</span> <span class="pre">=</span> <span class="pre">{&quot;r&quot;:</span> <span class="pre">&quot;Element&quot;,</span> <span class="pre">&quot;A&quot;:</span> <span class="pre">&quot;Element&quot;,</span>
+<span class="pre">&quot;Jx&quot;:</span> <span class="pre">&quot;Element&quot;,</span> <span class="pre">&quot;Iyy&quot;:</span> <span class="pre">&quot;Element&quot;,</span> <span class="pre">&quot;Izz&quot;:</span> <span class="pre">&quot;Element&quot;}</span></code> before output.
+Recovery converts these arrays to the saved beam Gauss-point locations.
+Node-associated section arrays with element-subset output are currently rejected.</p>
+<p>The viewer hides underscore-prefixed fields by default. <strong>Options → Show
+internal fields</strong> exposes them. <code class="docutils literal notranslate"><span class="pre">add_output(...,</span> <span class="pre">private=True)</span></code> prefixes
+requested mesh fields with <code class="docutils literal notranslate"><span class="pre">_</span></code>. <strong>Options → Beam… → Section geometry and
+sampling…</strong> displays section points and properties at a selected longitudinal
+location. Select <strong>Section point index</strong> to evaluate Stress/Strain at a normalized
+output point scaled separately at each beam location. In Python, use
+<code class="docutils literal notranslate"><span class="pre">results.beam_options.update(reduction=None,</span> <span class="pre">point_index=0,</span> <span class="pre">samples=32)</span></code>;
+updating <code class="docutils literal notranslate"><span class="pre">position</span></code> clears the previous index automatically.
+Older JSON-based section descriptions remain readable.</p>
+<p>Beam options respect <strong>Options → Apply options to</strong>. For <strong>All windows</strong>, each
+beam pane evaluates the settings using its own section definition. Non-beam
+panes are unaffected. If an index or coordinate-system choice is unsupported
+in a target pane, no panes are changed and the viewer identifies the incompatible
+pane. Use <strong>Active window</strong> to configure different sections independently.</p>
+<p>In sample-index mode, the local y/z boxes display read-only physical coordinates
+at the selected longitudinal Gauss point of the active submesh. Changing that
+location updates the coordinates for varying sections; it does not restrict
+the plotted field to that location. The index still follows the section mapping
+throughout the mesh. The section preview highlights the selected sample.</p>
+<p>Older FDH5 files cannot infer section geometry from resultants alone. If the
+original section properties are available, attach them to a single-mesh dataset
+before viewing or resaving:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">set_beam_section</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Nonuniform properties must follow the saved Gauss-point order. Files without
+these descriptions continue to expose their original generalized fields.
+Automatic recovery requires unaveraged Gauss-point generalized fields and
+frames; requesting their output at nodes does not preserve this information.</p>
+</section>
+</section>
 <section id="save-data-to-disk">
 <h3>Save data to disk<a class="headerlink" href="#save-data-to-disk" title="Link to this heading"></a></h3>
 <p>Once a DataSet is created using for instance the
@@ -219,10 +574,8 @@ disk using for instance the <a class="reference internal" href="generated/fedoo.
 without an extension, the <code class="docutils literal notranslate"><span class="pre">.fdh5</span></code> extension is assumed.</p>
 <dl class="simple">
 <dt>The available file types are:</dt><dd><ul class="simple">
-<li><p>‘fdh5’: The native HDF5-based Fedoo format. It stores the mesh, node and
-element sets, node/element/Gauss-point fields, and multiple iterations
-in one file. It also preserves the complete MultiMesh structure and its
-per-submesh fields. This is the default format.</p></li>
+<li><p>‘fdh5’: Fedoo’s native HDF5 result format (default). See
+<a class="reference internal" href="#fdh5-format"><span class="std std-ref">FDH5 format</span></a> for its contents and write policies.</p></li>
 <li><p>‘fdz’: A legacy zipped archive containing the mesh using the ‘vtk’ format
 named ‘_mesh_.vtk’, and data from several iterations named ‘iter_x.npz’
 where x is the iteration number (x=0 for the 1st iteration).</p></li>
@@ -246,6 +599,90 @@ The mesh is not included and may be saved beside in a vtk file.</p></li>
 </ul>
 </dd>
 </dl>
+<section id="fdh5-format">
+<span id="id1"></span><h4>FDH5 format<a class="headerlink" href="#fdh5-format" title="Link to this heading"></a></h4>
+<p>FDH5 stores the mesh, node and element sets, node/element/Gauss-point fields,
+scalar outputs such as Time, and multiple saved frames in one file. It
+preserves the complete MultiMesh structure and its per-submesh fields.
+Beam/shell section descriptions and output-point coordinates are saved when
+available, and local frames can be saved for recovery in global coordinates.
+No conversion to nodal fields is required for storage.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Opening an FDH5 file in the viewer while its simulation is running is
+supported and should normally work: temporary read/write lock conflicts
+are retried. Persistent contention can still exceed the retry timeout and
+interrupt simulation output. Keep HDF5 file locking enabled; for critical
+runs, wait until the simulation finishes before opening the results.</p>
+</div>
+<p>The <span class="xref std std-doc">FDH5 file layout</span> describes the HDF5 groups and array
+conventions. That page is generated from the <code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.util.fdh5</span></code> module
+docstring, keeping the detailed format description alongside its implementation.</p>
+<p>The file structure below is illustrative: optional field and metadata groups
+are present only when the corresponding outputs have been saved.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>mesh/
+├── nodes
+├── node_sets/
+├── submesh_0/
+│     ├── elements
+│     ├── element_sets/
+│     └── metadata/
+│           └── element_type = "tri3"
+├── submesh_1/
+│     ├── elements
+│     ├── element_sets/
+│     └── metadata/
+│           └── element_type = "tri3"
+├── submesh_2/
+│     ├── elements
+│     ├── element_sets/
+│     └── metadata/
+│           └── element_type = "quad4"
+└── ...
+
+results/
+├── iter_0/
+│   ├── node_data/
+│   ├── element_data/
+│   │     ├── submesh_0/
+│   │     │    ├── stress
+│   │     │    ├── plasticity
+│   │     │    └── ...
+│   │     ├── submesh_1/
+│   │     └── ...
+│   ├── gausspoint_data/
+│   │     ├── submesh_0/
+│   │     ├── submesh_1/
+│   │     └── ...
+│   ├── scalars/
+│   ├── section_metadata/
+│   │     ├── submesh_0/       (shared beam section description)
+│   │     │    └── properties/
+│   │     └── ...
+│   ├── field_metadata/       (shell/field descriptions and output points)
+│   └── metadata/
+├── iter_1/
+└── ...
+</pre></div>
+</div>
+<p>FDH5 section tensors retain their point axis: stored Stress/Strain arrays
+have shape <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_section_points,</span> <span class="pre">n_locations)</span></code> when multiple section points
+are saved. Use <code class="docutils literal notranslate"><span class="pre">results.get_data</span></code> with <code class="docutils literal notranslate"><span class="pre">beam_options</span></code> or <code class="docutils literal notranslate"><span class="pre">shell_options</span></code>
+to select one point or reduce across points. Field descriptions are saved
+per frame and per submesh, so recovery can be performed after reopening the
+file without the original material object. Global recovery additionally
+requires the corresponding saved local-frame field.</p>
+<p>The file stores the requested outputs and recovery metadata, rather than a
+complete solver state for restarting an analysis. Dataset selection options
+and viewer settings are not saved; read-time defaults apply after reopening.
+Older files without section descriptions remain readable, but may only
+provide their original fields.</p>
+<p>For automatic simulation output, <code class="docutils literal notranslate"><span class="pre">Problem.add_output</span></code> accepts
+<code class="docutils literal notranslate"><span class="pre">write_mode=&quot;overwrite&quot;</span></code> (default), <code class="docutils literal notranslate"><span class="pre">&quot;append&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;error&quot;</span></code> for FDH5.
+Appending adds saved frames to an existing compatible mesh file; it does not
+resume the solver. In contrast, <code class="docutils literal notranslate"><span class="pre">DataSet.to_fdh5(...,</span> <span class="pre">overwrite=True)</span></code>
+replaces the whole file, not only an existing iteration.</p>
+</section>
 </section>
 <section id="read-data-from-disk">
 <h3>Read data from disk<a class="headerlink" href="#read-data-from-disk" title="Link to this heading"></a></h3>
@@ -253,6 +690,25 @@ The mesh is not included and may be saved beside in a vtk file.</p></li>
 The data are imported as <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSet</span></code></a> or
 <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> objects depending on the imported file(s).
 FDH5 is used by default when the filename has no extension.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s2">"simulation.fdh5"</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">MultiFrameDataSet</span><span class="p">):</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># load the last saved frame</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>One saved frame returns a DataSet; several frames return a MultiFrameDataSet
+whose frame fields are loaded on demand. <code class="docutils literal notranslate"><span class="pre">load(i)</span></code> selects the zero-based
+index in the list of saved frames, not a Newton iteration number.
+The viewer discovers new FDH5 frames during navigation; Reload also rereads
+the current frame. Existing all-frame color limits and history plots are not
+automatically recomputed. Reapply the limits or recreate the plot to include
+new frames. If the simulation temporarily locks the file, retry after it
+finishes writing the frame.
+FDH5 writes retry temporary reader lock conflicts for up to 10 seconds, so a
+brief viewer read does not abort output. Eager frame reads release their handle
+before plotting. Keep HDF5 file locking enabled; read-only access still needs
+protection against a writer changing the file. Explicit lazy-reader contexts
+must be closed promptly to let the simulation write.</p>
 <p class="rubric" id="very-simple-problem">Example</p>
 <p>For example, defining and solving a very simple problem :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
@@ -303,9 +759,8 @@ time interval (here the results are saved on a file).</p>
 </section>
 <section id="fedoo-interactive-viewer">
 <h2>Fedoo interactive viewer<a class="headerlink" href="#fedoo-interactive-viewer" title="Link to this heading"></a></h2>
-<p>Fedoo includes a graphical application to visulize a result file or
-a DataSet like object. To be able to launch the viewer, the
-package pyvistaqt has to be installed.</p>
+<p>Fedoo includes a graphical viewer for result files and DataSet objects.
+Install the plotting and GUI dependencies with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;fedoo[plot,gui]&quot;</span></code>.</p>
 <p>Then the viewer can either be launched as a standalone application from
 command line:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python -m fedoo.viewer
@@ -325,7 +780,23 @@ inside a python code:</p>
 <ul class="simple">
 <li><p>Management of multiple independent windows, which can be linked together.</p></li>
 <li><p>Field and iteration selectors for data exploration.</p></li>
+<li><p>Automatic discovery of new FDH5 frames when navigating an ongoing simulation.
+The Reload button also rereads the current frame. A file temporarily locked
+by the writer can be retried on the next navigation or Reload.
+Existing all-frame color limits and history plots are kept: reapply
+All frames Min/Max or recreate the history plot to include new frames.</p></li>
 <li><p>A wide range of plotting options.</p></li>
+<li><p>Show saved shell thickness in Shell options (disabled by default).
+Each <code class="docutils literal notranslate"><span class="pre">tri3</span></code>/<code class="docutils literal notranslate"><span class="pre">quad4</span></code> shell submesh uses its saved section thickness,
+including varying thickness, along normals of the deformed midsurface.
+Beams and solids retain their own geometry. The selected field is repeated
+through the display thickness; this does not recover distinct face stresses
+or change the simulation mesh. Save shell stress/strain or generalized
+shell fields to include the section metadata needed for this display.
+Clicking a top/bottom display node reports its original node ID and the
+displayed field under the current section selection. Gauss-point displays
+retain element discontinuities; Element displays report adjacent element
+values at a shared node.</p></li>
 <li><p>Show or hide elements from predefined sets, rectangular selections,
 or arbitrary expressions.</p></li>
 <li><p>Plot results along an interactively defined line.</p></li>
@@ -499,6 +970,8 @@ we can plot the stress results after the example
 </section>
 </section>
 </section>
+<div class="toctree-wrapper compound">
+</div>
 
 
            </div>

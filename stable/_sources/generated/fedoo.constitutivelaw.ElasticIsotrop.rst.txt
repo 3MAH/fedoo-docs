@@ -58,6 +58,7 @@
          ElasticIsotrop.is_isotropic
          ElasticIsotrop.manages_material_frame
          ElasticIsotrop.name
+         ElasticIsotrop.supports_total_formulation
          ElasticIsotrop.E
          ElasticIsotrop.nu
          ElasticIsotrop.is_initialized

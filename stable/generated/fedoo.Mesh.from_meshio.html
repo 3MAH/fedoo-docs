@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.Mesh.from_meshio &mdash; Fedoo 1.0.1 (stable)</title>
+  <title>fedoo.Mesh.from_meshio &mdash; Fedoo 1.1.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=292eb321"></script>
+      <script src="../_static/documentation_options.js?v=fc837d61"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -64,12 +64,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#class-mesh">Class Mesh</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#mesh-classes">Mesh classes</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="fedoo.Mesh.html">fedoo.Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MultiMesh.html">fedoo.MultiMesh</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-manipulation-functions">Mesh manipulation functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../mesh.html#import-export-fedoo-mesh-object">Import/Export Fedoo Mesh object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mesh.html#import-and-export-meshes">Import and export meshes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-creation-functions">Mesh Creation Functions</a></li>
 </ul>
 </li>
@@ -117,16 +118,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.Mesh.from_meshio">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">from_meshio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">io_mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.core.mesh.Mesh"><span class="pre">Mesh</span></a></span></span><a class="headerlink" href="#fedoo.Mesh.from_meshio" title="Link to this definition"></a></dt>
-<dd><p>Build a Mesh from a meshio mesh object.</p>
+<dd><p>Build a Mesh from a meshlane or meshio mesh object.</p>
 <p>Node coordinates, element connectivity, node sets (<code class="docutils literal notranslate"><span class="pre">point_sets</span></code>,
 e.g. Abaqus <code class="docutils literal notranslate"><span class="pre">*NSET</span></code>) and element sets (<code class="docutils literal notranslate"><span class="pre">cell_sets</span></code>, e.g. Abaqus
 <code class="docutils literal notranslate"><span class="pre">*ELSET</span></code>) are imported. Meshes holding several element types are
-returned as a <code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code>; element sets are then split per
+returned as a <a class="reference internal" href="fedoo.MultiMesh.html#fedoo.MultiMesh" title="fedoo.MultiMesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiMesh</span></code></a>; element sets are then split per
 element type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>io_mesh</strong> (<em>meshio.Mesh</em>) – Mesh object returned by <code class="docutils literal notranslate"><span class="pre">meshio.read</span></code>.</p></li>
+<li><p><strong>io_mesh</strong> (<em>meshlane.Mesh</em><em> or </em><em>meshio.Mesh</em>) – Mesh object returned by <code class="docutils literal notranslate"><span class="pre">meshlane.read</span></code> or <code class="docutils literal notranslate"><span class="pre">meshio.read</span></code>.</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – name of the new created Mesh. If specified, this Mesh is added to
 the dict containing all the loaded Mesh (Mesh.get_all()).</p></li>
 </ul>

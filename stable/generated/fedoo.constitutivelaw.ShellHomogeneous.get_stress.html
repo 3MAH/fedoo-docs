@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.constitutivelaw.ShellHomogeneous.get_stress &mdash; Fedoo 1.0.1 (stable)</title>
+  <title>fedoo.constitutivelaw.ShellHomogeneous.get_stress &mdash; Fedoo 1.1.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=292eb321"></script>
+      <script src="../_static/documentation_options.js?v=fc837d61"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -122,7 +122,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.ShellHomogeneous.get_stress">
 <span class="sig-prename descclassname"><span class="pre">ShellHomogeneous.</span></span><span class="sig-name descname"><span class="pre">get_stress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assembly</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ShellHomogeneous.get_stress" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Recover local stress at normalized thickness position(s).</p>
+<p>The default position is +1 (top face); position=None uses configured
+output points. This method does not reduce points. Dataset reads use
+<code class="docutils literal notranslate"><span class="pre">shell_options</span></code> and default to the sole saved point, or the top face
+when multiple points or only generalized fields exist. With a reduction, full
+tensors are reduced componentwise and components can come from different
+thickness points. Scalar invariants are evaluated before reduction;
+computing invariants from an envelope instead is not guaranteed
+conservative. These selection rules also apply to dataset Strain fields.</p>
+</dd></dl>
 
 </section>
 

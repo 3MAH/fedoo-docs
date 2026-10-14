@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boundary conditions and constraints &mdash; Fedoo 1.0.1 (stable)</title>
+  <title>Boundary conditions and constraints &mdash; Fedoo 1.1.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=292eb321"></script>
+      <script src="_static/documentation_options.js?v=fc837d61"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -74,6 +74,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#basic-boundary-conditions">Basic boundary conditions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.ListBC.html">fedoo.ListBC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dirichlet-and-neumann-boundary-conditions">Dirichlet and Neumann Boundary conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boundary-conditions-sharing-some-dof">Boundary conditions sharing some dof</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multi-point-constraints">Multi Point Constraints</a></li>
 </ul>
 </li>
@@ -209,6 +210,39 @@ factor to the prescribed value and should be between 0 and 1.</p>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">t_fact</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">'Dirichlet'</span><span class="p">,</span> <span class="s1">'nodeset'</span><span class="p">,</span> <span class="s1">'Disp'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">time_func</span> <span class="o">=</span> <span class="n">step_function</span><span class="p">)])</span>
+</pre></div>
+</div>
+</section>
+<section id="boundary-conditions-sharing-some-dof">
+<h3>Boundary conditions sharing some dof<a class="headerlink" href="#boundary-conditions-sharing-some-dof" title="Link to this heading"></a></h3>
+<p>A displacement and a generalized force may be prescribed on the same node as
+long as the dof are different. When several boundary conditions are defined
+on the same dof:</p>
+<ul class="simple">
+<li><p>The generalized forces of the Neumann boundary conditions are summed. This
+includes the distributed loads (e.g. <a class="reference internal" href="generated/fedoo.constraint.Pressure.html#fedoo.constraint.Pressure" title="fedoo.constraint.Pressure"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.Pressure</span></code></a>),
+whose equivalent nodal forces are computed over the whole surface as if no
+dof was blocked.</p></li>
+<li><p>A Dirichlet boundary condition prevails over a Neumann one: the prescribed
+force is ignored and the nodal force is the reaction.</p></li>
+<li><p>For several Dirichlet boundary conditions, the last one in the list is
+applied.</p></li>
+</ul>
+<p>The boundary conditions that can’t be applied together are reported the
+first time they are applied to the problem: Dirichlet boundary conditions
+with different values on a dof, Dirichlet boundary condition on a dof
+eliminated by a multi point constraint, or dof eliminated by several multi
+point constraints. A non zero nodal force ignored on a blocked dof is also
+reported. By default a warning is emitted. The attribute <code class="docutils literal notranslate"><span class="pre">check_mode</span></code>
+allows to raise an error for the incompatible boundary conditions, or to
+disable the check:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">check_mode</span> <span class="o">=</span> <span class="s2">"raise"</span>  <span class="c1"># or "warn" (default), "ignore"</span>
+</pre></div>
+</div>
+<p>The report is also available as a list with
+<a class="reference internal" href="generated/fedoo.ListBC.check.html#fedoo.ListBC.check" title="fedoo.ListBC.check"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ListBC.check()</span></code></a>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">pb</span><span class="o">.</span><span class="n">check_boundary_conditions</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">"kind"</span><span class="p">],</span> <span class="n">record</span><span class="p">[</span><span class="s2">"node"</span><span class="p">],</span> <span class="n">record</span><span class="p">[</span><span class="s2">"variable"</span><span class="p">])</span>
 </pre></div>
 </div>
 </section>
@@ -452,19 +486,59 @@ configurations.  It supports both 2D and 3D problems, friction, and optional
 CCD (Continuous Collision Detection) line search.</p>
 <p>Unlike the penalty method, IPC does <strong>not</strong> require tuning a penalty
 parameter.  The barrier stiffness <span class="math notranslate nohighlight">\(\kappa\)</span> is automatically computed
-and adaptively updated to balance the elastic and contact forces.  The only
-physical parameter is <code class="docutils literal notranslate"><span class="pre">dhat</span></code> — the barrier activation distance that
-controls the minimum gap between surfaces (default: 0.1% of the bounding
-box diagonal).</p>
+and adaptively updated to balance the elastic and contact forces. <code class="docutils literal notranslate"><span class="pre">dhat</span></code>
+sets the barrier activation range (default: 0.1% of the bounding-box
+diagonal); <code class="docutils literal notranslate"><span class="pre">dmin</span></code> optionally sets a physical minimum separation.</p>
 <p><strong>Choosing dhat</strong> — The default <code class="docutils literal notranslate"><span class="pre">dhat=1e-3</span></code> (relative) means the
 barrier activates when surfaces are within 0.1 % of the bounding-box
 diagonal.  For problems with a very small initial gap, increase <code class="docutils literal notranslate"><span class="pre">dhat</span></code>
 (e.g. <code class="docutils literal notranslate"><span class="pre">1e-2</span></code>) so the barrier catches contact early.  For tight-fitting
 assemblies where a visible gap is unacceptable, decrease it (e.g.
 <code class="docutils literal notranslate"><span class="pre">1e-4</span></code>), but expect more Newton–Raphson iterations.</p>
+<p><strong>Contact thickness / offset</strong> — <code class="docutils literal notranslate"><span class="pre">dmin=0</span></code> preserves zero-thickness
+contact. A positive <code class="docutils literal notranslate"><span class="pre">dmin</span></code> sets the minimum distance between collision
+primitives: the barrier activates when the distance is below
+<code class="docutils literal notranslate"><span class="pre">dmin</span> <span class="pre">+</span> <span class="pre">dhat</span></code> and diverges as it approaches <code class="docutils literal notranslate"><span class="pre">dmin</span></code>. <code class="docutils literal notranslate"><span class="pre">dmin</span></code> is always
+in absolute model length units, even with <code class="docutils literal notranslate"><span class="pre">dhat_is_relative=True</span></code>.
+Increasing <code class="docutils literal notranslate"><span class="pre">dhat</span></code> alone does not impose a physical thickness.</p>
+<p>For 2D beam centerlines with a common radius of 0.2 mm, use a minimum
+centerline separation of 0.4 mm:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">IPCContact</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">,</span> <span class="n">surface_mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span>
+    <span class="n">dmin</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">dhat</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">dhat_is_relative</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_ccd</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">beam_assembly</span><span class="p">,</span> <span class="n">contact</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The initial geometry must have separation strictly greater than <code class="docutils literal notranslate"><span class="pre">dmin</span></code>
+for every eligible collision pair. IPC excludes primitives sharing a
+vertex, but nearby segments around connected joints can still require
+additional collision exclusions: a vertex and the edges two rings away on
+the same surface are about one edge length apart, so <code class="docutils literal notranslate"><span class="pre">dmin</span> <span class="pre">+</span> <span class="pre">dhat</span></code>
+must stay below the edge length of the surface mesh, unless
+<code class="docutils literal notranslate"><span class="pre">excluded_rings</span></code> is raised: the nearest primitive pair allowed to collide is
+then about <code class="docutils literal notranslate"><span class="pre">excluded_rings</span> <span class="pre">-</span> <span class="pre">1</span></code> edge lengths away, which lets the shell
+thickness exceed the element size.
+The offset is uniform across the mesh; it does not model section deformation
+or automatically add periodic-image contact. <code class="docutils literal notranslate"><span class="pre">IPCSelfContact</span></code> accepts the same <code class="docutils literal notranslate"><span class="pre">dmin</span></code> argument.
+Nonzero offsets are not supported with <code class="docutils literal notranslate"><span class="pre">use_ogc=True</span></code>.</p>
+<p><strong>Exact or projected contact hessian</strong> — by default each collision hessian
+is projected onto the positive semi-definite cone (<code class="docutils literal notranslate"><span class="pre">psd_projection=True</span></code>),
+which guarantees a descent direction for the energy line search but makes
+the Newton tangent inexact: the iterations then converge linearly, about 0.7
+per iteration, as soon as the contact carries a large share of the load.
+<code class="docutils literal notranslate"><span class="pre">psd_projection=False</span></code> assembles the exact hessian; with a direct solver
+this restores the quadratic convergence of Newton-Raphson.</p>
+<p>Rigid-body contact also accepts <code class="docutils literal notranslate"><span class="pre">dmin</span></code> through
+<code class="docutils literal notranslate"><span class="pre">RigidBody.set_static_obstacle(...,</span> <span class="pre">dmin=...)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">RigidBody.set_static_plane(...,</span> <span class="pre">dmin=...)</span></code>. All analytic planes attached
+to one body must use the same <code class="docutils literal notranslate"><span class="pre">dmin</span></code>, <code class="docutils literal notranslate"><span class="pre">dhat</span></code> and <code class="docutils literal notranslate"><span class="pre">kappa</span></code>.</p>
 <p><strong>CCD line search</strong> — Enabling <code class="docutils literal notranslate"><span class="pre">use_ccd=True</span></code> is recommended for
 problems where first contact occurs suddenly (e.g. a punch hitting a
-plate) or where self-contact can cause rapid topology changes.</p>
+plate) or where self-contact can cause rapid topology changes.
+CCD uses the same <code class="docutils literal notranslate"><span class="pre">dmin</span></code> as the barrier so Newton corrections preserve
+the minimum separation. Disabling CCD removes this swept-path protection.</p>
 <p><strong>Energy-based backtracking</strong> — When <code class="docutils literal notranslate"><span class="pre">use_ccd=True</span></code>, an
 energy-based backtracking phase is automatically enabled after CCD
 filtering: the step is halved until total energy (exact barrier +
