@@ -1,0 +1,83 @@
+﻿fedoo.constitutivelaw.BeamFiberSection
+======================================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: BeamFiberSection
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamFiberSection.compute_linear_density
+         BeamFiberSection.compute_rotary_density
+         BeamFiberSection.from_section_description
+         BeamFiberSection.get_all
+         BeamFiberSection.get_beam_rigidity
+         BeamFiberSection.get_local_frame
+         BeamFiberSection.get_strain
+         BeamFiberSection.get_stress
+         BeamFiberSection.get_stress_distribution
+         BeamFiberSection.initialize
+         BeamFiberSection.integration_stresses
+         BeamFiberSection.normalize_section_coordinates
+         BeamFiberSection.normalized_output_points
+         BeamFiberSection.normalized_section_coordinates
+         BeamFiberSection.reset
+         BeamFiberSection.sample_points
+         BeamFiberSection.scale_section_points
+         BeamFiberSection.section_bounds
+         BeamFiberSection.section_coordinates
+         BeamFiberSection.section_description
+         BeamFiberSection.section_mesh
+         BeamFiberSection.set_local_frame
+         BeamFiberSection.set_start
+         BeamFiberSection.shear_stress
+         BeamFiberSection.to_start
+         BeamFiberSection.torsion_strain
+         BeamFiberSection.torsion_stress
+         BeamFiberSection.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamFiberSection.fibers
+         BeamFiberSection.is_section_law
+         BeamFiberSection.linear_density
+         BeamFiberSection.n_fibers
+         BeamFiberSection.n_points
+         BeamFiberSection.name
+         BeamFiberSection.output_points
+         BeamFiberSection.recovery
+         BeamFiberSection.rotary_density
+         BeamFiberSection.section_dimensions
+         BeamFiberSection.section_registry
+         BeamFiberSection.section_type
+         BeamFiberSection.fiber_material
+         BeamFiberSection.material
+         BeamFiberSection.A
+         BeamFiberSection.Jx
+         BeamFiberSection.Iyy
+         BeamFiberSection.Izz
+         BeamFiberSection.k
+         BeamFiberSection.is_initialized
+  
+  
