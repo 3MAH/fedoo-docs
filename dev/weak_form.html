@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="fedoo.weakform.StressEquilibrium" href="generated/fedoo.weakform.StressEquilibrium.html" />
-    <link rel="prev" title="fedoo.constitutivelaw.ThermalProperties.is_initialized" href="generated/fedoo.constitutivelaw.ThermalProperties.is_initialized.html" /> 
+    <link rel="prev" title="fedoo.constitutivelaw.KozenyCarmanPermeability.__call__" href="generated/fedoo.constitutivelaw.KozenyCarmanPermeability.__call__.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -72,6 +72,8 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.HeatEquation.html">fedoo.weakform.HeatEquation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html">fedoo.weakform.PoroMechanicsSimple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html">fedoo.weakform.PoroMechanics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html">fedoo.weakform.BeamEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.SpringEquilibrium.html">fedoo.weakform.SpringEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibrium.html">fedoo.weakform.PlateEquilibrium</a></li>
@@ -92,6 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poromechanics.html">Poromechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
@@ -162,6 +165,12 @@ existing class.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.HeatEquation.html#fedoo.weakform.HeatEquation" title="fedoo.weakform.HeatEquation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HeatEquation</span></code></a>(thermal_constitutivelaw[, ...])</p></td>
 <td><p>Weak formulation of the heat equation.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html#fedoo.weakform.PoroMechanicsSimple" title="fedoo.weakform.PoroMechanicsSimple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PoroMechanicsSimple</span></code></a>(skeleton_law, fluid_props)</p></td>
+<td><p>Non-mixed <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">PorePressure)</span></code> poromechanics weak form.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PoroMechanics</span></code></a>(skeleton_law, fluid_props[, ...])</p></td>
+<td><p>Full mixed <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">PorePressure,</span> <span class="pre">Pressure)</span></code> poromechanics weak form.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html#fedoo.weakform.BeamEquilibrium" title="fedoo.weakform.BeamEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamEquilibrium</span></code></a>(material[, A, Jx, Iyy, Izz, ...])</p></td>
 <td><p>Weak formulation of the mechanical equilibrium equation for beam models.</p></td>
 </tr>
@@ -212,7 +221,7 @@ existing class.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="generated/fedoo.constitutivelaw.ThermalProperties.is_initialized.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.ThermalProperties.is_initialized" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/fedoo.constitutivelaw.KozenyCarmanPermeability.__call__.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.KozenyCarmanPermeability.__call__" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="generated/fedoo.weakform.StressEquilibrium.html" class="btn btn-neutral float-right" title="fedoo.weakform.StressEquilibrium" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

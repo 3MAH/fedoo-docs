@@ -538,6 +538,81 @@ This section show some advanced capabilities of fedoo.
 
     </div>
 
+Poromechanics
+-------------
+
+Biot poroelasticity of saturated porous media, in small and finite strain.
+See :doc:`/poromechanics` for the formulation.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A saturated column is loaded by a constant pressure on its drained top face, under lateral confinement, and settles by about 8 %. The skeleton is a compressible Neo-Hookean solid (simcoon NEOHC law) and the permeability decreases with the volume change through the Holmes-Mow model, as is typical for soft biological tissues such as articular cartilage.">
+
+.. only:: html
+
+  .. image:: /examples/poromechanics/images/thumb/sphx_glr_finite_strain_consolidation_thumb.png
+    :alt:
+
+  :doc:`/examples/poromechanics/finite_strain_consolidation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Finite strain consolidation of a hyperelastic porous column</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The mixed displacement-pressure and the Biot u-PorePressure saddle systems need an inf-sup (LBB) stable interpolation pair. Equal-order pairs (displacement and pressure interpolated identically) violate the LBB condition and pollute the pressure with spurious &quot;checkerboard&quot; modes.">
+
+.. only:: html
+
+  .. image:: /examples/poromechanics/images/thumb/sphx_glr_taylor_hood_lbb_thumb.png
+    :alt:
+
+  :doc:`/examples/poromechanics/taylor_hood_lbb`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A column of saturated porous material with a linear elastic skeleton is loaded by a constant pressure on its top face. The top face is drained (``PorePressure = 0``), the bottom and lateral faces are sealed, and the lateral displacements are blocked (oedometric, i.e. 1D, consolidation).">
+
+.. only:: html
+
+  .. image:: /examples/poromechanics/images/thumb/sphx_glr_terzaghi_1d_thumb.png
+    :alt:
+
+  :doc:`/examples/poromechanics/terzaghi_1d`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Terzaghi 1D consolidation (small strain)</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
 
 .. toctree::
    :hidden:
@@ -547,6 +622,7 @@ This section show some advanced capabilities of fedoo.
    /examples/01-simple/index.rst
    /examples/02-constraints/index.rst
    /examples/03-advanced/index.rst
+   /examples/poromechanics/index.rst
 
 
 .. only:: html

@@ -1,0 +1,47 @@
+﻿fedoo.constitutivelaw.PoroFluidProperties
+=========================================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: PoroFluidProperties
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         PoroFluidProperties.get_all
+         PoroFluidProperties.get_local_frame
+         PoroFluidProperties.get_mobility
+         PoroFluidProperties.get_storage
+         PoroFluidProperties.initialize
+         PoroFluidProperties.reset
+         PoroFluidProperties.set_local_frame
+         PoroFluidProperties.set_start
+         PoroFluidProperties.to_start
+         PoroFluidProperties.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         PoroFluidProperties.name
+         PoroFluidProperties.is_initialized
+  
+  

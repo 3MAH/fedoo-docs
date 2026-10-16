@@ -70,6 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poromechanics.html">Poromechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
@@ -149,6 +150,7 @@
 <li class="toctree-l2"><a class="reference internal" href="constitutive_law.html#beam-constitutive-laws">Beam constitutive laws</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constitutive_law.html#shell-constitutive-laws">Shell constitutive laws</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constitutive_law.html#thermal-constitutive-law">Thermal constitutive law</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constitutive_law.html#poromechanics-fluid-properties">Poromechanics fluid properties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constitutive_law.html#manage-local-frames">Manage local frames</a></li>
 </ul>
 </li>
@@ -158,6 +160,8 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.HeatEquation.html">fedoo.weakform.HeatEquation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html">fedoo.weakform.PoroMechanicsSimple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html">fedoo.weakform.PoroMechanics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html">fedoo.weakform.BeamEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.SpringEquilibrium.html">fedoo.weakform.SpringEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibrium.html">fedoo.weakform.PlateEquilibrium</a></li>
@@ -207,6 +211,19 @@
 <li class="toctree-l2"><a class="reference internal" href="boundary_conditions.html#contact">Contact</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="poromechanics.html">Poromechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="poromechanics.html#governing-equations">Governing equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="poromechanics.html#weak-forms-and-choosing-a-variant">Weak forms and choosing a variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="poromechanics.html#element-interpolation-lbb-stability">Element interpolation (LBB stability)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="poromechanics.html#fluid-properties-and-permeability-models">Fluid properties and permeability models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="poromechanics.html#finite-strain-formulation">Finite strain formulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="poromechanics.html#sign-conventions">Sign conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="poromechanics.html#validation">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="poromechanics.html#limitations">Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="poromechanics.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="poromechanics.html#api">API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="post_processing.html#get-results-from-a-problem">Get results from a problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="post_processing.html#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
@@ -230,6 +247,7 @@
 <li class="toctree-l2"><a class="reference internal" href="examples/index.html#simple-examples-to-start">Simple examples to start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/index.html#apply-constraints">Apply constraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/index.html#advanced-problems">Advanced problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/index.html#poromechanics">Poromechanics</a></li>
 </ul>
 </li>
 </ul>

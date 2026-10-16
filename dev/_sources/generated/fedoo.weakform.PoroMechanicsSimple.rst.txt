@@ -1,0 +1,58 @@
+﻿fedoo.weakform.PoroMechanicsSimple
+==================================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: PoroMechanicsSimple
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         PoroMechanicsSimple.__getitem__
+         PoroMechanicsSimple.copy
+         PoroMechanicsSimple.get_all
+         PoroMechanicsSimple.get_dissipation
+         PoroMechanicsSimple.get_storage
+         PoroMechanicsSimple.get_weak_equation
+         PoroMechanicsSimple.initialize
+         PoroMechanicsSimple.iter_leaf
+         PoroMechanicsSimple.reset
+         PoroMechanicsSimple.set_damping
+         PoroMechanicsSimple.set_dissipation
+         PoroMechanicsSimple.set_inertia
+         PoroMechanicsSimple.set_start
+         PoroMechanicsSimple.set_storage
+         PoroMechanicsSimple.sum
+         PoroMechanicsSimple.to_start
+         PoroMechanicsSimple.update
+         PoroMechanicsSimple.update_2
+      
+         PoroMechanicsSimple.__getitem__
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         PoroMechanicsSimple.list_weakform
+         PoroMechanicsSimple.name
+         PoroMechanicsSimple.nvar
+         PoroMechanicsSimple.space
+  
+  
