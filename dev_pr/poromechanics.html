@@ -202,14 +202,20 @@ derived for one-dimensional consolidation with linear elements and
 incompressible constituents; with a hydraulic conductivity
 <span class="math notranslate nohighlight">\(k_h = k\,\gamma_w/\mu_f\)</span> it reads
 <span class="math notranslate nohighlight">\(\Delta t \gtrsim \gamma_w h^2/(6\,E_{oed}\,k_h)\)</span>, the form quoted in
-the Abaqus documentation. Fine meshes,
-low permeabilities and short first steps of a fast loading are therefore the
-risky cases. Equal-order elements are fine for most consolidation analyses
-that do not need the very first instants.</p>
+the Abaqus documentation. Fine meshes, low permeabilities and short first
+steps of a fast loading are therefore the risky cases. The default fluid
+(<code class="docutils literal notranslate"><span class="pre">biot_modulus=None</span></code>, incompressible, <span class="math notranslate nohighlight">\(1/M = 0\)</span>) is the worst case:
+only the Darcy term is left to stabilise. Equal-order elements are fine for
+most consolidation analyses that do not need the very first instants.</p>
 <p><strong>Taylor-Hood interpolation</strong> interpolates the displacement one order higher
 than the pressure: quadratic <code class="docutils literal notranslate"><span class="pre">u</span></code> and linear <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code>. This pair
 satisfies the inf-sup condition and gives a smooth pressure even in the
-undrained limit, at the cost of a quadratic mesh.</p>
+undrained limit, at the cost of a quadratic mesh. It does not remove a
+second, physical difficulty of the first instants: the pressure boundary
+layer near a drained face is thinner than one element, and the first
+pressure node overshoots (of the order of 25 % at the first step of a
+Terzaghi column). Refine the mesh near drained faces or use a larger first step if
+the very early response matters.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Quadratic mesh (<code class="docutils literal notranslate"><span class="pre">u</span></code>)</p></th>
@@ -253,18 +259,39 @@ under the name given as first argument, which must therefore be created
 <p>With the three-field <a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-class docutils literal notranslate"><span class="pre">PoroMechanics</span></code></a>, interpolate
 the skeleton <code class="docutils literal notranslate"><span class="pre">Pressure</span></code> linearly as well
 (<code class="docutils literal notranslate"><span class="pre">elm.set_variable_interpolation(&quot;Pressure&quot;,</span> <span class="pre">&quot;hex8&quot;)</span></code>).</p>
+<p><strong>Practical points.</strong></p>
+<ul class="simple">
+<li><p>The name of a combined element is global: creating another one with the
+same name replaces it. Use one name per base element type.</p></li>
+<li><p>Keep the default integration of the base element; reduced-integration
+bases (<code class="docutils literal notranslate"><span class="pre">hex20r</span></code>, …) are not validated with Taylor-Hood.</p></li>
+<li><p>fedoo has no <code class="docutils literal notranslate"><span class="pre">tet10</span></code> mesh generator: import a quadratic mesh (gmsh) or
+convert a <code class="docutils literal notranslate"><span class="pre">tet4</span></code> mesh with <code class="docutils literal notranslate"><span class="pre">fd.mesh.change_elm_type(mesh,</span> <span class="pre">&quot;tet10&quot;)</span></code>
+(slow on large meshes). For <code class="docutils literal notranslate"><span class="pre">tri6</span></code>/<code class="docutils literal notranslate"><span class="pre">tet10</span></code>, avoid meshes where an
+element has all its vertices on the boundary (corner elements of
+structured diagonal splits): they can carry a spurious pressure mode.</p></li>
+<li><p><strong>Drained boundaries</strong>: prescribe <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> on the vertex nodes of
+the face; with a linear pressure this drains the whole face. Conditions
+on mid-side nodes have no effect.</p></li>
+<li><p><strong>Fluid fluxes</strong> given as nodal values must be distributed on the vertex
+nodes with the weights of the linear element (one half per edge end,
+for instance), not with the quadratic weights.</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>With a Taylor-Hood element, the <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> DOFs of the mid-side
-nodes carry no physical value: the pressure is defined by the vertex
-nodes only. A nodal plot of <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> that includes the mid-side
-nodes is therefore misleading. Read the pressure at the vertex nodes, or
-at the integration points with
-<code class="docutils literal notranslate"><span class="pre">assembly.get_gp_results(pb.space.variable(&quot;PorePressure&quot;),</span>
-<span class="pre">pb.get_dof_solution())</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> DOFs of the mid-side nodes are not interpolated by
+any element: fedoo eliminates them automatically and they stay at zero.
+A nodal plot built from <code class="docutils literal notranslate"><span class="pre">pb.get_dof_solution(&quot;PorePressure&quot;)</span></code> on all
+nodes (or a VTK export of the quadratic cells) therefore shows a sawtooth
+that is not in the solution. Use the interpolated values instead:
+<code class="docutils literal notranslate"><span class="pre">assembly.get_node_results(pb.space.variable(&quot;PorePressure&quot;),</span>
+<span class="pre">pb.get_dof_solution())</span></code> returns the exact values at every node, the
+mid-side ones being linearly interpolated from the vertices, and
+<code class="docutils literal notranslate"><span class="pre">assembly.get_gp_results(...)</span></code> gives them at the integration points.</p>
 </div>
 <p>The example <a class="reference internal" href="examples/poromechanics/taylor_hood_lbb.html#sphx-glr-examples-poromechanics-taylor-hood-lbb-py"><span class="std std-ref">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</span></a>
-compares equal-order and Taylor-Hood interpolations in the undrained limit.</p>
+compares equal-order and Taylor-Hood interpolations on an undrained strip
+footing with an analytical solution.</p>
 </section>
 <section id="fluid-properties-and-permeability-models">
 <h2>Fluid properties and permeability models<a class="headerlink" href="#fluid-properties-and-permeability-models" title="Link to this heading"></a></h2>
@@ -362,7 +389,12 @@ Pore pressure is positive in compression.</p>
 <li><p>Mandel 2D vs the Abousleiman analytical solution, including the
 Mandel-Cryer non-monotonic pressure peak (~1 %) —
 <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_mandel_analytical.py</span></code>;</p></li>
-<li><p>Taylor-Hood LBB stability — <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_taylor_hood.py</span></code>;</p></li>
+<li><p>Taylor-Hood elements: pressure operators and eliminated mid-side DOFs,
+exact undrained oedometer for <code class="docutils literal notranslate"><span class="pre">quad8</span></code>/<code class="docutils literal notranslate"><span class="pre">quad4</span></code>, <code class="docutils literal notranslate"><span class="pre">tri6</span></code>/<code class="docutils literal notranslate"><span class="pre">tri3</span></code> and
+<code class="docutils literal notranslate"><span class="pre">hex20</span></code>/<code class="docutils literal notranslate"><span class="pre">hex8</span></code>, and undrained strip footing against the elastic
+solution (Taylor-Hood within 3 %, equal order with a checkerboard) —
+<code class="docutils literal notranslate"><span class="pre">tests/test_combined_element_taylor_hood.py</span></code> and
+<code class="docutils literal notranslate"><span class="pre">tests/test_poromech_taylor_hood.py</span></code>;</p></li>
 <li><p>Finite strain with a simcoon Neo-Hookean skeleton (<code class="docutils literal notranslate"><span class="pre">NEOHC</span></code>, UL) and
 Holmes-Mow permeability: exact confined kinematics
 <span class="math notranslate nohighlight">\(\ln J = \ln(1 + \delta/L)\)</span> at the drained state —

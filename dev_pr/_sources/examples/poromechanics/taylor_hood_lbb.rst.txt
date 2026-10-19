@@ -52,20 +52,20 @@ exact undrained Biot pressure.
      Part A - nearly incompressible mixed elasticity (nu = 0.49999)
      same quad8 mesh & quadratic displacement; only the Pressure order differs
     ======================================================================
-      Taylor-Hood Q2-Q1 (Pressure quad4): well posed, smooth pressure, extrema [-105.1, +4.714e+04]
+      Taylor-Hood Q2-Q1 (Pressure quad4): well posed, smooth pressure, extrema [-0.007573, +0.007573]
       equal order Q2-Q2 (Pressure quad8): see end of script.
 
     ======================================================================
      Part B - Taylor-Hood poromechanics, undrained step (hex20 u / hex8 p)
     ======================================================================
       converged=1 in 1 iter(s)
-      undrained gauss-point pore pressure: mean=10000  std=4.6e-12
+      undrained gauss-point pore pressure: mean=10000  std=4e-12
       analytical  p0 = -alpha*M*tr(eps) = 10000 Pa  (match)
 
     ======================================================================
      Equal-order Q2-Q2 on the Part A problem (LBB-deficient)
     ======================================================================
-      solved, but gp pressure extrema [-0.01371, +0.01371] (0.00x the Taylor-Hood extrema -> checkerboard pollution)
+      solved, but gp pressure extrema [-0.01371, +0.01371] (1.81x the Taylor-Hood extrema -> checkerboard pollution)
 
     DONE
 
@@ -245,7 +245,7 @@ exact undrained Biot pressure.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.470 seconds)
+   **Total running time of the script:** (0 minutes 0.293 seconds)
 
 
 .. _sphx_glr_download_examples_poromechanics_taylor_hood_lbb.py:
