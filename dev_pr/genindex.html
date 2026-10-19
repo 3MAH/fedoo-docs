@@ -61,6 +61,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
@@ -177,6 +178,8 @@
         <li><a href="generated/fedoo.time.CentralDifference.html#fedoo.time.CentralDifference.__init__">(CentralDifference method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.CohesiveLaw.html#fedoo.constitutivelaw.CohesiveLaw.__init__">(CohesiveLaw method)</a>
+</li>
+        <li><a href="generated/fedoo.lib_elements.CombinedElement.html#fedoo.lib_elements.CombinedElement.__init__">(CombinedElement method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.CompositeUD.html#fedoo.constitutivelaw.CompositeUD.__init__">(CompositeUD method)</a>
 </li>
@@ -703,6 +706,8 @@
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.CohesiveLaw.html#fedoo.constitutivelaw.CohesiveLaw">CohesiveLaw (class in fedoo.constitutivelaw)</a>
 </li>
+      <li><a href="generated/fedoo.lib_elements.CombinedElement.html#fedoo.lib_elements.CombinedElement">CombinedElement (class in fedoo.lib_elements)</a>
+</li>
       <li><a href="generated/fedoo.time.BackwardEuler.compile_assembly.html#fedoo.time.BackwardEuler.compile_assembly">compile_assembly() (BackwardEuler method)</a>
 
       <ul>
@@ -1155,6 +1160,13 @@
 </li>
       </ul></li>
       <li>
+    fedoo.lib_elements
+
+      <ul>
+        <li><a href="elements.html#module-fedoo.lib_elements">module</a>
+</li>
+      </ul></li>
+      <li>
     fedoo.mesh
 
       <ul>
@@ -1414,6 +1426,8 @@
 </li>
         <li><a href="generated/fedoo.weakform.ImplicitDynamic.get_all.html#fedoo.weakform.ImplicitDynamic.get_all">(ImplicitDynamic static method)</a>
 </li>
+        <li><a href="generated/fedoo.lib_elements.get_all.html#fedoo.lib_elements.get_all">(in module fedoo.lib_elements)</a>
+</li>
         <li><a href="generated/fedoo.weakform.Inertia.get_all.html#fedoo.weakform.Inertia.get_all">(Inertia static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.InterfaceForce.get_all.html#fedoo.weakform.InterfaceForce.get_all">(InterfaceForce static method)</a>
@@ -1503,6 +1517,8 @@
         <li><a href="generated/fedoo.constitutivelaw.ThermalProperties.get_all.html#fedoo.constitutivelaw.ThermalProperties.get_all">(ThermalProperties static method)</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.lib_elements.CombinedElement.get_all_elm_type.html#fedoo.lib_elements.CombinedElement.get_all_elm_type">get_all_elm_type() (CombinedElement method)</a>
+</li>
       <li><a href="generated/fedoo.MultiFrameDataSet.get_all_frame_lim.html#fedoo.MultiFrameDataSet.get_all_frame_lim">get_all_frame_lim() (MultiFrameDataSet method)</a>
 </li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.get_B.html#fedoo.problem.ExplicitDynamic.get_B">get_B() (ExplicitDynamic method)</a>
@@ -1675,6 +1691,8 @@
         <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.get_elastic_matrix.html#fedoo.constitutivelaw.ElastoPlasticity.get_elastic_matrix">(ElastoPlasticity method)</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.lib_elements.get_element.html#fedoo.lib_elements.get_element">get_element() (in module fedoo.lib_elements)</a>
+</li>
       <li><a href="assembly.html#fedoo.Assembly.get_element_local_frame">get_element_local_frame() (Assembly method)</a>
 
       <ul>
@@ -1711,6 +1729,8 @@
         <li><a href="generated/fedoo.MultiMesh.get_elements_from_nodes.html#fedoo.MultiMesh.get_elements_from_nodes">(MultiMesh method)</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.lib_elements.CombinedElement.get_elm_type.html#fedoo.lib_elements.CombinedElement.get_elm_type">get_elm_type() (CombinedElement method)</a>
+</li>
       <li><a href="generated/fedoo.constitutivelaw.CompositeUD.get_engineering_constants.html#fedoo.constitutivelaw.CompositeUD.get_engineering_constants">get_engineering_constants() (CompositeUD method)</a>
 </li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.get_ext_forces.html#fedoo.problem.ExplicitDynamic.get_ext_forces">get_ext_forces() (ExplicitDynamic method)</a>
@@ -3044,6 +3064,8 @@
 
       <ul>
         <li><a href="constitutive_law.html#module-fedoo.constitutivelaw">fedoo.constitutivelaw</a>
+</li>
+        <li><a href="elements.html#module-fedoo.lib_elements">fedoo.lib_elements</a>
 </li>
         <li><a href="mesh.html#module-fedoo.mesh">fedoo.mesh</a>
 </li>
@@ -4400,8 +4422,6 @@
         <li><a href="generated/fedoo.core.base.ProblemBase.set_solver.html#fedoo.core.base.ProblemBase.set_solver">(ProblemBase method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.weakform.ArtificialDamping.set_start.html#fedoo.weakform.ArtificialDamping.set_start">set_start() (ArtificialDamping method)</a>
 
       <ul>
@@ -4512,6 +4532,8 @@
         <li><a href="generated/fedoo.constitutivelaw.ThermalProperties.set_start.html#fedoo.constitutivelaw.ThermalProperties.set_start">(ThermalProperties method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.weakform.ArtificialDamping.set_storage.html#fedoo.weakform.ArtificialDamping.set_storage">set_storage() (ArtificialDamping method)</a>
 
       <ul>
@@ -4566,6 +4588,8 @@
         <li><a href="generated/fedoo.problem.NonLinear.set_time_integrator.html#fedoo.problem.NonLinear.set_time_integrator">(NonLinear method)</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.lib_elements.CombinedElement.set_variable_interpolation.html#fedoo.lib_elements.CombinedElement.set_variable_interpolation">set_variable_interpolation() (CombinedElement method)</a>
+</li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.set_X.html#fedoo.problem.ExplicitDynamic.set_X">set_X() (ExplicitDynamic method)</a>
 
       <ul>
