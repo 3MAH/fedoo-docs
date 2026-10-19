@@ -246,10 +246,11 @@ coupling terms of the mass balance carry the factor <span class="math notranslat
 pulled back to <span class="math notranslate nohighlight">\((k/\mu_f) J \mathbf{C}^{-1}\)</span>.</p></li>
 </ul>
 <p>In both modes the dependence of the Darcy term on the displacement (moving
-mesh in UL, <span class="math notranslate nohighlight">\(J \mathbf{C}^{-1}\)</span> in TL) and the derivative
-<span class="math notranslate nohighlight">\(d(J\mathbf{C}^{-1})/du\)</span> of the TL momentum coupling are not
-linearized: the residual is exact, these tangent blocks use frozen
-kinematics.</p>
+mesh in UL, <span class="math notranslate nohighlight">\(J \mathbf{C}^{-1}\)</span> in TL), the variation of the volume
+element <span class="math notranslate nohighlight">\(dv\)</span> in the UL storage and coupling terms of the mass balance,
+and the derivative <span class="math notranslate nohighlight">\(d(J\mathbf{C}^{-1})/du\)</span> of the TL momentum
+coupling are not linearized: the residual is exact, these tangent blocks
+use frozen kinematics.</p>
 <p><strong>Relation to Coussy’s poromechanics.</strong> In the Lagrangian finite-strain
 poroelasticity of Coussy (<em>Poromechanics</em>, 2004), the Lagrangian porosity
 <span class="math notranslate nohighlight">\(\phi = J n\)</span> obeys <span class="math notranslate nohighlight">\(\phi - \phi_0 = \mathbf{b} : \mathbf{E}
@@ -287,7 +288,13 @@ Holmes-Mow permeability: exact confined kinematics
 <span class="math notranslate nohighlight">\(\ln J = \ln(1 + \delta/L)\)</span> at the drained state —
 <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_finite_strain.py</span></code>;</p></li>
 <li><p>TL against UL on the same consolidation, and the TL mass-balance tangent
-against finite differences — <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_finite_strain_tl.py</span></code>.</p></li>
+against finite differences — <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_finite_strain_tl.py</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2Daxi</span></code>: homogeneous undrained unconfined compression of a cylinder vs
+the closed-form solution (both formulations), drained relaxation, and
+steady radial flow through a hollow cylinder vs the logarithmic pressure
+profile — <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_axi.py</span></code>. The draining case was also
+compared once with a 3D model of the full cylinder, with close agreement
+(this comparison is not part of the test suite).</p></li>
 </ul>
 </section>
 <section id="limitations">
@@ -303,9 +310,8 @@ the Biot coupling seeds the other modes at every iteration. Workarounds:
 smaller total strain, an elasto-plastic/corotational law (<code class="docutils literal notranslate"><span class="pre">ELISO</span></code> etc.,
 which are unaffected), or finer load steps do <em>not</em> help (the threshold is
 on the strain level, not the step size).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> modeling spaces are not supported: all poromechanics weak forms
-raise an explicit <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> (the Biot coupling lacks the
-<code class="docutils literal notranslate"><span class="pre">2*pi*r</span></code> measure and the hoop strain term).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> is supported in small strain and in UL, like
+<a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">StressEquilibrium</span></code></a>. It is not available in TL.</p></li>
 <li><p>The permeability tensor is isotropic (<span class="math notranslate nohighlight">\(k \mathbf{I}\)</span>); anisotropic
 permeability is not implemented.</p></li>
 <li><p>No gravity/body-force term for the fluid yet (<code class="docutils literal notranslate"><span class="pre">fluid_density</span></code> is
@@ -320,6 +326,11 @@ consolidation compared with the analytical Terzaghi series;</p></li>
 <li><p><a class="reference internal" href="examples/poromechanics/finite_strain_consolidation.html#sphx-glr-examples-poromechanics-finite-strain-consolidation-py"><span class="std std-ref">Finite strain consolidation of a hyperelastic porous column</span></a> —
 finite-strain (UL) confined consolidation of a Neo-Hookean skeleton with
 Holmes-Mow permeability;</p></li>
+<li><p><a class="reference internal" href="examples/poromechanics/indentation_soft_tissue.html#sphx-glr-examples-poromechanics-indentation-soft-tissue-py"><span class="std std-ref">Indentation of a hyperelastic soft tissue: fluid exudation</span></a> —
+axisymmetric (<code class="docutils literal notranslate"><span class="pre">2Daxi</span></code>) indentation of a hyperelastic soft tissue by a
+rigid spherical indenter with IPC contact, an impermeable contact zone
+that follows the contact, and force relaxation as the fluid is squeezed
+out;</p></li>
 <li><p><a class="reference internal" href="examples/poromechanics/taylor_hood_lbb.html#sphx-glr-examples-poromechanics-taylor-hood-lbb-py"><span class="std std-ref">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</span></a> — equal-order vs
 Taylor-Hood interpolation in the undrained limit.</p></li>
 </ul>

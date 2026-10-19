@@ -575,6 +575,23 @@ See :doc:`/poromechanics` for the formulation.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="A rigid hemispherical indenter is pressed into a layer of saturated soft tissue lying on a rigid substrate, as when pressing a fingertip on the skin. The indenter is pushed in quickly and then held in place.">
+
+.. only:: html
+
+  .. image:: /examples/poromechanics/images/thumb/sphx_glr_indentation_soft_tissue_thumb.png
+    :alt:
+
+  :doc:`/examples/poromechanics/indentation_soft_tissue`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Indentation of a hyperelastic soft tissue: fluid exudation</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="The mixed displacement-pressure and the Biot u-PorePressure saddle systems need an inf-sup (LBB) stable interpolation pair. Equal-order pairs (displacement and pressure interpolated identically) violate the LBB condition and pollute the pressure with spurious &quot;checkerboard&quot; modes.">
 
 .. only:: html
