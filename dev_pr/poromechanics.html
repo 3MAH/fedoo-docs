@@ -256,13 +256,12 @@ the skeleton <code class="docutils literal notranslate"><span class="pre">Pressu
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>With a Taylor-Hood element, the <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> DOFs of the mid-side
-nodes are not used: fedoo eliminates them and they stay at zero. A nodal
-plot of <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> therefore shows zeros at the mid-side nodes,
-which looks like an oscillation but is not one. Read the pressure at the
-vertex nodes, or at the integration points with
+nodes carry no physical value: the pressure is defined by the vertex
+nodes only. A nodal plot of <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> that includes the mid-side
+nodes is therefore misleading. Read the pressure at the vertex nodes, or
+at the integration points with
 <code class="docutils literal notranslate"><span class="pre">assembly.get_gp_results(pb.space.variable(&quot;PorePressure&quot;),</span>
-<span class="pre">pb.get_dof_solution())</span></code>. Pressure boundary conditions on mid-side nodes
-have no effect.</p>
+<span class="pre">pb.get_dof_solution())</span></code>.</p>
 </div>
 <p>The example <a class="reference internal" href="examples/poromechanics/taylor_hood_lbb.html#sphx-glr-examples-poromechanics-taylor-hood-lbb-py"><span class="std std-ref">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</span></a>
 compares equal-order and Taylor-Hood interpolations in the undrained limit.</p>

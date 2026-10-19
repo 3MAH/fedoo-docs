@@ -145,8 +145,8 @@ default that of <code class="docutils literal notranslate"><span class="pre">bas
 </dl>
 <p class="rubric">Notes</p>
 <p>The DOFs of a variable on nodes that its interpolation does not use
-(mid-side nodes for a linear pressure on a quadratic mesh) receive no
-contribution: they are eliminated by the solver and stay at zero.</p>
+(mid-side nodes for a linear pressure on a quadratic mesh) carry no
+physical value.</p>
 <p class="rubric">Examples</p>
 <p>Quadratic displacement with a linear pore pressure:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
