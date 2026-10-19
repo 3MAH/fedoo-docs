@@ -131,20 +131,20 @@ exact undrained Biot pressure.</p>
  Part A - nearly incompressible mixed elasticity (nu = 0.49999)
  same quad8 mesh &amp; quadratic displacement; only the Pressure order differs
 ======================================================================
-  Taylor-Hood Q2-Q1 (Pressure quad4): well posed, smooth pressure, extrema [-8.528e+18, +2.49e+19]
+  Taylor-Hood Q2-Q1 (Pressure quad4): well posed, smooth pressure, extrema [-0.007573, +0.007573]
   equal order Q2-Q2 (Pressure quad8): see end of script.
 
 ======================================================================
  Part B - Taylor-Hood poromechanics, undrained step (hex20 u / hex8 p)
 ======================================================================
   converged=1 in 1 iter(s)
-  undrained gauss-point pore pressure: mean=10000  std=4e-12
+  undrained gauss-point pore pressure: mean=10000  std=4.2e-12
   analytical  p0 = -alpha*M*tr(eps) = 10000 Pa  (match)
 
 ======================================================================
  Equal-order Q2-Q2 on the Part A problem (LBB-deficient)
 ======================================================================
-  solved, but gp pressure extrema [-0.01371, +0.01371] (0.00x the Taylor-Hood extrema -&gt; checkerboard pollution)
+  solved, but gp pressure extrema [-0.01371, +0.01371] (1.81x the Taylor-Hood extrema -&gt; checkerboard pollution)
 
 DONE
 </pre></div>
@@ -316,7 +316,7 @@ DONE
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">DONE"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.277 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.151 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-poromechanics-taylor-hood-lbb-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/3ad4d29b4e9fe36f2299cc051f9e75c4/taylor_hood_lbb.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">taylor_hood_lbb.ipynb</span></code></a></p>
