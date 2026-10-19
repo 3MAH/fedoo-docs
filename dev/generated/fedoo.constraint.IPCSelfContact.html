@@ -125,7 +125,10 @@
 <p>Convenience wrapper around <a class="reference internal" href="fedoo.constraint.IPCContact.html#fedoo.constraint.IPCContact" title="fedoo.constraint.IPCContact"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPCContact</span></code></a> that automatically
 extracts the surface mesh from the volumetric mesh. Useful for
 problems where a single body may come into contact with itself (e.g.
-buckling, folding, compression of porous structures).</p>
+buckling, folding, compression of porous structures). A 3D <code class="docutils literal notranslate"><span class="pre">lin2</span></code>
+mesh (beam centerlines, e.g. ropes or fiber bundles) is used directly
+as the contact mesh; set <code class="docutils literal notranslate"><span class="pre">dmin</span></code> to the fiber diameter and raise
+<code class="docutils literal notranslate"><span class="pre">excluded_rings</span></code> when the elements are shorter than <code class="docutils literal notranslate"><span class="pre">dmin</span> <span class="pre">+</span> <span class="pre">dhat</span></code>.</p>
 <p>All barrier stiffness tuning is automatic (see <a class="reference internal" href="fedoo.constraint.IPCContact.html#fedoo.constraint.IPCContact" title="fedoo.constraint.IPCContact"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPCContact</span></code></a>
 for details).</p>
 <dl class="field-list simple">
