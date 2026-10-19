@@ -83,6 +83,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../poromechanics.html">Poromechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
@@ -196,9 +197,11 @@ the 3D convergent formulation.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mesh</strong> (<a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><em>fedoo.Mesh</em></a>) – Full volumetric mesh (needed for DOF compatibility).</p></li>
-<li><p><strong>surface_mesh</strong> (<a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><em>fedoo.Mesh</em></a><em>, </em><em>optional</em>) – Pre-extracted surface mesh (<code class="docutils literal notranslate"><span class="pre">lin2</span></code> in 2D, <code class="docutils literal notranslate"><span class="pre">tri3</span></code> in 3D).</p></li>
+<li><p><strong>surface_mesh</strong> (<a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><em>fedoo.Mesh</em></a><em>, </em><em>optional</em>) – Pre-extracted surface mesh (<code class="docutils literal notranslate"><span class="pre">lin2</span></code> in 2D, <code class="docutils literal notranslate"><span class="pre">tri3</span></code> in 3D). In 3D,
+a <code class="docutils literal notranslate"><span class="pre">lin2</span></code> mesh is a curve, such as beam centerlines: its edges are
+the only collision primitives.</p></li>
 <li><p><strong>extract_surface</strong> (<em>bool</em><em>, </em><em>default=False</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, automatically extract the surface from the volumetric
-mesh.</p></li>
+mesh. A 3D <code class="docutils literal notranslate"><span class="pre">lin2</span></code> mesh is used directly as the contact mesh.</p></li>
 <li><p><strong>dhat</strong> (<em>float</em><em>, </em><em>default=1e-3</em>) – Barrier activation distance.  Pairs of primitives closer than
 <code class="docutils literal notranslate"><span class="pre">dhat</span></code> receive a repulsive barrier force.  A smaller value gives
 a tighter contact (less visible gap) but requires finer time steps.</p></li>

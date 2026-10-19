@@ -87,7 +87,6 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamCircular.html">fedoo.constitutivelaw.BeamCircular</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamPipe.html">fedoo.constitutivelaw.BeamPipe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamRectangular.html">fedoo.constitutivelaw.BeamRectangular</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamFiberSection.html">fedoo.constitutivelaw.BeamFiberSection</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#shell-constitutive-laws">Shell constitutive laws</a><ul>
@@ -101,6 +100,12 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ThermalProperties.html">fedoo.constitutivelaw.ThermalProperties</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#poromechanics-fluid-properties">Poromechanics fluid properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.PoroFluidProperties.html">fedoo.constitutivelaw.PoroFluidProperties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.HolmesMowPermeability.html">fedoo.constitutivelaw.HolmesMowPermeability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.KozenyCarmanPermeability.html">fedoo.constitutivelaw.KozenyCarmanPermeability</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#manage-local-frames">Manage local frames</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#beam-and-shell-frames">Beam and shell frames</a></li>
 </ul>
@@ -112,6 +117,7 @@
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poromechanics.html">Poromechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
@@ -217,9 +223,6 @@ selected formulation. The convention is detailed on
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamRectangular.html#fedoo.constitutivelaw.BeamRectangular" title="fedoo.constitutivelaw.BeamRectangular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamRectangular</span></code></a>(material, a[, b, k, name, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamFiberSection.html#fedoo.constitutivelaw.BeamFiberSection" title="fedoo.constitutivelaw.BeamFiberSection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamFiberSection</span></code></a>(section[, n_fibers, ...])</p></td>
-<td><p>Beam section integrated from nonlinear material points (fibers).</p></td>
-</tr>
 </tbody>
 </table>
 </section>
@@ -250,6 +253,25 @@ selected formulation. The convention is detailed on
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ThermalProperties.html#fedoo.constitutivelaw.ThermalProperties" title="fedoo.constitutivelaw.ThermalProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThermalProperties</span></code></a>(thermal_conductivity, ...)</p></td>
 <td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="poromechanics-fluid-properties">
+<h2>Poromechanics fluid properties<a class="headerlink" href="#poromechanics-fluid-properties" title="Link to this heading"></a></h2>
+<p>These properties should be associated with
+<a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html#fedoo.weakform.PoroMechanicsSimple" title="fedoo.weakform.PoroMechanicsSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PoroMechanicsSimple</span></code></a> or
+<a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PoroMechanics</span></code></a>. See <a class="reference internal" href="poromechanics.html"><span class="doc">Poromechanics</span></a>.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.PoroFluidProperties.html#fedoo.constitutivelaw.PoroFluidProperties" title="fedoo.constitutivelaw.PoroFluidProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PoroFluidProperties</span></code></a>(permeability[, ...])</p></td>
+<td><p>Fluid-phase parameters for a saturated porous medium.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.HolmesMowPermeability.html#fedoo.constitutivelaw.HolmesMowPermeability" title="fedoo.constitutivelaw.HolmesMowPermeability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HolmesMowPermeability</span></code></a>(k0, n0[, kappa, M])</p></td>
+<td><p>Strain-dependent permeability of Holmes and Mow.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.KozenyCarmanPermeability.html#fedoo.constitutivelaw.KozenyCarmanPermeability" title="fedoo.constitutivelaw.KozenyCarmanPermeability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KozenyCarmanPermeability</span></code></a>(k0, phi0)</p></td>
+<td><p>Kozeny-Carman permeability driven by current porosity <code class="docutils literal notranslate"><span class="pre">phi(J)</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -302,9 +324,7 @@ constitutive law.</p>
 that orientation is interpreted relative to the geometrical shell frame
 defined on the assembly. Beam constitutive laws currently use isotropic
 materials only, so material orientations are ignored. The assembly element
-frame defines the beam cross-section orientation. A
-<a class="reference internal" href="generated/fedoo.constitutivelaw.BeamFiberSection.html#fedoo.constitutivelaw.BeamFiberSection" title="fedoo.constitutivelaw.BeamFiberSection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BeamFiberSection</span></code></a> evaluates its material in the fiber axes of this
-frame (axis 1 along the beam).</p>
+frame defines the beam cross-section orientation.</p>
 </section>
 </section>
 </section>

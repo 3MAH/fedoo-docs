@@ -71,6 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../poromechanics.html">Poromechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
@@ -78,6 +79,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#simple-examples-to-start">Simple examples to start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#apply-constraints">Apply constraints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#advanced-problems">Advanced problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#poromechanics">Poromechanics</a></li>
 </ul>
 </li>
 </ul>
@@ -206,6 +208,20 @@ that can be applied in fedoo.</p>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This model uses IPC self-contact (requires ipctk &gt;= 1.6), elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase."><img alt="" src="../_images/sphx_glr_tube_compression_thumb.png" />
 <p><a class="reference internal" href="03-advanced/tube_compression.html"><span class="doc">Compression of a tube using 2D axisymmetric model</span></a></p>
   <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model</div>
+</div></div></section>
+<section id="poromechanics">
+<h2>Poromechanics<a class="headerlink" href="#poromechanics" title="Link to this heading"></a></h2>
+<p>Biot poroelasticity of saturated porous media, in small and finite strain.
+See <a class="reference internal" href="../poromechanics.html"><span class="doc">Poromechanics</span></a> for the formulation.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A saturated column is loaded by a constant pressure on its drained top face, under lateral confinement, and settles by about 8 %. The skeleton is a compressible Neo-Hookean solid (simcoon NEOHC law) and the permeability decreases with the volume change through the Holmes-Mow model, as is typical for soft biological tissues such as articular cartilage."><img alt="" src="../_images/sphx_glr_finite_strain_consolidation_thumb.png" />
+<p><a class="reference internal" href="poromechanics/finite_strain_consolidation.html"><span class="doc">Finite strain consolidation of a hyperelastic porous column</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Finite strain consolidation of a hyperelastic porous column</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The mixed displacement-pressure and the Biot u-PorePressure saddle systems need an inf-sup (LBB) stable interpolation pair. Equal-order pairs (displacement and pressure interpolated identically) violate the LBB condition and pollute the pressure with spurious &quot;checkerboard&quot; modes."><img alt="" src="../_images/sphx_glr_taylor_hood_lbb_thumb.png" />
+<p><a class="reference internal" href="poromechanics/taylor_hood_lbb.html"><span class="doc">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A column of saturated porous material with a linear elastic skeleton is loaded by a constant pressure on its top face. The top face is drained (``PorePressure = 0``), the bottom and lateral faces are sealed, and the lateral displacements are blocked (oedometric, i.e. 1D, consolidation)."><img alt="" src="../_images/sphx_glr_terzaghi_1d_thumb.png" />
+<p><a class="reference internal" href="poromechanics/terzaghi_1d.html"><span class="doc">Terzaghi 1D consolidation (small strain)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Terzaghi 1D consolidation (small strain)</div>
 </div></div><div class="toctree-wrapper compound">
 </div>
 <div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">

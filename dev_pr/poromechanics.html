@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poromechanics &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=26864b79" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=fc837d61"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Post-Processing" href="post_processing.html" />
+    <link rel="prev" title="fedoo.constraint.IPCSelfContact.associated_assembly_sum" href="generated/fedoo.constraint.IPCSelfContact.associated_assembly_sum.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Poromechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#governing-equations">Governing equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#weak-forms-and-choosing-a-variant">Weak forms and choosing a variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#element-interpolation-lbb-stability">Element interpolation (LBB stability)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fluid-properties-and-permeability-models">Fluid properties and permeability models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finite-strain-formulation">Finite strain formulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sign-conventions">Sign conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#validation">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limitations">Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Poromechanics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/poromechanics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="poromechanics">
+<h1>Poromechanics<a class="headerlink" href="#poromechanics" title="Link to this heading"></a></h1>
+<p>fedoo provides a Biot-type poromechanics module for saturated porous media:
+a monolithic (u, PorePressure) coupling between the solid skeleton momentum
+balance and the fluid mass balance (Darcy flow + storage). The skeleton
+constitutive law is reused unchanged — it never sees the pore pressure. Any
+<a class="reference internal" href="constitutive_law.html#module-fedoo.constitutivelaw" title="fedoo.constitutivelaw"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code></a> law works, including the simcoon
+hyperelastic laws (<code class="docutils literal notranslate"><span class="pre">NEOHC</span></code>, <code class="docutils literal notranslate"><span class="pre">MOORI</span></code>, <code class="docutils literal notranslate"><span class="pre">YEOHH</span></code>, <code class="docutils literal notranslate"><span class="pre">ISHAH</span></code>, <code class="docutils literal notranslate"><span class="pre">GETHH</span></code>,
+<code class="docutils literal notranslate"><span class="pre">SWANH</span></code>).</p>
+<section id="governing-equations">
+<h2>Governing equations<a class="headerlink" href="#governing-equations" title="Link to this heading"></a></h2>
+<p>The total Cauchy stress follows the Biot/Terzaghi effective stress split
+(<span class="math notranslate nohighlight">\(p &gt; 0\)</span> in compression):</p>
+<div class="math notranslate nohighlight">
+\[\sigma = \sigma_{\mathrm{eff}}(\varepsilon) - \alpha \, p \, \mathbf{I}\]</div>
+<p>and the fluid mass balance combines Darcy flow, storage and the volumetric
+coupling (backward-Euler in time):</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{M}\dot p + \alpha\, \dot\varepsilon_v
+- \nabla \cdot \left( \frac{k}{\mu_f} \nabla p \right) = 0\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the Biot coefficient, <span class="math notranslate nohighlight">\(M\)</span> the Biot modulus,
+<span class="math notranslate nohighlight">\(k\)</span> the intrinsic permeability and <span class="math notranslate nohighlight">\(\mu_f\)</span> the fluid viscosity.
+In finite strain the volumetric strain measure is the logarithmic volume
+change <span class="math notranslate nohighlight">\(\varepsilon_v = \ln J\)</span>.</p>
+</section>
+<section id="weak-forms-and-choosing-a-variant">
+<h2>Weak forms and choosing a variant<a class="headerlink" href="#weak-forms-and-choosing-a-variant" title="Link to this heading"></a></h2>
+<p>Two ready-made <code class="xref py py-class docutils literal notranslate"><span class="pre">WeakFormSum</span></code> classes group
+the momentum balance, the Darcy term and the storage/coupling term:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html#fedoo.weakform.PoroMechanicsSimple" title="fedoo.weakform.PoroMechanicsSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PoroMechanicsSimple</span></code></a> — two-field
+<code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">PorePressure)</span></code> formulation built on the standard
+<a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">StressEquilibrium</span></code></a>. <strong>This is the default
+choice.</strong> Use it whenever the boundary conditions include a free-traction
+face (Mandel consolidation, unconfined compression of cartilage, soft
+tissue indentation): the three-field variant oscillates there because its
+skeleton Lagrange multiplier is under-constrained.</p></li>
+<li><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PoroMechanics</span></code></a> — three-field
+<code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">PorePressure,</span> <span class="pre">Pressure)</span></code> formulation built on
+<a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumMixed.html#fedoo.weakform.StressEquilibriumMixed" title="fedoo.weakform.StressEquilibriumMixed"><code class="xref py py-class docutils literal notranslate"><span class="pre">StressEquilibriumMixed</span></code></a>, where <code class="docutils literal notranslate"><span class="pre">Pressure</span></code> is
+the volumetric Lagrange multiplier of the skeleton. Reserve it for a
+genuinely quasi-incompressible <strong>skeleton</strong> (drained Poisson ratio close
+to 0.5) with well-constrained (confined) boundaries. Requires
+<code class="docutils literal notranslate"><span class="pre">bulk_modulus</span></code> in <code class="docutils literal notranslate"><span class="pre">nlgeom</span></code> modes.</p></li>
+</ul>
+<p>Note that for most biological tissues the <em>drained</em> skeleton is quite
+compressible (<span class="math notranslate nohighlight">\(\nu \sim 0.1..0.3\)</span>); the observed near-incompressibility
+of the tissue is the <em>undrained</em> response, and it is already carried by the
+<code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> field. The two-field <code class="docutils literal notranslate"><span class="pre">PoroMechanicsSimple</span></code> variant with a
+compressible skeleton law is therefore the recommended setting for
+free-traction soft-tissue problems, combined with a Taylor-Hood
+interpolation for stability (below).</p>
+</section>
+<section id="element-interpolation-lbb-stability">
+<h2>Element interpolation (LBB stability)<a class="headerlink" href="#element-interpolation-lbb-stability" title="Link to this heading"></a></h2>
+<p>Equal-order linear interpolation of <code class="docutils literal notranslate"><span class="pre">u</span></code> and <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> works for
+moderate consolidation problems thanks to the storage term, but exhibits
+checkerboard pressure modes in the undrained limit (large <code class="docutils literal notranslate"><span class="pre">biot_modulus</span></code>,
+fast loading). fedoo supports Taylor-Hood interpolation natively through
+combined elements: define the combined element <em>before</em> creating the
+assembly, e.g. quadratic <code class="docutils literal notranslate"><span class="pre">u</span></code> with linear pressure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"hex20"</span><span class="p">)</span>
+<span class="c1"># Quadratic displacement, PorePressure interpolated linearly on the</span>
+<span class="c1"># hex8 sub-element:</span>
+<span class="n">elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">element_list</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="s2">"hex20lbb"</span><span class="p">,</span> <span class="s2">"hex20"</span><span class="p">)</span>
+<span class="n">elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"PorePressure"</span><span class="p">,</span> <span class="s2">"hex8"</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"hex20lbb"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See the example <a class="reference internal" href="examples/poromechanics/taylor_hood_lbb.html#sphx-glr-examples-poromechanics-taylor-hood-lbb-py"><span class="std std-ref">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</span></a>.</p>
+</section>
+<section id="fluid-properties-and-permeability-models">
+<h2>Fluid properties and permeability models<a class="headerlink" href="#fluid-properties-and-permeability-models" title="Link to this heading"></a></h2>
+<p>Fluid-phase parameters are grouped in
+<a class="reference internal" href="generated/fedoo.constitutivelaw.PoroFluidProperties.html#fedoo.constitutivelaw.PoroFluidProperties" title="fedoo.constitutivelaw.PoroFluidProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.PoroFluidProperties</span></code></a>:
+<code class="docutils literal notranslate"><span class="pre">biot_coefficient</span></code> (<span class="math notranslate nohighlight">\(\alpha\)</span>, default 1.0 — the Terzaghi limit),
+<code class="docutils literal notranslate"><span class="pre">biot_modulus</span></code> (<span class="math notranslate nohighlight">\(M\)</span>; <code class="docutils literal notranslate"><span class="pre">None</span></code> means an incompressible fluid,
+<span class="math notranslate nohighlight">\(1/M = 0\)</span>), <code class="docutils literal notranslate"><span class="pre">permeability</span></code>, <code class="docutils literal notranslate"><span class="pre">fluid_viscosity</span></code> and
+<code class="docutils literal notranslate"><span class="pre">initial_porosity</span></code>. <code class="docutils literal notranslate"><span class="pre">fluid_density</span></code> is stored but not used yet (reserved
+for gravity loading).</p>
+<p><code class="docutils literal notranslate"><span class="pre">permeability</span></code> may be a constant or a callable <code class="docutils literal notranslate"><span class="pre">k(J,</span> <span class="pre">sv)</span></code> for
+deformation-dependent permeability. Two standard models are provided:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="generated/fedoo.constitutivelaw.HolmesMowPermeability.html#fedoo.constitutivelaw.HolmesMowPermeability" title="fedoo.constitutivelaw.HolmesMowPermeability"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.HolmesMowPermeability</span></code></a> — articular
+cartilage model, permeability drops in compression;</p></li>
+<li><p><a class="reference internal" href="generated/fedoo.constitutivelaw.KozenyCarmanPermeability.html#fedoo.constitutivelaw.KozenyCarmanPermeability" title="fedoo.constitutivelaw.KozenyCarmanPermeability"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.KozenyCarmanPermeability</span></code></a> — porosity
+driven, with <span class="math notranslate nohighlight">\(\phi(J)\)</span> from solid mass conservation.</p></li>
+</ul>
+<p>In finite strain (<code class="docutils literal notranslate"><span class="pre">nlgeom</span></code>), both weak-form variants compute <code class="docutils literal notranslate"><span class="pre">lnJ</span></code> at
+gauss points and feed <span class="math notranslate nohighlight">\(J = e^{\ln J}\)</span> to the callable. If a callable
+permeability is used in a context where <code class="docutils literal notranslate"><span class="pre">lnJ</span></code> is unavailable, a warning is
+emitted and the reference value <span class="math notranslate nohighlight">\(k(J{=}1)\)</span> is used.</p>
+</section>
+<section id="finite-strain-formulation">
+<h2>Finite strain formulation<a class="headerlink" href="#finite-strain-formulation" title="Link to this heading"></a></h2>
+<p>The formulation follows the simcoon kinematic conventions: UL works in the
+<span class="math notranslate nohighlight">\((\ln \mathbf{V}, \boldsymbol{\tau})\)</span> box and TL in the
+<span class="math notranslate nohighlight">\((\ln \mathbf{U}, \mathbf{T})\)</span> box. Both use the same volumetric
+measure, <span class="math notranslate nohighlight">\(\mathrm{tr}\,\ln\mathbf{U} = \mathrm{tr}\,\ln\mathbf{V} = \ln J\)</span>.
+The TL weak form is the exact pull-back of the UL one, so the two modes
+assemble the same residual and give the same solution.</p>
+<p>Written per unit reference volume, the model is:</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\tau} = \boldsymbol{\tau}_{\mathrm{eff}} - \alpha p J \mathbf{I}
+\quad \left(\mathbf{S} = \mathbf{S}_{\mathrm{eff}}
+- \alpha p J \mathbf{C}^{-1}\right)\]</div>
+<div class="math notranslate nohighlight">
+\[\alpha \dot J + \frac{J}{M}\dot p
+- \mathrm{Div}\left( J \mathbf{F}^{-1} \frac{k(J)}{\mu_f}
+\mathbf{F}^{-T} \nabla_X p \right) = 0\]</div>
+<p>which is, per unit current volume,
+<span class="math notranslate nohighlight">\(\alpha\, \mathrm{div}\, \mathbf{v} + \dot p / M
+- \mathrm{div}(k/\mu_f\, \nabla p) = 0\)</span>. The coefficients
+<span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(M\)</span> are constants.</p>
+<ul class="simple">
+<li><p><strong>UL (updated Lagrangian, log_R corotational)</strong>: the recommended mode
+with simcoon laws. The coupling
+<span class="math notranslate nohighlight">\(-\alpha p\, \mathrm{tr}(\delta\varepsilon)\)</span> and the mass balance
+are assembled on the current mesh, with the geometric tangent of the
+pore stress. The volumetric rate is the backward-Euler rate of
+<span class="math notranslate nohighlight">\(\ln J\)</span>.</p></li>
+<li><p><strong>TL (total Lagrangian, Miehe logarithmic strain)</strong>: the same equations
+on the reference mesh. The momentum coupling is
+<span class="math notranslate nohighlight">\(-\alpha p J (\mathbf{C}^{-1} : \delta\mathbf{E})\)</span>. The storage and
+coupling terms of the mass balance carry the factor <span class="math notranslate nohighlight">\(J\)</span> of
+<span class="math notranslate nohighlight">\(dv = J\, dV\)</span>, with
+<span class="math notranslate nohighlight">\(\delta(\ln J) = \mathbf{C}^{-1} : \delta\mathbf{E}\)</span> and
+<span class="math notranslate nohighlight">\(\delta J = J \mathbf{C}^{-1} : \delta\mathbf{E}\)</span>. The mobility is
+pulled back to <span class="math notranslate nohighlight">\((k/\mu_f) J \mathbf{C}^{-1}\)</span>.</p></li>
+</ul>
+<p>In both modes the dependence of the Darcy term on the displacement (moving
+mesh in UL, <span class="math notranslate nohighlight">\(J \mathbf{C}^{-1}\)</span> in TL) and the derivative
+<span class="math notranslate nohighlight">\(d(J\mathbf{C}^{-1})/du\)</span> of the TL momentum coupling are not
+linearized: the residual is exact, these tangent blocks use frozen
+kinematics.</p>
+<p><strong>Relation to Coussy’s poromechanics.</strong> In the Lagrangian finite-strain
+poroelasticity of Coussy (<em>Poromechanics</em>, 2004), the Lagrangian porosity
+<span class="math notranslate nohighlight">\(\phi = J n\)</span> obeys <span class="math notranslate nohighlight">\(\phi - \phi_0 = \mathbf{b} : \mathbf{E}
++ p/N\)</span> and the stress <span class="math notranslate nohighlight">\(\mathbf{S} = \mathbf{S}_{\mathrm{eff}}
+- p \mathbf{b}\)</span>, with the same Biot tensor <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> in both
+(Maxwell symmetry). fedoo corresponds to
+<span class="math notranslate nohighlight">\(\mathbf{b} = \alpha J \mathbf{C}^{-1}\)</span> (exact for incompressible
+grains with <span class="math notranslate nohighlight">\(\alpha = 1\)</span>), so the coupling terms coincide with Coussy.
+The only difference is the storage term: fedoo uses a modulus <span class="math notranslate nohighlight">\(M\)</span>
+constant per unit current volume (<span class="math notranslate nohighlight">\(J \dot p / M\)</span> per reference
+volume), Coussy a modulus <span class="math notranslate nohighlight">\(N\)</span> constant per unit reference volume
+(<span class="math notranslate nohighlight">\(\dot p / N\)</span>). Both coincide for incompressible constituents
+(<span class="math notranslate nohighlight">\(1/M = 0\)</span>), which is the classical biphasic model of soft tissues.</p>
+</section>
+<section id="sign-conventions">
+<h2>Sign conventions<a class="headerlink" href="#sign-conventions" title="Link to this heading"></a></h2>
+<p>The Biot tangent blocks are intentionally non-symmetric
+(<span class="math notranslate nohighlight">\(K_{up} = -\alpha\)</span>, <span class="math notranslate nohighlight">\(K_{pu} = +\alpha/\Delta t\)</span>), so the
+momentum weak forms set <code class="docutils literal notranslate"><span class="pre">assembly_options[&quot;assume_sym&quot;]</span> <span class="pre">=</span> <span class="pre">False</span></code>. Do not
+re-enable the symmetric assumption: it would mirror the one-sided coupling
+into a phantom block and split the assembly, breaking the Newton tangent.
+Pore pressure is positive in compression.</p>
+</section>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Terzaghi 1D consolidation vs the analytical series (&lt; 1.5 %) —
+<code class="docutils literal notranslate"><span class="pre">tests/test_poromech_terzaghi_analytical.py</span></code>;</p></li>
+<li><p>Mandel 2D vs the Abousleiman analytical solution, including the
+Mandel-Cryer non-monotonic pressure peak (~1 %) —
+<code class="docutils literal notranslate"><span class="pre">tests/test_poromech_mandel_analytical.py</span></code>;</p></li>
+<li><p>Taylor-Hood LBB stability — <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_taylor_hood.py</span></code>;</p></li>
+<li><p>Finite strain with a simcoon Neo-Hookean skeleton (<code class="docutils literal notranslate"><span class="pre">NEOHC</span></code>, UL) and
+Holmes-Mow permeability: exact confined kinematics
+<span class="math notranslate nohighlight">\(\ln J = \ln(1 + \delta/L)\)</span> at the drained state —
+<code class="docutils literal notranslate"><span class="pre">tests/test_poromech_finite_strain.py</span></code>;</p></li>
+<li><p>TL against UL on the same consolidation, and the TL mass-balance tangent
+against finite differences — <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_finite_strain_tl.py</span></code>.</p></li>
+</ul>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Large compression with simcoon hyperelastic laws (UL)</strong>: beyond roughly
+12 % compression the Newton loop can develop a slowly-amplifying u-p
+oscillation. The poro coupling blocks were verified consistent against a
+finite-difference Jacobian; the amplification originates in the fedoo core
+UL displacement tangent of hyperelastic (<code class="docutils literal notranslate"><span class="pre">_Lt_from_F</span></code>) laws, which is
+self-consistent only in the modes excited by pure mechanical loading —
+the Biot coupling seeds the other modes at every iteration. Workarounds:
+smaller total strain, an elasto-plastic/corotational law (<code class="docutils literal notranslate"><span class="pre">ELISO</span></code> etc.,
+which are unaffected), or finer load steps do <em>not</em> help (the threshold is
+on the strain level, not the step size).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> modeling spaces are not supported: all poromechanics weak forms
+raise an explicit <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> (the Biot coupling lacks the
+<code class="docutils literal notranslate"><span class="pre">2*pi*r</span></code> measure and the hoop strain term).</p></li>
+<li><p>The permeability tensor is isotropic (<span class="math notranslate nohighlight">\(k \mathbf{I}\)</span>); anisotropic
+permeability is not implemented.</p></li>
+<li><p>No gravity/body-force term for the fluid yet (<code class="docutils literal notranslate"><span class="pre">fluid_density</span></code> is
+reserved).</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="examples/poromechanics/terzaghi_1d.html#sphx-glr-examples-poromechanics-terzaghi-1d-py"><span class="std std-ref">Terzaghi 1D consolidation (small strain)</span></a> — small-strain 1D
+consolidation compared with the analytical Terzaghi series;</p></li>
+<li><p><a class="reference internal" href="examples/poromechanics/finite_strain_consolidation.html#sphx-glr-examples-poromechanics-finite-strain-consolidation-py"><span class="std std-ref">Finite strain consolidation of a hyperelastic porous column</span></a> —
+finite-strain (UL) confined consolidation of a Neo-Hookean skeleton with
+Holmes-Mow permeability;</p></li>
+<li><p><a class="reference internal" href="examples/poromechanics/taylor_hood_lbb.html#sphx-glr-examples-poromechanics-taylor-hood-lbb-py"><span class="std std-ref">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</span></a> — equal-order vs
+Taylor-Hood interpolation in the undrained limit.</p></li>
+</ul>
+</section>
+<section id="api">
+<h2>API<a class="headerlink" href="#api" title="Link to this heading"></a></h2>
+<p>Weak forms:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html#fedoo.weakform.PoroMechanicsSimple" title="fedoo.weakform.PoroMechanicsSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PoroMechanicsSimple</span></code></a></p></li>
+<li><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PoroMechanics</span></code></a></p></li>
+</ul>
+<p>Fluid properties and permeability models:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="generated/fedoo.constitutivelaw.PoroFluidProperties.html#fedoo.constitutivelaw.PoroFluidProperties" title="fedoo.constitutivelaw.PoroFluidProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.PoroFluidProperties</span></code></a></p></li>
+<li><p><a class="reference internal" href="generated/fedoo.constitutivelaw.HolmesMowPermeability.html#fedoo.constitutivelaw.HolmesMowPermeability" title="fedoo.constitutivelaw.HolmesMowPermeability"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.HolmesMowPermeability</span></code></a></p></li>
+<li><p><a class="reference internal" href="generated/fedoo.constitutivelaw.KozenyCarmanPermeability.html#fedoo.constitutivelaw.KozenyCarmanPermeability" title="fedoo.constitutivelaw.KozenyCarmanPermeability"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.KozenyCarmanPermeability</span></code></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="generated/fedoo.constraint.IPCSelfContact.associated_assembly_sum.html" class="btn btn-neutral float-left" title="fedoo.constraint.IPCSelfContact.associated_assembly_sum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="post_processing.html" class="btn btn-neutral float-right" title="Post-Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
