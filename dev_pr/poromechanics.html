@@ -65,7 +65,6 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
@@ -75,7 +74,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Poromechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#governing-equations">Governing equations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#weak-forms-and-choosing-a-variant">Weak forms and choosing a variant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#element-interpolation-equal-order-or-taylor-hood">Element interpolation: equal order or Taylor-Hood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#element-interpolation-lbb-stability">Element interpolation (LBB stability)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fluid-properties-and-permeability-models">Fluid properties and permeability models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#finite-strain-formulation">Finite strain formulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sign-conventions">Sign conventions</a></li>
@@ -143,155 +142,49 @@ change <span class="math notranslate nohighlight">\(\varepsilon_v = \ln J\)</spa
 </section>
 <section id="weak-forms-and-choosing-a-variant">
 <h2>Weak forms and choosing a variant<a class="headerlink" href="#weak-forms-and-choosing-a-variant" title="Link to this heading"></a></h2>
-<p>Each variant is a <code class="xref py py-class docutils literal notranslate"><span class="pre">WeakFormSum</span></code> of the
-momentum balance, the Darcy term and the storage/coupling term. They differ
-by the treatment of the volume change of the skeleton.</p>
+<p>Two ready-made <code class="xref py py-class docutils literal notranslate"><span class="pre">WeakFormSum</span></code> classes group
+the momentum balance, the Darcy term and the storage/coupling term:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html#fedoo.weakform.PoroMechanicsSimple" title="fedoo.weakform.PoroMechanicsSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PoroMechanicsSimple</span></code></a> (<strong>default</strong>). Unknowns
-<code class="docutils literal notranslate"><span class="pre">u</span></code> and <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code>; the skeleton is handled by the standard
-<a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">StressEquilibrium</span></code></a>. Use it unless you have a
-specific reason not to.</p></li>
-<li><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PoroMechanics</span></code></a>. Adds a third unknown,
-<code class="docutils literal notranslate"><span class="pre">Pressure</span></code>, which enforces the volume change of the skeleton
-(<a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumMixed.html#fedoo.weakform.StressEquilibriumMixed" title="fedoo.weakform.StressEquilibriumMixed"><code class="xref py py-class docutils literal notranslate"><span class="pre">StressEquilibriumMixed</span></code></a>). It is only useful
-when the <em>skeleton itself</em> is nearly incompressible (drained Poisson ratio
-close to 0.5) and the sample is confined. Its pressure oscillates near
-free-traction faces (Mandel consolidation, unconfined compression,
-indentation). <code class="docutils literal notranslate"><span class="pre">bulk_modulus</span></code> is required with <code class="docutils literal notranslate"><span class="pre">nlgeom</span></code>.</p></li>
+<li><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html#fedoo.weakform.PoroMechanicsSimple" title="fedoo.weakform.PoroMechanicsSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PoroMechanicsSimple</span></code></a> — two-field
+<code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">PorePressure)</span></code> formulation built on the standard
+<a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">StressEquilibrium</span></code></a>. <strong>This is the default
+choice.</strong> Use it whenever the boundary conditions include a free-traction
+face (Mandel consolidation, unconfined compression of cartilage, soft
+tissue indentation): the three-field variant oscillates there because its
+skeleton Lagrange multiplier is under-constrained.</p></li>
+<li><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PoroMechanics</span></code></a> — three-field
+<code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">PorePressure,</span> <span class="pre">Pressure)</span></code> formulation built on
+<a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumMixed.html#fedoo.weakform.StressEquilibriumMixed" title="fedoo.weakform.StressEquilibriumMixed"><code class="xref py py-class docutils literal notranslate"><span class="pre">StressEquilibriumMixed</span></code></a>, where <code class="docutils literal notranslate"><span class="pre">Pressure</span></code> is
+the volumetric Lagrange multiplier of the skeleton. Reserve it for a
+genuinely quasi-incompressible <strong>skeleton</strong> (drained Poisson ratio close
+to 0.5) with well-constrained (confined) boundaries. Requires
+<code class="docutils literal notranslate"><span class="pre">bulk_modulus</span></code> in <code class="docutils literal notranslate"><span class="pre">nlgeom</span></code> modes.</p></li>
 </ul>
-<p><strong>Soft tissues and gels.</strong> A saturated tissue behaves as incompressible
-when it is loaded quickly, but this comes from the fluid, which has no time
-to escape (undrained response), not from the skeleton. The fluid part is
-already carried by <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code>, and the drained skeleton is
-compressible (<span class="math notranslate nohighlight">\(\nu \approx 0.1\)</span> to <span class="math notranslate nohighlight">\(0.3\)</span>). Use
-<code class="docutils literal notranslate"><span class="pre">PoroMechanicsSimple</span></code> with a compressible skeleton law, and a Taylor-Hood
-interpolation if the loading is fast (see below).</p>
+<p>Note that for most biological tissues the <em>drained</em> skeleton is quite
+compressible (<span class="math notranslate nohighlight">\(\nu \sim 0.1..0.3\)</span>); the observed near-incompressibility
+of the tissue is the <em>undrained</em> response, and it is already carried by the
+<code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> field. The two-field <code class="docutils literal notranslate"><span class="pre">PoroMechanicsSimple</span></code> variant with a
+compressible skeleton law is therefore the recommended setting for
+free-traction soft-tissue problems, combined with a Taylor-Hood
+interpolation for stability (below).</p>
 </section>
-<section id="element-interpolation-equal-order-or-taylor-hood">
-<h2>Element interpolation: equal order or Taylor-Hood<a class="headerlink" href="#element-interpolation-equal-order-or-taylor-hood" title="Link to this heading"></a></h2>
-<p><strong>Why the choice matters.</strong> When the fluid has no time to flow (low
-permeability, short time step) and is nearly incompressible (large
-<code class="docutils literal notranslate"><span class="pre">biot_modulus</span></code>), the mass balance reduces to
-<span class="math notranslate nohighlight">\(\alpha\,\dot\varepsilon_v \approx 0\)</span>: the skeleton cannot change volume,
-and the pore pressure acts as the Lagrange multiplier that enforces this
-constraint. This is the <em>undrained</em> limit. It has the same mathematical
-structure as incompressible elasticity or Stokes flow, a saddle-point problem,
-and its discretization is stable only if the pressure field is not too rich
-compared with the displacement field. This requirement is the <em>inf-sup</em>
-condition, also called the LBB condition after Ladyzhenskaya, Babuska and
-Brezzi.</p>
-<p>When it is violated, some pressure patterns produce no nodal force on the
-displacement field. Nothing in the equations controls them, so they appear as
-spurious oscillations of the pressure, typically alternating in sign from one
-node to the next (<em>checkerboard</em> modes). They are strongest near drained
-boundaries and loaded faces during the first increments. In the strictly
-undrained limit, the system matrix is singular.</p>
-<p><strong>Equal-order interpolation</strong> uses the same element for <code class="docutils literal notranslate"><span class="pre">u</span></code> and
-<code class="docutils literal notranslate"><span class="pre">PorePressure</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">hex8</span></code> for both. It does not satisfy the inf-sup
-condition, but the storage term (<span class="math notranslate nohighlight">\(1/M\)</span>) and the Darcy term stabilise it
-as long as the fluid can flow within a time step. A classical rule of thumb
-for linear elements is that oscillations stay small when</p>
-<div class="math notranslate nohighlight">
-\[\Delta t \gtrsim \frac{h^2}{6\,c_v}, \qquad
-c_v = \frac{k}{\mu_f}\Big(K + \tfrac43 G\Big),\]</div>
-<p>with <span class="math notranslate nohighlight">\(h\)</span> the element size near the drained boundary or the load,
-<span class="math notranslate nohighlight">\(c_v\)</span> the consolidation coefficient and <span class="math notranslate nohighlight">\(K\)</span>, <span class="math notranslate nohighlight">\(G\)</span> the drained
-bulk and shear moduli of the skeleton (<span class="math notranslate nohighlight">\(K + \tfrac43 G\)</span> is the
-oedometric modulus). This is the criterion of Vermeer and Verruijt (1981),
-derived for one-dimensional consolidation with linear elements and
-incompressible constituents; with a hydraulic conductivity
-<span class="math notranslate nohighlight">\(k_h = k\,\gamma_w/\mu_f\)</span> it reads
-<span class="math notranslate nohighlight">\(\Delta t \gtrsim \gamma_w h^2/(6\,E_{oed}\,k_h)\)</span>, the form quoted in
-the Abaqus documentation. Fine meshes, low permeabilities and short first
-steps of a fast loading are therefore the risky cases. The default fluid
-(<code class="docutils literal notranslate"><span class="pre">biot_modulus=None</span></code>, incompressible, <span class="math notranslate nohighlight">\(1/M = 0\)</span>) is the worst case:
-only the Darcy term is left to stabilise. Equal-order elements are fine for
-most consolidation analyses that do not need the very first instants.</p>
-<p><strong>Taylor-Hood interpolation</strong> interpolates the displacement one order higher
-than the pressure: quadratic <code class="docutils literal notranslate"><span class="pre">u</span></code> and linear <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code>. This pair
-satisfies the inf-sup condition and gives a smooth pressure even in the
-undrained limit, at the cost of a quadratic mesh. It does not remove a
-second, physical difficulty of the first instants: the pressure boundary
-layer near a drained face is thinner than one element, and the first
-pressure node overshoots (of the order of 25 % at the first step of a
-Terzaghi column). Refine the mesh near drained faces or use a larger first step if
-the very early response matters.</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Quadratic mesh (<code class="docutils literal notranslate"><span class="pre">u</span></code>)</p></th>
-<th class="head"><p>Linear pressure element</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hex20</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">hex8</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tet10</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">tet4</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">quad8</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">quad4</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tri6</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">tri3</span></code></p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>How to build it in fedoo.</strong> A
-<a class="reference internal" href="generated/fedoo.lib_elements.CombinedElement.html#fedoo.lib_elements.CombinedElement" title="fedoo.lib_elements.CombinedElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">CombinedElement</span></code></a> defines a new
-element type in which each variable may use its own interpolation. Its base
-element (here the quadratic one) is used for the geometry and for every
-variable by default; <code class="docutils literal notranslate"><span class="pre">set_variable_interpolation</span></code> assigns a linear
-interpolation to one variable, built on the vertex nodes of the quadratic
-element. The mesh itself stays quadratic. The combined element is registered
-under the name given as first argument, which must therefore be created
-<em>before</em> the assembly and passed as <code class="docutils literal notranslate"><span class="pre">elm_type</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"hex20"</span><span class="p">)</span>  <span class="c1"># quadratic mesh</span>
-
-<span class="c1"># New element type "hex20lbb": hex20 for u and the geometry,</span>
-<span class="c1"># hex8 (vertex nodes only) for PorePressure.</span>
-<span class="n">elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="s2">"hex20lbb"</span><span class="p">,</span> <span class="s2">"hex20"</span><span class="p">)</span>
+<section id="element-interpolation-lbb-stability">
+<h2>Element interpolation (LBB stability)<a class="headerlink" href="#element-interpolation-lbb-stability" title="Link to this heading"></a></h2>
+<p>Equal-order linear interpolation of <code class="docutils literal notranslate"><span class="pre">u</span></code> and <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> works for
+moderate consolidation problems thanks to the storage term, but exhibits
+checkerboard pressure modes in the undrained limit (large <code class="docutils literal notranslate"><span class="pre">biot_modulus</span></code>,
+fast loading). fedoo supports Taylor-Hood interpolation natively through
+combined elements: define the combined element <em>before</em> creating the
+assembly, e.g. quadratic <code class="docutils literal notranslate"><span class="pre">u</span></code> with linear pressure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"hex20"</span><span class="p">)</span>
+<span class="c1"># Quadratic displacement, PorePressure interpolated linearly on the</span>
+<span class="c1"># hex8 sub-element:</span>
+<span class="n">elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">element_list</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="s2">"hex20lbb"</span><span class="p">,</span> <span class="s2">"hex20"</span><span class="p">)</span>
 <span class="n">elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"PorePressure"</span><span class="p">,</span> <span class="s2">"hex8"</span><span class="p">)</span>
-
 <span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"hex20lbb"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>With the three-field <a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-class docutils literal notranslate"><span class="pre">PoroMechanics</span></code></a>, interpolate
-the skeleton <code class="docutils literal notranslate"><span class="pre">Pressure</span></code> linearly as well
-(<code class="docutils literal notranslate"><span class="pre">elm.set_variable_interpolation(&quot;Pressure&quot;,</span> <span class="pre">&quot;hex8&quot;)</span></code>).</p>
-<p><strong>Practical points.</strong></p>
-<ul class="simple">
-<li><p>The name of a combined element is global: creating another one with the
-same name replaces it. Use one name per base element type.</p></li>
-<li><p>Keep the default integration of the base element; reduced-integration
-bases (<code class="docutils literal notranslate"><span class="pre">hex20r</span></code>, …) are not validated with Taylor-Hood.</p></li>
-<li><p>fedoo has no <code class="docutils literal notranslate"><span class="pre">tet10</span></code> mesh generator: import a quadratic mesh (gmsh) or
-convert a <code class="docutils literal notranslate"><span class="pre">tet4</span></code> mesh with <code class="docutils literal notranslate"><span class="pre">fd.mesh.change_elm_type(mesh,</span> <span class="pre">&quot;tet10&quot;)</span></code>
-(slow on large meshes). For <code class="docutils literal notranslate"><span class="pre">tri6</span></code>/<code class="docutils literal notranslate"><span class="pre">tet10</span></code>, avoid meshes where an
-element has all its vertices on the boundary (corner elements of
-structured diagonal splits): they can carry a spurious pressure mode.</p></li>
-<li><p><strong>Drained boundaries</strong>: prescribe <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> on the vertex nodes of
-the face; with a linear pressure this drains the whole face. Conditions
-on mid-side nodes have no effect.</p></li>
-<li><p><strong>Fluid fluxes</strong> given as nodal values must be distributed on the vertex
-nodes with the weights of the linear element (one half per edge end,
-for instance), not with the quadratic weights.</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> DOFs of the mid-side nodes are not interpolated by
-any element: fedoo eliminates them automatically and they stay at zero.
-A nodal plot built from <code class="docutils literal notranslate"><span class="pre">pb.get_dof_solution(&quot;PorePressure&quot;)</span></code> on all
-nodes (or a VTK export of the quadratic cells) therefore shows a sawtooth
-that is not in the solution. Use the interpolated values instead:
-<code class="docutils literal notranslate"><span class="pre">assembly.get_node_results(pb.space.variable(&quot;PorePressure&quot;),</span>
-<span class="pre">pb.get_dof_solution())</span></code> returns the exact values at every node, the
-mid-side ones being linearly interpolated from the vertices, and
-<code class="docutils literal notranslate"><span class="pre">assembly.get_gp_results(...)</span></code> gives them at the integration points.</p>
-</div>
-<p>The example <a class="reference internal" href="examples/poromechanics/taylor_hood_lbb.html#sphx-glr-examples-poromechanics-taylor-hood-lbb-py"><span class="std std-ref">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</span></a>
-compares equal-order and Taylor-Hood interpolations on an undrained strip
-footing with an analytical solution.</p>
+<p>See the example <a class="reference internal" href="examples/poromechanics/taylor_hood_lbb.html#sphx-glr-examples-poromechanics-taylor-hood-lbb-py"><span class="std std-ref">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</span></a>.</p>
 </section>
 <section id="fluid-properties-and-permeability-models">
 <h2>Fluid properties and permeability models<a class="headerlink" href="#fluid-properties-and-permeability-models" title="Link to this heading"></a></h2>
@@ -353,11 +246,10 @@ coupling terms of the mass balance carry the factor <span class="math notranslat
 pulled back to <span class="math notranslate nohighlight">\((k/\mu_f) J \mathbf{C}^{-1}\)</span>.</p></li>
 </ul>
 <p>In both modes the dependence of the Darcy term on the displacement (moving
-mesh in UL, <span class="math notranslate nohighlight">\(J \mathbf{C}^{-1}\)</span> in TL), the variation of the volume
-element <span class="math notranslate nohighlight">\(dv\)</span> in the UL storage and coupling terms of the mass balance,
-and the derivative <span class="math notranslate nohighlight">\(d(J\mathbf{C}^{-1})/du\)</span> of the TL momentum
-coupling are not linearized: the residual is exact, these tangent blocks
-use frozen kinematics.</p>
+mesh in UL, <span class="math notranslate nohighlight">\(J \mathbf{C}^{-1}\)</span> in TL) and the derivative
+<span class="math notranslate nohighlight">\(d(J\mathbf{C}^{-1})/du\)</span> of the TL momentum coupling are not
+linearized: the residual is exact, these tangent blocks use frozen
+kinematics.</p>
 <p><strong>Relation to Coussy’s poromechanics.</strong> In the Lagrangian finite-strain
 poroelasticity of Coussy (<em>Poromechanics</em>, 2004), the Lagrangian porosity
 <span class="math notranslate nohighlight">\(\phi = J n\)</span> obeys <span class="math notranslate nohighlight">\(\phi - \phi_0 = \mathbf{b} : \mathbf{E}
@@ -389,24 +281,13 @@ Pore pressure is positive in compression.</p>
 <li><p>Mandel 2D vs the Abousleiman analytical solution, including the
 Mandel-Cryer non-monotonic pressure peak (~1 %) —
 <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_mandel_analytical.py</span></code>;</p></li>
-<li><p>Taylor-Hood elements: pressure operators and eliminated mid-side DOFs,
-exact undrained oedometer for <code class="docutils literal notranslate"><span class="pre">quad8</span></code>/<code class="docutils literal notranslate"><span class="pre">quad4</span></code>, <code class="docutils literal notranslate"><span class="pre">tri6</span></code>/<code class="docutils literal notranslate"><span class="pre">tri3</span></code> and
-<code class="docutils literal notranslate"><span class="pre">hex20</span></code>/<code class="docutils literal notranslate"><span class="pre">hex8</span></code>, and undrained strip footing against the elastic
-solution (Taylor-Hood within 3 %, equal order with a checkerboard) —
-<code class="docutils literal notranslate"><span class="pre">tests/test_combined_element_taylor_hood.py</span></code> and
-<code class="docutils literal notranslate"><span class="pre">tests/test_poromech_taylor_hood.py</span></code>;</p></li>
+<li><p>Taylor-Hood LBB stability — <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_taylor_hood.py</span></code>;</p></li>
 <li><p>Finite strain with a simcoon Neo-Hookean skeleton (<code class="docutils literal notranslate"><span class="pre">NEOHC</span></code>, UL) and
 Holmes-Mow permeability: exact confined kinematics
 <span class="math notranslate nohighlight">\(\ln J = \ln(1 + \delta/L)\)</span> at the drained state —
 <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_finite_strain.py</span></code>;</p></li>
 <li><p>TL against UL on the same consolidation, and the TL mass-balance tangent
-against finite differences — <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_finite_strain_tl.py</span></code>;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">2Daxi</span></code>: homogeneous undrained unconfined compression of a cylinder vs
-the closed-form solution (both formulations), drained relaxation, and
-steady radial flow through a hollow cylinder vs the logarithmic pressure
-profile — <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_axi.py</span></code>. The draining case was also
-compared once with a 3D model of the full cylinder, with close agreement
-(this comparison is not part of the test suite).</p></li>
+against finite differences — <code class="docutils literal notranslate"><span class="pre">tests/test_poromech_finite_strain_tl.py</span></code>.</p></li>
 </ul>
 </section>
 <section id="limitations">
@@ -422,8 +303,9 @@ the Biot coupling seeds the other modes at every iteration. Workarounds:
 smaller total strain, an elasto-plastic/corotational law (<code class="docutils literal notranslate"><span class="pre">ELISO</span></code> etc.,
 which are unaffected), or finer load steps do <em>not</em> help (the threshold is
 on the strain level, not the step size).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> is supported in small strain and in UL, like
-<a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">StressEquilibrium</span></code></a>. It is not available in TL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> modeling spaces are not supported: all poromechanics weak forms
+raise an explicit <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> (the Biot coupling lacks the
+<code class="docutils literal notranslate"><span class="pre">2*pi*r</span></code> measure and the hoop strain term).</p></li>
 <li><p>The permeability tensor is isotropic (<span class="math notranslate nohighlight">\(k \mathbf{I}\)</span>); anisotropic
 permeability is not implemented.</p></li>
 <li><p>No gravity/body-force term for the fluid yet (<code class="docutils literal notranslate"><span class="pre">fluid_density</span></code> is
@@ -438,11 +320,6 @@ consolidation compared with the analytical Terzaghi series;</p></li>
 <li><p><a class="reference internal" href="examples/poromechanics/finite_strain_consolidation.html#sphx-glr-examples-poromechanics-finite-strain-consolidation-py"><span class="std std-ref">Finite strain consolidation of a hyperelastic porous column</span></a> —
 finite-strain (UL) confined consolidation of a Neo-Hookean skeleton with
 Holmes-Mow permeability;</p></li>
-<li><p><a class="reference internal" href="examples/poromechanics/indentation_soft_tissue.html#sphx-glr-examples-poromechanics-indentation-soft-tissue-py"><span class="std std-ref">Indentation of a hyperelastic soft tissue: fluid exudation</span></a> —
-axisymmetric (<code class="docutils literal notranslate"><span class="pre">2Daxi</span></code>) indentation of a hyperelastic soft tissue by a
-rigid spherical indenter with IPC contact, an impermeable contact zone
-that follows the contact, and force relaxation as the fluid is squeezed
-out;</p></li>
 <li><p><a class="reference internal" href="examples/poromechanics/taylor_hood_lbb.html#sphx-glr-examples-poromechanics-taylor-hood-lbb-py"><span class="std std-ref">Inf-sup (LBB) stable elements: Taylor-Hood interpolation</span></a> — equal-order vs
 Taylor-Hood interpolation in the undrained limit.</p></li>
 </ul>
