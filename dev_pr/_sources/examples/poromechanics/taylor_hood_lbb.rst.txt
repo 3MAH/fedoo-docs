@@ -67,7 +67,7 @@ recovers the exact undrained Biot pressure with a 3D Taylor-Hood element
      Part B - Taylor-Hood poromechanics, undrained step (hex20 u / hex8 p)
     ======================================================================
       converged=1 in 1 iter(s)
-      undrained gauss-point pore pressure: mean=10000  std=3.5e-12
+      undrained gauss-point pore pressure: mean=10000  std=3.7e-12
       analytical  p0 = -alpha*M*tr(eps) = 10000 Pa  (match)
 
     DONE
@@ -221,7 +221,7 @@ recovers the exact undrained Biot pressure with a 3D Taylor-Hood element
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.134 seconds)
+   **Total running time of the script:** (0 minutes 0.091 seconds)
 
 
 .. _sphx_glr_download_examples_poromechanics_taylor_hood_lbb.py:
