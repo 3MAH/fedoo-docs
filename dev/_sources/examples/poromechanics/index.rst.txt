@@ -39,6 +39,23 @@ See :doc:`/poromechanics` for the formulation.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="A rigid hemispherical indenter is pressed into a layer of saturated soft tissue lying on a rigid substrate, as when pressing a fingertip on the skin. The indenter is pushed in quickly and then held in place.">
+
+.. only:: html
+
+  .. image:: /examples/poromechanics/images/thumb/sphx_glr_indentation_soft_tissue_thumb.png
+    :alt:
+
+  :doc:`/examples/poromechanics/indentation_soft_tissue`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Indentation of a hyperelastic soft tissue: fluid exudation</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="In the undrained limit (nearly incompressible fluid, no time to drain), the pore pressure enforces a volume constraint and the Biot system becomes a saddle-point problem. Its discretization is stable only if the pair of displacement and pressure interpolations satisfies the inf-sup (LBB) condition. Equal-order pairs (same element for both fields) violate it, and the pressure shows spurious node-to-node oscillations (&quot;checkerboard&quot;).">
 
 .. only:: html
@@ -82,6 +99,7 @@ See :doc:`/poromechanics` for the formulation.
    :hidden:
 
    /examples/poromechanics/finite_strain_consolidation
+   /examples/poromechanics/indentation_soft_tissue
    /examples/poromechanics/taylor_hood_lbb
    /examples/poromechanics/terzaghi_1d
 

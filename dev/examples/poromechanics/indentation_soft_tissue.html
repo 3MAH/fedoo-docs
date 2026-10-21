@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indentation of a hyperelastic soft tissue: fluid exudation &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Inf-sup (LBB) stable elements: Taylor-Hood interpolation" href="taylor_hood_lbb.html" />
+    <link rel="prev" title="Finite strain consolidation of a hyperelastic porous column" href="finite_strain_consolidation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Poromechanics</a></li>
+      <li class="breadcrumb-item active">Indentation of a hyperelastic soft tissue: fluid exudation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/poromechanics/indentation_soft_tissue.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-poromechanics-indentation-soft-tissue-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="indentation-of-a-hyperelastic-soft-tissue-fluid-exudation">
+<span id="sphx-glr-examples-poromechanics-indentation-soft-tissue-py"></span><h1>Indentation of a hyperelastic soft tissue: fluid exudation<a class="headerlink" href="#indentation-of-a-hyperelastic-soft-tissue-fluid-exudation" title="Link to this heading"></a></h1>
+<p>A rigid hemispherical indenter is pressed into a layer of saturated soft
+tissue lying on a rigid substrate, as when pressing a fingertip on the
+skin. The indenter is pushed in quickly and then held in place.</p>
+<p>Right after the indentation the fluid has no time to escape: it carries a
+large part of the load and the tissue responds as a nearly incompressible
+solid. The fluid is then squeezed out of the region under the indenter
+through the free top surface, and the force needed to hold the indenter
+relaxes towards the drained response of the skeleton. This poroelastic
+relaxation is the basis of indentation tests on cartilage, skin or
+hydrogels.</p>
+<ul class="simple">
+<li><p>The skeleton is a compressible Neo-Hookean solid (simcoon <code class="docutils literal notranslate"><span class="pre">NEOHC</span></code> law),
+and the Holmes-Mow permeability decreases where the tissue is compacted.</p></li>
+<li><p>The indenter is a rigid body (<a class="reference internal" href="../../generated/fedoo.constraint.RigidTie2D.html#fedoo.constraint.RigidTie2D" title="fedoo.constraint.RigidTie2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">RigidTie2D</span></code></a>)
+driven by an imposed vertical displacement. Its contact with the tissue is
+handled with the Incremental Potential Contact method
+(<a class="reference internal" href="../../generated/fedoo.constraint.IPCContact.html#fedoo.constraint.IPCContact" title="fedoo.constraint.IPCContact"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPCContact</span></code></a>).</p></li>
+<li><p>The contact face is impermeable while the rest of the top surface drains
+freely. Since the contact zone changes with time, the drained nodes are
+updated before each time increment.</p></li>
+<li><p>The problem is axisymmetric (<code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> modeling space, <code class="docutils literal notranslate"><span class="pre">X</span></code> is the
+radius and <code class="docutils literal notranslate"><span class="pre">Y</span></code> the axis) and is solved in finite strain
+(<code class="docutils literal notranslate"><span class="pre">nlgeom=&quot;UL&quot;</span></code>).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example requires simcoon and ipctk.</p>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h1>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h1>
+<p>Units: mm, N, MPa, s.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">W</span> <span class="o">=</span> <span class="mf">15.0</span>  <span class="c1"># radius of the tissue sample</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># tissue thickness</span>
+<span class="n">R_s</span> <span class="o">=</span> <span class="mf">5.0</span>  <span class="c1"># radius of the hemispherical indenter</span>
+<span class="n">gap</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># initial gap between the indenter and the tissue</span>
+<span class="n">depth</span> <span class="o">=</span> <span class="mf">0.6</span>  <span class="c1"># indentation depth (after contact)</span>
+
+<span class="n">E</span><span class="p">,</span> <span class="n">nu</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span>  <span class="c1"># drained skeleton (100 kPa)</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">nu</span><span class="p">))</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="mf">3.0</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">nu</span><span class="p">))</span>
+
+<span class="n">phi0</span> <span class="o">=</span> <span class="mf">0.8</span>  <span class="c1"># initial porosity</span>
+<span class="n">k0</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># reference mobility k / mu_f [mm^4 / (N s)]</span>
+<span class="n">biot_M</span> <span class="o">=</span> <span class="mf">1.0e3</span>  <span class="c1"># Biot modulus: nearly incompressible constituents</span>
+</pre></div>
+</div>
+</section>
+<section id="mesh">
+<h1>Mesh<a class="headerlink" href="#mesh" title="Link to this heading"></a></h1>
+<p>The tissue mesh is refined towards the axis and the top surface, where the
+contact takes place. The indenter is meshed between its spherical face and
+a flat top face. Both bodies are stacked in a single mesh, with one element
+set per body.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Daxi"</span><span class="p">)</span>
+
+<span class="n">tissue</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="mi">61</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">41</span><span class="p">,</span> <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span>
+<span class="p">)</span>
+<span class="n">tissue</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span> <span class="o">*</span> <span class="n">tissue</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mf">1.5</span>
+<span class="n">tissue</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">tissue</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">tissue</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"tissue"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">tissue</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="n">r_ind</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">R_s</span>  <span class="c1"># radial extent of the meshed part of the indenter</span>
+<span class="n">indenter</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="mi">41</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span>
+<span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">r_ind</span> <span class="o">*</span> <span class="n">indenter</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mf">1.2</span>
+<span class="n">z_sphere</span> <span class="o">=</span> <span class="n">H</span> <span class="o">+</span> <span class="n">gap</span> <span class="o">+</span> <span class="n">R_s</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R_s</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">z_top</span> <span class="o">=</span> <span class="n">H</span> <span class="o">+</span> <span class="n">gap</span> <span class="o">+</span> <span class="n">R_s</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R_s</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">r_ind</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.0</span>
+<span class="n">indenter</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span>
+<span class="n">indenter</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">z_sphere</span> <span class="o">+</span> <span class="n">indenter</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">z_top</span> <span class="o">-</span> <span class="n">z_sphere</span><span class="p">)</span>
+<span class="n">indenter</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"indenter"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">indenter</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+<span class="n">indenter_bottom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">indenter</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">])</span> <span class="o">+</span> <span class="n">tissue</span><span class="o">.</span><span class="n">n_nodes</span>
+<span class="n">indenter_nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">indenter</span><span class="o">.</span><span class="n">n_nodes</span><span class="p">)</span> <span class="o">+</span> <span class="n">tissue</span><span class="o">.</span><span class="n">n_nodes</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">tissue</span><span class="p">,</span> <span class="n">indenter</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="constitutive-laws-and-weak-forms">
+<h1>Constitutive laws and weak forms<a class="headerlink" href="#constitutive-laws-and-weak-forms" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../../generated/fedoo.weakform.PoroMechanicsSimple.html#fedoo.weakform.PoroMechanicsSimple" title="fedoo.weakform.PoroMechanicsSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">PoroMechanicsSimple</span></code></a> is the recommended variant
+when the model has free-traction faces, as here. In <code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> the weak
+forms include the hoop strain and the <span class="math notranslate nohighlight">\(2 \pi r\)</span> measure, so the
+reaction forces are those of the full circle. The indenter has no weak
+form: its nodes only follow the rigid body.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">skeleton</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"NEOHC"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mu</span><span class="p">,</span> <span class="n">kappa</span><span class="p">]))</span>
+<span class="n">permeability</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">HolmesMowPermeability</span><span class="p">(</span><span class="n">k0</span><span class="o">=</span><span class="n">k0</span><span class="p">,</span> <span class="n">n0</span><span class="o">=</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">phi0</span><span class="p">)</span>
+<span class="n">fluid</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">PoroFluidProperties</span><span class="p">(</span>
+    <span class="n">permeability</span><span class="o">=</span><span class="n">permeability</span><span class="p">,</span>
+    <span class="n">fluid_viscosity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">biot_coefficient</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">biot_modulus</span><span class="o">=</span><span class="n">biot_M</span><span class="p">,</span>
+    <span class="n">initial_porosity</span><span class="o">=</span><span class="n">phi0</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">wf_tissue</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">PoroMechanicsSimple</span><span class="p">(</span><span class="n">skeleton</span><span class="p">,</span> <span class="n">fluid</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">"UL"</span><span class="p">)</span>
+
+<span class="n">tissue_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf_tissue</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s2">"tissue"</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="contact">
+<h1>Contact<a class="headerlink" href="#contact" title="Link to this heading"></a></h1>
+<p>IPC keeps the two bodies apart with a barrier active below the distance
+<code class="docutils literal notranslate"><span class="pre">dhat</span></code> (relative to the bounding box diagonal). The Biot problem has no
+potential, so the energy-based line search of IPC is disabled; the
+collision-free step filtering (CCD) is kept.</p>
+<p>The barrier stiffness is set explicitly. The automatic value is driven
+by the stiff undrained response and grows by orders of magnitude; a too
+soft barrier lets the gap close while the drained tissue relaxes under
+the indenter.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dhat</span> <span class="o">=</span> <span class="mf">1e-3</span>
+<span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">IPCContact</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">,</span>
+    <span class="n">extract_surface</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dhat</span><span class="o">=</span><span class="n">dhat</span><span class="p">,</span>
+    <span class="n">barrier_stiffness</span><span class="o">=</span><span class="mf">1.0e4</span><span class="p">,</span>
+    <span class="n">adaptive_barrier_stiffness</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">line_search_energy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">psd_projection</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">tissue_assembly</span><span class="p">,</span> <span class="n">contact</span><span class="p">)</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Displacement"</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="boundary-conditions">
+<h1>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>axis <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">0</span></code>: no radial displacement, no flux;</p></li>
+<li><p>bottom: bonded to a rigid, impermeable substrate;</p></li>
+<li><p>indenter: rigid body with an imposed vertical displacement (only the
+axial translation is compatible with axisymmetry); its nodes carry no
+fluid, so their <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> is fixed;</p></li>
+<li><p>top surface of the tissue: free traction, drained (<code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">0</span></code>) outside
+the contact zone and impermeable inside. A tissue node is in contact
+when its distance to the indenter face is below twice the barrier
+distance <code class="docutils literal notranslate"><span class="pre">dhat</span></code> of IPC;</p></li>
+<li><p>outer face <code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">=</span> <span class="pre">W</span></code>: free traction, impermeable.</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">t_load</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># duration of the indentation</span>
+<span class="n">t_end</span> <span class="o">=</span> <span class="mf">150.0</span>  <span class="c1"># end of the relaxation</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="n">indenter_nodes</span><span class="p">),</span> <span class="s2">"DispX"</span><span class="p">,</span> <span class="mf">0.0</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+    <span class="c1"># the indenter only translates along the axis, which preserves axisymmetry</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">"RigidTie2D under the '2Daxi'"</span><span class="p">)</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">RigidTie2D</span><span class="p">(</span><span class="n">indenter_nodes</span><span class="p">))</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"RigidDispX"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"RigidRotZ"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="c1"># ramped from the current state during the indentation, then held</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"RigidDispY"</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">gap</span> <span class="o">+</span> <span class="n">depth</span><span class="p">))</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">indenter_nodes</span><span class="p">,</span> <span class="s2">"PorePressure"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">tissue_top</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">H</span><span class="p">),</span> <span class="n">indenter_nodes</span><span class="p">)</span>
+<span class="n">bbox</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span>
+<span class="n">contact_tol</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dhat</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">bbox</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nodes_in_contact</span><span class="p">(</span><span class="n">disp</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Top tissue nodes closer than contact_tol to the indenter face."""</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">tissue_top</span><span class="p">]</span> <span class="o">+</span> <span class="n">disp</span><span class="p">[:,</span> <span class="n">tissue_top</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">face</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">indenter_bottom</span><span class="p">]</span> <span class="o">+</span> <span class="n">disp</span><span class="p">[:,</span> <span class="n">indenter_bottom</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">face</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">face</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># segments of the indenter face</span>
+    <span class="n">ab</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ax</span> <span class="o">*</span> <span class="n">ab</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ab</span> <span class="o">*</span> <span class="n">ab</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">ax</span> <span class="o">-</span> <span class="n">s</span><span class="p">[:,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">ab</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tissue_top</span><span class="p">[</span><span class="n">dist</span> <span class="o">&lt;</span> <span class="n">contact_tol</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_drainage</span><span class="p">(</span><span class="n">pb</span><span class="p">,</span> <span class="n">in_contact</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Impose p = 0 on the top nodes out of contact during the next increment.</span>
+
+<span class="sd">    A Dirichlet condition imposes an increment from its start value. The</span>
+<span class="sd">    start value is the current pressure, so that a node leaving the contact</span>
+<span class="sd">    zone is drained in one increment (time function stepping at the current</span>
+<span class="sd">    time).</span>
+<span class="sd">    """</span>
+    <span class="n">drained</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">tissue_top</span><span class="p">,</span> <span class="n">in_contact</span><span class="p">)</span>
+    <span class="n">t_now</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">t_fact_old</span>  <span class="c1"># time factor at the end of the converged increment</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"drained top"</span><span class="p">)</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="s2">"Dirichlet"</span><span class="p">,</span>
+        <span class="n">drained</span><span class="p">,</span>
+        <span class="s2">"PorePressure"</span><span class="p">,</span>
+        <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">start_value</span><span class="o">=</span><span class="n">pb</span><span class="o">.</span><span class="n">get_dof_solution</span><span class="p">(</span><span class="s2">"PorePressure"</span><span class="p">)[</span><span class="n">drained</span><span class="p">],</span>
+        <span class="n">time_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t_fact</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">t_fact</span> <span class="o">&gt;</span> <span class="n">t_now</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"drained top"</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">tissue_top</span><span class="p">,</span> <span class="s2">"PorePressure"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"drained top"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Dirichlet boundary condition:
+name = 'drained top'
+var = 'PorePressure'
+n_nodes = 61
+value = 0.0
+</pre></div>
+</div>
+</section>
+<section id="time-integration">
+<h1>Time integration<a class="headerlink" href="#time-integration" title="Link to this heading"></a></h1>
+<p>The indentation and the relaxation are solved with adaptive time steps
+(the increment is cut when Newton-Raphson fails). A callback, executed
+after each converged increment, updates the drained nodes from the current
+contact zone (one increment lag) and records:</p>
+<ul class="simple">
+<li><p>the force on the indenter;</p></li>
+<li><p>the volume of fluid squeezed out of the tissue. With incompressible
+grains (Biot coefficient 1) it is the volume lost by the tissue,
+<span class="math notranslate nohighlight">\(V_{out} = -\int_{\Omega_0} (J - 1) \, 2 \pi R \, dA_0\)</span>, up to
+the fluid compression <span class="math notranslate nohighlight">\(p / M\)</span> (about <span class="math notranslate nohighlight">\(10^{-5}\)</span> here),
+computed from <code class="docutils literal notranslate"><span class="pre">lnJ</span></code> at the Gauss points;</p></li>
+<li><p>at a few instants, the pore pressure and the Darcy flux
+<span class="math notranslate nohighlight">\(\mathbf{w} = -(k(J)/\mu_f) \nabla p\)</span>, averaged at the nodes.</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+<span class="n">force</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+<span class="n">fluid_out</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+<span class="n">contact_radius</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+<span class="n">snapshot_times</span> <span class="o">=</span> <span class="p">[</span><span class="n">t_load</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">t_end</span><span class="p">]</span>
+<span class="n">snapshots</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1"># reference radius at the Gauss points, for the 2*pi*R measure</span>
+<span class="n">R0</span> <span class="o">=</span> <span class="n">tissue_assembly</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">convert_data</span><span class="p">(</span>
+    <span class="n">tissue_assembly</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s2">"Node"</span><span class="p">,</span>
+    <span class="s2">"GaussPoint"</span><span class="p">,</span>
+    <span class="n">n_elm_gp</span><span class="o">=</span><span class="n">tissue_assembly</span><span class="o">.</span><span class="n">n_elm_gp</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">darcy_flux</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Nodal Darcy flux on the current configuration."""</span>
+    <span class="n">sv</span> <span class="o">=</span> <span class="n">tissue_assembly</span><span class="o">.</span><span class="n">sv</span>
+    <span class="n">mobility</span> <span class="o">=</span> <span class="n">fluid</span><span class="o">.</span><span class="n">get_mobility</span><span class="p">(</span><span class="n">J</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sv</span><span class="p">[</span><span class="s2">"lnJ"</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">grad_p</span> <span class="o">=</span> <span class="n">sv</span><span class="p">[</span><span class="s2">"_PorePressureGradient_gp"</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">tissue_assembly</span><span class="o">.</span><span class="n">convert_data</span><span class="p">(</span><span class="o">-</span><span class="n">mobility</span> <span class="o">*</span> <span class="n">grad_p</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">"GaussPoint"</span><span class="p">,</span> <span class="s2">"Node"</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">after_increment</span><span class="p">(</span><span class="n">pb</span><span class="p">):</span>
+    <span class="n">disp</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_disp</span><span class="p">()</span>
+    <span class="n">in_contact</span> <span class="o">=</span> <span class="n">nodes_in_contact</span><span class="p">(</span><span class="n">disp</span><span class="p">)</span>
+    <span class="n">update_drainage</span><span class="p">(</span><span class="n">pb</span><span class="p">,</span> <span class="n">in_contact</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">force</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">pb</span><span class="o">.</span><span class="n">get_ext_forces</span><span class="p">(</span><span class="s2">"RigidDispY"</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">tissue_assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"lnJ"</span><span class="p">])</span>
+    <span class="n">fluid_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="o">-</span><span class="n">tissue_assembly</span><span class="o">.</span><span class="n">integrate_field</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">R0</span> <span class="o">*</span> <span class="p">(</span><span class="n">J</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"GaussPoint"</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">contact_radius</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">in_contact</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">in_contact</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="c1"># first increment reaching each snapshot time</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">snapshots</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">snapshot_times</span><span class="p">):</span>
+        <span class="n">t_next</span> <span class="o">=</span> <span class="n">snapshot_times</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">snapshots</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="n">pb</span><span class="o">.</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">t_next</span> <span class="o">-</span> <span class="mf">1e-9</span><span class="p">:</span>
+            <span class="n">snapshots</span><span class="p">[</span><span class="n">pb</span><span class="o">.</span><span class="n">time</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pb</span><span class="o">.</span><span class="n">get_dof_solution</span><span class="p">(</span><span class="s2">"PorePressure"</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+                <span class="n">disp</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+                <span class="n">darcy_flux</span><span class="p">(),</span>
+            <span class="p">)</span>
+
+
+<span class="n">solver_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"update_dt"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">"dt_min"</span><span class="p">:</span> <span class="mf">1e-5</span><span class="p">,</span>
+    <span class="s2">"print_info"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">"save_at_exact_time"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>  <span class="c1"># let the time step grow up to dt_max</span>
+    <span class="s2">"callback"</span><span class="p">:</span> <span class="n">after_increment</span><span class="p">,</span>
+    <span class="s2">"exec_callback_at_each_iter"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># after each converged increment</span>
+<span class="p">}</span>
+<span class="c1"># indentation</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">t0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="n">t_load</span><span class="p">,</span> <span class="n">dt_max</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">)</span>
+<span class="n">i_load</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="c1"># relaxation, with growing time steps</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">t0</span><span class="o">=</span><span class="n">t_load</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="n">t_end</span><span class="p">,</span> <span class="n">dt_max</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="o">**</span><span class="n">solver_options</span><span class="p">)</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="n">force</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">force</span><span class="p">)</span>
+<span class="n">fluid_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fluid_out</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"peak force: </span><span class="si">{</span><span class="n">force</span><span class="p">[</span><span class="n">i_load</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> N, relaxed force: </span><span class="si">{</span><span class="n">force</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> N"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"fluid squeezed out: </span><span class="si">{</span><span class="n">fluid_out</span><span class="p">[</span><span class="n">i_load</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mm^3 at the end of the "</span>
+    <span class="sa">f</span><span class="s2">"indentation, </span><span class="si">{</span><span class="n">fluid_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mm^3 at the end of the relaxation"</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"contact radius at the end of the indentation: </span><span class="si">{</span><span class="n">contact_radius</span><span class="p">[</span><span class="n">i_load</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>peak force: 0.2619 N, relaxed force: 0.1890 N
+fluid squeezed out: -0.116 mm^3 at the end of the indentation, 14.699 mm^3 at the end of the relaxation
+contact radius at the end of the indentation: 2.07 mm
+</pre></div>
+</div>
+</section>
+<section id="force-relaxation-and-drainage">
+<h1>Force relaxation and drainage<a class="headerlink" href="#force-relaxation-and-drainage" title="Link to this heading"></a></h1>
+<p>The force peaks at the end of the indentation, when the fluid carries the
+load. During the fast indentation little fluid can escape: the tissue
+deforms nearly at constant volume. While the indenter is held, the fluid
+is squeezed out and the force relaxes at the same pace
+(1 mm<sup>3</sup> = 1 µL).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">force</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="s2">"o-"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"indenter force [N]"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Poroelastic relaxation"</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">fluid_out</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="s2">"o-"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"tab:green"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"fluid squeezed out [mm$^3$]"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Drainage"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">t_load</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"end of indentation"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"time [s]"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_indentation_soft_tissue_001.png" srcset="../../_images/sphx_glr_indentation_soft_tissue_001.png" alt="Poroelastic relaxation, Drainage" class = "sphx-glr-single-img"/></section>
+<section id="pore-pressure-and-fluid-flow">
+<h1>Pore pressure and fluid flow<a class="headerlink" href="#pore-pressure-and-fluid-flow" title="Link to this heading"></a></h1>
+<p>Close-up of the contact region. The arrows show the Darcy flux. At the end
+of the indentation the pressure is concentrated under the contact zone and
+the fluid flows away from the impermeable contact face towards the drained
+top surface around the indenter. During the relaxation the pressure peak
+fades within a few seconds, but the fluid keeps draining out of the whole
+layer at a lower pressure. Color and arrow scales are set for each instant
+(their maximum values are given in the titles).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">tissue_mesh</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s2">"tissue"</span><span class="p">)</span>
+<span class="n">tissue_nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">tissue_mesh</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span>
+<span class="c1"># arrows on a regular grid of the contact region (nearest mesh nodes, the</span>
+<span class="c1"># surface nodes being excluded)</span>
+<span class="n">gx</span><span class="p">,</span> <span class="n">gy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">H</span> <span class="o">-</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">H</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">gx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">gy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()]</span>
+<span class="n">inner</span> <span class="o">=</span> <span class="n">tissue_nodes</span><span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">tissue_nodes</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">H</span> <span class="o">-</span> <span class="mf">0.25</span><span class="p">]</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">inner</span><span class="p">][</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">grid</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">arrow_nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">inner</span><span class="p">[</span><span class="n">dist</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)])</span>
+
+<span class="k">for</span> <span class="n">t_snap</span><span class="p">,</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">disp</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="ow">in</span> <span class="n">snapshots</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">w_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">[:,</span> <span class="n">arrow_nodes</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">DataSet</span><span class="p">(</span><span class="n">tissue_mesh</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">node_data</span><span class="p">[</span><span class="s2">"PorePressure [kPa]"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e3</span> <span class="o">*</span> <span class="n">p</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">node_data</span><span class="p">[</span><span class="s2">"Disp"</span><span class="p">]</span> <span class="o">=</span> <span class="n">disp</span>
+    <span class="n">pl</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="s2">"PorePressure [kPa]"</span><span class="p">,</span>
+        <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">clim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e3</span> <span class="o">*</span> <span class="n">p</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
+        <span class="n">title</span><span class="o">=</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"t = </span><span class="si">{</span><span class="n">t_snap</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2"> s: p max = </span><span class="si">{</span><span class="mf">1e3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2"> kPa, "</span>
+            <span class="sa">f</span><span class="s2">"max flux = </span><span class="si">{</span><span class="n">w_norm</span><span class="si">:</span><span class="s2">.2g</span><span class="si">}</span><span class="s2"> mm/s"</span>
+        <span class="p">),</span>
+        <span class="n">elevation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">azimuth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">show_edges</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">arrow_nodes</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">points</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">arrow_nodes</span><span class="p">]</span> <span class="o">+</span> <span class="n">disp</span><span class="p">[:,</span> <span class="n">arrow_nodes</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">arrow_nodes</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">vectors</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span><span class="p">[:,</span> <span class="n">arrow_nodes</span><span class="p">]</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">w_norm</span>
+    <span class="n">arrows</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+    <span class="n">arrows</span><span class="p">[</span><span class="s2">"flux"</span><span class="p">]</span> <span class="o">=</span> <span class="n">vectors</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">arrows</span><span class="o">.</span><span class="n">glyph</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s2">"flux"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">"flux"</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">focal_point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">H</span> <span class="o">-</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">H</span> <span class="o">-</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="mf">2.2</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_indentation_soft_tissue_002.png" srcset="../../_images/sphx_glr_indentation_soft_tissue_002.png" alt="indentation soft tissue" class = "sphx-glr-single-img"/><img src="../../_images/sphx_glr_indentation_soft_tissue_003.png" srcset="../../_images/sphx_glr_indentation_soft_tissue_003.png" alt="indentation soft tissue" class = "sphx-glr-single-img"/><img src="../../_images/sphx_glr_indentation_soft_tissue_004.png" srcset="../../_images/sphx_glr_indentation_soft_tissue_004.png" alt="indentation soft tissue" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 47.593 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-poromechanics-indentation-soft-tissue-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/c4975fff7d164b7ea80fccb00fc60f9d/indentation_soft_tissue.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">indentation_soft_tissue.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/b04529532550dc468307f45fb38e307d/indentation_soft_tissue.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">indentation_soft_tissue.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/440b94b72652eb1dc07044dcafbef001/indentation_soft_tissue.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">indentation_soft_tissue.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="finite_strain_consolidation.html" class="btn btn-neutral float-left" title="Finite strain consolidation of a hyperelastic porous column" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="taylor_hood_lbb.html" class="btn btn-neutral float-right" title="Inf-sup (LBB) stable elements: Taylor-Hood interpolation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
