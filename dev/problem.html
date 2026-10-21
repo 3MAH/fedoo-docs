@@ -445,8 +445,18 @@ division by zero.</p>
 in fewer iterations than this value, the time step <code class="docutils literal notranslate"><span class="pre">dt</span></code> is increased.</p></li>
 <li><p><strong>check_early_divergence</strong>: If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the solver aborts the increment if the
 error spikes to 100 times the previous iteration error (or becomes <code class="docutils literal notranslate"><span class="pre">NaN</span></code>
-or <code class="docutils literal notranslate"><span class="pre">inf</span></code>), or if the error increases/stagnates (less than 0.1% decrease) for 4
-consecutive iterations.</p></li>
+or <code class="docutils literal notranslate"><span class="pre">inf</span></code>), or if the error increases/stagnates (less than 0.1% decrease) for
+<code class="docutils literal notranslate"><span class="pre">early_divergence_niter</span></code> consecutive iterations (default: 4).
+With automatic beam or shell tangents, stagnation instead means that many iterations
+without a 1% improvement of a reference error, after
+activating the consistent tangent. Adaptive stiffness, when enabled, gets
+an opportunity to recover before the stagnation abort. See below.</p></li>
+<li><p><strong>early_divergence_niter</strong>: Positive integer, default <code class="docutils literal notranslate"><span class="pre">4</span></code>. Controls the
+nonproductive-iteration count before early rejection, for example
+<code class="docutils literal notranslate"><span class="pre">problem.set_nr_criterion(&quot;Force&quot;,</span> <span class="pre">early_divergence_niter=8)</span></code>. This setting
+does not change the tangent-switch or adaptive stiffness thresholds, the
+immediate failure checks, or <code class="docutils literal notranslate"><span class="pre">max_subiter</span></code>. It is ignored when
+<code class="docutils literal notranslate"><span class="pre">check_early_divergence=False</span></code>.</p></li>
 <li><p><strong>norm_type</strong>: Defines the mathematical norm used to compute the error.
 (default: <code class="docutils literal notranslate"><span class="pre">2</span></code> for Euclidean)</p></li>
 </ul>
@@ -636,6 +646,47 @@ prescribed displacements in one full step without the validity safeguard.</p></l
 <p>Useful for elastoplasticity or damage modeling where a sudden change in
 direction requires a “safe” search direction.</p>
 <ul>
+<li><dl class="simple">
+<dt><strong>Automatic Consistent Beam and Shell Tangents</strong>:</dt><dd><ul class="simple">
+<li><p><strong>Usage</strong>: Set <code class="docutils literal notranslate"><span class="pre">consistent_tangent=None</span></code> on
+<a class="reference internal" href="generated/fedoo.weakform.PlateEquilibrium.html#fedoo.weakform.PlateEquilibrium" title="fedoo.weakform.PlateEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PlateEquilibrium</span></code></a> or
+<a class="reference internal" href="generated/fedoo.weakform.PlateEquilibriumFI.html#fedoo.weakform.PlateEquilibriumFI" title="fedoo.weakform.PlateEquilibriumFI"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PlateEquilibriumFI</span></code></a>, or
+<a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html#fedoo.weakform.BeamEquilibrium" title="fedoo.weakform.BeamEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.BeamEquilibrium</span></code></a> with <code class="docutils literal notranslate"><span class="pre">nlgeom=True</span></code> (UL).
+<code class="docutils literal notranslate"><span class="pre">False</span></code> always uses the historical approximate tangent; <code class="docutils literal notranslate"><span class="pre">True</span></code> always
+uses the complete consistent tangent. Beams support standard two-node
+<code class="docutils literal notranslate"><span class="pre">beam</span></code> elements in 2D and 3D, with Bernoulli or Timoshenko kinematics.
+Alternative beam interpolations and <code class="docutils literal notranslate"><span class="pre">geometric_stiffness=False</span></code> retain
+their historical tangent. Unrelated weak forms, including contact and
+damping, are ignored by the switching mechanism. Eligible beam and shell
+assemblies switch together when used in the same problem; activation is
+stored per assembly, so sharing a weak form between problems does not
+share the runtime switch.</p></li>
+<li><p><strong>Progress monitoring</strong>: The first evaluated Newton error establishes a
+reference. An error at least 1% below that reference replaces it and
+resets the nonproductive-iteration counter. Smaller decreases and
+oscillations count as nonproductive. Three such iterations activate the
+consistent tangent at the current iterate, without restarting the
+increment. The earliest switch is iteration four. For example, errors
+<code class="docutils literal notranslate"><span class="pre">0.09261,</span> <span class="pre">0.02166,</span> <span class="pre">0.00904,</span> <span class="pre">0.01427,</span> <span class="pre">0.00939,</span> <span class="pre">0.03107</span></code> trigger the
+switch at iteration six.</p></li>
+<li><p><strong>After switching</strong>: The current error becomes a fresh reference and all
+progress counters reset. Four further nonproductive iterations trigger
+adaptive stiffness if enabled and available. Early rejection uses
+<code class="docutils literal notranslate"><span class="pre">early_divergence_niter</span></code> (default: four) when
+<code class="docutils literal notranslate"><span class="pre">check_early_divergence=True</span></code>. The reference and counter
+reset again when adaptive stiffness activates. The consistent tangent
+remains active for the rest of the attempt. Every new increment attempt,
+including a retry after time-step reduction, starts with the approximate
+tangent again.</p></li>
+<li><p><strong>Safeguards</strong>: Convergence and invalid-geometry checks still run at every
+iteration. With <code class="docutils literal notranslate"><span class="pre">check_early_divergence=True</span></code>, nonfinite errors and
+errors greater than 100 times the previous error still cause immediate
+failure. The progress rule uses the selected normalized NR error and
+does not change its normalization or the convergence tolerance.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><dl>
 <dt><strong>Adaptive Stiffness (Blending)</strong>:</dt><dd><ul>
 <li><p><strong>Mechanism</strong>: Blends the tangent matrix <span class="math notranslate nohighlight">\(\mathbf{K_T}\)</span> with the

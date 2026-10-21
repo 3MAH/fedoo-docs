@@ -190,11 +190,15 @@ initial membrane shear stiffness, held fixed during the solve for both
 tangent options and both drilling modes.
 Increasing this value enforces the constraint more strictly but
 may introduce drilling locking in fully integrated elements.</p></li>
-<li><p><strong>consistent_tangent</strong> (<em>bool</em><em>, </em><em>default=False</em>) – For UL, analytically differentiate the complete corotational residual,
+<li><p><strong>consistent_tangent</strong> (<em>bool</em><em> or </em><em>None</em><em>, </em><em>default=False</em>) – For UL, analytically differentiate the complete corotational residual,
 including current geometry, frame, FI/SRI/MITC interpolation and drilling.
 The tangent can be nonsymmetric. False retains the historical material
 plus membrane-force geometric stiffness. Both options use the same
-fixed initial stiffness scale for the drilling penalty.</p></li>
+fixed initial stiffness scale for the drilling penalty. None starts each
+increment attempt with the historical tangent and switches to the complete
+tangent after three iterations without at least a 1% improvement of the
+reference error. Each significant improvement updates that reference and
+resets the counter; the earliest switch is at iteration four.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the WeakForm.</p></li>
 <li><p><strong>nlgeom</strong> (<em>bool</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Property used to treat geometric nonlinearities.
 If True, a step-by-step frame update is used.</p></li>

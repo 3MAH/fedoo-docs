@@ -173,12 +173,16 @@ and k are ignored.</p></li>
 <li><p><strong>Izz</strong> (<em>scalar</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values</em><em>, </em><em>optional</em>) – Second moment of area with respect to z (beam local coordinate system).</p></li>
 <li><p><strong>k</strong> (<em>scalar</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values</em><em>, </em><em>optional</em>) – Shear coefficient. If k=0 (<em>default</em>) the beam use the bernoulli
 hypothesis.</p></li>
-<li><p><strong>consistent_tangent</strong> (<em>bool</em><em>, </em><em>default=False</em>) – For standard two-node <code class="docutils literal notranslate"><span class="pre">beam</span></code> elements with <code class="docutils literal notranslate"><span class="pre">nlgeom=True</span></code> or
+<li><p><strong>consistent_tangent</strong> (<em>bool</em><em> or </em><em>None</em><em>, </em><em>default=False</em>) – For standard two-node <code class="docutils literal notranslate"><span class="pre">beam</span></code> elements with <code class="docutils literal notranslate"><span class="pre">nlgeom=True</span></code> or
 <code class="docutils literal notranslate"><span class="pre">'UL'</span></code>, differentiate the complete existing internal-force residual.
 Includes the changing length, frame and local finite rotations. The
 resulting tangent may be nonsymmetric. Set False for the historical
 material plus axial-force geometric tangent. Alternative beam
 interpolations retain that historical tangent.
+None starts each increment attempt with the historical tangent and
+switches after three iterations without at least a 1% improvement of
+the reference error. Significant improvements update the reference
+and reset the counter; the earliest switch is iteration four.
 This option is read-only after construction. Create a new weak form
 to select a different tangent, including when sharing forms across assemblies.</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – name of the WeakForm.</p></li>

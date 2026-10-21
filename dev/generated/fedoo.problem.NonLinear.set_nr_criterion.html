@@ -243,12 +243,22 @@ If True, aborts the time step early if convergence trends are poor.
 A step is considered diverging if:
 1. The error remains “unproductive” (new_error &gt; 0.999 * previous_error)</p>
 <blockquote>
-<div><p>for 4 consecutive Newton-Raphson iterations.</p>
+<div><p>for early_divergence_niter consecutive Newton-Raphson iterations.</p>
 </div></blockquote>
-<ol class="arabic simple" start="2">
-<li><p>The error spikes to more than 100 times the previous error.</p></li>
-</ol>
+<p>2. The error spikes to more than 100 times the previous error.
+With automatic beam/shell tangents (consistent_tangent=None), three
+iterations without a 1% improvement of a reference error activate
+the consistent tangent. The current error becomes a fresh reference;
+four further nonproductive iterations trigger adaptive stiffness
+if available; early_divergence_niter controls the early abort.
+Significant improvements reset
+the counter and update the reference. Immediate failure checks
+remain active throughout.</p>
 </li>
+<li><p>‘early_divergence_niter’: positive int, default = 4.
+Number of nonproductive iterations before early rejection. Ignored
+when check_early_divergence=False. Does not change the automatic
+tangent or adaptive stiffness triggers, or the immediate spike check.</p></li>
 </ul>
 </dd>
 </dl>
