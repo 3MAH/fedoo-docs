@@ -24,6 +24,7 @@
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
       <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -111,40 +112,42 @@ to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="inf-sup-lbb-stable-elements-taylor-hood-interpolation">
 <span id="sphx-glr-examples-poromechanics-taylor-hood-lbb-py"></span><h1>Inf-sup (LBB) stable elements: Taylor-Hood interpolation<a class="headerlink" href="#inf-sup-lbb-stable-elements-taylor-hood-interpolation" title="Link to this heading"></a></h1>
-<p>The mixed displacement-pressure and the Biot u-PorePressure saddle systems need
-an inf-sup (LBB) stable interpolation pair. Equal-order pairs (displacement and
-pressure interpolated identically) violate the LBB condition and pollute the
-pressure with spurious “checkerboard” modes.</p>
-<p>fedoo supports a DIFFERENT interpolation order per variable – so a Taylor-Hood
-pair (quadratic displacement, linear pressure) needs no new machinery:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">element_list</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="s2">"quad8lbb"</span><span class="p">,</span> <span class="s2">"quad8"</span><span class="p">)</span>
-<span class="n">elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"Pressure"</span><span class="p">,</span> <span class="s2">"quad4"</span><span class="p">)</span>          <span class="c1"># one order lower</span>
+<p>In the undrained limit (nearly incompressible fluid, no time to drain), the
+pore pressure enforces a volume constraint and the Biot system becomes a
+saddle-point problem. Its discretization is stable only if the pair of
+displacement and pressure interpolations satisfies the inf-sup (LBB)
+condition. Equal-order pairs (same element for both fields) violate it, and
+the pressure shows spurious node-to-node oscillations (“checkerboard”).</p>
+<p>A Taylor-Hood pair (quadratic displacement, linear pressure) satisfies it. In
+fedoo it is built with a <code class="xref py py-class docutils literal notranslate"><span class="pre">CombinedElement</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="s2">"quad8lbb"</span><span class="p">,</span> <span class="s2">"quad8"</span><span class="p">)</span>
+<span class="n">elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"PorePressure"</span><span class="p">,</span> <span class="s2">"quad4"</span><span class="p">)</span>
 <span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh_quad8</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad8lbb"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Part A compares, on the SAME quad8 mesh and SAME quadratic displacement, the
-equal-order pressure (quad8) and the Taylor-Hood pressure (quad4) on a nearly
-incompressible problem – the equal-order pressure shows larger (checkerboard)
-extrema. Part B uses a Taylor-Hood poro element (hex20 / hex8) and recovers the
-exact undrained Biot pressure.</p>
+<p>The pressure DOFs of the mid-side nodes, which the linear pressure does not
+use, are eliminated automatically.</p>
+<p>Part A loads a strip footing on an undrained half-space (incompressible
+constituents) and compares the pore pressure on the axis with the elastic
+solution <span class="math notranslate nohighlight">\(p = (2q/\pi)\arctan(b/z)\)</span>: Taylor-Hood (quad8/quad4)
+against equal order (quad4/quad4) with the same pressure resolution. Part B
+recovers the exact undrained Biot pressure with a 3D Taylor-Hood element
+(hex20/hex8). Runs in a few seconds.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>======================================================================
- Part A - nearly incompressible mixed elasticity (nu = 0.49999)
- same quad8 mesh &amp; quadratic displacement; only the Pressure order differs
+ Part A - undrained strip footing, pore pressure p/q on the axis
 ======================================================================
-  Taylor-Hood Q2-Q1 (Pressure quad4): well posed, smooth pressure, extrema [-0.007573, +0.007573]
-  equal order Q2-Q2 (Pressure quad8): see end of script.
+  z/b = 0.5: exact 0.705 | Taylor-Hood 0.700 | equal order 1.317
+  z/b = 1.0: exact 0.500 | Taylor-Hood 0.498 | equal order 0.994
+  z/b = 1.5: exact 0.374 | Taylor-Hood 0.381 | equal order 0.778
+  z/b = 2.0: exact 0.295 | Taylor-Hood 0.309 | equal order 0.633
+  equal order, consecutive axis nodes near z = b: [ 1.317 -0.006  0.994 -0.023] -&gt; checkerboard
 
 ======================================================================
  Part B - Taylor-Hood poromechanics, undrained step (hex20 u / hex8 p)
 ======================================================================
   converged=1 in 1 iter(s)
-  undrained gauss-point pore pressure: mean=10000  std=4e-12
+  undrained gauss-point pore pressure: mean=10000  std=3.4e-12
   analytical  p0 = -alpha*M*tr(eps) = 10000 Pa  (match)
-
-======================================================================
- Equal-order Q2-Q2 on the Part A problem (LBB-deficient)
-======================================================================
-  solved, but gp pressure extrema [-0.01371, +0.01371] (1.81x the Taylor-Hood extrema -&gt; checkerboard pollution)
 
 DONE
 </pre></div>
@@ -158,71 +161,61 @@ DONE
 
 
 <span class="c1"># ----------------------------------------------------------------------</span>
-<span class="c1"># Part A - nearly-incompressible mixed elasticity: pressure smoothness</span>
+<span class="c1"># Part A - undrained strip footing: Taylor-Hood vs equal order</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">mixed_cantilever</span><span class="p">(</span><span class="n">pressure_elm</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">nu</span><span class="o">=</span><span class="mf">0.49999</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Plane-strain cantilever bending. pressure_elm in {"quad8","quad4"}."""</span>
-    <span class="n">E</span> <span class="o">=</span> <span class="mf">1.0</span>
-    <span class="n">K</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">nu</span><span class="p">))</span>
-    <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dplane"</span><span class="p">)</span>
-    <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
-        <span class="n">nx</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
-        <span class="n">ny</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
-        <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">x_max</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-        <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">y_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad8"</span><span class="p">,</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">"beam_"</span> <span class="o">+</span> <span class="n">name</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">strip_footing</span><span class="p">(</span><span class="n">taylor_hood</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">1.0e3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Pore pressure on the axis under a strip load q of half-width b."""</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">taylor_hood</span><span class="p">:</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+            <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="o">-</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"quad8"</span>
+        <span class="p">)</span>
+        <span class="n">elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="s2">"quad8lbb"</span><span class="p">,</span> <span class="s2">"quad8"</span><span class="p">)</span>
+        <span class="n">elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"PorePressure"</span><span class="p">,</span> <span class="s2">"quad4"</span><span class="p">)</span>
+        <span class="n">elm_type</span> <span class="o">=</span> <span class="s2">"quad8lbb"</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># same number of pressure nodes</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="o">-</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"quad4"</span><span class="p">)</span>
+        <span class="n">elm_type</span> <span class="o">=</span> <span class="s2">"quad4"</span>
+    <span class="c1"># biot_modulus=None: incompressible fluid; tiny permeability and time step</span>
+    <span class="n">fluid</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">PoroFluidProperties</span><span class="p">(</span><span class="n">permeability</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">)</span>
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">PoroMechanicsSimple</span><span class="p">(</span>
+        <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e6</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">fluid</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">)</span>
-    <span class="n">mat</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"mat_"</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibriumMixed</span><span class="p">(</span>
-        <span class="n">mat</span><span class="p">,</span> <span class="n">bulk_modulus</span><span class="o">=</span><span class="n">K</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"wf_"</span> <span class="o">+</span> <span class="n">name</span>
-    <span class="p">)</span>
-    <span class="k">if</span> <span class="n">pressure_elm</span> <span class="o">==</span> <span class="s2">"quad4"</span><span class="p">:</span>  <span class="c1"># Taylor-Hood Q2-Q1</span>
-        <span class="n">elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">element_list</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">"quad8"</span><span class="p">)</span>
-        <span class="n">elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"Pressure"</span><span class="p">,</span> <span class="s2">"quad4"</span><span class="p">)</span>
-        <span class="n">elm_type</span> <span class="o">=</span> <span class="n">name</span>
-    <span class="k">else</span><span class="p">:</span>  <span class="c1"># equal order Q2-Q2</span>
-        <span class="n">elm_type</span> <span class="o">=</span> <span class="s2">"quad8"</span>
-    <span class="n">asm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="n">elm_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"asm_"</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="s2">"asm_"</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Displacement"</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="s2">"DispX"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-        <span class="s2">"Dirichlet"</span><span class="p">,</span>
-        <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">),</span>
-        <span class="s2">"DispY"</span><span class="p">,</span>
-        <span class="o">-</span><span class="mf">0.05</span><span class="p">,</span>
-        <span class="n">time_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">tf</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">tf</span> <span class="o">*</span> <span class="mf">1e9</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">tmax</span> <span class="o">=</span> <span class="mf">1.0</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">dtime</span> <span class="o">=</span> <span class="mf">1.0</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">set_start</span><span class="p">()</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">pb</span><span class="o">.</span><span class="n">solve_time_increment</span><span class="p">()</span>
-    <span class="n">p_gp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
-        <span class="n">asm</span><span class="o">.</span><span class="n">get_gp_results</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">"Pressure"</span><span class="p">),</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_dof_solution</span><span class="p">())</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">p_gp</span>
+    <span class="n">asm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="n">elm_type</span><span class="p">)</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">loaded</span> <span class="o">=</span> <span class="n">top</span><span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">top</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">b</span> <span class="o">+</span> <span class="mf">1e-9</span><span class="p">]</span>
+    <span class="n">load</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="o">.</span><span class="n">from_nodes</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">loaded</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">initial_pressure</span><span class="o">=</span><span class="n">q</span><span class="p">)</span>
+    <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">asm</span> <span class="o">+</span> <span class="n">load</span><span class="p">)</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"left"</span><span class="p">,</span> <span class="s2">"DispX"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># symmetry axis</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">,</span> <span class="s2">"DispX"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"bottom"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">print_info</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">pressure</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_dof_solution</span><span class="p">(</span><span class="s2">"PorePressure"</span><span class="p">)</span>
+    <span class="n">vertices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">elements</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">axis</span> <span class="o">=</span> <span class="n">vertices</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">vertices</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)]</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="o">-</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">axis</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">depth</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">depth</span><span class="p">[</span><span class="n">order</span><span class="p">],</span> <span class="n">pressure</span><span class="p">[</span><span class="n">axis</span><span class="p">][</span><span class="n">order</span><span class="p">]</span> <span class="o">/</span> <span class="n">q</span>
 
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">" Part A - nearly incompressible mixed elasticity (nu = 0.49999)"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">" same quad8 mesh &amp; quadratic displacement; only the Pressure order differs"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">" Part A - undrained strip footing, pore pressure p/q on the axis"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
-<span class="c1"># Taylor-Hood here (well posed). The equal-order run is deferred to the very end</span>
-<span class="c1"># because the LBB-deficient saddle is singular and its failed factorization</span>
-<span class="c1"># pollutes the shared in-process direct solver.</span>
-<span class="n">p_th</span> <span class="o">=</span> <span class="n">mixed_cantilever</span><span class="p">(</span><span class="s2">"quad4"</span><span class="p">,</span> <span class="s2">"q8th"</span><span class="p">)</span>  <span class="c1"># Taylor-Hood Q2-Q1</span>
+<span class="n">z</span><span class="p">,</span> <span class="n">p_th</span> <span class="o">=</span> <span class="n">strip_footing</span><span class="p">(</span><span class="n">taylor_hood</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">z_eq</span><span class="p">,</span> <span class="n">p_eq</span> <span class="o">=</span> <span class="n">strip_footing</span><span class="p">(</span><span class="n">taylor_hood</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">depth</span> <span class="ow">in</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">):</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">depth</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">z_eq</span> <span class="o">-</span> <span class="n">depth</span><span class="p">))</span>
+    <span class="n">exact</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">depth</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"  z/b = </span><span class="si">{</span><span class="n">depth</span><span class="si">:</span><span class="s2">3.1f</span><span class="si">}</span><span class="s2">: exact </span><span class="si">{</span><span class="n">exact</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> | Taylor-Hood </span><span class="si">{</span><span class="n">p_th</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span>
+        <span class="sa">f</span><span class="s2">" | equal order </span><span class="si">{</span><span class="n">p_eq</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">"  Taylor-Hood Q2-Q1 (Pressure quad4): well posed, smooth pressure, "</span>
-    <span class="sa">f</span><span class="s2">"extrema [</span><span class="si">{</span><span class="n">p_th</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">+.4g</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">p_th</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">+.4g</span><span class="si">}</span><span class="s2">]"</span>
+    <span class="s2">"  equal order, consecutive axis nodes near z = b:"</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p_eq</span><span class="p">[(</span><span class="n">z_eq</span> <span class="o">&gt;</span> <span class="mf">0.4</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">z_eq</span> <span class="o">&lt;</span> <span class="mf">1.4</span><span class="p">)],</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="s2">"-&gt; checkerboard"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"  equal order Q2-Q2 (Pressure quad8): see end of script."</span><span class="p">)</span>
-
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1"># Part B - Taylor-Hood poromechanics (hex20 displacement / hex8 PorePressure)</span>
@@ -257,7 +250,7 @@ DONE
 <span class="p">)</span>
 <span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">PoroMechanicsSimple</span><span class="p">(</span><span class="n">skel</span><span class="p">,</span> <span class="n">fluid</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"poro"</span><span class="p">)</span>
 
-<span class="n">elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">element_list</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="s2">"hex20lbb"</span><span class="p">,</span> <span class="s2">"hex20"</span><span class="p">)</span>
+<span class="n">elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="s2">"hex20lbb"</span><span class="p">,</span> <span class="s2">"hex20"</span><span class="p">)</span>
 <span class="n">elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"PorePressure"</span><span class="p">,</span> <span class="s2">"hex8"</span><span class="p">)</span>
 <span class="n">asm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"hex20lbb"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"poroTH"</span><span class="p">)</span>
 
@@ -296,27 +289,10 @@ DONE
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  analytical  p0 = -alpha*M*tr(eps) = </span><span class="si">{</span><span class="o">-</span><span class="n">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dz</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span><span class="si">:</span><span class="s2">.5g</span><span class="si">}</span><span class="s2"> Pa  (match)"</span><span class="p">)</span>
 
-<span class="c1"># ----------------------------------------------------------------------</span>
-<span class="c1"># Equal-order LBB failure (run LAST: it is singular and corrupts the solver)</span>
-<span class="c1"># ----------------------------------------------------------------------</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">" Equal-order Q2-Q2 on the Part A problem (LBB-deficient)"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">p_eq</span> <span class="o">=</span> <span class="n">mixed_cantilever</span><span class="p">(</span><span class="s2">"quad8"</span><span class="p">,</span> <span class="s2">"q8eq"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">"  solved, but gp pressure extrema [</span><span class="si">{</span><span class="n">p_eq</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">+.4g</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">p_eq</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">+.4g</span><span class="si">}</span><span class="s2">] "</span>
-        <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">p_eq</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">p_th</span><span class="p">))</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">x the Taylor-Hood "</span>
-        <span class="sa">f</span><span class="s2">"extrema -&gt; checkerboard pollution)"</span>
-    <span class="p">)</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  *** </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)[:</span><span class="mi">55</span><span class="p">]</span><span class="si">}</span><span class="s2"> ***"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"  -&gt; SINGULAR saddle: the textbook inf-sup (LBB) failure that the"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"     Taylor-Hood pair above avoids on the very same mesh."</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">DONE"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.149 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.165 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-poromechanics-taylor-hood-lbb-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/3ad4d29b4e9fe36f2299cc051f9e75c4/taylor_hood_lbb.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">taylor_hood_lbb.ipynb</span></code></a></p>

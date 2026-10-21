@@ -575,7 +575,7 @@ See :doc:`/poromechanics` for the formulation.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The mixed displacement-pressure and the Biot u-PorePressure saddle systems need an inf-sup (LBB) stable interpolation pair. Equal-order pairs (displacement and pressure interpolated identically) violate the LBB condition and pollute the pressure with spurious &quot;checkerboard&quot; modes.">
+    <div class="sphx-glr-thumbcontainer" tooltip="In the undrained limit (nearly incompressible fluid, no time to drain), the pore pressure enforces a volume constraint and the Biot system becomes a saddle-point problem. Its discretization is stable only if the pair of displacement and pressure interpolations satisfies the inf-sup (LBB) condition. Equal-order pairs (same element for both fields) violate it, and the pressure shows spurious node-to-node oscillations (&quot;checkerboard&quot;).">
 
 .. only:: html
 
