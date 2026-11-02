@@ -70,6 +70,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
@@ -146,7 +147,9 @@ petsc4py) depending on the processor as described below.</p></li>
 </pre></div>
 </div>
 <p>This installs the following optional groups: <code class="docutils literal notranslate"><span class="pre">solver</span></code>, <code class="docutils literal notranslate"><span class="pre">plot</span></code>,
-<code class="docutils literal notranslate"><span class="pre">simcoon</span></code>, <code class="docutils literal notranslate"><span class="pre">test</span></code> and <code class="docutils literal notranslate"><span class="pre">ipc</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">test</span></code>, <code class="docutils literal notranslate"><span class="pre">ipc</span></code>, <code class="docutils literal notranslate"><span class="pre">io</span></code> and <code class="docutils literal notranslate"><span class="pre">zstd</span></code>. Zstandard compression for FDH5 can
+also be installed separately with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;fedoo[zstd]&quot;</span></code>; both writers
+and readers need the optional <code class="docutils literal notranslate"><span class="pre">hdf5plugin</span></code> package.</p>
 <p><code class="docutils literal notranslate"><span class="pre">pyvistaqt</span></code>, which is required for the viewer, is not included in the all
 group. This allows you to choose your preferred Qt binding (<code class="docutils literal notranslate"><span class="pre">pyqt5</span></code>,
 <code class="docutils literal notranslate"><span class="pre">pyqt6</span></code> or <code class="docutils literal notranslate"><span class="pre">pyside6</span></code>). We recommend installing only one of these to avoid
@@ -157,7 +160,7 @@ potential library conflicts.</p>
 </div>
 <p>Alternatively, use the <code class="docutils literal notranslate"><span class="pre">gui</span></code> install group that includes <code class="docutils literal notranslate"><span class="pre">pyvistaqt</span></code>
 and <code class="docutils literal notranslate"><span class="pre">pyside6</span></code>:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install fedoo[all, gui]
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install "fedoo[all,gui]"
 </pre></div>
 </div>
 </section>

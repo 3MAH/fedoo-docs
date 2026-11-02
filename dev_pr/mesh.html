@@ -69,6 +69,17 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.MultiMesh.html">fedoo.MultiMesh</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#node-and-element-selection">Node and element selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.Mesh.find_nodes.html">fedoo.Mesh.find_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.Mesh.find_elements.html">fedoo.Mesh.find_elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.Mesh.get_elements_from_nodes.html">fedoo.Mesh.get_elements_from_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.find_surface_nodes.html">fedoo.mesh.find_surface_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.find_edge_nodes.html">fedoo.mesh.find_edge_nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coordinates-and-field-expressions">Coordinates and field expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connected-exterior-surface-selection">Connected exterior surface selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connected-exterior-edge-selection">Connected exterior edge selection</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#mesh-manipulation-functions">Mesh manipulation functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.stack.html">fedoo.mesh.stack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.mesh.extrude.html">fedoo.mesh.extrude</a></li>
@@ -106,6 +117,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
@@ -158,6 +170,100 @@
 </tr>
 </tbody>
 </table>
+</section>
+<section id="node-and-element-selection">
+<span id="mesh-selection"></span><h2>Node and element selection<a class="headerlink" href="#node-and-element-selection" title="Link to this heading"></a></h2>
+<p>Use the selection methods to obtain node or element IDs without changing
+mesh geometry. Pass <code class="docutils literal notranslate"><span class="pre">name</span></code> to <code class="docutils literal notranslate"><span class="pre">find_nodes</span></code> or <code class="docutils literal notranslate"><span class="pre">find_elements</span></code> to also
+store the result in <code class="docutils literal notranslate"><span class="pre">mesh.node_sets</span></code> or <code class="docutils literal notranslate"><span class="pre">mesh.element_sets</span></code>. Node IDs
+refer to the shared node table. For a MultiMesh, global element IDs follow
+the concatenated submesh order.</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.Mesh.find_nodes.html#fedoo.Mesh.find_nodes" title="fedoo.Mesh.find_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.find_nodes</span></code></a>(selection_criterion[, ...])</p></td>
+<td><p>Return a list of nodes from a given selection criterion</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.Mesh.find_elements.html#fedoo.Mesh.find_elements" title="fedoo.Mesh.find_elements"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.find_elements</span></code></a>(selection_criterion[, ...])</p></td>
+<td><p>Return a list of elements from a given selection criterion</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.Mesh.get_elements_from_nodes.html#fedoo.Mesh.get_elements_from_nodes" title="fedoo.Mesh.get_elements_from_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Mesh.get_elements_from_nodes</span></code></a>(node_set[, ...])</p></td>
+<td><p>Return a list of elements that are build with the nodes given in node_set</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.mesh.find_surface_nodes.html#fedoo.mesh.find_surface_nodes" title="fedoo.mesh.find_surface_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mesh.find_surface_nodes</span></code></a>(mesh, seed[, ...])</p></td>
+<td><p>Find the nodes of the connected exterior patch containing a seed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.mesh.find_edge_nodes.html#fedoo.mesh.find_edge_nodes" title="fedoo.mesh.find_edge_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mesh.find_edge_nodes</span></code></a>(mesh, seed[, angle, ...])</p></td>
+<td><p>Return node IDs along a connected exterior feature-edge chain.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="coordinates-and-field-expressions">
+<h3>Coordinates and field expressions<a class="headerlink" href="#coordinates-and-field-expressions" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">find_nodes</span></code> selects by node coordinates. <code class="docutils literal notranslate"><span class="pre">find_elements</span></code> tests element
+centers by default; use <code class="docutils literal notranslate"><span class="pre">select_by=&quot;nodes&quot;</span></code> with <code class="docutils literal notranslate"><span class="pre">all_nodes=True</span></code> or
+<code class="docutils literal notranslate"><span class="pre">False</span></code> to require all nodes or at least one node to satisfy the criterion.
+Both methods accept mathematical expressions, and <code class="docutils literal notranslate"><span class="pre">data=results</span></code> makes
+result fields and components such as <code class="docutils literal notranslate"><span class="pre">Stress_XX</span></code> available. Fields are
+converted to Node or Element values according to the selection method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Left"</span><span class="p">)</span>
+<span class="n">elements</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="s2">"X &gt; 0.5"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Right"</span><span class="p">)</span>
+<span class="n">loaded_nodes</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Disp_X &gt; 0.01 and Y &gt; 0"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">)</span>
+<span class="n">stressed_elements</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="s2">"Stress_XX &gt; 100"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">mesh.get_elements_from_nodes(nodes)</span></code> to select elements from node IDs.
+See <a class="reference internal" href="post_processing.html#fedoo-viewer"><span class="std std-ref">Fedoo interactive viewer</span></a> for the corresponding interactive node/element set
+managers and conversions.</p>
+</section>
+<section id="connected-exterior-surface-selection">
+<h3>Connected exterior surface selection<a class="headerlink" href="#connected-exterior-surface-selection" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">mesh.find_surface_nodes(seed,</span> <span class="pre">seed_type=&quot;Node&quot;,</span> <span class="pre">angle=30)</span></code> returns sorted
+node IDs on the connected exterior patch containing a node or global element
+seed. It crosses neighboring faces when their normal-angle difference is at
+most <code class="docutils literal notranslate"><span class="pre">angle</span></code> degrees: 0 joins flat faces; 30 stops at a right-angle edge.
+The test is local, so a smoothly curved patch can wrap around the geometry.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_surface_nodes</span><span class="p">(</span><span class="n">top_node_id</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"selected_surface"</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span>
+<span class="n">surface</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">node_set</span><span class="o">=</span><span class="n">nodes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The same function is available as <code class="docutils literal notranslate"><span class="pre">fd.mesh.find_surface_nodes(mesh,</span> <span class="pre">...)</span></code>.
+Solid internal faces are removed, including interfaces between MultiMesh
+submeshes. Midside nodes are included; normals use corner geometry. For a
+three-dimensional shell mesh, existing tri/quad faces are traversed instead;
+use <code class="docutils literal notranslate"><span class="pre">mesh.extract_elements(mesh.get_elements_from_nodes(nodes))</span></code> to extract
+the selected shell patch. For two-dimensional meshes, the selection follows
+exterior boundary edges. Non-manifold edges stop the selection.</p>
+<p>A seed at a corner may belong to distinct patches. In this case
+<code class="docutils literal notranslate"><span class="pre">AmbiguousSurfaceSeed</span></code> exposes candidate <code class="docutils literal notranslate"><span class="pre">face_ids</span></code> and <code class="docutils literal notranslate"><span class="pre">normals</span></code>;
+repeat the call with <code class="docutils literal notranslate"><span class="pre">seed_face</span></code> set to the desired exterior face ID.
+The viewer presents this choice in a dialog. Node Sets provides a seed ID,
+a maximum normal angle, and <strong>Select surface nodes</strong>. <strong>Select</strong> activates
+the single-node picker. All viewer surface/edge selection uses node seeds.
+Interior nodes cannot seed a patch. For planar XYZ meshes use
+<strong>Boundary edges (2D mesh)</strong>;
+the equivalent Python option is <code class="docutils literal notranslate"><span class="pre">boundary_edges=True</span></code>.
+The resulting node selection can be saved as a named set and exported to FDH5.</p>
+</section>
+<section id="connected-exterior-edge-selection">
+<h3>Connected exterior edge selection<a class="headerlink" href="#connected-exterior-edge-selection" title="Link to this heading"></a></h3>
+<p>For a 3D mesh, <strong>Exterior edges (3D)</strong> selects nodes along creases and open
+shell boundaries. <strong>Sharpness</strong> is the minimum angle between adjacent exterior
+face normals that identifies a crease. <strong>Turn limit</strong> is the maximum direction
+change allowed while following that edge. Smooth surface tessellation lines
+are excluded; branches and sharp changes of direction stop traversal.
+The seed must lie on an eligible edge. A corner touching distinct edge chains
+offers a starting-edge choice. Midside nodes are included.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_edge_nodes</span><span class="p">(</span><span class="n">edge_node_id</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">feature_angle</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"selected_edge"</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span>
+</pre></div>
+</div>
+<p>The same function is available as <code class="docutils literal notranslate"><span class="pre">fd.mesh.find_edge_nodes(mesh,</span> <span class="pre">...)</span></code>.
+<code class="docutils literal notranslate"><span class="pre">AmbiguousEdgeSeed</span></code> exposes candidate <code class="docutils literal notranslate"><span class="pre">edge_ids</span></code>, <code class="docutils literal notranslate"><span class="pre">endpoints</span></code> and
+<code class="docutils literal notranslate"><span class="pre">directions</span></code>; repeat with <code class="docutils literal notranslate"><span class="pre">seed_edge</span></code> to choose one chain explicitly.</p>
+</section>
 </section>
 <section id="mesh-manipulation-functions">
 <h2>Mesh manipulation functions<a class="headerlink" href="#mesh-manipulation-functions" title="Link to this heading"></a></h2>

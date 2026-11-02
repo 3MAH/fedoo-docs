@@ -64,6 +64,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
@@ -74,6 +75,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../post_processing.html">Post-Processing</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../post_processing.html#get-results-from-a-problem">Get results from a problem</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#class-dataset">Class DataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../post_processing.html#class-problemdataset">Class ProblemDataSet</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../post_processing.html#class-multiframedataset">Class MultiFrameDataSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#multimesh-results">MultiMesh results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#beam-and-shell-section-fields">Beam and shell section fields</a></li>
@@ -158,7 +160,9 @@ Indicates the type of the returned data.</p></li>
 </dl>
 <p class="rubric">Notes</p>
 <p>This method supports automatic conversion between node, element,
-and Gauss point data types when applicable.</p>
+and Gauss point data types when applicable.
+Scalar data, including global DOF arrays, have no mesh association:
+<code class="docutils literal notranslate"><span class="pre">data_type</span></code> is ignored and their stored value indices are preserved.</p>
 <p>With a <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code>, element and Gauss point fields may be stored as a
 dictionary keyed by submesh id, submesh name, or unique element type.
 The active submesh is controlled by <code class="docutils literal notranslate"><span class="pre">dataset.active_submesh</span></code>.</p>

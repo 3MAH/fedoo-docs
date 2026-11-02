@@ -21,6 +21,7 @@
       
          MultiFrameDataSet.__getitem__
          MultiFrameDataSet.add_data
+         MultiFrameDataSet.add_scalar_expression
          MultiFrameDataSet.beam_derived_fields
          MultiFrameDataSet.beam_section_description
          MultiFrameDataSet.copy
