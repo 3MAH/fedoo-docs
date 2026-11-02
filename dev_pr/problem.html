@@ -547,9 +547,11 @@ not consistent and emits a warning with updated Lagrangian; prefer
 not supported.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;fbar&quot;</span></code>: F-bar method with the volume change evaluated at the element
 center. For <code class="docutils literal notranslate"><span class="pre">quad4</span></code> and <code class="docutils literal notranslate"><span class="pre">hex8</span></code> in <code class="docutils literal notranslate"><span class="pre">3D</span></code> or
-<code class="docutils literal notranslate"><span class="pre">2Dplane</span></code>, its consistent tangent matrix is nonsymmetric. In small
-strain, it reduces to a center-based B-bar correction. Other elements,
-<code class="docutils literal notranslate"><span class="pre">2Daxi</span></code>, and total-Lagrangian analyses retain the F-bar kinematic
+<code class="docutils literal notranslate"><span class="pre">2Dplane</span></code>, its consistent tangent matrix is nonsymmetric, with the
+updated and the total Lagrangian methods alike: the total-Lagrangian
+residual is the pull-back of the updated-Lagrangian one and both reach the
+same solution. In small strain, it reduces to a center-based B-bar
+correction. Other elements and <code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> retain the F-bar kinematic
 correction but use the standard tangent, with a warning.</p></li>
 </ul>
 <p>In plane stress (<code class="docutils literal notranslate"><span class="pre">2Dstress</span></code>), these options are ignored and the standard

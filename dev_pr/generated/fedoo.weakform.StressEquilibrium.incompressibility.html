@@ -190,9 +190,12 @@ elements only. Its use with updated-Lagrangian finite strains
 emits a warning because the formulation is not consistent.</p></li>
 <li><p>“fbar”: F-bar method where the volume change is evaluated at the
 element center. The consistent non symmetric tangent matrix is
-used for “quad4” and “hex8” elements (not available for ‘2Daxi’
-and with the total lagrangian method). In small strain, it
-reduces to a center-based B-bar volumetric correction.</p></li>
+used for “quad4” and “hex8” elements (not available for
+‘2Daxi’), with the updated and the total lagrangian methods.
+The total lagrangian residual is the pull-back of the updated
+lagrangian one, S = J F^-1 sigma(F_bar) F^-T, so that both
+reach the same solution. In small strain, it reduces to a
+center-based B-bar volumetric correction.</p></li>
 </ul>
 </div></blockquote>
 <p>This attribute should be defined before the creation of the associated

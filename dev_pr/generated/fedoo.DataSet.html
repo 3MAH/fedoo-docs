@@ -75,7 +75,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../post_processing.html">Post-Processing</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../post_processing.html#get-results-from-a-problem">Get results from a problem</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../post_processing.html#class-dataset">Class DataSet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../post_processing.html#class-problemdataset">Class ProblemDataSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#class-multiframedataset">Class MultiFrameDataSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#multimesh-results">MultiMesh results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#beam-and-shell-section-fields">Beam and shell section fields</a></li>
@@ -259,100 +258,97 @@ conversion between different data types.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.add_data.html#fedoo.DataSet.add_data" title="fedoo.DataSet.add_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.add_data</span></code></a>(data_set)</p></td>
 <td><p>Update the DataSet object including all the node, element and gausspoint data from antoher DataSet object data_set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.add_scalar_expression.html#fedoo.DataSet.add_scalar_expression" title="fedoo.DataSet.add_scalar_expression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.add_scalar_expression</span></code></a>(name, expression)</p></td>
-<td><p>Compute one scalar per frame from fields, scalars and named sets.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.beam_derived_fields.html#fedoo.DataSet.beam_derived_fields" title="fedoo.DataSet.beam_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.beam_derived_fields</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.beam_derived_fields.html#fedoo.DataSet.beam_derived_fields" title="fedoo.DataSet.beam_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.beam_derived_fields</span></code></a>()</p></td>
 <td><p>Lazy section tensors, available when generalized fields have metadata.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.beam_section_description.html#fedoo.DataSet.beam_section_description" title="fedoo.DataSet.beam_section_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.beam_section_description</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.beam_section_description.html#fedoo.DataSet.beam_section_description" title="fedoo.DataSet.beam_section_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.beam_section_description</span></code></a>()</p></td>
 <td><p>Section metadata with varying properties evaluated at beam Gauss points.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.copy.html#fedoo.DataSet.copy" title="fedoo.DataSet.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.copy</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.copy.html#fedoo.DataSet.copy" title="fedoo.DataSet.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.copy</span></code></a>()</p></td>
 <td><p>Make a copy of the dataset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.deepcopy.html#fedoo.DataSet.deepcopy" title="fedoo.DataSet.deepcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.deepcopy</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.deepcopy.html#fedoo.DataSet.deepcopy" title="fedoo.DataSet.deepcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.deepcopy</span></code></a>()</p></td>
 <td><p>Make a deep copy of the dataset.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.field_names.html#fedoo.DataSet.field_names" title="fedoo.DataSet.field_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.field_names</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.field_names.html#fedoo.DataSet.field_names" title="fedoo.DataSet.field_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.field_names</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.get_data.html#fedoo.DataSet.get_data" title="fedoo.DataSet.get_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.get_data</span></code></a>(field[, component, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.get_data.html#fedoo.DataSet.get_data" title="fedoo.DataSet.get_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.get_data</span></code></a>(field[, component, ...])</p></td>
 <td><p>Retrieve data from the DataSet for a given field.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.global_element_id.html#fedoo.DataSet.global_element_id" title="fedoo.DataSet.global_element_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.global_element_id</span></code></a>(submesh_id, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.global_element_id.html#fedoo.DataSet.global_element_id" title="fedoo.DataSet.global_element_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.global_element_id</span></code></a>(submesh_id, ...)</p></td>
 <td><p>Return the global element id for a submesh-local element id.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.global_element_location.html#fedoo.DataSet.global_element_location" title="fedoo.DataSet.global_element_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.global_element_location</span></code></a>(element_id)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.global_element_location.html#fedoo.DataSet.global_element_location" title="fedoo.DataSet.global_element_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.global_element_location</span></code></a>(element_id)</p></td>
 <td><p>Return <code class="docutils literal notranslate"><span class="pre">(submesh_id,</span> <span class="pre">local_element_id)</span></code> for a global element id.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.load.html#fedoo.DataSet.load" title="fedoo.DataSet.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.load</span></code></a>(data[, load_mesh, iteration])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.load.html#fedoo.DataSet.load" title="fedoo.DataSet.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.load</span></code></a>(data[, load_mesh, iteration])</p></td>
 <td><p>Load data from a data object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.load_dict.html#fedoo.DataSet.load_dict" title="fedoo.DataSet.load_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.load_dict</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.load_dict.html#fedoo.DataSet.load_dict" title="fedoo.DataSet.load_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.load_dict</span></code></a>(data)</p></td>
 <td><p>Load data from a dict generated with the to_dict method.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.plot.html#fedoo.DataSet.plot" title="fedoo.DataSet.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.plot</span></code></a>([field, component, data_type, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.plot.html#fedoo.DataSet.plot" title="fedoo.DataSet.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.plot</span></code></a>([field, component, data_type, ...])</p></td>
 <td><p>Plot a field on the surface of the associated mesh.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.read.html#fedoo.DataSet.read" title="fedoo.DataSet.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.read</span></code></a>(filename[, file_format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.read.html#fedoo.DataSet.read" title="fedoo.DataSet.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.read</span></code></a>(filename[, file_format])</p></td>
 <td><p>Read a file from disk.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.save.html#fedoo.DataSet.save" title="fedoo.DataSet.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.save</span></code></a>(filename[, save_mesh, compressed])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.save.html#fedoo.DataSet.save" title="fedoo.DataSet.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.save</span></code></a>(filename[, save_mesh, compressed])</p></td>
 <td><p>Save data to a file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.save_mesh.html#fedoo.DataSet.save_mesh" title="fedoo.DataSet.save_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.save_mesh</span></code></a>(filename)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.save_mesh.html#fedoo.DataSet.save_mesh" title="fedoo.DataSet.save_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.save_mesh</span></code></a>(filename)</p></td>
 <td><p>Save the mesh using a vtk file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.savez.html#fedoo.DataSet.savez" title="fedoo.DataSet.savez"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.savez</span></code></a>(filename[, save_mesh])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.savez.html#fedoo.DataSet.savez" title="fedoo.DataSet.savez"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.savez</span></code></a>(filename[, save_mesh])</p></td>
 <td><p>Write a npz file using the numpy savez function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.savez_compressed.html#fedoo.DataSet.savez_compressed" title="fedoo.DataSet.savez_compressed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.savez_compressed</span></code></a>(filename[, save_mesh])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.savez_compressed.html#fedoo.DataSet.savez_compressed" title="fedoo.DataSet.savez_compressed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.savez_compressed</span></code></a>(filename[, save_mesh])</p></td>
 <td><p>Write a compressed npz file using the numpy savez_compressed function.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.section_derived_fields.html#fedoo.DataSet.section_derived_fields" title="fedoo.DataSet.section_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.section_derived_fields</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.section_derived_fields.html#fedoo.DataSet.section_derived_fields" title="fedoo.DataSet.section_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.section_derived_fields</span></code></a>()</p></td>
 <td><p>Unified beam and shell tensor aliases for plotting.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.set_beam_section.html#fedoo.DataSet.set_beam_section" title="fedoo.DataSet.set_beam_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.set_beam_section</span></code></a>(section)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.set_beam_section.html#fedoo.DataSet.set_beam_section" title="fedoo.DataSet.set_beam_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.set_beam_section</span></code></a>(section)</p></td>
 <td><p>Attach section properties to old generalized fields on a single mesh.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.shell_derived_fields.html#fedoo.DataSet.shell_derived_fields" title="fedoo.DataSet.shell_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.shell_derived_fields</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.shell_derived_fields.html#fedoo.DataSet.shell_derived_fields" title="fedoo.DataSet.shell_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.shell_derived_fields</span></code></a>()</p></td>
 <td><p>Shell tensors selectable through the thickness after saving.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.shell_section_description.html#fedoo.DataSet.shell_section_description" title="fedoo.DataSet.shell_section_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.shell_section_description</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.shell_section_description.html#fedoo.DataSet.shell_section_description" title="fedoo.DataSet.shell_section_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.shell_section_description</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.shell_sources.html#fedoo.DataSet.shell_sources" title="fedoo.DataSet.shell_sources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.shell_sources</span></code></a>(kind)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.shell_sources.html#fedoo.DataSet.shell_sources" title="fedoo.DataSet.shell_sources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.shell_sources</span></code></a>(kind)</p></td>
 <td><p>Available stored and reconstructed thickness distributions.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.split_global_element_indices.html#fedoo.DataSet.split_global_element_indices" title="fedoo.DataSet.split_global_element_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.split_global_element_indices</span></code></a>(element_ids)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.split_global_element_indices.html#fedoo.DataSet.split_global_element_indices" title="fedoo.DataSet.split_global_element_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.split_global_element_indices</span></code></a>(element_ids)</p></td>
 <td><p>Split global element ids into submesh-local element ids.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_csv.html#fedoo.DataSet.to_csv" title="fedoo.DataSet.to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_csv</span></code></a>(filename[, save_mesh])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_csv.html#fedoo.DataSet.to_csv" title="fedoo.DataSet.to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_csv</span></code></a>(filename[, save_mesh])</p></td>
 <td><p>Write data in a csv file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_dict.html#fedoo.DataSet.to_dict" title="fedoo.DataSet.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_dict</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_dict.html#fedoo.DataSet.to_dict" title="fedoo.DataSet.to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_dict</span></code></a>()</p></td>
 <td><p>Return fields and optional JSON metadata for NPZ/FDZ storage.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_excel.html#fedoo.DataSet.to_excel" title="fedoo.DataSet.to_excel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_excel</span></code></a>(filename[, save_mesh])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_excel.html#fedoo.DataSet.to_excel" title="fedoo.DataSet.to_excel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_excel</span></code></a>(filename[, save_mesh])</p></td>
 <td><p>Write data in a xlsx file (excel format).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_fdh5.html#fedoo.DataSet.to_fdh5" title="fedoo.DataSet.to_fdh5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_fdh5</span></code></a>(filename[, iteration, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_fdh5.html#fedoo.DataSet.to_fdh5" title="fedoo.DataSet.to_fdh5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_fdh5</span></code></a>(filename[, iteration, ...])</p></td>
 <td><p>Write the dataset to a FDH5 file.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_fdz.html#fedoo.DataSet.to_fdz" title="fedoo.DataSet.to_fdz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_fdz</span></code></a>(filename[, save_mesh, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_fdz.html#fedoo.DataSet.to_fdz" title="fedoo.DataSet.to_fdz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_fdz</span></code></a>(filename[, save_mesh, ...])</p></td>
 <td><p>Write a fdz file from the dataset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_msh.html#fedoo.DataSet.to_msh" title="fedoo.DataSet.to_msh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_msh</span></code></a>(filename)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_msh.html#fedoo.DataSet.to_msh" title="fedoo.DataSet.to_msh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_msh</span></code></a>(filename)</p></td>
 <td><p>Write a msh (gmsh format) file with mesh and associated data.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_pandas.html#fedoo.DataSet.to_pandas" title="fedoo.DataSet.to_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_pandas</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_pandas.html#fedoo.DataSet.to_pandas" title="fedoo.DataSet.to_pandas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_pandas</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_pyvista.html#fedoo.DataSet.to_pyvista" title="fedoo.DataSet.to_pyvista"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_pyvista</span></code></a>([gp_data_to_node, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_pyvista.html#fedoo.DataSet.to_pyvista" title="fedoo.DataSet.to_pyvista"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_pyvista</span></code></a>([gp_data_to_node, ...])</p></td>
 <td><p>Convert the dataset to a PyVista unstructured grid.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.DataSet.to_vtk.html#fedoo.DataSet.to_vtk" title="fedoo.DataSet.to_vtk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_vtk</span></code></a>(filename[, binary, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.DataSet.to_vtk.html#fedoo.DataSet.to_vtk" title="fedoo.DataSet.to_vtk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.to_vtk</span></code></a>(filename[, binary, ...])</p></td>
 <td><p>Write vtk file with the mesh and associated data.</p></td>
 </tr>
 </tbody>

@@ -152,14 +152,15 @@ minimal or maximal z value (sphere extremity along the z axis.</p>
 </pre></div>
 </div>
 <p>Now we build the pressure load by extracting the loaded surface mesh.
-The pressure is added as an external Neumann boundary condition.</p>
+For nonlinear analyses, the pressure is added as an external Neumann boundary
+condition so that the residual normalization sees the applied load.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pressure_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Pressure</span><span class="p">(</span>
     <span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="n">boundaries</span><span class="p">),</span>
     <span class="n">pressure</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Define a linear analysis and solve the problem.</p>
+<p>Define a nonlinear analysis and solve the problem.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To improve numerical stability, a few displacement boundary conditions are
@@ -198,7 +199,7 @@ defined in the element local coordinate system
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.320 seconds)</p>
+<img src="../../_images/sphx_glr_spherical_shell_compression_001.png" srcset="../../_images/sphx_glr_spherical_shell_compression_001.png" alt="spherical shell compression" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.355 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-01-simple-spherical-shell-compression-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/bbbbe72a68b7ca22134fff70ab3d1b26/spherical_shell_compression.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">spherical_shell_compression.ipynb</span></code></a></p>

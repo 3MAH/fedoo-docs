@@ -28,7 +28,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="fedoo.Mesh.find_isolated_nodes" href="fedoo.Mesh.find_isolated_nodes.html" />
-    <link rel="prev" title="fedoo.Mesh.find_edge_nodes" href="fedoo.Mesh.find_edge_nodes.html" /> 
+    <link rel="prev" title="fedoo.Mesh.find_coincident_nodes" href="fedoo.Mesh.find_coincident_nodes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -64,16 +64,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-classes">Mesh classes</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#node-and-element-selection">Node and element selection</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.find_nodes.html">fedoo.Mesh.find_nodes</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">fedoo.Mesh.find_elements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.Mesh.get_elements_from_nodes.html">fedoo.Mesh.get_elements_from_nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.find_surface_nodes.html">fedoo.mesh.find_surface_nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fedoo.mesh.find_edge_nodes.html">fedoo.mesh.find_edge_nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mesh.html#coordinates-and-field-expressions">Coordinates and field expressions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mesh.html#connected-exterior-surface-selection">Connected exterior surface selection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mesh.html#connected-exterior-edge-selection">Connected exterior edge selection</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../mesh.html#mesh-classes">Mesh classes</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="fedoo.Mesh.html">fedoo.Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fedoo.MultiMesh.html">fedoo.MultiMesh</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../mesh.html#mesh-manipulation-functions">Mesh manipulation functions</a></li>
@@ -126,7 +119,7 @@
 <h1>fedoo.Mesh.find_elements<a class="headerlink" href="#fedoo-mesh-find-elements" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.Mesh.find_elements">
-<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">find_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection_criterion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'centers'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Mesh.find_elements" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Mesh.</span></span><span class="sig-name descname"><span class="pre">find_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection_criterion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-06</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'centers'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Mesh.find_elements" title="Link to this definition"></a></dt>
 <dd><p>Return a list of elements from a given selection criterion</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -147,19 +140,10 @@ depending of all_nodes.</p></li>
 If True, get elements whose all nodes verify the criterion.
 If False, get elements that have at least 1 node verifying the criterion.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – If name is given an element_set is added to the mesh.</p></li>
-<li><p><strong>*</strong></p></li>
 </ul>
 </dd>
-</dl>
-<p>:param :
-:param data: Dataset exposing fields such as <code class="docutils literal notranslate"><span class="pre">Stress_XX</span></code>. For center</p>
-<blockquote>
-<div><p>selection fields are converted to Element values; for node
-selection they are converted to Node values.</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List of element index</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of element index</p>
 </dd>
 </dl>
 </dd></dl>
@@ -170,7 +154,7 @@ selection they are converted to Node values.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.Mesh.find_edge_nodes.html" class="btn btn-neutral float-left" title="fedoo.Mesh.find_edge_nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.Mesh.find_coincident_nodes.html" class="btn btn-neutral float-left" title="fedoo.Mesh.find_coincident_nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="fedoo.Mesh.find_isolated_nodes.html" class="btn btn-neutral float-right" title="fedoo.Mesh.find_isolated_nodes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

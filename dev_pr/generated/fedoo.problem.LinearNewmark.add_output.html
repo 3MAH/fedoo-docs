@@ -123,14 +123,11 @@ arguments:</p>
 Scalar results are not concerned by this parameter.</p></li>
 <li><p><strong>file_format</strong> (<em>&quot;fdh5&quot;</em><em>, </em><em>&quot;fdz&quot;</em><em>, </em><em>&quot;vtk&quot;</em><em>, </em><em>&quot;msh&quot;</em><em>, </em><em>&quot;npz&quot;</em><em>, </em><em>&quot;csv&quot;</em><em>, </em><em>&quot;xlsx&quot;</em>) – file format used to save the results. The default file format
 and recommanding one is “fdh5”.</p></li>
-<li><p><strong>compressed</strong> (<em>bool</em><em>, </em><em>int</em><em>, </em><em>str</em><em> or </em><em>CompressionConfig</em><em>, </em><em>default=True</em>) – For FDH5, True uses gzip level 4, False disables compression, and
+<li><p><strong>compressed</strong> (<em>bool</em><em> or </em><em>int</em><em>, </em><em>default=True</em>) – For FDH5, True uses gzip level 4, False disables compression, and
 an integer from 0 to 9 selects the gzip level. Integer 0 keeps the
 gzip filter with compression disabled. Existing iterations are
 unaffected when appending. For other formats, compression is
-enabled when this option is truthy, where supported.
-FDH5 also accepts <code class="docutils literal notranslate"><span class="pre">&quot;zstd&quot;</span></code> (level 3, requires <code class="docutils literal notranslate"><span class="pre">fedoo[zstd]</span></code>)
-or <code class="docutils literal notranslate"><span class="pre">fedoo.util.fdh5.CompressionConfig(&quot;zstd&quot;,</span> <span class="pre">level)</span></code> for a
-custom Zstandard level from 1 to 22.</p></li>
+enabled when this option is truthy, where supported.</p></li>
 <li><p><strong>position</strong> (<em>None</em><em>, </em><em>scalar</em><em>, </em><em>coordinate pair</em><em> or </em><em>array</em><em>, </em><em>optional</em>) – For beams, normalized (y, z) coordinates, either one pair or an
 array with shape (n_section_points, 2). None extracts all configured
 output_points; scalar beam positions are rejected. Shell positions

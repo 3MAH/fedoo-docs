@@ -75,7 +75,6 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Post-Processing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#get-results-from-a-problem">Get results from a problem</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#class-dataset">Class DataSet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#class-problemdataset">Class ProblemDataSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#class-multiframedataset">Class MultiFrameDataSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multimesh-results">MultiMesh results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#beam-and-shell-section-fields">Beam and shell section fields</a></li>
@@ -85,8 +84,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#basic-operations">Basic operations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#live-problem-results">Live problem results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#shared-mathematical-expressions">Shared mathematical expressions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extract-data">Extract data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plotting-results">Plotting results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#save-results">Save results</a></li>
@@ -160,16 +157,6 @@ of a given iteration.</p>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet</span></code></a>([mesh, data, data_type])</p></td>
 <td><p>Object to store, save, load and plot data associated to a mesh.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="class-problemdataset">
-<h3>Class ProblemDataSet<a class="headerlink" href="#class-problemdataset" title="Link to this heading"></a></h3>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.ProblemDataSet.html#fedoo.ProblemDataSet" title="fedoo.ProblemDataSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProblemDataSet</span></code></a>(problem[, fields, assembly])</p></td>
-<td><p>Expose current Problem results through the DataSet interface.</p></td>
 </tr>
 </tbody>
 </table>
@@ -436,8 +423,7 @@ or constitutive-law object to display section tensors:</p>
 description. Older descriptions containing isotropic constants are still read,
 but these constants do not influence kinematic strain recovery.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Stress</span></code>, <code class="docutils literal notranslate"><span class="pre">Stress_local</span></code> and <code class="docutils literal notranslate"><span class="pre">Stress_global</span></code> share one selection policy
-(likewise for strain). Global components require <code class="docutils literal notranslate"><span class="pre">BeamLocalFrame</span></code>, which is
-included automatically with beam stress or strain output, as for shells. The viewer
+(likewise for strain). Global components require <code class="docutils literal notranslate"><span class="pre">BeamLocalFrame</span></code>. The viewer
 shows one Stress and one Strain entry. <strong>Options → Beam…</strong> selects the source,
 coordinate system, section position/index and reduction. Its optional Beam
 toolbar is hidden by default.</p>
@@ -631,8 +617,8 @@ are retried. Persistent contention can still exceed the retry timeout and
 interrupt simulation output. Keep HDF5 file locking enabled; for critical
 runs, wait until the simulation finishes before opening the results.</p>
 </div>
-<p>The <a class="reference internal" href="fdh5.html"><span class="doc">FDH5 file layout</span></a> describes the HDF5 groups and array
-conventions. That page is generated from the <a class="reference internal" href="fdh5.html#module-fedoo.util.fdh5" title="fedoo.util.fdh5"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.util.fdh5</span></code></a> module
+<p>The <span class="xref std std-doc">FDH5 file layout</span> describes the HDF5 groups and array
+conventions. That page is generated from the <code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.util.fdh5</span></code> module
 docstring, keeping the detailed format description alongside its implementation.</p>
 <p>The file structure below is illustrative: optional field and metadata groups
 are present only when the corresponding outputs have been saved.</p>
@@ -698,28 +684,6 @@ provide their original fields.</p>
 Appending adds saved frames to an existing compatible mesh file; it does not
 resume the solver. In contrast, <code class="docutils literal notranslate"><span class="pre">DataSet.to_fdh5(...,</span> <span class="pre">overwrite=True)</span></code>
 replaces the whole file, not only an existing iteration.</p>
-<section id="fdh5-compression">
-<h5>FDH5 compression<a class="headerlink" href="#fdh5-compression" title="Link to this heading"></a></h5>
-<p>FDH5 uses lossless gzip compression at level 4 by default. The viewer’s
-File &gt; Save as dialog offers None, gzip (levels 1-9), and Zstandard
-(levels 1-22, default 3). The last successful choice is reused by Save for
-that dataset. Zstandard is optional: install <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">fedoo[zstd]</span></code>
-or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">hdf5plugin</span></code> on both writers and readers. Fedoo registers
-the filter automatically; other HDF5 readers also need a compatible filter.
-Gzip remains the portable default and requires no extra dependency.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fedoo.util.fdh5</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompressionConfig</span>
-
-<span class="n">data</span><span class="o">.</span><span class="n">to_fdh5</span><span class="p">(</span><span class="s2">"result.fdh5"</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">compressed</span><span class="o">=</span><span class="s2">"zstd"</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"result.fdh5"</span><span class="p">,</span> <span class="n">compressed</span><span class="o">=</span><span class="n">CompressionConfig</span><span class="p">(</span><span class="s2">"zstd"</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">results</span><span class="o">.</span><span class="n">save_all</span><span class="p">(</span><span class="s2">"history.fdh5"</span><span class="p">,</span> <span class="n">compressed</span><span class="o">=</span><span class="s2">"zstd"</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"uncompressed.fdh5"</span><span class="p">,</span> <span class="n">compressed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Existing <code class="docutils literal notranslate"><span class="pre">compressed=True</span></code> and integer gzip levels retain their meaning.
-Compression settings apply to newly written arrays; appending with a
-different codec does not recompress earlier frames. Higher Zstandard
-levels can need considerably more time and memory; start with level 3.</p>
-</section>
 </section>
 </section>
 <section id="read-data-from-disk">
@@ -796,36 +760,28 @@ time interval (here the results are saved on a file).</p>
 </section>
 </section>
 <section id="fedoo-interactive-viewer">
-<span id="fedoo-viewer"></span><h2>Fedoo interactive viewer<a class="headerlink" href="#fedoo-interactive-viewer" title="Link to this heading"></a></h2>
-<p>Fedoo includes a graphical viewer for result files, DataSet objects and live
-Problems.
+<h2>Fedoo interactive viewer<a class="headerlink" href="#fedoo-interactive-viewer" title="Link to this heading"></a></h2>
+<p>Fedoo includes a graphical viewer for result files and DataSet objects.
 Install the plotting and GUI dependencies with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;fedoo[plot,gui]&quot;</span></code>.</p>
 <p>Then the viewer can either be launched as a standalone application from
 command line:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python -m fedoo.viewer
 </pre></div>
 </div>
-<p>or from Python:</p>
+<p>or from a python code. The code below show different ways to start the viewer
+inside a python code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s1">'myfile.fdh5'</span><span class="p">)</span>  <span class="c1"># load a DataSet from file</span>
 
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">()</span>  <span class="c1"># start the viewer with no file opened</span>
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># start the viewer and open the result DataSet</span>
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="s1">'myfile.fdh5'</span><span class="p">)</span>  <span class="c1"># start the viewer with the data from a file</span>
-<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span>  <span class="c1"># inspect an existing Problem in the current Python session</span>
 </pre></div>
 </div>
 <p>The viewer includes the following tools and features:</p>
 <ul class="simple">
-<li><p>Manage independent views with Windows &gt; Arrange Windows (tabbed,
-horizontal, vertical or automatic layout). Windows &gt; Link windows links
-fields, iterations and/or cameras; Options &gt; Apply options to separately
-selects whether plotting options affect the active view or all views.
-Unlinked views retain their own selected frame. Linked iteration navigation
-skips views that do not contain the requested frame. Windows &gt; Copy Window
-creates another view of the current results.</p></li>
-<li><p>Field and iteration selectors for data exploration. The iteration spinbox
-decreases on the left and increases on the right.</p></li>
+<li><p>Management of multiple independent windows, which can be linked together.</p></li>
+<li><p>Field and iteration selectors for data exploration.</p></li>
 <li><p>Automatic discovery of new FDH5 frames when navigating an ongoing simulation.
 The Reload button also rereads the current frame. A file temporarily locked
 by the writer can be retried on the next navigation or Reload.
@@ -843,163 +799,18 @@ Clicking a top/bottom display node reports its original node ID and the
 displayed field under the current section selection. Gauss-point displays
 retain element discontinuities; Element displays report adjacent element
 values at a shared node.</p></li>
-<li><p>Open Tools &gt; Element Sets or Node Sets to manage selections. Element Sets
-can show or hide elements from predefined sets, rectangular selections,
-or arbitrary expressions; Node Sets manages nodes without visibility controls.
-Pick on screen displays a rectangle while dragging. New creates a named set
-from the current selection; Replace, Add and Remove load a set into the
-selection using the chosen operation.</p></li>
-<li><p>Manage node sets (selection, create, rename, remove) without visibility
-controls. Node Sets offers Create from element set; Element Sets offers
-Create from node set. Choose a source set in the dropdown and click Create.
-For element creation, a checkbox switches between requiring all element
-nodes or at least one node; its label shows the current rule.
-Node-to-element conversion can require all nodes or any node; element-to-node
-conversion collects unique nodes. MultiMesh element ids remain global.</p></li>
-<li><p>Grow an exterior surface selection in Node Sets. Click Select to pick a
-boundary node using the existing single-node picker, then select the patch
-with the chosen maximum normal angle. All viewer seeds are nodes;
-interior nodes are rejected.
-Corner seeds offer a starting-face choice. Boundary edges mode follows a
-line on a 2D mesh, including planar meshes stored with XYZ coordinates;
-Surface faces mode traverses shell faces. The result is a node selection
-that can be saved as a named set and reconstructed with <code class="docutils literal notranslate"><span class="pre">extract_surface</span></code>.
-Exterior edges (3D) follows creases and open shell boundaries. Sharpness
-controls the minimum face-normal angle identifying a crease; Turn limit
-controls the allowed direction change along the edge. Branches stop
-traversal, and ambiguous corner seeds offer a starting-edge choice.
-Edge results are node IDs, including midside nodes, and can be saved as sets.</p></li>
-<li><p>Use field/component names such as <code class="docutils literal notranslate"><span class="pre">Stress_XX</span></code> in selection expressions.
-Element tests use element-center positions and element field values;
-node tests use nodal positions and values. Field conversions follow DataSet.</p></li>
-<li><p>Compute scalar expressions from fields, existing scalars and named sets.
-The help button beside Expression opens the full guidance and examples in
-a separate window, which can stay open while entering an expression.
-For example <code class="docutils literal notranslate"><span class="pre">sum(Disp_X[nodes(&quot;Top&quot;)])</span></code>,
-<code class="docutils literal notranslate"><span class="pre">mean(Stress_XX[elements(&quot;Wall&quot;)])</span></code> with Element field values, or
-<code class="docutils literal notranslate"><span class="pre">sum(scalar(&quot;Fext(RigidDisp)&quot;)[2])</span></code>. The result must be one finite number.
-Compute / update scalar evaluates the current frame immediately. Other
-frames are evaluated when loaded or requested by a history plot, rather than
-eagerly processing the whole file. File &gt; Save or Save as evaluates and
-exports every frame of a multiframe dataset, including numeric scalar values,
-expression definitions and user-created sets. Definitions remain editable
-after reopening. A live Problem exports only its selected state or mode.</p></li>
+<li><p>Show or hide elements from predefined sets, rectangular selections,
+or arbitrary expressions.</p></li>
 <li><p>Plot results along an interactively defined line.</p></li>
-<li><p>Tools &gt; History plot accepts field/component names in quick search.
-For global DOFs and their associated forces, ID indexes the saved output
-array, not a node, element or Gauss point; changing the field association
-does not convert these global values.</p></li>
-<li><p>Optionally open Windows &gt; Object inspector to browse the active dataset’s
-mesh, named sets, stored fields, computed scalars and live Problem boundary
-conditions. Set and condition selections highlight their geometry; the
-read-only properties include counts, field shapes/ranges and expressions.
-Automatically generated submesh element sets are omitted here because the
-corresponding submesh already appears under Mesh. User-created sets remain
-visible, including sets whose names start with <code class="docutils literal notranslate"><span class="pre">submesh_</span></code>.
-Manage delegates edits to the existing tools. The panel can float or
-dock on either side; fullscreen hides it and restores its prior visibility.
-A docked inspector returns to a compact width when opening another dataset.
-Right-click an element set, mesh, or submesh for Show only and a checkable
-Mask action. Unchecking Mask restores that object’s elements without
-resetting other visibility choices. Visibility uses the same element
-filter as Element Sets, and the properties show partial masking.</p></li>
-<li><p>Optionally show the current <code class="docutils literal notranslate"><span class="pre">Time</span></code> scalar in the upper-right corner.
-It is hidden by default; enable Show time in Options &gt; Plot.
-The existing active/all views target
-applies to this option too.</p></li>
-<li><p>Open a live Problem directly, or use a <code class="docutils literal notranslate"><span class="pre">ProblemDataSet</span></code> wrapper. The
-Problem &gt; Open existing problem dialog also lists Problems from the current
-Python session’s workspace variables, the named Fedoo registry and the
-active Problem. Refresh updates the list; reopening a Problem refreshes
-its existing viewer pane; different Problems open separate panes. Use
-Windows &gt; Copy Window for another view when needed. This reads existing
-objects without running a solve. Reload reads its current state; Save as
-exports a single-state FDH5 snapshot.
-Problem &gt; Boundary conditions inspects and highlights existing constraints,
-and adds/edits nodal Dirichlet or Neumann conditions using node sets or
-the nodes of element sets. Neumann values are per-node forces, not pressure.
-Custom constraints can be inspected. Edits affect the live Problem; solve
-from Python to update its solution. BC definitions are not exported to FDH5.</p></li>
-<li><p>File &gt; Save as exports FDH5 with None, gzip or optional Zstandard
-compression. File &gt; Save reuses that view’s last successful compression
-choice. All compression options are lossless. User-created node and element
-sets are included; automatically generated All/submesh selection sets are
-not exported. Submesh geometry and names are preserved independently of
-these generated sets. Display visibility masks do not remove mesh elements
-from the saved result. See <a class="reference internal" href="#fdh5-format"><span class="std std-ref">FDH5 format</span></a> for compression dependencies.</p></li>
+<li><p>Plot time-history data, when applicable.</p></li>
 <li><p>Clip the current mesh using an interactively defined plane.</p></li>
 <li><p>Save figures and create movies using the current visualization settings.</p></li>
 </ul>
 </section>
 <section id="basic-operations">
 <h2>Basic operations<a class="headerlink" href="#basic-operations" title="Link to this heading"></a></h2>
-<section id="live-problem-results">
-<h3>Live problem results<a class="headerlink" href="#live-problem-results" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">ProblemDataSet</span></code> implements the DataSet interface for one current Problem
-state. It extracts results using <code class="docutils literal notranslate"><span class="pre">problem.get_results</span></code> without running a
-solve. Default fields include available DOFs, forces and stress/strain;
-pass <code class="docutils literal notranslate"><span class="pre">fields</span></code> to request a specific set. Reading through <code class="docutils literal notranslate"><span class="pre">get_data</span></code>
-refreshes automatically; call <code class="docutils literal notranslate"><span class="pre">refresh</span></code> before reading the storage
-dictionaries directly. Copies are detached DataSet snapshots.</p>
-<p>Pass the Problem directly to <code class="docutils literal notranslate"><span class="pre">fd.viewer(pb)</span></code>; creating the wrapper explicitly
-is optional. In an already running viewer, <strong>Problem &gt; Open existing problem</strong>
-finds Problems in that same Python session. A standalone viewer cannot access
-objects in a separate Python process. <strong>Reload</strong> refreshes the current results,
-and <strong>Problem &gt; Boundary conditions</strong> edits the live constraints; solving
-remains an explicit operation in Python.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
-
-<span class="c1"># pb is an existing Problem, for example after pb.solve() or pb.nlsolve().</span>
-<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span>  <span class="c1"># inspect its results and manage live boundary conditions</span>
-
-<span class="c1"># Optionally choose which fields the live wrapper exposes.</span>
-<span class="n">current</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ProblemDataSet</span><span class="p">(</span><span class="n">pb</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">])</span>
-<span class="n">current</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"X"</span><span class="p">)</span>
-<span class="n">current</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"current.fdh5"</span><span class="p">)</span>
-<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>For modal and linear buckling Problems with computed modes, the viewer’s
-iteration slider, spinbox and Play button navigate the retained modes with
-the same zero-based indexing as FDH5 frames. The <code class="docutils literal notranslate"><span class="pre">Mode</span></code> scalar is one-based,
-as in saved mode output. Selection calls <code class="docutils literal notranslate"><span class="pre">problem.set_mode</span></code> and refreshes
-the live fields and frequency/load-factor metadata without another eigensolve.
-Reload discovers modes computed after opening the viewer. From Python use
-<code class="docutils literal notranslate"><span class="pre">current.set_mode(index)</span></code>; <code class="docutils literal notranslate"><span class="pre">current.n_modes</span></code> gives the retained count.</p>
-<p>Other Problems retain one current state. There is no accumulated time history
-in a ProblemDataSet. Export saves the selected mode/current state’s fields,
-computed scalars and named sets; it does not create a solver restart file.</p>
-</section>
-<section id="shared-mathematical-expressions">
-<h3>Shared mathematical expressions<a class="headerlink" href="#shared-mathematical-expressions" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">fedoo.util.expressions.evaluate_expression</span></code> provides the same evaluator
-used by mesh selection and viewer tools. It accepts a mesh for positions
-and an optional DataSet for fields and scalar outputs. <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">Z</span></code>
-and <code class="docutils literal notranslate"><span class="pre">ID</span></code> refer to nodes or element centers, depending on <code class="docutils literal notranslate"><span class="pre">data_type</span></code>.
-Scalar computations use reference positions; viewer selection additionally
-offers deformed positions. Logical <code class="docutils literal notranslate"><span class="pre">and</span></code>/<code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>/<code class="docutils literal notranslate"><span class="pre">|</span></code> operate
-elementwise. Named mathematical functions can also use the <code class="docutils literal notranslate"><span class="pre">np.</span></code> prefix.
-Arbitrary Python statements and attribute access are not supported. The
-expression language uses an explicit list of supported operations and functions,
-not Python <code class="docutils literal notranslate"><span class="pre">eval</span></code>. Expensive expressions can still consume substantial memory
-or computation time; there are no strict resource limits. Stored definitions
-are evaluated when frames load, so use trusted expression definitions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fedoo.util.expressions</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate_expression</span>
-
-<span class="n">ids</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Disp_X &gt; 0 and X &lt; 1"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">)</span>
-<span class="n">ids</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="s2">"Stress_XX &gt; 100"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">)</span>
-<span class="n">total</span> <span class="o">=</span> <span class="n">evaluate_expression</span><span class="p">(</span><span class="s1">'sum(Disp_X[nodes("Top")])'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">)</span>
-<span class="n">results</span><span class="o">.</span><span class="n">add_scalar_expression</span><span class="p">(</span><span class="s2">"TopDisplacement"</span><span class="p">,</span> <span class="s1">'sum(Disp_X[nodes("Top")])'</span><span class="p">)</span>
-<span class="n">results</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"computed.fdh5"</span><span class="p">)</span>  <span class="c1"># one DataSet</span>
-<span class="c1"># For a MultiFrameDataSet, use results.save_all("computed.fdh5").</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">field(&quot;Stress_XX&quot;,</span> <span class="pre">&quot;Element&quot;)</span></code> explicitly selects a field association.
-<code class="docutils literal notranslate"><span class="pre">scalar(&quot;name&quot;)</span></code> handles scalar names containing punctuation, and
-<code class="docutils literal notranslate"><span class="pre">node_sets[&quot;Top&quot;]</span></code> / <code class="docutils literal notranslate"><span class="pre">element_sets[&quot;Wall&quot;]</span></code> also provide set indices.</p>
 <p>The principale methods/functions to extract, plot and manage
 result data are listed in this section.</p>
-</section>
 <section id="extract-data">
 <h3>Extract data<a class="headerlink" href="#extract-data" title="Link to this heading"></a></h3>
 <table class="autosummary longtable docutils align-default">

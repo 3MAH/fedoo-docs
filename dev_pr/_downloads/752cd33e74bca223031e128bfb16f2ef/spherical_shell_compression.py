@@ -49,7 +49,8 @@ boundaries = mesh.find_elements(
 
 ###############################################################################
 # Now we build the pressure load by extracting the loaded surface mesh.
-# The pressure is added as an external Neumann boundary condition.
+# For nonlinear analyses, the pressure is added as an external Neumann boundary
+# condition so that the residual normalization sees the applied load.
 
 pressure_assembly = fd.constraint.Pressure(
     mesh.extract_elements(boundaries),
@@ -57,7 +58,7 @@ pressure_assembly = fd.constraint.Pressure(
 )
 
 ###############################################################################
-# Define a linear analysis and solve the problem.
+# Define a nonlinear analysis and solve the problem.
 #
 # .. note::
 #   To improve numerical stability, a few displacement boundary conditions are

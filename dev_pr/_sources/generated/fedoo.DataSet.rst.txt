@@ -21,7 +21,6 @@
       
          DataSet.__getitem__
          DataSet.add_data
-         DataSet.add_scalar_expression
          DataSet.beam_derived_fields
          DataSet.beam_section_description
          DataSet.copy
