@@ -28,7 +28,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="fedoo.MultiFrameDataSet.__getitem__" href="fedoo.MultiFrameDataSet.__getitem__.html" />
-    <link rel="prev" title="fedoo.DataSet.active_submesh" href="fedoo.DataSet.active_submesh.html" /> 
+    <link rel="prev" title="fedoo.ProblemDataSet.active_submesh" href="fedoo.ProblemDataSet.active_submesh.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -75,6 +75,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../post_processing.html">Post-Processing</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../post_processing.html#get-results-from-a-problem">Get results from a problem</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#class-dataset">Class DataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../post_processing.html#class-problemdataset">Class ProblemDataSet</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../post_processing.html#class-multiframedataset">Class MultiFrameDataSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#multimesh-results">MultiMesh results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#beam-and-shell-section-fields">Beam and shell section fields</a></li>
@@ -136,71 +137,77 @@
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.add_data.html#fedoo.MultiFrameDataSet.add_data" title="fedoo.MultiFrameDataSet.add_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.add_data</span></code></a>(data_set)</p></td>
 <td><p>Update the DataSet object including all the node, element and gausspoint data from antoher DataSet object data_set.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.beam_derived_fields.html#fedoo.MultiFrameDataSet.beam_derived_fields" title="fedoo.MultiFrameDataSet.beam_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.beam_derived_fields</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.add_scalar_expression.html#fedoo.MultiFrameDataSet.add_scalar_expression" title="fedoo.MultiFrameDataSet.add_scalar_expression"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.add_scalar_expression</span></code></a>(...)</p></td>
+<td><p>Compute one scalar per frame from fields, scalars and named sets.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.beam_derived_fields.html#fedoo.MultiFrameDataSet.beam_derived_fields" title="fedoo.MultiFrameDataSet.beam_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.beam_derived_fields</span></code></a>()</p></td>
 <td><p>Lazy section tensors, available when generalized fields have metadata.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.beam_section_description.html#fedoo.MultiFrameDataSet.beam_section_description" title="fedoo.MultiFrameDataSet.beam_section_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.beam_section_description</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.beam_section_description.html#fedoo.MultiFrameDataSet.beam_section_description" title="fedoo.MultiFrameDataSet.beam_section_description"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.beam_section_description</span></code></a>()</p></td>
 <td><p>Section metadata with varying properties evaluated at beam Gauss points.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.copy.html#fedoo.MultiFrameDataSet.copy" title="fedoo.MultiFrameDataSet.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.copy</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.copy.html#fedoo.MultiFrameDataSet.copy" title="fedoo.MultiFrameDataSet.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.copy</span></code></a>()</p></td>
 <td><p>Make a copy of the dataset.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.deepcopy.html#fedoo.MultiFrameDataSet.deepcopy" title="fedoo.MultiFrameDataSet.deepcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.deepcopy</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.deepcopy.html#fedoo.MultiFrameDataSet.deepcopy" title="fedoo.MultiFrameDataSet.deepcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.deepcopy</span></code></a>()</p></td>
 <td><p>Make a deep copy of the dataset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.field_names.html#fedoo.MultiFrameDataSet.field_names" title="fedoo.MultiFrameDataSet.field_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.field_names</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.field_names.html#fedoo.MultiFrameDataSet.field_names" title="fedoo.MultiFrameDataSet.field_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.field_names</span></code></a>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.get_all_frame_lim.html#fedoo.MultiFrameDataSet.get_all_frame_lim" title="fedoo.MultiFrameDataSet.get_all_frame_lim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.get_all_frame_lim</span></code></a>(field[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.get_all_frame_lim.html#fedoo.MultiFrameDataSet.get_all_frame_lim" title="fedoo.MultiFrameDataSet.get_all_frame_lim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.get_all_frame_lim</span></code></a>(field[, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.get_data.html#fedoo.MultiFrameDataSet.get_data" title="fedoo.MultiFrameDataSet.get_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.get_data</span></code></a>(field[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.get_data.html#fedoo.MultiFrameDataSet.get_data" title="fedoo.MultiFrameDataSet.get_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.get_data</span></code></a>(field[, ...])</p></td>
 <td><p>Retrieve data from the DataSet for a given field.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.get_history.html#fedoo.MultiFrameDataSet.get_history" title="fedoo.MultiFrameDataSet.get_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.get_history</span></code></a>(field[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.get_history.html#fedoo.MultiFrameDataSet.get_history" title="fedoo.MultiFrameDataSet.get_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.get_history</span></code></a>(field[, ...])</p></td>
 <td><p>Retrieve history data from the MultiFrameDataSet.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.global_element_id.html#fedoo.MultiFrameDataSet.global_element_id" title="fedoo.MultiFrameDataSet.global_element_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.global_element_id</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.global_element_id.html#fedoo.MultiFrameDataSet.global_element_id" title="fedoo.MultiFrameDataSet.global_element_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.global_element_id</span></code></a>(...)</p></td>
 <td><p>Return the global element id for a submesh-local element id.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.global_element_location.html#fedoo.MultiFrameDataSet.global_element_location" title="fedoo.MultiFrameDataSet.global_element_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.global_element_location</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.global_element_location.html#fedoo.MultiFrameDataSet.global_element_location" title="fedoo.MultiFrameDataSet.global_element_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.global_element_location</span></code></a>(...)</p></td>
 <td><p>Return <code class="docutils literal notranslate"><span class="pre">(submesh_id,</span> <span class="pre">local_element_id)</span></code> for a global element id.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.load.html#fedoo.MultiFrameDataSet.load" title="fedoo.MultiFrameDataSet.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.load</span></code></a>([data, load_mesh])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.load.html#fedoo.MultiFrameDataSet.load" title="fedoo.MultiFrameDataSet.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.load</span></code></a>([data, load_mesh])</p></td>
 <td><p>Load data from a data object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.load_dict.html#fedoo.MultiFrameDataSet.load_dict" title="fedoo.MultiFrameDataSet.load_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.load_dict</span></code></a>(data)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.load_dict.html#fedoo.MultiFrameDataSet.load_dict" title="fedoo.MultiFrameDataSet.load_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.load_dict</span></code></a>(data)</p></td>
 <td><p>Load data from a dict generated with the to_dict method.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.plot.html#fedoo.MultiFrameDataSet.plot" title="fedoo.MultiFrameDataSet.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot</span></code></a>([field, component, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.plot.html#fedoo.MultiFrameDataSet.plot" title="fedoo.MultiFrameDataSet.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot</span></code></a>([field, component, ...])</p></td>
 <td><p>Plot a field on the surface of the associated mesh.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.plot_history.html#fedoo.MultiFrameDataSet.plot_history" title="fedoo.MultiFrameDataSet.plot_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot_history</span></code></a>(field, indices)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.plot_history.html#fedoo.MultiFrameDataSet.plot_history" title="fedoo.MultiFrameDataSet.plot_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot_history</span></code></a>(field, indices)</p></td>
 <td><p>Plot history data from the MultiFrameDataSet.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.read.html#fedoo.MultiFrameDataSet.read" title="fedoo.MultiFrameDataSet.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.read</span></code></a>(filename[, file_format])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.read.html#fedoo.MultiFrameDataSet.read" title="fedoo.MultiFrameDataSet.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.read</span></code></a>(filename[, file_format])</p></td>
 <td><p>Read a file from disk.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.save.html#fedoo.MultiFrameDataSet.save" title="fedoo.MultiFrameDataSet.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.save</span></code></a>(filename[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.save.html#fedoo.MultiFrameDataSet.save" title="fedoo.MultiFrameDataSet.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.save</span></code></a>(filename[, ...])</p></td>
 <td><p>Save data to a file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.save_all.html#fedoo.MultiFrameDataSet.save_all" title="fedoo.MultiFrameDataSet.save_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.save_all</span></code></a>(filename[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.save_all.html#fedoo.MultiFrameDataSet.save_all" title="fedoo.MultiFrameDataSet.save_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.save_all</span></code></a>(filename[, ...])</p></td>
 <td><p>Save all data from MultiFrameDataSet.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.save_mesh.html#fedoo.MultiFrameDataSet.save_mesh" title="fedoo.MultiFrameDataSet.save_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.save_mesh</span></code></a>(filename)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.save_mesh.html#fedoo.MultiFrameDataSet.save_mesh" title="fedoo.MultiFrameDataSet.save_mesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.save_mesh</span></code></a>(filename)</p></td>
 <td><p>Save the mesh using a vtk file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.savez.html#fedoo.MultiFrameDataSet.savez" title="fedoo.MultiFrameDataSet.savez"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.savez</span></code></a>(filename[, save_mesh])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.savez.html#fedoo.MultiFrameDataSet.savez" title="fedoo.MultiFrameDataSet.savez"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.savez</span></code></a>(filename[, save_mesh])</p></td>
 <td><p>Write a npz file using the numpy savez function.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.savez_compressed.html#fedoo.MultiFrameDataSet.savez_compressed" title="fedoo.MultiFrameDataSet.savez_compressed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.savez_compressed</span></code></a>(filename)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.savez_compressed.html#fedoo.MultiFrameDataSet.savez_compressed" title="fedoo.MultiFrameDataSet.savez_compressed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.savez_compressed</span></code></a>(filename)</p></td>
 <td><p>Write a compressed npz file using the numpy savez_compressed function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.section_derived_fields.html#fedoo.MultiFrameDataSet.section_derived_fields" title="fedoo.MultiFrameDataSet.section_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.section_derived_fields</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.section_derived_fields.html#fedoo.MultiFrameDataSet.section_derived_fields" title="fedoo.MultiFrameDataSet.section_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.section_derived_fields</span></code></a>()</p></td>
 <td><p>Unified beam and shell tensor aliases for plotting.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.set_beam_section.html#fedoo.MultiFrameDataSet.set_beam_section" title="fedoo.MultiFrameDataSet.set_beam_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.set_beam_section</span></code></a>(section)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.set_beam_section.html#fedoo.MultiFrameDataSet.set_beam_section" title="fedoo.MultiFrameDataSet.set_beam_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.set_beam_section</span></code></a>(section)</p></td>
 <td><p>Attach section properties to old generalized fields on a single mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.set_current_local_frame.html#fedoo.MultiFrameDataSet.set_current_local_frame" title="fedoo.MultiFrameDataSet.set_current_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.set_current_local_frame</span></code></a>([field])</p></td>
+<td><p>Select the orientation field used by local-frame arrow overlays.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.shell_derived_fields.html#fedoo.MultiFrameDataSet.shell_derived_fields" title="fedoo.MultiFrameDataSet.shell_derived_fields"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.shell_derived_fields</span></code></a>()</p></td>
 <td><p>Shell tensors selectable through the thickness after saving.</p></td>
@@ -251,16 +258,19 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.beam_options.html#fedoo.MultiFrameDataSet.beam_options" title="fedoo.MultiFrameDataSet.beam_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.beam_options</span></code></a></p></td>
 <td><p>Beam selection options; see <code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.util.beam_recovery.BeamOptions</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.dict_data.html#fedoo.MultiFrameDataSet.dict_data" title="fedoo.MultiFrameDataSet.dict_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.dict_data</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.current_local_frame.html#fedoo.MultiFrameDataSet.current_local_frame" title="fedoo.MultiFrameDataSet.current_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.current_local_frame</span></code></a></p></td>
+<td><p>Selected orientation field, or None for automatic per-submesh selection.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.dict_data.html#fedoo.MultiFrameDataSet.dict_data" title="fedoo.MultiFrameDataSet.dict_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.dict_data</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.n_iter.html#fedoo.MultiFrameDataSet.n_iter" title="fedoo.MultiFrameDataSet.n_iter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.n_iter</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.n_iter.html#fedoo.MultiFrameDataSet.n_iter" title="fedoo.MultiFrameDataSet.n_iter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.n_iter</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.shell_options.html#fedoo.MultiFrameDataSet.shell_options" title="fedoo.MultiFrameDataSet.shell_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.shell_options</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.shell_options.html#fedoo.MultiFrameDataSet.shell_options" title="fedoo.MultiFrameDataSet.shell_options"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.shell_options</span></code></a></p></td>
 <td><p>Thickness options; see <code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.util.shell_recovery.ShellOptions</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.active_submesh.html#fedoo.MultiFrameDataSet.active_submesh" title="fedoo.MultiFrameDataSet.active_submesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.active_submesh</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.MultiFrameDataSet.active_submesh.html#fedoo.MultiFrameDataSet.active_submesh" title="fedoo.MultiFrameDataSet.active_submesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.active_submesh</span></code></a></p></td>
 <td><p>Active submesh used by MultiMesh data access.</p></td>
 </tr>
 </tbody>
@@ -276,7 +286,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.DataSet.active_submesh.html" class="btn btn-neutral float-left" title="fedoo.DataSet.active_submesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.ProblemDataSet.active_submesh.html" class="btn btn-neutral float-left" title="fedoo.ProblemDataSet.active_submesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="fedoo.MultiFrameDataSet.__getitem__.html" class="btn btn-neutral float-right" title="fedoo.MultiFrameDataSet.__getitem__" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

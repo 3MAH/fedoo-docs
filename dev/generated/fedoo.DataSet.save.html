@@ -76,6 +76,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../post_processing.html#get-results-from-a-problem">Get results from a problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../post_processing.html#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../post_processing.html#basic-operations">Basic operations</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../post_processing.html#live-problem-results">Live problem results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../post_processing.html#shared-mathematical-expressions">Shared mathematical expressions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#extract-data">Extract data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../post_processing.html#plotting-results">Plotting results</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../post_processing.html#save-results">Save results</a></li>
@@ -121,7 +123,7 @@
 <h1>fedoo.DataSet.save<a class="headerlink" href="#fedoo-dataset-save" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.DataSet.save">
-<span class="sig-prename descclassname"><span class="pre">DataSet.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#fedoo.DataSet.save" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">DataSet.</span></span><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdh5_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#fedoo.DataSet.save" title="Link to this definition"></a></dt>
 <dd><p>Save data to a file.
 File type is inferred from the extension of the filename.</p>
 <dl class="simple">
@@ -155,7 +157,15 @@ MultiMesh element and Gauss point fields.</p></li>
 <li><p><strong>filename</strong> (<em>str</em>) – Name of the file including the path.</p></li>
 <li><p><strong>save_mesh</strong> (<em>bool</em><em>, </em><em>default = False</em>) – If True, the mesh is also saved in a vtk file using the same filename with a ‘.vtk’ extention.
 For vtk and msh file, the mesh is always included in the file and save_mesh have no effect.</p></li>
-<li><p><strong>compressed</strong> (<em>bool</em><em>, </em><em>default = False</em>) – If True, the file is compressed if available (only for npz and fdz files)</p></li>
+<li><p><strong>compressed</strong> (<em>bool</em><em> or </em><em>None</em><em>, </em><em>default=None</em>) – For FDH5, None uses configured defaults; False disables compression;
+True uses the configured codec, falling back to gzip level 4 when
+it is None. For other formats, enables supported compression.</p></li>
+<li><p><strong>fdh5_options</strong> (<em>dict</em><em>, </em><em>optional</em>) – Per-output overrides of <code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.get_fdh5_options()</span></code>: compression,
+compression_level, float_dtype, coordinate_dtype, integer_min_bits,
+and local_frame. Default result fields use float32; coordinates,
+scalar outputs and metadata preserve precision. Set float_dtype=None
+to preserve field precision. Cannot specify compression entries
+together with compressed. Conversions affect saved arrays only.</p></li>
 </ul>
 </dd>
 </dl>

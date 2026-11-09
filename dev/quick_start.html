@@ -244,8 +244,11 @@ directly from Python:</p>
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The viewer provides field/component selection, deformation scaling and
-image export. In a later Python session, open the saved file directly:</p>
+<p>The viewer provides field/component selection, deformation scaling, node and
+element set tools, computed scalars and image export. File &gt; Save as stores
+results, user-created sets and computed scalar definitions in FDH5, with
+lossless compression options. See <a class="reference internal" href="post_processing.html#fedoo-viewer"><span class="std std-ref">Fedoo interactive viewer</span></a> for the available tools.
+In a later Python session, open the saved file directly:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="s2">"cantilever.fdh5"</span><span class="p">)</span>
@@ -259,6 +262,10 @@ image export. In a later Python session, open the saved file directly:</p>
 from Python also opens an empty viewer. In a standalone script, the viewer
 runs until its window is closed; perform saving or other computations before
 launching it.</p>
+<p>To inspect a live Problem, call <code class="docutils literal notranslate"><span class="pre">fd.viewer(pb)</span></code> or use <strong>Problem &gt; Open
+existing problem</strong> in a viewer launched from the same Python session. Reload
+reads its current state; opening it does not run a solve. Modal and buckling
+Problems with retained modes use the iteration slider to select a mode.</p>
 <p>For external tools such as ParaView, export a VTK file with
 <code class="docutils literal notranslate"><span class="pre">results.save(&quot;cantilever.vtk&quot;)</span></code>. See
 <a class="reference internal" href="post_processing.html"><span class="doc">Post-Processing</span></a> for nonlinear time histories,

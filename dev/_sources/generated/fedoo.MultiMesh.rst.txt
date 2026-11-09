@@ -34,9 +34,11 @@
          MultiMesh.determine_data_type
          MultiMesh.extract_elements
          MultiMesh.find_coincident_nodes
+         MultiMesh.find_edge_nodes
          MultiMesh.find_elements
          MultiMesh.find_isolated_nodes
          MultiMesh.find_nodes
+         MultiMesh.find_surface_nodes
          MultiMesh.from_mesh_list
          MultiMesh.from_meshio
          MultiMesh.from_pyvista
