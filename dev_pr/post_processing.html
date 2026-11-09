@@ -75,6 +75,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Post-Processing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#get-results-from-a-problem">Get results from a problem</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#class-dataset">Class DataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-problemdataset">Class ProblemDataSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#class-multiframedataset">Class MultiFrameDataSet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#multimesh-results">MultiMesh results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#beam-and-shell-section-fields">Beam and shell section fields</a></li>
@@ -84,6 +85,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#fedoo-interactive-viewer">Fedoo interactive viewer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#basic-operations">Basic operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#live-problem-results">Live problem results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shared-mathematical-expressions">Shared mathematical expressions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extract-data">Extract data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plotting-results">Plotting results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#save-results">Save results</a></li>
@@ -157,6 +160,16 @@ of a given iteration.</p>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet</span></code></a>([mesh, data, data_type])</p></td>
 <td><p>Object to store, save, load and plot data associated to a mesh.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="class-problemdataset">
+<h3>Class ProblemDataSet<a class="headerlink" href="#class-problemdataset" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.ProblemDataSet.html#fedoo.ProblemDataSet" title="fedoo.ProblemDataSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProblemDataSet</span></code></a>(problem[, fields, assembly])</p></td>
+<td><p>Expose current Problem results through the DataSet interface.</p></td>
 </tr>
 </tbody>
 </table>
@@ -236,7 +249,7 @@ controlled by <code class="docutils literal notranslate"><span class="pre">n_poi
 integration points. Linear laminates save both sides of every layer interface.</p>
 <p>Shell tensors have shape <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">n_thickness_points,</span> <span class="pre">n_shell_gauss_points)</span></code>.
 Their coordinates and layer identities are stored as native FDH5 metadata.
-<code class="docutils literal notranslate"><span class="pre">ShellLocalFrame</span></code> is included automatically for shell outputs and enables
+<code class="docutils literal notranslate"><span class="pre">_ShellLocalFrame</span></code> is included automatically for shell outputs and enables
 global tensor components. Stored nodal tensors cannot be rotated unambiguously;
 use element/Gauss-point tensors or recompute before converting to nodes.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">res.shell_options</span></code> to select the source and thickness value:</p>
@@ -423,7 +436,9 @@ or constitutive-law object to display section tensors:</p>
 description. Older descriptions containing isotropic constants are still read,
 but these constants do not influence kinematic strain recovery.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Stress</span></code>, <code class="docutils literal notranslate"><span class="pre">Stress_local</span></code> and <code class="docutils literal notranslate"><span class="pre">Stress_global</span></code> share one selection policy
-(likewise for strain). Global components require <code class="docutils literal notranslate"><span class="pre">BeamLocalFrame</span></code>. The viewer
+(likewise for strain). Global components require a beam local frame, which is
+included automatically as <code class="docutils literal notranslate"><span class="pre">_BeamLocalFrame</span></code> with beam stress or strain output,
+as for shells. Explicit requests retain the public name. The viewer
 shows one Stress and one Strain entry. <strong>Options → Beam…</strong> selects the source,
 coordinate system, section position/index and reduction. Its optional Beam
 toolbar is hidden by default.</p>
@@ -617,8 +632,8 @@ are retried. Persistent contention can still exceed the retry timeout and
 interrupt simulation output. Keep HDF5 file locking enabled; for critical
 runs, wait until the simulation finishes before opening the results.</p>
 </div>
-<p>The <span class="xref std std-doc">FDH5 file layout</span> describes the HDF5 groups and array
-conventions. That page is generated from the <code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.util.fdh5</span></code> module
+<p>The <a class="reference internal" href="fdh5.html"><span class="doc">FDH5 file layout</span></a> describes the HDF5 groups and array
+conventions. That page is generated from the <a class="reference internal" href="fdh5.html#module-fedoo.util.fdh5" title="fedoo.util.fdh5"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.util.fdh5</span></code></a> module
 docstring, keeping the detailed format description alongside its implementation.</p>
 <p>The file structure below is illustrative: optional field and metadata groups
 are present only when the corresponding outputs have been saved.</p>
@@ -684,6 +699,135 @@ provide their original fields.</p>
 Appending adds saved frames to an existing compatible mesh file; it does not
 resume the solver. In contrast, <code class="docutils literal notranslate"><span class="pre">DataSet.to_fdh5(...,</span> <span class="pre">overwrite=True)</span></code>
 replaces the whole file, not only an existing iteration.</p>
+<section id="fdh5-storage-options">
+<h5>FDH5 storage options<a class="headerlink" href="#fdh5-storage-options" title="Link to this heading"></a></h5>
+<p>FDH5 defaults to gzip level 4, float32 result fields, and lossless integer
+packing with a 32-bit minimum. Coordinates, scalar outputs (including Time),
+and metadata retain their floating-point precision. Saving never modifies
+solver arrays. Float32 retains about seven significant decimal digits;
+choose <code class="docutils literal notranslate"><span class="pre">float_dtype=None</span></code> for precision-preserving results.</p>
+<p>Set defaults once per Python process, then override selected options per file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">set_fdh5_options</span><span class="p">(</span>
+    <span class="n">compression</span><span class="o">=</span><span class="s2">"zstd"</span><span class="p">,</span> <span class="n">compression_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">float_dtype</span><span class="o">=</span><span class="s2">"float32"</span><span class="p">,</span> <span class="n">coordinate_dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">integer_min_bits</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">local_frame</span><span class="o">=</span><span class="s2">"quaternion"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"results.fdh5"</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">])</span>
+<span class="n">data</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"precise.fdh5"</span><span class="p">,</span> <span class="n">fdh5_options</span><span class="o">=</span><span class="p">{</span><span class="s2">"float_dtype"</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
+<span class="n">results</span><span class="o">.</span><span class="n">save_all</span><span class="p">(</span><span class="s2">"history.fdh5"</span><span class="p">,</span> <span class="n">fdh5_options</span><span class="o">=</span><span class="p">{</span><span class="s2">"integer_min_bits"</span><span class="p">:</span> <span class="mi">16</span><span class="p">})</span>
+<span class="n">options</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">get_fdh5_options</span><span class="p">()</span>  <span class="c1"># Independent copy</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">reset_fdh5_options</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">add_output</span></code> captures the resolved settings when registered; later changes
+to global defaults affect only new registrations. <code class="docutils literal notranslate"><span class="pre">save</span></code>, <code class="docutils literal notranslate"><span class="pre">save_all</span></code> and
+<code class="docutils literal notranslate"><span class="pre">to_fdh5</span></code> accept the same <code class="docutils literal notranslate"><span class="pre">fdh5_options</span></code> dictionary. Integer packing
+preserves signedness, checks both minimum and maximum, and never enlarges
+an existing smaller type. Set <code class="docutils literal notranslate"><span class="pre">integer_min_bits=None</span></code> to preserve types.
+Coordinate precision can be changed separately with <code class="docutils literal notranslate"><span class="pre">coordinate_dtype</span></code>.</p>
+<p>The released boolean <code class="docutils literal notranslate"><span class="pre">compressed</span></code> argument remains supported. Omitting it
+uses the configured codec; False disables compression; True enables the
+configured codec, falling back to gzip level 4 if compression is configured
+as None. Do not combine it with compression entries in <code class="docutils literal notranslate"><span class="pre">fdh5_options</span></code>.
+Unpublished integer/string compression shortcuts are replaced by the dictionary.
+Options affect newly written arrays only, including when appending.</p>
+<p>Zstandard requires <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">fedoo[zstd]</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">hdf5plugin</span></code>
+on readers and writers. Gzip requires no plugin. The viewer’s File &gt; Save as
+exposes compression, field/coordinate precision, integer packing and frame
+encoding. Save As remembers the last successful settings for that view.
+Ctrl+S opens Save As; selecting the current filename allows replacing it after
+overwrite confirmation. Export rewrites all saved iterations.</p>
+<p>Proper orthonormal local-frame fields are saved as quaternions by default and reconstructed as ordinary nine-component matrices
+on reading. Identical Gauss-point frames within each element are stored once
+per element. Varying beam frames retain every sample; non-orthonormal arrays
+retain their matrix representation. Select <code class="docutils literal notranslate"><span class="pre">local_frame=&quot;matrix&quot;</span></code> to store
+nine components, <code class="docutils literal notranslate"><span class="pre">&quot;quaternion&quot;</span></code> for four, or <code class="docutils literal notranslate"><span class="pre">&quot;rotvec&quot;</span></code> for three (radians). Older matrix files remain readable. Compact frames require an
+updated Fedoo reader; generic HDF5 readers see the encoded arrays. Encoding
+and repeated-Gauss-point counts are recorded explicitly as dataset attributes.
+Reading preserves stored field precision; expanding float32 to float64 would
+not recover discarded digits.</p>
+</section>
+<section id="local-frame-display">
+<h5>Local frame display<a class="headerlink" href="#local-frame-display" title="Link to this heading"></a></h5>
+<p>Automatically added recovery frames are private (<code class="docutils literal notranslate"><span class="pre">_ShellLocalFrame</span></code> and
+<code class="docutils literal notranslate"><span class="pre">_BeamLocalFrame</span></code>), so they are hidden in the viewer field list by default.
+Explicitly requesting <code class="docutils literal notranslate"><span class="pre">ShellLocalFrame</span></code> or <code class="docutils literal notranslate"><span class="pre">BeamLocalFrame</span></code> in output_list
+keeps the public field name. Options &gt; Local frames &gt; Show local frames uses private
+frames too, without enabling Show internal fields. Public frame names from
+older files remain supported for plotting and tensor recovery.</p>
+<p>Shell and beam frame outputs automatically receive <code class="docutils literal notranslate"><span class="pre">type=&quot;local_frame&quot;</span></code>
+field metadata. <code class="docutils literal notranslate"><span class="pre">MaterialLocalFrame</span></code> is generated only when explicitly
+requested; it exports the current material orientation exposed by a mechanical
+constitutive law, or the global basis when that law has no material rotation.
+It is not implicitly added to ordinary stress output. Laws without a single
+exposed material orientation report this field as unavailable (for example,
+a layered shell has several material orientations).</p>
+<p>Any field name can identify a local frame through metadata:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># basis_rows has shape (mesh.n_elements, 3, 3); rows are local axes in global coordinates.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">element_data</span><span class="p">[</span><span class="s2">"FiberOrientation"</span><span class="p">]</span> <span class="o">=</span> <span class="n">basis_rows</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">data</span><span class="o">.</span><span class="n">field_metadata</span><span class="p">[</span><span class="s2">"FiberOrientation"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"local_frame"</span><span class="p">}</span>
+<span class="n">data</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"fibres.fdh5"</span><span class="p">,</span> <span class="n">fdh5_options</span><span class="o">=</span><span class="p">{</span><span class="s2">"local_frame"</span><span class="p">:</span> <span class="s2">"rotvec"</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Tagged inputs may have shape (9, n_locations), (4, n_locations), or
+(3, n_locations): row-wise matrices, xyzw quaternions, or rotation vectors in
+radians, respectively. Compact forms represent the same row matrix using
+SciPy’s Rotation convention. Shape inference applies only to tagged fields
+and legacy shell/beam/material frame names; ordinary vectors and tensors are
+not treated as orientations. FDH5 reads reconstruct nine-component matrices.
+Manual field metadata are preserved together with existing section descriptions.</p>
+<p>Local frames can be overlaid independently of scalar colours. Select a frame
+outside the plot call; None (the default) uses automatic selection per submesh:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">set_current_local_frame</span><span class="p">(</span><span class="s2">"MaterialLocalFrame"</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"vm"</span><span class="p">,</span> <span class="n">show_local_frame</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">local_frame_axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">set_current_local_frame</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">field</span><span class="o">=</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"vm"</span><span class="p">,</span> <span class="n">show_local_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">local_frame_options</span><span class="o">=</span><span class="p">{</span><span class="s2">"max_frames"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">"gauss_points"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"legend"</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s2">"_ShellLocalFrame"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"XX"</span><span class="p">)</span>  <span class="c1"># Scalar colours only</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show_normals</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>  <span class="c1"># Geometric normal, independent of the selected frame</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">show_local_frame=False</span></code> hides arrows. True uses a length of 2% of the mesh
+bounding-box diagonal; a number supplies that percentage (including 1.0).
+<code class="docutils literal notranslate"><span class="pre">local_frame_axis</span></code> selects one-based axes; None shows all axes, or use a
+sequence such as [1, 2]. In 2D spaces only axes 1 and 2 are shown; explicitly
+requesting axis 3 raises an error. Surface meshes embedded in 3D have three axes.</p>
+<p>Automatic selection prefers available shell/beam frames, then other tagged
+frames including material orientations. Without saved frames, geometric frames
+are computed for surfaces in 3D and lines in 2D/3D, using existing mesh frame
+construction. No geometric fallback is used for 2D elements in 2D or volumes
+in 3D. These can still display explicitly selected or saved material frames.
+Each submesh is handled independently. Geometric frames use deformed positions;
+frames read from fields retain their saved orientations.</p>
+<p><code class="docutils literal notranslate"><span class="pre">show_normals</span></code> uses the same percentage convention and shared renderer, but
+always selects geometric normals: axis 3 for shells in 3D, axis 2 for lines in
+2D. Lines in 3D have no unique normal and are skipped. Mesh.plot_normals and
+Mesh.plot remain independent quick-view helpers with their existing API.</p>
+<p>The compact local_frame_options dictionary accepts max_frames (default 1000),
+gauss_points (False), and legend (False). Frame selections survive dataset
+copies and frame changes, without being written as result-file metadata.
+The viewer uses the same DataSet plotting feature, including deformation,
+clipping, visibility and frame sampling. Tagged frame scalar components such
+as XX or XY are decoded from the row matrix before extraction, independently
+of the stored representation.</p>
+<p>Public frame fields appear in the viewer field list. Their component selector
+offers Whole frame, Local 1, Local 2 and Local 3, followed by the nine matrix
+components XX/XY/XZ/YX/YY/YZ/ZX/ZY/ZZ, also selectable from the Object inspector.
+Matrix components produce ordinary scalar plots; frame choices produce arrows. Selecting one draws coloured basis arrows
+(local 1 red, 2 green, 3 blue). Options &gt; Local frames can overlay frames on another
+result, choose the frame field (including private fields), individual axes,
+element-centre or Gauss-point placement,
+arrow length and a maximum frame count. The local-frame legend is hidden by
+default; enable Show local frame legend in Options &gt; Local frames to display it.
+Shell normal-only display uses axis 3.
+Element-centre display uses the first available Gauss-point orientation,
+without averaging frame components. Frames follow deformation, loaded
+iterations, element visibility and the clipping plane.</p>
+</section>
 </section>
 </section>
 <section id="read-data-from-disk">
@@ -760,28 +904,36 @@ time interval (here the results are saved on a file).</p>
 </section>
 </section>
 <section id="fedoo-interactive-viewer">
-<h2>Fedoo interactive viewer<a class="headerlink" href="#fedoo-interactive-viewer" title="Link to this heading"></a></h2>
-<p>Fedoo includes a graphical viewer for result files and DataSet objects.
+<span id="fedoo-viewer"></span><h2>Fedoo interactive viewer<a class="headerlink" href="#fedoo-interactive-viewer" title="Link to this heading"></a></h2>
+<p>Fedoo includes a graphical viewer for result files, DataSet objects and live
+Problems.
 Install the plotting and GUI dependencies with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;fedoo[plot,gui]&quot;</span></code>.</p>
 <p>Then the viewer can either be launched as a standalone application from
 command line:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ python -m fedoo.viewer
 </pre></div>
 </div>
-<p>or from a python code. The code below show different ways to start the viewer
-inside a python code:</p>
+<p>or from Python:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="s1">'myfile.fdh5'</span><span class="p">)</span>  <span class="c1"># load a DataSet from file</span>
 
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">()</span>  <span class="c1"># start the viewer with no file opened</span>
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># start the viewer and open the result DataSet</span>
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="s1">'myfile.fdh5'</span><span class="p">)</span>  <span class="c1"># start the viewer with the data from a file</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span>  <span class="c1"># inspect an existing Problem in the current Python session</span>
 </pre></div>
 </div>
 <p>The viewer includes the following tools and features:</p>
 <ul class="simple">
-<li><p>Management of multiple independent windows, which can be linked together.</p></li>
-<li><p>Field and iteration selectors for data exploration.</p></li>
+<li><p>Manage independent views with Windows &gt; Arrange Windows (tabbed,
+horizontal, vertical or automatic layout). Windows &gt; Link windows links
+fields, iterations and/or cameras; Options &gt; Apply options to separately
+selects whether plotting options affect the active view or all views.
+Unlinked views retain their own selected frame. Linked iteration navigation
+skips views that do not contain the requested frame. Windows &gt; Copy Window
+creates another view of the current results.</p></li>
+<li><p>Field and iteration selectors for data exploration. The iteration spinbox
+decreases on the left and increases on the right.</p></li>
 <li><p>Automatic discovery of new FDH5 frames when navigating an ongoing simulation.
 The Reload button also rereads the current frame. A file temporarily locked
 by the writer can be retried on the next navigation or Reload.
@@ -799,18 +951,171 @@ Clicking a top/bottom display node reports its original node ID and the
 displayed field under the current section selection. Gauss-point displays
 retain element discontinuities; Element displays report adjacent element
 values at a shared node.</p></li>
-<li><p>Show or hide elements from predefined sets, rectangular selections,
-or arbitrary expressions.</p></li>
+<li><p>Open Tools &gt; Element Sets or Node Sets to manage selections. Element Sets
+can show or hide elements from predefined sets, rectangular selections,
+or arbitrary expressions; Node Sets manages nodes without visibility controls.
+Pick on screen displays a rectangle while dragging. New creates a named set
+from the current selection; Replace, Add and Remove load a set into the
+selection using the chosen operation.</p></li>
+<li><p>Manage node sets (selection, create, rename, remove) without visibility
+controls. Node Sets offers Create from element set; Element Sets offers
+Create from node set. Choose a source set in the dropdown and click Create.
+For element creation, a checkbox switches between requiring all element
+nodes or at least one node; its label shows the current rule.
+Node-to-element conversion can require all nodes or any node; element-to-node
+conversion collects unique nodes. MultiMesh element ids remain global.</p></li>
+<li><p>Grow an exterior surface selection in Node Sets. Click Select to pick a
+boundary node using the existing single-node picker, then select the patch
+with the chosen maximum normal angle. All viewer seeds are nodes;
+interior nodes are rejected.
+Corner seeds offer a starting-face choice. Boundary edges mode follows a
+line on a 2D mesh, including planar meshes stored with XYZ coordinates;
+Surface faces mode traverses shell faces. The result is a node selection
+that can be saved as a named set and reconstructed with <code class="docutils literal notranslate"><span class="pre">extract_surface</span></code>.
+Exterior edges (3D) follows creases and open shell boundaries. Sharpness
+controls the minimum face-normal angle identifying a crease; Turn limit
+controls the allowed direction change along the edge. Branches stop
+traversal, and ambiguous corner seeds offer a starting-edge choice.
+Edge results are node IDs, including midside nodes, and can be saved as sets.</p></li>
+<li><p>Use field/component names such as <code class="docutils literal notranslate"><span class="pre">Stress_XX</span></code> in selection expressions.
+Element tests use element-center positions and element field values;
+node tests use nodal positions and values. Field conversions follow DataSet.</p></li>
+<li><p>Compute scalar expressions from fields, existing scalars and named sets.
+The help button beside Expression opens the full guidance and examples in
+a separate window, which can stay open while entering an expression.
+For example <code class="docutils literal notranslate"><span class="pre">sum(Disp_X[nodes(&quot;Top&quot;)])</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mean(Stress_XX[elements(&quot;Wall&quot;)])</span></code> with Element field values, or
+<code class="docutils literal notranslate"><span class="pre">sum(scalar(&quot;Fext(RigidDisp)&quot;)[2])</span></code>. The result must be one finite number.
+Compute / update scalar evaluates the current frame immediately. Other
+frames are evaluated when loaded or requested by a history plot, rather than
+eagerly processing the whole file. File &gt; Save as evaluates and
+exports every frame of a multiframe dataset, including numeric scalar values,
+expression definitions and user-created sets. Definitions remain editable
+after reopening. A live Problem exports only its selected state or mode.</p></li>
 <li><p>Plot results along an interactively defined line.</p></li>
-<li><p>Plot time-history data, when applicable.</p></li>
+<li><p>Tools &gt; History plot accepts field/component names in quick search.
+For global DOFs and their associated forces, ID indexes the saved output
+array, not a node, element or Gauss point; changing the field association
+does not convert these global values.</p></li>
+<li><p>The Object inspector is visible by default; toggle it through
+Windows &gt; Object inspector. It browses the active dataset’s
+mesh, named sets, stored fields, computed scalars and live Problem boundary
+conditions. Set and condition selections highlight their geometry; the
+read-only properties include counts, field shapes/ranges and expressions.
+Automatically generated submesh element sets are omitted here because the
+corresponding submesh already appears under Mesh. User-created sets remain
+visible, including sets whose names start with <code class="docutils literal notranslate"><span class="pre">submesh_</span></code>.
+Expand a vector or tensor field to select its component directly, including
+magnitudes and stress invariants supported by the field selector. Selecting a
+component displays that field/component and association in the active view.
+Manage delegates edits to the existing tools. The panel can float or dock
+on the left or right, independently of Windows &gt; Arrange Windows. Fullscreen
+hides it and restores its prior visibility. It starts at its minimum width
+and keeps that width when resizing the main window. Dragging the divider
+wider chooses a proportion preserved on resize; dragging back to minimum
+restores the fixed minimum width.
+Right-click Mesh for Show all and a checkable Mask all action. Submeshes and
+element sets retain Show only and Mask. Unchecking a mask restores that
+object’s elements without resetting other visibility choices. Visibility
+uses the same element filter as Element Sets, and the properties show partial
+masking.</p></li>
+<li><p>Optionally show the current <code class="docutils literal notranslate"><span class="pre">Time</span></code> scalar in the upper-right corner.
+It is hidden by default; enable Show time in Options &gt; Plot.
+The existing active/all views target
+applies to this option too.</p></li>
+<li><p>Open a live Problem directly, or use a <code class="docutils literal notranslate"><span class="pre">ProblemDataSet</span></code> wrapper. The
+Problem &gt; Open existing problem dialog also lists Problems from the current
+Python session’s workspace variables, the named Fedoo registry and the
+active Problem. Refresh updates the list; reopening a Problem refreshes
+its existing viewer pane; different Problems open separate panes. Use
+Windows &gt; Copy Window for another view when needed. This reads existing
+objects without running a solve. Reload reads its current state; Save as
+exports a single-state FDH5 snapshot.
+Problem &gt; Boundary conditions inspects and highlights existing constraints,
+and adds/edits nodal Dirichlet or Neumann conditions using node sets or
+the nodes of element sets. Neumann values are per-node forces, not pressure.
+Custom constraints can be inspected. Edits affect the live Problem; solve
+from Python to update its solution. BC definitions are not exported to FDH5.</p></li>
+<li><p>File &gt; Save as exports FDH5 with None, gzip or optional Zstandard
+compression. Save As remembers that view’s last successful compression
+choice. All compression options are lossless. User-created node and element
+sets are included; automatically generated All/submesh selection sets are
+not exported. Submesh geometry and names are preserved independently of
+these generated sets. Display visibility masks do not remove mesh elements
+from the saved result. See <a class="reference internal" href="#fdh5-format"><span class="std std-ref">FDH5 format</span></a> for compression dependencies.</p></li>
 <li><p>Clip the current mesh using an interactively defined plane.</p></li>
 <li><p>Save figures and create movies using the current visualization settings.</p></li>
 </ul>
 </section>
 <section id="basic-operations">
 <h2>Basic operations<a class="headerlink" href="#basic-operations" title="Link to this heading"></a></h2>
+<section id="live-problem-results">
+<h3>Live problem results<a class="headerlink" href="#live-problem-results" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ProblemDataSet</span></code> implements the DataSet interface for one current Problem
+state. It extracts results using <code class="docutils literal notranslate"><span class="pre">problem.get_results</span></code> without running a
+solve. Default fields include available DOFs, forces and stress/strain;
+pass <code class="docutils literal notranslate"><span class="pre">fields</span></code> to request a specific set. Reading through <code class="docutils literal notranslate"><span class="pre">get_data</span></code>
+refreshes automatically; call <code class="docutils literal notranslate"><span class="pre">refresh</span></code> before reading the storage
+dictionaries directly. Copies are detached DataSet snapshots.</p>
+<p>Pass the Problem directly to <code class="docutils literal notranslate"><span class="pre">fd.viewer(pb)</span></code>; creating the wrapper explicitly
+is optional. In an already running viewer, <strong>Problem &gt; Open existing problem</strong>
+finds Problems in that same Python session. A standalone viewer cannot access
+objects in a separate Python process. <strong>Reload</strong> refreshes the current results,
+and <strong>Problem &gt; Boundary conditions</strong> edits the live constraints; solving
+remains an explicit operation in Python.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="c1"># pb is an existing Problem, for example after pb.solve() or pb.nlsolve().</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span>  <span class="c1"># inspect its results and manage live boundary conditions</span>
+
+<span class="c1"># Optionally choose which fields the live wrapper exposes.</span>
+<span class="n">current</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ProblemDataSet</span><span class="p">(</span><span class="n">pb</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">])</span>
+<span class="n">current</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"X"</span><span class="p">)</span>
+<span class="n">current</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"current.fdh5"</span><span class="p">)</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For modal and linear buckling Problems with computed modes, the viewer’s
+iteration slider, spinbox and Play button navigate the retained modes with
+the same zero-based indexing as FDH5 frames. The <code class="docutils literal notranslate"><span class="pre">Mode</span></code> scalar is one-based,
+as in saved mode output. Selection calls <code class="docutils literal notranslate"><span class="pre">problem.set_mode</span></code> and refreshes
+the live fields and frequency/load-factor metadata without another eigensolve.
+Reload discovers modes computed after opening the viewer. From Python use
+<code class="docutils literal notranslate"><span class="pre">current.set_mode(index)</span></code>; <code class="docutils literal notranslate"><span class="pre">current.n_modes</span></code> gives the retained count.</p>
+<p>Other Problems retain one current state. There is no accumulated time history
+in a ProblemDataSet. Export saves the selected mode/current state’s fields,
+computed scalars and named sets; it does not create a solver restart file.</p>
+</section>
+<section id="shared-mathematical-expressions">
+<h3>Shared mathematical expressions<a class="headerlink" href="#shared-mathematical-expressions" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">fedoo.util.expressions.evaluate_expression</span></code> provides the same evaluator
+used by mesh selection and viewer tools. It accepts a mesh for positions
+and an optional DataSet for fields and scalar outputs. <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>, <code class="docutils literal notranslate"><span class="pre">Z</span></code>
+and <code class="docutils literal notranslate"><span class="pre">ID</span></code> refer to nodes or element centers, depending on <code class="docutils literal notranslate"><span class="pre">data_type</span></code>.
+Scalar computations use reference positions; viewer selection additionally
+offers deformed positions. Logical <code class="docutils literal notranslate"><span class="pre">and</span></code>/<code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>/<code class="docutils literal notranslate"><span class="pre">|</span></code> operate
+elementwise. Named mathematical functions can also use the <code class="docutils literal notranslate"><span class="pre">np.</span></code> prefix.
+Arbitrary Python statements and attribute access are not supported. The
+expression language uses an explicit list of supported operations and functions,
+not Python <code class="docutils literal notranslate"><span class="pre">eval</span></code>. Expensive expressions can still consume substantial memory
+or computation time; there are no strict resource limits. Stored definitions
+are evaluated when frames load, so use trusted expression definitions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">fedoo.util.expressions</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate_expression</span>
+
+<span class="n">ids</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Disp_X &gt; 0 and X &lt; 1"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">)</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="s2">"Stress_XX &gt; 100"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">)</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">evaluate_expression</span><span class="p">(</span><span class="s1">'sum(Disp_X[nodes("Top")])'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">add_scalar_expression</span><span class="p">(</span><span class="s2">"TopDisplacement"</span><span class="p">,</span> <span class="s1">'sum(Disp_X[nodes("Top")])'</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"computed.fdh5"</span><span class="p">)</span>  <span class="c1"># one DataSet</span>
+<span class="c1"># For a MultiFrameDataSet, use results.save_all("computed.fdh5").</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">field(&quot;Stress_XX&quot;,</span> <span class="pre">&quot;Element&quot;)</span></code> explicitly selects a field association.
+<code class="docutils literal notranslate"><span class="pre">scalar(&quot;name&quot;)</span></code> handles scalar names containing punctuation, and
+<code class="docutils literal notranslate"><span class="pre">node_sets[&quot;Top&quot;]</span></code> / <code class="docutils literal notranslate"><span class="pre">element_sets[&quot;Wall&quot;]</span></code> also provide set indices.</p>
 <p>The principale methods/functions to extract, plot and manage
 result data are listed in this section.</p>
+</section>
 <section id="extract-data">
 <h3>Extract data<a class="headerlink" href="#extract-data" title="Link to this heading"></a></h3>
 <table class="autosummary longtable docutils align-default">
@@ -830,16 +1135,19 @@ result data are listed in this section.</p>
 <a class="reference internal" href="generated/fedoo.DataSet.html#fedoo.DataSet" title="fedoo.DataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSet</span></code></a> and <a class="reference internal" href="generated/fedoo.MultiFrameDataSet.html#fedoo.MultiFrameDataSet" title="fedoo.MultiFrameDataSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiFrameDataSet</span></code></a> objects.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.DataSet.plot.html#fedoo.DataSet.plot" title="fedoo.DataSet.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.plot</span></code></a>([field, component, data_type, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.DataSet.set_current_local_frame.html#fedoo.DataSet.set_current_local_frame" title="fedoo.DataSet.set_current_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.set_current_local_frame</span></code></a>([field])</p></td>
+<td><p>Select the orientation field used by local-frame arrow overlays.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.DataSet.plot.html#fedoo.DataSet.plot" title="fedoo.DataSet.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.plot</span></code></a>([field, component, data_type, ...])</p></td>
 <td><p>Plot a field on the surface of the associated mesh.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot.html#fedoo.MultiFrameDataSet.plot" title="fedoo.MultiFrameDataSet.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot</span></code></a>([field, component, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot.html#fedoo.MultiFrameDataSet.plot" title="fedoo.MultiFrameDataSet.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot</span></code></a>([field, component, ...])</p></td>
 <td><p>Plot a field on the surface of the associated mesh.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot_history.html#fedoo.MultiFrameDataSet.plot_history" title="fedoo.MultiFrameDataSet.plot_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot_history</span></code></a>(field, indices)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.plot_history.html#fedoo.MultiFrameDataSet.plot_history" title="fedoo.MultiFrameDataSet.plot_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.plot_history</span></code></a>(field, indices)</p></td>
 <td><p>Plot history data from the MultiFrameDataSet.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.write_movie.html#fedoo.MultiFrameDataSet.write_movie" title="fedoo.MultiFrameDataSet.write_movie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.write_movie</span></code></a>([filename, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.MultiFrameDataSet.write_movie.html#fedoo.MultiFrameDataSet.write_movie" title="fedoo.MultiFrameDataSet.write_movie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiFrameDataSet.write_movie</span></code></a>([filename, ...])</p></td>
 <td><p>Create a video from the data.</p></td>
 </tr>
 </tbody>
@@ -849,7 +1157,7 @@ result data are listed in this section.</p>
 <h3>Save results<a class="headerlink" href="#save-results" title="Link to this heading"></a></h3>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.DataSet.save.html#fedoo.DataSet.save" title="fedoo.DataSet.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.save</span></code></a>(filename[, save_mesh, compressed])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.DataSet.save.html#fedoo.DataSet.save" title="fedoo.DataSet.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.save</span></code></a>(filename[, save_mesh, ...])</p></td>
 <td><p>Save data to a file.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.DataSet.savez.html#fedoo.DataSet.savez" title="fedoo.DataSet.savez"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSet.savez</span></code></a>(filename[, save_mesh])</p></td>

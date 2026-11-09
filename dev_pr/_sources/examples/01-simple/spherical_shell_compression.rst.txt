@@ -142,13 +142,12 @@ minimal or maximal z value (sphere extremity along the z axis.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 51-54
+.. GENERATED FROM PYTHON SOURCE LINES 51-53
 
 Now we build the pressure load by extracting the loaded surface mesh.
-For nonlinear analyses, the pressure is added as an external Neumann boundary
-condition so that the residual normalization sees the applied load.
+The pressure is added as an external Neumann boundary condition.
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-60
+.. GENERATED FROM PYTHON SOURCE LINES 53-59
 
 .. code-block:: Python
 
@@ -165,9 +164,9 @@ condition so that the residual normalization sees the applied load.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-71
+.. GENERATED FROM PYTHON SOURCE LINES 60-70
 
-Define a nonlinear analysis and solve the problem.
+Define a linear analysis and solve the problem.
 
 .. note::
   To improve numerical stability, a few displacement boundary conditions are
@@ -178,7 +177,7 @@ Define a nonlinear analysis and solve the problem.
   arbitrary rigid-body motion.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 71-87
+.. GENERATED FROM PYTHON SOURCE LINES 70-86
 
 .. code-block:: Python
 
@@ -205,7 +204,7 @@ Define a nonlinear analysis and solve the problem.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-93
+.. GENERATED FROM PYTHON SOURCE LINES 87-92
 
 Extract the results:
 position = 1 is set for the surface along the positif direction of the
@@ -213,7 +212,7 @@ normal vector (0 is the mean plane). The strains and stresses components are
 defined in the element local coordinate system
 (mesh.get_element_local_frame()).
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-99
+.. GENERATED FROM PYTHON SOURCE LINES 92-98
 
 .. code-block:: Python
 
@@ -241,7 +240,7 @@ defined in the element local coordinate system
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.355 seconds)
+   **Total running time of the script:** (0 minutes 0.227 seconds)
 
 
 .. _sphx_glr_download_examples_01-simple_spherical_shell_compression.py:
