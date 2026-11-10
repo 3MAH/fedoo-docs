@@ -137,5 +137,47 @@
       "wall_time_s": 530
     },
     "media": "plasticity/heterogeneous_struct_nl.gif"
+  },
+  "contact/ipc_gyroid_compression.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 206
+    },
+    "media": "contact/ipc_gyroid_compression.gif"
+  },
+  "contact/ipc_gyroid_compression_periodic.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 167
+    },
+    "media": "contact/ipc_gyroid_compression_periodic.gif"
+  },
+  "contact/ipc_gyroid_compression_plastic.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 213
+    },
+    "media": "contact/ipc_gyroid_compression_plastic.gif"
   }
 }
