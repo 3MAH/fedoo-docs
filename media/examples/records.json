@@ -54,5 +54,88 @@
       "wall_time_s": 42
     },
     "media": "contact/ipc_indentation_3d.gif"
+  },
+  "plasticity/plastic_bending_2d.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 7
+    },
+    "media": "plasticity/plastic_bending_2d.gif"
+  },
+  "plasticity/plastic_bending_2d_from_scratch.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 3
+    }
+  },
+  "plasticity/plastic_bending_3d.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 52
+    },
+    "media": "plasticity/plastic_bending_3d.gif"
+  },
+  "plasticity/shear_test.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 50
+    },
+    "media": "plasticity/shear_test.gif"
+  },
+  "plasticity/torsion_test.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 50
+    },
+    "media": "plasticity/torsion_test.gif"
+  },
+  "plasticity/heterogeneous_struct_nl.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 530
+    },
+    "media": "plasticity/heterogeneous_struct_nl.gif"
   }
 }
