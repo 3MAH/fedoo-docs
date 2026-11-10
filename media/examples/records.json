@@ -12,5 +12,47 @@
       "wall_time_s": 69
     },
     "media": "contact/ipc_punch_indentation.gif"
+  },
+  "contact/tube_compression.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 75
+    },
+    "media": "contact/tube_compression.gif"
+  },
+  "contact/ipc_tube_compression.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 74
+    },
+    "media": "contact/ipc_tube_compression.gif"
+  },
+  "contact/ipc_indentation_3d.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.1",
+      "commit": "8fa6ec0798fea2cd3c52159d1c5ffe508131a66b",
+      "date": "2026-11-10",
+      "machine": "Linux x86_64",
+      "wall_time_s": 42
+    },
+    "media": "contact/ipc_indentation_3d.gif"
   }
 }
