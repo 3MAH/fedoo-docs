@@ -234,5 +234,61 @@
       "wall_time_s": 379
     },
     "media": "homogenization/fe2_plate_with_hole.gif"
+  },
+  "dynamics/multi_mesh_dynamic_contact.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.0",
+      "commit": "0c1c3c65c9bdd8702d3f2ad96d75c408d2ffb4d6",
+      "date": "2026-11-11",
+      "machine": "Linux x86_64",
+      "wall_time_s": 69
+    },
+    "media": "dynamics/multi_mesh_dynamic_contact.gif"
+  },
+  "dynamics/rigid_body_bunny_bounce.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.0",
+      "commit": "0c1c3c65c9bdd8702d3f2ad96d75c408d2ffb4d6",
+      "date": "2026-11-11",
+      "machine": "Linux x86_64",
+      "wall_time_s": 62
+    },
+    "media": "dynamics/rigid_body_bunny_bounce.gif"
+  },
+  "dynamics/rigid_body_cow_bounce.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.0",
+      "commit": "0c1c3c65c9bdd8702d3f2ad96d75c408d2ffb4d6",
+      "date": "2026-11-11",
+      "machine": "Linux x86_64",
+      "wall_time_s": 86
+    },
+    "media": "dynamics/rigid_body_cow_bounce.gif"
+  },
+  "thermal/thermomechanical_weak_coupling_3d.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.0",
+      "commit": "0c1c3c65c9bdd8702d3f2ad96d75c408d2ffb4d6",
+      "date": "2026-11-11",
+      "machine": "Linux x86_64",
+      "wall_time_s": 232
+    },
+    "media": "thermal/thermomechanical_weak_coupling_3d.gif"
   }
 }
