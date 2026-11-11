@@ -179,5 +179,46 @@
       "wall_time_s": 213
     },
     "media": "contact/ipc_gyroid_compression_plastic.gif"
+  },
+  "homogenization/non_periodic_homogenization.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.0",
+      "commit": "0c1c3c65c9bdd8702d3f2ad96d75c408d2ffb4d6",
+      "date": "2026-11-11",
+      "machine": "Linux x86_64",
+      "wall_time_s": 49
+    }
+  },
+  "dynamics/rigid_body_bounce_ipc.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.0",
+      "commit": "0c1c3c65c9bdd8702d3f2ad96d75c408d2ffb4d6",
+      "date": "2026-11-11",
+      "machine": "Linux x86_64",
+      "wall_time_s": 66
+    },
+    "media": "dynamics/rigid_body_bounce_ipc.gif"
+  },
+  "dynamics/broberg_dynamic_crack.py": {
+    "run": {
+      "fedoo": "1.1.0",
+      "simcoon": "0+unknown",
+      "numpy": "2.5.4",
+      "blas": "mkl",
+      "ipctk": "1.6.0",
+      "commit": "0c1c3c65c9bdd8702d3f2ad96d75c408d2ffb4d6",
+      "date": "2026-11-11",
+      "machine": "Linux x86_64",
+      "wall_time_s": 46
+    },
+    "media": "dynamics/broberg_dynamic_crack.gif"
   }
 }
