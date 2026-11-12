@@ -19,6 +19,7 @@
          :toctree:
          
       
+         ElasticOrthotropic.get_H_condensed
          ElasticOrthotropic.get_H_plane_stress
          ElasticOrthotropic.get_all
          ElasticOrthotropic.get_current_local_frame
