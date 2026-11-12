@@ -153,22 +153,25 @@ numbering (<code class="docutils literal notranslate"><span class="pre">0</span>
 them must be renumbered. The attribute <code class="docutils literal notranslate"><span class="pre">tangent_mode</span></code> can also be
 changed after construction. The default <code class="docutils literal notranslate"><span class="pre">None</span></code> selects <code class="docutils literal notranslate"><span class="pre">1</span></code>, or
 <code class="docutils literal notranslate"><span class="pre">2</span></code> with <code class="docutils literal notranslate"><span class="pre">integrator=&quot;closest_point&quot;</span></code>, which only returns its
-algorithmic operator.</p>
+algorithmic operator. It is resolved once, at construction: when
+<code class="docutils literal notranslate"><span class="pre">integrator</span></code> is changed afterwards, set <code class="docutils literal notranslate"><span class="pre">tangent_mode</span></code> as well.</p>
 </p></li>
 <li><p><strong>name</strong> (<em>str</em>) – The name of the constitutive law</p></li>
 <li><p><strong>ncp</strong> (<em>{&quot;fischer_burmeister&quot;</em><em>, </em><em>&quot;min&quot;}</em><em>, </em><em>default=&quot;fischer_burmeister&quot;</em>) – Complementarity function of the local cutting-plane return mapping,
 forwarded to <code class="xref py py-func docutils literal notranslate"><span class="pre">simcoon.umat()</span></code>. <code class="docutils literal notranslate"><span class="pre">&quot;min&quot;</span></code> is the classic
 cutting-plane step on a single surface with a Fischer-Burmeister
-fallback. Simcoon only accepts it for the laws that read it
-(<code class="docutils literal notranslate"><span class="pre">EPICP</span></code>, <code class="docutils literal notranslate"><span class="pre">EPKCP</span></code> and modular materials without an
-Armstrong-Frederick back stress) and with the cutting-plane
-integrator; it raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> otherwise.</p></li>
+fallback. Simcoon only accepts it for the laws that read it and with
+the cutting-plane integrator, and raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> otherwise.
+The set of laws depends on the simcoon version: <code class="docutils literal notranslate"><span class="pre">EPICP</span></code>, <code class="docutils literal notranslate"><span class="pre">EPKCP</span></code>
+and modular materials without an Armstrong-Frederick back stress in
+simcoon 2.3; every law served by the modular engine from simcoon 2.4.</p></li>
 <li><p><strong>integrator</strong> (<em>{&quot;cutting_plane&quot;</em><em>, </em><em>&quot;closest_point&quot;}</em><em>, </em><em>default=&quot;cutting_plane&quot;</em>) – Local integrator of the laws with a return mapping, forwarded to
 <code class="xref py py-func docutils literal notranslate"><span class="pre">simcoon.umat()</span></code>. <code class="docutils literal notranslate"><span class="pre">&quot;closest_point&quot;</span></code> is a backward-Euler update
 that requires <code class="docutils literal notranslate"><span class="pre">tangent_mode=2</span></code>; a law without a closest-point
 update keeps the cutting plane.</p></li>
 <li><p><strong>that</strong> (<em>ncp and integrator are keyword-only and are also attributes</em>)</p></li>
-<li><p><strong>construction.</strong> (<em>can be changed after</em>)</p></li>
+<li><p><strong>a</strong> (<em>can be changed after construction</em><em> (</em><em>tangent_mode does not follow</em>)</p></li>
+<li><p><strong>integrator</strong><strong>)</strong><strong>.</strong> (<em>change of</em>)</p></li>
 <li><p><strong>constructor</strong> (<em>Alternative</em>)</p></li>
 <li><p><strong>-----------------------</strong></p></li>
 </ul>
@@ -195,10 +198,12 @@ material = Simcoon.from_modular(configuration, name=”steel”)</p>
 </dd>
 </dl>
 <p>:param :
-:param integrator=…)``. For backward:
-:param compatibility:
-:param a string passed as the third positional argument is still:
-:param interpreted as <code class="docutils literal notranslate"><span class="pre">name</span></code>.:</p>
+:param integrator=…)``. <code class="docutils literal notranslate"><span class="pre">name</span></code> is the fourth positional argument:
+:type integrator=…)``. <code class="docutils literal notranslate"><span class="pre">name</span></code> is the fourth positional argument: scripts
+:param written for the historical <code class="docutils literal notranslate"><span class="pre">Simcoon(umat_name:</span>
+<span class="pre">:param</span> <span class="pre">props:</span>
+<span class="pre">:param</span> <span class="pre">name)</span></code> order must:
+:param pass it as <code class="docutils literal notranslate"><span class="pre">name=...</span></code>.:</p>
 <p class="rubric">Notes</p>
 <p>UMAT compatibility with the <code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> ModelingSpace:</p>
 <ul class="simple">

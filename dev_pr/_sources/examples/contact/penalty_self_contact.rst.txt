@@ -187,17 +187,17 @@ Large strain (Updated Lagrangian with logarithmic corotational).
     Iter 131 - Time: 0.95954 - dt 0.01000 - NR iter: 3 - Err: 0.00361
     Iter 132 - Time: 0.96000 - dt 0.01000 - NR iter: 2 - Err: 0.00196
     Iter 133 - Time: 0.97000 - dt 0.01000 - NR iter: 2 - Err: 0.00263
-    Convergence Failed - dt 0.01000 - NR iter: 9 - Err: 0.05890
-    Iter 134 - Time: 0.97250 - dt 0.00250 - NR iter: 4 - Err: 0.00491
-    Iter 135 - Time: 0.97563 - dt 0.00313 - NR iter: 2 - Err: 0.00297
-    Iter 136 - Time: 0.97953 - dt 0.00391 - NR iter: 3 - Err: 0.00297
-    Iter 137 - Time: 0.98000 - dt 0.00488 - NR iter: 2 - Err: 0.00102
-    Iter 138 - Time: 0.98488 - dt 0.00488 - NR iter: 2 - Err: 0.00287
-    Iter 139 - Time: 0.99099 - dt 0.00610 - NR iter: 3 - Err: 0.00305
-    Iter 140 - Time: 0.99862 - dt 0.00763 - NR iter: 3 - Err: 0.00332
-    Iter 141 - Time: 1.00000 - dt 0.00954 - NR iter: 3 - Err: 0.00141
+    Convergence Failed - dt 0.01000 - NR iter: 9 - Err: 0.05885
+    Iter 134 - Time: 0.97250 - dt 0.00250 - NR iter: 5 - Err: 0.00251
+    Iter 135 - Time: 0.97563 - dt 0.00313 - NR iter: 2 - Err: 0.00254
+    Iter 136 - Time: 0.97953 - dt 0.00391 - NR iter: 7 - Err: 0.00287
+    Iter 137 - Time: 0.98000 - dt 0.00391 - NR iter: 2 - Err: 0.00164
+    Iter 138 - Time: 0.98391 - dt 0.00391 - NR iter: 2 - Err: 0.00270
+    Iter 139 - Time: 0.98879 - dt 0.00488 - NR iter: 2 - Err: 0.00462
+    Iter 140 - Time: 0.99489 - dt 0.00610 - NR iter: 3 - Err: 0.00357
+    Iter 141 - Time: 1.00000 - dt 0.00763 - NR iter: 2 - Err: 0.00456
 
-    <pyvista.plotting.plotter.Plotter object at 0x7b971c173100>
+    <pyvista.plotting.plotter.Plotter object at 0x7b08c11ec6a0>
 
 
 
@@ -269,7 +269,7 @@ Large strain (Updated Lagrangian with logarithmic corotational).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 21.427 seconds)
+   **Total running time of the script:** (0 minutes 21.543 seconds)
 
 
 .. _sphx_glr_download_examples_contact_penalty_self_contact.py:

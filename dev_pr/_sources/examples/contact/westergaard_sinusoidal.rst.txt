@@ -84,7 +84,7 @@ The problem is solved twice (IPC, then penalty) on an 80 x 80 grid.
     Iter 11 - Time: 0.99073 - dt 0.19073 - NR iter: 3 - Err: 0.00413
     Iter 12 - Time: 1.00000 - dt 0.23842 - NR iter: 4 - Err: 0.00190
 
-    IPC solve time: 2.50 s
+    IPC solve time: 2.48 s
 
     ==============================================================
       PENALTY CONTACT  (Westergaard sinusoidal benchmark)
@@ -103,7 +103,7 @@ The problem is solved twice (IPC, then penalty) on an 80 x 80 grid.
     Iter 12 - Time: 0.99073 - dt 0.19073 - NR iter: 4 - Err: 0.00007
     Iter 13 - Time: 1.00000 - dt 0.23842 - NR iter: 2 - Err: 0.00402
 
-    Penalty solve time: 2.60 s
+    Penalty solve time: 2.57 s
 
 
     ==============================================================
@@ -111,7 +111,7 @@ The problem is solved twice (IPC, then penalty) on an 80 x 80 grid.
     ==============================================================
     Metric                                      IPC            Penalty
     ------------------------------------------------------------------
-    Total solve time                         2.50 s             2.60 s
+    Total solve time                         2.48 s             2.57 s
     Total increments                             12                 13
     Final reaction Fy                      -27.9804           -26.6296
     p* (analytical)                         69.0460            69.0460
@@ -656,7 +656,7 @@ The problem is solved twice (IPC, then penalty) on an 80 x 80 grid.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.556 seconds)
+   **Total running time of the script:** (0 minutes 5.512 seconds)
 
 
 .. _sphx_glr_download_examples_contact_westergaard_sinusoidal.py:
