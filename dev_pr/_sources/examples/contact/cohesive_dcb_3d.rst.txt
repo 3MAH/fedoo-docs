@@ -89,7 +89,7 @@ remains fast enough for the documentation gallery.
  .. code-block:: none
 
 
-    <fedoo.core.modelingspace.ModelingSpace object at 0x70381b666020>
+    <fedoo.core.modelingspace.ModelingSpace object at 0x752df9c42950>
 
 
 
@@ -388,7 +388,7 @@ A damage value of one denotes a fully failed cohesive point.
     max_damage: 1.0
     damaged_gauss_points: 112
     failed_gauss_points: 112
-    max_opening: 5.58976093050678
+    max_opening: 5.589760930506699
 
 
 
@@ -448,7 +448,7 @@ VTK/PyVista cell equivalent.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.351 seconds)
+   **Total running time of the script:** (0 minutes 2.367 seconds)
 
 
 .. _sphx_glr_download_examples_contact_cohesive_dcb_3d.py:

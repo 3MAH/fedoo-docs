@@ -223,7 +223,7 @@ strain :math:`\gamma_{xy}`.
  .. code-block:: none
 
     Mean strain, Voigt vector ([Exx, Eyy, gamma_xy]):  [np.float64(0.0), np.float64(0.0), np.float64(0.1)]
-    Mean stress, Voigt vector ([Sxx, Syy, Sxy]):  [np.float64(-3.834512085632014e-12), np.float64(-5.082836196379503e-12), np.float64(2497.6680151186256)]
+    Mean stress, Voigt vector ([Sxx, Syy, Sxy]):  [np.float64(-1.4715197949044524e-12), np.float64(-1.4409010873350781e-12), np.float64(2497.6680151186365)]
 
 
 
@@ -231,7 +231,7 @@ strain :math:`\gamma_{xy}`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.263 seconds)
+   **Total running time of the script:** (0 minutes 0.261 seconds)
 
 
 .. _sphx_glr_download_examples_boundary_conditions_periodic_bc_2d_plate_with_hole.py:
