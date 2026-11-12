@@ -1,0 +1,88 @@
+
+
+.. _sphx_glr_examples_custom_weak_forms:
+
+Custom weak forms
+-----------------
+
+Problems defined directly from a user weak form written with fedoo's
+differential operators: Stokes and Navier-Stokes flows. The Poisson equation is
+in the basic examples (:ref:`sphx_glr_examples_basic_poisson_eq.py`).
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Steady incompressible Stokes flow in a channel around a circular obstacle, written directly with the differential operators of a fedoo.ModelingSpace and a fedoo.WeakForm. The mixed velocity/pressure problem is discretized with the stable p1+/p1 element (linear triangle enriched by a bubble for the velocity, linear pressure) built with fedoo.lib_elements.CombinedElement.">
+
+.. only:: html
+
+  .. image:: /examples/custom_weak_forms/images/thumb/sphx_glr_fluid_mechanics_thumb.png
+    :alt:
+
+  :doc:`/examples/custom_weak_forms/fluid_mechanics`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Stokes flow around a cylinder with a user-defined weak form</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A nonlinear user weak form is written by subclassing fedoo.core.weakform.WeakFormBase: update stores the current velocity, pressure and velocity gradient at the Gauss points, set_start keeps the velocity of the last converged increment, and get_weak_equation returns the weak form linearized at the current state (tangent operator plus residual) for the Newton-Raphson solver of fedoo.problem.NonLinear.">
+
+.. only:: html
+
+  .. image:: /examples/custom_weak_forms/images/thumb/sphx_glr_navier_stokes_thumb.png
+    :alt:
+
+  :doc:`/examples/custom_weak_forms/navier_stokes`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Transient Navier-Stokes flow around a cylinder with a user weak-form class</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Steady incompressible Stokes flow in a unit square cavity whose top wall moves at a unit velocity, written with the differential operators of a fedoo.ModelingSpace and a fedoo.WeakForm. The mixed problem uses the stable p1+/p1 element (bubble-enriched velocity, linear pressure). The weak form is the one of the Stokes example around a cylinder:">
+
+.. only:: html
+
+  .. image:: /examples/custom_weak_forms/images/thumb/sphx_glr_recirculating_flow_thumb.png
+    :alt:
+
+  :doc:`/examples/custom_weak_forms/recirculating_flow`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Lid-driven cavity (Stokes flow) with a user-defined weak form</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/custom_weak_forms/fluid_mechanics
+   /examples/custom_weak_forms/navier_stokes
+   /examples/custom_weak_forms/recirculating_flow
+

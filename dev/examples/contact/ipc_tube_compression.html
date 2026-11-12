@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tube compression (2Daxi): IPC versus penalty self-contact &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Disk-rectangle contact (2D, penalty method)" href="penalty_disk_rectangle.html" />
+    <link rel="prev" title="Self-contact — hole plate compression (2D, IPC method)" href="ipc_self_contact.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Contact and interfaces</a></li>
+      <li class="breadcrumb-item active">Tube compression (2Daxi): IPC versus penalty self-contact</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/contact/ipc_tube_compression.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-contact-ipc-tube-compression-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="tube-compression-2daxi-ipc-versus-penalty-self-contact">
+<span id="sphx-glr-examples-contact-ipc-tube-compression-py"></span><h1>Tube compression (2Daxi): IPC versus penalty self-contact<a class="headerlink" href="#tube-compression-2daxi-ipc-versus-penalty-self-contact" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example is too heavy to be run at each documentation build.
+The animation below was precomputed on 2026-11-10 with fedoo 1.1.0, simcoon 0+unknown, ipctk 1.6.1, numpy 2.5.4 (fedoo commit 8fa6ec0798fea2cd3c52159d1c5ffe508131a66b), in about 74 s (Linux x86_64, BLAS mkl). Run
+the script to reproduce it with your fedoo version.</p>
+</div>
+<img src="https://3mah.github.io/fedoo-docs/media/examples/contact/ipc_tube_compression.gif" style="width: 100%" alt="contact/ipc_tube_compression.py"><p>Same problem as <a class="reference internal" href="tube_compression.html#sphx-glr-examples-contact-tube-compression-py"><span class="std std-ref">Compression of a tube using 2D axisymmetric model</span></a>, solved
+twice: with <code class="docutils literal notranslate"><span class="pre">IPCSelfContact</span></code> (collisions weighted by <span class="math notranslate nohighlight">\(2 \pi r\)</span>) and
+with the penalty <code class="docutils literal notranslate"><span class="pre">SelfContact</span></code>. For each run the script prints the solve
+time, the axial reaction forces on the top and bottom faces (they should be
+opposite), the peak axial stress and the peak equivalent plastic strain at
+the last saved increment. The page has no figure: the deformed shape is
+shown in <a class="reference internal" href="tube_compression.html#sphx-glr-examples-contact-tube-compression-py"><span class="std std-ref">Compression of a tube using 2D axisymmetric model</span></a>, and the
+results of both runs are written to <code class="docutils literal notranslate"><span class="pre">results/</span></code>.</p>
+<p>This example requires <code class="docutils literal notranslate"><span class="pre">ipctk</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span> <span class="ow">or</span> <span class="s2">"."</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)</span>
+
+<span class="n">NLGEOM</span> <span class="o">=</span> <span class="s2">"UL"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Daxi"</span><span class="p">)</span>
+    <span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+
+    <span class="n">sigma_y</span> <span class="o">=</span> <span class="mi">300</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mf">0.3</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="mf">200e3</span>
+    <span class="n">nu</span> <span class="o">=</span> <span class="mf">0.3</span>
+    <span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">sigma_y</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">])</span>
+    <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="n">NLGEOM</span><span class="p">)</span>
+    <span class="n">solid_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">"ipc"</span><span class="p">:</span>
+        <span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">IPCSelfContact</span><span class="p">(</span>
+            <span class="n">mesh</span><span class="p">,</span>
+            <span class="n">dhat</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
+            <span class="n">dhat_is_relative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">surf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+        <span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">contact</span><span class="o">.</span><span class="n">SelfContact</span><span class="p">(</span><span class="n">surf</span><span class="p">)</span>
+        <span class="n">contact</span><span class="o">.</span><span class="n">contact_search_once</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">contact</span><span class="o">.</span><span class="n">eps_n</span> <span class="o">=</span> <span class="mf">1e4</span>  <span class="c1"># contact penalty</span>
+        <span class="n">contact</span><span class="o">.</span><span class="n">max_dist</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># max distance for the contact search</span>
+
+    <span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="n">contact</span><span class="p">)</span>
+
+    <span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="n">NLGEOM</span><span class="p">)</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span>
+        <span class="s2">"Displacement"</span><span class="p">,</span>
+        <span class="n">tol</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span>
+        <span class="n">max_subiter</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">adaptive_stiffness</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"results/tube_compression_</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="n">solid_assembly</span><span class="p">,</span>
+        <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"P"</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="n">bottom</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">]</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"top"</span><span class="p">]</span>
+
+    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">150</span><span class="p">])</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">add_line_search</span><span class="p">()</span>
+
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dt_min</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+    <span class="n">solve_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+
+    <span class="c1"># axial reaction forces: they should be opposite</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_ext_forces</span><span class="p">(</span><span class="s2">"Disp"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">,</span> <span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">top</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">bottom</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">solve_time</span>
+</pre></div>
+</div>
+<section id="reduced-numeric-metrics">
+<h2>Reduced numeric metrics<a class="headerlink" href="#reduced-numeric-metrics" title="Link to this heading"></a></h2>
+<p>Reaction forces, peak axial stress and peak equivalent plastic strain at the
+last saved increment.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_summarise</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">f_top</span><span class="p">,</span> <span class="n">f_bottom</span><span class="p">,</span> <span class="n">solve_time</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stress_yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"YY"</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s2">"P"</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"--- </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> ---"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  solve time           = </span><span class="si">{</span><span class="n">solve_time</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> s"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  reaction top/bottom  = </span><span class="si">{</span><span class="n">f_top</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">f_bottom</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  peak |Stress YY|     = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">stress_yy</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  peak P (eq. plastic) = </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">{</span><span class="n">method</span><span class="p">:</span> <span class="n">solve</span><span class="p">(</span><span class="n">method</span><span class="p">)</span> <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">"ipc"</span><span class="p">,</span> <span class="s2">"penalty"</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">_summarise</span><span class="p">(</span><span class="o">*</span><span class="n">results</span><span class="p">[</span><span class="s2">"ipc"</span><span class="p">],</span> <span class="s2">"IPC"</span><span class="p">)</span>
+<span class="n">_summarise</span><span class="p">(</span><span class="o">*</span><span class="n">results</span><span class="p">[</span><span class="s2">"penalty"</span><span class="p">],</span> <span class="s2">"Penalty"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-contact-ipc-tube-compression-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/f3bc877d80dabf836fe27865ad106045/ipc_tube_compression.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">ipc_tube_compression.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/deed785f0a1685e9cd4580b8ebeb819c/ipc_tube_compression.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">ipc_tube_compression.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/d63df7007784913ce663032641fd14af/ipc_tube_compression.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">ipc_tube_compression.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ipc_self_contact.html" class="btn btn-neutral float-left" title="Self-contact — hole plate compression (2D, IPC method)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="penalty_disk_rectangle.html" class="btn btn-neutral float-right" title="Disk-rectangle contact (2D, penalty method)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elastoplastic matrix with an elastic inclusion (Heterogeneous law) &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2D elastoplastic three-point bending (Simcoon EPICP)" href="plastic_bending_2d.html" />
+    <link rel="prev" title="Matrix with a stiff inclusion: three ways to assign materials" href="heterogeneous_struct.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Plasticity</a></li>
+      <li class="breadcrumb-item active">Elastoplastic matrix with an elastic inclusion (Heterogeneous law)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/plasticity/heterogeneous_struct_nl.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-plasticity-heterogeneous-struct-nl-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="elastoplastic-matrix-with-an-elastic-inclusion-heterogeneous-law">
+<span id="sphx-glr-examples-plasticity-heterogeneous-struct-nl-py"></span><h1>Elastoplastic matrix with an elastic inclusion (Heterogeneous law)<a class="headerlink" href="#elastoplastic-matrix-with-an-elastic-inclusion-heterogeneous-law" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example is too heavy to be run at each documentation build.
+The animation below was precomputed on 2026-11-10 with fedoo 1.1.0, simcoon 0+unknown, ipctk 1.6.1, numpy 2.5.4 (fedoo commit 8fa6ec0798fea2cd3c52159d1c5ffe508131a66b), in about 530 s (Linux x86_64, BLAS mkl). Run
+the script to reproduce it with your fedoo version.</p>
+</div>
+<img src="https://3mah.github.io/fedoo-docs/media/examples/plasticity/heterogeneous_struct_nl.gif" style="width: 100%" alt="plasticity/heterogeneous_struct_nl.py"><p>Nonlinear version of the “matrix with a stiff inclusion” example. The matrix
+follows the J2 elastoplastic law with power-law hardening of Simcoon
+(<code class="docutils literal notranslate"><span class="pre">EPICP</span></code>) and the circular inclusion is linear elastic. The plate (plane
+stress) is stretched by 20 % in finite strain (<code class="docutils literal notranslate"><span class="pre">nlgeom=True</span></code>) with
+<a class="reference internal" href="../../generated/fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.problem.NonLinear</span></code></a>.</p>
+<p>The two laws are combined in a single
+<a class="reference internal" href="../../generated/fedoo.constitutivelaw.Heterogeneous.html#fedoo.constitutivelaw.Heterogeneous" title="fedoo.constitutivelaw.Heterogeneous"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.Heterogeneous</span></code></a> law (<code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">3</span></code>), or put in
+two assemblies that are summed (<code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">1</span></code>).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<section id="mesh-of-the-matrix-and-of-the-inclusion">
+<h2>Mesh of the matrix and of the inclusion<a class="headerlink" href="#mesh-of-the-matrix-and-of-the-inclusion" title="Link to this heading"></a></h2>
+<p>The plate with a hole and the disk are meshed separately, then merged into a
+single mesh. The coincident nodes of the interface are merged so that the
+inclusion is perfectly bonded to the matrix.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2D problem with the plane stress assumption.</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dstress"</span><span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hole_plate_mesh</span><span class="p">(</span>
+    <span class="n">nr</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Domain"</span>
+<span class="p">)</span>
+
+<span class="n">mesh</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"matrix"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"inclusion"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh</span> <span class="o">+</span> <span class="n">mesh_disk</span>
+
+<span class="c1"># glue the inclusion to the matrix</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">merge_nodes</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"hole_edge"</span><span class="p">],</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"boundary"</span><span class="p">]])</span>
+</pre></div>
+</div>
+</section>
+<section id="materials-and-assembly">
+<h2>Materials and assembly<a class="headerlink" href="#materials-and-assembly" title="Link to this heading"></a></h2>
+<p>Matrix: <code class="docutils literal notranslate"><span class="pre">EPICP</span></code> with <span class="math notranslate nohighlight">\(E = 2 \times 10^5\)</span>, <span class="math notranslate nohighlight">\(\nu = 0.3\)</span> and a
+yield stress of 200. Inclusion: linear elastic, <span class="math notranslate nohighlight">\(E = 10^5\)</span>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">method</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># 1: sum of assemblies, 3: Heterogeneous law</span>
+<span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># method 1: one assembly per material, then sum of the assemblies</span>
+    <span class="n">material2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>  <span class="c1"># E, nu, alpha, Re, k, m</span>
+    <span class="n">material1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+
+    <span class="c1"># weak formulation of the mechanical equilibrium equation</span>
+    <span class="n">wf1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material1</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">wf2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material2</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># global assembly</span>
+    <span class="n">assemb1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf1</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s2">"matrix"</span><span class="p">))</span>
+    <span class="n">assemb2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf2</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s2">"inclusion"</span><span class="p">))</span>
+
+    <span class="n">assembly</span> <span class="o">=</span> <span class="n">assemb1</span> <span class="o">+</span> <span class="n">assemb2</span>
+
+<span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="c1"># method 3: heterogeneous constitutive law</span>
+    <span class="n">material2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>  <span class="c1"># E, nu, alpha, Re, k, m</span>
+    <span class="n">material1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+
+    <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Heterogeneous</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">material1</span><span class="p">,</span> <span class="n">material2</span><span class="p">),</span> <span class="p">(</span><span class="s2">"matrix"</span><span class="p">,</span> <span class="s2">"inclusion"</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="nonlinear-problem-and-boundary-conditions">
+<h2>Nonlinear problem and boundary conditions<a class="headerlink" href="#nonlinear-problem-and-boundary-conditions" title="Link to this heading"></a></h2>
+<p>The left edge is clamped and a displacement <span class="math notranslate nohighlight">\(u_x = 20\)</span> is prescribed
+on the right edge (with <span class="math notranslate nohighlight">\(u_y = 0\)</span>).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span><span class="p">)</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmax</span><span class="p">)</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># results of each increment (written in the "results" folder), used to build</span>
+<span class="c1"># the animation of the gallery page</span>
+<span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"results/heterogeneous_struct_nl"</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">])</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="von-mises-stress-at-the-end-of-the-loading">
+<h2>Von Mises stress at the end of the loading<a class="headerlink" href="#von-mises-stress-at-the-end-of-the-loading" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">field_plot</span> <span class="o">=</span> <span class="s2">"Stress"</span>
+<span class="n">component</span> <span class="o">=</span> <span class="s2">"vm"</span>
+<span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># stress, strain and displacement (nodal values) of each assembly</span>
+    <span class="n">res1</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assemb1</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">])</span>
+    <span class="n">res2</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assemb2</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">])</span>
+
+    <span class="n">pl</span> <span class="o">=</span> <span class="n">res2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field_plot</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="n">component</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">res1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field_plot</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="n">component</span><span class="p">,</span> <span class="n">plotter</span><span class="o">=</span><span class="n">pl</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">method</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">])</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field_plot</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="n">component</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-plasticity-heterogeneous-struct-nl-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/359ed2efd7eee57a2369ef264b6a904d/heterogeneous_struct_nl.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">heterogeneous_struct_nl.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/8d7c4eb741e2404d7abeaf7d3d966580/heterogeneous_struct_nl.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">heterogeneous_struct_nl.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/45902923d5d48662db72a39872ac17ba/heterogeneous_struct_nl.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">heterogeneous_struct_nl.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="heterogeneous_struct.html" class="btn btn-neutral float-left" title="Matrix with a stiff inclusion: three ways to assign materials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plastic_bending_2d.html" class="btn btn-neutral float-right" title="2D elastoplastic three-point bending (Simcoon EPICP)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

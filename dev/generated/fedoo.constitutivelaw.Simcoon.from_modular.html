@@ -135,7 +135,10 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>modular_material</strong> (<em>simcoon.modular.ModularMaterial</em>) – Composable Simcoon material containing an elasticity block and
 zero or more inelastic mechanisms.</p></li>
-<li><p><strong>tangent_mode</strong> (<em>int</em><em>, </em><em>default=1</em>) – Tangent selector forwarded to the Simcoon <code class="docutils literal notranslate"><span class="pre">MODUL</span></code> UMAT.</p></li>
+<li><p><strong>tangent_mode</strong> (<em>int</em><em>, </em><em>default=1</em>) – Tangent operator requested from the Simcoon <code class="docutils literal notranslate"><span class="pre">MODUL</span></code> UMAT: <code class="docutils literal notranslate"><span class="pre">0</span></code>
+elastic, <code class="docutils literal notranslate"><span class="pre">1</span></code> continuum, <code class="docutils literal notranslate"><span class="pre">2</span></code> algorithmic (convex cutting
+plane). See
+<a class="reference internal" href="fedoo.constitutivelaw.Simcoon.html#fedoo.constitutivelaw.Simcoon" title="fedoo.constitutivelaw.Simcoon"><code class="xref py py-class docutils literal notranslate"><span class="pre">Simcoon</span></code></a>.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Fedoo constitutive-law registration name.</p></li>
 </ul>
 </dd>

@@ -164,9 +164,15 @@ unknown with <code class="xref py py-meth docutils literal notranslate"><span cl
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ModelingSpace.new_vector()</span></code> when useful, and add the weak terms.
 Mixed formulations may assign different element interpolations to different
 variables.</p>
-<p>Complete examples are available in
-<a class="reference download internal" download="" href="_downloads/eaeb7088eb53567d0ce9ebb995aafd00/poison_eq.py"><code class="xref download docutils literal notranslate"><span class="pre">poison_eq.py</span></code></a> and
-<a class="reference download internal" download="" href="_downloads/5870f5ae4b181f411f663eb85f76e345/fluid_mechanics.py"><code class="xref download docutils literal notranslate"><span class="pre">fluid_mechanics.py</span></code></a>.</p>
+<p>Complete examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="examples/basic/poisson_eq.html#sphx-glr-examples-basic-poisson-eq-py"><span class="std std-ref">Define and solve user equation</span></a>: a scalar Poisson equation
+(<a class="reference download internal" download="" href="_downloads/2d7d4785f868a5be23216a74ea01627c/poisson_eq.py"><code class="xref download docutils literal notranslate"><span class="pre">poisson_eq.py</span></code></a>);</p></li>
+<li><p><a class="reference internal" href="examples/custom_weak_forms/fluid_mechanics.html#sphx-glr-examples-custom-weak-forms-fluid-mechanics-py"><span class="std std-ref">Stokes flow around a cylinder with a user-defined weak form</span></a> and
+<a class="reference internal" href="examples/custom_weak_forms/recirculating_flow.html#sphx-glr-examples-custom-weak-forms-recirculating-flow-py"><span class="std std-ref">Lid-driven cavity (Stokes flow) with a user-defined weak form</span></a>: Stokes
+systems with a velocity-pressure mixed interpolation
+(<a class="reference download internal" download="" href="_downloads/3f9cbfa3ae9f615d404065c605d29f1b/fluid_mechanics.py"><code class="xref download docutils literal notranslate"><span class="pre">fluid_mechanics.py</span></code></a>).</p></li>
+</ul>
 <section id="state-dependent-weak-forms">
 <h3>State-dependent weak forms<a class="headerlink" href="#state-dependent-weak-forms" title="Link to this heading"></a></h3>
 <p>When coefficients or residual terms depend on the current solution, derive a
@@ -190,8 +196,9 @@ tangent and current residual terms.</p>
 <p>The problem may have <code class="docutils literal notranslate"><span class="pre">problem.dtime</span> <span class="pre">==</span> <span class="pre">0</span></code> during initialization. A custom
 weak form must not divide by <code class="docutils literal notranslate"><span class="pre">dtime</span></code> in that state. Time-dependent terms can
 be omitted until a positive increment is supplied. See
-<a class="reference download internal" download="" href="_downloads/a95fe3ac84c3ba9d38638e49e7a96968/navier_stokes.py"><code class="xref download docutils literal notranslate"><span class="pre">navier_stokes.py</span></code></a> for
-a complete nonlinear example.</p>
+<a class="reference internal" href="examples/custom_weak_forms/navier_stokes.html#sphx-glr-examples-custom-weak-forms-navier-stokes-py"><span class="std std-ref">Transient Navier-Stokes flow around a cylinder with a user weak-form class</span></a>
+(<a class="reference download internal" download="" href="_downloads/e4c8b3bca0848c1ba636c301116217be/navier_stokes.py"><code class="xref download docutils literal notranslate"><span class="pre">navier_stokes.py</span></code></a>)
+for a complete nonlinear example.</p>
 </section>
 </section>
 <section id="define-a-mechanical-constitutive-law">

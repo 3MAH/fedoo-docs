@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laminated plate cantilever (ShellLaminate) &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Plate elements on a cantilever: comparison with beam theory" href="plate_elements_cantilever.html" />
+    <link rel="prev" title="Shells and plates" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Shells and plates</a></li>
+      <li class="breadcrumb-item active">Laminated plate cantilever (ShellLaminate)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/shells/laminate_cantilever.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-shells-laminate-cantilever-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="laminated-plate-cantilever-shelllaminate">
+<span id="sphx-glr-examples-shells-laminate-cantilever-py"></span><h1>Laminated plate cantilever (ShellLaminate)<a class="headerlink" href="#laminated-plate-cantilever-shelllaminate" title="Link to this heading"></a></h1>
+<p>A rectangular plate (100 x 20, plate elements) is clamped on one end and loaded
+by a transverse force at the center of the other end. The section is a
+symmetric sandwich defined with <a class="reference internal" href="../../generated/fedoo.constitutivelaw.ShellLaminate.html#fedoo.constitutivelaw.ShellLaminate" title="fedoo.constitutivelaw.ShellLaminate"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.ShellLaminate</span></code></a>:
+two stiff skins (thickness 0.2) on a core ten times softer (thickness 1), with
+transverse shear (Reissner-Mindlin plate). The problem is linear
+(<a class="reference internal" href="../../generated/fedoo.weakform.PlateEquilibrium.html#fedoo.weakform.PlateEquilibrium" title="fedoo.weakform.PlateEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.PlateEquilibrium</span></code></a>, <a class="reference internal" href="../../generated/fedoo.problem.Linear.html#fedoo.problem.Linear" title="fedoo.problem.Linear"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.problem.Linear</span></code></a>).</p>
+<p>The through-thickness distribution of <span class="math notranslate nohighlight">\(\sigma_{xx}\)</span> at one Gauss point
+shows the stress jump at the skin/core interfaces; the von Mises stress on the
+lower face is then plotted.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pylab</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+<section id="materials-laminated-section-and-mesh">
+<h2>Materials, laminated section and mesh<a class="headerlink" href="#materials-laminated-section-and-mesh" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mf">1e5</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">F</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
+
+<span class="n">geom_elm_type</span> <span class="o">=</span> <span class="s2">"quad4"</span>  <span class="c1"># choose among 'tri3', 'tri6', 'quad4', 'quad8', 'quad9'</span>
+<span class="c1"># True, False or 'auto'. If True, use selective reduced integration (SRI) for</span>
+<span class="c1"># linear elements. If 'auto', use the PlateEquilibrium defaults.</span>
+<span class="n">reduced_integration</span> <span class="o">=</span> <span class="s2">"auto"</span>
+<span class="n">save_results</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">mat1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Mat1"</span><span class="p">)</span>
+<span class="n">mat2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Mat2"</span><span class="p">)</span>
+
+<span class="c1"># total thickness 1.4; by default k=1 i.e. with transverse shear</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ShellLaminate</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"Mat1"</span><span class="p">,</span> <span class="s2">"Mat2"</span><span class="p">,</span> <span class="s2">"Mat1"</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">"PlateSection"</span>
+<span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+    <span class="mi">201</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="n">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">geom_elm_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"plate"</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+
+<span class="n">nodes_left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"left"</span><span class="p">]</span>
+<span class="n">nodes_right</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"right"</span><span class="p">]</span>
+
+<span class="n">node_right_center</span> <span class="o">=</span> <span class="n">nodes_right</span><span class="p">[(</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes_right</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span>
+</pre></div>
+</div>
+</section>
+<section id="plate-weak-form-assembly-and-problem">
+<h2>Plate weak form, assembly and problem<a class="headerlink" href="#plate-weak-form-assembly-and-problem" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">PlateEquilibrium</span><span class="p">(</span><span class="s2">"PlateSection"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"WFplate"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">reduced_integration</span> <span class="o">==</span> <span class="s2">"auto"</span><span class="p">:</span>
+    <span class="n">plate_elm_type</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">elif</span> <span class="n">reduced_integration</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">geom_elm_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"tri3"</span><span class="p">,</span> <span class="s2">"quad4"</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"SRI plate elements are only available for tri3 and quad4"</span><span class="p">)</span>
+    <span class="n">plate_elm_type</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"p</span><span class="si">{</span><span class="n">geom_elm_type</span><span class="si">}</span><span class="s2">sri"</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">plate_elm_type</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"p</span><span class="si">{</span><span class="n">geom_elm_type</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="k">if</span> <span class="n">plate_elm_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">"WFplate"</span><span class="p">,</span> <span class="s2">"plate"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"plate"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">"WFplate"</span><span class="p">,</span> <span class="s2">"plate"</span><span class="p">,</span> <span class="n">plate_elm_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"plate"</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="s2">"plate"</span><span class="p">)</span>
+
+<span class="c1"># create a 'results' folder and set the desired outputs</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"results/laminate"</span><span class="p">,</span>
+    <span class="s2">"plate"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Rot"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">],</span>
+    <span class="n">file_format</span><span class="o">=</span><span class="s2">"npz"</span><span class="p">,</span>
+    <span class="n">position</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>  <span class="c1"># position = -1 for the lower face</span>
+</pre></div>
+</div>
+</section>
+<section id="boundary-conditions-and-solve">
+<h2>Boundary conditions and solve<a class="headerlink" href="#boundary-conditions-and-solve" title="Link to this heading"></a></h2>
+<p>Clamped left end (displacements and rotations), transverse force at the
+center of the right end.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_left</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_left</span><span class="p">,</span> <span class="s2">"Rot"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Neumann"</span><span class="p">,</span> <span class="n">node_right_center</span><span class="p">,</span> <span class="s2">"DispZ"</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">apply_boundary_conditions</span><span class="p">()</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">save_results</span><span class="p">:</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">save_results</span><span class="p">()</span>  <span class="c1"># save in npz</span>
+</pre></div>
+</div>
+</section>
+<section id="through-thickness-stress-and-von-mises-stress">
+<h2>Through-thickness stress and von Mises stress<a class="headerlink" href="#through-thickness-stress-and-von-mises-stress" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># stress distribution through the thickness at Gauss point 200</span>
+<span class="n">z</span><span class="p">,</span> <span class="n">StressDistribution</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ConstitutiveLaw</span><span class="p">[</span><span class="s2">"PlateSection"</span><span class="p">]</span><span class="o">.</span><span class="n">get_stress_distribution</span><span class="p">(</span>
+    <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="p">[</span><span class="s2">"plate"</span><span class="p">],</span> <span class="mi">200</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">StressDistribution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">z</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"SXX"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"z"</span><span class="p">)</span>
+
+<span class="c1"># von Mises stress on the lower face</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"vm"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_laminate_cantilever_001.png" srcset="../../_images/sphx_glr_laminate_cantilever_001.png" alt="laminate cantilever" class = "sphx-glr-single-img"/><img src="../../_images/sphx_glr_laminate_cantilever_002.png" srcset="../../_images/sphx_glr_laminate_cantilever_002.png" alt="laminate cantilever" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.978 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-shells-laminate-cantilever-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/a83a6a52509efa97bb9f20a966af5e07/laminate_cantilever.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">laminate_cantilever.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/e404c41117989d407d4031f91ddb67ae/laminate_cantilever.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">laminate_cantilever.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/be20bf917d72bd1dad2d6412a80a6a25/laminate_cantilever.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">laminate_cantilever.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Shells and plates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plate_elements_cantilever.html" class="btn btn-neutral float-right" title="Plate elements on a cantilever: comparison with beam theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

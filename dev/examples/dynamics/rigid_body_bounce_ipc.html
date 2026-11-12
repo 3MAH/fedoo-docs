@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rigid sphere bouncing on an analytic plane (IPC, Rayleigh damping) &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Rigid Stanford bunny tumbling on a plane (IPC)" href="rigid_body_bunny_bounce.html" />
+    <link rel="prev" title="Rigid-body bounce with IPC contact" href="rigid_body_bounce.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dynamics and rigid bodies</a></li>
+      <li class="breadcrumb-item active">Rigid sphere bouncing on an analytic plane (IPC, Rayleigh damping)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/dynamics/rigid_body_bounce_ipc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-dynamics-rigid-body-bounce-ipc-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="rigid-sphere-bouncing-on-an-analytic-plane-ipc-rayleigh-damping">
+<span id="sphx-glr-examples-dynamics-rigid-body-bounce-ipc-py"></span><h1>Rigid sphere bouncing on an analytic plane (IPC, Rayleigh damping)<a class="headerlink" href="#rigid-sphere-bouncing-on-an-analytic-plane-ipc-rayleigh-damping" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example is too heavy to be run at each documentation build.
+The animation below was precomputed on 2026-11-11 with fedoo 1.1.0, simcoon 0+unknown, ipctk 1.6.0, numpy 2.5.4 (fedoo commit 0c1c3c65c9bdd8702d3f2ad96d75c408d2ffb4d6), in about 66 s (Linux x86_64, BLAS mkl). Run
+the script to reproduce it with your fedoo version.</p>
+</div>
+<img src="https://3mah.github.io/fedoo-docs/media/examples/dynamics/rigid_body_bounce_ipc.gif" style="width: 100%" alt="dynamics/rigid_body_bounce_ipc.py"><p>A rigid sphere (<code class="docutils literal notranslate"><span class="pre">fedoo.constraint.RigidBody</span></code>) falls under gravity and
+bounces on a floor. The body is solved by fedoo’s standard
+<a class="reference internal" href="../../generated/fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.problem.NonLinear</span></code></a> solver, with a Newmark time integrator
+attached to the problem (<code class="docutils literal notranslate"><span class="pre">pb.set_time_integrator</span></code>), Rayleigh damping on the
+rigid-body motion, and an analytic floor plane
+(<code class="docutils literal notranslate"><span class="pre">RigidBody.set_static_plane</span></code>) for the IPC contact. This is the longer,
+higher-resolution version of
+<a class="reference internal" href="rigid_body_bounce.html#sphx-glr-examples-dynamics-rigid-body-bounce-py"><span class="std std-ref">Rigid-body bounce with IPC contact</span></a>; it writes the
+animation <code class="docutils literal notranslate"><span class="pre">rigid_body_bounce_ipc.gif</span></code>.</p>
+<p>This example requires <code class="docutils literal notranslate"><span class="pre">ipctk</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>
+<span class="n">mass</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">z0</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">5e-4</span>
+<span class="n">t_end</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"SPHERE BOUNCE — NonLinear + IPC + Rayleigh"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  m=</span><span class="si">{</span><span class="n">mass</span><span class="si">}</span><span class="s2">kg, z0=</span><span class="si">{</span><span class="n">z0</span><span class="si">}</span><span class="s2">m, r=</span><span class="si">{</span><span class="n">radius</span><span class="si">}</span><span class="s2">m, dt=</span><span class="si">{</span><span class="n">dt</span><span class="si">}</span><span class="s2">s"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="n">space</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"DispX"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"DispY"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"DispZ"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_vector</span><span class="p">(</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="p">(</span><span class="s2">"DispX"</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="s2">"DispZ"</span><span class="p">))</span>
+
+<span class="n">ball_mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">from_pyvista</span><span class="p">(</span>
+    <span class="n">pv</span><span class="o">.</span><span class="n">Sphere</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">z0</span><span class="p">),</span> <span class="n">theta_resolution</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">phi_resolution</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">RigidBody</span><span class="p">(</span>
+    <span class="n">ball_mesh</span><span class="p">,</span>
+    <span class="n">mass</span><span class="o">=</span><span class="n">mass</span><span class="p">,</span>
+    <span class="n">inertia_tensor</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">*</span> <span class="n">radius</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+    <span class="n">center_of_mass</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">z0</span><span class="p">]),</span>
+<span class="p">)</span>
+<span class="n">body</span><span class="o">.</span><span class="n">set_force</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">mass</span> <span class="o">*</span> <span class="n">g</span><span class="p">])</span>
+<span class="n">body</span><span class="o">.</span><span class="n">set_rayleigh_damping</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="c1"># The floor is an analytic plane: the contact force only depends on the</span>
+<span class="c1"># distance to the floor, not on the layout of a floor mesh.</span>
+<span class="n">body</span><span class="o">.</span><span class="n">set_static_plane</span><span class="p">(</span><span class="n">normal</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">point</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">dhat</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">1e8</span><span class="p">)</span>
+
+<span class="c1"># Solve with NonLinear and save the trajectory through Fedoo's output system.</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">assembly</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">SECOND_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Newmark</span><span class="p">())</span>
+
+<span class="n">_results_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span> <span class="k">if</span> <span class="s2">"__file__"</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span> <span class="k">else</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">"results"</span>
+<span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">_results_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_results_dir</span><span class="p">,</span> <span class="s2">"rigid_body_bounce"</span><span class="p">),</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"RigidDisp"</span><span class="p">,</span> <span class="s2">"RigidRot"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
+    <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span>
+    <span class="n">dt_max</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="n">t_end</span><span class="p">,</span>
+    <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">interval_output</span><span class="o">=</span><span class="n">dt</span> <span class="o">*</span> <span class="mi">80</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Results can be visualized with ``fd.viewer(results)``.</span>
+
+<span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="c1"># The initial state is prepended because output frames start after the first</span>
+<span class="c1"># requested output interval.</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_history</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"RigidDisp"</span><span class="p">,</span> <span class="s2">"Time"</span><span class="p">],</span>
+    <span class="n">component</span><span class="o">=</span><span class="p">[</span><span class="s2">"Z"</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">t_hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">history</span><span class="p">[</span><span class="s2">"Time"</span><span class="p">]]</span>
+<span class="n">z_hist</span> <span class="o">=</span> <span class="n">z0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s2">"RigidDisp"</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">  </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">n_iter</span><span class="si">}</span><span class="s2"> saved frames in </span><span class="si">{</span><span class="n">elapsed</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">s"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  z_min=</span><span class="si">{</span><span class="n">z_hist</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">m, z_max=</span><span class="si">{</span><span class="n">z_hist</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">m"</span><span class="p">)</span>
+
+<span class="c1"># Animation</span>
+<span class="n">_here</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span> <span class="k">if</span> <span class="s2">"__file__"</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span> <span class="k">else</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">gif_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_here</span><span class="p">,</span> <span class="s2">"rigid_body_bounce_ipc.gif"</span><span class="p">)</span>
+<span class="n">fps</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">frame_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_hist</span><span class="p">))</span>
+
+<span class="n">sphere</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Sphere</span><span class="p">(</span>
+    <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">z0</span><span class="p">),</span> <span class="n">theta_resolution</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">phi_resolution</span><span class="o">=</span><span class="mi">20</span>
+<span class="p">)</span>
+<span class="n">pts_ref</span> <span class="o">=</span> <span class="n">sphere</span><span class="o">.</span><span class="n">points</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">vis_plane</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plane</span><span class="p">(</span>
+    <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">direction</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">i_size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">j_size</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">i_resolution</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">j_resolution</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">pl</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">window_size</span><span class="o">=</span><span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">],</span> <span class="n">off_screen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">set_background</span><span class="p">(</span><span class="s2">"white"</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">vis_plane</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"lightgrey"</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"steelblue"</span><span class="p">,</span> <span class="n">smooth_shading</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">camera_position</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">open_gif</span><span class="p">(</span><span class="n">gif_path</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="n">fps</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">frame_indices</span><span class="p">:</span>
+    <span class="n">sphere</span><span class="o">.</span><span class="n">points</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">pts_ref</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">z_hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">z0</span><span class="p">]])</span>
+    <span class="n">sphere</span><span class="o">.</span><span class="n">GetPoints</span><span class="p">()</span><span class="o">.</span><span class="n">Modified</span><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"t=</span><span class="si">{</span><span class="n">t_hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s  z=</span><span class="si">{</span><span class="n">z_hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">m  NonLinear+IPC"</span><span class="p">,</span>
+        <span class="n">position</span><span class="o">=</span><span class="s2">"upper_edge"</span><span class="p">,</span>
+        <span class="n">font_size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"title"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">write_frame</span><span class="p">()</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Saved: </span><span class="si">{</span><span class="n">gif_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-dynamics-rigid-body-bounce-ipc-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/a1fabe4ad06fe545c9223eb628fb1127/rigid_body_bounce_ipc.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">rigid_body_bounce_ipc.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/cbf1742e5cfbc27b5dde6252cb4da4e5/rigid_body_bounce_ipc.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">rigid_body_bounce_ipc.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/47d84aeec4d0b974cb6b74ab8a4919d3/rigid_body_bounce_ipc.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">rigid_body_bounce_ipc.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rigid_body_bounce.html" class="btn btn-neutral float-left" title="Rigid-body bounce with IPC contact" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rigid_body_bunny_bounce.html" class="btn btn-neutral float-right" title="Rigid Stanford bunny tumbling on a plane (IPC)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

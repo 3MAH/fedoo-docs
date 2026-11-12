@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disk-rectangle contact (2D, penalty method) &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Self-contact — hole plate compression (2D, penalty method)" href="penalty_self_contact.html" />
+    <link rel="prev" title="Tube compression (2Daxi): IPC versus penalty self-contact" href="ipc_tube_compression.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Contact and interfaces</a></li>
+      <li class="breadcrumb-item active">Disk-rectangle contact (2D, penalty method)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/contact/penalty_disk_rectangle.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-contact-penalty-disk-rectangle-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="disk-rectangle-contact-2d-penalty-method">
+<span id="sphx-glr-examples-contact-penalty-disk-rectangle-py"></span><h1>Disk-rectangle contact (2D, penalty method)<a class="headerlink" href="#disk-rectangle-contact-2d-penalty-method" title="Link to this heading"></a></h1>
+<p>An elastic disk (<span class="math notranslate nohighlight">\(E = 50\)</span> GPa) is pushed into an elasto-plastic rectangle
+(<span class="math notranslate nohighlight">\(E = 200\)</span> GPa, quad4, plane strain) using the penalty contact method, then
+released. The slave nodes are the right face of the rectangle, the master
+surface is the disk boundary.</p>
+<p>Demonstrates the legacy penalty-based contact approach
+(<code class="docutils literal notranslate"><span class="pre">fd.constraint.Contact</span></code>) with node-to-surface formulation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires <code class="docutils literal notranslate"><span class="pre">simcoon</span></code> for the EPICP elasto-plastic material.</p>
+</div>
+<img src="../../_images/sphx_glr_penalty_disk_rectangle_001.png" srcset="../../_images/sphx_glr_penalty_disk_rectangle_001.png" alt="penalty disk rectangle" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.00500 - dt 0.00500 - NR iter: 2 - Err: 0.00000
+Iter 2 - Time: 0.01125 - dt 0.00625 - NR iter: 4 - Err: 0.00213
+Iter 3 - Time: 0.01906 - dt 0.00781 - NR iter: 3 - Err: 0.00049
+Iter 4 - Time: 0.02000 - dt 0.00977 - NR iter: 2 - Err: 0.00140
+Iter 5 - Time: 0.02977 - dt 0.00977 - NR iter: 3 - Err: 0.00371
+Iter 6 - Time: 0.03977 - dt 0.01000 - NR iter: 3 - Err: 0.00480
+Iter 7 - Time: 0.04000 - dt 0.01000 - NR iter: 5 - Err: 0.00040
+Iter 8 - Time: 0.05000 - dt 0.01000 - NR iter: 4 - Err: 0.00156
+Iter 9 - Time: 0.06000 - dt 0.01000 - NR iter: 3 - Err: 0.00336
+Iter 10 - Time: 0.07000 - dt 0.01000 - NR iter: 4 - Err: 0.00292
+Iter 11 - Time: 0.08000 - dt 0.01000 - NR iter: 3 - Err: 0.00338
+Iter 12 - Time: 0.09000 - dt 0.01000 - NR iter: 3 - Err: 0.00257
+Iter 13 - Time: 0.10000 - dt 0.01000 - NR iter: 5 - Err: 0.00292
+Iter 14 - Time: 0.11000 - dt 0.01000 - NR iter: 4 - Err: 0.00225
+Iter 15 - Time: 0.12000 - dt 0.01000 - NR iter: 3 - Err: 0.00368
+Iter 16 - Time: 0.13000 - dt 0.01000 - NR iter: 3 - Err: 0.00339
+Iter 17 - Time: 0.14000 - dt 0.01000 - NR iter: 3 - Err: 0.00299
+Iter 18 - Time: 0.15000 - dt 0.01000 - NR iter: 3 - Err: 0.00265
+Iter 19 - Time: 0.16000 - dt 0.01000 - NR iter: 4 - Err: 0.00354
+Iter 20 - Time: 0.17000 - dt 0.01000 - NR iter: 4 - Err: 0.00214
+Iter 21 - Time: 0.18000 - dt 0.01000 - NR iter: 3 - Err: 0.00346
+Iter 22 - Time: 0.19000 - dt 0.01000 - NR iter: 3 - Err: 0.00330
+Iter 23 - Time: 0.20000 - dt 0.01000 - NR iter: 5 - Err: 0.00318
+Iter 24 - Time: 0.21000 - dt 0.01000 - NR iter: 3 - Err: 0.00256
+Iter 25 - Time: 0.22000 - dt 0.01000 - NR iter: 3 - Err: 0.00247
+Iter 26 - Time: 0.23000 - dt 0.01000 - NR iter: 3 - Err: 0.00243
+Iter 27 - Time: 0.24000 - dt 0.01000 - NR iter: 3 - Err: 0.00243
+Iter 28 - Time: 0.25000 - dt 0.01000 - NR iter: 4 - Err: 0.00263
+Iter 29 - Time: 0.26000 - dt 0.01000 - NR iter: 4 - Err: 0.00096
+Iter 30 - Time: 0.27000 - dt 0.01000 - NR iter: 3 - Err: 0.00231
+Iter 31 - Time: 0.28000 - dt 0.01000 - NR iter: 3 - Err: 0.00247
+Iter 32 - Time: 0.29000 - dt 0.01000 - NR iter: 3 - Err: 0.00253
+Iter 33 - Time: 0.30000 - dt 0.01000 - NR iter: 3 - Err: 0.00238
+Iter 34 - Time: 0.31000 - dt 0.01000 - NR iter: 3 - Err: 0.00378
+Iter 35 - Time: 0.32000 - dt 0.01000 - NR iter: 3 - Err: 0.00330
+Iter 36 - Time: 0.33000 - dt 0.01000 - NR iter: 3 - Err: 0.00272
+Iter 37 - Time: 0.34000 - dt 0.01000 - NR iter: 3 - Err: 0.00243
+Iter 38 - Time: 0.35000 - dt 0.01000 - NR iter: 3 - Err: 0.00306
+Iter 39 - Time: 0.36000 - dt 0.01000 - NR iter: 6 - Err: 0.00237
+Iter 40 - Time: 0.37000 - dt 0.01000 - NR iter: 3 - Err: 0.00452
+Iter 41 - Time: 0.38000 - dt 0.01000 - NR iter: 3 - Err: 0.00259
+Iter 42 - Time: 0.39000 - dt 0.01000 - NR iter: 3 - Err: 0.00233
+Iter 43 - Time: 0.40000 - dt 0.01000 - NR iter: 3 - Err: 0.00227
+Iter 44 - Time: 0.41000 - dt 0.01000 - NR iter: 3 - Err: 0.00226
+Iter 45 - Time: 0.42000 - dt 0.01000 - NR iter: 3 - Err: 0.00225
+Iter 46 - Time: 0.43000 - dt 0.01000 - NR iter: 3 - Err: 0.00225
+Iter 47 - Time: 0.44000 - dt 0.01000 - NR iter: 4 - Err: 0.00465
+Iter 48 - Time: 0.45000 - dt 0.01000 - NR iter: 3 - Err: 0.00283
+Iter 49 - Time: 0.46000 - dt 0.01000 - NR iter: 3 - Err: 0.00208
+Iter 50 - Time: 0.47000 - dt 0.01000 - NR iter: 3 - Err: 0.00219
+Iter 51 - Time: 0.48000 - dt 0.01000 - NR iter: 3 - Err: 0.00221
+Iter 52 - Time: 0.49000 - dt 0.01000 - NR iter: 3 - Err: 0.00221
+Iter 53 - Time: 0.50000 - dt 0.01000 - NR iter: 3 - Err: 0.00221
+Iter 54 - Time: 0.51000 - dt 0.01000 - NR iter: 3 - Err: 0.00221
+Iter 55 - Time: 0.52000 - dt 0.01000 - NR iter: 3 - Err: 0.00220
+Iter 56 - Time: 0.53000 - dt 0.01000 - NR iter: 3 - Err: 0.00219
+Iter 57 - Time: 0.54000 - dt 0.01000 - NR iter: 3 - Err: 0.00217
+Iter 58 - Time: 0.55000 - dt 0.01000 - NR iter: 3 - Err: 0.00216
+Iter 59 - Time: 0.56000 - dt 0.01000 - NR iter: 4 - Err: 0.00339
+Iter 60 - Time: 0.57000 - dt 0.01000 - NR iter: 3 - Err: 0.00461
+Iter 61 - Time: 0.58000 - dt 0.01000 - NR iter: 3 - Err: 0.00166
+Iter 62 - Time: 0.59000 - dt 0.01000 - NR iter: 3 - Err: 0.00205
+Iter 63 - Time: 0.60000 - dt 0.01000 - NR iter: 3 - Err: 0.00205
+Iter 64 - Time: 0.61000 - dt 0.01000 - NR iter: 3 - Err: 0.00204
+Iter 65 - Time: 0.62000 - dt 0.01000 - NR iter: 3 - Err: 0.00202
+Iter 66 - Time: 0.63000 - dt 0.01000 - NR iter: 4 - Err: 0.00361
+Iter 67 - Time: 0.64000 - dt 0.01000 - NR iter: 3 - Err: 0.00298
+Iter 68 - Time: 0.65000 - dt 0.01000 - NR iter: 3 - Err: 0.00172
+Iter 69 - Time: 0.66000 - dt 0.01000 - NR iter: 3 - Err: 0.00181
+Iter 70 - Time: 0.67000 - dt 0.01000 - NR iter: 3 - Err: 0.00183
+Iter 71 - Time: 0.68000 - dt 0.01000 - NR iter: 3 - Err: 0.00182
+Iter 72 - Time: 0.69000 - dt 0.01000 - NR iter: 4 - Err: 0.00304
+Iter 73 - Time: 0.70000 - dt 0.01000 - NR iter: 3 - Err: 0.00167
+Iter 74 - Time: 0.71000 - dt 0.01000 - NR iter: 3 - Err: 0.00163
+Iter 75 - Time: 0.72000 - dt 0.01000 - NR iter: 3 - Err: 0.00164
+Iter 76 - Time: 0.73000 - dt 0.01000 - NR iter: 3 - Err: 0.00163
+Iter 77 - Time: 0.74000 - dt 0.01000 - NR iter: 4 - Err: 0.00343
+Iter 78 - Time: 0.75000 - dt 0.01000 - NR iter: 3 - Err: 0.00151
+Iter 79 - Time: 0.76000 - dt 0.01000 - NR iter: 3 - Err: 0.00135
+Iter 80 - Time: 0.77000 - dt 0.01000 - NR iter: 3 - Err: 0.00109
+Iter 81 - Time: 0.78000 - dt 0.01000 - NR iter: 3 - Err: 0.00135
+Iter 82 - Time: 0.79000 - dt 0.01000 - NR iter: 3 - Err: 0.00138
+Iter 83 - Time: 0.80000 - dt 0.01000 - NR iter: 3 - Err: 0.00137
+Iter 84 - Time: 0.81000 - dt 0.01000 - NR iter: 3 - Err: 0.00136
+Iter 85 - Time: 0.82000 - dt 0.01000 - NR iter: 3 - Err: 0.00135
+Iter 86 - Time: 0.83000 - dt 0.01000 - NR iter: 3 - Err: 0.00133
+Iter 87 - Time: 0.84000 - dt 0.01000 - NR iter: 3 - Err: 0.00131
+Iter 88 - Time: 0.85000 - dt 0.01000 - NR iter: 3 - Err: 0.00129
+Iter 89 - Time: 0.86000 - dt 0.01000 - NR iter: 3 - Err: 0.00127
+Iter 90 - Time: 0.87000 - dt 0.01000 - NR iter: 7 - Err: 0.00232
+Iter 91 - Time: 0.88000 - dt 0.01000 - NR iter: 6 - Err: 0.00147
+Iter 92 - Time: 0.89000 - dt 0.01000 - NR iter: 3 - Err: 0.00216
+Iter 93 - Time: 0.90000 - dt 0.01000 - NR iter: 3 - Err: 0.00112
+Iter 94 - Time: 0.91000 - dt 0.01000 - NR iter: 3 - Err: 0.00205
+Iter 95 - Time: 0.92000 - dt 0.01000 - NR iter: 3 - Err: 0.00099
+Iter 96 - Time: 0.93000 - dt 0.01000 - NR iter: 3 - Err: 0.00104
+Iter 97 - Time: 0.94000 - dt 0.01000 - NR iter: 3 - Err: 0.00104
+Iter 98 - Time: 0.95000 - dt 0.01000 - NR iter: 3 - Err: 0.00104
+Iter 99 - Time: 0.96000 - dt 0.01000 - NR iter: 3 - Err: 0.00104
+Iter 100 - Time: 0.97000 - dt 0.01000 - NR iter: 3 - Err: 0.00104
+Iter 101 - Time: 0.98000 - dt 0.01000 - NR iter: 3 - Err: 0.00104
+Iter 102 - Time: 0.99000 - dt 0.01000 - NR iter: 3 - Err: 0.00104
+Iter 103 - Time: 1.00000 - dt 0.01000 - NR iter: 3 - Err: 0.00105
+Iter 104 - Time: 0.00500 - dt 0.00500 - NR iter: 3 - Err: 0.00134
+Iter 105 - Time: 0.01125 - dt 0.00625 - NR iter: 3 - Err: 0.00008
+Iter 106 - Time: 0.01906 - dt 0.00781 - NR iter: 2 - Err: 0.00074
+Iter 107 - Time: 0.02000 - dt 0.00977 - NR iter: 2 - Err: 0.00013
+Iter 108 - Time: 0.02977 - dt 0.00977 - NR iter: 2 - Err: 0.00077
+Iter 109 - Time: 0.03977 - dt 0.01000 - NR iter: 2 - Err: 0.00071
+Iter 110 - Time: 0.04000 - dt 0.01000 - NR iter: 2 - Err: 0.00003
+Iter 111 - Time: 0.05000 - dt 0.01000 - NR iter: 2 - Err: 0.00152
+Iter 112 - Time: 0.06000 - dt 0.01000 - NR iter: 3 - Err: 0.00012
+Iter 113 - Time: 0.07000 - dt 0.01000 - NR iter: 2 - Err: 0.00096
+Iter 114 - Time: 0.08000 - dt 0.01000 - NR iter: 3 - Err: 0.00090
+Iter 115 - Time: 0.09000 - dt 0.01000 - NR iter: 3 - Err: 0.00086
+Iter 116 - Time: 0.10000 - dt 0.01000 - NR iter: 3 - Err: 0.00193
+Iter 117 - Time: 0.11000 - dt 0.01000 - NR iter: 3 - Err: 0.00361
+Iter 118 - Time: 0.12000 - dt 0.01000 - NR iter: 3 - Err: 0.00379
+Iter 119 - Time: 0.13000 - dt 0.01000 - NR iter: 3 - Err: 0.00190
+Iter 120 - Time: 0.14000 - dt 0.01000 - NR iter: 3 - Err: 0.00101
+Iter 121 - Time: 0.15000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 122 - Time: 0.16000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 123 - Time: 0.17000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 124 - Time: 0.18000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 125 - Time: 0.19000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 126 - Time: 0.20000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 127 - Time: 0.21000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 128 - Time: 0.22000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 129 - Time: 0.23000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 130 - Time: 0.24000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 131 - Time: 0.25000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 132 - Time: 0.26000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 133 - Time: 0.27000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 134 - Time: 0.28000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 135 - Time: 0.29000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 136 - Time: 0.30000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 137 - Time: 0.31000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 138 - Time: 0.32000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 139 - Time: 0.33000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 140 - Time: 0.34000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 141 - Time: 0.35000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 142 - Time: 0.36000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 143 - Time: 0.37000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 144 - Time: 0.38000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 145 - Time: 0.39000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 146 - Time: 0.40000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 147 - Time: 0.41000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 148 - Time: 0.42000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 149 - Time: 0.43000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 150 - Time: 0.44000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 151 - Time: 0.45000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 152 - Time: 0.46000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 153 - Time: 0.47000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 154 - Time: 0.48000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 155 - Time: 0.49000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 156 - Time: 0.50000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 157 - Time: 0.51000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 158 - Time: 0.52000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 159 - Time: 0.53000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 160 - Time: 0.54000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 161 - Time: 0.55000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 162 - Time: 0.56000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 163 - Time: 0.57000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 164 - Time: 0.58000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 165 - Time: 0.59000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 166 - Time: 0.60000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 167 - Time: 0.61000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 168 - Time: 0.62000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 169 - Time: 0.63000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 170 - Time: 0.64000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 171 - Time: 0.65000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 172 - Time: 0.66000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 173 - Time: 0.67000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 174 - Time: 0.68000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 175 - Time: 0.69000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 176 - Time: 0.70000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 177 - Time: 0.71000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 178 - Time: 0.72000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 179 - Time: 0.73000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 180 - Time: 0.74000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 181 - Time: 0.75000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 182 - Time: 0.76000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 183 - Time: 0.77000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 184 - Time: 0.78000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 185 - Time: 0.79000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 186 - Time: 0.80000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 187 - Time: 0.81000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 188 - Time: 0.82000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 189 - Time: 0.83000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 190 - Time: 0.84000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 191 - Time: 0.85000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 192 - Time: 0.86000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 193 - Time: 0.87000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 194 - Time: 0.88000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 195 - Time: 0.89000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 196 - Time: 0.90000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 197 - Time: 0.91000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 198 - Time: 0.92000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 199 - Time: 0.93000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 200 - Time: 0.94000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 201 - Time: 0.95000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 202 - Time: 0.96000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 203 - Time: 0.97000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 204 - Time: 0.98000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 205 - Time: 0.99000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+Iter 206 - Time: 1.00000 - dt 0.01000 - NR iter: 2 - Err: 0.00000
+
+&lt;pyvista.plotting.plotter.Plotter object at 0x7fa677f2d480&gt;
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">if</span> <span class="s2">"__file__"</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
+
+<span class="c1"># --- Geometry ---</span>
+<span class="n">mesh_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+    <span class="n">ny</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">mesh_rect</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"rect"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">mesh_rect</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">)</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">nodes</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">])</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"disk"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">mesh_rect</span><span class="p">,</span> <span class="n">mesh_disk</span><span class="p">)</span>
+
+<span class="n">nodes_left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">rect_nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s2">"rect"</span><span class="p">)</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span>
+<span class="n">nodes_right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">rect_nodes</span><span class="p">)</span>
+<span class="n">nodes_bc</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X&gt;1.5"</span><span class="p">)</span>
+<span class="n">nodes_bc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">nodes_bc</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"boundary"</span><span class="p">]))</span>
+
+<span class="c1"># --- Contact (penalty) ---</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s2">"disk"</span><span class="p">))</span>
+<span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Contact</span><span class="p">(</span><span class="n">nodes_right</span><span class="p">,</span> <span class="n">surf</span><span class="p">)</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">contact_search_once</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">eps_n</span> <span class="o">=</span> <span class="mf">5e5</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">max_dist</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># --- Material ---</span>
+<span class="n">E</span><span class="p">,</span> <span class="n">nu</span> <span class="o">=</span> <span class="mf">200e3</span><span class="p">,</span> <span class="mf">0.3</span>
+<span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+<span class="n">material_rect</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">)</span>
+<span class="n">material_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">50e3</span><span class="p">,</span> <span class="n">nu</span><span class="p">)</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Heterogeneous</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">material_rect</span><span class="p">,</span> <span class="n">material_disk</span><span class="p">),</span> <span class="p">(</span><span class="s2">"rect"</span><span class="p">,</span> <span class="s2">"disk"</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="s2">"UL"</span><span class="p">)</span>
+<span class="n">solid_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">solid_assembly</span><span class="p">,</span> <span class="n">contact</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"results/disk_rectangle_contact"</span><span class="p">,</span> <span class="n">solid_assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># --- Step 1: push ---</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_left</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_bc</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">])</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Displacement"</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
+    <span class="n">dt</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+    <span class="n">dt_max</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">interval_output</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># --- Step 2: release ---</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_bc</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
+    <span class="n">dt</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>
+    <span class="n">dt_max</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">interval_output</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># --- Static plot ---</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"XX"</span><span class="p">,</span> <span class="s2">"Node"</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># An mp4 animation can be written with</span>
+<span class="c1"># res.write_movie("results/disk_rectangle_contact", "Stress", "XX", "Node", framerate=24)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.377 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-contact-penalty-disk-rectangle-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/18397163ef2b017f69630dcb332b9278/penalty_disk_rectangle.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">penalty_disk_rectangle.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/9cabc7d25d7ed058aacc3ed17a633f7a/penalty_disk_rectangle.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">penalty_disk_rectangle.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/67a61f3d089a1901742bf58033ce6b53/penalty_disk_rectangle.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">penalty_disk_rectangle.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ipc_tube_compression.html" class="btn btn-neutral float-left" title="Tube compression (2Daxi): IPC versus penalty self-contact" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="penalty_self_contact.html" class="btn btn-neutral float-right" title="Self-contact — hole plate compression (2D, penalty method)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

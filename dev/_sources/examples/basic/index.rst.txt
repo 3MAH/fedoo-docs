@@ -1,0 +1,251 @@
+
+
+.. _sphx_glr_examples_basic:
+
+Basic examples
+--------------
+
+Simple examples to get started with fedoo: create meshes, define materials,
+apply boundary conditions, solve linear and nonlinear static problems, modal
+and linear buckling analyses with solid, beam and shell elements, define a
+user equation from its weak form, and post-process the results.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Simple cantilever beam example using different kinds of beam elements. The tip deflection is compared with the analytical Bernoulli or Timoshenko value.">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_beam_elements_cantilever_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/beam_elements_cantilever`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cantilever beam with beam elements</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Linear elastic cantilever beam meshed with hex8 elements: the left face is clamped and a transverse displacement is imposed on the right face.">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_cantilever_beam_3d_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/cantilever_beam_3d`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Cantilever beam using 3D hexahedral elements</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Large deflection of a hex8 cantilever beam (updated Lagrangian formulation, nlgeom=True): a transverse displacement of half the beam length is imposed on the top edge of the free end.">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_cantilever_beam_3d_nlgeom_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/cantilever_beam_3d_nlgeom`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">3D cantilever beam with geometric nonlinearities</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Three-point bending of a rubber beam with an I-shaped cross section, meshed by extruding a 2D profile. The prescribed deflection is 10 % of the span, so the problem is solved in finite strain with a compressible Neo-Hookean law (simcoon NEOHC) whose strain energy is">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_i_beam_three_point_bending_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/i_beam_three_point_bending`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Three-point bending of an I-shaped beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The edges of a structured box mesh are extracted to build a beam lattice. The left face is clamped and a large transverse displacement is imposed on the right face. The geometrically nonlinear beam problem uses the consistent corotational tangent of :pyfedoo.weakform.BeamEquilibrium.">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_lattice_beam_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/lattice_beam`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Beam lattice structure using a beam model with geometric nonlinearities</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example predicts the critical compressive loads and buckling modes of a straight elastic beam. Linear buckling is a perturbation analysis performed about a preloaded reference state. Fedoo solves">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_linear_buckling_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/linear_buckling`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Linear buckling of a pinned beam</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example computes the natural frequencies and mode shapes of a square plate clamped along its entire boundary. A modal analysis solves the generalized eigenvalue problem">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_modal_analysis_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/modal_analysis`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Free vibration of a clamped square plate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A square plate (100 x 100 mm) with a central hole of radius 20 mm is stretched along x by prescribed displacements on its left and right edges, under the 2D plane stress assumption. The von Mises stress and the \sigma_{xx}, \sigma_{yy}, \sigma_{xy} components are plotted in a 2 x 2 pyvista.Plotter. The stress concentrates at the top and bottom of the hole: the concentration factor is about 3 for a small hole in an infinite plate, and larger relative to the far-field stress here because the hole is wide (diameter 0.4 times the plate width) and the mesh is coarse.">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_plate_with_hole_tension_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/plate_with_hole_tension`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">2D plate with hole in tension</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Basic example that shows how to define the Poisson equation -\Delta U = f from its weak form and how to solve it with Dirichlet boundary conditions. Here f = 0 (Laplace equation), so the solution is the linear field U = X.">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_poisson_eq_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/poisson_eq`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Define and solve user equation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fedoo provides structured mesh generators for common shapes as well as operations for building new geometries from existing meshes. This example starts with a few built-in meshes, then creates solids and curved structures using extrusion, local frames, and surface thickening.">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_simple_mesh_generation_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/simple_mesh_generation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Creating simple meshes and swept geometries</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example that shows how to use plate (shell) elements with a pressure load in a geometrically nonlinear analysis.">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_spherical_shell_compression_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/spherical_shell_compression`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Compression of a ping-pong ball</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example performs a displacement-driven shear test on a unit cube using a finite-strain formulation. Several post-processing and visualization options are demonstrated, including:">
+
+.. only:: html
+
+  .. image:: /examples/basic/images/thumb/sphx_glr_visualization_thumb.png
+    :alt:
+
+  :doc:`/examples/basic/visualization`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Visualization tutorial: shear test of a cube</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/basic/beam_elements_cantilever
+   /examples/basic/cantilever_beam_3d
+   /examples/basic/cantilever_beam_3d_nlgeom
+   /examples/basic/i_beam_three_point_bending
+   /examples/basic/lattice_beam
+   /examples/basic/linear_buckling
+   /examples/basic/modal_analysis
+   /examples/basic/plate_with_hole_tension
+   /examples/basic/poisson_eq
+   /examples/basic/simple_mesh_generation
+   /examples/basic/spherical_shell_compression
+   /examples/basic/visualization
+

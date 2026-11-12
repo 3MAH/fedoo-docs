@@ -1,0 +1,51 @@
+
+
+.. _sphx_glr_examples_mesh:
+
+Meshing
+-------
+
+Nodal gradient and Hessian recovery on a mesh, used to drive anisotropic
+adaptive remeshing (mmg). Mesh generation is shown in the basic examples.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compute the recovered nodal gradient and Hessian of an analytic scalar field on a 2D mesh using fedoo.recover_gradient and fedoo.recover_hessian. The recovered fields are plotted and written to a vtk file so you can inspect them in ParaView.">
+
+.. only:: html
+
+  .. image:: /examples/mesh/images/thumb/sphx_glr_hessian_recovery_thumb.png
+    :alt:
+
+  :doc:`/examples/mesh/hessian_recovery`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nodal Hessian recovery on a fedoo mesh</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/mesh/hessian_recovery
+

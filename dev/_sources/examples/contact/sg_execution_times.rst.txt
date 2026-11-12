@@ -1,0 +1,79 @@
+
+:orphan:
+
+.. _sphx_glr_examples_contact_sg_execution_times:
+
+
+Computation times
+=================
+**01:10.477** total execution time for 15 files **from examples/contact**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_examples_contact_penalty_self_contact.py` (``penalty_self_contact.py``)
+     - 00:23.266
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_self_contact.py` (``ipc_self_contact.py``)
+     - 00:14.852
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_penalty_disk_rectangle.py` (``penalty_disk_rectangle.py``)
+     - 00:12.377
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_westergaard_sinusoidal.py` (``westergaard_sinusoidal.py``)
+     - 00:06.326
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_hertz_axisymmetric.py` (``hertz_axisymmetric.py``)
+     - 00:04.517
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_indentation_2d.py` (``ipc_indentation_2d.py``)
+     - 00:03.687
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_disk_rectangle.py` (``ipc_disk_rectangle.py``)
+     - 00:03.547
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_cohesive_dcb_3d.py` (``cohesive_dcb_3d.py``)
+     - 00:01.906
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_gyroid_compression.py` (``ipc_gyroid_compression.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_gyroid_compression_periodic.py` (``ipc_gyroid_compression_periodic.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_gyroid_compression_plastic.py` (``ipc_gyroid_compression_plastic.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_indentation_3d.py` (``ipc_indentation_3d.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_punch_indentation.py` (``ipc_punch_indentation.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_tube_compression.py` (``ipc_tube_compression.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_tube_compression.py` (``tube_compression.py``)
+     - 00:00.000
+     - 0.0

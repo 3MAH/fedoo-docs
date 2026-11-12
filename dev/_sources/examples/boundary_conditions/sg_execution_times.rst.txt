@@ -1,0 +1,58 @@
+
+:orphan:
+
+.. _sphx_glr_examples_boundary_conditions_sg_execution_times:
+
+
+Computation times
+=================
+**00:21.736** total execution time for 8 files **from examples/boundary_conditions**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_examples_boundary_conditions_mean_rigid_motion_torsion.py` (``mean_rigid_motion_torsion.py``)
+     - 00:11.456
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_composite_ply.py` (``periodic_bc_composite_ply.py``)
+     - 00:05.361
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_3d_gyroid_off_axis.py` (``periodic_bc_3d_gyroid_off_axis.py``)
+     - 00:03.589
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_rigid_tie.py` (``rigid_tie.py``)
+     - 00:00.387
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_mean_disp_constraint.py` (``periodic_bc_mean_disp_constraint.py``)
+     - 00:00.285
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_multi_mesh_example.py` (``multi_mesh_example.py``)
+     - 00:00.229
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_2d_plate_with_hole.py` (``periodic_bc_2d_plate_with_hole.py``)
+     - 00:00.224
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_pressurized_pipe.py` (``pressurized_pipe.py``)
+     - 00:00.204
+     - 0.0

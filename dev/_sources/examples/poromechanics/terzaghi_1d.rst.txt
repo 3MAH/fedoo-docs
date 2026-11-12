@@ -63,7 +63,7 @@ See :doc:`/poromechanics` for details.
 .. GENERATED FROM PYTHON SOURCE LINES 34-40
 
 Material parameters and analytical solution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------------
 With a single drainage path of length :math:`L`, the closed-form solution
 uses the oedometric modulus :math:`M_{oed} = K + 4G/3`, the consolidation
 coefficient :math:`c_v = (k/\mu_f) / (\alpha^2/M_{oed} + 1/M)` and the time
@@ -107,7 +107,7 @@ factor :math:`T = c_v t / L^2`.
 .. GENERATED FROM PYTHON SOURCE LINES 65-74
 
 Mesh, constitutive laws and weak form
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------
 The skeleton law is a standard mechanical law. The fluid properties are
 grouped in :py:class:`~fedoo.constitutivelaw.PoroFluidProperties`. The
 :py:class:`~fedoo.weakform.PoroMechanics` weak form couples the momentum
@@ -158,7 +158,7 @@ alternative, recommended when the model has a free-traction face.
 .. GENERATED FROM PYTHON SOURCE LINES 103-107
 
 Loading and boundary conditions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 The surface load is applied as a step: setting ``initial_pressure`` equal
 to the final pressure removes the default linear ramp over the time step.
 
@@ -205,7 +205,7 @@ to the final pressure removes the default linear ramp over the time step.
 .. GENERATED FROM PYTHON SOURCE LINES 128-132
 
 Time integration
-~~~~~~~~~~~~~~~~
+----------------
 The time increments are driven by hand to record the bottom pore pressure,
 the top settlement and a few pressure profiles along the column.
 
@@ -252,7 +252,7 @@ the top settlement and a few pressure profiles along the column.
 .. GENERATED FROM PYTHON SOURCE LINES 162-164
 
 Comparison with the Terzaghi solution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------
 
 .. GENERATED FROM PYTHON SOURCE LINES 164-199
 
@@ -315,7 +315,7 @@ Comparison with the Terzaghi solution
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.900 seconds)
+   **Total running time of the script:** (0 minutes 1.019 seconds)
 
 
 .. _sphx_glr_download_examples_poromechanics_terzaghi_1d.py:

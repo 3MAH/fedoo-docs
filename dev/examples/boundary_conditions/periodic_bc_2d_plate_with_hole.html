@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2D periodic boundary condition &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Off-axis tensile test on a gyroid unit cell with periodic boundary conditions" href="periodic_bc_3d_gyroid_off_axis.html" />
+    <link rel="prev" title="Analysis and visualization of a multi-mesh model" href="multi_mesh_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Boundary conditions and constraints</a></li>
+      <li class="breadcrumb-item active">2D periodic boundary condition</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/boundary_conditions/periodic_bc_2d_plate_with_hole.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-boundary-conditions-periodic-bc-2d-plate-with-hole-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="d-periodic-boundary-condition">
+<span id="sphx-glr-examples-boundary-conditions-periodic-bc-2d-plate-with-hole-py"></span><h1>2D periodic boundary condition<a class="headerlink" href="#d-periodic-boundary-condition" title="Link to this heading"></a></h1>
+<p>Periodic boundary conditions are enforced with
+<a class="reference internal" href="../../generated/fedoo.constraint.PeriodicBC.html#fedoo.constraint.PeriodicBC" title="fedoo.constraint.PeriodicBC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.PeriodicBC</span></code></a> on a 2D unit cell with a central hole,
+under the plane stress assumption. A mean shear strain
+<span class="math notranslate nohighlight">\(\gamma_{xy} = 0.1\)</span> is prescribed on the mean strain degrees of freedom
+added by the constraint, and the resulting mean stress is computed by
+integrating the stress field over the cell.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+</pre></div>
+</div>
+<section id="dimension-of-the-problem-and-geometry">
+<h2>Dimension of the problem and geometry<a class="headerlink" href="#dimension-of-the-problem-and-geometry" title="Link to this heading"></a></h2>
+<p>Any mesh with matching nodes on opposite edges can be used, for instance
+<code class="docutils literal notranslate"><span class="pre">fd.mesh.rectangle_mesh(nx=51,</span> <span class="pre">ny=51)</span></code> for a homogeneous cell.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dstress"</span><span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hole_plate_mesh</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="material-weak-form-assembly-and-linear-problem">
+<h2>Material, weak form, assembly and linear problem<a class="headerlink" href="#material-weak-form-assembly-and-linear-problem" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"ElasticLaw"</span><span class="p">)</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="s2">"ElasticLaw"</span><span class="p">)</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Assembly"</span><span class="p">)</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="s2">"Assembly"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="add-periodic-constraint">
+<h2>Add periodic constraint<a class="headerlink" href="#add-periodic-constraint" title="Link to this heading"></a></h2>
+<p>The periodic condition is a set of multipoint constraints linking the nodes
+of opposite edges. Some global dofs are automatically added to the problem:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_xx</span></code>, <code class="docutils literal notranslate"><span class="pre">E_yy</span></code>, <code class="docutils literal notranslate"><span class="pre">E_xy</span></code>, the mean strain components (Voigt notation:
+<code class="docutils literal notranslate"><span class="pre">E_xy</span></code> is the engineering shear strain
+<span class="math notranslate nohighlight">\(\gamma_{xy} = 2\varepsilon_{xy}\)</span>),</p></li>
+<li><p>the global vector <code class="docutils literal notranslate"><span class="pre">MeanStrain</span></code> that gathers them.</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="n">periodicity_type</span><span class="o">=</span><span class="s2">"small_strain"</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2D Periodic Boundary Condition:
+name = 'Periodicity'
+</pre></div>
+</div>
+</section>
+<section id="add-standard-boundary-conditions">
+<h2>Add standard boundary conditions<a class="headerlink" href="#add-standard-boundary-conditions" title="Link to this heading"></a></h2>
+<p>Each mean strain component accepts a Dirichlet condition (strain) or a
+Neumann condition (associated mean stress times the cell area).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">Exx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Eyy</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Exy</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># engineering shear strain gamma_xy</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"E_xx"</span><span class="p">,</span> <span class="n">Exx</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"E_xy"</span><span class="p">,</span> <span class="n">Exy</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"E_yy"</span><span class="p">,</span> <span class="n">Eyy</span><span class="p">)</span>
+
+<span class="c1"># Block one node to avoid singularity</span>
+<span class="n">center</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nearest_node</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">center</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>List of boundary conditions:
+number of bc = 2
+
+0: Dirichlet -&gt; 'DispX' for 1 nodes set to 0
+1: Dirichlet -&gt; 'DispY' for 1 nodes set to 0
+</pre></div>
+</div>
+</section>
+<section id="solve-and-plot-the-stress-field">
+<h2>Solve and plot the stress field<a class="headerlink" href="#solve-and-plot-the-stress-field" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="s2">"Assembly"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"MeanStrain"</span><span class="p">])</span>
+
+<span class="c1"># plot the deformed mesh with the shear stress</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"XY"</span><span class="p">,</span> <span class="s2">"Node"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_periodic_bc_2d_plate_with_hole_001.png" srcset="../../_images/sphx_glr_periodic_bc_2d_plate_with_hole_001.png" alt="periodic bc 2d plate with hole" class = "sphx-glr-single-img"/></section>
+<section id="macroscopic-strain-and-stress">
+<h2>Macroscopic strain and stress<a class="headerlink" href="#macroscopic-strain-and-stress" title="Link to this heading"></a></h2>
+<p>Both are printed as Voigt vectors; the strain uses the engineering shear
+strain <span class="math notranslate nohighlight">\(\gamma_{xy}\)</span>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="s2">"Mean strain, Voigt vector ([Exx, Eyy, gamma_xy]): "</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">pb</span><span class="o">.</span><span class="n">get_dof_solution</span><span class="p">(</span><span class="n">component</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"E_xx"</span><span class="p">,</span> <span class="s2">"E_yy"</span><span class="p">,</span> <span class="s2">"E_xy"</span><span class="p">]],</span>
+<span class="p">)</span>
+
+<span class="c1"># Compute the mean stress tensor</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">volume</span>  <span class="c1"># total surface of the domain = volume in 2d</span>
+<span class="n">mean_stress</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">surf</span> <span class="o">*</span> <span class="n">mesh</span><span class="o">.</span><span class="n">integrate_field</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean stress, Voigt vector ([Sxx, Syy, Sxy]): "</span><span class="p">,</span> <span class="n">mean_stress</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Mean strain, Voigt vector ([Exx, Eyy, gamma_xy]):  [np.float64(0.0), np.float64(0.0), np.float64(0.1)]
+Mean stress, Voigt vector ([Sxx, Syy, Sxy]):  [np.float64(6.937119678696036e-12), np.float64(-2.9228431230876597e-12), np.float64(2497.6680151186342)]
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.224 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-boundary-conditions-periodic-bc-2d-plate-with-hole-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/629771aafe6693718bba62143674ee63/periodic_bc_2d_plate_with_hole.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">periodic_bc_2d_plate_with_hole.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/088b668cd8d394b72156815043ac1823/periodic_bc_2d_plate_with_hole.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">periodic_bc_2d_plate_with_hole.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/95abe2cea27cb2435972d84fe8d71fd6/periodic_bc_2d_plate_with_hole.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">periodic_bc_2d_plate_with_hole.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="multi_mesh_example.html" class="btn btn-neutral float-left" title="Analysis and visualization of a multi-mesh model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="periodic_bc_3d_gyroid_off_axis.html" class="btn btn-neutral float-right" title="Off-axis tensile test on a gyroid unit cell with periodic boundary conditions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

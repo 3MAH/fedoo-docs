@@ -140,6 +140,10 @@ Newmark or generalized-alpha integrator:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">FIRST_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">BackwardEuler</span><span class="p">())</span>
 </pre></div>
 </div>
+<p>Examples: <a class="reference internal" href="examples/thermal/thermal_conduction_2d.html#sphx-glr-examples-thermal-thermal-conduction-2d-py"><span class="std std-ref">Transient heat conduction in a 2D square</span></a>
+(<a class="reference internal" href="generated/fedoo.time.BackwardEuler.html#fedoo.time.BackwardEuler" title="fedoo.time.BackwardEuler"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackwardEuler</span></code></a> on a heat equation) and
+<a class="reference internal" href="examples/dynamics/rigid_body_bounce.html#sphx-glr-examples-dynamics-rigid-body-bounce-py"><span class="std std-ref">Rigid-body bounce with IPC contact</span></a> (<a class="reference internal" href="generated/fedoo.time.Newmark.html#fedoo.time.Newmark" title="fedoo.time.Newmark"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newmark</span></code></a> on a
+rigid body with contact).</p>
 <section id="static-analysis">
 <h2>Static analysis<a class="headerlink" href="#static-analysis" title="Link to this heading"></a></h2>
 <p>A problem remains static as long as no time integrator is attached. Weak forms
@@ -217,6 +221,9 @@ common case:</p>
                          <span class="n">beta</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Examples: <a class="reference internal" href="examples/dynamics/rigid_body_bounce.html#sphx-glr-examples-dynamics-rigid-body-bounce-py"><span class="std std-ref">Rigid-body bounce with IPC contact</span></a>,
+<a class="reference internal" href="examples/dynamics/multi_mesh_dynamic_contact.html#sphx-glr-examples-dynamics-multi-mesh-dynamic-contact-py"><span class="std std-ref">Shell ping-pong ball dropped on a solid plate (dynamic MultiMesh, IPC)</span></a> and
+<a class="reference internal" href="examples/finite_strain/neohookean_snap_through.html#sphx-glr-examples-finite-strain-neohookean-snap-through-py"><span class="std std-ref">Snap-through of a compressed Neo-Hookean blade (static vs implicit dynamics)</span></a>.</p>
 </section>
 <section id="explicit-second-order-schemes">
 <h2>Explicit second-order schemes<a class="headerlink" href="#explicit-second-order-schemes" title="Link to this heading"></a></h2>

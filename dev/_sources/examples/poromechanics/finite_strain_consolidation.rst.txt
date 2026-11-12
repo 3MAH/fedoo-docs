@@ -63,7 +63,7 @@ compacted material drops, which slows down the consolidation.
 .. GENERATED FROM PYTHON SOURCE LINES 34-36
 
 Parameters
-~~~~~~~~~~
+----------
 
 .. GENERATED FROM PYTHON SOURCE LINES 36-47
 
@@ -90,7 +90,7 @@ Parameters
 .. GENERATED FROM PYTHON SOURCE LINES 48-56
 
 Mesh, constitutive laws and weak form
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------
 The permeability is given as a callable
 :py:class:`~fedoo.constitutivelaw.HolmesMowPermeability`, which receives
 :math:`J` from the weak form. The two-field
@@ -141,7 +141,7 @@ The permeability is given as a callable
 .. GENERATED FROM PYTHON SOURCE LINES 86-91
 
 Boundary conditions
-~~~~~~~~~~~~~~~~~~~
+-------------------
 Lateral confinement, fixed and sealed bottom, drained top face. The load
 is applied as a step: ``initial_pressure`` equal to the final pressure
 removes the default ramp over the time step.
@@ -192,7 +192,7 @@ removes the default ramp over the time step.
 .. GENERATED FROM PYTHON SOURCE LINES 115-120
 
 Time integration
-~~~~~~~~~~~~~~~~
+----------------
 ``lnJ`` is stored at Gauss points in the assembly state variables. Its
 element average is recorded at a few instants, together with the pore
 pressure at the sealed bottom and the settlement of the top face.
@@ -236,7 +236,7 @@ pressure at the sealed bottom and the settlement of the top face.
 .. GENERATED FROM PYTHON SOURCE LINES 146-150
 
 Final state
-~~~~~~~~~~~
+-----------
 Once drained, the compaction is uniform along the column and the
 Holmes-Mow permeability has dropped accordingly.
 
@@ -268,7 +268,7 @@ Holmes-Mow permeability has dropped accordingly.
 .. GENERATED FROM PYTHON SOURCE LINES 157-159
 
 Pore pressure history and compaction profiles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------
 
 .. GENERATED FROM PYTHON SOURCE LINES 159-183
 
@@ -313,7 +313,7 @@ Pore pressure history and compaction profiles
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.773 seconds)
+   **Total running time of the script:** (0 minutes 2.781 seconds)
 
 
 .. _sphx_glr_download_examples_poromechanics_finite_strain_consolidation.py:

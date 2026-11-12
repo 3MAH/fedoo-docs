@@ -305,6 +305,7 @@ boundary-condition force.</p>
 </tr>
 </tbody>
 </table>
+<p>Example: <a class="reference internal" href="examples/boundary_conditions/pressurized_pipe.html#sphx-glr-examples-boundary-conditions-pressurized-pipe-py"><span class="std std-ref">Pressure constraint</span></a>.</p>
 </section>
 <section id="generic-lagrange-multiplier-constraints">
 <h3>Generic Lagrange-multiplier constraints<a class="headerlink" href="#generic-lagrange-multiplier-constraints" title="Link to this heading"></a></h3>
@@ -353,6 +354,7 @@ same stress field as a single-node pin.</p>
 </tr>
 </tbody>
 </table>
+<p>Example: <a class="reference internal" href="examples/boundary_conditions/periodic_bc_mean_disp_constraint.html#sphx-glr-examples-boundary-conditions-periodic-bc-mean-disp-constraint-py"><span class="std std-ref">Periodic BC without node pinning: mean displacement constraint</span></a>.</p>
 </section>
 <section id="kinematic-mpc-constraints">
 <h3>Kinematic MPC constraints<a class="headerlink" href="#kinematic-mpc-constraints" title="Link to this heading"></a></h3>
@@ -378,6 +380,7 @@ suppressed.</p>
 </tr>
 </tbody>
 </table>
+<p>Example: <a class="reference internal" href="examples/boundary_conditions/rigid_tie.html#sphx-glr-examples-boundary-conditions-rigid-tie-py"><span class="std std-ref">Rigid tie constraint</span></a>.</p>
 </section>
 <section id="mean-motion-control">
 <h4>Mean motion control<a class="headerlink" href="#mean-motion-control" title="Link to this heading"></a></h4>
@@ -435,6 +438,7 @@ mean-motion center.</p>
 </tr>
 </tbody>
 </table>
+<p>Example: <a class="reference internal" href="examples/boundary_conditions/mean_rigid_motion_torsion.html#sphx-glr-examples-boundary-conditions-mean-rigid-motion-torsion-py"><span class="std std-ref">Mean motion torsion</span></a>.</p>
 </section>
 </section>
 <section id="periodic-boundary-conditions">
@@ -453,6 +457,14 @@ and then be added to <code class="docutils literal notranslate"><span class="pre
 </tr>
 </tbody>
 </table>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="examples/boundary_conditions/periodic_bc_2d_plate_with_hole.html#sphx-glr-examples-boundary-conditions-periodic-bc-2d-plate-with-hole-py"><span class="std std-ref">2D periodic boundary condition</span></a></p></li>
+<li><p><a class="reference internal" href="examples/boundary_conditions/periodic_bc_composite_ply.html#sphx-glr-examples-boundary-conditions-periodic-bc-composite-ply-py"><span class="std std-ref">In-plane periodic boundary conditions on a woven composite ply</span></a></p></li>
+<li><p><a class="reference internal" href="examples/boundary_conditions/periodic_bc_3d_gyroid_off_axis.html#sphx-glr-examples-boundary-conditions-periodic-bc-3d-gyroid-off-axis-py"><span class="std std-ref">Off-axis tensile test on a gyroid unit cell with periodic boundary conditions</span></a></p></li>
+<li><p><a class="reference internal" href="examples/boundary_conditions/periodic_bc_mean_disp_constraint.html#sphx-glr-examples-boundary-conditions-periodic-bc-mean-disp-constraint-py"><span class="std std-ref">Periodic BC without node pinning: mean displacement constraint</span></a>
+(rigid-body translation removed with a mean-value constraint)</p></li>
+</ul>
 </section>
 </section>
 <section id="contact">
@@ -479,6 +491,8 @@ assembly objects and can be combined with other assemblies using
 to a problem, we need first to create the contact assembly (using the class
 <a class="reference internal" href="generated/fedoo.constraint.Contact.html#fedoo.constraint.Contact" title="fedoo.constraint.Contact"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.Contact</span></code></a>) and then to add it to the global
 assembly with <a class="reference internal" href="assembly.html#fedoo.Assembly.sum" title="fedoo.Assembly.sum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Assembly.sum()</span></code></a>.</p>
+<p>Examples: <a class="reference internal" href="examples/contact/penalty_disk_rectangle.html#sphx-glr-examples-contact-penalty-disk-rectangle-py"><span class="std std-ref">Disk-rectangle contact (2D, penalty method)</span></a> and
+<a class="reference internal" href="examples/contact/penalty_self_contact.html#sphx-glr-examples-contact-penalty-self-contact-py"><span class="std std-ref">Self-contact — hole plate compression (2D, penalty method)</span></a>.</p>
 </section>
 <section id="ipc-contact">
 <h3>IPC contact<a class="headerlink" href="#ipc-contact" title="Link to this heading"></a></h3>
@@ -573,10 +587,25 @@ pip<span class="w"> </span>install<span class="w"> </span>fedoo<span class="o">[
 </tr>
 </tbody>
 </table>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>contact between solids:
+<a class="reference internal" href="examples/contact/ipc_disk_rectangle.html#sphx-glr-examples-contact-ipc-disk-rectangle-py"><span class="std std-ref">Disk-rectangle contact (2D, IPC method)</span></a>,
+<a class="reference internal" href="examples/contact/ipc_punch_indentation.html#sphx-glr-examples-contact-ipc-punch-indentation-py"><span class="std std-ref">Hemispherical punch indentation (3D, IPC method)</span></a>;</p></li>
+<li><p>self-contact: <a class="reference internal" href="examples/contact/ipc_self_contact.html#sphx-glr-examples-contact-ipc-self-contact-py"><span class="std std-ref">Self-contact — hole plate compression (2D, IPC method)</span></a>,
+<a class="reference internal" href="examples/contact/tube_compression.html#sphx-glr-examples-contact-tube-compression-py"><span class="std std-ref">Compression of a tube using 2D axisymmetric model</span></a> (2D axisymmetric),
+<a class="reference internal" href="examples/contact/ipc_gyroid_compression.html#sphx-glr-examples-contact-ipc-gyroid-compression-py"><span class="std std-ref">Gyroid self-contact under compression (3D, IPC method)</span></a>;</p></li>
+<li><p>comparison with analytical solutions and with the penalty method:
+<a class="reference internal" href="examples/contact/hertz_axisymmetric.html#sphx-glr-examples-contact-hertz-axisymmetric-py"><span class="std std-ref">Hertz axisymmetric contact benchmark: rigid sphere on elastic half-space</span></a>,
+<a class="reference internal" href="examples/contact/westergaard_sinusoidal.html#sphx-glr-examples-contact-westergaard-sinusoidal-py"><span class="std std-ref">Westergaard sinusoidal contact benchmark: IPC vs penalty</span></a>,
+<a class="reference internal" href="examples/contact/ipc_tube_compression.html#sphx-glr-examples-contact-ipc-tube-compression-py"><span class="std std-ref">Tube compression (2Daxi): IPC versus penalty self-contact</span></a>.</p></li>
+</ul>
 </section>
 <section id="penalty-contact-example">
 <h3>Penalty contact example<a class="headerlink" href="#penalty-contact-example" title="Link to this heading"></a></h3>
-<p>Here an example of a contact between a square and a disk using the penalty method.</p>
+<p>Here an example of a contact between a square and a disk using the penalty
+method. The rendered page of this example is
+<a class="reference internal" href="examples/contact/penalty_disk_rectangle.html#sphx-glr-examples-contact-penalty-disk-rectangle-py"><span class="std std-ref">Disk-rectangle contact (2D, penalty method)</span></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -678,7 +707,8 @@ pip<span class="w"> </span>install<span class="w"> </span>fedoo<span class="o">[
 <p>The same disk-rectangle contact problem can be solved with the IPC method.
 The IPC method does not require choosing slave/master nodes or tuning a
 penalty parameter. The barrier stiffness is automatically computed and
-adapted.</p>
+adapted. The complete script is
+<a class="reference internal" href="examples/contact/ipc_disk_rectangle.html#sphx-glr-examples-contact-ipc-disk-rectangle-py"><span class="std std-ref">Disk-rectangle contact (2D, IPC method)</span></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -722,7 +752,9 @@ adapted.</p>
 <section id="ipc-self-contact-example">
 <h3>IPC self-contact example<a class="headerlink" href="#ipc-self-contact-example" title="Link to this heading"></a></h3>
 <p>For self-contact problems, use <a class="reference internal" href="generated/fedoo.constraint.IPCSelfContact.html#fedoo.constraint.IPCSelfContact" title="fedoo.constraint.IPCSelfContact"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPCSelfContact</span></code></a>
-which automatically extracts the surface from the volumetric mesh.</p>
+which automatically extracts the surface from the volumetric mesh. Complete
+examples: <a class="reference internal" href="examples/contact/ipc_self_contact.html#sphx-glr-examples-contact-ipc-self-contact-py"><span class="std std-ref">Self-contact — hole plate compression (2D, IPC method)</span></a> (2D) and
+<a class="reference internal" href="examples/contact/ipc_gyroid_compression.html#sphx-glr-examples-contact-ipc-gyroid-compression-py"><span class="std std-ref">Gyroid self-contact under compression (3D, IPC method)</span></a> (3D gyroid).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
