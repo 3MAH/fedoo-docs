@@ -139,9 +139,8 @@ about 12 % compression: see the Limitations section of
 <span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 </pre></div>
 </div>
-</section>
 <section id="parameters">
-<h1>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h1>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># column height [m]</span>
 <span class="n">sigma0</span> <span class="o">=</span> <span class="mf">1.2e5</span>  <span class="c1"># applied surface load [Pa], about 8 % settlement</span>
 
@@ -155,7 +154,7 @@ about 12 % compression: see the Limitations section of
 </div>
 </section>
 <section id="mesh-constitutive-laws-and-weak-form">
-<h1>Mesh, constitutive laws and weak form<a class="headerlink" href="#mesh-constitutive-laws-and-weak-form" title="Link to this heading"></a></h1>
+<h2>Mesh, constitutive laws and weak form<a class="headerlink" href="#mesh-constitutive-laws-and-weak-form" title="Link to this heading"></a></h2>
 <p>The permeability is given as a callable
 <a class="reference internal" href="../../generated/fedoo.constitutivelaw.HolmesMowPermeability.html#fedoo.constitutivelaw.HolmesMowPermeability" title="fedoo.constitutivelaw.HolmesMowPermeability"><code class="xref py py-class docutils literal notranslate"><span class="pre">HolmesMowPermeability</span></code></a>, which receives
 <span class="math notranslate nohighlight">\(J\)</span> from the weak form. The two-field
@@ -193,7 +192,7 @@ about 12 % compression: see the Limitations section of
 </div>
 </section>
 <section id="boundary-conditions">
-<h1>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading"></a></h1>
+<h2>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading"></a></h2>
 <p>Lateral confinement, fixed and sealed bottom, drained top face. The load
 is applied as a step: <code class="docutils literal notranslate"><span class="pre">initial_pressure</span></code> equal to the final pressure
 removes the default ramp over the time step.</p>
@@ -228,7 +227,7 @@ value = 0.0
 </div>
 </section>
 <section id="time-integration">
-<h1>Time integration<a class="headerlink" href="#time-integration" title="Link to this heading"></a></h1>
+<h2>Time integration<a class="headerlink" href="#time-integration" title="Link to this heading"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">lnJ</span></code> is stored at Gauss points in the assembly state variables. Its
 element average is recorded at a few instants, together with the pore
 pressure at the sealed bottom and the settlement of the top face.</p>
@@ -259,7 +258,7 @@ pressure at the sealed bottom and the settlement of the top face.</p>
 </div>
 </section>
 <section id="final-state">
-<h1>Final state<a class="headerlink" href="#final-state" title="Link to this heading"></a></h1>
+<h2>Final state<a class="headerlink" href="#final-state" title="Link to this heading"></a></h2>
 <p>Once drained, the compaction is uniform along the column and the
 Holmes-Mow permeability has dropped accordingly.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">lnJ</span> <span class="o">=</span> <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"lnJ"</span><span class="p">]</span>
@@ -275,7 +274,7 @@ permeability ratio k/k0: 0.482
 </div>
 </section>
 <section id="pore-pressure-history-and-compaction-profiles">
-<h1>Pore pressure history and compaction profiles<a class="headerlink" href="#pore-pressure-history-and-compaction-profiles" title="Link to this heading"></a></h1>
+<h2>Pore pressure history and compaction profiles<a class="headerlink" href="#pore-pressure-history-and-compaction-profiles" title="Link to this heading"></a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nb_steps</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
@@ -301,7 +300,7 @@ permeability ratio k/k0: 0.482
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_finite_strain_consolidation_001.png" srcset="../../_images/sphx_glr_finite_strain_consolidation_001.png" alt="Consolidation, Compaction profiles" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.976 seconds)</p>
+<img src="../../_images/sphx_glr_finite_strain_consolidation_001.png" srcset="../../_images/sphx_glr_finite_strain_consolidation_001.png" alt="Consolidation, Compaction profiles" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.369 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-poromechanics-finite-strain-consolidation-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/8deb5f9b7943aba123ad2bbf32927d59/finite_strain_consolidation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">finite_strain_consolidation.ipynb</span></code></a></p>
@@ -314,6 +313,7 @@ permeability ratio k/k0: 0.482
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
 </section>
 
 

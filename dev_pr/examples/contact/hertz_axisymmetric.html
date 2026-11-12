@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hertz axisymmetric contact benchmark: rigid sphere on elastic half-space &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Disk-rectangle contact (2D, IPC method)" href="ipc_disk_rectangle.html" />
+    <link rel="prev" title="Composite double-cantilever beam with a cohesive interface" href="cohesive_dcb_3d.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Contact and interfaces</a></li>
+      <li class="breadcrumb-item active">Hertz axisymmetric contact benchmark: rigid sphere on elastic half-space</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/contact/hertz_axisymmetric.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-contact-hertz-axisymmetric-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="hertz-axisymmetric-contact-benchmark-rigid-sphere-on-elastic-half-space">
+<span id="sphx-glr-examples-contact-hertz-axisymmetric-py"></span><h1>Hertz axisymmetric contact benchmark: rigid sphere on elastic half-space<a class="headerlink" href="#hertz-axisymmetric-contact-benchmark-rigid-sphere-on-elastic-half-space" title="Link to this heading"></a></h1>
+<p>Validates penalty contact in fedoo’s <code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> modeling space against the
+classical Hertz (1882) analytical solution for a rigid sphere pressed
+onto an elastic half-space.</p>
+<p>The 2D axisymmetric formulation makes the 3D problem computationally
+cheap (2D mesh on the r-z plane) while producing the full 3D result,
+including the <span class="math notranslate nohighlight">\(2 \pi r\)</span> circumferential integration.</p>
+<p>Two-body setup in the r-z plane:</p>
+<ul class="simple">
+<li><p>elastic substrate (half-space approximation): a large rectangle;</p></li>
+<li><p>quasi-rigid parabolic indenter: a thin body whose bottom surface follows
+<span class="math notranslate nohighlight">\(z(r) = H_{sub} + g + r^2/(2R)\)</span>, with <span class="math notranslate nohighlight">\(g\)</span> the initial gap.</p></li>
+</ul>
+<p>Analytical solution for a rigid indenter on an elastic body, with the
+effective modulus <span class="math notranslate nohighlight">\(E^* = E/(1-\nu^2)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[F = \frac{4}{3} E^* \sqrt{R}\, \delta^{3/2}, \qquad
+a = \sqrt{R \delta}, \qquad
+p_0 = \frac{2 E^*}{\pi} \sqrt{\frac{\delta}{R}}.\]</div>
+<p>The numerical indentation <span class="math notranslate nohighlight">\(\delta\)</span> is taken as the prescribed
+indenter displacement minus the gap; it ignores the compliance of the
+finite substrate (height <span class="math notranslate nohighlight">\(H_{sub} = 25 \approx 11\,a\)</span>, clamped at its
+bottom). The contact radius is estimated with the Hertz property
+<span class="math notranslate nohighlight">\(u_z(a) = \delta/2\)</span>, which holds for displacements measured from the
+far field, whereas here <span class="math notranslate nohighlight">\(u_z\)</span> is measured from the fixed bottom. Both
+approximations bias the estimated contact radius, so its agreement with the
+analytical value is indicative only.
+The substrate uses a graded 101 x 101 node grid.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This benchmark uses the penalty method. <code class="docutils literal notranslate"><span class="pre">IPCContact</span></code> also supports
+<code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> (collisions weighted by <span class="math notranslate nohighlight">\(2 \pi r\)</span>) and can be used
+instead.</p>
+</div>
+<img src="../../_images/sphx_glr_hertz_axisymmetric_001.png" srcset="../../_images/sphx_glr_hertz_axisymmetric_001.png" alt="Hertz Axisymmetric Contact Benchmark (Penalty), Force vs Indentation: $F = \frac{4}{3} E^* \sqrt{R}\, \delta^{3/2}$, Contact Radius: $a = \sqrt{R\,\delta}$" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Substrate top nodes:  101
+Indenter bottom edges: 50
+a_max = 2.236,  E* = 1098.9,  gap = 0.05
+
+==============================================================
+  HERTZ AXISYMMETRIC CONTACT BENCHMARK (Penalty)
+==============================================================
+Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 2 - Time: 0.11250 - dt 0.06250 - NR iter: 3 - Err: 0.00142
+Iter 3 - Time: 0.19062 - dt 0.07812 - NR iter: 5 - Err: 0.00028
+Iter 4 - Time: 0.20000 - dt 0.09766 - NR iter: 2 - Err: 0.00000
+Iter 5 - Time: 0.29766 - dt 0.09766 - NR iter: 4 - Err: 0.00001
+Iter 6 - Time: 0.40000 - dt 0.12207 - NR iter: 4 - Err: 0.00000
+Iter 7 - Time: 0.52207 - dt 0.12207 - NR iter: 4 - Err: 0.00001
+Iter 8 - Time: 0.60000 - dt 0.15259 - NR iter: 3 - Err: 0.00005
+Iter 9 - Time: 0.75259 - dt 0.15259 - NR iter: 3 - Err: 0.00126
+Iter 10 - Time: 0.80000 - dt 0.19073 - NR iter: 2 - Err: 0.00002
+Iter 11 - Time: 0.99073 - dt 0.19073 - NR iter: 3 - Err: 0.00257
+Iter 12 - Time: 1.00000 - dt 0.23842 - NR iter: 3 - Err: 0.00000
+
+Solve time: 3.52 s
+
+--------------------------------------------------------------
+  RESULTS SUMMARY
+--------------------------------------------------------------
+Quantity                             Numerical      Analytical
+--------------------------------------------------------------
+Final indentation                       0.4500          0.4500
+Final force F                          1521.53         1398.67
+F error                                  8.78%
+Contact radius a                        2.0705          2.1213
+a error                                 -2.40%
+
+--------------------------------------------------------------
+  Per-increment detail
+--------------------------------------------------------------
+ Inc     Time      Delta        F_num        F_ana     Err%    a_num    a_ana
+   1   0.0500    -0.0250         0.00         0.00     0.00   0.0000   0.0000
+   2   0.1125     0.0062         2.27         2.29    -0.94   0.2000   0.2500
+   3   0.1906     0.0453        46.00        44.69     2.94   0.6750   0.6731
+   4   0.2000     0.0500        53.40        51.80     3.09   0.6750   0.7071
+   5   0.2977     0.0988       149.41       143.95     3.79   0.9121   0.9941
+   6   0.4000     0.1500       282.69       269.17     5.02   1.1718   1.2247
+   7   0.5221     0.2110       477.11       449.19     6.21   1.4524   1.4527
+   8   0.6000     0.2500       618.31       579.17     6.76   1.6000   1.5811
+   9   0.7526     0.3263       927.17       863.60     7.36   1.7523   1.8064
+  10   0.8000     0.3500      1035.86       959.40     7.97   1.7523   1.8708
+  11   0.9907     0.4454      1497.63      1377.13     8.75   2.0705   2.1104
+  12   1.0000     0.4500      1521.53      1398.67     8.78   2.0705   2.1213
+
+Benchmark plot saved to results/hertz_axisymmetric_benchmark.png
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="k">if</span> <span class="s2">"__file__"</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Parameters</span>
+<span class="c1"># =========================================================================</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># sphere radius</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mf">1000.0</span>  <span class="c1"># elastic modulus (substrate)</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># Poisson's ratio</span>
+<span class="n">E_star</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">nu</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># effective modulus (rigid indenter)</span>
+<span class="n">E_rigid</span> <span class="o">=</span> <span class="mf">1e6</span>  <span class="c1"># quasi-rigid indenter</span>
+<span class="n">nu_rigid</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="n">gap</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># initial gap at r=0 between substrate top and indenter</span>
+<span class="n">delta_max</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># max indentation at tmax=1</span>
+
+<span class="n">a_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">delta_max</span><span class="p">)</span>  <span class="c1"># max contact radius ~ 2.236</span>
+
+<span class="n">R_domain</span> <span class="o">=</span> <span class="mf">25.0</span>  <span class="c1"># substrate radial extent (~11 * a_max)</span>
+<span class="n">H_sub</span> <span class="o">=</span> <span class="mf">25.0</span>  <span class="c1"># substrate height</span>
+<span class="n">R_indenter</span> <span class="o">=</span> <span class="mf">5.0</span>  <span class="c1"># indenter radial extent (~2.2 * a_max)</span>
+<span class="n">H_indenter</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># indenter thickness</span>
+
+<span class="c1"># Mesh resolution (number of nodes along each axis)</span>
+<span class="n">nx_sub</span> <span class="o">=</span> <span class="mi">101</span>
+<span class="n">ny_sub</span> <span class="o">=</span> <span class="mi">101</span>
+<span class="n">nx_ind</span> <span class="o">=</span> <span class="mi">51</span>
+<span class="n">ny_ind</span> <span class="o">=</span> <span class="mi">5</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Analytical solution</span>
+<span class="c1"># =========================================================================</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">hertz_analytical</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">E_star</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Hertz force-displacement for rigid sphere on elastic half-space."""</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">d_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">/</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">E_star</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">*</span> <span class="n">d_pos</span><span class="o">**</span><span class="mf">1.5</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">d_pos</span><span class="p">)</span>
+    <span class="n">p0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">E_star</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d_pos</span> <span class="o">/</span> <span class="n">R</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">F</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">p0</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Mesh</span>
+<span class="c1"># =========================================================================</span>
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Daxi"</span><span class="p">)</span>
+
+<span class="c1"># --- Substrate (elastic half-space approximation) ---</span>
+<span class="n">mesh_sub</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="n">nx_sub</span><span class="p">,</span>
+    <span class="n">ny</span><span class="o">=</span><span class="n">ny_sub</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># Biased node placement: dense near r=0 and z=H_sub (contact zone)</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">mesh_sub</span><span class="o">.</span><span class="n">nodes</span>
+<span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">R_domain</span> <span class="o">*</span> <span class="n">nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mf">1.5</span>  <span class="c1"># radial grading</span>
+<span class="n">nodes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">H_sub</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">nodes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mf">1.5</span><span class="p">)</span>  <span class="c1"># axial: dense at top</span>
+<span class="n">mesh_sub</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"substrate"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">mesh_sub</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="c1"># --- Indenter (quasi-rigid parabolic body) ---</span>
+<span class="n">mesh_ind</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="n">nx_ind</span><span class="p">,</span>
+    <span class="n">ny</span><span class="o">=</span><span class="n">ny_ind</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ind_nodes</span> <span class="o">=</span> <span class="n">mesh_ind</span><span class="o">.</span><span class="n">nodes</span>
+<span class="n">r_frac</span> <span class="o">=</span> <span class="n">ind_nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">z_frac</span> <span class="o">=</span> <span class="n">ind_nodes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Radial grading (dense near r=0)</span>
+<span class="n">r_ind</span> <span class="o">=</span> <span class="n">R_indenter</span> <span class="o">*</span> <span class="n">r_frac</span><span class="o">**</span><span class="mf">1.5</span>
+
+<span class="c1"># Bottom surface follows parabola: z(r) = H_sub + gap + r^2/(2R)</span>
+<span class="c1"># Top surface: z = z_bottom + H_indenter</span>
+<span class="n">z_bottom</span> <span class="o">=</span> <span class="n">H_sub</span> <span class="o">+</span> <span class="n">gap</span> <span class="o">+</span> <span class="n">r_ind</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">R</span><span class="p">)</span>
+<span class="n">ind_nodes</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">r_ind</span>
+<span class="n">ind_nodes</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">z_bottom</span> <span class="o">+</span> <span class="n">z_frac</span> <span class="o">*</span> <span class="n">H_indenter</span>
+
+<span class="n">mesh_ind</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"indenter"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">mesh_ind</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="c1"># Store indenter bottom node indices before stacking</span>
+<span class="n">indenter_bottom_local</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mesh_ind</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"bottom"</span><span class="p">])</span>
+
+<span class="c1"># --- Stack meshes ---</span>
+<span class="n">n_sub</span> <span class="o">=</span> <span class="n">mesh_sub</span><span class="o">.</span><span class="n">n_nodes</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">mesh_sub</span><span class="p">,</span> <span class="n">mesh_ind</span><span class="p">)</span>
+
+<span class="c1"># Indenter bottom/top nodes in global numbering</span>
+<span class="n">indenter_bottom_global</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="n">n_sub</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">indenter_bottom_local</span><span class="p">)</span>
+<span class="n">indenter_top_local</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mesh_ind</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"top"</span><span class="p">])</span>
+<span class="n">nodes_ind_top</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">n</span> <span class="o">+</span> <span class="n">n_sub</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">indenter_top_local</span><span class="p">])</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Contact setup</span>
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Slave nodes: top surface of substrate</span>
+<span class="n">nodes_sub_top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">H_sub</span><span class="p">)</span>
+<span class="n">nodes_sub_top</span> <span class="o">=</span> <span class="n">nodes_sub_top</span><span class="p">[</span><span class="n">nodes_sub_top</span> <span class="o">&lt;</span> <span class="n">n_sub</span><span class="p">]</span>  <span class="c1"># only substrate nodes</span>
+
+<span class="c1"># Master surface: bottom of indenter only (filter out top/side edges)</span>
+<span class="n">surf_ind_full</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_elements</span><span class="p">(</span><span class="s2">"indenter"</span><span class="p">))</span>
+<span class="n">keep</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">i</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">surf_ind_full</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="ow">in</span> <span class="n">indenter_bottom_global</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">elem</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fedoo.core.mesh</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mesh</span> <span class="k">as</span> <span class="n">_Mesh</span>
+
+<span class="n">surf_indenter</span> <span class="o">=</span> <span class="n">_Mesh</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span>
+    <span class="n">surf_ind_full</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="n">keep</span><span class="p">],</span>
+    <span class="n">surf_ind_full</span><span class="o">.</span><span class="n">elm_type</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"indenter_bottom"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Substrate top nodes:  </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes_sub_top</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Indenter bottom edges: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"a_max = </span><span class="si">{</span><span class="n">a_max</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">,  E* = </span><span class="si">{</span><span class="n">E_star</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">,  gap = </span><span class="si">{</span><span class="n">gap</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">Contact</span><span class="p">(</span>
+    <span class="n">nodes_sub_top</span><span class="p">,</span>
+    <span class="n">surf_indenter</span><span class="p">,</span>
+    <span class="n">search_algorithm</span><span class="o">=</span><span class="s2">"bucket"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">contact_search_once</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">eps_n</span> <span class="o">=</span> <span class="mf">1e5</span>  <span class="c1"># ~100*E, penalty stiffness</span>
+<span class="n">contact</span><span class="o">.</span><span class="n">max_dist</span> <span class="o">=</span> <span class="n">gap</span> <span class="o">+</span> <span class="n">delta_max</span> <span class="o">+</span> <span class="mf">0.5</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Material</span>
+<span class="c1"># =========================================================================</span>
+<span class="n">mat_sub</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">)</span>
+<span class="n">mat_ind</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E_rigid</span><span class="p">,</span> <span class="n">nu_rigid</span><span class="p">)</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Heterogeneous</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">mat_sub</span><span class="p">,</span> <span class="n">mat_ind</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"substrate"</span><span class="p">,</span> <span class="s2">"indenter"</span><span class="p">),</span>
+<span class="p">)</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Assembly and problem</span>
+<span class="c1"># =========================================================================</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">solid</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">solid</span><span class="p">,</span> <span class="n">contact</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"results/hertz_axi"</span><span class="p">,</span> <span class="n">solid</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">])</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Boundary conditions</span>
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Bottom of substrate: fix axial (Y), free radial</span>
+<span class="n">nodes_bottom</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_bottom</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Symmetry axis (r=0): fix radial displacement</span>
+<span class="n">nodes_axis</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_axis</span><span class="p">,</span> <span class="s2">"DispX"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Top of indenter: prescribe downward displacement</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_ind_top</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="o">-</span><span class="n">delta_max</span><span class="p">)</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Solver</span>
+<span class="c1"># =========================================================================</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Displacement"</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># --- Tracking ---</span>
+<span class="n">r_top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">nodes_sub_top</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">history</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"time"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"reaction_y"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"a_num"</span><span class="p">:</span> <span class="p">[]}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">track</span><span class="p">(</span><span class="n">pb</span><span class="p">):</span>
+    <span class="n">history</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_ext_forces</span><span class="p">(</span><span class="s2">"Disp"</span><span class="p">)</span>
+    <span class="n">history</span><span class="p">[</span><span class="s2">"reaction_y"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">nodes_ind_top</span><span class="p">]))</span>
+
+    <span class="c1"># Estimate contact radius from displacement profile.</span>
+    <span class="c1"># In Hertz theory u_z(a) = delta/2 (displacements measured from the far</span>
+    <span class="c1"># field), so the contact edge is taken where the displacement drops below</span>
+    <span class="c1"># half the center value. Here uy is measured from the clamped bottom of a</span>
+    <span class="c1"># finite substrate, which biases this estimate.</span>
+    <span class="n">disp</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_disp</span><span class="p">()</span>
+    <span class="n">uy</span> <span class="o">=</span> <span class="n">disp</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">nodes_sub_top</span><span class="p">]</span>
+    <span class="n">uy_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">uy</span><span class="p">)</span>  <span class="c1"># most negative = max compression</span>
+    <span class="k">if</span> <span class="n">uy_center</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">1e-10</span><span class="p">:</span>
+        <span class="n">in_contact</span> <span class="o">=</span> <span class="n">uy</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">uy_center</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">r_top</span><span class="p">[</span><span class="n">in_contact</span><span class="p">])</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">in_contact</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">history</span><span class="p">[</span><span class="s2">"a_num"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span> <span class="o">*</span> <span class="mi">62</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"  HERTZ AXISYMMETRIC CONTACT BENCHMARK (Penalty)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">62</span><span class="p">)</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
+    <span class="n">dt</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">interval_output</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">callback</span><span class="o">=</span><span class="n">track</span><span class="p">,</span>
+    <span class="n">exec_callback_at_each_iter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">solve_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Solve time: </span><span class="si">{</span><span class="n">solve_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s"</span><span class="p">)</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Comparison with analytical solution</span>
+<span class="c1"># =========================================================================</span>
+<span class="n">t_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s2">"time"</span><span class="p">])</span>
+<span class="n">F_num</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s2">"reaction_y"</span><span class="p">])</span>  <span class="c1"># reaction is negative (compression)</span>
+<span class="n">delta_num</span> <span class="o">=</span> <span class="n">delta_max</span> <span class="o">*</span> <span class="n">t_num</span> <span class="o">-</span> <span class="n">gap</span>  <span class="c1"># effective indentation</span>
+
+<span class="c1"># Analytical curve</span>
+<span class="n">delta_ana</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delta_max</span> <span class="o">-</span> <span class="n">gap</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">F_ana</span><span class="p">,</span> <span class="n">a_ana</span><span class="p">,</span> <span class="n">p0_ana</span> <span class="o">=</span> <span class="n">hertz_analytical</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">E_star</span><span class="p">,</span> <span class="n">delta_ana</span><span class="p">)</span>
+
+<span class="c1"># Numerical at final step</span>
+<span class="n">delta_final</span> <span class="o">=</span> <span class="n">delta_num</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">F_final</span> <span class="o">=</span> <span class="n">F_num</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">F_ana_final</span> <span class="o">=</span> <span class="n">hertz_analytical</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">E_star</span><span class="p">,</span> <span class="n">delta_final</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">*</span> <span class="mi">62</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"  RESULTS SUMMARY"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">62</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'Quantity'</span><span class="si">:</span><span class="s2">&lt;30</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'Numerical'</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'Analytical'</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">62</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'Final indentation'</span><span class="si">:</span><span class="s2">&lt;30</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">delta_final</span><span class="si">:</span><span class="s2">15.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">delta_max</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gap</span><span class="si">:</span><span class="s2">15.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'Final force F'</span><span class="si">:</span><span class="s2">&lt;30</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">F_final</span><span class="si">:</span><span class="s2">15.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">F_ana_final</span><span class="p">)</span><span class="si">:</span><span class="s2">15.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">err_pct</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">F_final</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">F_ana_final</span><span class="p">))</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">F_ana_final</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'F error'</span><span class="si">:</span><span class="s2">&lt;30</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">err_pct</span><span class="si">:</span><span class="s2">14.2f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+
+<span class="c1"># Contact radius at final step</span>
+<span class="n">a_num_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s2">"a_num"</span><span class="p">])</span>
+<span class="n">a_num_final</span> <span class="o">=</span> <span class="n">a_num_arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">a_ana_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">delta_final</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'Contact radius a'</span><span class="si">:</span><span class="s2">&lt;30</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">a_num_final</span><span class="si">:</span><span class="s2">15.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">a_ana_val</span><span class="si">:</span><span class="s2">15.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">a_ana_val</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">a_err</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">a_num_final</span> <span class="o">-</span> <span class="n">a_ana_val</span><span class="p">)</span> <span class="o">/</span> <span class="n">a_ana_val</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'a error'</span><span class="si">:</span><span class="s2">&lt;30</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">a_err</span><span class="si">:</span><span class="s2">14.2f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Per-increment detail</span>
+<span class="c1"># =========================================================================</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">62</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"  Per-increment detail"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">62</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'Inc'</span><span class="si">:</span><span class="s2">&gt;4</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'Time'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'Delta'</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'F_num'</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'F_ana'</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'Err%'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'a_num'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'a_ana'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2">"</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s2">"time"</span><span class="p">])):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">delta_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">f_n</span> <span class="o">=</span> <span class="n">F_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">a_n</span> <span class="o">=</span> <span class="n">a_num_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">f_a</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">/</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">E_star</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mf">1.5</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">f_n</span> <span class="o">-</span> <span class="n">f_a</span><span class="p">)</span> <span class="o">/</span> <span class="n">f_a</span> <span class="k">if</span> <span class="n">f_a</span> <span class="o">&gt;</span> <span class="mf">1e-10</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">a_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">d</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">f_a</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">a_a</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">4d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">t_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">8.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">10.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">f_n</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">f_a</span><span class="si">:</span><span class="s2">12.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">err</span><span class="si">:</span><span class="s2">8.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">a_n</span><span class="si">:</span><span class="s2">8.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">a_a</span><span class="si">:</span><span class="s2">8.4f</span><span class="si">}</span><span class="s2">"</span>
+    <span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Plots</span>
+<span class="c1"># =========================================================================</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">"Hertz Axisymmetric Contact Benchmark (Penalty)"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+    <span class="c1"># --- Force vs indentation ---</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_ana</span><span class="p">,</span> <span class="n">F_ana</span><span class="p">,</span> <span class="s2">"k-"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Hertz analytical"</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">delta_num</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">mask</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">delta_num</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span>
+            <span class="n">F_num</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span>
+            <span class="s2">"o-"</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">"tab:blue"</span><span class="p">,</span>
+            <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">"FEM (penalty)"</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Indentation $\delta$"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Contact force $F$"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Force vs Indentation: $F = \frac</span><span class="si">{4}{3}</span><span class="s2"> E^* \sqrt</span><span class="si">{R}</span><span class="s2">\, \delta^{3/2}$"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># --- Contact radius vs indentation ---</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">delta_ana</span><span class="p">,</span> <span class="n">a_ana</span><span class="p">,</span> <span class="s2">"k-"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">"Analytical $a = \sqrt{R\,\delta}$"</span>
+    <span class="p">)</span>
+    <span class="c1"># Plot FEM contact radius at each increment (only where delta &gt; 0)</span>
+    <span class="n">mask_a</span> <span class="o">=</span> <span class="n">delta_num</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">mask_a</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">delta_num</span><span class="p">[</span><span class="n">mask_a</span><span class="p">],</span>
+            <span class="n">a_num_arr</span><span class="p">[</span><span class="n">mask_a</span><span class="p">],</span>
+            <span class="s2">"o-"</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">"tab:blue"</span><span class="p">,</span>
+            <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">"FEM (penalty)"</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Indentation $\delta$"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Contact radius $a$"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Contact Radius: $a = \sqrt{R\,\delta}$"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"results/hertz_axisymmetric_benchmark.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Benchmark plot saved to results/hertz_axisymmetric_benchmark.png"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"matplotlib not available -- skipping plots."</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.915 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-contact-hertz-axisymmetric-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/ebf16aad8eb2696c49ed6dc6b3f8b27a/hertz_axisymmetric.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">hertz_axisymmetric.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/8c8be0cd244a8870753f6853fb449a0d/hertz_axisymmetric.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">hertz_axisymmetric.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/b45d7b600a112440859e214ddb03968e/hertz_axisymmetric.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">hertz_axisymmetric.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cohesive_dcb_3d.html" class="btn btn-neutral float-left" title="Composite double-cantilever beam with a cohesive interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ipc_disk_rectangle.html" class="btn btn-neutral float-right" title="Disk-rectangle contact (2D, IPC method)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

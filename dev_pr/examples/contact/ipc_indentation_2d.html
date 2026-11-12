@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disk indentation (2D plane strain) — IPC contact with Hertz comparison &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Sphere indentation (3D) — IPC contact with Hertz comparison" href="ipc_indentation_3d.html" />
+    <link rel="prev" title="Elasto-plastic gyroid self-contact under compression (3D, IPC method)" href="ipc_gyroid_compression_plastic.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Contact and interfaces</a></li>
+      <li class="breadcrumb-item active">Disk indentation (2D plane strain) — IPC contact with Hertz comparison</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/contact/ipc_indentation_2d.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-contact-ipc-indentation-2d-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="disk-indentation-2d-plane-strain-ipc-contact-with-hertz-comparison">
+<span id="sphx-glr-examples-contact-ipc-indentation-2d-py"></span><h1>Disk indentation (2D plane strain) — IPC contact with Hertz comparison<a class="headerlink" href="#disk-indentation-2d-plane-strain-ipc-contact-with-hertz-comparison" title="Link to this heading"></a></h1>
+<p>A stiff elastic disk is pressed vertically into a softer elastic rectangle
+(plane strain).  This is a classical Hertz-like contact benchmark.</p>
+<p>The plate is meshed with gmsh, using a graded size field that concentrates
+elements near the contact zone.  The disk uses fedoo’s built-in disk_mesh.</p>
+<p>The simulation uses the IPC barrier method for contact and compares the
+computed force-indentation curve to the 2D Hertz analytical prediction
+(Johnson, <em>Contact Mechanics</em>, Ch. 4):</p>
+<div class="math notranslate nohighlight">
+\[P = \frac{\pi E^*}{4 R} a^2, \qquad
+\delta = \frac{a^2}{4 R} \left( 2 \ln \frac{4 R}{a} - 1 \right)\]</div>
+<p>with <span class="math notranslate nohighlight">\(a\)</span> the contact half-width, <span class="math notranslate nohighlight">\(P\)</span> the force per unit length
+and <span class="math notranslate nohighlight">\(E^*\)</span> the effective modulus.</p>
+<p>Only the load-width relation <span class="math notranslate nohighlight">\(P(a)\)</span> is independent of the geometry
+of the body. In 2D the displacement of a half-space under a line load grows
+logarithmically with the distance, so an indentation depth <span class="math notranslate nohighlight">\(\delta\)</span> is
+only defined relative to a reference depth. The <span class="math notranslate nohighlight">\(\delta(a)\)</span> relation
+above (Johnson’s cylinder formula) implicitly places this reference at a
+depth of the order of <span class="math notranslate nohighlight">\(R\)</span>, whereas the plate here is clamped at
+<span class="math notranslate nohighlight">\(h = 40 \gg R = 5\)</span>. The extra compliance of the plate below that depth
+adds to the indentation, so the FEM force at a given <span class="math notranslate nohighlight">\(\delta\)</span> is
+expected to be lower than the Hertz curve. A reference-free comparison would
+plot <span class="math notranslate nohighlight">\(P\)</span> against the contact half-width <span class="math notranslate nohighlight">\(a\)</span>. At the final
+increment <span class="math notranslate nohighlight">\(a/R \approx 0.85\)</span>, well outside the small-contact
+assumption <span class="math notranslate nohighlight">\(a \ll R\)</span> of the Hertz theory, so the curves are only
+expected to agree qualitatively.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires <code class="docutils literal notranslate"><span class="pre">ipctk</span></code> and <code class="docutils literal notranslate"><span class="pre">gmsh</span></code>.</p>
+</div>
+<img src="../../_images/sphx_glr_ipc_indentation_2d_001.png" srcset="../../_images/sphx_glr_ipc_indentation_2d_001.png" alt="ipc indentation 2d" class = "sphx-glr-single-img"/><img src="../../_images/sphx_glr_ipc_indentation_2d_002.png" srcset="../../_images/sphx_glr_ipc_indentation_2d_002.png" alt="2D Hertz Indentation -- Disk on Rectangle" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Plate mesh: 1146 nodes, 2177 elems
+Disk mesh:  4233 nodes, 8280 elems
+Total mesh: 5379 nodes, 10457 elems, type=tri3
+============================================================
+2D DISK INDENTATION -- IPC CONTACT
+============================================================
+Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 4 - Err: 0.00029
+Iter 2 - Time: 0.10000 - dt 0.05000 - NR iter: 4 - Err: 0.00487
+Iter 3 - Time: 0.15000 - dt 0.05000 - NR iter: 3 - Err: 0.00015
+Iter 4 - Time: 0.20000 - dt 0.05000 - NR iter: 3 - Err: 0.00090
+Iter 5 - Time: 0.25000 - dt 0.05000 - NR iter: 2 - Err: 0.00086
+Iter 6 - Time: 0.30000 - dt 0.05000 - NR iter: 2 - Err: 0.00097
+Iter 7 - Time: 0.35000 - dt 0.05000 - NR iter: 2 - Err: 0.00477
+Iter 8 - Time: 0.40000 - dt 0.05000 - NR iter: 2 - Err: 0.00097
+Iter 9 - Time: 0.45000 - dt 0.05000 - NR iter: 3 - Err: 0.00077
+Iter 10 - Time: 0.50000 - dt 0.05000 - NR iter: 3 - Err: 0.00018
+Iter 11 - Time: 0.55000 - dt 0.05000 - NR iter: 3 - Err: 0.00213
+Iter 12 - Time: 0.60000 - dt 0.05000 - NR iter: 2 - Err: 0.00015
+Iter 13 - Time: 0.65000 - dt 0.05000 - NR iter: 3 - Err: 0.00114
+Iter 14 - Time: 0.70000 - dt 0.05000 - NR iter: 3 - Err: 0.00116
+Iter 15 - Time: 0.75000 - dt 0.05000 - NR iter: 3 - Err: 0.00072
+Iter 16 - Time: 0.80000 - dt 0.05000 - NR iter: 2 - Err: 0.00029
+Iter 17 - Time: 0.85000 - dt 0.05000 - NR iter: 3 - Err: 0.00096
+Iter 18 - Time: 0.90000 - dt 0.05000 - NR iter: 2 - Err: 0.00197
+Iter 19 - Time: 0.95000 - dt 0.05000 - NR iter: 3 - Err: 0.00109
+Iter 20 - Time: 1.00000 - dt 0.05000 - NR iter: 1 - Err: 0.00408
+Hertz comparison saved to results/indentation_2d_hertz.png
+
+&lt;pyvista.plotting.plotter.Plotter object at 0x7b96f8051fc0&gt;
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+
+<span class="k">if</span> <span class="s2">"__file__"</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)))</span>
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Parameters</span>
+<span class="c1"># =========================================================================</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
+
+<span class="c1"># Units: N, mm, MPa</span>
+<span class="n">E_plate</span> <span class="o">=</span> <span class="mf">1e3</span>  <span class="c1"># soft plate</span>
+<span class="n">E_disk</span> <span class="o">=</span> <span class="mf">1e5</span>  <span class="c1"># stiff disk (quasi-rigid, 100x stiffer)</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">5.0</span>  <span class="c1"># disk radius</span>
+<span class="n">plate_half</span> <span class="o">=</span> <span class="mf">30.0</span>  <span class="c1"># half-width of the plate</span>
+<span class="n">plate_h</span> <span class="o">=</span> <span class="mf">40.0</span>  <span class="c1"># plate height</span>
+<span class="n">gap</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># initial gap between disk bottom and plate top</span>
+<span class="n">imposed_disp</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.0</span>  <span class="c1"># total vertical displacement of disk top</span>
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Plate mesh (gmsh -- graded refinement near contact)</span>
+<span class="c1"># =========================================================================</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">gmsh</span>
+
+<span class="n">gmsh</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">option</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="s2">"General.Verbosity"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plate_tag</span> <span class="o">=</span> <span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">occ</span><span class="o">.</span><span class="n">addRectangle</span><span class="p">(</span>
+    <span class="o">-</span><span class="n">plate_half</span><span class="p">,</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="mi">2</span> <span class="o">*</span> <span class="n">plate_half</span><span class="p">,</span>
+    <span class="n">plate_h</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">occ</span><span class="o">.</span><span class="n">synchronize</span><span class="p">()</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">addPhysicalGroup</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">plate_tag</span><span class="p">],</span> <span class="n">tag</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"plate"</span><span class="p">)</span>
+
+<span class="c1"># Fine elements near the top-centre (contact zone), coarse far away</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Box"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"VIn"</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"VOut"</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"XMin"</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"XMax"</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"YMin"</span><span class="p">,</span> <span class="n">plate_h</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"YMax"</span><span class="p">,</span> <span class="n">plate_h</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"Thickness"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">field</span><span class="o">.</span><span class="n">setAsBackgroundMesh</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">option</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="s2">"Mesh.MeshSizeExtendFromBoundary"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">option</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="s2">"Mesh.MeshSizeFromPoints"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">option</span><span class="o">.</span><span class="n">setNumber</span><span class="p">(</span><span class="s2">"Mesh.MeshSizeFromCurvature"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">gmsh</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plate_msh</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">(),</span> <span class="s2">"plate_indent2d.msh"</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">plate_msh</span><span class="p">)</span>
+<span class="n">gmsh</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+
+<span class="n">mesh_plate</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">import_msh</span><span class="p">(</span><span class="n">plate_msh</span><span class="p">,</span> <span class="n">mesh_type</span><span class="o">=</span><span class="s2">"surface"</span><span class="p">)</span>
+<span class="c1"># gmsh always stores 3D coordinates; strip Z for 2D modelling space</span>
+<span class="k">if</span> <span class="n">mesh_plate</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="n">mesh_plate</span><span class="o">.</span><span class="n">nodes</span> <span class="o">=</span> <span class="n">mesh_plate</span><span class="o">.</span><span class="n">nodes</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">mesh_plate</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"plate"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">mesh_plate</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Plate mesh: </span><span class="si">{</span><span class="n">mesh_plate</span><span class="o">.</span><span class="n">n_nodes</span><span class="si">}</span><span class="s2"> nodes, </span><span class="si">{</span><span class="n">mesh_plate</span><span class="o">.</span><span class="n">n_elements</span><span class="si">}</span><span class="s2"> elems"</span><span class="p">)</span>
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Disk mesh (fedoo built-in)</span>
+<span class="c1"># =========================================================================</span>
+
+<span class="c1"># tri3, the element type of the gmsh plate mesh, so that both can be stacked</span>
+<span class="n">mesh_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">disk_mesh</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">nr</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">nt</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"tri3"</span><span class="p">)</span>
+<span class="c1"># Position: disk center at (0, plate_top + R + gap)</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">nodes</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">plate_h</span> <span class="o">+</span> <span class="n">R</span> <span class="o">+</span> <span class="n">gap</span><span class="p">])</span>
+<span class="n">mesh_disk</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"disk"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Disk mesh:  </span><span class="si">{</span><span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_nodes</span><span class="si">}</span><span class="s2"> nodes, </span><span class="si">{</span><span class="n">mesh_disk</span><span class="o">.</span><span class="n">n_elements</span><span class="si">}</span><span class="s2"> elems"</span><span class="p">)</span>
+
+<span class="c1"># Stack into single mesh</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">mesh_plate</span><span class="p">,</span> <span class="n">mesh_disk</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">"Total mesh: </span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_nodes</span><span class="si">}</span><span class="s2"> nodes, </span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_elements</span><span class="si">}</span><span class="s2"> elems, type=</span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">elm_type</span><span class="si">}</span><span class="s2">"</span>
+<span class="p">)</span>
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># IPC contact</span>
+<span class="c1"># =========================================================================</span>
+
+<span class="n">surf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">ipc_contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">IPCContact</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">,</span>
+    <span class="n">surface_mesh</span><span class="o">=</span><span class="n">surf</span><span class="p">,</span>
+    <span class="n">dhat</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>  <span class="c1"># absolute dhat (&lt; gap)</span>
+    <span class="n">dhat_is_relative</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_ccd</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Material, assembly, BCs</span>
+<span class="c1"># =========================================================================</span>
+
+<span class="n">mat_plate</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E_plate</span><span class="p">,</span> <span class="n">nu</span><span class="p">)</span>
+<span class="n">mat_disk</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E_disk</span><span class="p">,</span> <span class="n">nu</span><span class="p">)</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Heterogeneous</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">mat_plate</span><span class="p">,</span> <span class="n">mat_disk</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"plate"</span><span class="p">,</span> <span class="s2">"disk"</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">solid</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">solid</span><span class="p">,</span> <span class="n">ipc_contact</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+
+<span class="n">nodes_bottom</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">nodes_disk_top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">ymax</span><span class="p">)</span>
+<span class="n">disk_nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">mesh_plate</span><span class="o">.</span><span class="n">n_nodes</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">n_nodes</span><span class="p">)</span>
+<span class="n">nodes_disk_axis</span> <span class="o">=</span> <span class="n">disk_nodes</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">disk_nodes</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)]</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_bottom</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># The highest point is a single node. Prescribing it alone leaves a rigid</span>
+<span class="c1"># rotation mode while the disk is separated from the plate. Horizontal</span>
+<span class="c1"># symmetry on the disk centreline removes that mode without preventing its</span>
+<span class="c1"># vertical deformation.</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_disk_axis</span><span class="p">,</span> <span class="s2">"DispX"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_disk_top</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="n">imposed_disp</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Force"</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Output and tracking callback</span>
+<span class="c1"># =========================================================================</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"results/indentation_2d"</span><span class="p">,</span> <span class="n">solid</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">])</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"time"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"reaction_y"</span><span class="p">:</span> <span class="p">[]}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">track</span><span class="p">(</span><span class="n">pb</span><span class="p">):</span>
+    <span class="n">history</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_ext_forces</span><span class="p">(</span><span class="s2">"Disp"</span><span class="p">)</span>
+    <span class="n">history</span><span class="p">[</span><span class="s2">"reaction_y"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">nodes_disk_top</span><span class="p">]))</span>
+
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Solve</span>
+<span class="c1"># =========================================================================</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"2D DISK INDENTATION -- IPC CONTACT"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
+    <span class="n">dt</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">callback</span><span class="o">=</span><span class="n">track</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Hertz comparison</span>
+<span class="c1"># =========================================================================</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s2">"time"</span><span class="p">])</span>
+    <span class="n">Fy</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s2">"reaction_y"</span><span class="p">])</span>  <span class="c1"># positive = pushing down</span>
+
+    <span class="c1"># Approximate indentation depth: prescribed displacement minus gap</span>
+    <span class="c1"># (valid because the disk is 100x stiffer, so it barely deforms)</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">imposed_disp</span><span class="p">)</span> <span class="o">-</span> <span class="n">gap</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Hertz theory for 2D plane strain (cylinder on elastic half-space)</span>
+    <span class="c1"># Effective modulus: 1/E* = (1-nu1^2)/E1 + (1-nu2^2)/E2</span>
+    <span class="n">E_star</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">nu</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">E_plate</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">nu</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">E_disk</span><span class="p">)</span>
+
+    <span class="c1"># 2D Hertz (Johnson, Contact Mechanics, Ch. 4), solved parametrically in</span>
+    <span class="c1"># the contact half-width a (see the formulas in the header). P(a) is</span>
+    <span class="c1"># reference-free; delta(a) assumes a reference depth of order R, while the</span>
+    <span class="c1"># plate is clamped much deeper (plate_h &gt;&gt; R), so the FEM curve lies below.</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">hertz_2d</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Return (delta, P) for given contact half-width a."""</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">R</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">R</span> <span class="o">/</span> <span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">E_star</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">R</span><span class="p">)</span> <span class="o">*</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span>
+        <span class="k">return</span> <span class="n">d</span><span class="p">,</span> <span class="n">P</span>
+
+    <span class="c1"># Build Hertz curve by sweeping contact half-width</span>
+    <span class="n">a_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">R</span> <span class="o">*</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">delta_hertz</span><span class="p">,</span> <span class="n">F_hertz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">hertz_2d</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">a_vals</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="c1"># Keep only the range that overlaps with FEM data</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">delta_hertz</span> <span class="o">&lt;=</span> <span class="n">delta</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span>
+    <span class="n">delta_hertz</span> <span class="o">=</span> <span class="n">delta_hertz</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">F_hertz</span> <span class="o">=</span> <span class="n">F_hertz</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">Fy</span><span class="p">,</span> <span class="s2">"o-"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"FEM (IPC)"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_hertz</span><span class="p">,</span> <span class="n">F_hertz</span><span class="p">,</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Hertz (2D half-space)"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Indentation depth (mm)"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Force per unit thickness (N/mm)"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"2D Hertz Indentation -- Disk on Rectangle"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"results/indentation_2d_hertz.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Hertz comparison saved to results/indentation_2d_hertz.png"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"matplotlib not available -- skipping Hertz comparison plot"</span><span class="p">)</span>
+
+<span class="c1"># =========================================================================</span>
+<span class="c1"># Stress plot</span>
+<span class="c1"># =========================================================================</span>
+
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"vm"</span><span class="p">,</span> <span class="s2">"Node"</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.226 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-contact-ipc-indentation-2d-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/1308579bab2dda479bcded72d13f1d05/ipc_indentation_2d.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">ipc_indentation_2d.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/f378cc5800d81a89a5cf2ac8d33f1462/ipc_indentation_2d.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">ipc_indentation_2d.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/684cd12b94e6fb2922613105b1b71dcf/ipc_indentation_2d.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">ipc_indentation_2d.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ipc_gyroid_compression_plastic.html" class="btn btn-neutral float-left" title="Elasto-plastic gyroid self-contact under compression (3D, IPC method)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ipc_indentation_3d.html" class="btn btn-neutral float-right" title="Sphere indentation (3D) — IPC contact with Hertz comparison" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

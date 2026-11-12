@@ -28,6 +28,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Custom weak forms" href="../custom_weak_forms/index.html" />
     <link rel="prev" title="Inf-sup (LBB) stable elements: Taylor-Hood interpolation" href="taylor_hood_lbb.html" /> 
 </head>
 
@@ -134,9 +135,8 @@ and the fluid mass balance is</p>
 <span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 </pre></div>
 </div>
-</section>
 <section id="material-parameters-and-analytical-solution">
-<h1>Material parameters and analytical solution<a class="headerlink" href="#material-parameters-and-analytical-solution" title="Link to this heading"></a></h1>
+<h2>Material parameters and analytical solution<a class="headerlink" href="#material-parameters-and-analytical-solution" title="Link to this heading"></a></h2>
 <p>With a single drainage path of length <span class="math notranslate nohighlight">\(L\)</span>, the closed-form solution
 uses the oedometric modulus <span class="math notranslate nohighlight">\(M_{oed} = K + 4G/3\)</span>, the consolidation
 coefficient <span class="math notranslate nohighlight">\(c_v = (k/\mu_f) / (\alpha^2/M_{oed} + 1/M)\)</span> and the time
@@ -166,7 +166,7 @@ factor <span class="math notranslate nohighlight">\(T = c_v t / L^2\)</span>.</p
 </div>
 </section>
 <section id="mesh-constitutive-laws-and-weak-form">
-<h1>Mesh, constitutive laws and weak form<a class="headerlink" href="#mesh-constitutive-laws-and-weak-form" title="Link to this heading"></a></h1>
+<h2>Mesh, constitutive laws and weak form<a class="headerlink" href="#mesh-constitutive-laws-and-weak-form" title="Link to this heading"></a></h2>
 <p>The skeleton law is a standard mechanical law. The fluid properties are
 grouped in <a class="reference internal" href="../../generated/fedoo.constitutivelaw.PoroFluidProperties.html#fedoo.constitutivelaw.PoroFluidProperties" title="fedoo.constitutivelaw.PoroFluidProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">PoroFluidProperties</span></code></a>. The
 <a class="reference internal" href="../../generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-class docutils literal notranslate"><span class="pre">PoroMechanics</span></code></a> weak form couples the momentum
@@ -204,7 +204,7 @@ alternative, recommended when the model has a free-traction face.</p>
 </div>
 </section>
 <section id="loading-and-boundary-conditions">
-<h1>Loading and boundary conditions<a class="headerlink" href="#loading-and-boundary-conditions" title="Link to this heading"></a></h1>
+<h2>Loading and boundary conditions<a class="headerlink" href="#loading-and-boundary-conditions" title="Link to this heading"></a></h2>
 <p>The surface load is applied as a step: setting <code class="docutils literal notranslate"><span class="pre">initial_pressure</span></code> equal
 to the final pressure removes the default linear ramp over the time step.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Z"</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
@@ -235,7 +235,7 @@ value = 0.0
 </div>
 </section>
 <section id="time-integration">
-<h1>Time integration<a class="headerlink" href="#time-integration" title="Link to this heading"></a></h1>
+<h2>Time integration<a class="headerlink" href="#time-integration" title="Link to this heading"></a></h2>
 <p>The time increments are driven by hand to record the bottom pore pressure,
 the top settlement and a few pressure profiles along the column.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.2</span>
@@ -269,7 +269,7 @@ the top settlement and a few pressure profiles along the column.</p>
 </div>
 </section>
 <section id="comparison-with-the-terzaghi-solution">
-<h1>Comparison with the Terzaghi solution<a class="headerlink" href="#comparison-with-the-terzaghi-solution" title="Link to this heading"></a></h1>
+<h2>Comparison with the Terzaghi solution<a class="headerlink" href="#comparison-with-the-terzaghi-solution" title="Link to this heading"></a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nb_steps</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">c_v</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span>
 <span class="n">T_fine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">300</span><span class="p">)</span>
@@ -310,7 +310,7 @@ the top settlement and a few pressure profiles along the column.</p>
 Final settlement: fedoo -0.0007297 m, drained analytical -0.0007429 m
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.627 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.876 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-poromechanics-terzaghi-1d-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/81141700c937f25682a63e78559ddebe/terzaghi_1d.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">terzaghi_1d.ipynb</span></code></a></p>
@@ -324,12 +324,14 @@ Final settlement: fedoo -0.0007297 m, drained analytical -0.0007429 m
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="taylor_hood_lbb.html" class="btn btn-neutral float-left" title="Inf-sup (LBB) stable elements: Taylor-Hood interpolation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../custom_weak_forms/index.html" class="btn btn-neutral float-right" title="Custom weak forms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

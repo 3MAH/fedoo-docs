@@ -184,7 +184,7 @@ selected formulation. The convention is detailed on
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.FE2.html#fedoo.constitutivelaw.FE2" title="fedoo.constitutivelaw.FE2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FE2</span></code></a>(assemb[, name])</p></td>
 <td><p>FE² constitutive law based on periodic microscopic problems.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.Simcoon.html#fedoo.constitutivelaw.Simcoon" title="fedoo.constitutivelaw.Simcoon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon</span></code></a>(umat_name, props[, tangent_mode, name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.Simcoon.html#fedoo.constitutivelaw.Simcoon" title="fedoo.constitutivelaw.Simcoon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon</span></code></a>(umat_name, props[, tangent_mode, ...])</p></td>
 <td><p>Constitutive laws from the simcoon library.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.Heterogeneous.html#fedoo.constitutivelaw.Heterogeneous" title="fedoo.constitutivelaw.Heterogeneous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Heterogeneous</span></code></a>(tup_cl, tup_elset[, name])</p></td>
@@ -192,6 +192,10 @@ selected formulation. The convention is detailed on
 </tr>
 </tbody>
 </table>
+<p>Examples: <a class="reference internal" href="examples/thermal/thermal_loading.html#sphx-glr-examples-thermal-thermal-loading-py"><span class="std std-ref">Heterogeneous material: inclusion in a matrix under thermal loading</span></a> and
+<a class="reference internal" href="examples/plasticity/heterogeneous_struct.html#sphx-glr-examples-plasticity-heterogeneous-struct-py"><span class="std std-ref">Matrix with a stiff inclusion: three ways to assign materials</span></a>
+(<a class="reference internal" href="generated/fedoo.constitutivelaw.Heterogeneous.html#fedoo.constitutivelaw.Heterogeneous" title="fedoo.constitutivelaw.Heterogeneous"><code class="xref py py-class docutils literal notranslate"><span class="pre">Heterogeneous</span></code></a>), <a class="reference internal" href="examples/homogenization/fe2_plate_with_hole.html#sphx-glr-examples-homogenization-fe2-plate-with-hole-py"><span class="std std-ref">FE2 multiscale analysis of a plate with a hole (octet-truss unit cell)</span></a>
+(<a class="reference internal" href="generated/fedoo.constitutivelaw.FE2.html#fedoo.constitutivelaw.FE2" title="fedoo.constitutivelaw.FE2"><code class="xref py py-class docutils literal notranslate"><span class="pre">FE2</span></code></a>).</p>
 </section>
 <section id="interface-mechanical-constitutive-laws">
 <h2>Interface mechanical constitutive laws<a class="headerlink" href="#interface-mechanical-constitutive-laws" title="Link to this heading"></a></h2>
@@ -206,6 +210,8 @@ selected formulation. The convention is detailed on
 </tr>
 </tbody>
 </table>
+<p>Example: <a class="reference internal" href="examples/contact/cohesive_dcb_3d.html#sphx-glr-examples-contact-cohesive-dcb-3d-py"><span class="std std-ref">Composite double-cantilever beam with a cohesive interface</span></a>
+(<a class="reference internal" href="generated/fedoo.constitutivelaw.CohesiveLaw.html#fedoo.constitutivelaw.CohesiveLaw" title="fedoo.constitutivelaw.CohesiveLaw"><code class="xref py py-class docutils literal notranslate"><span class="pre">CohesiveLaw</span></code></a>).</p>
 </section>
 <section id="beam-constitutive-laws">
 <span id="id1"></span><h2>Beam constitutive laws<a class="headerlink" href="#beam-constitutive-laws" title="Link to this heading"></a></h2>
@@ -246,6 +252,8 @@ selected formulation. The convention is detailed on
 </tr>
 </tbody>
 </table>
+<p>Example: <a class="reference internal" href="examples/shells/laminate_cantilever.html#sphx-glr-examples-shells-laminate-cantilever-py"><span class="std std-ref">Laminated plate cantilever (ShellLaminate)</span></a>
+(<a class="reference internal" href="generated/fedoo.constitutivelaw.ShellLaminate.html#fedoo.constitutivelaw.ShellLaminate" title="fedoo.constitutivelaw.ShellLaminate"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShellLaminate</span></code></a>).</p>
 </section>
 <section id="thermal-constitutive-law">
 <h2>Thermal constitutive law<a class="headerlink" href="#thermal-constitutive-law" title="Link to this heading"></a></h2>

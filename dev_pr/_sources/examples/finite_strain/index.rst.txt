@@ -1,0 +1,124 @@
+
+
+.. _sphx_glr_examples_finite_strain:
+
+Finite strain
+-------------
+
+Geometric nonlinearities: updated and total Lagrangian formulations,
+hyperelastic and elastoplastic laws under large deformation, objectivity of
+rigid rotations, and nearly incompressible materials.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Nearly incompressible materials are difficult for low-order displacement elements.  A fully integrated quad4 element constrains the volume change at four Gauss points although its displacement field cannot satisfy all these constraints independently.  The resulting volumetric locking makes a coarse mesh much too stiff.">
+
+.. only:: html
+
+  .. image:: /examples/finite_strain/images/thumb/sphx_glr_incompressibility_comparison_thumb.png
+    :alt:
+
+  :doc:`/examples/finite_strain/incompressibility_comparison`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Nearly incompressible plasticity: four element formulations</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A slender, nearly-incompressible cylinder is clamped at its base and bent by a transverse load applied to a rigid cap tied to its top face. It is loaded well into the large-deflection, finite-strain regime (tip deflection of order the cylinder length, cap rotated by ~90 degrees).">
+
+.. only:: html
+
+  .. image:: /examples/finite_strain/images/thumb/sphx_glr_neohookean_cantilever_thumb.png
+    :alt:
+
+  :doc:`/examples/finite_strain/neohookean_cantilever`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Finite-strain Neo-Hookean cantilever (rigid cap, force and displacement control)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Companion of the Neo-Hookean cantilever example &lt;sphx_glr_examples_finite_strain_neohookean_cantilever.py&gt;, where a soft cantilever is bent by a force in a plain static analysis. Static force control is enough there because the equilibrium path is monotonic. This example shows the case where it is not: a limit point, beyond which no neighbouring equilibrium exists and the structure jumps. The jump is a dynamic event, and implicit dynamics is then necessary.">
+
+.. only:: html
+
+  .. image:: /examples/finite_strain/images/thumb/sphx_glr_neohookean_snap_through_thumb.png
+    :alt:
+
+  :doc:`/examples/finite_strain/neohookean_snap_through`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Snap-through of a compressed Neo-Hookean blade (static vs implicit dynamics)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A cube of elastoplastic material (simcoon EPICP) is rotated by 90° about z as a rigid body, in 20 increments. The motion is prescribed through the mean displacement gradient of a finite strain fedoo.constraint.PeriodicBC, with \mathbf{F}(t) = \mathbf{R}(\theta t). A rigid rotation must not produce any stress: the printed maximum stress after the rotation checks the objectivity of the finite-strain (updated Lagrangian) update and should be negligible compared with the yield stress (300 MPa).">
+
+.. only:: html
+
+  .. image:: /examples/finite_strain/images/thumb/sphx_glr_rotation_test_thumb.png
+    :alt:
+
+  :doc:`/examples/finite_strain/rotation_test`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Large rigid rotation: objectivity check of the finite-strain update</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Both runs use the same Simcoon law (``EPICP``, J2 plasticity with isotropic hardening) on a logarithmic strain.">
+
+.. only:: html
+
+  .. image:: /examples/finite_strain/images/thumb/sphx_glr_shear_tl_vs_ul_thumb.png
+    :alt:
+
+  :doc:`/examples/finite_strain/shear_tl_vs_ul`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plastic simple shear: total against updated Lagrangian</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/finite_strain/incompressibility_comparison
+   /examples/finite_strain/neohookean_cantilever
+   /examples/finite_strain/neohookean_snap_through
+   /examples/finite_strain/rotation_test
+   /examples/finite_strain/shear_tl_vs_ul
+

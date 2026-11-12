@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transient Navier-Stokes flow around a cylinder with a user weak-form class &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lid-driven cavity (Stokes flow) with a user-defined weak form" href="recirculating_flow.html" />
+    <link rel="prev" title="Stokes flow around a cylinder with a user-defined weak form" href="fluid_mechanics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Custom weak forms</a></li>
+      <li class="breadcrumb-item active">Transient Navier-Stokes flow around a cylinder with a user weak-form class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/custom_weak_forms/navier_stokes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-custom-weak-forms-navier-stokes-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="transient-navier-stokes-flow-around-a-cylinder-with-a-user-weak-form-class">
+<span id="sphx-glr-examples-custom-weak-forms-navier-stokes-py"></span><h1>Transient Navier-Stokes flow around a cylinder with a user weak-form class<a class="headerlink" href="#transient-navier-stokes-flow-around-a-cylinder-with-a-user-weak-form-class" title="Link to this heading"></a></h1>
+<p>A nonlinear user weak form is written by subclassing
+<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.weakform.WeakFormBase</span></code>: <code class="docutils literal notranslate"><span class="pre">update</span></code> stores the current velocity,
+pressure and velocity gradient at the Gauss points, <code class="docutils literal notranslate"><span class="pre">set_start</span></code> keeps the
+velocity of the last converged increment, and <code class="docutils literal notranslate"><span class="pre">get_weak_equation</span></code> returns the
+weak form linearized at the current state (tangent operator plus residual) for
+the Newton-Raphson solver of <a class="reference internal" href="../../generated/fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.problem.NonLinear</span></code></a>.</p>
+<p>For an incompressible Newtonian fluid, with
+<span class="math notranslate nohighlight">\(\boldsymbol{\sigma} = -p\,\mathbf{I} + 2\mu\,\mathbf{D}(\mathbf{v})\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\int_\Omega \rho \left( \frac{\partial \mathbf{v}}{\partial t}
++ (\nabla \mathbf{v})\,\mathbf{v} \right) \cdot \delta\mathbf{v}
++ \boldsymbol{\sigma} : \nabla \delta\mathbf{v} \, d\Omega = 0, \qquad
+\int_\Omega \delta p \, \nabla \cdot \mathbf{v} \, d\Omega = 0,\]</div>
+<p>with a backward Euler time derivative. The mixed problem uses the stable
+<code class="docutils literal notranslate"><span class="pre">p1+/p1</span></code> element (bubble-enriched velocity, linear pressure).</p>
+<p>The Reynolds number based on the cylinder diameter and on the final inflow
+velocity is <span class="math notranslate nohighlight">\(Re = \rho U (2R) / \mu = 2000\)</span>, and 100 nonlinear time
+increments are computed. The inflow velocity is ramped and only reaches
+<span class="math notranslate nohighlight">\(U = 1\)</span> at the last increment. This example is illustrative and the flow
+is not resolved: the mesh Reynolds number <span class="math notranslate nohighlight">\(\rho U h / \mu\)</span> is about 500
+in the wake, far above what the unstabilized Galerkin formulation used here can
+resolve, and a converged solution at this Reynolds number would be unsteady.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fedoo.core.weakform</span><span class="w"> </span><span class="kn">import</span> <span class="n">WeakFormBase</span>
+</pre></div>
+</div>
+<section id="nonlinear-weak-form-linearized-at-the-current-state">
+<h2>Nonlinear weak form linearized at the current state<a class="headerlink" href="#nonlinear-weak-form-linearized-at-the-current-state" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">NavierStokes</span><span class="p">(</span><span class="n">WeakFormBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Navier-Stokes weak formulation for incompressible Newtonian fluids.</span>
+
+<span class="sd">    This implementation uses a mixed velocity/pressure formulation.</span>
+<span class="sd">    It supports transient and non-linear convection terms.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    rho: float or array</span>
+<span class="sd">        Density of the fluid.</span>
+<span class="sd">    mu: float or array</span>
+<span class="sd">        Dynamic viscosity of the fluid.</span>
+<span class="sd">    name: str, optional</span>
+<span class="sd">        Name of the weak form.</span>
+<span class="sd">    space: ModelingSpace, optional</span>
+<span class="sd">        Modeling space.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">space</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">rho</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span>
+
+        <span class="c1"># Velocity variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"Vx"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"Vy"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"Vz"</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">new_vector</span><span class="p">(</span><span class="s2">"V"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"Vy"</span><span class="p">,</span> <span class="s2">"Vz"</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">new_vector</span><span class="p">(</span><span class="s2">"V"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"Vy"</span><span class="p">])</span>
+
+        <span class="c1"># Pressure variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"P"</span><span class="p">)</span>
+
+        <span class="c1"># Internal operators for updating sv</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_op_v</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"Vy"</span><span class="p">,</span> <span class="s2">"Vz"</span><span class="p">][:</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">ndim</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_op_p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">"P"</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_grad_ops</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+            <span class="n">var_name</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"Vy"</span><span class="p">,</span> <span class="s2">"Vz"</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">ndim</span><span class="p">):</span>
+                <span class="n">crd_name</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"X"</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_grad_ops</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">var_name</span><span class="p">,</span> <span class="n">crd_name</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="n">pb</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Initialize state variables."""</span>
+        <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"V"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">assembly</span><span class="o">.</span><span class="n">n_gauss_points</span><span class="p">))</span>
+        <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"P"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">assembly</span><span class="o">.</span><span class="n">n_gauss_points</span><span class="p">)</span>
+        <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"gradV"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">ndim</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">assembly</span><span class="o">.</span><span class="n">n_gauss_points</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_v_start</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">assembly</span><span class="o">.</span><span class="n">n_gauss_points</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="n">pb</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Called at the beginning of a new time step."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_v_start</span> <span class="o">=</span> <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"V"</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="n">pb</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Update current values from solution."""</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_dof_solution</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span> <span class="ow">and</span> <span class="n">sol</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">v_results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_op_v</span><span class="p">:</span>
+            <span class="n">v_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">assembly</span><span class="o">.</span><span class="n">get_gp_results</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">sol</span><span class="p">))</span>
+        <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"V"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v_results</span><span class="p">)</span>
+        <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"P"</span><span class="p">]</span> <span class="o">=</span> <span class="n">assembly</span><span class="o">.</span><span class="n">get_gp_results</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_op_p</span><span class="p">,</span> <span class="n">sol</span><span class="p">)</span>
+
+        <span class="n">grads</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grad_ops</span><span class="p">:</span>
+            <span class="n">grads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">assembly</span><span class="o">.</span><span class="n">get_gp_results</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">sol</span><span class="p">))</span>
+        <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"gradV"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">grads</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_weak_equation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="n">pb</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Build the weak equation including tangent and residual."""</span>
+        <span class="n">ndim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">ndim</span>
+
+        <span class="c1"># Increments (operators)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">variable</span><span class="p">([</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"Vy"</span><span class="p">,</span> <span class="s2">"Vz"</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">)]</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">"P"</span><span class="p">)</span>
+
+        <span class="c1"># grad_V_inc[i][j] = dVi / dXj</span>
+        <span class="n">grad_V_inc</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">):</span>
+                <span class="n">grad_V_inc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span>
+                    <span class="p">[</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"Vy"</span><span class="p">,</span> <span class="s2">"Vz"</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="p">[</span><span class="s2">"X"</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">,</span> <span class="s2">"Z"</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+                <span class="p">)</span>
+
+        <span class="c1"># Current state</span>
+        <span class="n">V_curr</span> <span class="o">=</span> <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"V"</span><span class="p">]</span>
+        <span class="n">P_curr</span> <span class="o">=</span> <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"P"</span><span class="p">]</span>
+        <span class="n">gradV_curr</span> <span class="o">=</span> <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"gradV"</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ndim</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Time step</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">dtime</span>
+
+        <span class="n">DiffOp</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># 1. Momentum Equations (Conservation of linear momentum)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">):</span>
+            <span class="c1"># Viscous part: 2*mu*D_ij * delta_V_i,j = mu*(V_i,j + V_j,i) * delta_V_i,j</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">):</span>
+                <span class="c1"># Residual part</span>
+                <span class="n">res_visc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="n">gradV_curr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">gradV_curr</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span>
+                <span class="c1"># Tangent part</span>
+                <span class="n">tan_visc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">*</span> <span class="p">(</span><span class="n">grad_V_inc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">grad_V_inc</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+
+                <span class="n">DiffOp</span> <span class="o">+=</span> <span class="n">grad_V_inc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="p">(</span><span class="n">res_visc</span> <span class="o">+</span> <span class="n">tan_visc</span><span class="p">)</span>
+
+            <span class="c1"># Pressure part in momentum equation: -P * div(delta_v)</span>
+            <span class="c1"># = -P * delta_Vi,i</span>
+            <span class="n">DiffOp</span> <span class="o">+=</span> <span class="n">grad_V_inc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">P_curr</span> <span class="o">-</span> <span class="n">P</span><span class="p">)</span>
+
+            <span class="c1"># Convection part: rho * (V . grad) V</span>
+            <span class="c1"># Residual: rho * sum_j ( Vj_curr * gradVi,j_curr )</span>
+            <span class="n">res_conv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span><span class="n">V_curr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">gradV_curr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">))</span>
+            <span class="c1"># Tangent: rho * sum_j ( dVj * gradVi,j_curr + Vj_curr * dgradVi,j )</span>
+            <span class="n">tan_conv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(</span>
+                <span class="n">V</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">gradV_curr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">V_curr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">grad_V_inc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Time derivative: rho * dV/dt</span>
+            <span class="k">if</span> <span class="n">dt</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">res_time</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">V_curr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_start</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">tan_time</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res_time</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">tan_time</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="n">DiffOp</span> <span class="o">+=</span> <span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="p">(</span><span class="n">res_conv</span> <span class="o">+</span> <span class="n">tan_conv</span> <span class="o">+</span> <span class="n">res_time</span> <span class="o">+</span> <span class="n">tan_time</span><span class="p">)</span>
+
+        <span class="c1"># 2. Continuity Equation (Conservation of mass: div(V) = 0)</span>
+        <span class="c1"># Residual: div(V_curr)</span>
+        <span class="n">res_cont</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">gradV_curr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">))</span>
+        <span class="c1"># Tangent: div(dV)</span>
+        <span class="n">tan_cont</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">grad_V_inc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">))</span>
+
+        <span class="n">DiffOp</span> <span class="o">+=</span> <span class="n">P</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="p">(</span><span class="n">res_cont</span> <span class="o">+</span> <span class="n">tan_cont</span><span class="p">)</span>
+
+        <span class="c1"># Axisymmetric case</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="o">.</span><span class="n">_dimension</span> <span class="o">==</span> <span class="s2">"2Daxi"</span><span class="p">:</span>
+            <span class="n">rr</span> <span class="o">=</span> <span class="n">assembly</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"_R_gausspoints"</span><span class="p">]</span>
+            <span class="c1"># Add extra term for divergence in cylindrical coordinates: Vr/r</span>
+            <span class="c1"># Vr is Vx (radial)</span>
+            <span class="n">res_cont_axi</span> <span class="o">=</span> <span class="n">V_curr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">rr</span>
+            <span class="n">tan_cont_axi</span> <span class="o">=</span> <span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">rr</span>
+            <span class="n">DiffOp</span> <span class="o">+=</span> <span class="n">P</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="p">(</span><span class="n">res_cont_axi</span> <span class="o">+</span> <span class="n">tan_cont_axi</span><span class="p">)</span>
+
+            <span class="c1"># Also extra viscous term: sigma_theta = -P + 2*mu*Vr/r</span>
+            <span class="n">res_visc_axi</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">*</span> <span class="n">V_curr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">rr</span>
+            <span class="n">tan_visc_axi</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">*</span> <span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">rr</span>
+            <span class="c1"># Virtual work: sigma_theta * delta_eps_theta = sigma_theta * delta_Vr / r</span>
+            <span class="n">DiffOp</span> <span class="o">+=</span> <span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="p">(</span>
+                <span class="mi">1</span> <span class="o">/</span> <span class="n">rr</span> <span class="o">*</span> <span class="p">(</span><span class="n">res_visc_axi</span> <span class="o">+</span> <span class="n">tan_visc_axi</span> <span class="o">-</span> <span class="n">P_curr</span> <span class="o">-</span> <span class="n">P</span><span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="n">DiffOp</span> <span class="o">=</span> <span class="n">DiffOp</span> <span class="o">*</span> <span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">rr</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">DiffOp</span>
+</pre></div>
+</div>
+</section>
+<section id="modeling-space-fluid-properties-and-weak-form">
+<h2>Modeling space, fluid properties and weak form<a class="headerlink" href="#modeling-space-fluid-properties-and-weak-form" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
+
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># density</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># dynamic viscosity (low value to see some convection effects)</span>
+
+<span class="c1"># NavierStokes weak form defined above</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">NavierStokes</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="mesh-flow-around-a-cylinder-hole-in-a-plate-with-a-wake-region">
+<h2>Mesh: flow around a cylinder (hole in a plate) with a wake region<a class="headerlink" href="#mesh-flow-around-a-cylinder-hole-in-a-plate-with-a-wake-region" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">L1</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">mesh1</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hole_plate_mesh</span><span class="p">(</span>
+    <span class="n">length</span><span class="o">=</span><span class="n">L1</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">L1</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"tri3"</span><span class="p">,</span> <span class="n">sym</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="c1"># Add a wake region</span>
+<span class="n">mesh2</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">ny</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="n">L1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="n">L1</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="o">=-</span><span class="n">L1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="n">L1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"tri3"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">mesh1</span><span class="p">,</span> <span class="n">mesh2</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">merge_nodes</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">find_coincident_nodes</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="stable-mixed-element-p1-p1">
+<h2>Stable mixed element (P1+ / P1)<a class="headerlink" href="#stable-mixed-element-p1-p1" title="Link to this heading"></a></h2>
+<p>P1+ elements (linear triangles with bubble functions) for velocity,
+P1 elements for pressure.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">internal_nodes</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">add_internal_nodes</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">elm_type</span> <span class="o">=</span> <span class="s2">"p1+/p1"</span>
+<span class="n">new_elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="n">elm_type</span><span class="p">,</span> <span class="s2">"tri3"</span><span class="p">)</span>
+<span class="n">new_elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"tri3bubble"</span><span class="p">)</span>
+<span class="n">new_elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"Vy"</span><span class="p">,</span> <span class="s2">"tri3bubble"</span><span class="p">)</span>
+<span class="n">new_elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"P"</span><span class="p">,</span> <span class="s2">"tri3"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="assembly-problem-and-boundary-conditions">
+<h2>Assembly, problem and boundary conditions<a class="headerlink" href="#assembly-problem-and-boundary-conditions" title="Link to this heading"></a></h2>
+<p>The Dirichlet values are ramped linearly from 0 over the simulated time (default
+time function). The outflow (right edge) is traction free, which also fixes the
+pressure level.</p>
+<p>The two left corners belong both to the inlet and to a wall: they are removed
+from the inlet nodes so that they keep the no-slip value (two Dirichlet
+conditions with different values on the same dof would emit a
+<code class="docutils literal notranslate"><span class="pre">BoundaryConditionWarning</span></code>, the last one added prevailing).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="n">elm_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"assembling"</span><span class="p">)</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="s2">"assembling"</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s2">"results/navier_stokes"</span><span class="p">,</span> <span class="n">assembly</span><span class="p">,</span> <span class="p">[</span><span class="s2">"P"</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">])</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span><span class="p">)</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"X"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmax</span><span class="p">)</span>
+<span class="n">bottom</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">ymin</span><span class="p">)</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">ymax</span><span class="p">)</span>
+<span class="n">hole</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Point"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">R</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">inlet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">bottom</span><span class="p">,</span> <span class="n">top</span><span class="p">)))</span>  <span class="c1"># left edge without corners</span>
+
+<span class="c1"># Inlet velocity (horizontal inflow, no vertical velocity)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">inlet</span><span class="p">,</span> <span class="s2">"Vx"</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">inlet</span><span class="p">,</span> <span class="s2">"Vy"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="c1"># No-slip on top and bottom (walls)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="c1"># No-slip on the cylinder</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">hole</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="c1"># The pressure dof of the bubble nodes is not used by the P1 pressure interpolation:</span>
+<span class="c1"># it is set to zero to remove it from the system.</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">internal_nodes</span><span class="p">,</span> <span class="s2">"P"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Dirichlet boundary condition:
+var = 'P'
+n_nodes = 3082
+value = 0.0
+</pre></div>
+</div>
+</section>
+<section id="solve">
+<h2>Solve<a class="headerlink" href="#solve" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 1.00000 - dt 1.00000 - NR iter: 1 - Err: 0.00049
+Iter 2 - Time: 2.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00076
+Iter 3 - Time: 3.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00076
+Iter 4 - Time: 4.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00071
+Iter 5 - Time: 5.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00064
+Iter 6 - Time: 6.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00057
+Iter 7 - Time: 7.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00053
+Iter 8 - Time: 8.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00049
+Iter 9 - Time: 9.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00048
+Iter 10 - Time: 10.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00049
+Iter 11 - Time: 11.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00051
+Iter 12 - Time: 12.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00053
+Iter 13 - Time: 13.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00057
+Iter 14 - Time: 14.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00061
+Iter 15 - Time: 15.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00065
+Iter 16 - Time: 16.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00070
+Iter 17 - Time: 17.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00075
+Iter 18 - Time: 18.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00080
+Iter 19 - Time: 19.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00086
+Iter 20 - Time: 20.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00091
+Iter 21 - Time: 21.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00096
+Iter 22 - Time: 22.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00100
+Iter 23 - Time: 23.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00106
+Iter 24 - Time: 24.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00112
+Iter 25 - Time: 25.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00115
+Iter 26 - Time: 26.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00116
+Iter 27 - Time: 27.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00129
+Iter 28 - Time: 28.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00146
+Iter 29 - Time: 29.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00157
+Iter 30 - Time: 30.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00269
+Iter 31 - Time: 31.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00428
+Iter 32 - Time: 32.00000 - dt 1.25000 - NR iter: 2 - Err: 0.00014
+Iter 33 - Time: 33.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00024
+Iter 34 - Time: 34.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00026
+Iter 35 - Time: 35.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00025
+Iter 36 - Time: 36.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00028
+Iter 37 - Time: 37.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00033
+Iter 38 - Time: 38.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00038
+Iter 39 - Time: 39.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00043
+Iter 40 - Time: 40.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00048
+Iter 41 - Time: 41.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00052
+Iter 42 - Time: 42.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00057
+Iter 43 - Time: 43.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00061
+Iter 44 - Time: 44.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00066
+Iter 45 - Time: 45.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00070
+Iter 46 - Time: 46.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00074
+Iter 47 - Time: 47.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00079
+Iter 48 - Time: 48.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00083
+Iter 49 - Time: 49.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00087
+Iter 50 - Time: 50.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00091
+Iter 51 - Time: 51.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00096
+Iter 52 - Time: 52.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00101
+Iter 53 - Time: 53.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00106
+Iter 54 - Time: 54.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00111
+Iter 55 - Time: 55.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00116
+Iter 56 - Time: 56.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00121
+Iter 57 - Time: 57.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00125
+Iter 58 - Time: 58.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00130
+Iter 59 - Time: 59.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00135
+Iter 60 - Time: 60.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00141
+Iter 61 - Time: 61.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00147
+Iter 62 - Time: 62.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00153
+Iter 63 - Time: 63.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00158
+Iter 64 - Time: 64.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00164
+Iter 65 - Time: 65.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00169
+Iter 66 - Time: 66.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00175
+Iter 67 - Time: 67.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00181
+Iter 68 - Time: 68.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00187
+Iter 69 - Time: 69.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00192
+Iter 70 - Time: 70.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00198
+Iter 71 - Time: 71.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00203
+Iter 72 - Time: 72.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00209
+Iter 73 - Time: 73.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00215
+Iter 74 - Time: 74.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00222
+Iter 75 - Time: 75.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00230
+Iter 76 - Time: 76.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00237
+Iter 77 - Time: 77.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00243
+Iter 78 - Time: 78.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00249
+Iter 79 - Time: 79.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00255
+Iter 80 - Time: 80.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00261
+Iter 81 - Time: 81.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00268
+Iter 82 - Time: 82.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00275
+Iter 83 - Time: 83.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00282
+Iter 84 - Time: 84.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00291
+Iter 85 - Time: 85.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00300
+Iter 86 - Time: 86.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00309
+Iter 87 - Time: 87.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00318
+Iter 88 - Time: 88.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00326
+Iter 89 - Time: 89.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00333
+Iter 90 - Time: 90.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00342
+Iter 91 - Time: 91.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00355
+Iter 92 - Time: 92.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00356
+Iter 93 - Time: 93.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00392
+Iter 94 - Time: 94.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00400
+Iter 95 - Time: 95.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00432
+Iter 96 - Time: 96.00000 - dt 1.25000 - NR iter: 2 - Err: 0.00008
+Iter 97 - Time: 97.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00009
+Iter 98 - Time: 98.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00021
+Iter 99 - Time: 99.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00034
+Iter 100 - Time: 100.00000 - dt 1.25000 - NR iter: 1 - Err: 0.00046
+</pre></div>
+</div>
+</section>
+<section id="pressure-field-and-streamlines-at-the-last-increment">
+<h2>Pressure field and streamlines at the last increment<a class="headerlink" href="#pressure-field-and-streamlines-at-the-last-increment" title="Link to this heading"></a></h2>
+<p>Streamlines are not part of the fedoo plot function: they are added with
+PyVista on the plotted mesh (<code class="docutils literal notranslate"><span class="pre">res.meshplot</span></code>), with a zero out-of-plane
+velocity component.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"P"</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Pressure"</span><span class="p">)</span>
+
+<span class="n">res</span><span class="o">.</span><span class="n">meshplot</span><span class="p">[</span><span class="s2">"velocity"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="s2">"V"</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_nodes</span><span class="p">)]</span>
+<span class="n">line_streamlines</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">meshplot</span><span class="o">.</span><span class="n">streamlines</span><span class="p">(</span>
+    <span class="s2">"velocity"</span><span class="p">,</span>
+    <span class="n">pointa</span><span class="o">=</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">ymin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">pointb</span><span class="o">=</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">ymax</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">n_points</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">max_length</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">line_streamlines</span><span class="o">.</span><span class="n">tube</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_navier_stokes_001.png" srcset="../../_images/sphx_glr_navier_stokes_001.png" alt="navier stokes" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.498 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-custom-weak-forms-navier-stokes-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/63061d5805f9a614ab34ccb6ff564c30/navier_stokes.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">navier_stokes.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/277b906588d2d079bd5c7d2b80876425/navier_stokes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">navier_stokes.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/95d51c47a7bb33bfaf704585669ff401/navier_stokes.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">navier_stokes.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fluid_mechanics.html" class="btn btn-neutral float-left" title="Stokes flow around a cylinder with a user-defined weak form" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="recirculating_flow.html" class="btn btn-neutral float-right" title="Lid-driven cavity (Stokes flow) with a user-defined weak form" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

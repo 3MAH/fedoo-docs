@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2D elastoplastic three-point bending written from low-level operators &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3D elastoplastic three-point bending" href="plastic_bending_3d.html" />
+    <link rel="prev" title="2D elastoplastic three-point bending (Simcoon EPICP)" href="plastic_bending_2d.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Plasticity</a></li>
+      <li class="breadcrumb-item active">2D elastoplastic three-point bending written from low-level operators</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/plasticity/plastic_bending_2d_from_scratch.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-plasticity-plastic-bending-2d-from-scratch-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="d-elastoplastic-three-point-bending-written-from-low-level-operators">
+<span id="sphx-glr-examples-plasticity-plastic-bending-2d-from-scratch-py"></span><h1>2D elastoplastic three-point bending written from low-level operators<a class="headerlink" href="#d-elastoplastic-three-point-bending-written-from-low-level-operators" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example is too heavy to be run at each documentation build.
+Its results were precomputed on 2026-11-10 with fedoo 1.1.0, simcoon 0+unknown, ipctk 1.6.1, numpy 2.5.4 (fedoo commit 8fa6ec0798fea2cd3c52159d1c5ffe508131a66b), in about 3 s (Linux x86_64, BLAS mkl). Run
+the script to reproduce it with your fedoo version.</p>
+</div>
+<p>Same plane strain bending test as the 2D elastoplastic three-point bending
+example (Simcoon <code class="docutils literal notranslate"><span class="pre">EPICP</span></code> law, 5 mm central displacement, then release), but
+in small strain and without <a class="reference internal" href="../../generated/fedoo.problem.NonLinear.nlsolve.html#fedoo.problem.NonLinear.nlsolve" title="fedoo.problem.NonLinear.nlsolve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.problem.NonLinear.nlsolve()</span></code></a>: the
+time loop and the Newton-Raphson iterations are written by hand with the
+low-level methods of the problem and of the assembly (<code class="docutils literal notranslate"><span class="pre">set_start</span></code>,
+<code class="docutils literal notranslate"><span class="pre">update</span></code>, <code class="docutils literal notranslate"><span class="pre">apply_boundary_conditions</span></code>, <code class="docutils literal notranslate"><span class="pre">set_A</span></code>, <code class="docutils literal notranslate"><span class="pre">set_D</span></code>, <code class="docutils literal notranslate"><span class="pre">solve</span></code>).
+It shows what <code class="docutils literal notranslate"><span class="pre">nlsolve</span></code> does internally.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<section id="geometry-mesh-and-material">
+<h2>Geometry, mesh and material<a class="headerlink" href="#geometry-mesh-and-material" title="Link to this heading"></a></h2>
+<p>Units: N, mm, MPa. Set <code class="docutils literal notranslate"><span class="pre">mat</span> <span class="pre">=</span> <span class="pre">0</span></code> for a linear elastic material.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2Dplane"</span><span class="p">)</span>
+
+<span class="n">typeBending</span> <span class="o">=</span> <span class="s2">"3nodes"</span>  <span class="c1"># '3nodes' or '4nodes'</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mf">200e3</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">1e-5</span>  <span class="c1"># thermal expansion coefficient (required by EPICP, isothermal here)</span>
+<span class="n">uimp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="mi">41</span><span class="p">,</span> <span class="n">ny</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="n">L</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="s2">"quad4"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Domain"</span>
+<span class="p">)</span>
+
+<span class="n">mat</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">mat</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># linear</span>
+    <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"ConstitutiveLaw"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">mat</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># J2 plasticity with isotropic power-law hardening:</span>
+    <span class="c1"># yield stress Re + k * p**m, p = accumulated plastic strain</span>
+    <span class="n">Re</span> <span class="o">=</span> <span class="mi">300</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mf">0.25</span>
+    <span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Re</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">])</span>
+    <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"ConstitutiveLaw"</span><span class="p">)</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="s2">"ConstitutiveLaw"</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="boundary-node-sets-assembly-and-problem">
+<h2>Boundary node sets, assembly and problem<a class="headerlink" href="#boundary-node-sets-assembly-and-problem" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">bottom_left</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nearest_node</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">bottom_right</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nearest_node</span><span class="p">([</span><span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="n">typeBending</span> <span class="o">==</span> <span class="s2">"3nodes"</span><span class="p">:</span>
+    <span class="n">top_center</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nearest_node</span><span class="p">([</span><span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">nodes_top1</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="sa">f</span><span class="s2">"X==</span><span class="si">{</span><span class="n">L</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="si">}</span><span class="s2"> and Y==</span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">nodes_top2</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="sa">f</span><span class="s2">"X==</span><span class="si">{</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="si">}</span><span class="s2"> and Y==</span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">top_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">nodes_top1</span><span class="p">,</span> <span class="n">nodes_top2</span><span class="p">))</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">wf</span><span class="p">,</span> <span class="s2">"Domain"</span><span class="p">,</span> <span class="s2">"quad4"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Assembling"</span><span class="p">,</span> <span class="n">mesh_change</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>  <span class="c1"># use mesh_change=True when the mesh changes during the time</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="s2">"Assembling"</span><span class="p">)</span>  <span class="c1"># incremental nonlinear problem</span>
+
+<span class="c1"># create a 'results' folder and set the desired outputs</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">mat</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+        <span class="s2">"results/bendingPlastic_from_scratch"</span><span class="p">,</span>
+        <span class="s2">"Assembling"</span><span class="p">,</span>
+        <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">],</span>
+        <span class="n">output_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">,</span>
+        <span class="n">file_format</span><span class="o">=</span><span class="s2">"vtk"</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="k">elif</span> <span class="n">mat</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+        <span class="s2">"results/bendingPlastic_from_scratch"</span><span class="p">,</span>
+        <span class="s2">"Assembling"</span><span class="p">,</span>
+        <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"Statev"</span><span class="p">,</span> <span class="s2">"Wm"</span><span class="p">],</span>
+        <span class="n">output_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">,</span>
+        <span class="n">file_format</span><span class="o">=</span><span class="s2">"vtk"</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-1-bending-with-a-hand-written-newton-raphson-loop">
+<h2>Step 1: bending with a hand-written Newton-Raphson loop<a class="headerlink" href="#step-1-bending-with-a-hand-written-newton-raphson-loop" title="Link to this heading"></a></h2>
+<p>Each increment starts with an elastic prediction that applies the increment
+of the boundary conditions, followed by Newton-Raphson corrections with the
+tangent matrix of the constitutive law. Convergence is checked on the
+displacement correction.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">"Dirichlet"</span><span class="p">,</span>
+    <span class="n">bottom_left</span><span class="p">,</span>
+    <span class="s2">"Disp"</span><span class="p">,</span>
+    <span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">bottom_right</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">top_center</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="n">uimp</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"disp"</span><span class="p">)</span>
+
+<span class="c1"># parameters</span>
+<span class="n">n_iter</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">tol_nr</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># newton-raphson tolerance</span>
+<span class="n">max_subiter</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># maximum number of newton-raphson iterations per time step</span>
+<span class="n">err_num</span> <span class="o">=</span> <span class="mf">1e-8</span>  <span class="c1"># numerical error to avoid very small iterations</span>
+<span class="n">tmax</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">dtime</span> <span class="o">=</span> <span class="n">tmax</span> <span class="o">/</span> <span class="n">n_iter</span>  <span class="c1"># time step</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">init_bc_start_value</span><span class="p">()</span>  <span class="c1"># set the initial displacement and forces</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># time at the beginning of the iteration</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>  <span class="c1"># compute the initial stress and elastic matrix</span>
+<span class="n">ii</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># iterations</span>
+
+<span class="c1"># Newton raphson loop</span>
+<span class="k">while</span> <span class="n">pb</span><span class="o">.</span><span class="n">time</span> <span class="o">&lt;</span> <span class="n">tmax</span> <span class="o">-</span> <span class="n">err_num</span><span class="p">:</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">set_start</span><span class="p">(</span>
+        <span class="n">pb</span>
+    <span class="p">)</span>  <span class="c1"># set the tangent matrix to the elastic and make the global matrices assembly</span>
+    <span class="k">if</span> <span class="n">ii</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pb</span><span class="o">.</span><span class="n">save_results</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>  <span class="c1"># Save results</span>
+
+    <span class="c1"># Begin with an elastic prediction using the elastic tangent matrix</span>
+
+    <span class="c1"># apply progressively the boundary conditions using a time factor</span>
+    <span class="c1"># as we solve an incremental problem, the load variation is considered</span>
+    <span class="n">t_fact_old</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">time</span> <span class="o">/</span> <span class="n">tmax</span>
+    <span class="n">t_fact</span> <span class="o">=</span> <span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">time</span> <span class="o">+</span> <span class="n">pb</span><span class="o">.</span><span class="n">dtime</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">tmax</span><span class="p">)</span>  <span class="c1"># adimensional time</span>
+
+    <span class="n">pb</span><span class="o">.</span><span class="n">apply_boundary_conditions</span><span class="p">(</span><span class="n">t_fact</span><span class="p">,</span> <span class="n">t_fact_old</span><span class="p">)</span>
+
+    <span class="c1"># build and solve the linearized system with elastic rigidity matrix</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">set_A</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">get_global_matrix</span><span class="p">())</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">set_D</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">get_global_vector</span><span class="p">())</span>
+
+    <span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+    <span class="n">pb</span><span class="o">.</span><span class="n">_Xbc</span> <span class="o">*=</span> <span class="mi">0</span>  <span class="c1"># boundary conditions increment are now set to 0 because the current prediction already satisfy the bc</span>
+
+    <span class="c1"># update displacement increment</span>
+    <span class="n">pb</span><span class="o">.</span><span class="n">_dU</span> <span class="o">+=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_X</span><span class="p">()</span>
+
+    <span class="n">err0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">_U</span> <span class="o">+</span> <span class="n">pb</span><span class="o">.</span><span class="n">_dU</span><span class="p">))</span>
+    <span class="n">convergence</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">for</span> <span class="n">subiter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_subiter</span><span class="p">):</span>  <span class="c1"># newton-raphson iterations</span>
+        <span class="c1"># Check convergence (displacement criterion. Force and work criteria are also possible)</span>
+        <span class="n">norm_res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">get_X</span><span class="p">()))</span> <span class="o">/</span> <span class="n">err0</span>
+
+        <span class="k">if</span> <span class="n">norm_res</span> <span class="o">&lt;</span> <span class="n">tol_nr</span><span class="p">:</span>  <span class="c1"># convergence of the NR algorithm</span>
+            <span class="n">convergence</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">break</span>
+
+        <span class="c1"># update the stress and tangent matrix from the constitutive law and</span>
+        <span class="c1"># make the global matrix and vector assemblies</span>
+        <span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span>
+
+        <span class="n">pb</span><span class="o">.</span><span class="n">set_A</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">get_global_matrix</span><span class="p">())</span>
+        <span class="n">pb</span><span class="o">.</span><span class="n">set_D</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">get_global_vector</span><span class="p">())</span>
+        <span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+        <span class="n">pb</span><span class="o">.</span><span class="n">_dU</span> <span class="o">+=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_X</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">convergence</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span>
+            <span class="s2">"Newton Raphson iteration has not converged (err: </span><span class="si">{:.5f}</span><span class="s2">)- Reduce the time step."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">norm_res</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="n">pb</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">time</span> <span class="o">+</span> <span class="n">pb</span><span class="o">.</span><span class="n">dtime</span>  <span class="c1"># update time value</span>
+    <span class="n">ii</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+        <span class="n">pb</span>
+    <span class="p">)</span>  <span class="c1"># update the stress and tangent matrix from the constitutive law and make the global matrix and vector assemblies</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">"Iter </span><span class="si">{}</span><span class="s2"> - Time: </span><span class="si">{:.5f}</span><span class="s2"> - NR iter: </span><span class="si">{}</span><span class="s2"> - Err: </span><span class="si">{:.5f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">ii</span><span class="p">,</span> <span class="n">pb</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">subiter</span><span class="p">,</span> <span class="n">norm_res</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+
+<span class="n">pb</span><span class="o">.</span><span class="n">save_results</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-elastic-release-and-residual-stresses">
+<h2>Step 2: elastic release and residual stresses<a class="headerlink" href="#step-2-elastic-release-and-residual-stresses" title="Link to this heading"></a></h2>
+<p>The prescribed displacement is removed. The unloading is assumed to be
+elastic, so a single linear solve with the elastic matrix is enough.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"disp"</span><span class="p">)</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">set_start</span><span class="p">(</span>
+    <span class="n">pb</span>
+<span class="p">)</span>  <span class="c1"># set the tangent matrix to the elastic and make the global matrices assembly</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">apply_boundary_conditions</span><span class="p">(</span><span class="n">t_fact</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t_fact_old</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># build and solve the linearized system with elastic rigidity matrix</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_A</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">get_global_matrix</span><span class="p">())</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_D</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">get_global_vector</span><span class="p">())</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="c1"># update displacement</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">_U</span> <span class="o">+=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_X</span><span class="p">()</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">assembly</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="n">pb</span>
+<span class="p">)</span>  <span class="c1"># update the stress and tangent matrix from the constitutive law and make the global matrix and vector assemblies</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">save_results</span><span class="p">(</span><span class="n">ii</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># residual stresses after the elastic release</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"vm"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-plasticity-plastic-bending-2d-from-scratch-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/8f274c3bd32d187f530d5a5121e77130/plastic_bending_2d_from_scratch.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plastic_bending_2d_from_scratch.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/82da4e19d14376e7b8d8ccc515a81089/plastic_bending_2d_from_scratch.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plastic_bending_2d_from_scratch.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/052dbcc49ef4c5a8dff0981abee4645c/plastic_bending_2d_from_scratch.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plastic_bending_2d_from_scratch.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plastic_bending_2d.html" class="btn btn-neutral float-left" title="2D elastoplastic three-point bending (Simcoon EPICP)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plastic_bending_3d.html" class="btn btn-neutral float-right" title="3D elastoplastic three-point bending" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

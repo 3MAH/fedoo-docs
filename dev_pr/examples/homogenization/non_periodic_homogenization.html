@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Non-periodic homogenization with microgen &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homogenized elastic stiffness of periodic unit cells" href="periodic_homogenization.html" />
+    <link rel="prev" title="FE2 multiscale analysis of a plate with a hole (octet-truss unit cell)" href="fe2_plate_with_hole.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Homogenization</a></li>
+      <li class="breadcrumb-item active">Non-periodic homogenization with microgen</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/homogenization/non_periodic_homogenization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-homogenization-non-periodic-homogenization-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="non-periodic-homogenization-with-microgen">
+<span id="sphx-glr-examples-homogenization-non-periodic-homogenization-py"></span><h1>Non-periodic homogenization with microgen<a class="headerlink" href="#non-periodic-homogenization-with-microgen" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example is too heavy to be run at each documentation build.
+Its results were precomputed on 2026-11-11 with fedoo 1.1.0, simcoon 0+unknown, ipctk 1.6.0, numpy 2.5.4 (fedoo commit 0c1c3c65c9bdd8702d3f2ad96d75c408d2ffb4d6), in about 49 s (Linux x86_64, BLAS mkl). Run
+the script to reproduce it with your fedoo version.</p>
+</div>
+<p>Homogenization of a non-periodic spinodoid microstructure
+using microgen’s BoxMesh to build the boundary interpolation
+dictionary required by PeriodicBC with <code class="docutils literal notranslate"><span class="pre">meshperio=False</span></code>.</p>
+<p>The effective stiffness tensor is computed using the perturbation
+method (<code class="docutils literal notranslate"><span class="pre">get_homogenized_stiffness</span></code> / <code class="docutils literal notranslate"><span class="pre">get_tangent_stiffness</span></code>).</p>
+<p>This example requires <a class="reference external" href="https://microgen.readthedocs.io">microgen</a>
+(<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">microgen</span></code>), version 1.3 or later: the boundary keys of
+<code class="docutils literal notranslate"><span class="pre">BoxMesh</span></code> (<code class="docutils literal notranslate"><span class="pre">&quot;x-&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;x+y-&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;x-y-z+&quot;</span></code>…) are those expected by
+<a class="reference internal" href="../../generated/fedoo.constraint.PeriodicBC.html#fedoo.constraint.PeriodicBC" title="fedoo.constraint.PeriodicBC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.PeriodicBC</span></code></a> (microgen 1.2 used other names). Only
+the <code class="docutils literal notranslate"><span class="pre">BoxMesh</span></code> submodule is used; with microgen 2, it does not require
+cadquery (microgen 1.x imports cadquery when the package is imported).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">microgen.box_mesh</span><span class="w"> </span><span class="kn">import</span> <span class="n">BoxMesh</span>
+</pre></div>
+</div>
+<section id="load-the-non-periodic-mesh">
+<h2>Load the non-periodic mesh<a class="headerlink" href="#load-the-non-periodic-mesh" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+
+<span class="n">dir_meshes</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">"../../util/meshes/"</span>
+<span class="p">)</span>
+
+<span class="n">pvmesh</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dir_meshes</span><span class="p">,</span> <span class="s2">"spinodoid_pd.vtk"</span><span class="p">))</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">from_pyvista</span><span class="p">(</span><span class="n">pvmesh</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Domain"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="build-the-boundary-interpolation-dictionary">
+<h2>Build the boundary interpolation dictionary<a class="headerlink" href="#build-the-boundary-interpolation-dictionary" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">BoxMesh</span></code> identifies boundary nodes and computes nearest-neighbour
+interpolation data for non-matching opposite faces.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">box_mesh</span> <span class="o">=</span> <span class="n">BoxMesh</span><span class="o">.</span><span class="n">from_pyvista</span><span class="p">(</span><span class="n">pvmesh</span><span class="p">)</span>
+
+<span class="c1"># Merge all boundary data into a single dictionary.</span>
+<span class="c1"># ``closest_points_on_boundaries`` returns "+" side entries as</span>
+<span class="c1"># ``(indices, distances)`` tuples for interpolation weights.</span>
+<span class="c1"># ``faces`` / ``edges`` / ``corners`` provide the "-" side plain arrays.</span>
+<span class="c1"># The "+" keys from ``closest_points`` overwrite the plain "+" arrays.</span>
+<span class="n">dic</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dic</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">box_mesh</span><span class="o">.</span><span class="n">faces</span><span class="p">)</span>
+<span class="n">dic</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">box_mesh</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
+<span class="n">dic</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">box_mesh</span><span class="o">.</span><span class="n">corners</span><span class="p">)</span>
+<span class="n">dic</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">box_mesh</span><span class="o">.</span><span class="n">closest_points_on_boundaries</span><span class="p">(</span><span class="n">k_neighbours</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">dic</span><span class="p">[</span><span class="s2">"rve_size"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">box_mesh</span><span class="o">.</span><span class="n">rve</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="material-weak-formulation-and-assembly">
+<h2>Material, weak formulation and assembly<a class="headerlink" href="#material-weak-formulation-and-assembly" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">assemb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">elm_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Assembly"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="compute-the-effective-stiffness-tensor">
+<h2>Compute the effective stiffness tensor<a class="headerlink" href="#compute-the-effective-stiffness-tensor" title="Link to this heading"></a></h2>
+<p>The 6 x 6 stiffness matrix is computed by the perturbation method: one
+linear problem per mean strain component.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">L_eff</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">homogen</span><span class="o">.</span><span class="n">get_homogenized_stiffness</span><span class="p">(</span>
+    <span class="n">assemb</span><span class="p">,</span>
+    <span class="n">meshperio</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">dic_closest_points_on_boundaries</span><span class="o">=</span><span class="n">dic</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Effective stiffness tensor:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L_eff</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-homogenization-non-periodic-homogenization-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/99b1f64e7dee7ed76a3eb49fcfda7f04/non_periodic_homogenization.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">non_periodic_homogenization.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/7e29c21d46a91bf4e6d9a42b4d6d5f6e/non_periodic_homogenization.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">non_periodic_homogenization.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/3d4214cfc6644f890979085a67ee6301/non_periodic_homogenization.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">non_periodic_homogenization.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fe2_plate_with_hole.html" class="btn btn-neutral float-left" title="FE2 multiscale analysis of a plate with a hole (octet-truss unit cell)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="periodic_homogenization.html" class="btn btn-neutral float-right" title="Homogenized elastic stiffness of periodic unit cells" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

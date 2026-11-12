@@ -1,0 +1,165 @@
+
+
+.. _sphx_glr_examples_dynamics:
+
+Dynamics and rigid bodies
+-------------------------
+
+Implicit time integration of structural dynamics (Newmark schemes attached to
+the problem), dynamic crack propagation, and rigid bodies
+(``fedoo.constraint.RigidBody``): free fall, then bodies of increasing
+geometric complexity (sphere, Stanford bunny, cow) bouncing on a floor through
+IPC contact, and a deformable shell ball dropped on a plate.
+
+The examples with contact require the optional dependency ``ipctk``
+(``pip install fedoo[ipc]``).
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A plane-stress strip (half model, symmetry on the crack plane Y = ymin) is first stretched statically. The crack then advances at a constant speed coeff * c_R by releasing one node of the crack plane per time step (linear implicit Newmark dynamics). The dynamic energy release rate GId is computed from the elastic and kinetic energy balance and compared with the static value Gqs.">
+
+.. only:: html
+
+  .. image:: /examples/dynamics/images/thumb/sphx_glr_broberg_dynamic_crack_thumb.png
+    :alt:
+
+  :doc:`/examples/dynamics/broberg_dynamic_crack`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dynamic crack propagation by node release in a pre-strained strip</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The example combines:">
+
+.. only:: html
+
+  .. image:: /examples/dynamics/images/thumb/sphx_glr_multi_mesh_dynamic_contact_thumb.png
+    :alt:
+
+  :doc:`/examples/dynamics/multi_mesh_dynamic_contact`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Shell ping-pong ball dropped on a solid plate (dynamic MultiMesh, IPC)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example lets a rigid sphere fall under gravity and bounce on a fixed plane.  It illustrates the rigid-body constraint, Newmark time integration, and IPC contact with a deliberately coarse model suitable for the online example gallery.">
+
+.. only:: html
+
+  .. image:: /examples/dynamics/images/thumb/sphx_glr_rigid_body_bounce_thumb.gif
+    :alt:
+
+  :doc:`/examples/dynamics/rigid_body_bounce`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid-body bounce with IPC contact</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A rigid sphere (``fedoo.constraint.RigidBody``) falls under gravity and bounces on a floor. The body is solved by fedoo&#x27;s standard fedoo.problem.NonLinear solver, with a Newmark time integrator attached to the problem (``pb.set_time_integrator``), Rayleigh damping on the rigid-body motion, and an analytic floor plane (``RigidBody.set_static_plane``) for the IPC contact. This is the longer, higher-resolution version of sphx_glr_examples_dynamics_rigid_body_bounce.py; it writes the animation rigid_body_bounce_ipc.gif.">
+
+.. only:: html
+
+  .. image:: /examples/dynamics/images/thumb/sphx_glr_rigid_body_bounce_ipc_thumb.png
+    :alt:
+
+  :doc:`/examples/dynamics/rigid_body_bounce_ipc`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid sphere bouncing on an analytic plane (IPC, Rayleigh damping)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compared with sphx_glr_examples_dynamics_rigid_body_bounce.py, the rigid body is not a sphere but the convex hull of the Stanford bunny (a watertight, asymmetric surface), which tumbles on impact. The centre of mass is taken at the centre of the bounding box and the inertia tensor is that of a box of the same size (simple approximations). The time loop is written by hand to store the orientation at each increment, read from the rigid tie quaternion, and to write the animation rigid_body_bunny_bounce.gif.">
+
+.. only:: html
+
+  .. image:: /examples/dynamics/images/thumb/sphx_glr_rigid_body_bunny_bounce_thumb.png
+    :alt:
+
+  :doc:`/examples/dynamics/rigid_body_bunny_bounce`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid Stanford bunny tumbling on a plane (IPC)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compared with sphx_glr_examples_dynamics_rigid_body_bounce.py, the rigid body is the PyVista cow mesh (watertight, decimated for speed), a non-convex surface that tumbles on impact. Large rotations are tracked with a quaternion (no gimbal lock): the orientation is read from the rigid tie at each increment of a hand-written time loop, and the animation is written to rigid_body_cow_bounce.gif.">
+
+.. only:: html
+
+  .. image:: /examples/dynamics/images/thumb/sphx_glr_rigid_body_cow_bounce_thumb.png
+    :alt:
+
+  :doc:`/examples/dynamics/rigid_body_cow_bounce`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid cow tumbling on a plane (IPC, non-convex body)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A rigid sphere falls under gravity and its final height is compared with the analytical trajectory z(t) = z_0 - \frac{1}{2} g t^2. The fedoo.constraint.RigidBody is solved by fedoo&#x27;s standard fedoo.problem.NonLinear solver through body.solve, which attaches a Newmark integrator. Any Newmark scheme (whatever \beta and \gamma) integrates a constant acceleration exactly, so the error is round-off. No contact is involved, so ipctk is not needed.">
+
+.. only:: html
+
+  .. image:: /examples/dynamics/images/thumb/sphx_glr_rigid_body_freefall_thumb.png
+    :alt:
+
+  :doc:`/examples/dynamics/rigid_body_freefall`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid-body free fall: validation of the time integration</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/dynamics/broberg_dynamic_crack
+   /examples/dynamics/multi_mesh_dynamic_contact
+   /examples/dynamics/rigid_body_bounce
+   /examples/dynamics/rigid_body_bounce_ipc
+   /examples/dynamics/rigid_body_bunny_bounce
+   /examples/dynamics/rigid_body_cow_bounce
+   /examples/dynamics/rigid_body_freefall
+

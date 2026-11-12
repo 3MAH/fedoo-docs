@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Large rigid rotation: objectivity check of the finite-strain update &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Plastic simple shear: total against updated Lagrangian" href="shear_tl_vs_ul.html" />
+    <link rel="prev" title="Snap-through of a compressed Neo-Hookean blade (static vs implicit dynamics)" href="neohookean_snap_through.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Finite strain</a></li>
+      <li class="breadcrumb-item active">Large rigid rotation: objectivity check of the finite-strain update</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/finite_strain/rotation_test.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-finite-strain-rotation-test-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="large-rigid-rotation-objectivity-check-of-the-finite-strain-update">
+<span id="sphx-glr-examples-finite-strain-rotation-test-py"></span><h1>Large rigid rotation: objectivity check of the finite-strain update<a class="headerlink" href="#large-rigid-rotation-objectivity-check-of-the-finite-strain-update" title="Link to this heading"></a></h1>
+<p>A cube of elastoplastic material (simcoon <code class="docutils literal notranslate"><span class="pre">EPICP</span></code>) is rotated by 90° about
+<span class="math notranslate nohighlight">\(z\)</span> as a rigid body, in 20 increments. The motion is prescribed through
+the mean displacement gradient of a finite strain
+<a class="reference internal" href="../../generated/fedoo.constraint.PeriodicBC.html#fedoo.constraint.PeriodicBC" title="fedoo.constraint.PeriodicBC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.PeriodicBC</span></code></a>, with
+<span class="math notranslate nohighlight">\(\mathbf{F}(t) = \mathbf{R}(\theta t)\)</span>. A rigid rotation must not
+produce any stress: the printed maximum stress after the rotation checks the
+objectivity of the finite-strain (updated Lagrangian) update and should be
+negligible compared with the yield stress (300 MPa).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<section id="mesh-and-material">
+<h2>Mesh and material<a class="headerlink" href="#mesh-and-material" title="Link to this heading"></a></h2>
+<p>Units: N, mm, MPa. The <code class="docutils literal notranslate"><span class="pre">EPICP</span></code> law (isotropic power-law hardening) is used
+here; any other law, e.g. <code class="docutils literal notranslate"><span class="pre">fd.constitutivelaw.ElasticIsotrop(E,</span> <span class="pre">nu)</span></code>,
+should give the same zero stress. The thermal expansion coefficient
+<code class="docutils literal notranslate"><span class="pre">alpha</span></code> is a required property of the law but has no effect here
+(isothermal problem).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+
+<span class="n">NLGEOM</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mf">200e3</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">1e-5</span>  <span class="c1"># thermal expansion coefficient</span>
+<span class="n">Re</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># yield stress</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># hardening coefficient</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># hardening exponent</span>
+<span class="n">meshname</span> <span class="o">=</span> <span class="s2">"Domain"</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">ny</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">nz</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="n">L</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
+    <span class="n">z_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">z_max</span><span class="o">=</span><span class="n">w</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"hex8"</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">meshname</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">[</span><span class="n">meshname</span><span class="p">]</span>
+
+<span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Re</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">])</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"ConstitutiveLaw"</span><span class="p">)</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="s2">"ConstitutiveLaw"</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="n">NLGEOM</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="problem-and-boundary-conditions">
+<h2>Problem and boundary conditions<a class="headerlink" href="#problem-and-boundary-conditions" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># node set for boundary conditions</span>
+<span class="n">nodes_bottom</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">nodes_top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">node_center</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nearest_node</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+
+<span class="n">assemb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">meshname</span><span class="p">,</span> <span class="s2">"hex8"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Assembling"</span><span class="p">,</span> <span class="n">n_elm_gp</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="s2">"Assembling"</span><span class="p">)</span>
+<span class="c1"># No external force acts on a rigid rotation, so the default force criterion</span>
+<span class="c1"># has a zero reference: use the displacement criterion.</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Displacement"</span><span class="p">)</span>
+
+<span class="c1"># set the desired outputs (the results folder is created if needed)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"results/rot_test"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"P"</span><span class="p">,</span> <span class="s2">"EP"</span><span class="p">,</span> <span class="s2">"Wm"</span><span class="p">],</span>
+    <span class="n">ignore_missing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Add periodic BC</span>
+<span class="n">bc_periodic</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="s2">"finite_strain"</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bc_periodic</span><span class="p">)</span>
+
+<span class="n">tmax</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">node_center</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Prescribe F(t) = R(theta * t) by defining time_func, instead of the default</span>
+<span class="c1"># linear interpolation of grad(u) = R(theta) - I. Linear component interpolation</span>
+<span class="c1"># would give F(t) = I + t * (R(theta) - I), which contains an artificial stretch</span>
+<span class="c1"># between the initial and final rotations.</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">"Dirichlet"</span><span class="p">,</span>
+    <span class="s2">"DU_xx"</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="n">start_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">time_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">"Dirichlet"</span><span class="p">,</span>
+    <span class="s2">"DU_xy"</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="n">start_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">time_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span> <span class="o">*</span> <span class="n">t</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"DU_xz"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">"Dirichlet"</span><span class="p">,</span>
+    <span class="s2">"DU_yx"</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="n">start_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">time_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span> <span class="o">*</span> <span class="n">t</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="s2">"Dirichlet"</span><span class="p">,</span>
+    <span class="s2">"DU_yy"</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="n">start_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">time_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"DU_yz"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"DU_zx"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"DU_zy"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"DU_zz"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Dirichlet boundary condition:
+var = 'DU_zz'
+n_nodes = 1
+value = 0
+</pre></div>
+</div>
+</section>
+<section id="solve-and-check-the-stress">
+<h2>Solve and check the stress<a class="headerlink" href="#solve-and-check-the-stress" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">interval_output</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="c1"># Objectivity check: a rigid rotation must not produce any stress.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"max |stress| after the rotation:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">assemb</span><span class="o">.</span><span class="n">sv</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">]</span><span class="o">.</span><span class="n">asarray</span><span class="p">())</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Iter 1 - Time: 0.05000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 2 - Time: 0.10000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 3 - Time: 0.15000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 4 - Time: 0.20000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 5 - Time: 0.25000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 6 - Time: 0.30000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 7 - Time: 0.35000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 8 - Time: 0.40000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 9 - Time: 0.45000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 10 - Time: 0.50000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 11 - Time: 0.55000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 12 - Time: 0.60000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 13 - Time: 0.65000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 14 - Time: 0.70000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 15 - Time: 0.75000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 16 - Time: 0.80000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 17 - Time: 0.85000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 18 - Time: 0.90000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 19 - Time: 0.95000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+Iter 20 - Time: 1.00000 - dt 0.05000 - NR iter: 2 - Err: 0.00000
+max |stress| after the rotation: 2.8225088814311386e-10
+</pre></div>
+</div>
+<p>The saved iterations can be browsed interactively with <code class="docutils literal notranslate"><span class="pre">fd.viewer(res)</span></code>
+(requires <code class="docutils literal notranslate"><span class="pre">pyvistaqt</span></code>), which provides iteration and animation controls as
+well as field and component selection. Here the final displacement is
+plotted: the cube has turned by 90° without any distortion.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"norm"</span><span class="p">,</span> <span class="s2">"Node"</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_rotation_test_001.png" srcset="../../_images/sphx_glr_rotation_test_001.png" alt="rotation test" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.021 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-finite-strain-rotation-test-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/8b5d8b18770fafe02141f4a51d0d9efd/rotation_test.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">rotation_test.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/e4898db3165e5099ecd9ef34dd367122/rotation_test.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">rotation_test.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/96beb44f401be6fcb8841a77c96ed92e/rotation_test.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">rotation_test.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="neohookean_snap_through.html" class="btn btn-neutral float-left" title="Snap-through of a compressed Neo-Hookean blade (static vs implicit dynamics)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shear_tl_vs_ul.html" class="btn btn-neutral float-right" title="Plastic simple shear: total against updated Lagrangian" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

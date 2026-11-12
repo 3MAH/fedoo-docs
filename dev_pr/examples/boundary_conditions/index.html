@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boundary conditions and constraints &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Mean motion torsion" href="mean_rigid_motion_torsion.html" />
+    <link rel="prev" title="Visualization tutorial: shear test of a cube" href="../basic/visualization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+      <li class="breadcrumb-item active">Boundary conditions and constraints</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/boundary_conditions/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="boundary-conditions-and-constraints">
+<span id="sphx-glr-examples-boundary-conditions"></span><h1>Boundary conditions and constraints<a class="headerlink" href="#boundary-conditions-and-constraints" title="Link to this heading"></a></h1>
+<p>Periodic boundary conditions (2D, 3D, in-plane and off-axis), mean value
+constraints, rigid ties and mean motion constraints, pressure loads, and
+problems that combine several meshes.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Compare two ways of imposing a torsion on the right face of a cube:"><img alt="" src="../../_images/sphx_glr_mean_rigid_motion_torsion_thumb.png" />
+<p><a class="reference internal" href="mean_rigid_motion_torsion.html"><span class="doc">Mean motion torsion</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Mean motion torsion</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example combines quadrilateral and triangular elements that share the same node array. Each element block has its own assembly, while their sum is used to solve a single mechanical problem."><img alt="" src="../../_images/sphx_glr_multi_mesh_example_thumb.png" />
+<p><a class="reference internal" href="multi_mesh_example.html"><span class="doc">Analysis and visualization of a multi-mesh model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Analysis and visualization of a multi-mesh model</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Periodic boundary conditions are enforced with fedoo.constraint.PeriodicBC on a 2D unit cell with a central hole, under the plane stress assumption. A mean shear strain \gamma_{xy} = 0.1 is prescribed on the mean strain degrees of freedom added by the constraint, and the resulting mean stress is computed by integrating the stress field over the cell."><img alt="" src="../../_images/sphx_glr_periodic_bc_2d_plate_with_hole_thumb.png" />
+<p><a class="reference internal" href="periodic_bc_2d_plate_with_hole.html"><span class="doc">2D periodic boundary condition</span></a></p>
+  <div class="sphx-glr-thumbnail-title">2D periodic boundary condition</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The periodic mesh of the Gyroid has been generated with microgen. This example shows how to define periodic boundary conditions with fedoo.constraint.PeriodicBC and to load the structure with a prescribed mean strain in a local coordinate system rotated by 45° about z (``off_axis_rotation``). The mean stress and mean strain are then extracted in the local and global coordinate systems."><img alt="" src="../../_images/sphx_glr_periodic_bc_3d_gyroid_off_axis_thumb.png" />
+<p><a class="reference internal" href="periodic_bc_3d_gyroid_off_axis.html"><span class="doc">Off-axis tensile test on a gyroid unit cell with periodic boundary conditions</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Off-axis tensile test on a gyroid unit cell with periodic boundary conditions</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A 3D unit cell of a composite ply, made of two orthogonal elliptical fiber bundles embedded in a soft matrix, is loaded by a mean in-plane strain E_{xx} = 0.1. fedoo.constraint.PeriodicBC with dim=2 makes the faces normal to x and y periodic while the top and bottom faces remain free, which models a ply of finite thickness that is periodic in its plane. The mean in-plane stress is read as the reaction to the MeanStrain degrees of freedom, and the stress in the fibers is plotted."><img alt="" src="../../_images/sphx_glr_periodic_bc_composite_ply_thumb.png" />
+<p><a class="reference internal" href="periodic_bc_composite_ply.html"><span class="doc">In-plane periodic boundary conditions on a woven composite ply</span></a></p>
+  <div class="sphx-glr-thumbnail-title">In-plane periodic boundary conditions on a woven composite ply</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Periodic boundary conditions only constrain the difference of displacement between opposite faces: the rigid body translation remains free and must be removed. The usual way is to block the displacement of an arbitrary node (generally the node nearest to the center of the RVE)."><img alt="" src="../../_images/sphx_glr_periodic_bc_mean_disp_constraint_thumb.png" />
+<p><a class="reference internal" href="periodic_bc_mean_disp_constraint.html"><span class="doc">Periodic BC without node pinning: mean displacement constraint</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Periodic BC without node pinning: mean displacement constraint</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of fedoo.constraint.Pressure for the simulation of a pipe (outer radius 200 mm, thickness 20 mm) under an internal pressure of 2 MPa and an external pressure of 0.1 MPa. The problem is treated in 2D with the plane strain assumption. For this thin pipe, the hoop stress is close to (p_i r_i - p_e r_e)/t \approx 17 MPa; the plotted field is the hydrostatic pressure -\mathrm{tr}(\boldsymbol{\sigma})/3."><img alt="" src="../../_images/sphx_glr_pressurized_pipe_thumb.png" />
+<p><a class="reference internal" href="pressurized_pipe.html"><span class="doc">Pressure constraint</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pressure constraint</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of a 2D rigid tie with fedoo.constraint.RigidTie2D. The bottom face of a square is clamped and a rigid body rotation of 45° is imposed on the top face through the RigidRotZ degree of freedom added by the constraint, in finite strain (plane strain)."><img alt="" src="../../_images/sphx_glr_rigid_tie_thumb.png" />
+<p><a class="reference internal" href="rigid_tie.html"><span class="doc">Rigid tie constraint</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rigid tie constraint</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../basic/visualization.html" class="btn btn-neutral float-left" title="Visualization tutorial: shear test of a cube" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mean_rigid_motion_torsion.html" class="btn btn-neutral float-right" title="Mean motion torsion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

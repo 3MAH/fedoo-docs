@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lid-driven cavity (Stokes flow) with a user-defined weak form &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Homogenization" href="../homogenization/index.html" />
+    <link rel="prev" title="Transient Navier-Stokes flow around a cylinder with a user weak-form class" href="navier_stokes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Custom weak forms</a></li>
+      <li class="breadcrumb-item active">Lid-driven cavity (Stokes flow) with a user-defined weak form</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/custom_weak_forms/recirculating_flow.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-custom-weak-forms-recirculating-flow-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="lid-driven-cavity-stokes-flow-with-a-user-defined-weak-form">
+<span id="sphx-glr-examples-custom-weak-forms-recirculating-flow-py"></span><h1>Lid-driven cavity (Stokes flow) with a user-defined weak form<a class="headerlink" href="#lid-driven-cavity-stokes-flow-with-a-user-defined-weak-form" title="Link to this heading"></a></h1>
+<p>Steady incompressible Stokes flow in a unit square cavity whose top wall
+moves at a unit velocity, written with the differential operators of a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.ModelingSpace</span></code> and a <code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.WeakForm</span></code>. The mixed problem
+uses the stable <code class="docutils literal notranslate"><span class="pre">p1+/p1</span></code> element (bubble-enriched velocity, linear
+pressure). The weak form is the one of the Stokes example around a cylinder:</p>
+<div class="math notranslate nohighlight">
+\[\int_\Omega \left( 2\mu\,\mathbf{D}(\mathbf{v}) : \mathbf{D}(\delta\mathbf{v})
+- p\,\nabla\cdot\delta\mathbf{v} \right) d\Omega = 0, \qquad
+\int_\Omega \delta p\,\nabla\cdot\mathbf{v}\, d\Omega = 0.\]</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">delete_memory</span><span class="p">()</span>
+
+<span class="n">space</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"2D"</span><span class="p">)</span>
+
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"Vx"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"Vy"</span><span class="p">)</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_vector</span><span class="p">(</span><span class="s2">"V"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"Vy"</span><span class="p">])</span>
+<span class="n">space</span><span class="o">.</span><span class="n">new_variable</span><span class="p">(</span><span class="s2">"P"</span><span class="p">)</span>  <span class="c1"># pressure</span>
+
+<span class="c1"># create simple DiffOp objects</span>
+<span class="n">dVx_dX</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"X"</span><span class="p">)</span>
+<span class="n">dVy_dY</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">"Vy"</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">)</span>
+<span class="n">dVy_dX</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">"Vy"</span><span class="p">,</span> <span class="s2">"X"</span><span class="p">)</span>
+<span class="n">dVx_dY</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"Y"</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="s2">"P"</span><span class="p">)</span>
+
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># dynamic viscosity</span>
+
+<span class="c1"># strain rate in Voigt notation: D_xx, D_yy, gamma_xy = 2 D_xy</span>
+<span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="n">dVx_dX</span><span class="p">,</span> <span class="n">dVy_dY</span><span class="p">,</span> <span class="n">dVx_dY</span> <span class="o">+</span> <span class="n">dVy_dX</span><span class="p">]</span>
+
+<span class="c1"># Momentum conservation equation</span>
+<span class="n">eq1</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">P</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="o">+</span> <span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">P</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">D</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="o">+</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">D</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="n">D</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Mass conservation equation</span>
+<span class="n">eq2</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">virtual</span> <span class="o">*</span> <span class="p">(</span><span class="n">dVx_dX</span> <span class="o">+</span> <span class="n">dVy_dY</span><span class="p">)</span>
+
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">WeakForm</span><span class="p">(</span><span class="n">eq1</span> <span class="o">+</span> <span class="n">eq2</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="mesh-mixed-element-and-boundary-conditions">
+<h2>Mesh, mixed element and boundary conditions<a class="headerlink" href="#mesh-mixed-element-and-boundary-conditions" title="Link to this heading"></a></h2>
+<p>The pressure dof of the bubble nodes is unused and set to zero. All the
+velocities are prescribed on the boundary, so the pressure is only defined up
+to a constant (the bubble nodes do not fix it): it is set to zero at the
+bottom-left corner.</p>
+<p>The two top corners belong both to a side wall (<span class="math notranslate nohighlight">\(\mathbf{v} = 0\)</span>) and
+to the lid (<span class="math notranslate nohighlight">\(v_x = 1\)</span>). They are removed from the side walls, so that
+they move with the lid (the “leaky” lid-driven cavity); two Dirichlet
+conditions with different values on the same dof would emit a
+<code class="docutils literal notranslate"><span class="pre">BoundaryConditionWarning</span></code>. This velocity discontinuity makes the pressure
+singular at the top corners.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">rectangle_mesh</span><span class="p">(</span><span class="n">elm_type</span><span class="o">=</span><span class="s2">"tri3"</span><span class="p">)</span>
+<span class="n">internal_nodes</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">add_internal_nodes</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">elm_type</span> <span class="o">=</span> <span class="s2">"p1+/p1"</span>
+<span class="n">new_elm</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">lib_elements</span><span class="o">.</span><span class="n">CombinedElement</span><span class="p">(</span><span class="n">elm_type</span><span class="p">,</span> <span class="s2">"tri3"</span><span class="p">)</span>
+<span class="n">new_elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"tri3bubble"</span><span class="p">)</span>
+<span class="n">new_elm</span><span class="o">.</span><span class="n">set_variable_interpolation</span><span class="p">(</span><span class="s2">"Vy"</span><span class="p">,</span> <span class="s2">"tri3bubble"</span><span class="p">)</span>
+
+<span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">elm_type</span><span class="o">=</span><span class="n">elm_type</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"assembling"</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="s2">"assembling"</span><span class="p">)</span>
+
+<span class="n">top</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"top"</span><span class="p">]</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"left"</span><span class="p">],</span> <span class="n">top</span><span class="p">),</span> <span class="s2">"V"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">node_sets</span><span class="p">[</span><span class="s2">"right"</span><span class="p">],</span> <span class="n">top</span><span class="p">),</span> <span class="s2">"V"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"bottom"</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"top"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Vx"</span><span class="p">,</span> <span class="s2">"Vy"</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">internal_nodes</span><span class="p">,</span> <span class="s2">"P"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># unused pressure dof of the bubbles</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="p">[</span><span class="n">mesh</span><span class="o">.</span><span class="n">nearest_node</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])],</span> <span class="s2">"P"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># pressure level</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">apply_boundary_conditions</span><span class="p">()</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="velocity-magnitude-and-streamlines">
+<h2>Velocity magnitude and streamlines<a class="headerlink" href="#velocity-magnitude-and-streamlines" title="Link to this heading"></a></h2>
+<p>Streamlines are not part of the fedoo plot function: they are added with
+PyVista on the plotted mesh (<code class="docutils literal notranslate"><span class="pre">res.meshplot</span></code>).</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="s2">"assembling"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"V"</span><span class="p">,</span> <span class="s2">"P"</span><span class="p">])</span>
+
+<span class="n">pl</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"V"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"norm"</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Add a zero out-of-plane component for PyVista's 3D streamline filter.</span>
+<span class="n">res</span><span class="o">.</span><span class="n">meshplot</span><span class="p">[</span><span class="s2">"vectors"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="s2">"V"</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_nodes</span><span class="p">)]</span>
+
+<span class="n">line_streamlines</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">meshplot</span><span class="o">.</span><span class="n">streamlines</span><span class="p">(</span>
+    <span class="s2">"vectors"</span><span class="p">,</span>
+    <span class="n">pointa</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">pointb</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">n_points</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="n">pl</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">line_streamlines</span><span class="o">.</span><span class="n">tube</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mf">0.005</span><span class="p">))</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_recirculating_flow_001.png" srcset="../../_images/sphx_glr_recirculating_flow_001.png" alt="recirculating flow" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.462 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-custom-weak-forms-recirculating-flow-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/c3eedd0540a7e61e69420cf7e421d0ea/recirculating_flow.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">recirculating_flow.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/3e6ec00303aff94958e72e2159cabfe6/recirculating_flow.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">recirculating_flow.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/7ca7c73a23c1a7dd3c5d5367936eaf3e/recirculating_flow.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">recirculating_flow.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="navier_stokes.html" class="btn btn-neutral float-left" title="Transient Navier-Stokes flow around a cylinder with a user weak-form class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../homogenization/index.html" class="btn btn-neutral float-right" title="Homogenization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

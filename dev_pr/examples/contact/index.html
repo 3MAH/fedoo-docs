@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact and interfaces &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Composite double-cantilever beam with a cohesive interface" href="cohesive_dcb_3d.html" />
+    <link rel="prev" title="Rigid tie constraint" href="../boundary_conditions/rigid_tie.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+      <li class="breadcrumb-item active">Contact and interfaces</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/contact/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contact-and-interfaces">
+<span id="sphx-glr-examples-contact"></span><h1>Contact and interfaces<a class="headerlink" href="#contact-and-interfaces" title="Link to this heading"></a></h1>
+<p>Contact between deformable bodies and self-contact, with the penalty method and
+with the Incremental Potential Contact (IPC) barrier, compared with analytical
+solutions (Hertz, Westergaard) where they exist. The folder also covers
+self-contact in 2D axisymmetric models (tube compression) and cohesive
+interfaces: <a class="reference internal" href="cohesive_dcb_3d.html#sphx-glr-examples-contact-cohesive-dcb-3d-py"><span class="std std-ref">Composite double-cantilever beam with a cohesive interface</span></a> opens a
+zero-thickness interface governed by a <a class="reference internal" href="../../generated/fedoo.constitutivelaw.CohesiveLaw.html#fedoo.constitutivelaw.CohesiveLaw" title="fedoo.constitutivelaw.CohesiveLaw"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.CohesiveLaw</span></code></a>.</p>
+<p>The IPC examples (<code class="docutils literal notranslate"><span class="pre">ipc_*</span></code> and the other scripts using <code class="docutils literal notranslate"><span class="pre">IPCContact</span></code> or
+<code class="docutils literal notranslate"><span class="pre">IPCSelfContact</span></code>) require the optional dependency <code class="docutils literal notranslate"><span class="pre">ipctk</span></code>
+(<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">fedoo[ipc]</span></code>). Some of them also need <code class="docutils literal notranslate"><span class="pre">gmsh</span></code> to mesh curved
+geometries.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="The model consists of two composite arms separated by a zero-thickness cohesive interface. Cohesive elements are inserted only after the prescribed starter-crack length. The initially unconnected part of the two arms therefore represents the pre-crack."><img alt="" src="../../_images/sphx_glr_cohesive_dcb_3d_thumb.png" />
+<p><a class="reference internal" href="cohesive_dcb_3d.html"><span class="doc">Composite double-cantilever beam with a cohesive interface</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Composite double-cantilever beam with a cohesive interface</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Validates penalty contact in fedoo&#x27;s 2Daxi modeling space against the classical Hertz (1882) analytical solution for a rigid sphere pressed onto an elastic half-space."><img alt="" src="../../_images/sphx_glr_hertz_axisymmetric_thumb.png" />
+<p><a class="reference internal" href="hertz_axisymmetric.html"><span class="doc">Hertz axisymmetric contact benchmark: rigid sphere on elastic half-space</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hertz axisymmetric contact benchmark: rigid sphere on elastic half-space</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates contact between a disk and a rectangle using the IPC (Incremental Potential Contact) barrier method. The disk is pressed into the rectangle and then unloaded."><img alt="" src="../../_images/sphx_glr_ipc_disk_rectangle_thumb.png" />
+<p><a class="reference internal" href="ipc_disk_rectangle.html"><span class="doc">Disk-rectangle contact (2D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Disk-rectangle contact (2D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Compresses a 3D gyroid unit cell (40 % axial strain) with IPC self-contact to prevent wall intersections. Linear elastic material, updated Lagrangian formulation."><img alt="" src="../../_images/sphx_glr_ipc_gyroid_compression_thumb.png" />
+<p><a class="reference internal" href="ipc_gyroid_compression.html"><span class="doc">Gyroid self-contact under compression (3D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Gyroid self-contact under compression (3D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Compresses a 3D gyroid unit cell (50% strain) with IPC self-contact and periodic boundary conditions.  This is the most advanced contact example, combining large strain (UL), periodic BCs, and IPC."><img alt="" src="../../_images/sphx_glr_ipc_gyroid_compression_periodic_thumb.png" />
+<p><a class="reference internal" href="ipc_gyroid_compression_periodic.html"><span class="doc">Gyroid compression with periodic BCs (3D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Gyroid compression with periodic BCs (3D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Compresses a 3D gyroid unit cell (50 % axial strain) with IPC self-contact to prevent wall intersections. Elasto-plastic material (simcoon EPICP, isotropic power-law hardening), updated Lagrangian formulation."><img alt="" src="../../_images/sphx_glr_ipc_gyroid_compression_plastic_thumb.png" />
+<p><a class="reference internal" href="ipc_gyroid_compression_plastic.html"><span class="doc">Elasto-plastic gyroid self-contact under compression (3D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Elasto-plastic gyroid self-contact under compression (3D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A stiff elastic disk is pressed vertically into a softer elastic rectangle (plane strain).  This is a classical Hertz-like contact benchmark."><img alt="" src="../../_images/sphx_glr_ipc_indentation_2d_thumb.png" />
+<p><a class="reference internal" href="ipc_indentation_2d.html"><span class="doc">Disk indentation (2D plane strain) — IPC contact with Hertz comparison</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Disk indentation (2D plane strain) — IPC contact with Hertz comparison</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A stiff elastic sphere is pressed vertically into a softer elastic block. This is the classical 3D Hertz contact benchmark."><img alt="" src="../../_images/sphx_glr_ipc_indentation_3d_thumb.png" />
+<p><a class="reference internal" href="ipc_indentation_3d.html"><span class="doc">Sphere indentation (3D) — IPC contact with Hertz comparison</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sphere indentation (3D) — IPC contact with Hertz comparison</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A cylindrical punch with a hemispherical tip is pressed into a thick elastic plate.  Both bodies deform visibly at the contact interface -- a classic contact mechanics benchmark."><img alt="" src="../../_images/sphx_glr_ipc_punch_indentation_thumb.png" />
+<p><a class="reference internal" href="ipc_punch_indentation.html"><span class="doc">Hemispherical punch indentation (3D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hemispherical punch indentation (3D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A plate with a large circular hole is compressed until self-contact occurs on the hole&#x27;s inner surface.  Uses the IPC self-contact method (``fd.constraint.IPCSelfContact``) with CCD line search."><img alt="" src="../../_images/sphx_glr_ipc_self_contact_thumb.png" />
+<p><a class="reference internal" href="ipc_self_contact.html"><span class="doc">Self-contact — hole plate compression (2D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Self-contact — hole plate compression (2D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Same problem as sphx_glr_examples_contact_tube_compression.py, solved twice: with IPCSelfContact (collisions weighted by 2 \pi r) and with the penalty SelfContact. For each run the script prints the solve time, the axial reaction forces on the top and bottom faces (they should be opposite), the peak axial stress and the peak equivalent plastic strain at the last saved increment. The page has no figure: the deformed shape is shown in sphx_glr_examples_contact_tube_compression.py, and the results of both runs are written to results/."><img alt="" src="../../_images/sphx_glr_ipc_tube_compression_thumb.png" />
+<p><a class="reference internal" href="ipc_tube_compression.html"><span class="doc">Tube compression (2Daxi): IPC versus penalty self-contact</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Tube compression (2Daxi): IPC versus penalty self-contact</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An elastic disk (E = 50 GPa) is pushed into an elasto-plastic rectangle (E = 200 GPa, quad4, plane strain) using the penalty contact method, then released. The slave nodes are the right face of the rectangle, the master surface is the disk boundary."><img alt="" src="../../_images/sphx_glr_penalty_disk_rectangle_thumb.png" />
+<p><a class="reference internal" href="penalty_disk_rectangle.html"><span class="doc">Disk-rectangle contact (2D, penalty method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Disk-rectangle contact (2D, penalty method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A plate with a large circular hole is compressed until self-contact occurs on the hole&#x27;s inner surface.  Uses the penalty self-contact method (``fd.constraint.SelfContact``) with an elasto-plastic material."><img alt="" src="../../_images/sphx_glr_penalty_self_contact_thumb.png" />
+<p><a class="reference internal" href="penalty_self_contact.html"><span class="doc">Self-contact — hole plate compression (2D, penalty method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Self-contact — hole plate compression (2D, penalty method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This model uses IPC self-contact (requires ipctk &gt;= 1.6), elasto-plastic material law with finite strain assumption in a 2D axisymmetric modeling space. The full 3D result is plotted during the post processing phase."><img alt="" src="../../_images/sphx_glr_tube_compression_thumb.png" />
+<p><a class="reference internal" href="tube_compression.html"><span class="doc">Compression of a tube using 2D axisymmetric model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Validates both IPC and penalty contact against the exact Westergaard analytical solution for periodic sinusoidal contact (plane strain)."><img alt="" src="../../_images/sphx_glr_westergaard_sinusoidal_thumb.png" />
+<p><a class="reference internal" href="westergaard_sinusoidal.html"><span class="doc">Westergaard sinusoidal contact benchmark: IPC vs penalty</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Westergaard sinusoidal contact benchmark: IPC vs penalty</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../boundary_conditions/rigid_tie.html" class="btn btn-neutral float-left" title="Rigid tie constraint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cohesive_dcb_3d.html" class="btn btn-neutral float-right" title="Composite double-cantilever beam with a cohesive interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

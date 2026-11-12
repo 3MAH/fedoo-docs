@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Off-axis tensile test on a gyroid unit cell with periodic boundary conditions &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="In-plane periodic boundary conditions on a woven composite ply" href="periodic_bc_composite_ply.html" />
+    <link rel="prev" title="2D periodic boundary condition" href="periodic_bc_2d_plate_with_hole.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Boundary conditions and constraints</a></li>
+      <li class="breadcrumb-item active">Off-axis tensile test on a gyroid unit cell with periodic boundary conditions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/boundary_conditions/periodic_bc_3d_gyroid_off_axis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-boundary-conditions-periodic-bc-3d-gyroid-off-axis-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="off-axis-tensile-test-on-a-gyroid-unit-cell-with-periodic-boundary-conditions">
+<span id="sphx-glr-examples-boundary-conditions-periodic-bc-3d-gyroid-off-axis-py"></span><h1>Off-axis tensile test on a gyroid unit cell with periodic boundary conditions<a class="headerlink" href="#off-axis-tensile-test-on-a-gyroid-unit-cell-with-periodic-boundary-conditions" title="Link to this heading"></a></h1>
+<p>The periodic mesh of the Gyroid has been generated with microgen.
+This example shows how to define periodic boundary conditions with
+<a class="reference internal" href="../../generated/fedoo.constraint.PeriodicBC.html#fedoo.constraint.PeriodicBC" title="fedoo.constraint.PeriodicBC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.PeriodicBC</span></code></a> and to load the structure with a
+prescribed mean strain in a local coordinate system rotated by 45° about
+<span class="math notranslate nohighlight">\(z\)</span> (<code class="docutils literal notranslate"><span class="pre">off_axis_rotation</span></code>). The mean stress and mean strain are then
+extracted in the local and global coordinate systems.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span>
+</pre></div>
+</div>
+<section id="mesh-material-and-linear-problem">
+<h2>Mesh, material and linear problem<a class="headerlink" href="#mesh-material-and-linear-problem" title="Link to this heading"></a></h2>
+<p>Periodic boundary conditions require a periodic mesh (matching nodes on
+opposite faces), which is checked here.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"../../util/meshes/gyroid_per_clean.vtk"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">mesh</span><span class="o">.</span><span class="n">is_periodic</span><span class="p">()</span>
+
+<span class="c1"># Material definition</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+
+<span class="c1"># Assembly</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+
+<span class="c1"># Define linear problem</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">assembly</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="boundary-conditions">
+<h2>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading"></a></h2>
+<p>The global mean strain components are eliminated from the problem when
+<code class="docutils literal notranslate"><span class="pre">off_axis_rotation</span></code> is given, so they can no longer be prescribed: for
+instance <code class="docutils literal notranslate"><span class="pre">pb.bc.add(&quot;Dirichlet&quot;,</span> <span class="pre">&quot;E_xx&quot;,</span> <span class="pre">1)</span></code> would have no effect. The load
+is applied on the local components <code class="docutils literal notranslate"><span class="pre">E_11</span></code>, …, <code class="docutils literal notranslate"><span class="pre">E_23</span></code> instead.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># periodic constraint in local frame</span>
+<span class="n">local_frame</span> <span class="o">=</span> <span class="n">Rotation</span><span class="o">.</span><span class="n">from_rotvec</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">bc_periodic</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="s2">"small_strain"</span><span class="p">,</span> <span class="n">off_axis_rotation</span><span class="o">=</span><span class="n">local_frame</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bc_periodic</span><span class="p">)</span>
+
+<span class="c1"># block a node near the center to avoid rigid body motion</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nearest_node</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">center</span><span class="p">),</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># off axis traction along the local x axis = '1'</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"E_11"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Dirichlet boundary condition:
+var = 'E_11'
+n_nodes = 1
+value = 1
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Without <code class="docutils literal notranslate"><span class="pre">off_axis_rotation</span></code>, the periodic constraint only creates the
+global mean strain dofs <code class="docutils literal notranslate"><span class="pre">MeanStrain</span></code> (<code class="docutils literal notranslate"><span class="pre">E_xx</span></code>, …, <code class="docutils literal notranslate"><span class="pre">E_yz</span></code>). The six
+components can then be prescribed at once in the global frame, for
+instance a pure shear <span class="math notranslate nohighlight">\(\gamma_{yz} = 2 \varepsilon_{yz} = 1\)</span>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">PeriodicBC</span><span class="p">(</span><span class="s2">"small_strain"</span><span class="p">))</span>
+<span class="c1"># [E_xx, E_yy, E_zz, E_xy, E_xz, E_yz], engineering shear strains</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="s2">"MeanStrain"</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span><span class="n">assembly</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"YZ"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="solve-and-print-the-macroscopic-strain-and-stress-tensors">
+<h2>Solve and print the macroscopic strain and stress tensors<a class="headerlink" href="#solve-and-print-the-macroscopic-strain-and-stress-tensors" title="Link to this heading"></a></h2>
+<p>The mean strain and its reaction can be read from the results (as below) or
+directly with <code class="docutils literal notranslate"><span class="pre">pb.get_dof_solution(&quot;LocalMeanStrain&quot;)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">pb.get_ext_forces(&quot;LocalMeanStrain&quot;)</span></code>. The reaction to the mean strain
+dofs is the mean stress times the cell volume (voids included).</p>
+<p>The mean strain dofs use the Voigt notation <code class="docutils literal notranslate"><span class="pre">[11,</span> <span class="pre">22,</span> <span class="pre">33,</span> <span class="pre">12,</span> <span class="pre">13,</span> <span class="pre">23]</span></code> with
+engineering shear strains <span class="math notranslate nohighlight">\(\gamma_{ij} = 2 \varepsilon_{ij}\)</span> (see
+<a class="reference internal" href="../../generated/fedoo.constraint.PeriodicBC.html#fedoo.constraint.PeriodicBC" title="fedoo.constraint.PeriodicBC"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constraint.PeriodicBC</span></code></a>), so the shear terms are divided by 2 to
+build the strain tensor. The stress tensor shear terms need no correction.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_results</span><span class="p">(</span>
+    <span class="n">assembly</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">"LocalMeanStrain"</span><span class="p">,</span>
+        <span class="s2">"MeanStrain"</span><span class="p">,</span>
+        <span class="s2">"Stress"</span><span class="p">,</span>
+        <span class="s2">"Disp"</span><span class="p">,</span>
+        <span class="s2">"Fext(MeanStrain)"</span><span class="p">,</span>  <span class="c1"># dual variable associated to strain is: stress * volume</span>
+        <span class="s2">"Fext(LocalMeanStrain)"</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"XX"</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">mean_strain</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s2">"LocalMeanStrain"</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">"Strain tensor in local frame:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="n">mean_strain</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">mean_strain</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">mean_strain</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+        <span class="p">]</span>
+    <span class="p">),</span>
+    <span class="s2">" </span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mean_strain</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s2">"MeanStrain"</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">"Strain tensor in global frame:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="n">mean_strain</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">mean_strain</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">mean_strain</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mean_strain</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+        <span class="p">]</span>
+    <span class="p">),</span>
+    <span class="s2">" </span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">volume</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">bounding_box</span><span class="o">.</span><span class="n">volume</span>  <span class="c1"># volume of the unit cell, including voids</span>
+<span class="n">mean_stress</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s2">"Fext(LocalMeanStrain)"</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">/</span> <span class="n">volume</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">"Stress tensor in local frame:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="n">mean_stress</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">4</span><span class="p">]],</span>
+            <span class="p">[</span><span class="n">mean_stress</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">5</span><span class="p">]],</span>
+            <span class="p">[</span><span class="n">mean_stress</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+        <span class="p">]</span>
+    <span class="p">),</span>
+    <span class="s2">" </span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mean_stress</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s2">"Fext(MeanStrain)"</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="o">/</span> <span class="n">volume</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">"Stress tensor in global frame:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="n">mean_stress</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">4</span><span class="p">]],</span>
+            <span class="p">[</span><span class="n">mean_stress</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">5</span><span class="p">]],</span>
+            <span class="p">[</span><span class="n">mean_stress</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+        <span class="p">]</span>
+    <span class="p">),</span>
+    <span class="s2">" </span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Compute the mean stress tensor by integration over the domain</span>
+<span class="c1"># The difference with the previous method is due to numerical errors</span>
+<span class="n">mean_stress</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">volume</span> <span class="o">*</span> <span class="n">mesh</span><span class="o">.</span><span class="n">integrate_field</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">"Stress"</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">"Stress tensor using integration:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="n">mean_stress</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">4</span><span class="p">]],</span>
+            <span class="p">[</span><span class="n">mean_stress</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">5</span><span class="p">]],</span>
+            <span class="p">[</span><span class="n">mean_stress</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">mean_stress</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+        <span class="p">]</span>
+    <span class="p">),</span>
+    <span class="s2">" </span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_periodic_bc_3d_gyroid_off_axis_001.png" srcset="../../_images/sphx_glr_periodic_bc_3d_gyroid_off_axis_001.png" alt="periodic bc 3d gyroid off axis" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Strain tensor in local frame:
+ [[ 1.000e+00 -1.222e-03  4.749e-04]
+ [-1.222e-03 -2.415e-01  5.056e-04]
+ [ 4.749e-04  5.056e-04 -3.296e-01]]
+
+
+Strain tensor in global frame:
+ [[ 3.805e-01  6.208e-01 -2.173e-05]
+ [ 6.208e-01  3.780e-01  6.933e-04]
+ [-2.173e-05  6.933e-04 -3.296e-01]]
+
+
+Stress tensor in local frame:
+ [[ 1.336e+04  2.330e-10  7.352e-12]
+ [ 2.330e-10 -2.363e-13  5.950e-12]
+ [ 7.352e-12  5.950e-12 -9.036e-10]]
+
+
+Stress tensor in global frame:
+ [[ 6.678e+03  6.678e+03  7.496e-13]
+ [ 6.678e+03  6.678e+03  9.108e-12]
+ [ 7.496e-13  9.108e-12 -9.036e-10]]
+
+
+Stress tensor using integration:
+ [[ 6.678e+03  6.678e+03  9.660e-13]
+ [ 6.678e+03  6.678e+03  1.125e-11]
+ [ 9.660e-13  1.125e-11 -9.096e-10]]
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.284 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-boundary-conditions-periodic-bc-3d-gyroid-off-axis-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/a28c081b9403d1fec8ec181895a11a1c/periodic_bc_3d_gyroid_off_axis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">periodic_bc_3d_gyroid_off_axis.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/29c9830ca28b76a5459f96177b108fd6/periodic_bc_3d_gyroid_off_axis.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">periodic_bc_3d_gyroid_off_axis.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/6c1447f8f52fc6b7f5578173be6eb416/periodic_bc_3d_gyroid_off_axis.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">periodic_bc_3d_gyroid_off_axis.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="periodic_bc_2d_plate_with_hole.html" class="btn btn-neutral float-left" title="2D periodic boundary condition" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="periodic_bc_composite_ply.html" class="btn btn-neutral float-right" title="In-plane periodic boundary conditions on a woven composite ply" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

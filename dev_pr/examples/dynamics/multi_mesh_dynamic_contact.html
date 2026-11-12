@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shell ping-pong ball dropped on a solid plate (dynamic MultiMesh, IPC) &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Rigid-body bounce with IPC contact" href="rigid_body_bounce.html" />
+    <link rel="prev" title="Dynamic crack propagation by node release in a pre-strained strip" href="broberg_dynamic_crack.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Dynamics and rigid bodies</a></li>
+      <li class="breadcrumb-item active">Shell ping-pong ball dropped on a solid plate (dynamic MultiMesh, IPC)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/dynamics/multi_mesh_dynamic_contact.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-dynamics-multi-mesh-dynamic-contact-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="shell-ping-pong-ball-dropped-on-a-solid-plate-dynamic-multimesh-ipc">
+<span id="sphx-glr-examples-dynamics-multi-mesh-dynamic-contact-py"></span><h1>Shell ping-pong ball dropped on a solid plate (dynamic MultiMesh, IPC)<a class="headerlink" href="#shell-ping-pong-ball-dropped-on-a-solid-plate-dynamic-multimesh-ipc" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example is too heavy to be run at each documentation build.
+The animation below was precomputed on 2026-11-11 with fedoo 1.1.0, simcoon 0+unknown, ipctk 1.6.0, numpy 2.5.4 (fedoo commit 0c1c3c65c9bdd8702d3f2ad96d75c408d2ffb4d6), in about 69 s (Linux x86_64, BLAS mkl). Run
+the script to reproduce it with your fedoo version.</p>
+</div>
+<img src="https://3mah.github.io/fedoo-docs/media/examples/dynamics/multi_mesh_dynamic_contact.gif" style="width: 100%" alt="dynamics/multi_mesh_dynamic_contact.py"><p>The example combines:</p>
+<ul class="simple">
+<li><p>a shell sphere meshed with <code class="docutils literal notranslate"><span class="pre">tri3</span></code> elements,</p></li>
+<li><p>a solid plate meshed with <code class="docutils literal notranslate"><span class="pre">hex8</span></code> elements,</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">MultiMesh</span></code> obtained with <code class="docutils literal notranslate"><span class="pre">mesh_sphere</span> <span class="pre">+</span> <span class="pre">mesh_plate</span></code>,</p></li>
+<li><p>gravity as a distributed load on the shell sphere,</p></li>
+<li><p>IPC contact on the sphere and the top surface of the plate,</p></li>
+<li><p>implicit Newmark time integration attached to the problem,</p></li>
+<li><p>FDH5 time output from the structural <code class="docutils literal notranslate"><span class="pre">AssemblySum</span></code>.</p></li>
+</ul>
+<p>The discretisation is intentionally modest so the file stays usable as an
+example. Increase the sphere resolution, plate mesh density, and time horizon
+for production-quality results. The impact itself is not resolved in time
+with the default settings (see the comments on <code class="docutils literal notranslate"><span class="pre">DENSITY</span></code> and <code class="docutils literal notranslate"><span class="pre">dhat</span></code>).</p>
+<p>This example requires <code class="docutils literal notranslate"><span class="pre">ipctk</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+
+
+<span class="n">SCRIPT_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">RESULTS_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SCRIPT_DIR</span><span class="p">,</span> <span class="s2">"results"</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">RESULTS_DIR</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Units: N, mm, tonne, s, MPa = N/mm2</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mf">2.0e3</span>
+<span class="n">NU</span> <span class="o">=</span> <span class="mf">0.37</span>
+<span class="c1"># 1.2e-9 t/mm3 = 1200 kg/m3: shell mass rho * 4 pi R^2 t = 2.7 g, the mass of</span>
+<span class="c1"># a real ping-pong ball (celluloid / ABS-like plastics: 1050-1400 kg/m3).</span>
+<span class="c1"># The free fall (about 78 ms for GAP = 30 mm) does not depend on the density,</span>
+<span class="c1"># but the impact does: with the shell stiffness of about 50 N/mm the contact</span>
+<span class="c1"># lasts about 0.7 ms, shorter than dt = 1e-3 s. The impact velocity is about</span>
+<span class="c1"># sqrt(2 g GAP) = 0.77 m/s, so the ball travels 0.77 mm per step, more than</span>
+<span class="c1"># dhat = 0.5 mm, and the elastic peak deflection v sqrt(m/k) ~ 0.18 mm is</span>
+<span class="c1"># smaller than dhat: the barrier, not the shell, may then set the contact</span>
+<span class="c1"># duration and the rebound. Use dt &lt;= 1e-4 s around the impact and a smaller</span>
+<span class="c1"># dhat to resolve it.</span>
+<span class="n">DENSITY</span> <span class="o">=</span> <span class="mf">1.2e-9</span>  <span class="c1"># tonne / mm3</span>
+<span class="n">GRAVITY</span> <span class="o">=</span> <span class="mf">9.81e3</span>  <span class="c1"># mm / s2</span>
+
+<span class="n">RADIUS</span> <span class="o">=</span> <span class="mf">20.0</span>
+<span class="n">THICKNESS</span> <span class="o">=</span> <span class="mf">0.45</span>
+<span class="n">GAP</span> <span class="o">=</span> <span class="mf">30.0</span>  <span class="c1"># initial distance between the sphere and the plate</span>
+
+<span class="n">PLATE_X</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="n">PLATE_Y</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="n">PLATE_H</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="n">SPHERE_CENTER</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">PLATE_X</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">PLATE_Y</span><span class="p">,</span> <span class="n">PLATE_H</span> <span class="o">+</span> <span class="n">RADIUS</span> <span class="o">+</span> <span class="n">GAP</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="mesh">
+<h2>Mesh<a class="headerlink" href="#mesh" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">sphere</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Sphere</span><span class="p">(</span>
+    <span class="n">radius</span><span class="o">=</span><span class="n">RADIUS</span><span class="p">,</span>
+    <span class="n">center</span><span class="o">=</span><span class="n">SPHERE_CENTER</span><span class="p">,</span>
+    <span class="n">theta_resolution</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
+    <span class="n">phi_resolution</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sphere_mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">from_pyvista</span><span class="p">(</span><span class="n">sphere</span><span class="p">)</span>
+<span class="n">sphere_mesh</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"sphere"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">sphere_mesh</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="n">plate_mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">(</span>
+    <span class="mi">20</span><span class="p">,</span>
+    <span class="mi">20</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="n">PLATE_X</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="n">PLATE_Y</span><span class="p">,</span>
+    <span class="n">z_max</span><span class="o">=</span><span class="n">PLATE_H</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plate_mesh</span><span class="o">.</span><span class="n">element_sets</span><span class="p">[</span><span class="s2">"plate"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">plate_mesh</span><span class="o">.</span><span class="n">n_elements</span><span class="p">)</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">sphere_mesh</span> <span class="o">+</span> <span class="n">plate_mesh</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"MultiMesh: </span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_nodes</span><span class="si">}</span><span class="s2"> nodes, </span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">n_elements</span><span class="si">}</span><span class="s2"> elements, </span><span class="si">{</span><span class="n">mesh</span><span class="o">.</span><span class="n">elm_types</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="models-and-structural-assemblies">
+<h2>Models and structural assemblies<a class="headerlink" href="#models-and-structural-assemblies" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+
+<span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">NU</span><span class="p">)</span>
+<span class="n">material</span><span class="o">.</span><span class="n">set_density</span><span class="p">(</span><span class="n">DENSITY</span><span class="p">)</span>
+
+<span class="n">shell_section</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ShellHomogeneous</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">THICKNESS</span><span class="p">)</span>
+<span class="n">shell_wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">PlateEquilibrium</span><span class="p">(</span><span class="n">shell_section</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Numerical damping can be added to the shell with</span>
+<span class="c1"># ``fd.weakform.ArtificialDamping`` (e.g. ``c_stab=0.001``,</span>
+<span class="c1"># ``energy_fraction=True``, about 1 % dissipated energy).</span>
+<span class="n">sphere_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">shell_wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">"sphere_shell"</span><span class="p">)</span>
+
+<span class="n">solid_wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="n">material</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plate_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">solid_wf</span><span class="p">,</span> <span class="n">mesh</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">"plate_solid"</span><span class="p">)</span>
+
+<span class="n">structural_assembly</span> <span class="o">=</span> <span class="n">sphere_assembly</span> <span class="o">+</span> <span class="n">plate_assembly</span>
+</pre></div>
+</div>
+</section>
+<section id="gravity-and-ipc-contact">
+<h2>Gravity and IPC contact<a class="headerlink" href="#gravity-and-ipc-contact" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">gravity_force</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="n">DENSITY</span> <span class="o">*</span> <span class="n">THICKNESS</span> <span class="o">*</span> <span class="n">GRAVITY</span><span class="p">]</span>
+<span class="n">gravity</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">DistributedForce</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">gravity_force</span><span class="p">,</span>
+    <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">time_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"sphere_gravity"</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># IPC contact in 3D expects a tri3 surface mesh with node ids matching the full</span>
+<span class="c1"># mechanical mesh. The shell sphere already is a surface mesh; the plate uses</span>
+<span class="c1"># only its top face, converted from quad4 to tri3.</span>
+<span class="n">plate_top_nodes</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"Z"</span><span class="p">,</span> <span class="n">PLATE_H</span><span class="p">)</span>
+<span class="n">plate_surface</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">extract_surface</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">node_set</span><span class="o">=</span><span class="n">plate_top_nodes</span><span class="p">,</span>
+    <span class="n">quad2tri</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ipc_surface</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">mesh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">elements</span><span class="p">,</span> <span class="n">plate_surface</span><span class="o">.</span><span class="n">elements</span><span class="p">)),</span>
+    <span class="s2">"tri3"</span><span class="p">,</span>
+    <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># dhat = 0.5 mm is larger than the expected elastic peak deflection at impact</span>
+<span class="c1"># (~0.18 mm, see the parameters): the barrier stiffness may govern the impact.</span>
+<span class="n">ipc_contact</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constraint</span><span class="o">.</span><span class="n">IPCContact</span><span class="p">(</span>
+    <span class="n">mesh</span><span class="p">,</span>
+    <span class="n">surface_mesh</span><span class="o">=</span><span class="n">ipc_surface</span><span class="p">,</span>
+    <span class="n">dhat</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">dhat_is_relative</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">friction_coefficient</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">use_ccd</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="problem-boundary-conditions-and-output">
+<h2>Problem, boundary conditions, and output<a class="headerlink" href="#problem-boundary-conditions-and-output" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inertia comes from the material density; the problem-level Newmark</span>
+<span class="c1"># integrator (average acceleration, beta=1/4, gamma=1/2) advances it.</span>
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="n">structural_assembly</span> <span class="o">+</span> <span class="n">ipc_contact</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">SECOND_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Newmark</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="c1"># ``fd.time.GeneralizedAlpha(alpha_m=0.0, alpha_f=1.0 / 3.0)`` would add</span>
+<span class="c1"># high-frequency numerical damping instead.</span>
+
+<span class="n">plate_nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">mesh</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span>
+<span class="n">plate_xyz</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">plate_nodes</span><span class="p">]</span>
+<span class="n">plate_support</span> <span class="o">=</span> <span class="n">plate_nodes</span><span class="p">[</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">plate_xyz</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">plate_xyz</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">plate_xyz</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">PLATE_X</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">plate_xyz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">plate_xyz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">PLATE_Y</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gravity</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">plate_support</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">plate_nodes</span><span class="p">,</span> <span class="s2">"Rot"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">RESULTS_DIR</span><span class="p">,</span> <span class="s2">"ping_pong_multimesh"</span><span class="p">),</span>
+    <span class="n">structural_assembly</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">,</span> <span class="s2">"Acceleration"</span><span class="p">],</span>
+    <span class="n">file_format</span><span class="o">=</span><span class="s2">"fdh5"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="solve-and-post-process">
+<h2>Solve and post-process<a class="headerlink" href="#solve-and-post-process" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">sphere_nodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">mesh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">elements</span><span class="p">)</span>
+<span class="n">history</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"time"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"sphere_z"</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">"contact_force_norm"</span><span class="p">:</span> <span class="p">[]}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">track</span><span class="p">(</span><span class="n">pb</span><span class="p">):</span>
+    <span class="n">disp</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">get_disp</span><span class="p">()</span>
+    <span class="n">history</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">history</span><span class="p">[</span><span class="s2">"sphere_z"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">sphere_nodes</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">disp</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">sphere_nodes</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="n">history</span><span class="p">[</span><span class="s2">"contact_force_norm"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">ipc_contact</span><span class="o">.</span><span class="n">global_vector</span><span class="p">))</span>
+
+
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Force"</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-2</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span>
+    <span class="n">dt</span><span class="o">=</span><span class="mf">1.0e-3</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="mf">2e-1</span><span class="p">,</span>
+    <span class="n">dt_min</span><span class="o">=</span><span class="mf">2.0e-5</span><span class="p">,</span>
+    <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">callback</span><span class="o">=</span><span class="n">track</span><span class="p">,</span>
+    <span class="n">exec_callback_at_each_iter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The results are written to <code class="docutils literal notranslate"><span class="pre">results/ping_pong_multimesh.fdh5</span></code>; open them
+with <code class="docutils literal notranslate"><span class="pre">fd.viewer(results)</span></code> or plot the last increment with
+<code class="docutils literal notranslate"><span class="pre">results.load(-1)</span></code> and <code class="docutils literal notranslate"><span class="pre">results.plot(&quot;Stress&quot;,</span> <span class="pre">&quot;vm&quot;,</span> <span class="pre">&quot;Node&quot;)</span></code>.</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-dynamics-multi-mesh-dynamic-contact-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/c4cdbd39689de9a59255ced60b9e6e7f/multi_mesh_dynamic_contact.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">multi_mesh_dynamic_contact.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/99cdf92bb4cecf6e7b8d288cf15bfb3e/multi_mesh_dynamic_contact.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">multi_mesh_dynamic_contact.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/1849f4ad6a3996a61cd45a6be4f863ba/multi_mesh_dynamic_contact.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">multi_mesh_dynamic_contact.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="broberg_dynamic_crack.html" class="btn btn-neutral float-left" title="Dynamic crack propagation by node release in a pre-strained strip" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rigid_body_bounce.html" class="btn btn-neutral float-right" title="Rigid-body bounce with IPC contact" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

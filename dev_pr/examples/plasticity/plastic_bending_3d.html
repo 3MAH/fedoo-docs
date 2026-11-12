@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D elastoplastic three-point bending &mdash; Fedoo 1.1.0 (dev)</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=26864b79" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Elastoplastic simple shear of a cube (finite strain, UL)" href="shear_test.html" />
+    <link rel="prev" title="2D elastoplastic three-point bending written from low-level operators" href="plastic_bending_2d_from_scratch.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #24445C" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/fedoo_logos_ss_fond.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+<p style="padding: 0.5em 1.618em; margin-bottom: 0;">
+  <a href="https://3mah.github.io/" style="color: #d9d9d9; font-weight: bold; text-decoration: none;">
+    &larr; Back to 3MAH
+  </a>
+</p>
+<hr style="border-color: #4e4e4e; margin: 0.5em 1.618em;">
+
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../post_processing.html">Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../heterogeneous.html">Heterogeneous structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_problems.html">Define user problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples</a></li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #24445C" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">fedoo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Examples</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Plasticity</a></li>
+      <li class="breadcrumb-item active">3D elastoplastic three-point bending</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/examples/plasticity/plastic_bending_3d.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-plasticity-plastic-bending-3d-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
+</div>
+<section class="sphx-glr-example-title" id="d-elastoplastic-three-point-bending">
+<span id="sphx-glr-examples-plasticity-plastic-bending-3d-py"></span><h1>3D elastoplastic three-point bending<a class="headerlink" href="#d-elastoplastic-three-point-bending" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example is too heavy to be run at each documentation build.
+The animation below was precomputed on 2026-11-10 with fedoo 1.1.0, simcoon 0+unknown, ipctk 1.6.1, numpy 2.5.4 (fedoo commit 8fa6ec0798fea2cd3c52159d1c5ffe508131a66b), in about 52 s (Linux x86_64, BLAS mkl). Run
+the script to reproduce it with your fedoo version.</p>
+</div>
+<img src="https://3mah.github.io/fedoo-docs/media/examples/plasticity/plastic_bending_3d.gif" style="width: 100%" alt="plasticity/plastic_bending_3d.py"><p>A plate (length 16 mm, thickness 2 mm, width 10 mm, hex8 elements) lies on two
+line supports and an 8 mm displacement is imposed along the line at the middle
+of its top face. The material follows the J2 elastoplastic law with isotropic
+power-law hardening of Simcoon (<code class="docutils literal notranslate"><span class="pre">EPICP</span></code>). The problem is solved in finite
+strain with the updated Lagrangian formulation (<code class="docutils literal notranslate"><span class="pre">nlgeom=&quot;UL&quot;</span></code>) and the F-bar
+method (<code class="docutils literal notranslate"><span class="pre">incompressibility=&quot;fbar&quot;</span></code>) to avoid the volumetric locking of the
+nearly incompressible plastic flow.</p>
+<p>The shear stress <span class="math notranslate nohighlight">\(\sigma_{xy}\)</span> at the end of the loading is plotted.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<section id="geometry-mesh-and-material">
+<h2>Geometry, mesh and material<a class="headerlink" href="#geometry-mesh-and-material" title="Link to this heading"></a></h2>
+<p>Units: N, mm, MPa. <code class="docutils literal notranslate"><span class="pre">mat</span> <span class="pre">=</span> <span class="pre">2</span></code> uses the native
+<a class="reference internal" href="../../generated/fedoo.constitutivelaw.ElastoPlasticity.html#fedoo.constitutivelaw.ElastoPlasticity" title="fedoo.constitutivelaw.ElastoPlasticity"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.ElastoPlasticity</span></code></a> law instead of Simcoon, and
+<code class="docutils literal notranslate"><span class="pre">mat</span> <span class="pre">=</span> <span class="pre">0</span></code> the linear elastic Simcoon law <code class="docutils literal notranslate"><span class="pre">ELISO</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">space</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">ModelingSpace</span><span class="p">(</span><span class="s2">"3D"</span><span class="p">)</span>
+
+<span class="n">NLGEOM</span> <span class="o">=</span> <span class="s2">"UL"</span>
+<span class="n">typeBending</span> <span class="o">=</span> <span class="s2">"3nodes"</span>  <span class="c1"># '3nodes' or '4nodes'</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mf">200e3</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">1e-5</span>  <span class="c1"># thermal expansion coefficient (required by Simcoon, isothermal here)</span>
+<span class="n">meshname</span> <span class="o">=</span> <span class="s2">"Domain"</span>
+<span class="n">uimp</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">box_mesh</span><span class="p">(</span>
+    <span class="n">nx</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+    <span class="n">ny</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">nz</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">x_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">x_max</span><span class="o">=</span><span class="n">L</span><span class="p">,</span>
+    <span class="n">y_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">y_max</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
+    <span class="n">z_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">z_max</span><span class="o">=</span><span class="n">w</span><span class="p">,</span>
+    <span class="n">elm_type</span><span class="o">=</span><span class="s2">"hex8"</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">meshname</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">mat</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">mat</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">alpha</span><span class="p">])</span>
+    <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"ELISO"</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"constitutivelaw"</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">mat</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">mat</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">Re</span> <span class="o">=</span> <span class="mi">300</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mf">0.3</span>
+    <span class="k">if</span> <span class="n">mat</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Re</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">])</span>
+        <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">Simcoon</span><span class="p">(</span><span class="s2">"EPICP"</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"constitutivelaw"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">mat</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElastoPlasticity</span><span class="p">(</span>
+            <span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">Re</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"constitutivelaw"</span>
+        <span class="p">)</span>
+        <span class="n">material</span><span class="o">.</span><span class="n">set_hardening_function</span><span class="p">(</span><span class="s2">"power"</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="n">m</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">material</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">constitutivelaw</span><span class="o">.</span><span class="n">ElasticIsotrop</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"constitutivelaw"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="weak-form-assembly-and-problem">
+<h2>Weak form, assembly and problem<a class="headerlink" href="#weak-form-assembly-and-problem" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../../generated/fedoo.weakform.StressEquilibriumRI.html#fedoo.weakform.StressEquilibriumRI" title="fedoo.weakform.StressEquilibriumRI"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibriumRI</span></code></a> (reduced integration with
+hourglass stiffness) is an alternative to the F-bar method.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">wf</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span>
+    <span class="s2">"constitutivelaw"</span><span class="p">,</span> <span class="n">nlgeom</span><span class="o">=</span><span class="n">NLGEOM</span><span class="p">,</span> <span class="n">incompressibility</span><span class="o">=</span><span class="s2">"fbar"</span>
+<span class="p">)</span>
+
+<span class="c1"># node sets for boundary conditions</span>
+<span class="n">nodes_bottomLeft</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"XY"</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">nodes_bottomRight</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"XY"</span><span class="p">,</span> <span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">typeBending</span> <span class="o">==</span> <span class="s2">"3nodes"</span><span class="p">:</span>
+    <span class="n">nodes_topCenter</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"XY"</span><span class="p">,</span> <span class="p">(</span><span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">nodes_top1</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"XY"</span><span class="p">,</span> <span class="p">(</span><span class="n">L</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+    <span class="n">nodes_top2</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">find_nodes</span><span class="p">(</span><span class="s2">"XY"</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+    <span class="n">nodes_topCenter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">nodes_top1</span><span class="p">,</span> <span class="n">nodes_top2</span><span class="p">))</span>
+
+<span class="n">assemb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">wf</span><span class="p">,</span> <span class="n">meshname</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Assembling"</span><span class="p">)</span>
+
+<span class="n">pb</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">NonLinear</span><span class="p">(</span><span class="s2">"Assembling"</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">set_nr_criterion</span><span class="p">(</span><span class="s2">"Force"</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span> <span class="n">max_subiter</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># create a 'results' folder and set the desired outputs</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"results"</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span>
+    <span class="s2">"results/bendingPlastic3D"</span><span class="p">,</span>
+    <span class="s2">"Assembling"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"Disp"</span><span class="p">,</span> <span class="s2">"Stress"</span><span class="p">,</span> <span class="s2">"Strain"</span><span class="p">],</span>
+    <span class="n">file_format</span><span class="o">=</span><span class="s2">"fdz"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="bending">
+<h2>Bending<a class="headerlink" href="#bending" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_bottomLeft</span><span class="p">,</span> <span class="s2">"Disp"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_bottomRight</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">bc</span> <span class="o">=</span> <span class="n">pb</span><span class="o">.</span><span class="n">bc</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Dirichlet"</span><span class="p">,</span> <span class="n">nodes_topCenter</span><span class="p">,</span> <span class="s2">"DispY"</span><span class="p">,</span> <span class="n">uimp</span><span class="p">)</span>
+
+<span class="n">pb</span><span class="o">.</span><span class="n">nlsolve</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">update_dt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">print_info</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">interval_output</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="shear-stress-at-the-end-of-the-loading">
+<h2>Shear stress at the end of the loading<a class="headerlink" href="#shear-stress-at-the-end-of-the-loading" title="Link to this heading"></a></h2>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"Stress"</span><span class="p">,</span> <span class="n">component</span><span class="o">=</span><span class="s2">"XY"</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="s2">"Node"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-plasticity-plastic-bending-3d-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/8daebd2048e714e9ddf94e7c49e782e1/plastic_bending_3d.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plastic_bending_3d.ipynb</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/23bcf3059f030239a322ae9756ae5ed7/plastic_bending_3d.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plastic_bending_3d.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/22556581a13b39cca576c026573968a3/plastic_bending_3d.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plastic_bending_3d.zip</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plastic_bending_2d_from_scratch.html" class="btn btn-neutral float-left" title="2D elastoplastic three-point bending written from low-level operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shear_test.html" class="btn btn-neutral float-right" title="Elastoplastic simple shear of a cube (finite strain, UL)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, Etienne Prulière.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

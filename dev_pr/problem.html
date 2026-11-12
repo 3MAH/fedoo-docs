@@ -245,6 +245,7 @@ by <code class="xref py py-meth docutils literal notranslate"><span class="pre">
 and frequency included as scalar metadata. To defer output, solve before
 calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">Modal.add_output()</span></code>, then register the desired fields and call
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">Modal.save_modes()</span></code> explicitly.</p>
+<p>Example: <a class="reference internal" href="examples/basic/modal_analysis.html#sphx-glr-examples-basic-modal-analysis-py"><span class="std std-ref">Free vibration of a clamped square plate</span></a>.</p>
 </section>
 <section id="linear-buckling-analysis">
 <h3>Linear buckling analysis<a class="headerlink" href="#linear-buckling-analysis" title="Link to this heading"></a></h3>
@@ -267,6 +268,7 @@ matrix already assembled by the preload problem is reused:</p>
 <p>Set <code class="docutils literal notranslate"><span class="pre">reuse_assembled_matrix=False</span></code> to rebuild both stiffness matrices. The
 first implementation supports fixed-geometry and total-Lagrangian preload
 states; updated-Lagrangian states are rejected.</p>
+<p>Example: <a class="reference internal" href="examples/basic/linear_buckling.html#sphx-glr-examples-basic-linear-buckling-py"><span class="std std-ref">Linear buckling of a pinned beam</span></a>.</p>
 </section>
 </section>
 <section id="time-integration">
@@ -326,6 +328,8 @@ material state, geometry, contact or tangent stiffness requires
 fields must be refreshed at every increment. This option does not rebuild the
 cached linear operators. <code class="xref py py-class docutils literal notranslate"><span class="pre">LinearNewmark</span></code> is an alias of
 <code class="xref py py-class docutils literal notranslate"><span class="pre">Linear</span></code> provided for convenience.</p>
+<p>Example: <a class="reference internal" href="examples/dynamics/broberg_dynamic_crack.html#sphx-glr-examples-dynamics-broberg-dynamic-crack-py"><span class="std std-ref">Dynamic crack propagation by node release in a pre-strained strip</span></a> (linear
+Newmark dynamics).</p>
 </section>
 <section id="nonlinear-transient-problems">
 <h3>Nonlinear transient problems<a class="headerlink" href="#nonlinear-transient-problems" title="Link to this heading"></a></h3>
@@ -352,6 +356,9 @@ one increment. <code class="xref py py-meth docutils literal notranslate"><span 
 adaptive time-step reduction and retry after failed increments.
 <code class="xref py py-class docutils literal notranslate"><span class="pre">NonLinearNewmark</span></code> is a convenience factory that attaches Newmark and,
 when required, Backward Euler integrators.</p>
+<p>Examples: <a class="reference internal" href="examples/dynamics/rigid_body_bounce.html#sphx-glr-examples-dynamics-rigid-body-bounce-py"><span class="std std-ref">Rigid-body bounce with IPC contact</span></a> (Newmark
+with contact) and <a class="reference internal" href="examples/thermal/thermal_conduction_2d.html#sphx-glr-examples-thermal-thermal-conduction-2d-py"><span class="std std-ref">Transient heat conduction in a 2D square</span></a>
+(Backward Euler).</p>
 </section>
 <section id="explicit-transient-problems">
 <h3>Explicit transient problems<a class="headerlink" href="#explicit-transient-problems" title="Link to this heading"></a></h3>
@@ -582,6 +589,8 @@ one. To define a different interpolation for the Pressure field, a
 </div>
 </li>
 </ul>
+<p>Example: <a class="reference internal" href="examples/finite_strain/incompressibility_comparison.html#sphx-glr-examples-finite-strain-incompressibility-comparison-py"><span class="std std-ref">Nearly incompressible plasticity: four element formulations</span></a>
+compares these formulations on a nearly incompressible plastic problem.</p>
 </section>
 <section id="numerical-damping-artificial-viscosity">
 <h4>2. Numerical Damping (Artificial Viscosity)<a class="headerlink" href="#numerical-damping-artificial-viscosity" title="Link to this heading"></a></h4>
@@ -747,6 +756,8 @@ The legacy <a class="reference internal" href="generated/fedoo.weakform.Implicit
 pedagogical purposes, but new transient models should prefer
 problem-level time integrators.</p></li>
 </ul>
+<p>Example: <a class="reference internal" href="examples/finite_strain/neohookean_snap_through.html#sphx-glr-examples-finite-strain-neohookean-snap-through-py"><span class="std std-ref">Snap-through of a compressed Neo-Hookean blade (static vs implicit dynamics)</span></a>
+(Newmark integrator on a <a class="reference internal" href="generated/fedoo.problem.NonLinear.html#fedoo.problem.NonLinear" title="fedoo.problem.NonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonLinear</span></code></a> problem, passing a limit point).</p>
 </section>
 </section>
 </section>

@@ -28,7 +28,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Simple examples to start" href="01-simple/index.html" />
+    <link rel="next" title="Basic examples" href="basic/index.html" />
     <link rel="prev" title="Define user problems" href="../user_problems.html" /> 
 </head>
 
@@ -77,10 +77,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#simple-examples-to-start">Simple examples to start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#apply-constraints">Apply constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#advanced-problems">Advanced problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-examples">Basic examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boundary-conditions-and-constraints">Boundary conditions and constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contact-and-interfaces">Contact and interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finite-strain">Finite strain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plasticity">Plasticity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shells-and-plates">Shells and plates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamics-and-rigid-bodies">Dynamics and rigid bodies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thermal-and-thermomechanical-problems">Thermal and thermomechanical problems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#poromechanics">Poromechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-weak-forms">Custom weak forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homogenization">Homogenization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#meshing">Meshing</a></li>
 </ul>
 </li>
 </ul>
@@ -112,103 +120,257 @@
              
   <section id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h1>
-<p>Below are examples illustrating fedoo’s main features.
-These examples are desgined to serve as tutorials.
-In that sense, an effort is made to keep the scripts simple and executable with
-a low computational cost. The meshes, tolerances and time increment used are coarse
-and the result obtained may not be accurate.</p>
-<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div><section id="simple-examples-to-start">
-<h2>Simple examples to start<a class="headerlink" href="#simple-examples-to-start" title="Link to this heading"></a></h2>
-<p>This section contains several very simple examples that illustrate
-the basics feature of fedoo, like how to create simple meshes,
-apply basics boundary conditions and get the results.</p>
-<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="3 points bending of an I-Shape beam"><img alt="" src="../_images/sphx_glr_I_shape_beam_bending_thumb.png" />
-<p><a class="reference internal" href="01-simple/I_shape_beam_bending.html"><span class="doc">3 points bending of an I-Shape beam</span></a></p>
-  <div class="sphx-glr-thumbnail-title">3 points bending of an I-Shape beam</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Simple example of a plate with hole in tension with 2D plane stress assumption."><img alt="" src="../_images/sphx_glr_Plate_with_hole_in_tension_thumb.png" />
-<p><a class="reference internal" href="01-simple/Plate_with_hole_in_tension.html"><span class="doc">2D plate with hole in tension</span></a></p>
-  <div class="sphx-glr-thumbnail-title">2D plate with hole in tension</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Beam Lattice Structure using beam model with geometric nonlinearities"><img alt="" src="../_images/sphx_glr_lattice_beam_thumb.png" />
-<p><a class="reference internal" href="01-simple/lattice_beam.html"><span class="doc">Beam Lattice Structure using beam model with geometric nonlinearities</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Beam Lattice Structure using beam model with geometric nonlinearities</div>
+<p>Below are examples illustrating fedoo’s main features, grouped by topic.
+These examples are designed to serve as tutorials. In that sense, an effort is
+made to keep the scripts simple and executable with a low computational cost.
+The meshes, tolerances and time increments used are coarse and the results
+obtained may not be accurate. Examples that need an optional package
+(<code class="docutils literal notranslate"><span class="pre">ipctk</span></code>, <code class="docutils literal notranslate"><span class="pre">gmsh</span></code>, <code class="docutils literal notranslate"><span class="pre">microgen</span></code>) say so at the top of their page.</p>
+<p>A few examples are too heavy to be run at each documentation build. Their page
+shows the code and a precomputed animation, with the fedoo version and date of
+the run.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"></div><section id="basic-examples">
+<h2>Basic examples<a class="headerlink" href="#basic-examples" title="Link to this heading"></a></h2>
+<p>Simple examples to get started with fedoo: create meshes, define materials,
+apply boundary conditions, solve linear and nonlinear static problems, modal
+and linear buckling analyses with solid, beam and shell elements, define a
+user equation from its weak form, and post-process the results.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Simple cantilever beam example using different kinds of beam elements. The tip deflection is compared with the analytical Bernoulli or Timoshenko value."><img alt="" src="../_images/sphx_glr_beam_elements_cantilever_thumb.png" />
+<p><a class="reference internal" href="basic/beam_elements_cantilever.html"><span class="doc">Cantilever beam with beam elements</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cantilever beam with beam elements</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Linear elastic cantilever beam meshed with hex8 elements: the left face is clamped and a transverse displacement is imposed on the right face."><img alt="" src="../_images/sphx_glr_cantilever_beam_3d_thumb.png" />
+<p><a class="reference internal" href="basic/cantilever_beam_3d.html"><span class="doc">Cantilever beam using 3D hexahedral elements</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cantilever beam using 3D hexahedral elements</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Large deflection of a hex8 cantilever beam (updated Lagrangian formulation, nlgeom=True): a transverse displacement of half the beam length is imposed on the top edge of the free end."><img alt="" src="../_images/sphx_glr_cantilever_beam_3d_nlgeom_thumb.png" />
+<p><a class="reference internal" href="basic/cantilever_beam_3d_nlgeom.html"><span class="doc">3D cantilever beam with geometric nonlinearities</span></a></p>
+  <div class="sphx-glr-thumbnail-title">3D cantilever beam with geometric nonlinearities</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Three-point bending of a rubber beam with an I-shaped cross section, meshed by extruding a 2D profile. The prescribed deflection is 10 % of the span, so the problem is solved in finite strain with a compressible Neo-Hookean law (simcoon NEOHC) whose strain energy is"><img alt="" src="../_images/sphx_glr_i_beam_three_point_bending_thumb.png" />
+<p><a class="reference internal" href="basic/i_beam_three_point_bending.html"><span class="doc">Three-point bending of an I-shaped beam</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Three-point bending of an I-shaped beam</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The edges of a structured box mesh are extracted to build a beam lattice. The left face is clamped and a large transverse displacement is imposed on the right face. The geometrically nonlinear beam problem uses the consistent corotational tangent of :pyfedoo.weakform.BeamEquilibrium."><img alt="" src="../_images/sphx_glr_lattice_beam_thumb.png" />
+<p><a class="reference internal" href="basic/lattice_beam.html"><span class="doc">Beam lattice structure using a beam model with geometric nonlinearities</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Beam lattice structure using a beam model with geometric nonlinearities</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example predicts the critical compressive loads and buckling modes of a straight elastic beam. Linear buckling is a perturbation analysis performed about a preloaded reference state. Fedoo solves"><img alt="" src="../_images/sphx_glr_linear_buckling_thumb.png" />
-<p><a class="reference internal" href="01-simple/linear_buckling.html"><span class="doc">Linear buckling of a pinned beam</span></a></p>
+<p><a class="reference internal" href="basic/linear_buckling.html"><span class="doc">Linear buckling of a pinned beam</span></a></p>
   <div class="sphx-glr-thumbnail-title">Linear buckling of a pinned beam</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example computes the natural frequencies and mode shapes of a square plate clamped along its entire boundary. A modal analysis solves the generalized eigenvalue problem"><img alt="" src="../_images/sphx_glr_modal_analysis_thumb.png" />
-<p><a class="reference internal" href="01-simple/modal_analysis.html"><span class="doc">Free vibration of a clamped square plate</span></a></p>
+<p><a class="reference internal" href="basic/modal_analysis.html"><span class="doc">Free vibration of a clamped square plate</span></a></p>
   <div class="sphx-glr-thumbnail-title">Free vibration of a clamped square plate</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Define and solve user equation"><img alt="" src="../_images/sphx_glr_poison_eq_thumb.png" />
-<p><a class="reference internal" href="01-simple/poison_eq.html"><span class="doc">Define and solve user equation</span></a></p>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A square plate (100 x 100 mm) with a central hole of radius 20 mm is stretched along x by prescribed displacements on its left and right edges, under the 2D plane stress assumption. The von Mises stress and the \sigma_{xx}, \sigma_{yy}, \sigma_{xy} components are plotted in a 2 x 2 pyvista.Plotter. The stress concentrates at the top and bottom of the hole: the concentration factor is about 3 for a small hole in an infinite plate, and larger relative to the far-field stress here because the hole is wide (diameter 0.4 times the plate width) and the mesh is coarse."><img alt="" src="../_images/sphx_glr_plate_with_hole_tension_thumb.png" />
+<p><a class="reference internal" href="basic/plate_with_hole_tension.html"><span class="doc">2D plate with hole in tension</span></a></p>
+  <div class="sphx-glr-thumbnail-title">2D plate with hole in tension</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Basic example that shows how to define the Poisson equation -\Delta U = f from its weak form and how to solve it with Dirichlet boundary conditions. Here f = 0 (Laplace equation), so the solution is the linear field U = X."><img alt="" src="../_images/sphx_glr_poisson_eq_thumb.png" />
+<p><a class="reference internal" href="basic/poisson_eq.html"><span class="doc">Define and solve user equation</span></a></p>
   <div class="sphx-glr-thumbnail-title">Define and solve user equation</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Simple canteleaver beam example using different kind of elements"><img alt="" src="../_images/sphx_glr_simpleBeamElementExample_thumb.png" />
-<p><a class="reference internal" href="01-simple/simpleBeamElementExample.html"><span class="doc">Beam Element Canteleaver Beam</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Beam Element Canteleaver Beam</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Canteleaver Beam using 3D hexahedral elements"><img alt="" src="../_images/sphx_glr_simple_cantilever_beam_3D_model_thumb.png" />
-<p><a class="reference internal" href="01-simple/simple_cantilever_beam_3D_model.html"><span class="doc">Canteleaver Beam using 3D hexahedral elements</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Canteleaver Beam using 3D hexahedral elements</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="3D Canteleaver Beam with geometric nonlinearities"><img alt="" src="../_images/sphx_glr_simple_cantilever_beam_3D_model_nlgeom_thumb.png" />
-<p><a class="reference internal" href="01-simple/simple_cantilever_beam_3D_model_nlgeom.html"><span class="doc">3D Canteleaver Beam with geometric nonlinearities</span></a></p>
-  <div class="sphx-glr-thumbnail-title">3D Canteleaver Beam with geometric nonlinearities</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Fedoo provides structured mesh generators for common shapes as well as operations for building new geometries from existing meshes. This example starts with a few built-in meshes, then creates solids and curved structures using extrusion, local frames, and surface thickening."><img alt="" src="../_images/sphx_glr_simple_mesh_generation_thumb.png" />
-<p><a class="reference internal" href="01-simple/simple_mesh_generation.html"><span class="doc">Creating simple meshes and swept geometries</span></a></p>
+<p><a class="reference internal" href="basic/simple_mesh_generation.html"><span class="doc">Creating simple meshes and swept geometries</span></a></p>
   <div class="sphx-glr-thumbnail-title">Creating simple meshes and swept geometries</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Example that show how to use plate elements with a pressure load."><img alt="" src="../_images/sphx_glr_spherical_shell_compression_thumb.png" />
-<p><a class="reference internal" href="01-simple/spherical_shell_compression.html"><span class="doc">Compression of a ping pong ball</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Compression of a ping pong ball</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example that shows how to use plate (shell) elements with a pressure load in a geometrically nonlinear analysis."><img alt="" src="../_images/sphx_glr_spherical_shell_compression_thumb.png" />
+<p><a class="reference internal" href="basic/spherical_shell_compression.html"><span class="doc">Compression of a ping-pong ball</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Compression of a ping-pong ball</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This example performs a displacement-driven shear test on a unit cube using a finite-strain formulation. Several post-processing and visualization options are demonstrated, including:"><img alt="" src="../_images/sphx_glr_visualization_thumb.png" />
-<p><a class="reference internal" href="01-simple/visualization.html"><span class="doc">Visualization tutoral - Shear test of a cube</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Visualization tutoral - Shear test of a cube</div>
+<p><a class="reference internal" href="basic/visualization.html"><span class="doc">Visualization tutorial: shear test of a cube</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Visualization tutorial: shear test of a cube</div>
 </div></div></section>
-<section id="apply-constraints">
-<h2>Apply constraints<a class="headerlink" href="#apply-constraints" title="Link to this heading"></a></h2>
-<p>This section illustrates on some examples the advanced constraints
-that can be applied in fedoo.</p>
-<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="2D periodic boundary condition"><img alt="" src="../_images/sphx_glr_Periodic_BC_2D_Plate_with_hole_thumb.png" />
-<p><a class="reference internal" href="02-constraints/Periodic_BC_2D_Plate_with_hole.html"><span class="doc">2D periodic boundary condition</span></a></p>
-  <div class="sphx-glr-thumbnail-title">2D periodic boundary condition</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates contact between a disk and a rectangle using the IPC (Incremental Potential Contact) barrier method. The disk is pressed into the rectangle and then unloaded."><img alt="" src="../_images/sphx_glr_disk_rectangle_contact_thumb.png" />
-<p><a class="reference internal" href="02-constraints/disk_rectangle_contact.html"><span class="doc">Contact between a disk and a rectangle (IPC)</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Contact between a disk and a rectangle (IPC)</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Compare two ways of imposing a torsion on the right face of a cube:"><img alt="" src="../_images/sphx_glr_mean_rigid_motion_torsion_thumb.png" />
-<p><a class="reference internal" href="02-constraints/mean_rigid_motion_torsion.html"><span class="doc">Mean motion torsion</span></a></p>
+<section id="boundary-conditions-and-constraints">
+<h2>Boundary conditions and constraints<a class="headerlink" href="#boundary-conditions-and-constraints" title="Link to this heading"></a></h2>
+<p>Periodic boundary conditions (2D, 3D, in-plane and off-axis), mean value
+constraints, rigid ties and mean motion constraints, pressure loads, and
+problems that combine several meshes.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Compare two ways of imposing a torsion on the right face of a cube:"><img alt="" src="../_images/sphx_glr_mean_rigid_motion_torsion_thumb.png" />
+<p><a class="reference internal" href="boundary_conditions/mean_rigid_motion_torsion.html"><span class="doc">Mean motion torsion</span></a></p>
   <div class="sphx-glr-thumbnail-title">Mean motion torsion</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrate the use the pressure constraint for the simulation of a pipe under internal pressure and external pressure. The problem is treated in 2D with plane strain assumption."><img alt="" src="../_images/sphx_glr_pressurized_pipe_thumb.png" />
-<p><a class="reference internal" href="02-constraints/pressurized_pipe.html"><span class="doc">Pressure constraint</span></a></p>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example combines quadrilateral and triangular elements that share the same node array. Each element block has its own assembly, while their sum is used to solve a single mechanical problem."><img alt="" src="../_images/sphx_glr_multi_mesh_example_thumb.png" />
+<p><a class="reference internal" href="boundary_conditions/multi_mesh_example.html"><span class="doc">Analysis and visualization of a multi-mesh model</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Analysis and visualization of a multi-mesh model</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Periodic boundary conditions are enforced with fedoo.constraint.PeriodicBC on a 2D unit cell with a central hole, under the plane stress assumption. A mean shear strain \gamma_{xy} = 0.1 is prescribed on the mean strain degrees of freedom added by the constraint, and the resulting mean stress is computed by integrating the stress field over the cell."><img alt="" src="../_images/sphx_glr_periodic_bc_2d_plate_with_hole_thumb.png" />
+<p><a class="reference internal" href="boundary_conditions/periodic_bc_2d_plate_with_hole.html"><span class="doc">2D periodic boundary condition</span></a></p>
+  <div class="sphx-glr-thumbnail-title">2D periodic boundary condition</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The periodic mesh of the Gyroid has been generated with microgen. This example shows how to define periodic boundary conditions with fedoo.constraint.PeriodicBC and to load the structure with a prescribed mean strain in a local coordinate system rotated by 45° about z (``off_axis_rotation``). The mean stress and mean strain are then extracted in the local and global coordinate systems."><img alt="" src="../_images/sphx_glr_periodic_bc_3d_gyroid_off_axis_thumb.png" />
+<p><a class="reference internal" href="boundary_conditions/periodic_bc_3d_gyroid_off_axis.html"><span class="doc">Off-axis tensile test on a gyroid unit cell with periodic boundary conditions</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Off-axis tensile test on a gyroid unit cell with periodic boundary conditions</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A 3D unit cell of a composite ply, made of two orthogonal elliptical fiber bundles embedded in a soft matrix, is loaded by a mean in-plane strain E_{xx} = 0.1. fedoo.constraint.PeriodicBC with dim=2 makes the faces normal to x and y periodic while the top and bottom faces remain free, which models a ply of finite thickness that is periodic in its plane. The mean in-plane stress is read as the reaction to the MeanStrain degrees of freedom, and the stress in the fibers is plotted."><img alt="" src="../_images/sphx_glr_periodic_bc_composite_ply_thumb.png" />
+<p><a class="reference internal" href="boundary_conditions/periodic_bc_composite_ply.html"><span class="doc">In-plane periodic boundary conditions on a woven composite ply</span></a></p>
+  <div class="sphx-glr-thumbnail-title">In-plane periodic boundary conditions on a woven composite ply</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Periodic boundary conditions only constrain the difference of displacement between opposite faces: the rigid body translation remains free and must be removed. The usual way is to block the displacement of an arbitrary node (generally the node nearest to the center of the RVE)."><img alt="" src="../_images/sphx_glr_periodic_bc_mean_disp_constraint_thumb.png" />
+<p><a class="reference internal" href="boundary_conditions/periodic_bc_mean_disp_constraint.html"><span class="doc">Periodic BC without node pinning: mean displacement constraint</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Periodic BC without node pinning: mean displacement constraint</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of fedoo.constraint.Pressure for the simulation of a pipe (outer radius 200 mm, thickness 20 mm) under an internal pressure of 2 MPa and an external pressure of 0.1 MPa. The problem is treated in 2D with the plane strain assumption. For this thin pipe, the hoop stress is close to (p_i r_i - p_e r_e)/t \approx 17 MPa; the plotted field is the hydrostatic pressure -\mathrm{tr}(\boldsymbol{\sigma})/3."><img alt="" src="../_images/sphx_glr_pressurized_pipe_thumb.png" />
+<p><a class="reference internal" href="boundary_conditions/pressurized_pipe.html"><span class="doc">Pressure constraint</span></a></p>
   <div class="sphx-glr-thumbnail-title">Pressure constraint</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Rigid tie constraint"><img alt="" src="../_images/sphx_glr_rigid_tie_thumb.png" />
-<p><a class="reference internal" href="02-constraints/rigid_tie.html"><span class="doc">Rigid tie constraint</span></a></p>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of a 2D rigid tie with fedoo.constraint.RigidTie2D. The bottom face of a square is clamped and a rigid body rotation of 45° is imposed on the top face through the RigidRotZ degree of freedom added by the constraint, in finite strain (plane strain)."><img alt="" src="../_images/sphx_glr_rigid_tie_thumb.png" />
+<p><a class="reference internal" href="boundary_conditions/rigid_tie.html"><span class="doc">Rigid tie constraint</span></a></p>
   <div class="sphx-glr-thumbnail-title">Rigid tie constraint</div>
 </div></div></section>
-<section id="advanced-problems">
-<h2>Advanced problems<a class="headerlink" href="#advanced-problems" title="Link to this heading"></a></h2>
-<p>This section show some advanced capabilities of fedoo.</p>
-<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="The periodic mesh of the Gyriod has been generated with microgen. This example show how to define periodic boundary conditions and to load the structure with prescribed strain in local coordinate system. After that, the mean stress and mean strain results are extracted in local and global coordinate system."><img alt="" src="../_images/sphx_glr_3D_periodic_BC_off_axis_thumb.png" />
-<p><a class="reference internal" href="03-advanced/3D_periodic_BC_off_axis.html"><span class="doc">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Off-axis tensile test on a Gyroid unit cell with periodic boundary condition</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The model consists of two composite arms separated by a zero-thickness cohesive interface. Cohesive elements are inserted only after the prescribed starter-crack length. The initially unconnected part of the two arms therefore represents the pre-crack."><img alt="" src="../_images/sphx_glr_composite_DCB_test_3D_thumb.png" />
-<p><a class="reference internal" href="03-advanced/composite_DCB_test_3D.html"><span class="doc">Composite double-cantilever beam with a cohesive interface</span></a></p>
+<section id="contact-and-interfaces">
+<h2>Contact and interfaces<a class="headerlink" href="#contact-and-interfaces" title="Link to this heading"></a></h2>
+<p>Contact between deformable bodies and self-contact, with the penalty method and
+with the Incremental Potential Contact (IPC) barrier, compared with analytical
+solutions (Hertz, Westergaard) where they exist. The folder also covers
+self-contact in 2D axisymmetric models (tube compression) and cohesive
+interfaces: <a class="reference internal" href="contact/cohesive_dcb_3d.html#sphx-glr-examples-contact-cohesive-dcb-3d-py"><span class="std std-ref">Composite double-cantilever beam with a cohesive interface</span></a> opens a
+zero-thickness interface governed by a <a class="reference internal" href="../generated/fedoo.constitutivelaw.CohesiveLaw.html#fedoo.constitutivelaw.CohesiveLaw" title="fedoo.constitutivelaw.CohesiveLaw"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.CohesiveLaw</span></code></a>.</p>
+<p>The IPC examples (<code class="docutils literal notranslate"><span class="pre">ipc_*</span></code> and the other scripts using <code class="docutils literal notranslate"><span class="pre">IPCContact</span></code> or
+<code class="docutils literal notranslate"><span class="pre">IPCSelfContact</span></code>) require the optional dependency <code class="docutils literal notranslate"><span class="pre">ipctk</span></code>
+(<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">fedoo[ipc]</span></code>). Some of them also need <code class="docutils literal notranslate"><span class="pre">gmsh</span></code> to mesh curved
+geometries.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="The model consists of two composite arms separated by a zero-thickness cohesive interface. Cohesive elements are inserted only after the prescribed starter-crack length. The initially unconnected part of the two arms therefore represents the pre-crack."><img alt="" src="../_images/sphx_glr_cohesive_dcb_3d_thumb.png" />
+<p><a class="reference internal" href="contact/cohesive_dcb_3d.html"><span class="doc">Composite double-cantilever beam with a cohesive interface</span></a></p>
   <div class="sphx-glr-thumbnail-title">Composite double-cantilever beam with a cohesive interface</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Nearly incompressible materials are difficult for low-order displacement elements.  A fully integrated quad4 element constrains the volume change at four Gauss points although its displacement field cannot satisfy all these constraints independently.  The resulting volumetric locking makes a coarse mesh much too stiff."><img alt="" src="../_images/sphx_glr_incompressibility_comparison_thumb.png" />
-<p><a class="reference internal" href="03-advanced/incompressibility_comparison.html"><span class="doc">Nearly incompressible plasticity: four element formulations</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Nearly incompressible plasticity: four element formulations</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example combines quadrilateral and triangular elements that share the same node array. Each element block has its own assembly, while their sum is used to solve a single mechanical problem."><img alt="" src="../_images/sphx_glr_multi_mesh_example_thumb.png" />
-<p><a class="reference internal" href="03-advanced/multi_mesh_example.html"><span class="doc">Analysis and visualization of a multi-mesh model</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Analysis and visualization of a multi-mesh model</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="A slender, nearly-incompressible cylinder is clamped at its base and bent by a transverse load applied to a rigid cap tied to its top face. It is loaded well into the large-deflection, finite-strain regime (tip deflection of order the cylinder length, ~40 % local strain at the clamped base)."><img alt="" src="../_images/sphx_glr_neohookean_cantilever_thumb.png" />
-<p><a class="reference internal" href="03-advanced/neohookean_cantilever.html"><span class="doc">Finite-strain Neo-Hookean cantilever (rigid cap)</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Finite-strain Neo-Hookean cantilever (rigid cap)</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Companion of the displacement-driven cantilever example &lt;neohookean_cantilever&gt;: the same slender, nearly-incompressible NEOHC cylinder, but loaded by a transverse force applied to its rigid cap — the natural protocol when mirroring a dynamics engine such as ArtiSynth."><img alt="" src="../_images/sphx_glr_neohookean_cantilever_force_thumb.png" />
-<p><a class="reference internal" href="03-advanced/neohookean_cantilever_force.html"><span class="doc">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Force-driven Neo-Hookean cantilever (massive rigid cap, implicit dynamics)</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example lets a rigid sphere fall under gravity and bounce on a fixed plane.  It illustrates the rigid-body constraint, Newmark time integration, and IPC contact with a deliberately coarse model suitable for the online example gallery."><img alt="" src="../_images/sphx_glr_rigid_body_bounce_thumb.gif" />
-<p><a class="reference internal" href="03-advanced/rigid_body_bounce.html"><span class="doc">Rigid-body bounce with IPC contact</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Rigid-body bounce with IPC contact</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Heterogeneous Material: Inclusion in a Matrix under Thermal Loading"><img alt="" src="../_images/sphx_glr_thermal_loading_thumb.png" />
-<p><a class="reference internal" href="03-advanced/thermal_loading.html"><span class="doc">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</span></a></p>
-  <div class="sphx-glr-thumbnail-title">Heterogeneous Material: Inclusion in a Matrix under Thermal Loading</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This model uses IPC self-contact (requires ipctk &gt;= 1.6), elasto-plastic material law with finite strain assumption in a 2D axisymetric modeling space. The full 3D result is ploted during the post processing phase."><img alt="" src="../_images/sphx_glr_tube_compression_thumb.png" />
-<p><a class="reference internal" href="03-advanced/tube_compression.html"><span class="doc">Compression of a tube using 2D axisymmetric model</span></a></p>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Validates penalty contact in fedoo&#x27;s 2Daxi modeling space against the classical Hertz (1882) analytical solution for a rigid sphere pressed onto an elastic half-space."><img alt="" src="../_images/sphx_glr_hertz_axisymmetric_thumb.png" />
+<p><a class="reference internal" href="contact/hertz_axisymmetric.html"><span class="doc">Hertz axisymmetric contact benchmark: rigid sphere on elastic half-space</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hertz axisymmetric contact benchmark: rigid sphere on elastic half-space</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates contact between a disk and a rectangle using the IPC (Incremental Potential Contact) barrier method. The disk is pressed into the rectangle and then unloaded."><img alt="" src="../_images/sphx_glr_ipc_disk_rectangle_thumb.png" />
+<p><a class="reference internal" href="contact/ipc_disk_rectangle.html"><span class="doc">Disk-rectangle contact (2D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Disk-rectangle contact (2D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Compresses a 3D gyroid unit cell (40 % axial strain) with IPC self-contact to prevent wall intersections. Linear elastic material, updated Lagrangian formulation."><img alt="" src="../_images/sphx_glr_ipc_gyroid_compression_thumb.png" />
+<p><a class="reference internal" href="contact/ipc_gyroid_compression.html"><span class="doc">Gyroid self-contact under compression (3D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Gyroid self-contact under compression (3D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Compresses a 3D gyroid unit cell (50% strain) with IPC self-contact and periodic boundary conditions.  This is the most advanced contact example, combining large strain (UL), periodic BCs, and IPC."><img alt="" src="../_images/sphx_glr_ipc_gyroid_compression_periodic_thumb.png" />
+<p><a class="reference internal" href="contact/ipc_gyroid_compression_periodic.html"><span class="doc">Gyroid compression with periodic BCs (3D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Gyroid compression with periodic BCs (3D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Compresses a 3D gyroid unit cell (50 % axial strain) with IPC self-contact to prevent wall intersections. Elasto-plastic material (simcoon EPICP, isotropic power-law hardening), updated Lagrangian formulation."><img alt="" src="../_images/sphx_glr_ipc_gyroid_compression_plastic_thumb.png" />
+<p><a class="reference internal" href="contact/ipc_gyroid_compression_plastic.html"><span class="doc">Elasto-plastic gyroid self-contact under compression (3D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Elasto-plastic gyroid self-contact under compression (3D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A stiff elastic disk is pressed vertically into a softer elastic rectangle (plane strain).  This is a classical Hertz-like contact benchmark."><img alt="" src="../_images/sphx_glr_ipc_indentation_2d_thumb.png" />
+<p><a class="reference internal" href="contact/ipc_indentation_2d.html"><span class="doc">Disk indentation (2D plane strain) — IPC contact with Hertz comparison</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Disk indentation (2D plane strain) — IPC contact with Hertz comparison</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A stiff elastic sphere is pressed vertically into a softer elastic block. This is the classical 3D Hertz contact benchmark."><img alt="" src="../_images/sphx_glr_ipc_indentation_3d_thumb.png" />
+<p><a class="reference internal" href="contact/ipc_indentation_3d.html"><span class="doc">Sphere indentation (3D) — IPC contact with Hertz comparison</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sphere indentation (3D) — IPC contact with Hertz comparison</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A cylindrical punch with a hemispherical tip is pressed into a thick elastic plate.  Both bodies deform visibly at the contact interface -- a classic contact mechanics benchmark."><img alt="" src="../_images/sphx_glr_ipc_punch_indentation_thumb.png" />
+<p><a class="reference internal" href="contact/ipc_punch_indentation.html"><span class="doc">Hemispherical punch indentation (3D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Hemispherical punch indentation (3D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A plate with a large circular hole is compressed until self-contact occurs on the hole&#x27;s inner surface.  Uses the IPC self-contact method (``fd.constraint.IPCSelfContact``) with CCD line search."><img alt="" src="../_images/sphx_glr_ipc_self_contact_thumb.png" />
+<p><a class="reference internal" href="contact/ipc_self_contact.html"><span class="doc">Self-contact — hole plate compression (2D, IPC method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Self-contact — hole plate compression (2D, IPC method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Same problem as sphx_glr_examples_contact_tube_compression.py, solved twice: with IPCSelfContact (collisions weighted by 2 \pi r) and with the penalty SelfContact. For each run the script prints the solve time, the axial reaction forces on the top and bottom faces (they should be opposite), the peak axial stress and the peak equivalent plastic strain at the last saved increment. The page has no figure: the deformed shape is shown in sphx_glr_examples_contact_tube_compression.py, and the results of both runs are written to results/."><img alt="" src="../_images/sphx_glr_ipc_tube_compression_thumb.png" />
+<p><a class="reference internal" href="contact/ipc_tube_compression.html"><span class="doc">Tube compression (2Daxi): IPC versus penalty self-contact</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Tube compression (2Daxi): IPC versus penalty self-contact</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="An elastic disk (E = 50 GPa) is pushed into an elasto-plastic rectangle (E = 200 GPa, quad4, plane strain) using the penalty contact method, then released. The slave nodes are the right face of the rectangle, the master surface is the disk boundary."><img alt="" src="../_images/sphx_glr_penalty_disk_rectangle_thumb.png" />
+<p><a class="reference internal" href="contact/penalty_disk_rectangle.html"><span class="doc">Disk-rectangle contact (2D, penalty method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Disk-rectangle contact (2D, penalty method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A plate with a large circular hole is compressed until self-contact occurs on the hole&#x27;s inner surface.  Uses the penalty self-contact method (``fd.constraint.SelfContact``) with an elasto-plastic material."><img alt="" src="../_images/sphx_glr_penalty_self_contact_thumb.png" />
+<p><a class="reference internal" href="contact/penalty_self_contact.html"><span class="doc">Self-contact — hole plate compression (2D, penalty method)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Self-contact — hole plate compression (2D, penalty method)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This model uses IPC self-contact (requires ipctk &gt;= 1.6), elasto-plastic material law with finite strain assumption in a 2D axisymmetric modeling space. The full 3D result is plotted during the post processing phase."><img alt="" src="../_images/sphx_glr_tube_compression_thumb.png" />
+<p><a class="reference internal" href="contact/tube_compression.html"><span class="doc">Compression of a tube using 2D axisymmetric model</span></a></p>
   <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Validates both IPC and penalty contact against the exact Westergaard analytical solution for periodic sinusoidal contact (plane strain)."><img alt="" src="../_images/sphx_glr_westergaard_sinusoidal_thumb.png" />
+<p><a class="reference internal" href="contact/westergaard_sinusoidal.html"><span class="doc">Westergaard sinusoidal contact benchmark: IPC vs penalty</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Westergaard sinusoidal contact benchmark: IPC vs penalty</div>
+</div></div></section>
+<section id="finite-strain">
+<h2>Finite strain<a class="headerlink" href="#finite-strain" title="Link to this heading"></a></h2>
+<p>Geometric nonlinearities: updated and total Lagrangian formulations,
+hyperelastic and elastoplastic laws under large deformation, objectivity of
+rigid rotations, and nearly incompressible materials.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Nearly incompressible materials are difficult for low-order displacement elements.  A fully integrated quad4 element constrains the volume change at four Gauss points although its displacement field cannot satisfy all these constraints independently.  The resulting volumetric locking makes a coarse mesh much too stiff."><img alt="" src="../_images/sphx_glr_incompressibility_comparison_thumb.png" />
+<p><a class="reference internal" href="finite_strain/incompressibility_comparison.html"><span class="doc">Nearly incompressible plasticity: four element formulations</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Nearly incompressible plasticity: four element formulations</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A slender, nearly-incompressible cylinder is clamped at its base and bent by a transverse load applied to a rigid cap tied to its top face. It is loaded well into the large-deflection, finite-strain regime (tip deflection of order the cylinder length, cap rotated by ~90 degrees)."><img alt="" src="../_images/sphx_glr_neohookean_cantilever_thumb.png" />
+<p><a class="reference internal" href="finite_strain/neohookean_cantilever.html"><span class="doc">Finite-strain Neo-Hookean cantilever (rigid cap, force and displacement control)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Finite-strain Neo-Hookean cantilever (rigid cap, force and displacement control)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Companion of the Neo-Hookean cantilever example &lt;sphx_glr_examples_finite_strain_neohookean_cantilever.py&gt;, where a soft cantilever is bent by a force in a plain static analysis. Static force control is enough there because the equilibrium path is monotonic. This example shows the case where it is not: a limit point, beyond which no neighbouring equilibrium exists and the structure jumps. The jump is a dynamic event, and implicit dynamics is then necessary."><img alt="" src="../_images/sphx_glr_neohookean_snap_through_thumb.png" />
+<p><a class="reference internal" href="finite_strain/neohookean_snap_through.html"><span class="doc">Snap-through of a compressed Neo-Hookean blade (static vs implicit dynamics)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Snap-through of a compressed Neo-Hookean blade (static vs implicit dynamics)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A cube of elastoplastic material (simcoon EPICP) is rotated by 90° about z as a rigid body, in 20 increments. The motion is prescribed through the mean displacement gradient of a finite strain fedoo.constraint.PeriodicBC, with \mathbf{F}(t) = \mathbf{R}(\theta t). A rigid rotation must not produce any stress: the printed maximum stress after the rotation checks the objectivity of the finite-strain (updated Lagrangian) update and should be negligible compared with the yield stress (300 MPa)."><img alt="" src="../_images/sphx_glr_rotation_test_thumb.png" />
+<p><a class="reference internal" href="finite_strain/rotation_test.html"><span class="doc">Large rigid rotation: objectivity check of the finite-strain update</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Large rigid rotation: objectivity check of the finite-strain update</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Both runs use the same Simcoon law (``EPICP``, J2 plasticity with isotropic hardening) on a logarithmic strain."><img alt="" src="../_images/sphx_glr_shear_tl_vs_ul_thumb.png" />
+<p><a class="reference internal" href="finite_strain/shear_tl_vs_ul.html"><span class="doc">Plastic simple shear: total against updated Lagrangian</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plastic simple shear: total against updated Lagrangian</div>
+</div></div></section>
+<section id="plasticity">
+<h2>Plasticity<a class="headerlink" href="#plasticity" title="Link to this heading"></a></h2>
+<p>Elastoplastic structures in small and finite strain, with Simcoon and native
+constitutive laws (bending, simple shear, torsion), and heterogeneous
+structures: a matrix with an inclusion, linear elastic or elastoplastic, with
+three ways to assign a material to each element set.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A square plate (plane stress) contains a circular inclusion five times stiffer than the matrix. Both materials are linear elastic and the problem is solved with fedoo.problem.Linear. The example shows three ways to give different materials to different element sets:"><img alt="" src="../_images/sphx_glr_heterogeneous_struct_thumb.png" />
+<p><a class="reference internal" href="plasticity/heterogeneous_struct.html"><span class="doc">Matrix with a stiff inclusion: three ways to assign materials</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Matrix with a stiff inclusion: three ways to assign materials</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Nonlinear version of the &quot;matrix with a stiff inclusion&quot; example. The matrix follows the J2 elastoplastic law with power-law hardening of Simcoon (``EPICP``) and the circular inclusion is linear elastic. The plate (plane stress) is stretched by 20 % in finite strain (``nlgeom=True``) with fedoo.problem.NonLinear."><img alt="" src="../_images/sphx_glr_heterogeneous_struct_nl_thumb.png" />
+<p><a class="reference internal" href="plasticity/heterogeneous_struct_nl.html"><span class="doc">Elastoplastic matrix with an elastic inclusion (Heterogeneous law)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Elastoplastic matrix with an elastic inclusion (Heterogeneous law)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A plane strain beam (length 16 mm, height 2 mm, quad4 elements) is bent by a 5 mm displacement imposed at the middle of its top edge, then released to show the residual stresses. The material follows the J2 elastoplastic law with isotropic power-law hardening of Simcoon (``EPICP``, through fedoo.constitutivelaw.Simcoon), and the problem is solved in finite strain (``nlgeom=True``) with fedoo.problem.NonLinear."><img alt="" src="../_images/sphx_glr_plastic_bending_2d_thumb.png" />
+<p><a class="reference internal" href="plasticity/plastic_bending_2d.html"><span class="doc">2D elastoplastic three-point bending (Simcoon EPICP)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">2D elastoplastic three-point bending (Simcoon EPICP)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Same plane strain bending test as the 2D elastoplastic three-point bending example (Simcoon EPICP law, 5 mm central displacement, then release), but in small strain and without :pyfedoo.problem.NonLinear.nlsolve: the time loop and the Newton-Raphson iterations are written by hand with the low-level methods of the problem and of the assembly (``set_start``, update, apply_boundary_conditions, set_A, set_D, solve). It shows what nlsolve does internally."><img alt="" src="../_images/sphx_glr_plastic_bending_2d_from_scratch_thumb.png" />
+<p><a class="reference internal" href="plasticity/plastic_bending_2d_from_scratch.html"><span class="doc">2D elastoplastic three-point bending written from low-level operators</span></a></p>
+  <div class="sphx-glr-thumbnail-title">2D elastoplastic three-point bending written from low-level operators</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A plate (length 16 mm, thickness 2 mm, width 10 mm, hex8 elements) lies on two line supports and an 8 mm displacement is imposed along the line at the middle of its top face. The material follows the J2 elastoplastic law with isotropic power-law hardening of Simcoon (``EPICP``). The problem is solved in finite strain with the updated Lagrangian formulation (``nlgeom=&quot;UL&quot;``) and the F-bar method (``incompressibility=&quot;fbar&quot;``) to avoid the volumetric locking of the nearly incompressible plastic flow."><img alt="" src="../_images/sphx_glr_plastic_bending_3d_thumb.png" />
+<p><a class="reference internal" href="plasticity/plastic_bending_3d.html"><span class="doc">3D elastoplastic three-point bending</span></a></p>
+  <div class="sphx-glr-thumbnail-title">3D elastoplastic three-point bending</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A unit cube (hex8 elements) is clamped on its bottom face while its top face is moved by one side length in the x direction (shear \gamma = 1), with no vertical motion. The material follows the J2 elastoplastic law with isotropic power-law hardening of Simcoon (``EPICP``). The problem is solved with the updated Lagrangian formulation (``nlgeom=&quot;UL&quot;``), the F-bar method and the logarithmic objective rate (``wf.corate = &quot;log&quot;``)."><img alt="" src="../_images/sphx_glr_shear_test_thumb.png" />
+<p><a class="reference internal" href="plasticity/shear_test.html"><span class="doc">Elastoplastic simple shear of a cube (finite strain, UL)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Elastoplastic simple shear of a cube (finite strain, UL)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A unit cube (hex8 elements) is clamped on its left face and its right face is twisted by 180 degrees about the x axis. The right face is driven as a rigid surface with fedoo.constraint.RigidTie, whose rotation dof RigidRotX is prescribed. The problem is solved with the updated Lagrangian formulation (``nlgeom=&quot;UL&quot;``)."><img alt="" src="../_images/sphx_glr_torsion_test_thumb.png" />
+<p><a class="reference internal" href="plasticity/torsion_test.html"><span class="doc">Large torsion of a cube (finite strain, UL)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Large torsion of a cube (finite strain, UL)</div>
+</div></div></section>
+<section id="shells-and-plates">
+<h2>Shells and plates<a class="headerlink" href="#shells-and-plates" title="Link to this heading"></a></h2>
+<p>Plate and shell elements: homogeneous and laminated sections in linear
+elasticity, and an elastoplastic shell in large rotations (corotational
+kinematics). The elastic ping-pong ball compression is in the basic examples.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A rectangular plate (100 x 20, plate elements) is clamped on one end and loaded by a transverse force at the center of the other end. The section is a symmetric sandwich defined with fedoo.constitutivelaw.ShellLaminate: two stiff skins (thickness 0.2) on a core ten times softer (thickness 1), with transverse shear (Reissner-Mindlin plate). The problem is linear (fedoo.weakform.PlateEquilibrium, fedoo.problem.Linear)."><img alt="" src="../_images/sphx_glr_laminate_cantilever_thumb.png" />
+<p><a class="reference internal" href="shells/laminate_cantilever.html"><span class="doc">Laminated plate cantilever (ShellLaminate)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Laminated plate cantilever (ShellLaminate)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A thin rectangular plate (100 x 20, thickness 1) is clamped on one end and loaded by a transverse force at the center of the other end. The homogeneous section is defined with fedoo.constitutivelaw.ShellHomogeneous and the linear problem with fedoo.weakform.PlateEquilibrium. Change geomElementType (tri3, tri6, quad4, quad8, quad9) and reduced_integration to compare the plate elements."><img alt="" src="../_images/sphx_glr_plate_elements_cantilever_thumb.png" />
+<p><a class="reference internal" href="shells/plate_elements_cantilever.html"><span class="doc">Plate elements on a cantilever: comparison with beam theory</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Plate elements on a cantilever: comparison with beam theory</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A shell sphere (radius 20 mm, thickness 0.45 mm) is compressed by a pressure applied on the two polar caps, with three point supports that only remove the rigid body motions. The section is a fedoo.constitutivelaw.ShellHomogeneousNonLinear integrated at three points through the thickness with the Simcoon EPICP elastoplastic law in plane stress. The shell kinematics are corotational (fedoo.weakform.PlateEquilibrium with nlgeom=True), while the strains passed to the material points remain small."><img alt="" src="../_images/sphx_glr_spherical_shell_compression_plastic_thumb.png" />
+<p><a class="reference internal" href="shells/spherical_shell_compression_plastic.html"><span class="doc">Elastoplastic compression of a ping-pong ball</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Elastoplastic compression of a ping-pong ball</div>
+</div></div></section>
+<section id="dynamics-and-rigid-bodies">
+<h2>Dynamics and rigid bodies<a class="headerlink" href="#dynamics-and-rigid-bodies" title="Link to this heading"></a></h2>
+<p>Implicit time integration of structural dynamics (Newmark schemes attached to
+the problem), dynamic crack propagation, and rigid bodies
+(<code class="docutils literal notranslate"><span class="pre">fedoo.constraint.RigidBody</span></code>): free fall, then bodies of increasing
+geometric complexity (sphere, Stanford bunny, cow) bouncing on a floor through
+IPC contact, and a deformable shell ball dropped on a plate.</p>
+<p>The examples with contact require the optional dependency <code class="docutils literal notranslate"><span class="pre">ipctk</span></code>
+(<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">fedoo[ipc]</span></code>).</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A plane-stress strip (half model, symmetry on the crack plane Y = ymin) is first stretched statically. The crack then advances at a constant speed coeff * c_R by releasing one node of the crack plane per time step (linear implicit Newmark dynamics). The dynamic energy release rate GId is computed from the elastic and kinetic energy balance and compared with the static value Gqs."><img alt="" src="../_images/sphx_glr_broberg_dynamic_crack_thumb.png" />
+<p><a class="reference internal" href="dynamics/broberg_dynamic_crack.html"><span class="doc">Dynamic crack propagation by node release in a pre-strained strip</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Dynamic crack propagation by node release in a pre-strained strip</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The example combines:"><img alt="" src="../_images/sphx_glr_multi_mesh_dynamic_contact_thumb.png" />
+<p><a class="reference internal" href="dynamics/multi_mesh_dynamic_contact.html"><span class="doc">Shell ping-pong ball dropped on a solid plate (dynamic MultiMesh, IPC)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Shell ping-pong ball dropped on a solid plate (dynamic MultiMesh, IPC)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example lets a rigid sphere fall under gravity and bounce on a fixed plane.  It illustrates the rigid-body constraint, Newmark time integration, and IPC contact with a deliberately coarse model suitable for the online example gallery."><img alt="" src="../_images/sphx_glr_rigid_body_bounce_thumb.gif" />
+<p><a class="reference internal" href="dynamics/rigid_body_bounce.html"><span class="doc">Rigid-body bounce with IPC contact</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rigid-body bounce with IPC contact</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A rigid sphere (``fedoo.constraint.RigidBody``) falls under gravity and bounces on a floor. The body is solved by fedoo&#x27;s standard fedoo.problem.NonLinear solver, with a Newmark time integrator attached to the problem (``pb.set_time_integrator``), Rayleigh damping on the rigid-body motion, and an analytic floor plane (``RigidBody.set_static_plane``) for the IPC contact. This is the longer, higher-resolution version of sphx_glr_examples_dynamics_rigid_body_bounce.py; it writes the animation rigid_body_bounce_ipc.gif."><img alt="" src="../_images/sphx_glr_rigid_body_bounce_ipc_thumb.png" />
+<p><a class="reference internal" href="dynamics/rigid_body_bounce_ipc.html"><span class="doc">Rigid sphere bouncing on an analytic plane (IPC, Rayleigh damping)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rigid sphere bouncing on an analytic plane (IPC, Rayleigh damping)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Compared with sphx_glr_examples_dynamics_rigid_body_bounce.py, the rigid body is not a sphere but the convex hull of the Stanford bunny (a watertight, asymmetric surface), which tumbles on impact. The centre of mass is taken at the centre of the bounding box and the inertia tensor is that of a box of the same size (simple approximations). The time loop is written by hand to store the orientation at each increment, read from the rigid tie quaternion, and to write the animation rigid_body_bunny_bounce.gif."><img alt="" src="../_images/sphx_glr_rigid_body_bunny_bounce_thumb.png" />
+<p><a class="reference internal" href="dynamics/rigid_body_bunny_bounce.html"><span class="doc">Rigid Stanford bunny tumbling on a plane (IPC)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rigid Stanford bunny tumbling on a plane (IPC)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Compared with sphx_glr_examples_dynamics_rigid_body_bounce.py, the rigid body is the PyVista cow mesh (watertight, decimated for speed), a non-convex surface that tumbles on impact. Large rotations are tracked with a quaternion (no gimbal lock): the orientation is read from the rigid tie at each increment of a hand-written time loop, and the animation is written to rigid_body_cow_bounce.gif."><img alt="" src="../_images/sphx_glr_rigid_body_cow_bounce_thumb.png" />
+<p><a class="reference internal" href="dynamics/rigid_body_cow_bounce.html"><span class="doc">Rigid cow tumbling on a plane (IPC, non-convex body)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rigid cow tumbling on a plane (IPC, non-convex body)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A rigid sphere falls under gravity and its final height is compared with the analytical trajectory z(t) = z_0 - \frac{1}{2} g t^2. The fedoo.constraint.RigidBody is solved by fedoo&#x27;s standard fedoo.problem.NonLinear solver through body.solve, which attaches a Newmark integrator. Any Newmark scheme (whatever \beta and \gamma) integrates a constant acceleration exactly, so the error is round-off. No contact is involved, so ipctk is not needed."><img alt="" src="../_images/sphx_glr_rigid_body_freefall_thumb.png" />
+<p><a class="reference internal" href="dynamics/rigid_body_freefall.html"><span class="doc">Rigid-body free fall: validation of the time integration</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rigid-body free fall: validation of the time integration</div>
+</div></div></section>
+<section id="thermal-and-thermomechanical-problems">
+<h2>Thermal and thermomechanical problems<a class="headerlink" href="#thermal-and-thermomechanical-problems" title="Link to this heading"></a></h2>
+<p>Transient heat conduction, weakly coupled thermomechanical problems and thermal
+expansion loads on a heterogeneous structure.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Transient heat conduction in a unit square with fedoo.weakform.HeatEquation and fedoo.constitutivelaw.ThermalProperties, solved on a fedoo.problem.NonLinear problem with a first-order backward Euler time integrator. The temperatures of the left and right edges are ramped from 0 to T = 100 and T = 50; the other edges are insulated."><img alt="" src="../_images/sphx_glr_thermal_conduction_2d_thumb.png" />
+<p><a class="reference internal" href="thermal/thermal_conduction_2d.html"><span class="doc">Transient heat conduction in a 2D square</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Transient heat conduction in a 2D square</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Transient heat conduction in a 3D gyroid lattice (tet4 mesh read from util/meshes/gyroid.msh) with fedoo.weakform.HeatEquation. The +X face is suddenly brought to T = 100 (step time function); the other faces are insulated and the initial temperature is zero."><img alt="" src="../_images/sphx_glr_thermal_conduction_3d_thumb.png" />
+<p><a class="reference internal" href="thermal/thermal_conduction_3d.html"><span class="doc">Transient heat conduction in a gyroid lattice</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Transient heat conduction in a gyroid lattice</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to model a composite material consisting of a disk-shaped inclusion embedded within a matrix, loaded by thermal expansion. It utilizes the fedoo.constitutivelaw.Heterogeneous constitutive law to manage different material behaviors (elastic and elastoplastic) within a single Assembly. The temperature is uniform and prescribed: it rises to 400 and returns to 0, while all the exterior edges are clamped."><img alt="" src="../_images/sphx_glr_thermal_loading_thumb.png" />
+<p><a class="reference internal" href="thermal/thermal_loading.html"><span class="doc">Heterogeneous material: inclusion in a matrix under thermal loading</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Heterogeneous material: inclusion in a matrix under thermal loading</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Staggered (weak) thermo-mechanical coupling on a 3D gyroid lattice: a transient fedoo.weakform.HeatEquation problem and a small-strain fedoo.weakform.StressEquilibrium problem with thermal expansion are advanced increment by increment with :pyfedoo.problem.NonLinear.solve_time_increment. At each increment the converged temperature is copied into the mechanical assembly. The +X face is heated to T = 100 during the first phase and cooled back to T = 0 during the second one; all faces are clamped."><img alt="" src="../_images/sphx_glr_thermomechanical_weak_coupling_3d_thumb.png" />
+<p><a class="reference internal" href="thermal/thermomechanical_weak_coupling_3d.html"><span class="doc">Weakly coupled thermo-mechanical analysis of a gyroid lattice</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Weakly coupled thermo-mechanical analysis of a gyroid lattice</div>
 </div></div></section>
 <section id="poromechanics">
 <h2>Poromechanics<a class="headerlink" href="#poromechanics" title="Link to this heading"></a></h2>
@@ -226,6 +388,46 @@ See <a class="reference internal" href="../poromechanics.html"><span class="doc"
 </div><div class="sphx-glr-thumbcontainer" tooltip="A column of saturated porous material with a linear elastic skeleton is loaded by a constant pressure on its top face. The top face is drained (``PorePressure = 0``), the bottom and lateral faces are sealed, and the lateral displacements are blocked (oedometric, i.e. 1D, consolidation)."><img alt="" src="../_images/sphx_glr_terzaghi_1d_thumb.png" />
 <p><a class="reference internal" href="poromechanics/terzaghi_1d.html"><span class="doc">Terzaghi 1D consolidation (small strain)</span></a></p>
   <div class="sphx-glr-thumbnail-title">Terzaghi 1D consolidation (small strain)</div>
+</div></div></section>
+<section id="custom-weak-forms">
+<h2>Custom weak forms<a class="headerlink" href="#custom-weak-forms" title="Link to this heading"></a></h2>
+<p>Problems defined directly from a user weak form written with fedoo’s
+differential operators: Stokes and Navier-Stokes flows. The Poisson equation is
+in the basic examples (<a class="reference internal" href="basic/poisson_eq.html#sphx-glr-examples-basic-poisson-eq-py"><span class="std std-ref">Define and solve user equation</span></a>).</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Steady incompressible Stokes flow in a channel around a circular obstacle, written directly with the differential operators of a fedoo.ModelingSpace and a fedoo.WeakForm. The mixed velocity/pressure problem is discretized with the stable p1+/p1 element (linear triangle enriched by a bubble for the velocity, linear pressure) built with fedoo.lib_elements.CombinedElement."><img alt="" src="../_images/sphx_glr_fluid_mechanics_thumb.png" />
+<p><a class="reference internal" href="custom_weak_forms/fluid_mechanics.html"><span class="doc">Stokes flow around a cylinder with a user-defined weak form</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Stokes flow around a cylinder with a user-defined weak form</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="A nonlinear user weak form is written by subclassing fedoo.core.weakform.WeakFormBase: update stores the current velocity, pressure and velocity gradient at the Gauss points, set_start keeps the velocity of the last converged increment, and get_weak_equation returns the weak form linearized at the current state (tangent operator plus residual) for the Newton-Raphson solver of fedoo.problem.NonLinear."><img alt="" src="../_images/sphx_glr_navier_stokes_thumb.png" />
+<p><a class="reference internal" href="custom_weak_forms/navier_stokes.html"><span class="doc">Transient Navier-Stokes flow around a cylinder with a user weak-form class</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Transient Navier-Stokes flow around a cylinder with a user weak-form class</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Steady incompressible Stokes flow in a unit square cavity whose top wall moves at a unit velocity, written with the differential operators of a fedoo.ModelingSpace and a fedoo.WeakForm. The mixed problem uses the stable p1+/p1 element (bubble-enriched velocity, linear pressure). The weak form is the one of the Stokes example around a cylinder:"><img alt="" src="../_images/sphx_glr_recirculating_flow_thumb.png" />
+<p><a class="reference internal" href="custom_weak_forms/recirculating_flow.html"><span class="doc">Lid-driven cavity (Stokes flow) with a user-defined weak form</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Lid-driven cavity (Stokes flow) with a user-defined weak form</div>
+</div></div></section>
+<section id="homogenization">
+<h2>Homogenization<a class="headerlink" href="#homogenization" title="Link to this heading"></a></h2>
+<p>Effective properties of periodic and non-periodic microstructures, and
+FE<sup>2</sup> multiscale analysis.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="A quarter of a plate with a hole (2D plane strain, very coarse quad4 mesh) is stretched along x. Its material is not given by a constitutive law but computed by FE\ 2: with fedoo.constitutivelaw.FE2, each macroscopic integration point carries a 3D finite element model of an octet-truss unit cell (``tet4`` mesh) made of an elastoplastic steel (simcoon EPICP). At every Newton iteration, the macroscopic strain is applied to each cell with periodic boundary conditions, and the cells return the mean stress and the homogenized tangent matrix."><img alt="" src="../_images/sphx_glr_fe2_plate_with_hole_thumb.png" />
+<p><a class="reference internal" href="homogenization/fe2_plate_with_hole.html"><span class="doc">FE2 multiscale analysis of a plate with a hole (octet-truss unit cell)</span></a></p>
+  <div class="sphx-glr-thumbnail-title">FE2 multiscale analysis of a plate with a hole (octet-truss unit cell)</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Homogenization of a non-periodic spinodoid microstructure using microgen&#x27;s BoxMesh to build the boundary interpolation dictionary required by PeriodicBC with meshperio=False."><img alt="" src="../_images/sphx_glr_non_periodic_homogenization_thumb.png" />
+<p><a class="reference internal" href="homogenization/non_periodic_homogenization.html"><span class="doc">Non-periodic homogenization with microgen</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Non-periodic homogenization with microgen</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example computes the effective (homogenized) elastic stiffness matrix \mathbf{L}^{\text{eff}} of periodic lattice unit cells with fedoo.homogen.get_homogenized_stiffness. The function applies periodic boundary conditions and solves six elementary load cases (one per component of the mean strain)."><img alt="" src="../_images/sphx_glr_periodic_homogenization_thumb.png" />
+<p><a class="reference internal" href="homogenization/periodic_homogenization.html"><span class="doc">Homogenized elastic stiffness of periodic unit cells</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Homogenized elastic stiffness of periodic unit cells</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example computes the effective elastic stiffness matrix \mathbf{L}^{\text{eff}} of a periodic gyroid unit cell without the fedoo.homogen.get_homogenized_stiffness helper (see sphx_glr_examples_homogenization_periodic_homogenization.py), to show what it does. A fedoo.constraint.PeriodicBC adds the six mean strain components as global degrees of freedom; six linear problems are solved, each with a unit load on one of these components, and \mathbf{L}^{\text{eff}} is built from the six solutions. The directional Young&#x27;s modulus of the cell is then plotted."><img alt="" src="../_images/sphx_glr_periodic_homogenization_from_scratch_thumb.png" />
+<p><a class="reference internal" href="homogenization/periodic_homogenization_from_scratch.html"><span class="doc">Homogenized stiffness of a periodic cell from low-level operators</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Homogenized stiffness of a periodic cell from low-level operators</div>
+</div></div></section>
+<section id="meshing">
+<h2>Meshing<a class="headerlink" href="#meshing" title="Link to this heading"></a></h2>
+<p>Nodal gradient and Hessian recovery on a mesh, used to drive anisotropic
+adaptive remeshing (mmg). Mesh generation is shown in the basic examples.</p>
+<div id='sg-tag-list' class='sphx-glr-tag-list'></div><div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Compute the recovered nodal gradient and Hessian of an analytic scalar field on a 2D mesh using fedoo.recover_gradient and fedoo.recover_hessian. The recovered fields are plotted and written to a vtk file so you can inspect them in ParaView."><img alt="" src="../_images/sphx_glr_hessian_recovery_thumb.png" />
+<p><a class="reference internal" href="mesh/hessian_recovery.html"><span class="doc">Nodal Hessian recovery on a fedoo mesh</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Nodal Hessian recovery on a fedoo mesh</div>
 </div></div><div class="toctree-wrapper compound">
 </div>
 <div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
@@ -245,7 +447,7 @@ See <a class="reference internal" href="../poromechanics.html"><span class="doc"
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../user_problems.html" class="btn btn-neutral float-left" title="Define user problems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="01-simple/index.html" class="btn btn-neutral float-right" title="Simple examples to start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="basic/index.html" class="btn btn-neutral float-right" title="Basic examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
