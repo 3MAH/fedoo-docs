@@ -272,10 +272,10 @@ analysis.
     Final response of Cook's membrane
     -------------------------------------------------------------------
     Formulation               tip displacement        max P   time [s]
-    Full integration                   0.87896      0.00137      0.571
-    Mean dilatation                    2.00988      0.01090      0.795
-    F-bar                              2.01025      0.01090      0.720
-    Reduced integration                1.81188      0.00569      0.424
+    Full integration                   0.87896      0.00137      0.602
+    Mean dilatation                    2.00988      0.01090      1.005
+    F-bar                              2.01025      0.01090      0.918
+    Reduced integration                1.81188      0.00569      0.528
 
 
 
@@ -328,7 +328,7 @@ locking.  Mean dilatation and F-bar are almost indistinguishable here.
  .. code-block:: none
 
 
-    <matplotlib.legend.Legend object at 0x7fa677dffd90>
+    <matplotlib.legend.Legend object at 0x73e8bf80bd60>
 
 
 
@@ -475,7 +475,7 @@ checked when the deformation contains strong bending or localization.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.574 seconds)
+   **Total running time of the script:** (0 minutes 4.303 seconds)
 
 
 .. _sphx_glr_download_examples_finite_strain_incompressibility_comparison.py:

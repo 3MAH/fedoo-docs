@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.996** total execution time for 3 files **from examples/shells**:
+**00:02.246** total execution time for 3 files **from examples/shells**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_shells_laminate_cantilever.py` (``laminate_cantilever.py``)
-     - 00:00.978
-     - 0.0
-   * - :ref:`sphx_glr_examples_shells_plate_elements_cantilever.py` (``plate_elements_cantilever.py``)
-     - 00:00.530
+     - 00:01.083
      - 0.0
    * - :ref:`sphx_glr_examples_shells_spherical_shell_compression_plastic.py` (``spherical_shell_compression_plastic.py``)
-     - 00:00.489
+     - 00:00.594
+     - 0.0
+   * - :ref:`sphx_glr_examples_shells_plate_elements_cantilever.py` (``plate_elements_cantilever.py``)
+     - 00:00.568
      - 0.0
