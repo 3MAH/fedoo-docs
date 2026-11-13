@@ -28,7 +28,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.constitutivelaw.Simcoon.condense_tangent" href="fedoo.constitutivelaw.Simcoon.condense_tangent.html" />
+    <link rel="next" title="fedoo.constitutivelaw.Simcoon.from_modular" href="fedoo.constitutivelaw.Simcoon.from_modular.html" />
     <link rel="prev" title="fedoo.constitutivelaw.FE2.is_initialized" href="fedoo.constitutivelaw.FE2.is_initialized.html" /> 
 </head>
 
@@ -135,7 +135,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>umat_name</strong> (<em>str</em>) – Name of the constitutive law.</p></li>
+<li><p><strong>umat_name</strong> (<em>str</em>) – Name of the constitutive law: a 5-letter simcoon name, or <code class="docutils literal notranslate"><span class="pre">NAME_closed</span></code>
+for the dedicated kernel simcoon keeps next to its modular default
+(<code class="docutils literal notranslate"><span class="pre">EPICP_closed</span></code>, <code class="docutils literal notranslate"><span class="pre">ZENER_closed</span></code>…; same props and statev layout).</p></li>
 <li><p><strong>props</strong> (<em>numpy.array</em>) – The constitive laws properties</p></li>
 <li><p><strong>tangent_mode</strong> (<em>int</em><em>, </em><em>optional</em>) – <p>Tangent operator requested from the Simcoon UMAT, forwarded unchanged
 (simcoon &gt;= 2.0 numbering):</p>
@@ -157,18 +159,22 @@ algorithmic operator. It is resolved once, at construction: when
 <code class="docutils literal notranslate"><span class="pre">integrator</span></code> is changed afterwards, set <code class="docutils literal notranslate"><span class="pre">tangent_mode</span></code> as well.</p>
 </p></li>
 <li><p><strong>name</strong> (<em>str</em>) – The name of the constitutive law</p></li>
-<li><p><strong>ncp</strong> (<em>{&quot;fischer_burmeister&quot;</em><em>, </em><em>&quot;min&quot;}</em><em>, </em><em>default=&quot;fischer_burmeister&quot;</em>) – Complementarity function of the local cutting-plane return mapping,
-forwarded to <code class="xref py py-func docutils literal notranslate"><span class="pre">simcoon.umat()</span></code>. <code class="docutils literal notranslate"><span class="pre">&quot;min&quot;</span></code> is the classic
-cutting-plane step on a single surface with a Fischer-Burmeister
-fallback. Simcoon only accepts it for the laws that read it and with
-the cutting-plane integrator, and raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> otherwise.
-The set of laws depends on the simcoon version: <code class="docutils literal notranslate"><span class="pre">EPICP</span></code>, <code class="docutils literal notranslate"><span class="pre">EPKCP</span></code>
-and modular materials without an Armstrong-Frederick back stress in
-simcoon 2.3; every law served by the modular engine from simcoon 2.4.</p></li>
+<li><p><strong>ncp</strong> (<em>{&quot;fischer_burmeister&quot;</em><em>, </em><em>&quot;min&quot;}</em><em>, </em><em>default=&quot;fischer_burmeister&quot;</em>) – Complementarity function of the local return mapping, forwarded to
+<code class="xref py py-func docutils literal notranslate"><span class="pre">simcoon.umat()</span></code>. <code class="docutils literal notranslate"><span class="pre">&quot;min&quot;</span></code> is the classic step on a single
+surface with a Fischer-Burmeister fallback. Simcoon only accepts it
+for the laws that read it and raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> otherwise. The
+set of laws depends on the simcoon version: <code class="docutils literal notranslate"><span class="pre">EPICP</span></code>, <code class="docutils literal notranslate"><span class="pre">EPKCP</span></code> and
+modular materials without an Armstrong-Frederick back stress, under
+the cutting plane only, in simcoon 2.3; every law served by the
+modular engine under both integrators from simcoon 2.4 (the cutting
+plane still refuses it with an Armstrong-Frederick back stress, the
+closest point takes it).</p></li>
 <li><p><strong>integrator</strong> (<em>{&quot;cutting_plane&quot;</em><em>, </em><em>&quot;closest_point&quot;}</em><em>, </em><em>default=&quot;cutting_plane&quot;</em>) – Local integrator of the laws with a return mapping, forwarded to
 <code class="xref py py-func docutils literal notranslate"><span class="pre">simcoon.umat()</span></code>. <code class="docutils literal notranslate"><span class="pre">&quot;closest_point&quot;</span></code> is a backward-Euler update
-that requires <code class="docutils literal notranslate"><span class="pre">tangent_mode=2</span></code>; a law without a closest-point
-update keeps the cutting plane.</p></li>
+that requires <code class="docutils literal notranslate"><span class="pre">tangent_mode=2</span></code>; simcoon raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> at
+the first call of a law without a closest-point update (every name
+the modular engine serves has one; a dedicated kernel that keeps its
+own algorithm, such as <code class="docutils literal notranslate"><span class="pre">ZENER_closed</span></code>, has none).</p></li>
 <li><p><strong>that</strong> (<em>ncp and integrator are keyword-only and are also attributes</em>)</p></li>
 <li><p><strong>a</strong> (<em>can be changed after construction</em><em> (</em><em>tangent_mode does not follow</em>)</p></li>
 <li><p><strong>integrator</strong><strong>)</strong><strong>.</strong> (<em>change of</em>)</p></li>
@@ -217,12 +223,8 @@ material direction “3” is silently the <strong>hoop</strong> direction in
 2Daxi (because slot 2 of the 6-vector carries ε_θθ). Define the
 stiffness / hardening parameters with this convention or the
 response will not match the intended material orientation.</p></li>
-<li><p>Hyperelastic laws (those with <code class="docutils literal notranslate"><span class="pre">_Lt_from_F</span> <span class="pre">=</span> <span class="pre">True</span></code>) run in plane
-stress (<code class="docutils literal notranslate"><span class="pre">2Dstress</span></code>) or uniaxial stress (<code class="docutils literal notranslate"><span class="pre">1Dstress</span></code>) only when
-simcoon condenses the state itself, which fedoo asks through
-<code class="docutils literal notranslate"><span class="pre">simcoon.condensation_serves</span></code>; otherwise a <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> is
-raised. Laws driven by the strain are condensed by fedoo when simcoon
-does not serve the state. They remain compatible with 2Daxi at
+<li><p>Hyperelastic laws (those with <code class="docutils literal notranslate"><span class="pre">_Lt_from_F</span> <span class="pre">=</span> <span class="pre">True</span></code>) are gated on
+plane stress; they remain compatible with 2Daxi at
 finite strain provided the F[θθ] = r/R fix is in effect (see
 <code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.weakform.stress_equilibrium._comp_grad_disp()</span></code>).</p></li>
 <li><p>A modular material uses the <code class="docutils literal notranslate"><span class="pre">MODUL</span></code> UMAT. Under <code class="docutils literal notranslate"><span class="pre">nlgeom=&quot;UL&quot;</span></code> it
@@ -244,14 +246,8 @@ it (see <a class="reference internal" href="fedoo.weakform.StressEquilibrium.kin
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.condense_tangent.html#fedoo.constitutivelaw.Simcoon.condense_tangent" title="fedoo.constitutivelaw.Simcoon.condense_tangent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.condense_tangent</span></code></a>(H, dimension)</p></td>
-<td><p>Condense a 3D tangent onto the stress state <code class="docutils literal notranslate"><span class="pre">dimension</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.from_modular.html#fedoo.constitutivelaw.Simcoon.from_modular" title="fedoo.constitutivelaw.Simcoon.from_modular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.from_modular</span></code></a>(modular_material[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.from_modular.html#fedoo.constitutivelaw.Simcoon.from_modular" title="fedoo.constitutivelaw.Simcoon.from_modular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.from_modular</span></code></a>(modular_material[, ...])</p></td>
 <td><p>Build a Simcoon law from a modular material configuration.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.get_H_condensed.html#fedoo.constitutivelaw.Simcoon.get_H_condensed" title="fedoo.constitutivelaw.Simcoon.get_H_condensed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.get_H_condensed</span></code></a>(H, kept)</p></td>
-<td><p>Statically condense a 3D tangent onto the Voigt slots <code class="docutils literal notranslate"><span class="pre">kept</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.Simcoon.get_H_plane_stress.html#fedoo.constitutivelaw.Simcoon.get_H_plane_stress" title="fedoo.constitutivelaw.Simcoon.get_H_plane_stress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simcoon.get_H_plane_stress</span></code></a>(H)</p></td>
 <td><p>Convert a full 3D tangent matrix H in an equivalent behavior in 2D with the plane stress assumption.</p></td>
@@ -364,7 +360,7 @@ it (see <a class="reference internal" href="fedoo.weakform.StressEquilibrium.kin
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="fedoo.constitutivelaw.FE2.is_initialized.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.FE2.is_initialized" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.constitutivelaw.Simcoon.condense_tangent.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.Simcoon.condense_tangent" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.constitutivelaw.Simcoon.from_modular.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.Simcoon.from_modular" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

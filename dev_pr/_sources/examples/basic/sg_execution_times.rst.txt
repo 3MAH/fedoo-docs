@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:28.532** total execution time for 12 files **from examples/basic**:
+**00:26.039** total execution time for 12 files **from examples/basic**:
 
 .. container::
 
@@ -33,38 +33,38 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_basic_visualization.py` (``visualization.py``)
-     - 00:13.531
-     - 0.0
-   * - :ref:`sphx_glr_examples_basic_beam_elements_cantilever.py` (``beam_elements_cantilever.py``)
-     - 00:04.603
+     - 00:13.108
      - 0.0
    * - :ref:`sphx_glr_examples_basic_lattice_beam.py` (``lattice_beam.py``)
-     - 00:04.298
+     - 00:04.290
+     - 0.0
+   * - :ref:`sphx_glr_examples_basic_beam_elements_cantilever.py` (``beam_elements_cantilever.py``)
+     - 00:02.420
      - 0.0
    * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d_nlgeom.py` (``cantilever_beam_3d_nlgeom.py``)
-     - 00:01.826
+     - 00:02.034
      - 0.0
    * - :ref:`sphx_glr_examples_basic_spherical_shell_compression.py` (``spherical_shell_compression.py``)
-     - 00:01.144
+     - 00:01.126
      - 0.0
    * - :ref:`sphx_glr_examples_basic_i_beam_three_point_bending.py` (``i_beam_three_point_bending.py``)
-     - 00:00.951
+     - 00:00.975
      - 0.0
    * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d.py` (``cantilever_beam_3d.py``)
-     - 00:00.581
+     - 00:00.577
      - 0.0
    * - :ref:`sphx_glr_examples_basic_modal_analysis.py` (``modal_analysis.py``)
-     - 00:00.486
+     - 00:00.470
      - 0.0
    * - :ref:`sphx_glr_examples_basic_simple_mesh_generation.py` (``simple_mesh_generation.py``)
-     - 00:00.446
+     - 00:00.391
      - 0.0
    * - :ref:`sphx_glr_examples_basic_plate_with_hole_tension.py` (``plate_with_hole_tension.py``)
-     - 00:00.289
+     - 00:00.274
      - 0.0
    * - :ref:`sphx_glr_examples_basic_poisson_eq.py` (``poisson_eq.py``)
-     - 00:00.198
+     - 00:00.200
      - 0.0
    * - :ref:`sphx_glr_examples_basic_linear_buckling.py` (``linear_buckling.py``)
-     - 00:00.180
+     - 00:00.174
      - 0.0

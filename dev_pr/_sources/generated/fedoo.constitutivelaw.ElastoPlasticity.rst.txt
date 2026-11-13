@@ -20,8 +20,6 @@
          
       
          ElastoPlasticity.compute_stress
-         ElastoPlasticity.condense_tangent
-         ElastoPlasticity.get_H_condensed
          ElastoPlasticity.get_H_plane_stress
          ElastoPlasticity.get_all
          ElastoPlasticity.get_current_local_frame
