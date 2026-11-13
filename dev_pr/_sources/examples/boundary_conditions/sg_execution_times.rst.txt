@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:24.240** total execution time for 8 files **from examples/boundary_conditions**:
+**00:19.533** total execution time for 8 files **from examples/boundary_conditions**:
 
 .. container::
 
@@ -33,26 +33,26 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_boundary_conditions_mean_rigid_motion_torsion.py` (``mean_rigid_motion_torsion.py``)
-     - 00:13.199
+     - 00:10.255
      - 0.0
    * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_composite_ply.py` (``periodic_bc_composite_ply.py``)
-     - 00:05.430
+     - 00:04.818
      - 0.0
    * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_3d_gyroid_off_axis.py` (``periodic_bc_3d_gyroid_off_axis.py``)
-     - 00:04.066
+     - 00:03.275
      - 0.0
    * - :ref:`sphx_glr_examples_boundary_conditions_rigid_tie.py` (``rigid_tie.py``)
-     - 00:00.482
+     - 00:00.334
      - 0.0
    * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_mean_disp_constraint.py` (``periodic_bc_mean_disp_constraint.py``)
-     - 00:00.339
+     - 00:00.246
      - 0.0
    * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_2d_plate_with_hole.py` (``periodic_bc_2d_plate_with_hole.py``)
-     - 00:00.265
-     - 0.0
-   * - :ref:`sphx_glr_examples_boundary_conditions_multi_mesh_example.py` (``multi_mesh_example.py``)
      - 00:00.235
      - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_multi_mesh_example.py` (``multi_mesh_example.py``)
+     - 00:00.192
+     - 0.0
    * - :ref:`sphx_glr_examples_boundary_conditions_pressurized_pipe.py` (``pressurized_pipe.py``)
-     - 00:00.225
+     - 00:00.177
      - 0.0

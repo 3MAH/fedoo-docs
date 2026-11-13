@@ -267,21 +267,21 @@ build the strain tensor. The stress tensor shear terms need no correction.
 
 
     Stress tensor in local frame:
-     [[ 1.336e+04  4.458e-10  1.439e-11]
-     [ 4.458e-10 -3.748e-10 -5.813e-12]
-     [ 1.439e-11 -5.813e-12 -8.573e-10]]  
+     [[ 1.336e+04  2.330e-10  7.352e-12]
+     [ 2.330e-10 -2.363e-13  5.950e-12]
+     [ 7.352e-12  5.950e-12 -9.036e-10]]  
 
 
     Stress tensor in global frame:
-     [[ 6.678e+03  6.678e+03  1.402e-11]
-     [ 6.678e+03  6.678e+03  5.849e-12]
-     [ 1.402e-11  5.849e-12 -8.573e-10]]  
+     [[ 6.678e+03  6.678e+03  7.496e-13]
+     [ 6.678e+03  6.678e+03  9.108e-12]
+     [ 7.496e-13  9.108e-12 -9.036e-10]]  
 
 
     Stress tensor using integration:
-     [[ 6.678e+03  6.678e+03  1.379e-11]
-     [ 6.678e+03  6.678e+03  1.557e-11]
-     [ 1.379e-11  1.557e-11 -8.750e-10]]  
+     [[ 6.678e+03  6.678e+03  9.660e-13]
+     [ 6.678e+03  6.678e+03  1.125e-11]
+     [ 9.660e-13  1.125e-11 -9.096e-10]]  
 
 
 
@@ -291,7 +291,7 @@ build the strain tensor. The stress tensor shear terms need no correction.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.066 seconds)
+   **Total running time of the script:** (0 minutes 3.275 seconds)
 
 
 .. _sphx_glr_download_examples_boundary_conditions_periodic_bc_3d_gyroid_off_axis.py:
