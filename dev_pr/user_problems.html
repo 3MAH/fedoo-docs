@@ -284,8 +284,12 @@ column.</p></td>
 temperature field is available.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ndi</span></code></p></td>
-<td><p>Number of direct components: 3 normally and 2 for the
-plane-stress interface.</p></td>
+<td><p>Number of direct components: 3 normally, 2 in plane
+stress (<code class="docutils literal notranslate"><span class="pre">&quot;2Dstress&quot;</span></code>) and 1 in uniaxial stress
+(<code class="docutils literal notranslate"><span class="pre">&quot;1Dstress&quot;</span></code>, beam fibers). A callback is only
+called with 2 or 1 for the states listed in its
+<code class="docutils literal notranslate"><span class="pre">reduced_states</span></code>; it must then return a stress whose
+out-of-state components are zero.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tangent_mode</span></code></p></td>
 <td><p>User-defined tangent selector forwarded unchanged by

@@ -139,9 +139,11 @@
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>A tangent already condensed by the law (zero ZZ row and column, as
-returned by Simcoon &gt;= 2.3 with <code class="docutils literal notranslate"><span class="pre">ndi=2</span></code>) is returned unchanged on
-the kept slots.</p>
+<p>The three out-of-plane stresses (ZZ, XZ, YZ) vanish: this is
+<a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.get_H_condensed.html#fedoo.constitutivelaw.ElasticOrthotropic.get_H_condensed" title="fedoo.constitutivelaw.ElasticOrthotropic.get_H_condensed"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_H_condensed()</span></code></a> on the in-plane slots <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">3)</span></code>. For a
+material without coupling between the in-plane components and the
+transverse shears (isotropic, or orthotropic with an axis normal to
+the plane) it reduces to the condensation of the ZZ component alone.</p>
 </dd></dl>
 
 </section>

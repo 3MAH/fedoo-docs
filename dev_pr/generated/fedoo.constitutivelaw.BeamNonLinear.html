@@ -140,16 +140,20 @@ elastic shear modulus of the material), as the nonlinear shells do.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>section</strong> (<a class="reference internal" href="fedoo.constitutivelaw.BeamCircular.html#fedoo.constitutivelaw.BeamCircular" title="fedoo.constitutivelaw.BeamCircular"><em>BeamCircular</em></a><em>, </em><a class="reference internal" href="fedoo.constitutivelaw.BeamPipe.html#fedoo.constitutivelaw.BeamPipe" title="fedoo.constitutivelaw.BeamPipe"><em>BeamPipe</em></a><em> or </em><a class="reference internal" href="fedoo.constitutivelaw.BeamRectangular.html#fedoo.constitutivelaw.BeamRectangular" title="fedoo.constitutivelaw.BeamRectangular"><em>BeamRectangular</em></a>) – Section geometry. Its material is the fiber material unless
-<code class="docutils literal notranslate"><span class="pre">material</span></code> is given. Section dimensions must be uniform.</p></li>
+<li><p><strong>section</strong> (<a class="reference internal" href="fedoo.constitutivelaw.BeamProperties.html#fedoo.constitutivelaw.BeamProperties" title="fedoo.constitutivelaw.BeamProperties"><em>BeamProperties</em></a>) – Section geometry: <code class="docutils literal notranslate"><span class="pre">BeamRectangular</span></code>, <code class="docutils literal notranslate"><span class="pre">BeamCircular</span></code>, <code class="docutils literal notranslate"><span class="pre">BeamPipe</span></code>
+or a subclass that defines <code class="docutils literal notranslate"><span class="pre">section_bounds</span></code>, the latter with
+explicit <code class="docutils literal notranslate"><span class="pre">fibers</span></code>. A section given by its properties only
+(<code class="docutils literal notranslate"><span class="pre">BeamProperties</span></code>) is refused. Its material is the fiber material
+unless <code class="docutils literal notranslate"><span class="pre">material</span></code> is given. Section dimensions must be uniform.</p></li>
 <li><p><strong>n_fibers</strong> (<em>tuple</em><em> of </em><em>int</em><em>, </em><em>optional</em>) – Section quadrature: <code class="docutils literal notranslate"><span class="pre">(n_y,</span> <span class="pre">n_z)</span></code> layers of a rectangle, each with
 a two-point Gauss rule (default <code class="docutils literal notranslate"><span class="pre">(4,</span> <span class="pre">4)</span></code>; even counts integrate the
 fully plastic moment exactly); <code class="docutils literal notranslate"><span class="pre">(n_r,</span> <span class="pre">n_theta)</span></code> radial Gauss points
 and angular sectors of a circle (default <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">16)</span></code>) or a pipe
-(default <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">16)</span></code>).</p></li>
+(default <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">16)</span></code>). At least three sectors are required.</p></li>
 <li><p><strong>material</strong> (<em>Mechanical3D</em><em> or </em><em>str</em><em>, </em><em>optional</em>) – Fiber material, for instance <code class="docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.Simcoon</span></code>. It
-must support the <code class="docutils literal notranslate"><span class="pre">&quot;1Dstress&quot;</span></code> stress state. Defaults to the
-section material.</p></li>
+must support the <code class="docutils literal notranslate"><span class="pre">&quot;1Dstress&quot;</span></code> stress state and have uniform
+constants. Defaults to the section material. A name shared with the
+section resolves to the section: pass the law object in that case.</p></li>
 <li><p><strong>fibers</strong> (<em>tuple</em><em> of </em><em>array_like</em><em>, </em><em>optional</em>) – Explicit fibers <code class="docutils literal notranslate"><span class="pre">(y,</span> <span class="pre">z,</span> <span class="pre">weights)</span></code> in physical centroid-relative
 coordinates, overriding <code class="docutils literal notranslate"><span class="pre">n_fibers</span></code>.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the constitutive law.</p></li>

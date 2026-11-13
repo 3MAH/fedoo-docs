@@ -151,9 +151,10 @@ uniaxial stress state.</p></li>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The operation is idempotent: at points where the condensed block is
-zero, the tangent was already condensed by the law (Simcoon &gt;= 2.3
-with <code class="docutils literal notranslate"><span class="pre">ndi</span> <span class="pre">&lt;</span> <span class="pre">3</span></code>) and its kept block is returned unchanged.</p>
+<p>A condensed slot whose row and column are zero carries no stiffness
+and no coupling: it is left out of the Schur complement. A tangent
+already condensed (all such slots zero) is therefore returned
+unchanged on its kept block, and the operation is idempotent.</p>
 </dd></dl>
 
 </section>

@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:10.265** total execution time for 4 files **from examples/homogenization**:
+**00:10.599** total execution time for 4 files **from examples/homogenization**:
 
 .. container::
 
@@ -32,11 +32,11 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_examples_homogenization_periodic_homogenization_from_scratch.py` (``periodic_homogenization_from_scratch.py``)
-     - 00:05.284
-     - 0.0
    * - :ref:`sphx_glr_examples_homogenization_periodic_homogenization.py` (``periodic_homogenization.py``)
-     - 00:04.980
+     - 00:05.305
+     - 0.0
+   * - :ref:`sphx_glr_examples_homogenization_periodic_homogenization_from_scratch.py` (``periodic_homogenization_from_scratch.py``)
+     - 00:05.294
      - 0.0
    * - :ref:`sphx_glr_examples_homogenization_fe2_plate_with_hole.py` (``fe2_plate_with_hole.py``)
      - 00:00.000
