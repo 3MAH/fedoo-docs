@@ -11,7 +11,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 69
     },
-    "media": "contact/ipc_punch_indentation.gif"
+    "media": "contact/ipc_punch_indentation.gif",
+    "thumbnail": "contact/ipc_punch_indentation.png"
   },
   "contact/tube_compression.py": {
     "run": {
@@ -25,7 +26,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 75
     },
-    "media": "contact/tube_compression.gif"
+    "media": "contact/tube_compression.gif",
+    "thumbnail": "contact/tube_compression.png"
   },
   "contact/ipc_tube_compression.py": {
     "run": {
@@ -39,7 +41,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 74
     },
-    "media": "contact/ipc_tube_compression.gif"
+    "media": "contact/ipc_tube_compression.gif",
+    "thumbnail": "contact/ipc_tube_compression.png"
   },
   "contact/ipc_indentation_3d.py": {
     "run": {
@@ -53,7 +56,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 42
     },
-    "media": "contact/ipc_indentation_3d.gif"
+    "media": "contact/ipc_indentation_3d.gif",
+    "thumbnail": "contact/ipc_indentation_3d.png"
   },
   "plasticity/plastic_bending_2d.py": {
     "run": {
@@ -67,7 +71,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 7
     },
-    "media": "plasticity/plastic_bending_2d.gif"
+    "media": "plasticity/plastic_bending_2d.gif",
+    "thumbnail": "plasticity/plastic_bending_2d.png"
   },
   "plasticity/plastic_bending_2d_from_scratch.py": {
     "run": {
@@ -94,7 +99,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 52
     },
-    "media": "plasticity/plastic_bending_3d.gif"
+    "media": "plasticity/plastic_bending_3d.gif",
+    "thumbnail": "plasticity/plastic_bending_3d.png"
   },
   "plasticity/shear_test.py": {
     "run": {
@@ -108,7 +114,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 50
     },
-    "media": "plasticity/shear_test.gif"
+    "media": "plasticity/shear_test.gif",
+    "thumbnail": "plasticity/shear_test.png"
   },
   "plasticity/torsion_test.py": {
     "run": {
@@ -122,7 +129,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 50
     },
-    "media": "plasticity/torsion_test.gif"
+    "media": "plasticity/torsion_test.gif",
+    "thumbnail": "plasticity/torsion_test.png"
   },
   "plasticity/heterogeneous_struct_nl.py": {
     "run": {
@@ -136,7 +144,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 530
     },
-    "media": "plasticity/heterogeneous_struct_nl.gif"
+    "media": "plasticity/heterogeneous_struct_nl.gif",
+    "thumbnail": "plasticity/heterogeneous_struct_nl.png"
   },
   "contact/ipc_gyroid_compression.py": {
     "run": {
@@ -150,7 +159,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 206
     },
-    "media": "contact/ipc_gyroid_compression.gif"
+    "media": "contact/ipc_gyroid_compression.gif",
+    "thumbnail": "contact/ipc_gyroid_compression.png"
   },
   "contact/ipc_gyroid_compression_periodic.py": {
     "run": {
@@ -164,7 +174,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 167
     },
-    "media": "contact/ipc_gyroid_compression_periodic.gif"
+    "media": "contact/ipc_gyroid_compression_periodic.gif",
+    "thumbnail": "contact/ipc_gyroid_compression_periodic.png"
   },
   "contact/ipc_gyroid_compression_plastic.py": {
     "run": {
@@ -178,7 +189,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 213
     },
-    "media": "contact/ipc_gyroid_compression_plastic.gif"
+    "media": "contact/ipc_gyroid_compression_plastic.gif",
+    "thumbnail": "contact/ipc_gyroid_compression_plastic.png"
   },
   "homogenization/non_periodic_homogenization.py": {
     "run": {
@@ -205,7 +217,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 66
     },
-    "media": "dynamics/rigid_body_bounce_ipc.gif"
+    "media": "dynamics/rigid_body_bounce_ipc.gif",
+    "thumbnail": "dynamics/rigid_body_bounce_ipc.png"
   },
   "dynamics/broberg_dynamic_crack.py": {
     "run": {
@@ -219,7 +232,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 46
     },
-    "media": "dynamics/broberg_dynamic_crack.gif"
+    "media": "dynamics/broberg_dynamic_crack.gif",
+    "thumbnail": "dynamics/broberg_dynamic_crack.png"
   },
   "homogenization/fe2_plate_with_hole.py": {
     "run": {
@@ -233,7 +247,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 379
     },
-    "media": "homogenization/fe2_plate_with_hole.gif"
+    "media": "homogenization/fe2_plate_with_hole.gif",
+    "thumbnail": "homogenization/fe2_plate_with_hole.png"
   },
   "dynamics/multi_mesh_dynamic_contact.py": {
     "run": {
@@ -247,7 +262,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 69
     },
-    "media": "dynamics/multi_mesh_dynamic_contact.gif"
+    "media": "dynamics/multi_mesh_dynamic_contact.gif",
+    "thumbnail": "dynamics/multi_mesh_dynamic_contact.png"
   },
   "dynamics/rigid_body_bunny_bounce.py": {
     "run": {
@@ -261,7 +277,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 62
     },
-    "media": "dynamics/rigid_body_bunny_bounce.gif"
+    "media": "dynamics/rigid_body_bunny_bounce.gif",
+    "thumbnail": "dynamics/rigid_body_bunny_bounce.png"
   },
   "dynamics/rigid_body_cow_bounce.py": {
     "run": {
@@ -275,7 +292,8 @@
       "machine": "Linux x86_64",
       "wall_time_s": 86
     },
-    "media": "dynamics/rigid_body_cow_bounce.gif"
+    "media": "dynamics/rigid_body_cow_bounce.gif",
+    "thumbnail": "dynamics/rigid_body_cow_bounce.png"
   },
   "thermal/thermomechanical_weak_coupling_3d.py": {
     "run": {
@@ -289,6 +307,7 @@
       "machine": "Linux x86_64",
       "wall_time_s": 232
     },
-    "media": "thermal/thermomechanical_weak_coupling_3d.gif"
+    "media": "thermal/thermomechanical_weak_coupling_3d.gif",
+    "thumbnail": "thermal/thermomechanical_weak_coupling_3d.png"
   }
 }
