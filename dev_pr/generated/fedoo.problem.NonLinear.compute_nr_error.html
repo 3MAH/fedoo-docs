@@ -69,6 +69,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Modal.html">fedoo.problem.Modal</a></li>
@@ -192,7 +193,9 @@
 <span class="sig-prename descclassname"><span class="pre">NonLinear.</span></span><span class="sig-name descname"><span class="pre">compute_nr_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.NonLinear.compute_nr_error" title="Link to this definition"></a></dt>
 <dd><p>Compute the error of the Newton-Raphson algorithm.</p>
 <p>For Force and Work error criterion, the problem must be updated
-(update method).</p>
+(update method).
+Fields returns the largest field residual divided by its own
+absolute-plus-relative threshold. Convergence requires a value &lt; 1.</p>
 </dd></dl>
 
 </section>

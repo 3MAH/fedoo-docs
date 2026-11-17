@@ -73,6 +73,23 @@ expansion loads on a heterogeneous structure.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Run from the checkout with:     python -m examples.thermal.thermomechanical_monolithic     python -m examples.thermal.thermomechanical_monolithic --simcoon     python -m examples.thermal.thermomechanical_monolithic --nlgeom TL     python -m examples.thermal.thermomechanical_monolithic --nlgeom UL">
+
+.. only:: html
+
+  .. image:: /examples/thermal/images/thumb/sphx_glr_thermomechanical_monolithic_thumb.png
+    :alt:
+
+  :doc:`/examples/thermal/thermomechanical_monolithic`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Transient heating and thermal expansion, solved together in small strain.</div>
+    </div>
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Staggered (weak) thermo-mechanical coupling on a 3D gyroid lattice: a transient fedoo.weakform.HeatEquation problem and a small-strain fedoo.weakform.StressEquilibrium problem with thermal expansion are advanced increment by increment with :pyfedoo.problem.NonLinear.solve_time_increment. At each increment the converged temperature is copied into the mechanical assembly. The +X face is heated to T = 100 during the first phase and cooled back to T = 0 during the second one; all faces are clamped.">
 
 .. only:: html
@@ -101,5 +118,6 @@ expansion loads on a heterogeneous structure.
    /examples/thermal/thermal_conduction_2d
    /examples/thermal/thermal_conduction_3d
    /examples/thermal/thermal_loading
+   /examples/thermal/thermomechanical_monolithic
    /examples/thermal/thermomechanical_weak_coupling_3d
 

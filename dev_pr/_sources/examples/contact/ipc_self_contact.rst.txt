@@ -93,13 +93,13 @@ and EPICP elasto-plastic material.
     Iter 43 - Time: 0.43000 - dt 0.05000 - NR iter: 2 - Err: 0.00296
     Iter 44 - Time: 0.44000 - dt 0.05000 - NR iter: 2 - Err: 0.00257
     Iter 45 - Time: 0.45000 - dt 0.05000 - NR iter: 4 - Err: 0.00133
-    Iter 46 - Time: 0.46000 - dt 0.05000 - NR iter: 4 - Err: 0.00211
-    Iter 47 - Time: 0.47000 - dt 0.05000 - NR iter: 5 - Err: 0.00226
-    Iter 48 - Time: 0.48000 - dt 0.05000 - NR iter: 3 - Err: 0.00215
-    Iter 49 - Time: 0.49000 - dt 0.05000 - NR iter: 3 - Err: 0.00241
+    Iter 46 - Time: 0.46000 - dt 0.05000 - NR iter: 4 - Err: 0.00226
+    Iter 47 - Time: 0.47000 - dt 0.05000 - NR iter: 5 - Err: 0.00193
+    Iter 48 - Time: 0.48000 - dt 0.05000 - NR iter: 3 - Err: 0.00214
+    Iter 49 - Time: 0.49000 - dt 0.05000 - NR iter: 3 - Err: 0.00242
     Iter 50 - Time: 0.50000 - dt 0.05000 - NR iter: 3 - Err: 0.00218
     Iter 51 - Time: 0.51000 - dt 0.05000 - NR iter: 3 - Err: 0.00202
-    Iter 52 - Time: 0.52000 - dt 0.05000 - NR iter: 3 - Err: 0.00372
+    Iter 52 - Time: 0.52000 - dt 0.05000 - NR iter: 3 - Err: 0.00380
     Iter 53 - Time: 0.53000 - dt 0.05000 - NR iter: 3 - Err: 0.00213
     Iter 54 - Time: 0.54000 - dt 0.05000 - NR iter: 3 - Err: 0.00192
     Iter 55 - Time: 0.55000 - dt 0.05000 - NR iter: 3 - Err: 0.00159
@@ -119,7 +119,7 @@ and EPICP elasto-plastic material.
     Iter 69 - Time: 0.69000 - dt 0.05000 - NR iter: 2 - Err: 0.00274
     Iter 70 - Time: 0.70000 - dt 0.05000 - NR iter: 2 - Err: 0.00336
     Iter 71 - Time: 0.71000 - dt 0.05000 - NR iter: 2 - Err: 0.00332
-    Iter 72 - Time: 0.72000 - dt 0.05000 - NR iter: 3 - Err: 0.00229
+    Iter 72 - Time: 0.72000 - dt 0.05000 - NR iter: 3 - Err: 0.00230
     Iter 73 - Time: 0.73000 - dt 0.05000 - NR iter: 2 - Err: 0.00333
     Iter 74 - Time: 0.74000 - dt 0.05000 - NR iter: 3 - Err: 0.00411
     Iter 75 - Time: 0.75000 - dt 0.05000 - NR iter: 2 - Err: 0.00355
@@ -131,7 +131,7 @@ and EPICP elasto-plastic material.
     Iter 81 - Time: 0.81000 - dt 0.05000 - NR iter: 2 - Err: 0.00478
     Iter 82 - Time: 0.82000 - dt 0.05000 - NR iter: 4 - Err: 0.00321
     Iter 83 - Time: 0.83000 - dt 0.05000 - NR iter: 2 - Err: 0.00464
-    Iter 84 - Time: 0.84000 - dt 0.05000 - NR iter: 4 - Err: 0.00356
+    Iter 84 - Time: 0.84000 - dt 0.05000 - NR iter: 4 - Err: 0.00355
     Iter 85 - Time: 0.85000 - dt 0.05000 - NR iter: 3 - Err: 0.00381
     Iter 86 - Time: 0.86000 - dt 0.05000 - NR iter: 3 - Err: 0.00410
     Iter 87 - Time: 0.87000 - dt 0.05000 - NR iter: 3 - Err: 0.00364
@@ -149,7 +149,7 @@ and EPICP elasto-plastic material.
     Iter 99 - Time: 0.99000 - dt 0.05000 - NR iter: 4 - Err: 0.00431
     Iter 100 - Time: 1.00000 - dt 0.05000 - NR iter: 5 - Err: 0.00365
 
-    <pyvista.plotting.plotter.Plotter object at 0x77ea2bed91b0>
+    <pyvista.plotting.plotter.Plotter object at 0x7eb893112980>
 
 
 
@@ -227,7 +227,7 @@ and EPICP elasto-plastic material.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 18.301 seconds)
+   **Total running time of the script:** (0 minutes 13.961 seconds)
 
 
 .. _sphx_glr_download_examples_contact_ipc_self_contact.py:
