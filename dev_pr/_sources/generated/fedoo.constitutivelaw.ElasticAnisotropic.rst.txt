@@ -19,6 +19,8 @@
          :toctree:
          
       
+         ElasticAnisotropic.condense_tangent
+         ElasticAnisotropic.get_H_condensed
          ElasticAnisotropic.get_H_plane_stress
          ElasticAnisotropic.get_all
          ElasticAnisotropic.get_current_local_frame
@@ -40,7 +42,6 @@
          ElasticAnisotropic.set_density
          ElasticAnisotropic.set_local_frame
          ElasticAnisotropic.set_start
-         ElasticAnisotropic.set_thermal_properties
          ElasticAnisotropic.to_start
          ElasticAnisotropic.update
       
@@ -55,18 +56,11 @@
          :toctree:
          
       
-         ElasticAnisotropic.alpha
          ElasticAnisotropic.corate
          ElasticAnisotropic.is_isotropic
-         ElasticAnisotropic.is_thermomechanical
          ElasticAnisotropic.manages_material_frame
          ElasticAnisotropic.name
-         ElasticAnisotropic.reference_temperature
-         ElasticAnisotropic.specific_heat
          ElasticAnisotropic.supports_total_formulation
-         ElasticAnisotropic.thermal
-         ElasticAnisotropic.thermal_conductivity
-         ElasticAnisotropic.thermal_storage
          ElasticAnisotropic.is_initialized
   
   

@@ -117,7 +117,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../poromechanics.html">Poromechanics</a></li>
@@ -178,8 +177,9 @@ stability in the undrained limit prefer a Taylor-Hood interpolation
 (quadratic <code class="docutils literal notranslate"><span class="pre">u</span></code>, linear <code class="docutils literal notranslate"><span class="pre">PorePressure</span></code> via a <code class="docutils literal notranslate"><span class="pre">CombinedElement</span></code> —
 see the poromechanics documentation).</p>
 <p>With simcoon hyperelastic laws use <code class="docutils literal notranslate"><span class="pre">nlgeom=&quot;UL&quot;</span></code> (log_R corotational,
-the simcoon-native mode) and keep the compression below roughly 12% —
-see the Limitations section of the poromechanics documentation.</p>
+the simcoon-native mode). With a deformation-dependent permeability keep
+the local <code class="docutils literal notranslate"><span class="pre">J</span></code> above the pore-closure bound <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">phi_0</span></code> — see the
+Limitations section of the poromechanics documentation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

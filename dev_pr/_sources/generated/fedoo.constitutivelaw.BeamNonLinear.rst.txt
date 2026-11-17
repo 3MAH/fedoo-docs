@@ -1,0 +1,84 @@
+﻿fedoo.constitutivelaw.BeamNonLinear
+===================================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: BeamNonLinear
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamNonLinear.compute_linear_density
+         BeamNonLinear.compute_rotary_density
+         BeamNonLinear.from_section_description
+         BeamNonLinear.get_all
+         BeamNonLinear.get_beam_rigidity
+         BeamNonLinear.get_local_frame
+         BeamNonLinear.get_strain
+         BeamNonLinear.get_stress
+         BeamNonLinear.get_stress_distribution
+         BeamNonLinear.initialize
+         BeamNonLinear.integration_stresses
+         BeamNonLinear.normalize_section_coordinates
+         BeamNonLinear.normalized_output_points
+         BeamNonLinear.normalized_section_coordinates
+         BeamNonLinear.reset
+         BeamNonLinear.sample_points
+         BeamNonLinear.scale_section_points
+         BeamNonLinear.section_bounds
+         BeamNonLinear.section_coordinates
+         BeamNonLinear.section_description
+         BeamNonLinear.section_mesh
+         BeamNonLinear.set_local_frame
+         BeamNonLinear.set_start
+         BeamNonLinear.shear_stress
+         BeamNonLinear.to_start
+         BeamNonLinear.torsion_strain
+         BeamNonLinear.torsion_stress
+         BeamNonLinear.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamNonLinear.corate
+         BeamNonLinear.fibers
+         BeamNonLinear.is_section_law
+         BeamNonLinear.linear_density
+         BeamNonLinear.n_fibers
+         BeamNonLinear.n_points
+         BeamNonLinear.name
+         BeamNonLinear.output_points
+         BeamNonLinear.recovery
+         BeamNonLinear.rotary_density
+         BeamNonLinear.section_dimensions
+         BeamNonLinear.section_registry
+         BeamNonLinear.section_type
+         BeamNonLinear.fiber_material
+         BeamNonLinear.material
+         BeamNonLinear.A
+         BeamNonLinear.Jx
+         BeamNonLinear.Iyy
+         BeamNonLinear.Izz
+         BeamNonLinear.k
+         BeamNonLinear.is_initialized
+  
+  

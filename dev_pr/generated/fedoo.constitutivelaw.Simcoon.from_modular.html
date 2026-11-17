@@ -27,8 +27,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fedoo.constitutivelaw.Simcoon.get_H_plane_stress" href="fedoo.constitutivelaw.Simcoon.get_H_plane_stress.html" />
-    <link rel="prev" title="fedoo.constitutivelaw.Simcoon" href="fedoo.constitutivelaw.Simcoon.html" /> 
+    <link rel="next" title="fedoo.constitutivelaw.Simcoon.get_H_condensed" href="fedoo.constitutivelaw.Simcoon.get_H_condensed.html" />
+    <link rel="prev" title="fedoo.constitutivelaw.Simcoon.condense_tangent" href="fedoo.constitutivelaw.Simcoon.condense_tangent.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -88,7 +88,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../poromechanics.html">Poromechanics</a></li>
@@ -129,7 +128,7 @@
 <h1>fedoo.constitutivelaw.Simcoon.from_modular<a class="headerlink" href="#fedoo-constitutivelaw-simcoon-from-modular" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.Simcoon.from_modular">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Simcoon.</span></span><span class="sig-name descname"><span class="pre">from_modular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">modular_material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tangent_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fischer_burmeister'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cutting_plane'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.from_modular" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Simcoon.</span></span><span class="sig-name descname"><span class="pre">from_modular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">modular_material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tangent_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fischer_burmeister'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.Simcoon.from_modular" title="Link to this definition"></a></dt>
 <dd><p>Build a Simcoon law from a modular material configuration.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -165,8 +164,8 @@ Simcoon’s modular Hencky formulation.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.constitutivelaw.Simcoon.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.Simcoon" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="fedoo.constitutivelaw.Simcoon.get_H_plane_stress.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.Simcoon.get_H_plane_stress" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fedoo.constitutivelaw.Simcoon.condense_tangent.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.Simcoon.condense_tangent" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.constitutivelaw.Simcoon.get_H_condensed.html" class="btn btn-neutral float-right" title="fedoo.constitutivelaw.Simcoon.get_H_condensed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -66,7 +66,6 @@
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="poromechanics.html">Poromechanics</a></li>
@@ -169,6 +168,10 @@
         <li><a href="generated/fedoo.constitutivelaw.BeamCircular.html#fedoo.constitutivelaw.BeamCircular.__init__">(BeamCircular method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.BeamEquilibrium.html#fedoo.weakform.BeamEquilibrium.__init__">(BeamEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.html#fedoo.constitutivelaw.BeamMesh.__init__">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.html#fedoo.constitutivelaw.BeamNonLinear.__init__">(BeamNonLinear method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.html#fedoo.constitutivelaw.BeamPipe.__init__">(BeamPipe method)</a>
 </li>
@@ -308,8 +311,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.html#fedoo.constitutivelaw.Simcoon.__init__">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.html#fedoo.constitutivelaw.SimcoonThermoMechanical.__init__">(SimcoonThermoMechanical method)</a>
-</li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.html#fedoo.constitutivelaw.Spring.__init__">(Spring method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.html#fedoo.weakform.SpringEquilibrium.__init__">(SpringEquilibrium method)</a>
@@ -340,6 +341,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.A.html#fedoo.constitutivelaw.BeamCircular.A">A (BeamCircular attribute)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.A.html#fedoo.constitutivelaw.BeamMesh.A">(BeamMesh attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.A.html#fedoo.constitutivelaw.BeamNonLinear.A">(BeamNonLinear attribute)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.A.html#fedoo.constitutivelaw.BeamPipe.A">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.A.html#fedoo.constitutivelaw.BeamProperties.A">(BeamProperties attribute)</a>
@@ -461,6 +466,8 @@
         <li><a href="generated/fedoo.constraint.IPCSelfContact.add_rigid_body.html#fedoo.constraint.IPCSelfContact.add_rigid_body">(IPCSelfContact method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.DataSet.add_scalar_expression.html#fedoo.DataSet.add_scalar_expression">add_scalar_expression() (DataSet method)</a>
 
       <ul>
@@ -469,20 +476,8 @@
         <li><a href="generated/fedoo.ProblemDataSet.add_scalar_expression.html#fedoo.ProblemDataSet.add_scalar_expression">(ProblemDataSet method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.alpha.html#fedoo.constitutivelaw.CompositeUD.alpha">alpha (CompositeUD property)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.alpha.html#fedoo.constitutivelaw.ElasticAnisotropic.alpha">(ElasticAnisotropic property)</a>
+      <li><a href="generated/fedoo.time.RayleighDamping.alpha.html#fedoo.time.RayleighDamping.alpha">alpha (RayleighDamping attribute)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.alpha.html#fedoo.constitutivelaw.ElasticIsotrop.alpha">(ElasticIsotrop property)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.alpha.html#fedoo.constitutivelaw.ElasticOrthotropic.alpha">(ElasticOrthotropic property)</a>
-</li>
-        <li><a href="generated/fedoo.time.RayleighDamping.alpha.html#fedoo.time.RayleighDamping.alpha">(RayleighDamping attribute)</a>
-</li>
-      </ul></li>
       <li><a href="generated/fedoo.ListBC.append.html#fedoo.ListBC.append">append() (ListBC method)</a>
 </li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.apply_boundary_conditions.html#fedoo.problem.ExplicitDynamic.apply_boundary_conditions">apply_boundary_conditions() (ExplicitDynamic method)</a>
@@ -657,6 +652,10 @@
 </li>
       <li><a href="generated/fedoo.weakform.BeamEquilibrium.html#fedoo.weakform.BeamEquilibrium">BeamEquilibrium (class in fedoo.weakform)</a>
 </li>
+      <li><a href="generated/fedoo.constitutivelaw.BeamMesh.html#fedoo.constitutivelaw.BeamMesh">BeamMesh (class in fedoo.constitutivelaw)</a>
+</li>
+      <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.html#fedoo.constitutivelaw.BeamNonLinear">BeamNonLinear (class in fedoo.constitutivelaw)</a>
+</li>
       <li><a href="generated/fedoo.constitutivelaw.BeamPipe.html#fedoo.constitutivelaw.BeamPipe">BeamPipe (class in fedoo.constitutivelaw)</a>
 </li>
       <li><a href="generated/fedoo.constitutivelaw.BeamProperties.html#fedoo.constitutivelaw.BeamProperties">BeamProperties (class in fedoo.constitutivelaw)</a>
@@ -794,6 +793,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.compute_linear_density.html#fedoo.constitutivelaw.BeamCircular.compute_linear_density">compute_linear_density() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.compute_linear_density.html#fedoo.constitutivelaw.BeamMesh.compute_linear_density">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.compute_linear_density.html#fedoo.constitutivelaw.BeamNonLinear.compute_linear_density">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.compute_linear_density.html#fedoo.constitutivelaw.BeamPipe.compute_linear_density">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.compute_linear_density.html#fedoo.constitutivelaw.BeamProperties.compute_linear_density">(BeamProperties method)</a>
@@ -806,6 +809,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.compute_rotary_density.html#fedoo.constitutivelaw.BeamCircular.compute_rotary_density">compute_rotary_density() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.compute_rotary_density.html#fedoo.constitutivelaw.BeamMesh.compute_rotary_density">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.compute_rotary_density.html#fedoo.constitutivelaw.BeamNonLinear.compute_rotary_density">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.compute_rotary_density.html#fedoo.constitutivelaw.BeamPipe.compute_rotary_density">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.compute_rotary_density.html#fedoo.constitutivelaw.BeamProperties.compute_rotary_density">(BeamProperties method)</a>
@@ -823,6 +830,24 @@
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.compute_stress.html#fedoo.constitutivelaw.ElastoPlasticity.compute_stress">compute_stress() (ElastoPlasticity method)</a>
 </li>
+      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.condense_tangent.html#fedoo.constitutivelaw.CompositeUD.condense_tangent">condense_tangent() (CompositeUD method)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.condense_tangent.html#fedoo.constitutivelaw.ElasticAnisotropic.condense_tangent">(ElasticAnisotropic method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.condense_tangent.html#fedoo.constitutivelaw.ElasticIsotrop.condense_tangent">(ElasticIsotrop method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.condense_tangent.html#fedoo.constitutivelaw.ElasticOrthotropic.condense_tangent">(ElasticOrthotropic method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.condense_tangent.html#fedoo.constitutivelaw.ElastoPlasticity.condense_tangent">(ElastoPlasticity method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.FE2.condense_tangent.html#fedoo.constitutivelaw.FE2.condense_tangent">(FE2 method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.Heterogeneous.condense_tangent.html#fedoo.constitutivelaw.Heterogeneous.condense_tangent">(Heterogeneous method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.Simcoon.condense_tangent.html#fedoo.constitutivelaw.Simcoon.condense_tangent">(Simcoon method)</a>
+</li>
+      </ul></li>
       <li><a href="generated/fedoo.weakform.BeamEquilibrium.consistent_tangent.html#fedoo.weakform.BeamEquilibrium.consistent_tangent">consistent_tangent (BeamEquilibrium property)</a>
 </li>
       <li><a href="generated/fedoo.constraint.Contact.html#fedoo.constraint.Contact">Contact (class in fedoo.constraint)</a>
@@ -851,6 +876,8 @@
         <li><a href="generated/fedoo.constraint.SurfaceForce.convert_data.html#fedoo.constraint.SurfaceForce.convert_data">(SurfaceForce method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.weakform.StressEquilibrium.convert_tangent.html#fedoo.weakform.StressEquilibrium.convert_tangent">convert_tangent (StressEquilibrium property)</a>
 
       <ul>
@@ -919,11 +946,13 @@
         <li><a href="generated/fedoo.constraint.SurfaceForce.copy.html#fedoo.constraint.SurfaceForce.copy">(SurfaceForce method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.corate.html#fedoo.constitutivelaw.BeamCircular.corate">corate (BeamCircular property)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.corate.html#fedoo.constitutivelaw.BeamMesh.corate">(BeamMesh property)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.corate.html#fedoo.constitutivelaw.BeamNonLinear.corate">(BeamNonLinear property)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.corate.html#fedoo.constitutivelaw.BeamPipe.corate">(BeamPipe property)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.corate.html#fedoo.constitutivelaw.BeamProperties.corate">(BeamProperties property)</a>
@@ -957,8 +986,6 @@
         <li><a href="generated/fedoo.constitutivelaw.ShellLaminateNonLinear.corate.html#fedoo.constitutivelaw.ShellLaminateNonLinear.corate">(ShellLaminateNonLinear property)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.corate.html#fedoo.constitutivelaw.Simcoon.corate">(Simcoon property)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.corate.html#fedoo.constitutivelaw.SimcoonThermoMechanical.corate">(SimcoonThermoMechanical property)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.corate.html#fedoo.constitutivelaw.Spring.corate">(Spring property)</a>
 </li>
@@ -1303,6 +1330,14 @@
         <li><a href="weak_form.html#module-fedoo.weakform">module</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.fiber_material.html#fedoo.constitutivelaw.BeamNonLinear.fiber_material">fiber_material (BeamNonLinear attribute)</a>
+</li>
+      <li><a href="generated/fedoo.constitutivelaw.BeamMesh.fibers.html#fedoo.constitutivelaw.BeamMesh.fibers">fibers (BeamMesh property)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.fibers.html#fedoo.constitutivelaw.BeamNonLinear.fibers">(BeamNonLinear property)</a>
+</li>
+      </ul></li>
       <li><a href="generated/fedoo.DataSet.html#fedoo.DataSet.field_metadata">field_metadata (DataSet attribute)</a>
 </li>
       <li><a href="generated/fedoo.DataSet.field_names.html#fedoo.DataSet.field_names">field_names() (DataSet method)</a>
@@ -1390,6 +1425,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.from_section_description.html#fedoo.constitutivelaw.BeamCircular.from_section_description">from_section_description() (BeamCircular class method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.from_section_description.html#fedoo.constitutivelaw.BeamMesh.from_section_description">(BeamMesh class method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.from_section_description.html#fedoo.constitutivelaw.BeamNonLinear.from_section_description">(BeamNonLinear class method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.from_section_description.html#fedoo.constitutivelaw.BeamPipe.from_section_description">(BeamPipe class method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.from_section_description.html#fedoo.constitutivelaw.BeamProperties.from_section_description">(BeamProperties class method)</a>
@@ -1505,6 +1544,10 @@
         <li><a href="generated/fedoo.constitutivelaw.BeamCircular.get_all.html#fedoo.constitutivelaw.BeamCircular.get_all">(BeamCircular static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.BeamEquilibrium.get_all.html#fedoo.weakform.BeamEquilibrium.get_all">(BeamEquilibrium static method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.get_all.html#fedoo.constitutivelaw.BeamMesh.get_all">(BeamMesh static method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.get_all.html#fedoo.constitutivelaw.BeamNonLinear.get_all">(BeamNonLinear static method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.get_all.html#fedoo.constitutivelaw.BeamPipe.get_all">(BeamPipe static method)</a>
 </li>
@@ -1622,8 +1665,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.get_all.html#fedoo.constitutivelaw.Simcoon.get_all">(Simcoon static method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.get_all.html#fedoo.constitutivelaw.SimcoonThermoMechanical.get_all">(SimcoonThermoMechanical static method)</a>
-</li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.get_all.html#fedoo.constitutivelaw.Spring.get_all">(Spring static method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.get_all.html#fedoo.weakform.SpringEquilibrium.get_all">(SpringEquilibrium static method)</a>
@@ -1662,6 +1703,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.get_beam_rigidity.html#fedoo.constitutivelaw.BeamCircular.get_beam_rigidity">get_beam_rigidity() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.get_beam_rigidity.html#fedoo.constitutivelaw.BeamMesh.get_beam_rigidity">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.get_beam_rigidity.html#fedoo.constitutivelaw.BeamNonLinear.get_beam_rigidity">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.get_beam_rigidity.html#fedoo.constitutivelaw.BeamPipe.get_beam_rigidity">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.get_beam_rigidity.html#fedoo.constitutivelaw.BeamProperties.get_beam_rigidity">(BeamProperties method)</a>
@@ -1693,8 +1738,6 @@
         <li><a href="generated/fedoo.constitutivelaw.Heterogeneous.get_current_local_frame.html#fedoo.constitutivelaw.Heterogeneous.get_current_local_frame">(Heterogeneous method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.get_current_local_frame.html#fedoo.constitutivelaw.Simcoon.get_current_local_frame">(Simcoon method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.get_current_local_frame.html#fedoo.constitutivelaw.SimcoonThermoMechanical.get_current_local_frame">(SimcoonThermoMechanical method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.get_D.html#fedoo.problem.ExplicitDynamic.get_D">get_D() (ExplicitDynamic method)</a>
@@ -1937,6 +1980,26 @@
         <li><a href="generated/fedoo.constraint.SurfaceForce.get_grad_disp.html#fedoo.constraint.SurfaceForce.get_grad_disp">(SurfaceForce method)</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.get_H_condensed.html#fedoo.constitutivelaw.CompositeUD.get_H_condensed">get_H_condensed() (CompositeUD static method)</a>
+
+      <ul>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.get_H_condensed.html#fedoo.constitutivelaw.ElasticAnisotropic.get_H_condensed">(ElasticAnisotropic static method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.get_H_condensed.html#fedoo.constitutivelaw.ElasticIsotrop.get_H_condensed">(ElasticIsotrop static method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.get_H_condensed.html#fedoo.constitutivelaw.ElasticOrthotropic.get_H_condensed">(ElasticOrthotropic static method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.get_H_condensed.html#fedoo.constitutivelaw.ElastoPlasticity.get_H_condensed">(ElastoPlasticity static method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.FE2.get_H_condensed.html#fedoo.constitutivelaw.FE2.get_H_condensed">(FE2 static method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.Heterogeneous.get_H_condensed.html#fedoo.constitutivelaw.Heterogeneous.get_H_condensed">(Heterogeneous static method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.Simcoon.get_H_condensed.html#fedoo.constitutivelaw.Simcoon.get_H_condensed">(Simcoon static method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.constitutivelaw.CompositeUD.get_H_plane_stress.html#fedoo.constitutivelaw.CompositeUD.get_H_plane_stress">get_H_plane_stress() (CompositeUD method)</a>
 
       <ul>
@@ -1954,11 +2017,7 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.get_H_plane_stress.html#fedoo.constitutivelaw.Simcoon.get_H_plane_stress">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.get_H_plane_stress.html#fedoo.constitutivelaw.SimcoonThermoMechanical.get_H_plane_stress">(SimcoonThermoMechanical method)</a>
-</li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.MultiFrameDataSet.get_history.html#fedoo.MultiFrameDataSet.get_history">get_history() (MultiFrameDataSet method)</a>
 </li>
       <li><a href="assembly.html#fedoo.Assembly.get_int_forces">get_int_forces() (Assembly method)</a>
@@ -1988,6 +2047,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.get_local_frame.html#fedoo.constitutivelaw.BeamCircular.get_local_frame">get_local_frame() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.get_local_frame.html#fedoo.constitutivelaw.BeamMesh.get_local_frame">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.get_local_frame.html#fedoo.constitutivelaw.BeamNonLinear.get_local_frame">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.get_local_frame.html#fedoo.constitutivelaw.BeamPipe.get_local_frame">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.get_local_frame.html#fedoo.constitutivelaw.BeamProperties.get_local_frame">(BeamProperties method)</a>
@@ -2022,8 +2085,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.get_local_frame.html#fedoo.constitutivelaw.Simcoon.get_local_frame">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.get_local_frame.html#fedoo.constitutivelaw.SimcoonThermoMechanical.get_local_frame">(SimcoonThermoMechanical method)</a>
-</li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.get_local_frame.html#fedoo.constitutivelaw.Spring.get_local_frame">(Spring method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.ThermalProperties.get_local_frame.html#fedoo.constitutivelaw.ThermalProperties.get_local_frame">(ThermalProperties method)</a>
@@ -2045,8 +2106,6 @@
         <li><a href="generated/fedoo.constitutivelaw.Heterogeneous.get_local_rotation.html#fedoo.constitutivelaw.Heterogeneous.get_local_rotation">(Heterogeneous method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.get_local_rotation.html#fedoo.constitutivelaw.Simcoon.get_local_rotation">(Simcoon method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.get_local_rotation.html#fedoo.constitutivelaw.SimcoonThermoMechanical.get_local_rotation">(SimcoonThermoMechanical method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.PoroFluidProperties.get_mobility.html#fedoo.constitutivelaw.PoroFluidProperties.get_mobility">get_mobility() (PoroFluidProperties method)</a>
@@ -2184,6 +2243,10 @@
       <ul>
         <li><a href="generated/fedoo.constitutivelaw.BeamCircular.get_strain.html#fedoo.constitutivelaw.BeamCircular.get_strain">(BeamCircular method)</a>
 </li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.get_strain.html#fedoo.constitutivelaw.BeamMesh.get_strain">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.get_strain.html#fedoo.constitutivelaw.BeamNonLinear.get_strain">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.get_strain.html#fedoo.constitutivelaw.BeamPipe.get_strain">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.get_strain.html#fedoo.constitutivelaw.BeamProperties.get_strain">(BeamProperties method)</a>
@@ -2208,6 +2271,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.get_stress.html#fedoo.constitutivelaw.BeamCircular.get_stress">get_stress() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.get_stress.html#fedoo.constitutivelaw.BeamMesh.get_stress">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.get_stress.html#fedoo.constitutivelaw.BeamNonLinear.get_stress">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.get_stress.html#fedoo.constitutivelaw.BeamPipe.get_stress">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.get_stress.html#fedoo.constitutivelaw.BeamProperties.get_stress">(BeamProperties method)</a>
@@ -2225,9 +2292,11 @@
         <li><a href="generated/fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress.html#fedoo.constitutivelaw.ShellLaminateNonLinear.get_stress">(ShellLaminateNonLinear method)</a>
 </li>
       </ul></li>
-      <li><a href="generated/fedoo.constitutivelaw.ShellHomogeneous.get_stress_distribution.html#fedoo.constitutivelaw.ShellHomogeneous.get_stress_distribution">get_stress_distribution() (ShellHomogeneous method)</a>
+      <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.get_stress_distribution.html#fedoo.constitutivelaw.BeamNonLinear.get_stress_distribution">get_stress_distribution() (BeamNonLinear method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.ShellHomogeneous.get_stress_distribution.html#fedoo.constitutivelaw.ShellHomogeneous.get_stress_distribution">(ShellHomogeneous method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.ShellHomogeneousNonLinear.get_stress_distribution.html#fedoo.constitutivelaw.ShellHomogeneousNonLinear.get_stress_distribution">(ShellHomogeneousNonLinear method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.ShellLaminate.get_stress_distribution.html#fedoo.constitutivelaw.ShellLaminate.get_stress_distribution">(ShellLaminate method)</a>
@@ -2259,8 +2328,6 @@
         <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.get_tangent_matrix.html#fedoo.constitutivelaw.ElastoPlasticity.get_tangent_matrix">(ElastoPlasticity method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.get_tangent_matrix.html#fedoo.constitutivelaw.Simcoon.get_tangent_matrix">(Simcoon method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.get_tangent_matrix.html#fedoo.constitutivelaw.SimcoonThermoMechanical.get_tangent_matrix">(SimcoonThermoMechanical method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.get_tangent_matrix.html#fedoo.constitutivelaw.Spring.get_tangent_matrix">(Spring method)</a>
 </li>
@@ -2380,8 +2447,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.global2local_H.html#fedoo.constitutivelaw.Simcoon.global2local_H">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.global2local_H.html#fedoo.constitutivelaw.SimcoonThermoMechanical.global2local_H">(SimcoonThermoMechanical method)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.CompositeUD.global2local_rotation_increment.html#fedoo.constitutivelaw.CompositeUD.global2local_rotation_increment">global2local_rotation_increment() (CompositeUD method)</a>
 
@@ -2399,8 +2464,6 @@
         <li><a href="generated/fedoo.constitutivelaw.Heterogeneous.global2local_rotation_increment.html#fedoo.constitutivelaw.Heterogeneous.global2local_rotation_increment">(Heterogeneous method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.global2local_rotation_increment.html#fedoo.constitutivelaw.Simcoon.global2local_rotation_increment">(Simcoon method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.global2local_rotation_increment.html#fedoo.constitutivelaw.SimcoonThermoMechanical.global2local_rotation_increment">(SimcoonThermoMechanical method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.CompositeUD.global2local_strain.html#fedoo.constitutivelaw.CompositeUD.global2local_strain">global2local_strain() (CompositeUD method)</a>
@@ -2420,8 +2483,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.global2local_strain.html#fedoo.constitutivelaw.Simcoon.global2local_strain">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.global2local_strain.html#fedoo.constitutivelaw.SimcoonThermoMechanical.global2local_strain">(SimcoonThermoMechanical method)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.CompositeUD.global2local_stress.html#fedoo.constitutivelaw.CompositeUD.global2local_stress">global2local_stress() (CompositeUD method)</a>
 
@@ -2440,8 +2501,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.global2local_stress.html#fedoo.constitutivelaw.Simcoon.global2local_stress">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.global2local_stress.html#fedoo.constitutivelaw.SimcoonThermoMechanical.global2local_stress">(SimcoonThermoMechanical method)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.CompositeUD.global2local_tensor.html#fedoo.constitutivelaw.CompositeUD.global2local_tensor">global2local_tensor() (CompositeUD method)</a>
 
@@ -2459,8 +2518,6 @@
         <li><a href="generated/fedoo.constitutivelaw.Heterogeneous.global2local_tensor.html#fedoo.constitutivelaw.Heterogeneous.global2local_tensor">(Heterogeneous method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.global2local_tensor.html#fedoo.constitutivelaw.Simcoon.global2local_tensor">(Simcoon method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.global2local_tensor.html#fedoo.constitutivelaw.SimcoonThermoMechanical.global2local_tensor">(SimcoonThermoMechanical method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.global_dof.html#fedoo.problem.ExplicitDynamic.global_dof">global_dof (ExplicitDynamic property)</a>
@@ -2592,6 +2649,10 @@
 </li>
         <li><a href="generated/fedoo.weakform.BeamEquilibrium.initialize.html#fedoo.weakform.BeamEquilibrium.initialize">(BeamEquilibrium method)</a>
 </li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.initialize.html#fedoo.constitutivelaw.BeamMesh.initialize">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.initialize.html#fedoo.constitutivelaw.BeamNonLinear.initialize">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.initialize.html#fedoo.constitutivelaw.BeamPipe.initialize">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.initialize.html#fedoo.constitutivelaw.BeamProperties.initialize">(BeamProperties method)</a>
@@ -2694,8 +2755,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.initialize.html#fedoo.constitutivelaw.Simcoon.initialize">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.initialize.html#fedoo.constitutivelaw.SimcoonThermoMechanical.initialize">(SimcoonThermoMechanical method)</a>
-</li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.initialize.html#fedoo.constitutivelaw.Spring.initialize">(Spring method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.initialize.html#fedoo.weakform.SpringEquilibrium.initialize">(SpringEquilibrium method)</a>
@@ -2723,9 +2782,11 @@
         <li><a href="generated/fedoo.constraint.SurfaceForce.integrate_field.html#fedoo.constraint.SurfaceForce.integrate_field">(SurfaceForce method)</a>
 </li>
       </ul></li>
-      <li><a href="generated/fedoo.constitutivelaw.ShellHomogeneous.integration_stresses.html#fedoo.constitutivelaw.ShellHomogeneous.integration_stresses">integration_stresses() (ShellHomogeneous method)</a>
+      <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.integration_stresses.html#fedoo.constitutivelaw.BeamNonLinear.integration_stresses">integration_stresses() (BeamNonLinear method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.ShellHomogeneous.integration_stresses.html#fedoo.constitutivelaw.ShellHomogeneous.integration_stresses">(ShellHomogeneous method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.ShellHomogeneousNonLinear.integration_stresses.html#fedoo.constitutivelaw.ShellHomogeneousNonLinear.integration_stresses">(ShellHomogeneousNonLinear method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.ShellLaminate.integration_stresses.html#fedoo.constitutivelaw.ShellLaminate.integration_stresses">(ShellLaminate method)</a>
@@ -2782,6 +2843,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.is_initialized.html#fedoo.constitutivelaw.BeamCircular.is_initialized">is_initialized (BeamCircular attribute)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.is_initialized.html#fedoo.constitutivelaw.BeamMesh.is_initialized">(BeamMesh attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.is_initialized.html#fedoo.constitutivelaw.BeamNonLinear.is_initialized">(BeamNonLinear attribute)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.is_initialized.html#fedoo.constitutivelaw.BeamPipe.is_initialized">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.is_initialized.html#fedoo.constitutivelaw.BeamProperties.is_initialized">(BeamProperties attribute)</a>
@@ -2816,8 +2881,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.is_initialized.html#fedoo.constitutivelaw.Simcoon.is_initialized">(Simcoon attribute)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.is_initialized.html#fedoo.constitutivelaw.SimcoonThermoMechanical.is_initialized">(SimcoonThermoMechanical attribute)</a>
-</li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.is_initialized.html#fedoo.constitutivelaw.Spring.is_initialized">(Spring attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.ThermalProperties.is_initialized.html#fedoo.constitutivelaw.ThermalProperties.is_initialized">(ThermalProperties attribute)</a>
@@ -2840,8 +2903,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.is_isotropic.html#fedoo.constitutivelaw.Simcoon.is_isotropic">(Simcoon attribute)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.is_isotropic.html#fedoo.constitutivelaw.SimcoonThermoMechanical.is_isotropic">(SimcoonThermoMechanical attribute)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.Mesh.is_periodic.html#fedoo.Mesh.is_periodic">is_periodic() (Mesh method)</a>
 
@@ -2849,16 +2910,18 @@
         <li><a href="generated/fedoo.MultiMesh.is_periodic.html#fedoo.MultiMesh.is_periodic">(MultiMesh method)</a>
 </li>
       </ul></li>
-      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.is_thermomechanical.html#fedoo.constitutivelaw.CompositeUD.is_thermomechanical">is_thermomechanical (CompositeUD property)</a>
+      <li><a href="generated/fedoo.constitutivelaw.BeamCircular.is_section_law.html#fedoo.constitutivelaw.BeamCircular.is_section_law">is_section_law (BeamCircular attribute)</a>
 
       <ul>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.is_thermomechanical.html#fedoo.constitutivelaw.ElasticAnisotropic.is_thermomechanical">(ElasticAnisotropic property)</a>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.is_section_law.html#fedoo.constitutivelaw.BeamMesh.is_section_law">(BeamMesh attribute)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.is_thermomechanical.html#fedoo.constitutivelaw.ElasticIsotrop.is_thermomechanical">(ElasticIsotrop property)</a>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.is_section_law.html#fedoo.constitutivelaw.BeamNonLinear.is_section_law">(BeamNonLinear attribute)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.is_thermomechanical.html#fedoo.constitutivelaw.ElasticOrthotropic.is_thermomechanical">(ElasticOrthotropic property)</a>
+        <li><a href="generated/fedoo.constitutivelaw.BeamPipe.is_section_law.html#fedoo.constitutivelaw.BeamPipe.is_section_law">(BeamPipe attribute)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.is_thermomechanical.html#fedoo.constitutivelaw.SimcoonThermoMechanical.is_thermomechanical">(SimcoonThermoMechanical attribute)</a>
+        <li><a href="generated/fedoo.constitutivelaw.BeamProperties.is_section_law.html#fedoo.constitutivelaw.BeamProperties.is_section_law">(BeamProperties attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamRectangular.is_section_law.html#fedoo.constitutivelaw.BeamRectangular.is_section_law">(BeamRectangular attribute)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.MultiMeshData.items.html#fedoo.MultiMeshData.items">items() (MultiMeshData method)</a>
@@ -2928,6 +2991,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.Iyy.html#fedoo.constitutivelaw.BeamCircular.Iyy">Iyy (BeamCircular attribute)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.Iyy.html#fedoo.constitutivelaw.BeamMesh.Iyy">(BeamMesh attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.Iyy.html#fedoo.constitutivelaw.BeamNonLinear.Iyy">(BeamNonLinear attribute)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.Iyy.html#fedoo.constitutivelaw.BeamPipe.Iyy">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.Iyy.html#fedoo.constitutivelaw.BeamProperties.Iyy">(BeamProperties attribute)</a>
@@ -2938,6 +3005,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.Izz.html#fedoo.constitutivelaw.BeamCircular.Izz">Izz (BeamCircular attribute)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.Izz.html#fedoo.constitutivelaw.BeamMesh.Izz">(BeamMesh attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.Izz.html#fedoo.constitutivelaw.BeamNonLinear.Izz">(BeamNonLinear attribute)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.Izz.html#fedoo.constitutivelaw.BeamPipe.Izz">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.Izz.html#fedoo.constitutivelaw.BeamProperties.Izz">(BeamProperties attribute)</a>
@@ -2954,6 +3025,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.Jx.html#fedoo.constitutivelaw.BeamCircular.Jx">Jx (BeamCircular attribute)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.Jx.html#fedoo.constitutivelaw.BeamMesh.Jx">(BeamMesh attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.Jx.html#fedoo.constitutivelaw.BeamNonLinear.Jx">(BeamNonLinear attribute)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.Jx.html#fedoo.constitutivelaw.BeamPipe.Jx">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.Jx.html#fedoo.constitutivelaw.BeamProperties.Jx">(BeamProperties attribute)</a>
@@ -2970,6 +3045,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.k.html#fedoo.constitutivelaw.BeamCircular.k">k (BeamCircular attribute)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.k.html#fedoo.constitutivelaw.BeamMesh.k">(BeamMesh attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.k.html#fedoo.constitutivelaw.BeamNonLinear.k">(BeamNonLinear attribute)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.k.html#fedoo.constitutivelaw.BeamPipe.k">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.k.html#fedoo.constitutivelaw.BeamProperties.k">(BeamProperties attribute)</a>
@@ -3034,6 +3113,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.linear_density.html#fedoo.constitutivelaw.BeamCircular.linear_density">linear_density (BeamCircular property)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.linear_density.html#fedoo.constitutivelaw.BeamMesh.linear_density">(BeamMesh property)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.linear_density.html#fedoo.constitutivelaw.BeamNonLinear.linear_density">(BeamNonLinear property)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.linear_density.html#fedoo.constitutivelaw.BeamPipe.linear_density">(BeamPipe property)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.linear_density.html#fedoo.constitutivelaw.BeamProperties.linear_density">(BeamProperties property)</a>
@@ -3067,6 +3150,8 @@
         <li><a href="generated/fedoo.ProblemDataSet.load.html#fedoo.ProblemDataSet.load">(ProblemDataSet method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.DataSet.load_dict.html#fedoo.DataSet.load_dict">load_dict() (DataSet method)</a>
 
       <ul>
@@ -3075,8 +3160,6 @@
         <li><a href="generated/fedoo.ProblemDataSet.load_dict.html#fedoo.ProblemDataSet.load_dict">(ProblemDataSet method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.constitutivelaw.CompositeUD.local2global_H.html#fedoo.constitutivelaw.CompositeUD.local2global_H">local2global_H() (CompositeUD method)</a>
 
       <ul>
@@ -3093,8 +3176,6 @@
         <li><a href="generated/fedoo.constitutivelaw.Heterogeneous.local2global_H.html#fedoo.constitutivelaw.Heterogeneous.local2global_H">(Heterogeneous method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.local2global_H.html#fedoo.constitutivelaw.Simcoon.local2global_H">(Simcoon method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.local2global_H.html#fedoo.constitutivelaw.SimcoonThermoMechanical.local2global_H">(SimcoonThermoMechanical method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.CohesiveLaw.local2global_K.html#fedoo.constitutivelaw.CohesiveLaw.local2global_K">local2global_K() (CohesiveLaw method)</a>
@@ -3120,8 +3201,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.local2global_strain.html#fedoo.constitutivelaw.Simcoon.local2global_strain">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.local2global_strain.html#fedoo.constitutivelaw.SimcoonThermoMechanical.local2global_strain">(SimcoonThermoMechanical method)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.CompositeUD.local2global_stress.html#fedoo.constitutivelaw.CompositeUD.local2global_stress">local2global_stress() (CompositeUD method)</a>
 
@@ -3139,8 +3218,6 @@
         <li><a href="generated/fedoo.constitutivelaw.Heterogeneous.local2global_stress.html#fedoo.constitutivelaw.Heterogeneous.local2global_stress">(Heterogeneous method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.local2global_stress.html#fedoo.constitutivelaw.Simcoon.local2global_stress">(Simcoon method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.local2global_stress.html#fedoo.constitutivelaw.SimcoonThermoMechanical.local2global_stress">(SimcoonThermoMechanical method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -3184,8 +3261,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.manages_material_frame.html#fedoo.constitutivelaw.Simcoon.manages_material_frame">(Simcoon property)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.manages_material_frame.html#fedoo.constitutivelaw.SimcoonThermoMechanical.manages_material_frame">(SimcoonThermoMechanical attribute)</a>
-</li>
       </ul></li>
       <li><a href="generated/fedoo.MultiMeshData.map.html#fedoo.MultiMeshData.map">map() (MultiMeshData method)</a>
 </li>
@@ -3200,6 +3275,8 @@
 </li>
       </ul></li>
       <li><a href="generated/fedoo.problem.Modal.mass_matrix.html#fedoo.problem.Modal.mass_matrix">mass_matrix (Modal property)</a>
+</li>
+      <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.material.html#fedoo.constitutivelaw.BeamNonLinear.material">material (BeamNonLinear attribute)</a>
 </li>
       <li><a href="generated/fedoo.problem.LinearBuckling.material_assembly.html#fedoo.problem.LinearBuckling.material_assembly">material_assembly (LinearBuckling property)</a>
 </li>
@@ -3302,6 +3379,8 @@
         <li><a href="generated/fedoo.MultiMesh.n_elm_nodes.html#fedoo.MultiMesh.n_elm_nodes">(MultiMesh property)</a>
 </li>
       </ul></li>
+      <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.n_fibers.html#fedoo.constitutivelaw.BeamNonLinear.n_fibers">n_fibers (BeamNonLinear property)</a>
+</li>
       <li><a href="assembly.html#fedoo.Assembly.n_gauss_points">n_gauss_points (Assembly property)</a>
 
       <ul>
@@ -3365,6 +3444,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.n_points.html#fedoo.constitutivelaw.BeamCircular.n_points">n_points (BeamCircular property)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.n_points.html#fedoo.constitutivelaw.BeamMesh.n_points">(BeamMesh property)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.n_points.html#fedoo.constitutivelaw.BeamNonLinear.n_points">(BeamNonLinear property)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.n_points.html#fedoo.constitutivelaw.BeamPipe.n_points">(BeamPipe property)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.n_points.html#fedoo.constitutivelaw.BeamProperties.n_points">(BeamProperties property)</a>
@@ -3386,6 +3469,10 @@
         <li><a href="generated/fedoo.constitutivelaw.BeamCircular.name.html#fedoo.constitutivelaw.BeamCircular.name">(BeamCircular property)</a>
 </li>
         <li><a href="generated/fedoo.weakform.BeamEquilibrium.name.html#fedoo.weakform.BeamEquilibrium.name">(BeamEquilibrium property)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.name.html#fedoo.constitutivelaw.BeamMesh.name">(BeamMesh property)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.name.html#fedoo.constitutivelaw.BeamNonLinear.name">(BeamNonLinear property)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.name.html#fedoo.constitutivelaw.BeamPipe.name">(BeamPipe property)</a>
 </li>
@@ -3501,8 +3588,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.name.html#fedoo.constitutivelaw.Simcoon.name">(Simcoon property)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.name.html#fedoo.constitutivelaw.SimcoonThermoMechanical.name">(SimcoonThermoMechanical property)</a>
-</li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.name.html#fedoo.constitutivelaw.Spring.name">(Spring property)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.name.html#fedoo.weakform.SpringEquilibrium.name">(SpringEquilibrium property)</a>
@@ -3591,6 +3676,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.normalize_section_coordinates.html#fedoo.constitutivelaw.BeamCircular.normalize_section_coordinates">normalize_section_coordinates() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.normalize_section_coordinates.html#fedoo.constitutivelaw.BeamMesh.normalize_section_coordinates">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.normalize_section_coordinates.html#fedoo.constitutivelaw.BeamNonLinear.normalize_section_coordinates">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.normalize_section_coordinates.html#fedoo.constitutivelaw.BeamPipe.normalize_section_coordinates">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.normalize_section_coordinates.html#fedoo.constitutivelaw.BeamProperties.normalize_section_coordinates">(BeamProperties method)</a>
@@ -3601,6 +3690,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.normalized_output_points.html#fedoo.constitutivelaw.BeamCircular.normalized_output_points">normalized_output_points() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.normalized_output_points.html#fedoo.constitutivelaw.BeamMesh.normalized_output_points">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.normalized_output_points.html#fedoo.constitutivelaw.BeamNonLinear.normalized_output_points">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.normalized_output_points.html#fedoo.constitutivelaw.BeamPipe.normalized_output_points">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.normalized_output_points.html#fedoo.constitutivelaw.BeamProperties.normalized_output_points">(BeamProperties method)</a>
@@ -3611,6 +3704,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.normalized_section_coordinates.html#fedoo.constitutivelaw.BeamCircular.normalized_section_coordinates">normalized_section_coordinates() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.normalized_section_coordinates.html#fedoo.constitutivelaw.BeamMesh.normalized_section_coordinates">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.normalized_section_coordinates.html#fedoo.constitutivelaw.BeamNonLinear.normalized_section_coordinates">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.normalized_section_coordinates.html#fedoo.constitutivelaw.BeamPipe.normalized_section_coordinates">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.normalized_section_coordinates.html#fedoo.constitutivelaw.BeamProperties.normalized_section_coordinates">(BeamProperties method)</a>
@@ -3685,6 +3782,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.output_points.html#fedoo.constitutivelaw.BeamCircular.output_points">output_points (BeamCircular property)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.output_points.html#fedoo.constitutivelaw.BeamMesh.output_points">(BeamMesh property)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.output_points.html#fedoo.constitutivelaw.BeamNonLinear.output_points">(BeamNonLinear property)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.output_points.html#fedoo.constitutivelaw.BeamPipe.output_points">(BeamPipe property)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.output_points.html#fedoo.constitutivelaw.BeamProperties.output_points">(BeamProperties property)</a>
@@ -3823,6 +3924,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.recovery.html#fedoo.constitutivelaw.BeamCircular.recovery">recovery (BeamCircular attribute)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.recovery.html#fedoo.constitutivelaw.BeamMesh.recovery">(BeamMesh attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.recovery.html#fedoo.constitutivelaw.BeamNonLinear.recovery">(BeamNonLinear attribute)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.recovery.html#fedoo.constitutivelaw.BeamPipe.recovery">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.recovery.html#fedoo.constitutivelaw.BeamProperties.recovery">(BeamProperties attribute)</a>
@@ -3838,16 +3943,6 @@
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.reference_bounds.html#fedoo.constitutivelaw.BeamPipe.reference_bounds">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamRectangular.reference_bounds.html#fedoo.constitutivelaw.BeamRectangular.reference_bounds">(BeamRectangular attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.reference_temperature.html#fedoo.constitutivelaw.CompositeUD.reference_temperature">reference_temperature (CompositeUD property)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.reference_temperature.html#fedoo.constitutivelaw.ElasticAnisotropic.reference_temperature">(ElasticAnisotropic property)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.reference_temperature.html#fedoo.constitutivelaw.ElasticIsotrop.reference_temperature">(ElasticIsotrop property)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.reference_temperature.html#fedoo.constitutivelaw.ElasticOrthotropic.reference_temperature">(ElasticOrthotropic property)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.ProblemDataSet.refresh.html#fedoo.ProblemDataSet.refresh">refresh() (ProblemDataSet method)</a>
@@ -3916,6 +4011,10 @@
         <li><a href="generated/fedoo.constitutivelaw.BeamCircular.reset.html#fedoo.constitutivelaw.BeamCircular.reset">(BeamCircular method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.BeamEquilibrium.reset.html#fedoo.weakform.BeamEquilibrium.reset">(BeamEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.reset.html#fedoo.constitutivelaw.BeamMesh.reset">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.reset.html#fedoo.constitutivelaw.BeamNonLinear.reset">(BeamNonLinear method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.reset.html#fedoo.constitutivelaw.BeamPipe.reset">(BeamPipe method)</a>
 </li>
@@ -4005,8 +4104,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.reset.html#fedoo.constitutivelaw.Simcoon.reset">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.reset.html#fedoo.constitutivelaw.SimcoonThermoMechanical.reset">(SimcoonThermoMechanical method)</a>
-</li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.reset.html#fedoo.constitutivelaw.Spring.reset">(Spring method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.reset.html#fedoo.weakform.SpringEquilibrium.reset">(SpringEquilibrium method)</a>
@@ -4053,6 +4150,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.rotary_density.html#fedoo.constitutivelaw.BeamCircular.rotary_density">rotary_density (BeamCircular property)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.rotary_density.html#fedoo.constitutivelaw.BeamMesh.rotary_density">(BeamMesh property)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.rotary_density.html#fedoo.constitutivelaw.BeamNonLinear.rotary_density">(BeamNonLinear property)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.rotary_density.html#fedoo.constitutivelaw.BeamPipe.rotary_density">(BeamPipe property)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.rotary_density.html#fedoo.constitutivelaw.BeamProperties.rotary_density">(BeamProperties property)</a>
@@ -4087,6 +4188,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.sample_points.html#fedoo.constitutivelaw.BeamCircular.sample_points">sample_points() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.sample_points.html#fedoo.constitutivelaw.BeamMesh.sample_points">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.sample_points.html#fedoo.constitutivelaw.BeamNonLinear.sample_points">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.sample_points.html#fedoo.constitutivelaw.BeamPipe.sample_points">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.sample_points.html#fedoo.constitutivelaw.BeamProperties.sample_points">(BeamProperties method)</a>
@@ -4159,6 +4264,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.scale_section_points.html#fedoo.constitutivelaw.BeamCircular.scale_section_points">scale_section_points() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.scale_section_points.html#fedoo.constitutivelaw.BeamMesh.scale_section_points">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.scale_section_points.html#fedoo.constitutivelaw.BeamNonLinear.scale_section_points">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.scale_section_points.html#fedoo.constitutivelaw.BeamPipe.scale_section_points">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.scale_section_points.html#fedoo.constitutivelaw.BeamProperties.scale_section_points">(BeamProperties method)</a>
@@ -4169,6 +4278,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.section_bounds.html#fedoo.constitutivelaw.BeamCircular.section_bounds">section_bounds() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.section_bounds.html#fedoo.constitutivelaw.BeamMesh.section_bounds">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.section_bounds.html#fedoo.constitutivelaw.BeamNonLinear.section_bounds">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.section_bounds.html#fedoo.constitutivelaw.BeamPipe.section_bounds">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.section_bounds.html#fedoo.constitutivelaw.BeamProperties.section_bounds">(BeamProperties method)</a>
@@ -4179,6 +4292,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.section_coordinates.html#fedoo.constitutivelaw.BeamCircular.section_coordinates">section_coordinates() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.section_coordinates.html#fedoo.constitutivelaw.BeamMesh.section_coordinates">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.section_coordinates.html#fedoo.constitutivelaw.BeamNonLinear.section_coordinates">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.section_coordinates.html#fedoo.constitutivelaw.BeamPipe.section_coordinates">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.section_coordinates.html#fedoo.constitutivelaw.BeamProperties.section_coordinates">(BeamProperties method)</a>
@@ -4197,6 +4314,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.section_description.html#fedoo.constitutivelaw.BeamCircular.section_description">section_description() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.section_description.html#fedoo.constitutivelaw.BeamMesh.section_description">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.section_description.html#fedoo.constitutivelaw.BeamNonLinear.section_description">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.section_description.html#fedoo.constitutivelaw.BeamPipe.section_description">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.section_description.html#fedoo.constitutivelaw.BeamProperties.section_description">(BeamProperties method)</a>
@@ -4215,6 +4336,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.section_dimensions.html#fedoo.constitutivelaw.BeamCircular.section_dimensions">section_dimensions (BeamCircular attribute)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.section_dimensions.html#fedoo.constitutivelaw.BeamMesh.section_dimensions">(BeamMesh attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.section_dimensions.html#fedoo.constitutivelaw.BeamNonLinear.section_dimensions">(BeamNonLinear attribute)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.section_dimensions.html#fedoo.constitutivelaw.BeamPipe.section_dimensions">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.section_dimensions.html#fedoo.constitutivelaw.BeamProperties.section_dimensions">(BeamProperties attribute)</a>
@@ -4225,6 +4350,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.section_mesh.html#fedoo.constitutivelaw.BeamCircular.section_mesh">section_mesh() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.section_mesh.html#fedoo.constitutivelaw.BeamMesh.section_mesh">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.section_mesh.html#fedoo.constitutivelaw.BeamNonLinear.section_mesh">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.section_mesh.html#fedoo.constitutivelaw.BeamPipe.section_mesh">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.section_mesh.html#fedoo.constitutivelaw.BeamProperties.section_mesh">(BeamProperties method)</a>
@@ -4235,6 +4364,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.section_registry.html#fedoo.constitutivelaw.BeamCircular.section_registry">section_registry (BeamCircular attribute)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.section_registry.html#fedoo.constitutivelaw.BeamMesh.section_registry">(BeamMesh attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.section_registry.html#fedoo.constitutivelaw.BeamNonLinear.section_registry">(BeamNonLinear attribute)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.section_registry.html#fedoo.constitutivelaw.BeamPipe.section_registry">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.section_registry.html#fedoo.constitutivelaw.BeamProperties.section_registry">(BeamProperties attribute)</a>
@@ -4245,6 +4378,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.section_type.html#fedoo.constitutivelaw.BeamCircular.section_type">section_type (BeamCircular attribute)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.section_type.html#fedoo.constitutivelaw.BeamMesh.section_type">(BeamMesh attribute)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.section_type.html#fedoo.constitutivelaw.BeamNonLinear.section_type">(BeamNonLinear attribute)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.section_type.html#fedoo.constitutivelaw.BeamPipe.section_type">(BeamPipe attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.section_type.html#fedoo.constitutivelaw.BeamProperties.section_type">(BeamProperties attribute)</a>
@@ -4398,8 +4535,6 @@
         <li><a href="generated/fedoo.constitutivelaw.Heterogeneous.set_density.html#fedoo.constitutivelaw.Heterogeneous.set_density">(Heterogeneous method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.set_density.html#fedoo.constitutivelaw.Simcoon.set_density">(Simcoon method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.set_density.html#fedoo.constitutivelaw.SimcoonThermoMechanical.set_density">(SimcoonThermoMechanical method)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.constraint.Contact.set_disp.html#fedoo.constraint.Contact.set_disp">set_disp() (Contact method)</a>
@@ -4563,6 +4698,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.set_local_frame.html#fedoo.constitutivelaw.BeamCircular.set_local_frame">set_local_frame() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.set_local_frame.html#fedoo.constitutivelaw.BeamMesh.set_local_frame">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.set_local_frame.html#fedoo.constitutivelaw.BeamNonLinear.set_local_frame">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.set_local_frame.html#fedoo.constitutivelaw.BeamPipe.set_local_frame">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.set_local_frame.html#fedoo.constitutivelaw.BeamProperties.set_local_frame">(BeamProperties method)</a>
@@ -4596,8 +4735,6 @@
         <li><a href="generated/fedoo.constitutivelaw.ShellLaminateNonLinear.set_local_frame.html#fedoo.constitutivelaw.ShellLaminateNonLinear.set_local_frame">(ShellLaminateNonLinear method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.set_local_frame.html#fedoo.constitutivelaw.Simcoon.set_local_frame">(Simcoon method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.set_local_frame.html#fedoo.constitutivelaw.SimcoonThermoMechanical.set_local_frame">(SimcoonThermoMechanical method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.set_local_frame.html#fedoo.constitutivelaw.Spring.set_local_frame">(Spring method)</a>
 </li>
@@ -4636,6 +4773,8 @@
         <li><a href="generated/fedoo.core.base.ProblemBase.set_reuse_factorization.html#fedoo.core.base.ProblemBase.set_reuse_factorization">(ProblemBase method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.set_solver.html#fedoo.problem.ExplicitDynamic.set_solver">set_solver() (ExplicitDynamic method)</a>
 
       <ul>
@@ -4662,6 +4801,10 @@
         <li><a href="generated/fedoo.constitutivelaw.BeamCircular.set_start.html#fedoo.constitutivelaw.BeamCircular.set_start">(BeamCircular method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.BeamEquilibrium.set_start.html#fedoo.weakform.BeamEquilibrium.set_start">(BeamEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.set_start.html#fedoo.constitutivelaw.BeamMesh.set_start">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.set_start.html#fedoo.constitutivelaw.BeamNonLinear.set_start">(BeamNonLinear method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.set_start.html#fedoo.constitutivelaw.BeamPipe.set_start">(BeamPipe method)</a>
 </li>
@@ -4749,8 +4892,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.set_start.html#fedoo.constitutivelaw.Simcoon.set_start">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.set_start.html#fedoo.constitutivelaw.SimcoonThermoMechanical.set_start">(SimcoonThermoMechanical method)</a>
-</li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.set_start.html#fedoo.constitutivelaw.Spring.set_start">(Spring method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.set_start.html#fedoo.weakform.SpringEquilibrium.set_start">(SpringEquilibrium method)</a>
@@ -4766,8 +4907,6 @@
         <li><a href="generated/fedoo.constitutivelaw.ThermalProperties.set_start.html#fedoo.constitutivelaw.ThermalProperties.set_start">(ThermalProperties method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/fedoo.weakform.ArtificialDamping.set_storage.html#fedoo.weakform.ArtificialDamping.set_storage">set_storage() (ArtificialDamping method)</a>
 
       <ul>
@@ -4812,16 +4951,6 @@
         <li><a href="generated/fedoo.weakform.StressEquilibriumRI.set_storage.html#fedoo.weakform.StressEquilibriumRI.set_storage">(StressEquilibriumRI method)</a>
 </li>
       </ul></li>
-      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.set_thermal_properties.html#fedoo.constitutivelaw.CompositeUD.set_thermal_properties">set_thermal_properties() (CompositeUD method)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.set_thermal_properties.html#fedoo.constitutivelaw.ElasticAnisotropic.set_thermal_properties">(ElasticAnisotropic method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.set_thermal_properties.html#fedoo.constitutivelaw.ElasticIsotrop.set_thermal_properties">(ElasticIsotrop method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.set_thermal_properties.html#fedoo.constitutivelaw.ElasticOrthotropic.set_thermal_properties">(ElasticOrthotropic method)</a>
-</li>
-      </ul></li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.set_time_integrator.html#fedoo.problem.ExplicitDynamic.set_time_integrator">set_time_integrator() (ExplicitDynamic method)</a>
 
       <ul>
@@ -4857,6 +4986,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.shear_stress.html#fedoo.constitutivelaw.BeamCircular.shear_stress">shear_stress() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.shear_stress.html#fedoo.constitutivelaw.BeamMesh.shear_stress">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.shear_stress.html#fedoo.constitutivelaw.BeamNonLinear.shear_stress">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.shear_stress.html#fedoo.constitutivelaw.BeamPipe.shear_stress">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.shear_stress.html#fedoo.constitutivelaw.BeamProperties.shear_stress">(BeamProperties method)</a>
@@ -4907,8 +5040,6 @@
       <li><a href="generated/fedoo.constitutivelaw.ShellLaminateNonLinear.html#fedoo.constitutivelaw.ShellLaminateNonLinear">ShellLaminateNonLinear (class in fedoo.constitutivelaw)</a>
 </li>
       <li><a href="generated/fedoo.constitutivelaw.Simcoon.html#fedoo.constitutivelaw.Simcoon">Simcoon (class in fedoo.constitutivelaw)</a>
-</li>
-      <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.html#fedoo.constitutivelaw.SimcoonThermoMechanical">SimcoonThermoMechanical (class in fedoo.constitutivelaw)</a>
 </li>
       <li><a href="generated/fedoo.problem.ExplicitDynamic.solve.html#fedoo.problem.ExplicitDynamic.solve">solve() (ExplicitDynamic method)</a>
 
@@ -5042,16 +5173,6 @@
         <li><a href="generated/fedoo.constraint.SurfaceForce.space.html#fedoo.constraint.SurfaceForce.space">(SurfaceForce property)</a>
 </li>
       </ul></li>
-      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.specific_heat.html#fedoo.constitutivelaw.CompositeUD.specific_heat">specific_heat (CompositeUD property)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.specific_heat.html#fedoo.constitutivelaw.ElasticAnisotropic.specific_heat">(ElasticAnisotropic property)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.specific_heat.html#fedoo.constitutivelaw.ElasticIsotrop.specific_heat">(ElasticIsotrop property)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.specific_heat.html#fedoo.constitutivelaw.ElasticOrthotropic.specific_heat">(ElasticOrthotropic property)</a>
-</li>
-      </ul></li>
       <li><a href="generated/fedoo.DataSet.split_global_element_indices.html#fedoo.DataSet.split_global_element_indices">split_global_element_indices() (DataSet method)</a>
 
       <ul>
@@ -5174,14 +5295,14 @@
       </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.Simcoon.supports_tangent_output.html#fedoo.constitutivelaw.Simcoon.supports_tangent_output">supports_tangent_output (Simcoon attribute)</a>
 </li>
-      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.supports_total_formulation.html#fedoo.constitutivelaw.CompositeUD.supports_total_formulation">supports_total_formulation (CompositeUD property)</a>
+      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.supports_total_formulation.html#fedoo.constitutivelaw.CompositeUD.supports_total_formulation">supports_total_formulation (CompositeUD attribute)</a>
 
       <ul>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.supports_total_formulation.html#fedoo.constitutivelaw.ElasticAnisotropic.supports_total_formulation">(ElasticAnisotropic property)</a>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.supports_total_formulation.html#fedoo.constitutivelaw.ElasticAnisotropic.supports_total_formulation">(ElasticAnisotropic attribute)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.supports_total_formulation.html#fedoo.constitutivelaw.ElasticIsotrop.supports_total_formulation">(ElasticIsotrop property)</a>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.supports_total_formulation.html#fedoo.constitutivelaw.ElasticIsotrop.supports_total_formulation">(ElasticIsotrop attribute)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.supports_total_formulation.html#fedoo.constitutivelaw.ElasticOrthotropic.supports_total_formulation">(ElasticOrthotropic property)</a>
+        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.supports_total_formulation.html#fedoo.constitutivelaw.ElasticOrthotropic.supports_total_formulation">(ElasticOrthotropic attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.ElastoPlasticity.supports_total_formulation.html#fedoo.constitutivelaw.ElastoPlasticity.supports_total_formulation">(ElastoPlasticity attribute)</a>
 </li>
@@ -5190,8 +5311,6 @@
         <li><a href="generated/fedoo.constitutivelaw.Heterogeneous.supports_total_formulation.html#fedoo.constitutivelaw.Heterogeneous.supports_total_formulation">(Heterogeneous attribute)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.supports_total_formulation.html#fedoo.constitutivelaw.Simcoon.supports_total_formulation">(Simcoon property)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.supports_total_formulation.html#fedoo.constitutivelaw.SimcoonThermoMechanical.supports_total_formulation">(SimcoonThermoMechanical attribute)</a>
 </li>
       </ul></li>
       <li><a href="generated/fedoo.constraint.SurfaceForce.html#fedoo.constraint.SurfaceForce">SurfaceForce (class in fedoo.constraint)</a>
@@ -5224,38 +5343,6 @@
 </li>
       <li><a href="generated/fedoo.problem.NonLinear.t_fact_old.html#fedoo.problem.NonLinear.t_fact_old">t_fact_old (NonLinear property)</a>
 </li>
-      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.thermal.html#fedoo.constitutivelaw.CompositeUD.thermal">thermal (CompositeUD attribute)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.thermal.html#fedoo.constitutivelaw.ElasticAnisotropic.thermal">(ElasticAnisotropic attribute)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.thermal.html#fedoo.constitutivelaw.ElasticIsotrop.thermal">(ElasticIsotrop attribute)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.thermal.html#fedoo.constitutivelaw.ElasticOrthotropic.thermal">(ElasticOrthotropic attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.thermal_conductivity.html#fedoo.constitutivelaw.CompositeUD.thermal_conductivity">thermal_conductivity (CompositeUD property)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.thermal_conductivity.html#fedoo.constitutivelaw.ElasticAnisotropic.thermal_conductivity">(ElasticAnisotropic property)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.thermal_conductivity.html#fedoo.constitutivelaw.ElasticIsotrop.thermal_conductivity">(ElasticIsotrop property)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.thermal_conductivity.html#fedoo.constitutivelaw.ElasticOrthotropic.thermal_conductivity">(ElasticOrthotropic property)</a>
-</li>
-      </ul></li>
-      <li><a href="generated/fedoo.constitutivelaw.CompositeUD.thermal_storage.html#fedoo.constitutivelaw.CompositeUD.thermal_storage">thermal_storage (CompositeUD attribute)</a>
-
-      <ul>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticAnisotropic.thermal_storage.html#fedoo.constitutivelaw.ElasticAnisotropic.thermal_storage">(ElasticAnisotropic attribute)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticIsotrop.thermal_storage.html#fedoo.constitutivelaw.ElasticIsotrop.thermal_storage">(ElasticIsotrop attribute)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.ElasticOrthotropic.thermal_storage.html#fedoo.constitutivelaw.ElasticOrthotropic.thermal_storage">(ElasticOrthotropic attribute)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.thermal_storage.html#fedoo.constitutivelaw.SimcoonThermoMechanical.thermal_storage">(SimcoonThermoMechanical attribute)</a>
-</li>
-      </ul></li>
       <li><a href="generated/fedoo.constitutivelaw.ThermalProperties.html#fedoo.constitutivelaw.ThermalProperties">ThermalProperties (class in fedoo.constitutivelaw)</a>
 </li>
       <li><a href="generated/fedoo.mesh.thicken.html#fedoo.mesh.thicken">thicken() (in module fedoo.mesh)</a>
@@ -5359,6 +5446,10 @@
 </li>
         <li><a href="generated/fedoo.weakform.BeamEquilibrium.to_start.html#fedoo.weakform.BeamEquilibrium.to_start">(BeamEquilibrium method)</a>
 </li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.to_start.html#fedoo.constitutivelaw.BeamMesh.to_start">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.to_start.html#fedoo.constitutivelaw.BeamNonLinear.to_start">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.to_start.html#fedoo.constitutivelaw.BeamPipe.to_start">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.to_start.html#fedoo.constitutivelaw.BeamProperties.to_start">(BeamProperties method)</a>
@@ -5445,8 +5536,6 @@
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.to_start.html#fedoo.constitutivelaw.Simcoon.to_start">(Simcoon method)</a>
 </li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.to_start.html#fedoo.constitutivelaw.SimcoonThermoMechanical.to_start">(SimcoonThermoMechanical method)</a>
-</li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.to_start.html#fedoo.constitutivelaw.Spring.to_start">(Spring method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.SpringEquilibrium.to_start.html#fedoo.weakform.SpringEquilibrium.to_start">(SpringEquilibrium method)</a>
@@ -5481,6 +5570,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.torsion_strain.html#fedoo.constitutivelaw.BeamCircular.torsion_strain">torsion_strain() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.torsion_strain.html#fedoo.constitutivelaw.BeamMesh.torsion_strain">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.torsion_strain.html#fedoo.constitutivelaw.BeamNonLinear.torsion_strain">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.torsion_strain.html#fedoo.constitutivelaw.BeamPipe.torsion_strain">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.torsion_strain.html#fedoo.constitutivelaw.BeamProperties.torsion_strain">(BeamProperties method)</a>
@@ -5491,6 +5584,10 @@
       <li><a href="generated/fedoo.constitutivelaw.BeamCircular.torsion_stress.html#fedoo.constitutivelaw.BeamCircular.torsion_stress">torsion_stress() (BeamCircular method)</a>
 
       <ul>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.torsion_stress.html#fedoo.constitutivelaw.BeamMesh.torsion_stress">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.torsion_stress.html#fedoo.constitutivelaw.BeamNonLinear.torsion_stress">(BeamNonLinear method)</a>
+</li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.torsion_stress.html#fedoo.constitutivelaw.BeamPipe.torsion_stress">(BeamPipe method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamProperties.torsion_stress.html#fedoo.constitutivelaw.BeamProperties.torsion_stress">(BeamProperties method)</a>
@@ -5522,6 +5619,10 @@
         <li><a href="generated/fedoo.constitutivelaw.BeamCircular.update.html#fedoo.constitutivelaw.BeamCircular.update">(BeamCircular method)</a>
 </li>
         <li><a href="generated/fedoo.weakform.BeamEquilibrium.update.html#fedoo.weakform.BeamEquilibrium.update">(BeamEquilibrium method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamMesh.update.html#fedoo.constitutivelaw.BeamMesh.update">(BeamMesh method)</a>
+</li>
+        <li><a href="generated/fedoo.constitutivelaw.BeamNonLinear.update.html#fedoo.constitutivelaw.BeamNonLinear.update">(BeamNonLinear method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.BeamPipe.update.html#fedoo.constitutivelaw.BeamPipe.update">(BeamPipe method)</a>
 </li>
@@ -5610,8 +5711,6 @@
         <li><a href="generated/fedoo.constitutivelaw.ShellLaminateNonLinear.update.html#fedoo.constitutivelaw.ShellLaminateNonLinear.update">(ShellLaminateNonLinear method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Simcoon.update.html#fedoo.constitutivelaw.Simcoon.update">(Simcoon method)</a>
-</li>
-        <li><a href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.update.html#fedoo.constitutivelaw.SimcoonThermoMechanical.update">(SimcoonThermoMechanical method)</a>
 </li>
         <li><a href="generated/fedoo.constitutivelaw.Spring.update.html#fedoo.constitutivelaw.Spring.update">(Spring method)</a>
 </li>

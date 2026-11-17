@@ -1,0 +1,79 @@
+﻿fedoo.constitutivelaw.BeamMesh
+==============================
+
+.. currentmodule:: fedoo.constitutivelaw
+
+.. autoclass:: BeamMesh
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamMesh.compute_linear_density
+         BeamMesh.compute_rotary_density
+         BeamMesh.from_section_description
+         BeamMesh.get_all
+         BeamMesh.get_beam_rigidity
+         BeamMesh.get_local_frame
+         BeamMesh.get_strain
+         BeamMesh.get_stress
+         BeamMesh.initialize
+         BeamMesh.normalize_section_coordinates
+         BeamMesh.normalized_output_points
+         BeamMesh.normalized_section_coordinates
+         BeamMesh.reset
+         BeamMesh.sample_points
+         BeamMesh.scale_section_points
+         BeamMesh.section_bounds
+         BeamMesh.section_coordinates
+         BeamMesh.section_description
+         BeamMesh.section_mesh
+         BeamMesh.set_local_frame
+         BeamMesh.set_start
+         BeamMesh.shear_stress
+         BeamMesh.to_start
+         BeamMesh.torsion_strain
+         BeamMesh.torsion_stress
+         BeamMesh.update
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         BeamMesh.corate
+         BeamMesh.fibers
+         BeamMesh.is_section_law
+         BeamMesh.linear_density
+         BeamMesh.n_points
+         BeamMesh.name
+         BeamMesh.output_points
+         BeamMesh.recovery
+         BeamMesh.rotary_density
+         BeamMesh.section_dimensions
+         BeamMesh.section_registry
+         BeamMesh.section_type
+         BeamMesh.A
+         BeamMesh.Jx
+         BeamMesh.Iyy
+         BeamMesh.Izz
+         BeamMesh.k
+         BeamMesh.is_initialized
+  
+  
