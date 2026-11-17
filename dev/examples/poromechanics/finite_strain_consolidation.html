@@ -129,9 +129,9 @@ at the top and spreads down the column, while the permeability of the
 compacted material drops, which slows down the consolidation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This example requires simcoon. With simcoon hyperelastic laws, stay below
-about 12 % compression: see the Limitations section of
-<a class="reference internal" href="../../poromechanics.html"><span class="doc">Poromechanics</span></a>.</p>
+<p>This example requires simcoon. With a deformation-dependent permeability
+such as Holmes-Mow, keep the local <span class="math notranslate nohighlight">\(J\)</span> above the pore-closure bound
+<span class="math notranslate nohighlight">\(1 - \\phi_0\)</span>: see the Limitations section of <a class="reference internal" href="../../poromechanics.html"><span class="doc">Poromechanics</span></a>.</p>
 </div>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -300,7 +300,7 @@ permeability ratio k/k0: 0.482
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_finite_strain_consolidation_001.png" srcset="../../_images/sphx_glr_finite_strain_consolidation_001.png" alt="Consolidation, Compaction profiles" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 3.908 seconds)</p>
+<img src="../../_images/sphx_glr_finite_strain_consolidation_001.png" srcset="../../_images/sphx_glr_finite_strain_consolidation_001.png" alt="Consolidation, Compaction profiles" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.361 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-poromechanics-finite-strain-consolidation-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/8deb5f9b7943aba123ad2bbf32927d59/finite_strain_consolidation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">finite_strain_consolidation.ipynb</span></code></a></p>

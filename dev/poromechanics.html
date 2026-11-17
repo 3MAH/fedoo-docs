@@ -412,16 +412,21 @@ compared once with a 3D model of the full cylinder, with close agreement
 <section id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><strong>Large compression with simcoon hyperelastic laws (UL)</strong>: beyond roughly
-12 % compression the Newton loop can develop a slowly-amplifying u-p
-oscillation. The poro coupling blocks were verified consistent against a
-finite-difference Jacobian; the amplification originates in the fedoo core
-UL displacement tangent of hyperelastic (<code class="docutils literal notranslate"><span class="pre">_Lt_from_F</span></code>) laws, which is
-self-consistent only in the modes excited by pure mechanical loading —
-the Biot coupling seeds the other modes at every iteration. Workarounds:
-smaller total strain, an elasto-plastic/corotational law (<code class="docutils literal notranslate"><span class="pre">ELISO</span></code> etc.,
-which are unaffected), or finer load steps do <em>not</em> help (the threshold is
-on the strain level, not the step size).</p></li>
+<li><p><strong>Pore closure with deformation-dependent permeabilities</strong>: the
+Holmes-Mow and Kozeny-Carman laws are only meaningful while the pores stay
+open, <span class="math notranslate nohighlight">\(J &gt; 1 - \phi_0\)</span>; past that point the permeability collapses
+towards zero and the drained state is never reached. In a confined
+consolidation with a nearly incompressible fluid (large <span class="math notranslate nohighlight">\(M\)</span>), the
+drained boundary layer takes the whole compression during the transient,
+so the local <span class="math notranslate nohighlight">\(J\)</span> can hit this bound well before the average one
+does. Such a run then stalls or fails in Newton for a physical reason, not
+a numerical one. Keep the total strain below the bound, lower <span class="math notranslate nohighlight">\(M\)</span>,
+or use a constant permeability.
+(An earlier version of this page reported a u-p Newton oscillation of the
+UL hyperelastic skeleton beyond about 12 % compression. It came from the
+updated Lagrangian tangent of the core and has been fixed since; the
+<code class="docutils literal notranslate"><span class="pre">NEOHC</span></code> confined column now converges in a few iterations per step up to
+50 % compression with a constant permeability.)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">2Daxi</span></code> is supported in small strain and in UL, like
 <a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">StressEquilibrium</span></code></a>. It is not available in TL.</p></li>
 <li><p>The permeability tensor is isotropic (<span class="math notranslate nohighlight">\(k \mathbf{I}\)</span>); anisotropic
