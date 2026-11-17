@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:02.669** total execution time for 3 files **from examples/custom_weak_forms**:
+**00:05.327** total execution time for 3 files **from examples/custom_weak_forms**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_custom_weak_forms_navier_stokes.py` (``navier_stokes.py``)
-     - 00:02.005
+     - 00:04.305
      - 0.0
    * - :ref:`sphx_glr_examples_custom_weak_forms_recirculating_flow.py` (``recirculating_flow.py``)
-     - 00:00.363
+     - 00:00.573
      - 0.0
    * - :ref:`sphx_glr_examples_custom_weak_forms_fluid_mechanics.py` (``fluid_mechanics.py``)
-     - 00:00.301
+     - 00:00.449
      - 0.0

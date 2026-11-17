@@ -52,8 +52,8 @@ See :py:attr:`fedoo.weakform.StressEquilibrium.kinematic_form`.
 
     EPICP, simple shear gamma = 0.5, 20 increments
       nlgeom  kinematic form  time (s)   mean s_xx   mean s_yy   mean s_xy  (MPa)
-      UL      rate                 2.88      254.59      167.79      541.99
-      TL      total                4.16      254.87      162.92      541.22
+      UL      rate                 5.61      254.59      167.79      541.99
+      TL      total                8.45      254.87      162.92      541.22
 
 
 
@@ -125,7 +125,7 @@ See :py:attr:`fedoo.weakform.StressEquilibrium.kinematic_form`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 7.038 seconds)
+   **Total running time of the script:** (0 minutes 14.061 seconds)
 
 
 .. _sphx_glr_download_examples_finite_strain_shear_tl_vs_ul.py:
