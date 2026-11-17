@@ -231,8 +231,8 @@ response will not match the intended material orientation.</p></li>
 stress (<code class="docutils literal notranslate"><span class="pre">2Dstress</span></code>) or uniaxial stress (<code class="docutils literal notranslate"><span class="pre">1Dstress</span></code>) only when
 simcoon condenses the state itself, which fedoo asks through
 <code class="docutils literal notranslate"><span class="pre">simcoon.condensation_serves</span></code>; otherwise a <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> is
-raised. Laws driven by the strain are condensed by fedoo when simcoon
-does not serve the state. They remain compatible with 2Daxi at
+raised. Unsupported reduced states are refused for strain-driven laws
+as well. They remain compatible with 2Daxi at
 finite strain provided the F[θθ] = r/R fix is in effect (see
 <code class="xref py py-func docutils literal notranslate"><span class="pre">fedoo.weakform.stress_equilibrium._comp_grad_disp()</span></code>).</p></li>
 <li><p>A modular material uses the <code class="docutils literal notranslate"><span class="pre">MODUL</span></code> UMAT. Under <code class="docutils literal notranslate"><span class="pre">nlgeom=&quot;UL&quot;</span></code> it
