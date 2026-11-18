@@ -65,6 +65,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#full-pip-install">Full pip install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#individual-optional-groups">Individual optional groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sparse-solvers">Sparse solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#petsc">PETSc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">Simcoon</a></li>
 </ul>
 </li>
@@ -174,6 +175,10 @@ $ pip install fedoo[ipc]         # IPC contact (ipctk)
 $ pip install fedoo[gui]         # pyvistaqt + pyside6
 </pre></div>
 </div>
+<p><a class="reference external" href="https://numba.pydata.org/">numba</a> is optional and not installed by fedoo.
+When it is present (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numba</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span>
+<span class="pre">numba</span></code>), the assembly uses compiled kernels instead of numpy, on the number
+of threads given by <code class="docutils literal notranslate"><span class="pre">fedoo.get_config()[&quot;N_THREADS&quot;]</span></code>.</p>
 </section>
 <section id="sparse-solvers">
 <h2>Sparse solvers<a class="headerlink" href="#sparse-solvers" title="Link to this heading"></a></h2>
@@ -191,7 +196,10 @@ on macOS and arm64 (ARM Linux), where pypardiso is not available
 PETSc when only direct solving is needed.</p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/petsc4py/">Petsc4Py</a>
 mainly compatible with linux or macos including the MUMPS solver.
-Use this if you need PETSc’s iterative solvers or MPI parallelism.</p></li>
+Use this if you need PETSc’s iterative solvers (e.g. conjugate
+gradient with the GAMG algebraic multigrid for large 3D models) or
+MPI parallelism. petsc4py is not a dependency of fedoo: install it
+yourself (see <a class="reference internal" href="#petsc-install"><span class="std std-ref">PETSc</span></a>).</p></li>
 <li><p><a class="reference external" href="https://scikit-umfpack.github.io/scikit-umfpack/">Scikit-umfpack</a>
 optional fallback to <code class="docutils literal notranslate"><span class="pre">python-mumps</span></code>. Detected automatically if
 installed, useful in very specific cases (e.g. very small problems,
@@ -213,6 +221,10 @@ kernels through Apple’s vecLib:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge "libblas=*=*accelerate" python-mumps
 </pre></div>
 </div>
+<p>fedoo runs MUMPS on at most 8 threads (performance cores only on Apple
+chips) unless <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> is set, and sets <code class="docutils literal notranslate"><span class="pre">KMP_BLOCKTIME=1</span></code>
+at import on macOS when pypardiso is absent. Define either variable before
+importing fedoo to override.</p>
 <p>On Linux and Windows x86_64 (Intel or AMD), prefer the MKL variant,
 with pypardiso, which then shares the same MKL:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge "libblas=*=*mkl" pypardiso
@@ -229,6 +241,50 @@ $ ldd  $(python -c 'import numpy.linalg._umath_linalg as m; print(m.__file__)') 
 </pre></div>
 </div>
 </div>
+</section>
+<section id="petsc">
+<span id="petsc-install"></span><h2>PETSc<a class="headerlink" href="#petsc" title="Link to this heading"></a></h2>
+<p>fedoo uses PETSc through petsc4py when it is installed, with
+<code class="docutils literal notranslate"><span class="pre">pb.set_solver('petsc',</span> <span class="pre">...)</span></code>, or as direct solver if neither pypardiso
+nor python-mumps is installed (or with
+<code class="docutils literal notranslate"><span class="pre">fd.get_config()['USE_PETSC']</span> <span class="pre">=</span> <span class="pre">True</span></code>). fedoo does not depend on it: it is
+detected at import and initialized at its first use.</p>
+<p>The simplest installation is with conda, in the environment of fedoo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install -c conda-forge petsc4py
+</pre></div>
+</div>
+<p>conda-forge PETSc is built with MPI and MUMPS: the packages that depend on
+MPI-sensitive libraries are then installed in their MPI variant (<code class="docutils literal notranslate"><span class="pre">h5py</span></code>,
+<code class="docutils literal notranslate"><span class="pre">python-mumps</span></code>, which then shares the MUMPS library of PETSc). With pip,
+PETSc is built from sources (long, needs compilers and MPI):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install mpi4py petsc petsc4py
+</pre></div>
+</div>
+<p>Large 3D mechanical models: conjugate gradient and GAMG, which fedoo gives
+the rigid body modes of the problem (near null space). With
+<code class="docutils literal notranslate"><span class="pre">reuse_preconditioner=True</span></code>, the multigrid hierarchy of the first matrix is
+kept for the next Newton iterations and increments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_solver</span><span class="p">(</span><span class="s1">'petsc'</span><span class="p">,</span> <span class="n">solver_type</span><span class="o">=</span><span class="s1">'cg'</span><span class="p">,</span> <span class="n">pc_type</span><span class="o">=</span><span class="s1">'gamg'</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span>
+              <span class="n">reuse_preconditioner</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The PETSc options can also be given on the command line of the script
+(<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">script.py</span> <span class="pre">-ksp_type</span> <span class="pre">cg</span> <span class="pre">-pc_type</span> <span class="pre">gamg</span> <span class="pre">-ksp_converged_reason</span></code>) or in
+<code class="docutils literal notranslate"><span class="pre">petsc4py.PETSc.Options()</span></code> before <code class="docutils literal notranslate"><span class="pre">set_solver</span></code>. To solve on several MPI
+processes, use the PETSc linear solver server: the script runs on the first
+process, the others only take part in the solves:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mpiexec -n 4 python script.py -mpi_linear_solver_server \
+      -ksp_type cg -pc_type gamg -ksp_rtol 1e-8
+</pre></div>
+</div>
+<p>The solver of the server is then set by the command line options only (the
+parameters of <code class="docutils literal notranslate"><span class="pre">set_solver</span></code> are ignored, with a warning), and it does not
+get the rigid body modes: GAMG needs about ten times more iterations. For a
+3D elastic box of 105,000 dof, the serial GAMG with the rigid body modes
+(16 iterations) was faster than the server on 4 processes (192 iterations).</p>
+<p>On macOS, fedoo disables the shared memory of the server
+(<code class="docutils literal notranslate"><span class="pre">-mpi_linear_solver_server_use_shared_memory</span> <span class="pre">false</span></code>): the System V shared
+memory is limited to 4 MB by default.</p>
 </section>
 <section id="id1">
 <h2>Simcoon<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>

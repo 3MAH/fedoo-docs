@@ -167,12 +167,6 @@ unit of surface).</p></li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>The consistent mass needs a finer quadrature than the stiffness on
-tetrahedra: the assembly uses 4 Gauss points on <code class="docutils literal notranslate"><span class="pre">tet4</span></code> and 15 on
-<code class="docutils literal notranslate"><span class="pre">tet10</span></code> (both default to fewer points). Override with
-<code class="docutils literal notranslate"><span class="pre">wf.assembly_options[&quot;n_elm_gp&quot;,</span> <span class="pre">elm_type]</span> <span class="pre">=</span> <span class="pre">n</span></code> or with the
-<code class="docutils literal notranslate"><span class="pre">n_elm_gp</span></code> argument of the assembly.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.weakform.Inertia.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.Inertia.__init__" title="Link to this definition"></a></dt>
