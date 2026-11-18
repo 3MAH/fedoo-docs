@@ -165,7 +165,7 @@
 <h1>fedoo.Problem.set_solver<a class="headerlink" href="#fedoo-problem-set-solver" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.Problem.set_solver">
-<span class="sig-prename descclassname"><span class="pre">Problem.</span></span><span class="sig-name descname"><span class="pre">set_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Problem.set_solver" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">Problem.</span></span><span class="sig-name descname"><span class="pre">set_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.Problem.set_solver" title="Link to this definition"></a></dt>
 <dd><p>Define the solver for the linear system resolution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -209,14 +209,31 @@ where A is a scipy sparse matrix and B a 1d numpy array.
 kargs may contains optional parameters.</p></li>
 </ul>
 </p></li>
-<li><p><strong>symmetric</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Use a symmetric-indefinite direct factorization when supported.
-Pardiso uses <code class="docutils literal notranslate"><span class="pre">mtype=-2</span></code> and standalone MUMPS uses <code class="docutils literal notranslate"><span class="pre">sym=2</span></code>
+<li><p><strong>symmetric</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>Use a symmetric-indefinite direct factorization (LDL^T) when
+supported. It handles the indefinite matrices of Lagrange
+multipliers and mixed formulations, at about half the work of LU.</p>
+<ul>
+<li><p>None (default): automatic with the ‘direct’ solver of
+python-mumps. LDL^T is used when every assembly of the problem
+is assembled with <code class="docutils literal notranslate"><span class="pre">assume_sym=True</span></code> (the default of the weak
+forms whose tangent matrix is symmetric), LU otherwise, e.g.
+as soon as a weak form declares a nonsymmetric tangent or a
+constraint adds its own assembly. The choice is made again at
+each solve. The other solvers keep the general path.</p></li>
+<li><p>True: always. Only one triangle of the matrix is read: with a
+nonsymmetric tangent forced to <code class="docutils literal notranslate"><span class="pre">assume_sym=True</span></code>, the
+diagonal blocks are not symmetrized by the assembly and the
+factorization then solves with one triangle of them.</p></li>
+<li><p>False: never (LU).</p></li>
+</ul>
+<p>Pardiso uses <code class="docutils literal notranslate"><span class="pre">mtype=-2</span></code> and standalone MUMPS uses <code class="docutils literal notranslate"><span class="pre">sym=2</span></code>
 (python-mumps 0.0.6: the symmetry is given with the matrix).
 The ‘direct’ solver through PETSc uses a MUMPS Cholesky
 (symmetric-indefinite) factorization. SciPy/UMFPACK, ‘petsc’ and
 user-supplied solvers keep their usual general path. The caller
 is responsible for ensuring that the reduced system matrix is
-symmetric.</p></li>
+symmetric.</p>
+</p></li>
 <li><p><strong>kargs</strong> (<em>optional parameters depending on the type</em><em> of </em><em>solver</em>) – <dl class="simple">
 <dt>precond: bool</dt><dd><p>Use precond = False to desactivate the diagonal matrix
 preconditionning for scipy iterative methods.

@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**05:32.161** total execution time for 73 files **from all galleries**:
+**04:41.124** total execution time for 73 files **from all galleries**:
 
 .. container::
 
@@ -33,160 +33,160 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_finite_strain_neohookean_snap_through.py` (``../examples/finite_strain/neohookean_snap_through.py``)
-     - 01:32.247
+     - 01:09.659
      - 0.0
    * - :ref:`sphx_glr_examples_finite_strain_neohookean_cantilever.py` (``../examples/finite_strain/neohookean_cantilever.py``)
-     - 01:13.708
+     - 00:57.367
      - 0.0
    * - :ref:`sphx_glr_examples_poromechanics_indentation_soft_tissue.py` (``../examples/poromechanics/indentation_soft_tissue.py``)
-     - 00:16.310
+     - 00:14.082
      - 0.0
    * - :ref:`sphx_glr_examples_contact_penalty_self_contact.py` (``../examples/contact/penalty_self_contact.py``)
-     - 00:15.599
-     - 0.0
-   * - :ref:`sphx_glr_examples_basic_visualization.py` (``../examples/basic/visualization.py``)
-     - 00:11.854
+     - 00:12.508
      - 0.0
    * - :ref:`sphx_glr_examples_thermal_thermal_conduction_3d.py` (``../examples/thermal/thermal_conduction_3d.py``)
-     - 00:11.451
+     - 00:12.441
      - 0.0
-   * - :ref:`sphx_glr_examples_boundary_conditions_mean_rigid_motion_torsion.py` (``../examples/boundary_conditions/mean_rigid_motion_torsion.py``)
-     - 00:10.476
-     - 0.0
-   * - :ref:`sphx_glr_examples_contact_ipc_self_contact.py` (``../examples/contact/ipc_self_contact.py``)
-     - 00:09.290
-     - 0.0
-   * - :ref:`sphx_glr_examples_dynamics_rigid_body_bounce.py` (``../examples/dynamics/rigid_body_bounce.py``)
-     - 00:08.981
-     - 0.0
-   * - :ref:`sphx_glr_examples_contact_penalty_disk_rectangle.py` (``../examples/contact/penalty_disk_rectangle.py``)
-     - 00:08.510
-     - 0.0
-   * - :ref:`sphx_glr_examples_finite_strain_shear_tl_vs_ul.py` (``../examples/finite_strain/shear_tl_vs_ul.py``)
-     - 00:07.975
-     - 0.0
-   * - :ref:`sphx_glr_examples_contact_westergaard_sinusoidal.py` (``../examples/contact/westergaard_sinusoidal.py``)
-     - 00:06.236
-     - 0.0
-   * - :ref:`sphx_glr_examples_homogenization_periodic_homogenization_from_scratch.py` (``../examples/homogenization/periodic_homogenization_from_scratch.py``)
-     - 00:05.274
-     - 0.0
-   * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_composite_ply.py` (``../examples/boundary_conditions/periodic_bc_composite_ply.py``)
-     - 00:04.731
-     - 0.0
-   * - :ref:`sphx_glr_examples_homogenization_periodic_homogenization.py` (``../examples/homogenization/periodic_homogenization.py``)
-     - 00:04.517
-     - 0.0
-   * - :ref:`sphx_glr_examples_basic_lattice_beam.py` (``../examples/basic/lattice_beam.py``)
-     - 00:04.215
-     - 0.0
-   * - :ref:`sphx_glr_examples_contact_hertz_axisymmetric.py` (``../examples/contact/hertz_axisymmetric.py``)
-     - 00:04.194
-     - 0.0
-   * - :ref:`sphx_glr_examples_dynamics_rigid_body_freefall.py` (``../examples/dynamics/rigid_body_freefall.py``)
-     - 00:03.974
-     - 0.0
-   * - :ref:`sphx_glr_examples_contact_ipc_indentation_2d.py` (``../examples/contact/ipc_indentation_2d.py``)
-     - 00:03.459
-     - 0.0
-   * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_3d_gyroid_off_axis.py` (``../examples/boundary_conditions/periodic_bc_3d_gyroid_off_axis.py``)
-     - 00:03.362
-     - 0.0
-   * - :ref:`sphx_glr_examples_finite_strain_incompressibility_comparison.py` (``../examples/finite_strain/incompressibility_comparison.py``)
-     - 00:02.485
-     - 0.0
-   * - :ref:`sphx_glr_examples_contact_ipc_disk_rectangle.py` (``../examples/contact/ipc_disk_rectangle.py``)
-     - 00:02.397
-     - 0.0
-   * - :ref:`sphx_glr_examples_custom_weak_forms_navier_stokes.py` (``../examples/custom_weak_forms/navier_stokes.py``)
-     - 00:02.357
-     - 0.0
-   * - :ref:`sphx_glr_examples_poromechanics_finite_strain_consolidation.py` (``../examples/poromechanics/finite_strain_consolidation.py``)
-     - 00:01.846
-     - 0.0
-   * - :ref:`sphx_glr_examples_contact_cohesive_dcb_3d.py` (``../examples/contact/cohesive_dcb_3d.py``)
-     - 00:01.674
-     - 0.0
-   * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d_nlgeom.py` (``../examples/basic/cantilever_beam_3d_nlgeom.py``)
-     - 00:01.619
+   * - :ref:`sphx_glr_examples_basic_visualization.py` (``../examples/basic/visualization.py``)
+     - 00:09.709
      - 0.0
    * - :ref:`sphx_glr_examples_basic_beam_elements_cantilever.py` (``../examples/basic/beam_elements_cantilever.py``)
-     - 00:01.606
+     - 00:09.333
+     - 0.0
+   * - :ref:`sphx_glr_examples_dynamics_rigid_body_bounce.py` (``../examples/dynamics/rigid_body_bounce.py``)
+     - 00:08.387
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_mean_rigid_motion_torsion.py` (``../examples/boundary_conditions/mean_rigid_motion_torsion.py``)
+     - 00:08.339
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_self_contact.py` (``../examples/contact/ipc_self_contact.py``)
+     - 00:07.606
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_penalty_disk_rectangle.py` (``../examples/contact/penalty_disk_rectangle.py``)
+     - 00:07.071
+     - 0.0
+   * - :ref:`sphx_glr_examples_finite_strain_shear_tl_vs_ul.py` (``../examples/finite_strain/shear_tl_vs_ul.py``)
+     - 00:06.487
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_westergaard_sinusoidal.py` (``../examples/contact/westergaard_sinusoidal.py``)
+     - 00:06.205
+     - 0.0
+   * - :ref:`sphx_glr_examples_homogenization_periodic_homogenization_from_scratch.py` (``../examples/homogenization/periodic_homogenization_from_scratch.py``)
+     - 00:04.862
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_hertz_axisymmetric.py` (``../examples/contact/hertz_axisymmetric.py``)
+     - 00:04.315
+     - 0.0
+   * - :ref:`sphx_glr_examples_basic_lattice_beam.py` (``../examples/basic/lattice_beam.py``)
+     - 00:04.003
+     - 0.0
+   * - :ref:`sphx_glr_examples_dynamics_rigid_body_freefall.py` (``../examples/dynamics/rigid_body_freefall.py``)
+     - 00:03.842
+     - 0.0
+   * - :ref:`sphx_glr_examples_homogenization_periodic_homogenization.py` (``../examples/homogenization/periodic_homogenization.py``)
+     - 00:03.823
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_indentation_2d.py` (``../examples/contact/ipc_indentation_2d.py``)
+     - 00:03.484
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_composite_ply.py` (``../examples/boundary_conditions/periodic_bc_composite_ply.py``)
+     - 00:03.378
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_3d_gyroid_off_axis.py` (``../examples/boundary_conditions/periodic_bc_3d_gyroid_off_axis.py``)
+     - 00:02.891
+     - 0.0
+   * - :ref:`sphx_glr_examples_custom_weak_forms_navier_stokes.py` (``../examples/custom_weak_forms/navier_stokes.py``)
+     - 00:02.266
+     - 0.0
+   * - :ref:`sphx_glr_examples_finite_strain_incompressibility_comparison.py` (``../examples/finite_strain/incompressibility_comparison.py``)
+     - 00:02.109
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_ipc_disk_rectangle.py` (``../examples/contact/ipc_disk_rectangle.py``)
+     - 00:01.957
+     - 0.0
+   * - :ref:`sphx_glr_examples_poromechanics_finite_strain_consolidation.py` (``../examples/poromechanics/finite_strain_consolidation.py``)
+     - 00:01.582
+     - 0.0
+   * - :ref:`sphx_glr_examples_contact_cohesive_dcb_3d.py` (``../examples/contact/cohesive_dcb_3d.py``)
+     - 00:01.522
+     - 0.0
+   * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d_nlgeom.py` (``../examples/basic/cantilever_beam_3d_nlgeom.py``)
+     - 00:01.329
      - 0.0
    * - :ref:`sphx_glr_examples_thermal_thermal_loading.py` (``../examples/thermal/thermal_loading.py``)
-     - 00:01.515
+     - 00:01.287
      - 0.0
    * - :ref:`sphx_glr_examples_basic_spherical_shell_compression.py` (``../examples/basic/spherical_shell_compression.py``)
-     - 00:01.085
+     - 00:00.952
      - 0.0
    * - :ref:`sphx_glr_examples_shells_laminate_cantilever.py` (``../examples/shells/laminate_cantilever.py``)
-     - 00:00.950
-     - 0.0
-   * - :ref:`sphx_glr_examples_basic_i_beam_three_point_bending.py` (``../examples/basic/i_beam_three_point_bending.py``)
-     - 00:00.880
-     - 0.0
-   * - :ref:`sphx_glr_examples_finite_strain_rotation_test.py` (``../examples/finite_strain/rotation_test.py``)
-     - 00:00.816
+     - 00:00.937
      - 0.0
    * - :ref:`sphx_glr_examples_poromechanics_terzaghi_1d.py` (``../examples/poromechanics/terzaghi_1d.py``)
-     - 00:00.713
+     - 00:00.721
+     - 0.0
+   * - :ref:`sphx_glr_examples_finite_strain_rotation_test.py` (``../examples/finite_strain/rotation_test.py``)
+     - 00:00.689
+     - 0.0
+   * - :ref:`sphx_glr_examples_basic_i_beam_three_point_bending.py` (``../examples/basic/i_beam_three_point_bending.py``)
+     - 00:00.669
      - 0.0
    * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d.py` (``../examples/basic/cantilever_beam_3d.py``)
-     - 00:00.587
+     - 00:00.513
      - 0.0
    * - :ref:`sphx_glr_examples_basic_modal_analysis.py` (``../examples/basic/modal_analysis.py``)
-     - 00:00.488
+     - 00:00.450
      - 0.0
    * - :ref:`sphx_glr_examples_shells_plate_elements_cantilever.py` (``../examples/shells/plate_elements_cantilever.py``)
-     - 00:00.457
+     - 00:00.427
      - 0.0
    * - :ref:`sphx_glr_examples_custom_weak_forms_recirculating_flow.py` (``../examples/custom_weak_forms/recirculating_flow.py``)
-     - 00:00.456
-     - 0.0
-   * - :ref:`sphx_glr_examples_shells_spherical_shell_compression_plastic.py` (``../examples/shells/spherical_shell_compression_plastic.py``)
-     - 00:00.435
+     - 00:00.414
      - 0.0
    * - :ref:`sphx_glr_examples_basic_simple_mesh_generation.py` (``../examples/basic/simple_mesh_generation.py``)
-     - 00:00.423
+     - 00:00.401
      - 0.0
    * - :ref:`sphx_glr_examples_custom_weak_forms_fluid_mechanics.py` (``../examples/custom_weak_forms/fluid_mechanics.py``)
-     - 00:00.368
+     - 00:00.359
+     - 0.0
+   * - :ref:`sphx_glr_examples_shells_spherical_shell_compression_plastic.py` (``../examples/shells/spherical_shell_compression_plastic.py``)
+     - 00:00.348
      - 0.0
    * - :ref:`sphx_glr_examples_boundary_conditions_rigid_tie.py` (``../examples/boundary_conditions/rigid_tie.py``)
-     - 00:00.339
+     - 00:00.285
      - 0.0
    * - :ref:`sphx_glr_examples_basic_plate_with_hole_tension.py` (``../examples/basic/plate_with_hole_tension.py``)
-     - 00:00.287
-     - 0.0
-   * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_mean_disp_constraint.py` (``../examples/boundary_conditions/periodic_bc_mean_disp_constraint.py``)
-     - 00:00.259
+     - 00:00.274
      - 0.0
    * - :ref:`sphx_glr_examples_plasticity_heterogeneous_struct.py` (``../examples/plasticity/heterogeneous_struct.py``)
-     - 00:00.243
+     - 00:00.228
      - 0.0
-   * - :ref:`sphx_glr_examples_thermal_thermal_conduction_2d.py` (``../examples/thermal/thermal_conduction_2d.py``)
-     - 00:00.229
+   * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_mean_disp_constraint.py` (``../examples/boundary_conditions/periodic_bc_mean_disp_constraint.py``)
+     - 00:00.218
      - 0.0
    * - :ref:`sphx_glr_examples_mesh_hessian_recovery.py` (``../examples/mesh/hessian_recovery.py``)
-     - 00:00.216
+     - 00:00.210
+     - 0.0
+   * - :ref:`sphx_glr_examples_thermal_thermal_conduction_2d.py` (``../examples/thermal/thermal_conduction_2d.py``)
+     - 00:00.200
      - 0.0
    * - :ref:`sphx_glr_examples_boundary_conditions_periodic_bc_2d_plate_with_hole.py` (``../examples/boundary_conditions/periodic_bc_2d_plate_with_hole.py``)
-     - 00:00.202
-     - 0.0
-   * - :ref:`sphx_glr_examples_basic_poisson_eq.py` (``../examples/basic/poisson_eq.py``)
-     - 00:00.192
-     - 0.0
-   * - :ref:`sphx_glr_examples_boundary_conditions_multi_mesh_example.py` (``../examples/boundary_conditions/multi_mesh_example.py``)
      - 00:00.189
      - 0.0
-   * - :ref:`sphx_glr_examples_boundary_conditions_pressurized_pipe.py` (``../examples/boundary_conditions/pressurized_pipe.py``)
-     - 00:00.184
+   * - :ref:`sphx_glr_examples_basic_poisson_eq.py` (``../examples/basic/poisson_eq.py``)
+     - 00:00.176
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_multi_mesh_example.py` (``../examples/boundary_conditions/multi_mesh_example.py``)
+     - 00:00.175
      - 0.0
    * - :ref:`sphx_glr_examples_basic_linear_buckling.py` (``../examples/basic/linear_buckling.py``)
-     - 00:00.180
+     - 00:00.175
+     - 0.0
+   * - :ref:`sphx_glr_examples_boundary_conditions_pressurized_pipe.py` (``../examples/boundary_conditions/pressurized_pipe.py``)
+     - 00:00.161
      - 0.0
    * - :ref:`sphx_glr_examples_poromechanics_taylor_hood_lbb.py` (``../examples/poromechanics/taylor_hood_lbb.py``)
-     - 00:00.122
+     - 00:00.110
      - 0.0
    * - :ref:`sphx_glr_examples_contact_ipc_gyroid_compression.py` (``../examples/contact/ipc_gyroid_compression.py``)
      - 00:00.000
