@@ -69,7 +69,7 @@ Dimension of the problem
  .. code-block:: none
 
 
-    <fedoo.core.modelingspace.ModelingSpace object at 0x71bed6d23310>
+    <fedoo.core.modelingspace.ModelingSpace object at 0x76f5d39a6ce0>
 
 
 
@@ -172,7 +172,7 @@ Material definition
  .. code-block:: none
 
 
-    <fedoo.constitutivelaw.elastic_isotrop.ElasticIsotrop object at 0x71bed6c38130>
+    <fedoo.constitutivelaw.elastic_isotrop.ElasticIsotrop object at 0x76f5f9e8bb20>
 
 
 
@@ -338,7 +338,7 @@ e.g. ``pb.get_results(assemb, ["Stress", "Disp"], "Node").save(...)``.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 5.116 seconds)
+   **Total running time of the script:** (0 minutes 4.872 seconds)
 
 
 .. _sphx_glr_download_examples_boundary_conditions_periodic_bc_composite_ply.py:

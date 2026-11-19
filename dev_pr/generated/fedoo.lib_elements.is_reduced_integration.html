@@ -28,7 +28,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Constitutive Law (fedoo.constitutivelaw)" href="../constitutive_law.html" />
-    <link rel="prev" title="fedoo.lib_elements.get_element" href="fedoo.lib_elements.get_element.html" /> 
+    <link rel="prev" title="fedoo.lib_elements.get_full_integration" href="fedoo.lib_elements.get_full_integration.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -68,6 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.lib_elements.CombinedElement.html">fedoo.lib_elements.CombinedElement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.lib_elements.get_all.html">fedoo.lib_elements.get_all</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.lib_elements.get_element.html">fedoo.lib_elements.get_element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fedoo.lib_elements.get_full_integration.html">fedoo.lib_elements.get_full_integration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">fedoo.lib_elements.is_reduced_integration</a></li>
 </ul>
 </li>
@@ -115,12 +116,12 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="fedoo.lib_elements.is_reduced_integration">
 <span class="sig-name descname"><span class="pre">is_reduced_integration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elm_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_elm_gp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.lib_elements.is_reduced_integration" title="Link to this definition"></a></dt>
-<dd><p>Return True if <code class="docutils literal notranslate"><span class="pre">elm_type</span></code> with <code class="docutils literal notranslate"><span class="pre">n_elm_gp</span></code> points is under-integrated.</p>
-<p>This is the case of the reduced element variants (<code class="docutils literal notranslate"><span class="pre">&quot;tri3r&quot;</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&quot;quad4r&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;hex8r&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;hex20r&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;tet4r&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;tet10r&quot;</span></code>,
-hourglass elements) and of any element used with fewer Gauss points than
-its default rule. <code class="docutils literal notranslate"><span class="pre">mesh</span></code> gives the fallback default for a combined
-element.</p>
+<dd><p>Return True if the consistent mass of <code class="docutils literal notranslate"><span class="pre">elm_type</span></code> is under-integrated.</p>
+<p>This is the case of the variants with centroid interpolation whatever
+<code class="docutils literal notranslate"><span class="pre">n_elm_gp</span></code>, and of any element used with fewer Gauss points than its
+full rule (see <a class="reference internal" href="fedoo.lib_elements.get_full_integration.html#fedoo.lib_elements.get_full_integration" title="fedoo.lib_elements.get_full_integration"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_full_integration()</span></code></a>): the element mass matrix
+is then rank deficient. The stiffness may still be exact (<code class="docutils literal notranslate"><span class="pre">&quot;tet4&quot;</span></code>
+with 1 point, straight-sided <code class="docutils literal notranslate"><span class="pre">&quot;tet10&quot;</span></code> with 4).</p>
 </dd></dl>
 
 </section>
@@ -129,7 +130,7 @@ element.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fedoo.lib_elements.get_element.html" class="btn btn-neutral float-left" title="fedoo.lib_elements.get_element" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fedoo.lib_elements.get_full_integration.html" class="btn btn-neutral float-left" title="fedoo.lib_elements.get_full_integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../constitutive_law.html" class="btn btn-neutral float-right" title="Constitutive Law (fedoo.constitutivelaw)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

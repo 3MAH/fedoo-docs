@@ -68,6 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.lib_elements.CombinedElement.html">fedoo.lib_elements.CombinedElement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.lib_elements.get_all.html">fedoo.lib_elements.get_all</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.lib_elements.get_element.html">fedoo.lib_elements.get_element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.lib_elements.get_full_integration.html">fedoo.lib_elements.get_full_integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.lib_elements.is_reduced_integration.html">fedoo.lib_elements.is_reduced_integration</a></li>
 </ul>
 </li>
@@ -121,14 +122,21 @@ is built or an assembly is created (<code class="docutils literal notranslate"><
 argument of <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.Assembly.create()</span></code> overrides: 4 for <code class="docutils literal notranslate"><span class="pre">&quot;tet4&quot;</span></code>,
 15 for <code class="docutils literal notranslate"><span class="pre">&quot;tet10&quot;</span></code>, 8 for <code class="docutils literal notranslate"><span class="pre">&quot;hex8&quot;</span></code>, 27 for <code class="docutils literal notranslate"><span class="pre">&quot;hex20&quot;</span></code>. The reduced
 variants are selected with <code class="docutils literal notranslate"><span class="pre">elm_type</span></code> at the assembly level, the mesh
-keeping its base element: <code class="docutils literal notranslate"><span class="pre">&quot;tri3r&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;quad4r&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;hex8r&quot;</span></code> and
-<code class="docutils literal notranslate"><span class="pre">&quot;tet4r&quot;</span></code> use 1 point and evaluate the interpolation at the element
-centre whatever <code class="docutils literal notranslate"><span class="pre">n_elm_gp</span></code> (which allows selective integration),
-<code class="docutils literal notranslate"><span class="pre">&quot;hex20r&quot;</span></code> (14 points) and <code class="docutils literal notranslate"><span class="pre">&quot;tet10r&quot;</span></code> (4 points) only change the default
-rule. In dynamics the mass does not follow a reduced stiffness: it is
-assembled on the element of the mesh with its default rule (4 points on a
-<code class="docutils literal notranslate"><span class="pre">&quot;tet4&quot;</span></code> mesh even with <code class="docutils literal notranslate"><span class="pre">elm_type=&quot;tet4r&quot;</span></code>). A reduced mass must be
-requested on the storage weak form (<code class="docutils literal notranslate"><span class="pre">assembly_options</span></code> of the
+keeping its base element:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;tri3r&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;quad4r&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;hex8r&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;tet4r&quot;</span></code> evaluate the
+interpolation at the element centre whatever <code class="docutils literal notranslate"><span class="pre">n_elm_gp</span></code> and default to
+1 point. Another <code class="docutils literal notranslate"><span class="pre">n_elm_gp</span></code> raises a warning: selective integration
+goes through the combined elements (<code class="docutils literal notranslate"><span class="pre">&quot;quad4sri&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;hex8sri&quot;</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;hex20r&quot;</span></code> (14 points) and <code class="docutils literal notranslate"><span class="pre">&quot;tet10r&quot;</span></code> (4 points) keep the full
+interpolation and only change the default rule: with another <code class="docutils literal notranslate"><span class="pre">n_elm_gp</span></code>
+they are <code class="docutils literal notranslate"><span class="pre">&quot;hex20&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;tet10&quot;</span></code> with that rule, and a warning is
+raised.</p></li>
+</ul>
+<p>In dynamics the mass does not follow a reduced stiffness: it is assembled on
+the element of the mesh with its full rule (4 points on a <code class="docutils literal notranslate"><span class="pre">&quot;tet4&quot;</span></code> mesh
+even with <code class="docutils literal notranslate"><span class="pre">elm_type=&quot;tet4r&quot;</span></code>), on the reference configuration. A reduced
+mass must be requested on the storage weak form (<code class="docutils literal notranslate"><span class="pre">assembly_options</span></code> of the
 <a class="reference internal" href="generated/fedoo.weakform.Inertia.html#fedoo.weakform.Inertia" title="fedoo.weakform.Inertia"><code class="xref py py-class docutils literal notranslate"><span class="pre">Inertia</span></code></a> given to <code class="docutils literal notranslate"><span class="pre">set_inertia</span></code>) and raises a
 warning.</p>
 <p>By default every variable of the modeling space is interpolated with the
@@ -158,8 +166,11 @@ interpolation, for instance quadratic displacement and linear pressure
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.lib_elements.get_element.html#fedoo.lib_elements.get_element" title="fedoo.lib_elements.get_element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_element</span></code></a>(element_str)</p></td>
 <td><p>Return the element registered under the name <code class="docutils literal notranslate"><span class="pre">element_str</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.lib_elements.is_reduced_integration.html#fedoo.lib_elements.is_reduced_integration" title="fedoo.lib_elements.is_reduced_integration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_reduced_integration</span></code></a>(elm_type, n_elm_gp[, ...])</p></td>
-<td><p>Return True if <code class="docutils literal notranslate"><span class="pre">elm_type</span></code> with <code class="docutils literal notranslate"><span class="pre">n_elm_gp</span></code> points is under-integrated.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.lib_elements.get_full_integration.html#fedoo.lib_elements.get_full_integration" title="fedoo.lib_elements.get_full_integration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_full_integration</span></code></a>(elm_type[, mesh])</p></td>
+<td><p>Return <code class="docutils literal notranslate"><span class="pre">(elm_type,</span> <span class="pre">n_elm_gp)</span></code> of the full integration of <code class="docutils literal notranslate"><span class="pre">elm_type</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.lib_elements.is_reduced_integration.html#fedoo.lib_elements.is_reduced_integration" title="fedoo.lib_elements.is_reduced_integration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_reduced_integration</span></code></a>(elm_type, n_elm_gp[, ...])</p></td>
+<td><p>Return True if the consistent mass of <code class="docutils literal notranslate"><span class="pre">elm_type</span></code> is under-integrated.</p></td>
 </tr>
 </tbody>
 </table>
