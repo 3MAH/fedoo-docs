@@ -21,6 +21,7 @@
       
          BeamCircular.compute_linear_density
          BeamCircular.compute_rotary_density
+         BeamCircular.fiber_quadrature
          BeamCircular.from_section_description
          BeamCircular.get_all
          BeamCircular.get_beam_rigidity
@@ -58,6 +59,7 @@
          
       
          BeamCircular.corate
+         BeamCircular.is_section_law
          BeamCircular.linear_density
          BeamCircular.n_points
          BeamCircular.name

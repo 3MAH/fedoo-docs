@@ -21,6 +21,7 @@
       
          BeamPipe.compute_linear_density
          BeamPipe.compute_rotary_density
+         BeamPipe.fiber_quadrature
          BeamPipe.from_section_description
          BeamPipe.get_all
          BeamPipe.get_beam_rigidity
@@ -58,6 +59,7 @@
          
       
          BeamPipe.corate
+         BeamPipe.is_section_law
          BeamPipe.linear_density
          BeamPipe.n_points
          BeamPipe.name

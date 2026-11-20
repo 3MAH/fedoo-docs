@@ -199,9 +199,9 @@ in SciPy sparse format when solving. Retrieve the matrix after solving with
 </pre></div>
 </div>
 <p>For direct solver, it is strongly recommended to install one of
-<code class="docutils literal notranslate"><span class="pre">pypardiso</span></code> (Intel CPUs), <code class="docutils literal notranslate"><span class="pre">python-mumps</span></code> (cross-platform) or
-<code class="docutils literal notranslate"><span class="pre">petsc4py</span></code> (installed by the user, which also brings iterative solvers
-and MPI parallelism) for drastically improved computation performance. See
+<code class="docutils literal notranslate"><span class="pre">pypardiso</span></code> (Intel CPUs), <code class="docutils literal notranslate"><span class="pre">python-mumps</span></code> (cross-platform, also
+required for <code class="xref py py-meth docutils literal notranslate"><span class="pre">Problem.set_reuse_factorization()</span></code>) or <code class="docutils literal notranslate"><span class="pre">petsc4py</span></code>
+for drastically improved computation performance. See
 <a class="reference internal" href="install.html"><span class="doc">Installation</span></a> for the recommended commands per platform.</p>
 </section>
 <section id="boundary-conditions">

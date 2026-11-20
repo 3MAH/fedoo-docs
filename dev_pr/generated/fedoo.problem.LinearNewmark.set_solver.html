@@ -105,7 +105,7 @@
 <h1>fedoo.problem.LinearNewmark.set_solver<a class="headerlink" href="#fedoo-problem-linearnewmark-set-solver" title="Link to this heading"></a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.problem.LinearNewmark.set_solver">
-<span class="sig-prename descclassname"><span class="pre">LinearNewmark.</span></span><span class="sig-name descname"><span class="pre">set_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.LinearNewmark.set_solver" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">LinearNewmark.</span></span><span class="sig-name descname"><span class="pre">set_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetric</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.problem.LinearNewmark.set_solver" title="Link to this definition"></a></dt>
 <dd><p>Define the solver for the linear system resolution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -129,51 +129,22 @@ gradient based on the function scipy.sparse.linalg.cg.</p></li>
 <li><p>’pardiso’: force the use of the pypardiso solver</p></li>
 <li><p>’mumps’: force the use of the standalone MUMPS solver
 (python-mumps must be installed). This is the recommended direct
-solver on arm64 platforms where pypardiso is not available.
-Unless <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> is set, fedoo gives MUMPS at most
-8 threads, and at most the performance cores on Apple chips.
-Its analysis (ordering, symbolic factorization) is reused
-across the solves of a problem while the sparsity pattern of
-the matrix does not change.</p></li>
+solver on arm64 platforms where pypardiso is not available.</p></li>
 <li><p>’direct_scipy’: force the use of the direct scipy solver
 (umfpack if installed)</p></li>
 <li><p>’petsc’: use the petsc methods (iterative or direct). petsc4py
-is not a dependency of fedoo and should be installed by the
-user (e.g. “conda install -c conda-forge petsc4py”). The PETSc
-solver is kept across the solves of the problem: the symbolic
-factorization (direct solvers) is reused while the sparsity
-pattern of the matrix does not change.</p></li>
+should be installed.</p></li>
 <li><p>function: A user spsolve function that should have the signature
 res = solver(A,B,**kargs).
 where A is a scipy sparse matrix and B a 1d numpy array.
 kargs may contains optional parameters.</p></li>
 </ul>
 </p></li>
-<li><p><strong>symmetric</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>Use a symmetric-indefinite direct factorization (LDL^T) when
-supported. It handles the indefinite matrices of Lagrange
-multipliers and mixed formulations, at about half the work of LU.</p>
-<ul>
-<li><p>None (default): automatic with the ‘direct’ solver of
-python-mumps. LDL^T is used when every assembly of the problem
-is assembled with <code class="docutils literal notranslate"><span class="pre">assume_sym=True</span></code> (the default of the weak
-forms whose tangent matrix is symmetric), LU otherwise, e.g.
-as soon as a weak form declares a nonsymmetric tangent or a
-constraint adds its own assembly. The choice is made again at
-each solve. The other solvers keep the general path.</p></li>
-<li><p>True: always. Only one triangle of the matrix is read: with a
-nonsymmetric tangent forced to <code class="docutils literal notranslate"><span class="pre">assume_sym=True</span></code>, the
-diagonal blocks are not symmetrized by the assembly and the
-factorization then solves with one triangle of them.</p></li>
-<li><p>False: never (LU).</p></li>
-</ul>
-<p>Pardiso uses <code class="docutils literal notranslate"><span class="pre">mtype=-2</span></code> and standalone MUMPS uses <code class="docutils literal notranslate"><span class="pre">sym=2</span></code>
-(python-mumps 0.0.6: the symmetry is given with the matrix).
-The ‘direct’ solver through PETSc uses a MUMPS Cholesky
-(symmetric-indefinite) factorization. SciPy/UMFPACK, ‘petsc’ and
-user-supplied solvers keep their usual general path. The caller
-is responsible for ensuring that the reduced system matrix is
-symmetric.</p>
-</p></li>
+<li><p><strong>symmetric</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Use a symmetric-indefinite direct factorization when supported.
+Pardiso uses <code class="docutils literal notranslate"><span class="pre">mtype=-2</span></code> and standalone MUMPS uses <code class="docutils literal notranslate"><span class="pre">sym=2</span></code>.
+SciPy/UMFPACK, PETSc and user-supplied solvers keep their usual
+general path. The caller is responsible for ensuring that the
+reduced system matrix is symmetric.</p></li>
 <li><p><strong>kargs</strong> (<em>optional parameters depending on the type</em><em> of </em><em>solver</em>) – <dl class="simple">
 <dt>precond: bool</dt><dd><p>Use precond = False to desactivate the diagonal matrix
 preconditionning for scipy iterative methods.
@@ -191,18 +162,6 @@ See the petsc documentation for available preconditioners.</p>
 <dt>pc_factor_mat_solver_type: str</dt><dd><p>Petsc solver for matrix factorization when applicable.
 See the petsc documentation for details about this parameter.</p>
 </dd>
-<dt>reuse_preconditioner: bool</dt><dd><p>Petsc only. Keep the preconditioner built for the first matrix
-(e.g. a GAMG hierarchy) for the next solves of the problem,
-the Krylov iterations making up for the difference. The
-default is False.</p>
-</dd>
-<dt>rtol, atol, max_it: float, float, int</dt><dd><p>Petsc only. Tolerances of the Krylov solver.</p>
-</dd>
-<dt>near_null_space: bool</dt><dd><p>Petsc only. With the GAMG preconditioner, give it the rigid
-body modes of the problem (near null space), needed for an
-efficient multigrid on mechanical problems. The default is
-True.</p>
-</dd>
 </dl>
 </p></li>
 </ul>
@@ -212,17 +171,13 @@ True.</p>
 <ul>
 <li><p>To change the many available petsc options, the
 petsc4py.PETSc.Options dict should be imported and modified
-before set_solver (see example below), or the options given on the
-command line of the script (e.g. <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">script.py</span> <span class="pre">-ksp_type</span> <span class="pre">cg</span>
-<span class="pre">-pc_type</span> <span class="pre">gamg</span> <span class="pre">-ksp_converged_reason</span></code>).</p></li>
+(see example below).</p></li>
 <li><p>To use the petsc with MPI parallelization (PCMPI), the script
 mpi4py needs to be installed, and the script should be launch in
 command line using mpiexec. For instance:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mpiexec</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4</span> <span class="n">python</span> <span class="n">petsc_examples</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">mpi_linear_solver_server</span> <span class="o">-</span><span class="n">ksp_type</span> <span class="n">cg</span> <span class="o">-</span><span class="n">pc_type</span> <span class="n">bjacobi</span>
 </pre></div>
 </div>
-<p>fedoo initializes PETSc when it is imported in this case: the
-processes other than the first one only serve the solves.</p>
 <p>A performance gain may be observed for very large problems, but
 this method should be avoid for problem with moderate size.</p>
 </li>
