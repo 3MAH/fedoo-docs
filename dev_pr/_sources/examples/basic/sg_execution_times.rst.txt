@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:27.742** total execution time for 12 files **from examples/basic**:
+**00:21.865** total execution time for 12 files **from examples/basic**:
 
 .. container::
 
@@ -33,38 +33,38 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_basic_visualization.py` (``visualization.py``)
-     - 00:12.970
-     - 0.0
-   * - :ref:`sphx_glr_examples_basic_lattice_beam.py` (``lattice_beam.py``)
-     - 00:05.418
+     - 00:07.807
      - 0.0
    * - :ref:`sphx_glr_examples_basic_beam_elements_cantilever.py` (``beam_elements_cantilever.py``)
-     - 00:02.894
+     - 00:05.586
+     - 0.0
+   * - :ref:`sphx_glr_examples_basic_lattice_beam.py` (``lattice_beam.py``)
+     - 00:03.989
      - 0.0
    * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d_nlgeom.py` (``cantilever_beam_3d_nlgeom.py``)
-     - 00:01.787
+     - 00:01.145
      - 0.0
    * - :ref:`sphx_glr_examples_basic_spherical_shell_compression.py` (``spherical_shell_compression.py``)
-     - 00:01.240
+     - 00:00.962
      - 0.0
    * - :ref:`sphx_glr_examples_basic_i_beam_three_point_bending.py` (``i_beam_three_point_bending.py``)
-     - 00:00.980
+     - 00:00.679
      - 0.0
    * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d.py` (``cantilever_beam_3d.py``)
-     - 00:00.676
+     - 00:00.456
      - 0.0
    * - :ref:`sphx_glr_examples_basic_modal_analysis.py` (``modal_analysis.py``)
-     - 00:00.568
+     - 00:00.381
      - 0.0
    * - :ref:`sphx_glr_examples_basic_simple_mesh_generation.py` (``simple_mesh_generation.py``)
-     - 00:00.462
+     - 00:00.314
      - 0.0
    * - :ref:`sphx_glr_examples_basic_plate_with_hole_tension.py` (``plate_with_hole_tension.py``)
-     - 00:00.325
+     - 00:00.238
      - 0.0
    * - :ref:`sphx_glr_examples_basic_poisson_eq.py` (``poisson_eq.py``)
-     - 00:00.221
+     - 00:00.163
      - 0.0
    * - :ref:`sphx_glr_examples_basic_linear_buckling.py` (``linear_buckling.py``)
-     - 00:00.202
+     - 00:00.147
      - 0.0
