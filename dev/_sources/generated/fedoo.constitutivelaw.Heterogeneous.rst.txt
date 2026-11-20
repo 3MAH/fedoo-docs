@@ -19,6 +19,8 @@
          :toctree:
          
       
+         Heterogeneous.condense_tangent
+         Heterogeneous.get_H_condensed
          Heterogeneous.get_H_plane_stress
          Heterogeneous.get_all
          Heterogeneous.get_current_local_frame

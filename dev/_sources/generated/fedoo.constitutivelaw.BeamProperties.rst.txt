@@ -21,6 +21,7 @@
       
          BeamProperties.compute_linear_density
          BeamProperties.compute_rotary_density
+         BeamProperties.fiber_quadrature
          BeamProperties.from_section_description
          BeamProperties.get_all
          BeamProperties.get_beam_rigidity
@@ -58,6 +59,7 @@
          
       
          BeamProperties.corate
+         BeamProperties.is_section_law
          BeamProperties.linear_density
          BeamProperties.n_points
          BeamProperties.name

@@ -88,6 +88,8 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamCircular.html">fedoo.constitutivelaw.BeamCircular</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamPipe.html">fedoo.constitutivelaw.BeamPipe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamRectangular.html">fedoo.constitutivelaw.BeamRectangular</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamMesh.html">fedoo.constitutivelaw.BeamMesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamNonLinear.html">fedoo.constitutivelaw.BeamNonLinear</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#shell-constitutive-laws">Shell constitutive laws</a><ul>
@@ -230,6 +232,12 @@ selected formulation. The convention is detailed on
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamRectangular.html#fedoo.constitutivelaw.BeamRectangular" title="fedoo.constitutivelaw.BeamRectangular"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamRectangular</span></code></a>(material, a[, b, k, name, ...])</p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamMesh.html#fedoo.constitutivelaw.BeamMesh" title="fedoo.constitutivelaw.BeamMesh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamMesh</span></code></a>(material, section_mesh, Jx[, k, ...])</p></td>
+<td><p>Beam properties and fiber quadrature from a planar section mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.BeamNonLinear.html#fedoo.constitutivelaw.BeamNonLinear" title="fedoo.constitutivelaw.BeamNonLinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamNonLinear</span></code></a>(section[, fibers, material, name])</p></td>
+<td><p>Beam section integrated from nonlinear material points (fibers).</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -331,9 +339,15 @@ limited to beams and shells; anisotropic solid orientations belong to the
 constitutive law.</p>
 <p>For shell constitutive laws that support an additional material orientation,
 that orientation is interpreted relative to the geometrical shell frame
-defined on the assembly. Beam constitutive laws currently use isotropic
-materials only, so material orientations are ignored. The assembly element
-frame defines the beam cross-section orientation.</p>
+defined on the assembly.</p>
+<p>For beams, the assembly element frame defines the cross-section orientation.
+Linear elastic beam sections use scalar Young’s and shear moduli and do not
+use a separate material orientation. <a class="reference internal" href="generated/fedoo.constitutivelaw.BeamNonLinear.html#fedoo.constitutivelaw.BeamNonLinear" title="fedoo.constitutivelaw.BeamNonLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">BeamNonLinear</span></code></a> instead
+evaluates the material law at each fiber under uniaxial stress, with the first
+axis of the fiber frame along the beam. Any material orientation supported by
+the fiber law is relative to that frame. For anisotropic UMATs, it must preserve
+the beam axis. Transverse shear and torsion still use the initial elastic
+shear modulus.</p>
 </section>
 </section>
 </section>
