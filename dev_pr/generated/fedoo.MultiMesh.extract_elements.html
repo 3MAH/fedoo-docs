@@ -138,7 +138,7 @@ the indices of the nodes.</p></li>
 </dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li><p>The element sets are not transferred to the new mesh.</p></li>
+<li><p>The new mesh keep the former element_sets dict with only the extrated elements.</p></li>
 <li><p>The element indices of the new mesh are not the same as the former one.</p></li>
 <li><p>The new mesh keep the initial <code class="docutils literal notranslate"><span class="pre">nodes</span></code> array (shared with the parent), so
 an assembly built on it stays in the parent DOF space and can be summed

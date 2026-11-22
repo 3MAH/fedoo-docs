@@ -69,7 +69,7 @@ Dimension of the problem
  .. code-block:: none
 
 
-    <fedoo.core.modelingspace.ModelingSpace object at 0x7036e1fa5f90>
+    <fedoo.core.modelingspace.ModelingSpace object at 0x754c198bdb10>
 
 
 
@@ -172,7 +172,7 @@ Material definition
  .. code-block:: none
 
 
-    <fedoo.constitutivelaw.elastic_isotrop.ElasticIsotrop object at 0x70368875eef0>
+    <fedoo.constitutivelaw.elastic_isotrop.ElasticIsotrop object at 0x754bf5b622c0>
 
 
 
@@ -297,8 +297,8 @@ voids (the strain of a void cannot be computed).
      [0. ]]
     Mean stress ([Sxx, Syy, Sxy]):  [[ 2.406e+03]
      [ 2.152e+02]
-     [-2.190e-13]]
-    Elastic Energy: 36.09370723561505
+     [-3.391e-13]]
+    Elastic Energy: 36.09370723561498
 
 
 
@@ -338,7 +338,7 @@ e.g. ``pb.get_results(assemb, ["Stress", "Disp"], "Node").save(...)``.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 4.739 seconds)
+   **Total running time of the script:** (0 minutes 5.330 seconds)
 
 
 .. _sphx_glr_download_examples_boundary_conditions_periodic_bc_composite_ply.py:
