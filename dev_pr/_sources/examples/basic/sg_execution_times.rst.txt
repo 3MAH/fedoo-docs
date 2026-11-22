@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:32.523** total execution time for 12 files **from examples/basic**:
+**00:25.142** total execution time for 12 files **from examples/basic**:
 
 .. container::
 
@@ -33,38 +33,38 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_basic_visualization.py` (``visualization.py``)
-     - 00:15.651
+     - 00:12.568
      - 0.0
    * - :ref:`sphx_glr_examples_basic_lattice_beam.py` (``lattice_beam.py``)
-     - 00:06.267
+     - 00:04.299
      - 0.0
    * - :ref:`sphx_glr_examples_basic_beam_elements_cantilever.py` (``beam_elements_cantilever.py``)
-     - 00:03.021
+     - 00:02.256
      - 0.0
    * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d_nlgeom.py` (``cantilever_beam_3d_nlgeom.py``)
-     - 00:02.255
+     - 00:01.803
      - 0.0
    * - :ref:`sphx_glr_examples_basic_spherical_shell_compression.py` (``spherical_shell_compression.py``)
-     - 00:01.497
+     - 00:01.124
      - 0.0
    * - :ref:`sphx_glr_examples_basic_i_beam_three_point_bending.py` (``i_beam_three_point_bending.py``)
-     - 00:01.187
+     - 00:01.009
      - 0.0
    * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d.py` (``cantilever_beam_3d.py``)
-     - 00:00.716
+     - 00:00.573
      - 0.0
    * - :ref:`sphx_glr_examples_basic_modal_analysis.py` (``modal_analysis.py``)
-     - 00:00.623
+     - 00:00.480
      - 0.0
    * - :ref:`sphx_glr_examples_basic_simple_mesh_generation.py` (``simple_mesh_generation.py``)
-     - 00:00.488
+     - 00:00.395
      - 0.0
    * - :ref:`sphx_glr_examples_basic_plate_with_hole_tension.py` (``plate_with_hole_tension.py``)
-     - 00:00.367
-     - 0.0
-   * - :ref:`sphx_glr_examples_basic_linear_buckling.py` (``linear_buckling.py``)
-     - 00:00.226
+     - 00:00.288
      - 0.0
    * - :ref:`sphx_glr_examples_basic_poisson_eq.py` (``poisson_eq.py``)
-     - 00:00.226
+     - 00:00.177
+     - 0.0
+   * - :ref:`sphx_glr_examples_basic_linear_buckling.py` (``linear_buckling.py``)
+     - 00:00.172
      - 0.0
