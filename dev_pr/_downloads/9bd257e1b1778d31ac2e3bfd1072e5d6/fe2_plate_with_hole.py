@@ -79,8 +79,9 @@ micro_cells = fd.constitutivelaw.FE2(micro_assembly, name="FEM")
 # Macroscopic problem
 # -------------------
 # The macroscopic weak form uses the ``FE2`` law. The results of one micro
-# cell (here the cell of the 6th integration point) are also saved, once per
-# converged macroscopic increment.
+# cell (here the cell of the 6th integration point) are also saved. They are
+# written at each Newton iteration, so several frames correspond to the same
+# time increment.
 
 fd.weakform.StressEquilibrium("FEM", name="WeakForm", space="macro_space")
 
