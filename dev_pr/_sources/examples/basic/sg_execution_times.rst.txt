@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:36.794** total execution time for 12 files **from examples/basic**:
+**00:24.972** total execution time for 12 files **from examples/basic**:
 
 .. container::
 
@@ -33,38 +33,38 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_examples_basic_visualization.py` (``visualization.py``)
-     - 00:17.111
+     - 00:12.636
      - 0.0
    * - :ref:`sphx_glr_examples_basic_lattice_beam.py` (``lattice_beam.py``)
-     - 00:06.020
-     - 0.0
-   * - :ref:`sphx_glr_examples_basic_beam_elements_cantilever.py` (``beam_elements_cantilever.py``)
-     - 00:05.868
+     - 00:04.510
      - 0.0
    * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d_nlgeom.py` (``cantilever_beam_3d_nlgeom.py``)
-     - 00:02.313
+     - 00:01.911
+     - 0.0
+   * - :ref:`sphx_glr_examples_basic_beam_elements_cantilever.py` (``beam_elements_cantilever.py``)
+     - 00:01.566
      - 0.0
    * - :ref:`sphx_glr_examples_basic_spherical_shell_compression.py` (``spherical_shell_compression.py``)
-     - 00:01.455
+     - 00:01.146
      - 0.0
    * - :ref:`sphx_glr_examples_basic_i_beam_three_point_bending.py` (``i_beam_three_point_bending.py``)
-     - 00:01.333
+     - 00:01.067
      - 0.0
    * - :ref:`sphx_glr_examples_basic_cantilever_beam_3d.py` (``cantilever_beam_3d.py``)
-     - 00:00.722
+     - 00:00.584
      - 0.0
    * - :ref:`sphx_glr_examples_basic_modal_analysis.py` (``modal_analysis.py``)
-     - 00:00.635
+     - 00:00.488
      - 0.0
    * - :ref:`sphx_glr_examples_basic_simple_mesh_generation.py` (``simple_mesh_generation.py``)
-     - 00:00.534
+     - 00:00.406
      - 0.0
    * - :ref:`sphx_glr_examples_basic_plate_with_hole_tension.py` (``plate_with_hole_tension.py``)
-     - 00:00.355
-     - 0.0
-   * - :ref:`sphx_glr_examples_basic_poisson_eq.py` (``poisson_eq.py``)
-     - 00:00.230
+     - 00:00.285
      - 0.0
    * - :ref:`sphx_glr_examples_basic_linear_buckling.py` (``linear_buckling.py``)
-     - 00:00.219
+     - 00:00.188
+     - 0.0
+   * - :ref:`sphx_glr_examples_basic_poisson_eq.py` (``poisson_eq.py``)
+     - 00:00.185
      - 0.0
