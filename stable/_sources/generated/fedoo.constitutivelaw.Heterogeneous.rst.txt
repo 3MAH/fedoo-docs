@@ -19,6 +19,8 @@
          :toctree:
          
       
+         Heterogeneous.condense_tangent
+         Heterogeneous.get_H_condensed
          Heterogeneous.get_H_plane_stress
          Heterogeneous.get_all
          Heterogeneous.get_current_local_frame
@@ -51,6 +53,7 @@
          :toctree:
          
       
+         Heterogeneous.corate
          Heterogeneous.is_isotropic
          Heterogeneous.manages_material_frame
          Heterogeneous.name

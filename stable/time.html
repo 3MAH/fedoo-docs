@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time Integration (fedoo.time) &mdash; Fedoo 1.1.0 (stable)</title>
+  <title>Time Integration (fedoo.time) &mdash; Fedoo 1.2.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=fc837d61"></script>
+      <script src="_static/documentation_options.js?v=6efca38a"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -65,6 +65,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
@@ -89,6 +90,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poromechanics.html">Poromechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
@@ -138,6 +140,10 @@ Newmark or generalized-alpha integrator:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pb</span><span class="o">.</span><span class="n">set_time_integrator</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">FIRST_ORDER</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">BackwardEuler</span><span class="p">())</span>
 </pre></div>
 </div>
+<p>Examples: <a class="reference internal" href="examples/thermal/thermal_conduction_2d.html#sphx-glr-examples-thermal-thermal-conduction-2d-py"><span class="std std-ref">Transient heat conduction in a 2D square</span></a>
+(<a class="reference internal" href="generated/fedoo.time.BackwardEuler.html#fedoo.time.BackwardEuler" title="fedoo.time.BackwardEuler"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackwardEuler</span></code></a> on a heat equation) and
+<a class="reference internal" href="examples/dynamics/rigid_body_bounce.html#sphx-glr-examples-dynamics-rigid-body-bounce-py"><span class="std std-ref">Rigid-body bounce with IPC contact</span></a> (<a class="reference internal" href="generated/fedoo.time.Newmark.html#fedoo.time.Newmark" title="fedoo.time.Newmark"><code class="xref py py-class docutils literal notranslate"><span class="pre">Newmark</span></code></a> on a
+rigid body with contact).</p>
 <section id="static-analysis">
 <h2>Static analysis<a class="headerlink" href="#static-analysis" title="Link to this heading"></a></h2>
 <p>A problem remains static as long as no time integrator is attached. Weak forms
@@ -215,6 +221,9 @@ common case:</p>
                          <span class="n">beta</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Examples: <a class="reference internal" href="examples/dynamics/rigid_body_bounce.html#sphx-glr-examples-dynamics-rigid-body-bounce-py"><span class="std std-ref">Rigid-body bounce with IPC contact</span></a>,
+<a class="reference internal" href="examples/dynamics/multi_mesh_dynamic_contact.html#sphx-glr-examples-dynamics-multi-mesh-dynamic-contact-py"><span class="std std-ref">Shell ping-pong ball dropped on a solid plate (dynamic MultiMesh, IPC)</span></a> and
+<a class="reference internal" href="examples/finite_strain/neohookean_snap_through.html#sphx-glr-examples-finite-strain-neohookean-snap-through-py"><span class="std std-ref">Snap-through of a compressed Neo-Hookean blade (static vs implicit dynamics)</span></a>.</p>
 </section>
 <section id="explicit-second-order-schemes">
 <h2>Explicit second-order schemes<a class="headerlink" href="#explicit-second-order-schemes" title="Link to this heading"></a></h2>

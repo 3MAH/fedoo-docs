@@ -21,6 +21,7 @@
       
          DataSet.__getitem__
          DataSet.add_data
+         DataSet.add_scalar_expression
          DataSet.beam_derived_fields
          DataSet.beam_section_description
          DataSet.copy
@@ -39,6 +40,7 @@
          DataSet.savez_compressed
          DataSet.section_derived_fields
          DataSet.set_beam_section
+         DataSet.set_current_local_frame
          DataSet.shell_derived_fields
          DataSet.shell_section_description
          DataSet.shell_sources
@@ -65,6 +67,7 @@
          
       
          DataSet.beam_options
+         DataSet.current_local_frame
          DataSet.dict_data
          DataSet.shell_options
          DataSet.active_submesh

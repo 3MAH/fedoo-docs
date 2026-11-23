@@ -21,6 +21,7 @@
       
          BeamRectangular.compute_linear_density
          BeamRectangular.compute_rotary_density
+         BeamRectangular.fiber_quadrature
          BeamRectangular.from_section_description
          BeamRectangular.get_all
          BeamRectangular.get_beam_rigidity
@@ -57,6 +58,8 @@
          :toctree:
          
       
+         BeamRectangular.corate
+         BeamRectangular.is_section_law
          BeamRectangular.linear_density
          BeamRectangular.n_points
          BeamRectangular.name

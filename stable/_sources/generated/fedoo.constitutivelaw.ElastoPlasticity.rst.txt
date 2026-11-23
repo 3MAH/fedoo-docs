@@ -20,6 +20,8 @@
          
       
          ElastoPlasticity.compute_stress
+         ElastoPlasticity.condense_tangent
+         ElastoPlasticity.get_H_condensed
          ElastoPlasticity.get_H_plane_stress
          ElastoPlasticity.get_all
          ElastoPlasticity.get_current_local_frame
@@ -65,6 +67,7 @@
          :toctree:
          
       
+         ElastoPlasticity.corate
          ElastoPlasticity.is_isotropic
          ElastoPlasticity.manages_material_frame
          ElastoPlasticity.name

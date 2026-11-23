@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weak Formulation (fedoo.weakform) &mdash; Fedoo 1.1.0 (stable)</title>
+  <title>Weak Formulation (fedoo.weakform) &mdash; Fedoo 1.2.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=fc837d61"></script>
+      <script src="_static/documentation_options.js?v=6efca38a"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="fedoo.weakform.StressEquilibrium" href="generated/fedoo.weakform.StressEquilibrium.html" />
-    <link rel="prev" title="fedoo.constitutivelaw.ThermalProperties.is_initialized" href="generated/fedoo.constitutivelaw.ThermalProperties.is_initialized.html" /> 
+    <link rel="prev" title="fedoo.constitutivelaw.KozenyCarmanPermeability.__call__" href="generated/fedoo.constitutivelaw.KozenyCarmanPermeability.__call__.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -65,6 +65,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibrium.html">fedoo.weakform.StressEquilibrium</a></li>
@@ -72,6 +73,8 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.HeatEquation.html">fedoo.weakform.HeatEquation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html">fedoo.weakform.PoroMechanicsSimple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html">fedoo.weakform.PoroMechanics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html">fedoo.weakform.BeamEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.SpringEquilibrium.html">fedoo.weakform.SpringEquilibrium</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/fedoo.weakform.PlateEquilibrium.html">fedoo.weakform.PlateEquilibrium</a></li>
@@ -92,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poromechanics.html">Poromechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
@@ -162,6 +166,12 @@ existing class.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.HeatEquation.html#fedoo.weakform.HeatEquation" title="fedoo.weakform.HeatEquation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HeatEquation</span></code></a>(thermal_constitutivelaw[, ...])</p></td>
 <td><p>Weak formulation of the heat equation.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html#fedoo.weakform.PoroMechanicsSimple" title="fedoo.weakform.PoroMechanicsSimple"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PoroMechanicsSimple</span></code></a>(skeleton_law, fluid_props)</p></td>
+<td><p>Non-mixed <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">PorePressure)</span></code> poromechanics weak form.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PoroMechanics</span></code></a>(skeleton_law, fluid_props[, ...])</p></td>
+<td><p>Full mixed <code class="docutils literal notranslate"><span class="pre">(u,</span> <span class="pre">PorePressure,</span> <span class="pre">Pressure)</span></code> poromechanics weak form.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html#fedoo.weakform.BeamEquilibrium" title="fedoo.weakform.BeamEquilibrium"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamEquilibrium</span></code></a>(material[, A, Jx, Iyy, Izz, ...])</p></td>
 <td><p>Weak formulation of the mechanical equilibrium equation for beam models.</p></td>
 </tr>
@@ -206,13 +216,29 @@ existing class.</p>
 </tr>
 </tbody>
 </table>
+<p>Examples by weak form:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="generated/fedoo.weakform.BeamEquilibrium.html#fedoo.weakform.BeamEquilibrium" title="fedoo.weakform.BeamEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">BeamEquilibrium</span></code></a>:
+<a class="reference internal" href="examples/basic/beam_elements_cantilever.html#sphx-glr-examples-basic-beam-elements-cantilever-py"><span class="std std-ref">Cantilever beam with beam elements</span></a>,
+<a class="reference internal" href="examples/basic/lattice_beam.html#sphx-glr-examples-basic-lattice-beam-py"><span class="std std-ref">Beam lattice structure using a beam model with geometric nonlinearities</span></a>.</p></li>
+<li><p>Plate and shell weak forms (<a class="reference internal" href="generated/fedoo.weakform.PlateEquilibrium.html#fedoo.weakform.PlateEquilibrium" title="fedoo.weakform.PlateEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlateEquilibrium</span></code></a> and variants):
+<a class="reference internal" href="examples/shells/plate_elements_cantilever.html#sphx-glr-examples-shells-plate-elements-cantilever-py"><span class="std std-ref">Plate elements on a cantilever: comparison with beam theory</span></a>,
+<a class="reference internal" href="examples/shells/laminate_cantilever.html#sphx-glr-examples-shells-laminate-cantilever-py"><span class="std std-ref">Laminated plate cantilever (ShellLaminate)</span></a>,
+<a class="reference internal" href="examples/shells/spherical_shell_compression_plastic.html#sphx-glr-examples-shells-spherical-shell-compression-plastic-py"><span class="std std-ref">Elastoplastic compression of a ping-pong ball</span></a>.</p></li>
+<li><p><a class="reference internal" href="generated/fedoo.weakform.HeatEquation.html#fedoo.weakform.HeatEquation" title="fedoo.weakform.HeatEquation"><code class="xref py py-class docutils literal notranslate"><span class="pre">HeatEquation</span></code></a>:
+<a class="reference internal" href="examples/thermal/thermal_conduction_2d.html#sphx-glr-examples-thermal-thermal-conduction-2d-py"><span class="std std-ref">Transient heat conduction in a 2D square</span></a>,
+<a class="reference internal" href="examples/thermal/thermal_conduction_3d.html#sphx-glr-examples-thermal-thermal-conduction-3d-py"><span class="std std-ref">Transient heat conduction in a gyroid lattice</span></a>,
+<a class="reference internal" href="examples/thermal/thermomechanical_weak_coupling_3d.html#sphx-glr-examples-thermal-thermomechanical-weak-coupling-3d-py"><span class="std std-ref">Weakly coupled thermo-mechanical analysis of a gyroid lattice</span></a>.</p></li>
+<li><p><a class="reference internal" href="generated/fedoo.weakform.PoroMechanics.html#fedoo.weakform.PoroMechanics" title="fedoo.weakform.PoroMechanics"><code class="xref py py-class docutils literal notranslate"><span class="pre">PoroMechanics</span></code></a> and <a class="reference internal" href="generated/fedoo.weakform.PoroMechanicsSimple.html#fedoo.weakform.PoroMechanicsSimple" title="fedoo.weakform.PoroMechanicsSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">PoroMechanicsSimple</span></code></a>:
+<a class="reference internal" href="examples/poromechanics/terzaghi_1d.html#sphx-glr-examples-poromechanics-terzaghi-1d-py"><span class="std std-ref">Terzaghi 1D consolidation (small strain)</span></a>.</p></li>
+</ul>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="generated/fedoo.constitutivelaw.ThermalProperties.is_initialized.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.ThermalProperties.is_initialized" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/fedoo.constitutivelaw.KozenyCarmanPermeability.__call__.html" class="btn btn-neutral float-left" title="fedoo.constitutivelaw.KozenyCarmanPermeability.__call__" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="generated/fedoo.weakform.StressEquilibrium.html" class="btn btn-neutral float-right" title="fedoo.weakform.StressEquilibrium" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -19,6 +19,8 @@
          :toctree:
          
       
+         ElasticAnisotropic.condense_tangent
+         ElasticAnisotropic.get_H_condensed
          ElasticAnisotropic.get_H_plane_stress
          ElasticAnisotropic.get_all
          ElasticAnisotropic.get_current_local_frame
@@ -54,6 +56,7 @@
          :toctree:
          
       
+         ElasticAnisotropic.corate
          ElasticAnisotropic.is_isotropic
          ElasticAnisotropic.manages_material_frame
          ElasticAnisotropic.name

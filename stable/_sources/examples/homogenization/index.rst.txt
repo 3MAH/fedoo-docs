@@ -1,0 +1,105 @@
+
+
+.. _sphx_glr_examples_homogenization:
+
+Homogenization
+--------------
+
+Effective properties of periodic and non-periodic microstructures, and
+FE\ :sup:`2` multiscale analysis.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A quarter of a plate with a hole (2D plane strain, very coarse quad4 mesh) is stretched along x. Its material is not given by a constitutive law but computed by FE\ 2: with fedoo.constitutivelaw.FE2, each macroscopic integration point carries a 3D finite element model of an octet-truss unit cell (``tet4`` mesh) made of an elastoplastic steel (simcoon EPICP). At every Newton iteration, the macroscopic strain is applied to each cell with periodic boundary conditions, and the cells return the mean stress and the homogenized tangent matrix.">
+
+.. only:: html
+
+  .. image:: /examples/homogenization/images/thumb/sphx_glr_fe2_plate_with_hole_thumb.png
+    :alt:
+
+  :doc:`/examples/homogenization/fe2_plate_with_hole`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">FE2 multiscale analysis of a plate with a hole (octet-truss unit cell)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Homogenization of a non-periodic spinodoid microstructure using microgen&#x27;s BoxMesh to build the boundary interpolation dictionary required by PeriodicBC with meshperio=False.">
+
+.. only:: html
+
+  .. image:: /examples/homogenization/images/thumb/sphx_glr_non_periodic_homogenization_thumb.png
+    :alt:
+
+  :doc:`/examples/homogenization/non_periodic_homogenization`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Non-periodic homogenization with microgen</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example computes the effective (homogenized) elastic stiffness matrix \mathbf{L}^{\text{eff}} of periodic lattice unit cells with fedoo.homogen.get_homogenized_stiffness. The function applies periodic boundary conditions and solves six elementary load cases (one per component of the mean strain).">
+
+.. only:: html
+
+  .. image:: /examples/homogenization/images/thumb/sphx_glr_periodic_homogenization_thumb.png
+    :alt:
+
+  :doc:`/examples/homogenization/periodic_homogenization`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Homogenized elastic stiffness of periodic unit cells</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example computes the effective elastic stiffness matrix \mathbf{L}^{\text{eff}} of a periodic gyroid unit cell without the fedoo.homogen.get_homogenized_stiffness helper (see sphx_glr_examples_homogenization_periodic_homogenization.py), to show what it does. A fedoo.constraint.PeriodicBC adds the six mean strain components as global degrees of freedom; six linear problems are solved, each with a unit load on one of these components, and \mathbf{L}^{\text{eff}} is built from the six solutions. The directional Young&#x27;s modulus of the cell is then plotted.">
+
+.. only:: html
+
+  .. image:: /examples/homogenization/images/thumb/sphx_glr_periodic_homogenization_from_scratch_thumb.png
+    :alt:
+
+  :doc:`/examples/homogenization/periodic_homogenization_from_scratch`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Homogenized stiffness of a periodic cell from low-level operators</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/homogenization/fe2_plate_with_hole
+   /examples/homogenization/non_periodic_homogenization
+   /examples/homogenization/periodic_homogenization
+   /examples/homogenization/periodic_homogenization_from_scratch
+

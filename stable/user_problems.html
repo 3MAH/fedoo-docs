@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Define user problems &mdash; Fedoo 1.1.0 (stable)</title>
+  <title>Define user problems &mdash; Fedoo 1.2.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=fc837d61"></script>
+      <script src="_static/documentation_options.js?v=6efca38a"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -65,12 +65,14 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poromechanics.html">Poromechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Define user problems</a><ul>
@@ -162,9 +164,15 @@ unknown with <code class="xref py py-meth docutils literal notranslate"><span cl
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">fedoo.ModelingSpace.new_vector()</span></code> when useful, and add the weak terms.
 Mixed formulations may assign different element interpolations to different
 variables.</p>
-<p>Complete examples are available in
-<a class="reference download internal" download="" href="_downloads/eaeb7088eb53567d0ce9ebb995aafd00/poison_eq.py"><code class="xref download docutils literal notranslate"><span class="pre">poison_eq.py</span></code></a> and
-<a class="reference download internal" download="" href="_downloads/5870f5ae4b181f411f663eb85f76e345/fluid_mechanics.py"><code class="xref download docutils literal notranslate"><span class="pre">fluid_mechanics.py</span></code></a>.</p>
+<p>Complete examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="examples/basic/poisson_eq.html#sphx-glr-examples-basic-poisson-eq-py"><span class="std std-ref">Define and solve user equation</span></a>: a scalar Poisson equation
+(<a class="reference download internal" download="" href="_downloads/2d7d4785f868a5be23216a74ea01627c/poisson_eq.py"><code class="xref download docutils literal notranslate"><span class="pre">poisson_eq.py</span></code></a>);</p></li>
+<li><p><a class="reference internal" href="examples/custom_weak_forms/fluid_mechanics.html#sphx-glr-examples-custom-weak-forms-fluid-mechanics-py"><span class="std std-ref">Stokes flow around a cylinder with a user-defined weak form</span></a> and
+<a class="reference internal" href="examples/custom_weak_forms/recirculating_flow.html#sphx-glr-examples-custom-weak-forms-recirculating-flow-py"><span class="std std-ref">Lid-driven cavity (Stokes flow) with a user-defined weak form</span></a>: Stokes
+systems with a velocity-pressure mixed interpolation
+(<a class="reference download internal" download="" href="_downloads/3f9cbfa3ae9f615d404065c605d29f1b/fluid_mechanics.py"><code class="xref download docutils literal notranslate"><span class="pre">fluid_mechanics.py</span></code></a>).</p></li>
+</ul>
 <section id="state-dependent-weak-forms">
 <h3>State-dependent weak forms<a class="headerlink" href="#state-dependent-weak-forms" title="Link to this heading"></a></h3>
 <p>When coefficients or residual terms depend on the current solution, derive a
@@ -188,8 +196,9 @@ tangent and current residual terms.</p>
 <p>The problem may have <code class="docutils literal notranslate"><span class="pre">problem.dtime</span> <span class="pre">==</span> <span class="pre">0</span></code> during initialization. A custom
 weak form must not divide by <code class="docutils literal notranslate"><span class="pre">dtime</span></code> in that state. Time-dependent terms can
 be omitted until a positive increment is supplied. See
-<a class="reference download internal" download="" href="_downloads/a95fe3ac84c3ba9d38638e49e7a96968/navier_stokes.py"><code class="xref download docutils literal notranslate"><span class="pre">navier_stokes.py</span></code></a> for
-a complete nonlinear example.</p>
+<a class="reference internal" href="examples/custom_weak_forms/navier_stokes.html#sphx-glr-examples-custom-weak-forms-navier-stokes-py"><span class="std std-ref">Transient Navier-Stokes flow around a cylinder with a user weak-form class</span></a>
+(<a class="reference download internal" download="" href="_downloads/e4c8b3bca0848c1ba636c301116217be/navier_stokes.py"><code class="xref download docutils literal notranslate"><span class="pre">navier_stokes.py</span></code></a>)
+for a complete nonlinear example.</p>
 </section>
 </section>
 <section id="define-a-mechanical-constitutive-law">
@@ -275,8 +284,12 @@ column.</p></td>
 temperature field is available.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ndi</span></code></p></td>
-<td><p>Number of direct components: 3 normally and 2 for the
-plane-stress interface.</p></td>
+<td><p>Number of direct components: 3 normally, 2 in plane
+stress (<code class="docutils literal notranslate"><span class="pre">&quot;2Dstress&quot;</span></code>) and 1 in uniaxial stress
+(<code class="docutils literal notranslate"><span class="pre">&quot;1Dstress&quot;</span></code>, beam fibers). A callback is only
+called with 2 or 1 for the states listed in its
+<code class="docutils literal notranslate"><span class="pre">reduced_states</span></code>; it must then return a stress whose
+out-of-state components are zero.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tangent_mode</span></code></p></td>
 <td><p>User-defined tangent selector forwarded unchanged by

@@ -1,0 +1,178 @@
+
+
+.. _sphx_glr_examples_boundary_conditions:
+
+Boundary conditions and constraints
+-----------------------------------
+
+Periodic boundary conditions (2D, 3D, in-plane and off-axis), mean value
+constraints, rigid ties and mean motion constraints, pressure loads, and
+problems that combine several meshes.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compare two ways of imposing a torsion on the right face of a cube:">
+
+.. only:: html
+
+  .. image:: /examples/boundary_conditions/images/thumb/sphx_glr_mean_rigid_motion_torsion_thumb.png
+    :alt:
+
+  :doc:`/examples/boundary_conditions/mean_rigid_motion_torsion`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Mean motion torsion</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example combines quadrilateral and triangular elements that share the same node array. Each element block has its own assembly, while their sum is used to solve a single mechanical problem.">
+
+.. only:: html
+
+  .. image:: /examples/boundary_conditions/images/thumb/sphx_glr_multi_mesh_example_thumb.png
+    :alt:
+
+  :doc:`/examples/boundary_conditions/multi_mesh_example`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Analysis and visualization of a multi-mesh model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Periodic boundary conditions are enforced with fedoo.constraint.PeriodicBC on a 2D unit cell with a central hole, under the plane stress assumption. A mean shear strain \gamma_{xy} = 0.1 is prescribed on the mean strain degrees of freedom added by the constraint, and the resulting mean stress is computed by integrating the stress field over the cell.">
+
+.. only:: html
+
+  .. image:: /examples/boundary_conditions/images/thumb/sphx_glr_periodic_bc_2d_plate_with_hole_thumb.png
+    :alt:
+
+  :doc:`/examples/boundary_conditions/periodic_bc_2d_plate_with_hole`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">2D periodic boundary condition</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The periodic mesh of the Gyroid has been generated with microgen. This example shows how to define periodic boundary conditions with fedoo.constraint.PeriodicBC and to load the structure with a prescribed mean strain in a local coordinate system rotated by 45° about z (``off_axis_rotation``). The mean stress and mean strain are then extracted in the local and global coordinate systems.">
+
+.. only:: html
+
+  .. image:: /examples/boundary_conditions/images/thumb/sphx_glr_periodic_bc_3d_gyroid_off_axis_thumb.png
+    :alt:
+
+  :doc:`/examples/boundary_conditions/periodic_bc_3d_gyroid_off_axis`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Off-axis tensile test on a gyroid unit cell with periodic boundary conditions</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A 3D unit cell of a composite ply, made of two orthogonal elliptical fiber bundles embedded in a soft matrix, is loaded by a mean in-plane strain E_{xx} = 0.1. fedoo.constraint.PeriodicBC with dim=2 makes the faces normal to x and y periodic while the top and bottom faces remain free, which models a ply of finite thickness that is periodic in its plane. The mean in-plane stress is read as the reaction to the MeanStrain degrees of freedom, and the stress in the fibers is plotted.">
+
+.. only:: html
+
+  .. image:: /examples/boundary_conditions/images/thumb/sphx_glr_periodic_bc_composite_ply_thumb.png
+    :alt:
+
+  :doc:`/examples/boundary_conditions/periodic_bc_composite_ply`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">In-plane periodic boundary conditions on a woven composite ply</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Periodic boundary conditions only constrain the difference of displacement between opposite faces: the rigid body translation remains free and must be removed. The usual way is to block the displacement of an arbitrary node (generally the node nearest to the center of the RVE).">
+
+.. only:: html
+
+  .. image:: /examples/boundary_conditions/images/thumb/sphx_glr_periodic_bc_mean_disp_constraint_thumb.png
+    :alt:
+
+  :doc:`/examples/boundary_conditions/periodic_bc_mean_disp_constraint`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Periodic BC without node pinning: mean displacement constraint</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of fedoo.constraint.Pressure for the simulation of a pipe (outer radius 200 mm, thickness 20 mm) under an internal pressure of 2 MPa and an external pressure of 0.1 MPa. The problem is treated in 2D with the plane strain assumption. For this thin pipe, the hoop stress is close to (p_i r_i - p_e r_e)/t \approx 17 MPa; the plotted field is the hydrostatic pressure -\mathrm{tr}(\boldsymbol{\sigma})/3.">
+
+.. only:: html
+
+  .. image:: /examples/boundary_conditions/images/thumb/sphx_glr_pressurized_pipe_thumb.png
+    :alt:
+
+  :doc:`/examples/boundary_conditions/pressurized_pipe`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Pressure constraint</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of a 2D rigid tie with fedoo.constraint.RigidTie2D. The bottom face of a square is clamped and a rigid body rotation of 45° is imposed on the top face through the RigidRotZ degree of freedom added by the constraint, in finite strain (plane strain).">
+
+.. only:: html
+
+  .. image:: /examples/boundary_conditions/images/thumb/sphx_glr_rigid_tie_thumb.png
+    :alt:
+
+  :doc:`/examples/boundary_conditions/rigid_tie`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Rigid tie constraint</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/boundary_conditions/mean_rigid_motion_torsion
+   /examples/boundary_conditions/multi_mesh_example
+   /examples/boundary_conditions/periodic_bc_2d_plate_with_hole
+   /examples/boundary_conditions/periodic_bc_3d_gyroid_off_axis
+   /examples/boundary_conditions/periodic_bc_composite_ply
+   /examples/boundary_conditions/periodic_bc_mean_disp_constraint
+   /examples/boundary_conditions/pressurized_pipe
+   /examples/boundary_conditions/rigid_tie
+

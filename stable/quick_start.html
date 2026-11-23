@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quick Start &mdash; Fedoo 1.1.0 (stable)</title>
+  <title>Quick Start &mdash; Fedoo 1.2.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=fc837d61"></script>
+      <script src="_static/documentation_options.js?v=6efca38a"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/sg-tags.js?v=d80f6fa4"></script>
@@ -73,15 +73,18 @@
 <li class="toctree-l2"><a class="reference internal" href="#boundary-conditions">Boundary conditions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#solve-the-problem">Solve the Problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#analyse-and-export-results">Analyse and export results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next steps</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="poromechanics.html">Poromechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_problems.html">Define user problems</a></li>
@@ -242,8 +245,11 @@ directly from Python:</p>
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The viewer provides field/component selection, deformation scaling and
-image export. In a later Python session, open the saved file directly:</p>
+<p>The viewer provides field/component selection, deformation scaling, node and
+element set tools, computed scalars and image export. File &gt; Save as stores
+results, user-created sets and computed scalar definitions in FDH5, with
+lossless compression options. See <a class="reference internal" href="post_processing.html#fedoo-viewer"><span class="std std-ref">Fedoo interactive viewer</span></a> for the available tools.
+In a later Python session, open the saved file directly:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fedoo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">fd</span>
 
 <span class="n">fd</span><span class="o">.</span><span class="n">viewer</span><span class="p">(</span><span class="s2">"cantilever.fdh5"</span><span class="p">)</span>
@@ -257,10 +263,22 @@ image export. In a later Python session, open the saved file directly:</p>
 from Python also opens an empty viewer. In a standalone script, the viewer
 runs until its window is closed; perform saving or other computations before
 launching it.</p>
+<p>To inspect a live Problem, call <code class="docutils literal notranslate"><span class="pre">fd.viewer(pb)</span></code> or use <strong>Problem &gt; Open
+existing problem</strong> in a viewer launched from the same Python session. Reload
+reads its current state; opening it does not run a solve. Modal and buckling
+Problems with retained modes use the iteration slider to select a mode.</p>
 <p>For external tools such as ParaView, export a VTK file with
 <code class="docutils literal notranslate"><span class="pre">results.save(&quot;cantilever.vtk&quot;)</span></code>. See
 <a class="reference internal" href="post_processing.html"><span class="doc">Post-Processing</span></a> for nonlinear time histories,
 section output and more viewer options.</p>
+</section>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="examples/index.html"><span class="doc">example gallery</span></a> contains complete scripts grouped
+by topic. The basic examples are a good continuation of this guide, for
+instance <a class="reference internal" href="examples/basic/cantilever_beam_3d.html#sphx-glr-examples-basic-cantilever-beam-3d-py"><span class="std std-ref">Cantilever beam using 3D hexahedral elements</span></a> (the same
+cantilever beam with <code class="docutils literal notranslate"><span class="pre">hex8</span></code> elements) and
+<a class="reference internal" href="examples/basic/visualization.html#sphx-glr-examples-basic-visualization-py"><span class="std std-ref">Visualization tutorial: shear test of a cube</span></a> (post-processing options).</p>
 </section>
 </section>
 

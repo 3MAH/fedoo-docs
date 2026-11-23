@@ -21,6 +21,7 @@
       
          MultiFrameDataSet.__getitem__
          MultiFrameDataSet.add_data
+         MultiFrameDataSet.add_scalar_expression
          MultiFrameDataSet.beam_derived_fields
          MultiFrameDataSet.beam_section_description
          MultiFrameDataSet.copy
@@ -43,6 +44,7 @@
          MultiFrameDataSet.savez_compressed
          MultiFrameDataSet.section_derived_fields
          MultiFrameDataSet.set_beam_section
+         MultiFrameDataSet.set_current_local_frame
          MultiFrameDataSet.shell_derived_fields
          MultiFrameDataSet.shell_section_description
          MultiFrameDataSet.shell_sources
@@ -70,6 +72,7 @@
          
       
          MultiFrameDataSet.beam_options
+         MultiFrameDataSet.current_local_frame
          MultiFrameDataSet.dict_data
          MultiFrameDataSet.n_iter
          MultiFrameDataSet.shell_options

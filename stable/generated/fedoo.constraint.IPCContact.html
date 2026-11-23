@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.constraint.IPCContact &mdash; Fedoo 1.1.0 (stable)</title>
+  <title>fedoo.constraint.IPCContact &mdash; Fedoo 1.2.0 (stable)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=fc837d61"></script>
+      <script src="../_static/documentation_options.js?v=6efca38a"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -65,6 +65,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mesh.html">Geometry and Mesh (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.mesh</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../elements.html">Element library (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.lib_elements</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../constitutive_law.html">Constitutive Law (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
@@ -83,6 +84,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../poromechanics.html">Poromechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../post_processing.html">Post-Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../heterogeneous.html">Heterogeneous structures</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_problems.html">Define user problems</a></li>
@@ -196,9 +198,11 @@ the 3D convergent formulation.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mesh</strong> (<a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><em>fedoo.Mesh</em></a>) – Full volumetric mesh (needed for DOF compatibility).</p></li>
-<li><p><strong>surface_mesh</strong> (<a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><em>fedoo.Mesh</em></a><em>, </em><em>optional</em>) – Pre-extracted surface mesh (<code class="docutils literal notranslate"><span class="pre">lin2</span></code> in 2D, <code class="docutils literal notranslate"><span class="pre">tri3</span></code> in 3D).</p></li>
+<li><p><strong>surface_mesh</strong> (<a class="reference internal" href="fedoo.Mesh.html#fedoo.Mesh" title="fedoo.Mesh"><em>fedoo.Mesh</em></a><em>, </em><em>optional</em>) – Pre-extracted surface mesh (<code class="docutils literal notranslate"><span class="pre">lin2</span></code> in 2D, <code class="docutils literal notranslate"><span class="pre">tri3</span></code> in 3D). In 3D,
+a <code class="docutils literal notranslate"><span class="pre">lin2</span></code> mesh is a curve, such as beam centerlines: its edges are
+the only collision primitives.</p></li>
 <li><p><strong>extract_surface</strong> (<em>bool</em><em>, </em><em>default=False</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, automatically extract the surface from the volumetric
-mesh.</p></li>
+mesh. A 3D <code class="docutils literal notranslate"><span class="pre">lin2</span></code> mesh is used directly as the contact mesh.</p></li>
 <li><p><strong>dhat</strong> (<em>float</em><em>, </em><em>default=1e-3</em>) – Barrier activation distance.  Pairs of primitives closer than
 <code class="docutils literal notranslate"><span class="pre">dhat</span></code> receive a repulsive barrier force.  A smaller value gives
 a tighter contact (less visible gap) but requires finer time steps.</p></li>

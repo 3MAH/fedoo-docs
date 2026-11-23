@@ -1,0 +1,105 @@
+
+
+.. _sphx_glr_examples_thermal:
+
+Thermal and thermomechanical problems
+-------------------------------------
+
+Transient heat conduction, weakly coupled thermomechanical problems and thermal
+expansion loads on a heterogeneous structure.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Transient heat conduction in a unit square with fedoo.weakform.HeatEquation and fedoo.constitutivelaw.ThermalProperties, solved on a fedoo.problem.NonLinear problem with a first-order backward Euler time integrator. The temperatures of the left and right edges are ramped from 0 to T = 100 and T = 50; the other edges are insulated.">
+
+.. only:: html
+
+  .. image:: /examples/thermal/images/thumb/sphx_glr_thermal_conduction_2d_thumb.png
+    :alt:
+
+  :doc:`/examples/thermal/thermal_conduction_2d`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Transient heat conduction in a 2D square</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Transient heat conduction in a 3D gyroid lattice (tet4 mesh read from util/meshes/gyroid.msh) with fedoo.weakform.HeatEquation. The +X face is suddenly brought to T = 100 (step time function); the other faces are insulated and the initial temperature is zero.">
+
+.. only:: html
+
+  .. image:: /examples/thermal/images/thumb/sphx_glr_thermal_conduction_3d_thumb.png
+    :alt:
+
+  :doc:`/examples/thermal/thermal_conduction_3d`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Transient heat conduction in a gyroid lattice</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to model a composite material consisting of a disk-shaped inclusion embedded within a matrix, loaded by thermal expansion. It utilizes the fedoo.constitutivelaw.Heterogeneous constitutive law to manage different material behaviors (elastic and elastoplastic) within a single Assembly. The temperature is uniform and prescribed: it rises to 400 and returns to 0, while all the exterior edges are clamped.">
+
+.. only:: html
+
+  .. image:: /examples/thermal/images/thumb/sphx_glr_thermal_loading_thumb.png
+    :alt:
+
+  :doc:`/examples/thermal/thermal_loading`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Heterogeneous material: inclusion in a matrix under thermal loading</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Staggered (weak) thermo-mechanical coupling on a 3D gyroid lattice: a transient fedoo.weakform.HeatEquation problem and a small-strain fedoo.weakform.StressEquilibrium problem with thermal expansion are advanced increment by increment with :pyfedoo.problem.NonLinear.solve_time_increment. At each increment the converged temperature is copied into the mechanical assembly. The +X face is heated to T = 100 during the first phase and cooled back to T = 0 during the second one; all faces are clamped.">
+
+.. only:: html
+
+  .. image:: /examples/thermal/images/thumb/sphx_glr_thermomechanical_weak_coupling_3d_thumb.png
+    :alt:
+
+  :doc:`/examples/thermal/thermomechanical_weak_coupling_3d`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Weakly coupled thermo-mechanical analysis of a gyroid lattice</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/thermal/thermal_conduction_2d
+   /examples/thermal/thermal_conduction_3d
+   /examples/thermal/thermal_loading
+   /examples/thermal/thermomechanical_weak_coupling_3d
+

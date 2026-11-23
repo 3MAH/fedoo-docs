@@ -1,0 +1,312 @@
+
+
+.. _sphx_glr_examples_contact:
+
+Contact and interfaces
+----------------------
+
+Contact between deformable bodies and self-contact, with the penalty method and
+with the Incremental Potential Contact (IPC) barrier, compared with analytical
+solutions (Hertz, Westergaard) where they exist. The folder also covers
+self-contact in 2D axisymmetric models (tube compression) and cohesive
+interfaces: :ref:`sphx_glr_examples_contact_cohesive_dcb_3d.py` opens a
+zero-thickness interface governed by a :class:`fedoo.constitutivelaw.CohesiveLaw`.
+
+The IPC examples (``ipc_*`` and the other scripts using ``IPCContact`` or
+``IPCSelfContact``) require the optional dependency ``ipctk``
+(``pip install fedoo[ipc]``). Some of them also need ``gmsh`` to mesh curved
+geometries.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The model consists of two composite arms separated by a zero-thickness cohesive interface. Cohesive elements are inserted only after the prescribed starter-crack length. The initially unconnected part of the two arms therefore represents the pre-crack.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_cohesive_dcb_3d_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/cohesive_dcb_3d`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Composite double-cantilever beam with a cohesive interface</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Validates penalty contact in fedoo&#x27;s 2Daxi modeling space against the classical Hertz (1882) analytical solution for a rigid sphere pressed onto an elastic half-space.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_hertz_axisymmetric_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/hertz_axisymmetric`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hertz axisymmetric contact benchmark: rigid sphere on elastic half-space</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates contact between a disk and a rectangle using the IPC (Incremental Potential Contact) barrier method. The disk is pressed into the rectangle and then unloaded.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_ipc_disk_rectangle_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/ipc_disk_rectangle`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Disk-rectangle contact (2D, IPC method)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compresses a 3D gyroid unit cell (40 % axial strain) with IPC self-contact to prevent wall intersections. Linear elastic material, updated Lagrangian formulation.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_ipc_gyroid_compression_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/ipc_gyroid_compression`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gyroid self-contact under compression (3D, IPC method)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compresses a 3D gyroid unit cell (50% strain) with IPC self-contact and periodic boundary conditions.  This is the most advanced contact example, combining large strain (UL), periodic BCs, and IPC.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_ipc_gyroid_compression_periodic_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/ipc_gyroid_compression_periodic`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Gyroid compression with periodic BCs (3D, IPC method)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Compresses a 3D gyroid unit cell (50 % axial strain) with IPC self-contact to prevent wall intersections. Elasto-plastic material (simcoon EPICP, isotropic power-law hardening), updated Lagrangian formulation.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_ipc_gyroid_compression_plastic_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/ipc_gyroid_compression_plastic`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Elasto-plastic gyroid self-contact under compression (3D, IPC method)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A stiff elastic disk is pressed vertically into a softer elastic rectangle (plane strain).  This is a classical Hertz-like contact benchmark.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_ipc_indentation_2d_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/ipc_indentation_2d`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Disk indentation (2D plane strain) — IPC contact with Hertz comparison</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A stiff elastic sphere is pressed vertically into a softer elastic block. This is the classical 3D Hertz contact benchmark.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_ipc_indentation_3d_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/ipc_indentation_3d`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sphere indentation (3D) — IPC contact with Hertz comparison</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A cylindrical punch with a hemispherical tip is pressed into a thick elastic plate.  Both bodies deform visibly at the contact interface -- a classic contact mechanics benchmark.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_ipc_punch_indentation_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/ipc_punch_indentation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hemispherical punch indentation (3D, IPC method)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A plate with a large circular hole is compressed until self-contact occurs on the hole&#x27;s inner surface.  Uses the IPC self-contact method (``fd.constraint.IPCSelfContact``) with CCD line search.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_ipc_self_contact_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/ipc_self_contact`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Self-contact — hole plate compression (2D, IPC method)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Same problem as sphx_glr_examples_contact_tube_compression.py, solved twice: with IPCSelfContact (collisions weighted by 2 \pi r) and with the penalty SelfContact. For each run the script prints the solve time, the axial reaction forces on the top and bottom faces (they should be opposite), the peak axial stress and the peak equivalent plastic strain at the last saved increment. The page has no figure: the deformed shape is shown in sphx_glr_examples_contact_tube_compression.py, and the results of both runs are written to results/.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_ipc_tube_compression_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/ipc_tube_compression`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Tube compression (2Daxi): IPC versus penalty self-contact</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An elastic disk (E = 50 GPa) is pushed into an elasto-plastic rectangle (E = 200 GPa, quad4, plane strain) using the penalty contact method, then released. The slave nodes are the right face of the rectangle, the master surface is the disk boundary.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_penalty_disk_rectangle_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/penalty_disk_rectangle`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Disk-rectangle contact (2D, penalty method)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="A plate with a large circular hole is compressed until self-contact occurs on the hole&#x27;s inner surface.  Uses the penalty self-contact method (``fd.constraint.SelfContact``) with an elasto-plastic material.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_penalty_self_contact_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/penalty_self_contact`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Self-contact — hole plate compression (2D, penalty method)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This model uses IPC self-contact (requires ipctk &gt;= 1.6), elasto-plastic material law with finite strain assumption in a 2D axisymmetric modeling space. The full 3D result is plotted during the post processing phase.">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_tube_compression_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/tube_compression`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Compression of a tube using 2D axisymmetric model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Validates both IPC and penalty contact against the exact Westergaard analytical solution for periodic sinusoidal contact (plane strain).">
+
+.. only:: html
+
+  .. image:: /examples/contact/images/thumb/sphx_glr_westergaard_sinusoidal_thumb.png
+    :alt:
+
+  :doc:`/examples/contact/westergaard_sinusoidal`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Westergaard sinusoidal contact benchmark: IPC vs penalty</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/contact/cohesive_dcb_3d
+   /examples/contact/hertz_axisymmetric
+   /examples/contact/ipc_disk_rectangle
+   /examples/contact/ipc_gyroid_compression
+   /examples/contact/ipc_gyroid_compression_periodic
+   /examples/contact/ipc_gyroid_compression_plastic
+   /examples/contact/ipc_indentation_2d
+   /examples/contact/ipc_indentation_3d
+   /examples/contact/ipc_punch_indentation
+   /examples/contact/ipc_self_contact
+   /examples/contact/ipc_tube_compression
+   /examples/contact/penalty_disk_rectangle
+   /examples/contact/penalty_self_contact
+   /examples/contact/tube_compression
+   /examples/contact/westergaard_sinusoidal
+

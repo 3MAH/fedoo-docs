@@ -19,6 +19,8 @@
          :toctree:
          
       
+         FE2.condense_tangent
+         FE2.get_H_condensed
          FE2.get_H_plane_stress
          FE2.get_all
          FE2.get_current_local_frame
@@ -51,6 +53,7 @@
          :toctree:
          
       
+         FE2.corate
          FE2.is_isotropic
          FE2.manages_material_frame
          FE2.name
