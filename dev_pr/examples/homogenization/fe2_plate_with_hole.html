@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FE2 multiscale analysis of a plate with a hole (octet-truss unit cell) &mdash; Fedoo 1.2.0 (dev)</title>
+  <title>FE2 multiscale analysis of a plate with a hole (octet-truss unit cell) &mdash; Fedoo 1.1.0 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=6efca38a"></script>
+      <script src="../../_static/documentation_options.js?v=fc837d61"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -193,9 +193,8 @@ constitutive law of the macroscopic problem.</p>
 <section id="macroscopic-problem">
 <h2>Macroscopic problem<a class="headerlink" href="#macroscopic-problem" title="Link to this heading"></a></h2>
 <p>The macroscopic weak form uses the <code class="docutils literal notranslate"><span class="pre">FE2</span></code> law. The results of one micro
-cell (here the cell of the 6th integration point) are also saved. They are
-written at each Newton iteration, so several frames correspond to the same
-time increment.</p>
+cell (here the cell of the 6th integration point) are also saved, once per
+converged macroscopic increment.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fd</span><span class="o">.</span><span class="n">weakform</span><span class="o">.</span><span class="n">StressEquilibrium</span><span class="p">(</span><span class="s2">"FEM"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"WeakForm"</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="s2">"macro_space"</span><span class="p">)</span>
 
 <span class="n">macro_assembly</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">Assembly</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>

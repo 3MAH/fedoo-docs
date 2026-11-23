@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fedoo.constitutivelaw.FE2 &mdash; Fedoo 1.2.0 (dev)</title>
+  <title>fedoo.constitutivelaw.FE2 &mdash; Fedoo 1.1.0 (dev)</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
@@ -19,7 +19,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=6efca38a"></script>
+      <script src="../_static/documentation_options.js?v=fc837d61"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
@@ -134,6 +134,12 @@
 integration point. The macroscopic strain is prescribed through the
 problem-level <code class="docutils literal notranslate"><span class="pre">MeanStrain</span></code> degrees of freedom created by
 <code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicBC</span></code>.</p>
+<p>At each update of the macroscopic problem, every microscopic problem
+starts again from its state at the beginning of the macroscopic
+increment and is loaded up to the current macroscopic strain. The
+microscopic states are committed only when the macroscopic increment has
+converged. The homogenized tangent matrix is computed at the converged
+microscopic state.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -143,6 +149,45 @@ assembly per macroscopic integration point.</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fedoo.constitutivelaw.FE2.tol_nr">
+<span class="sig-name descname"><span class="pre">tol_nr</span></span><a class="headerlink" href="#fedoo.constitutivelaw.FE2.tol_nr" title="Link to this definition"></a></dt>
+<dd><p>Tolerance of the Newton-Raphson algorithm of the microscopic
+problems. The macroscopic stress and tangent carry an error of about
+a hundredth of this value: take it at least ten times smaller than
+the tolerance of the macroscopic problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float, default=0.05</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fedoo.constitutivelaw.FE2.use_elastic_lt">
+<span class="sig-name descname"><span class="pre">use_elastic_lt</span></span><a class="headerlink" href="#fedoo.constitutivelaw.FE2.use_elastic_lt" title="Link to this definition"></a></dt>
+<dd><p>If True, the elastic homogenized matrix is used for the prediction of
+each macroscopic increment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool, default=True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The homogenized tangent is the exact derivative of the macroscopic stress
+when the tangent of the microscopic laws is the algorithmic one (for a
+<a class="reference internal" href="fedoo.constitutivelaw.Simcoon.html#fedoo.constitutivelaw.Simcoon" title="fedoo.constitutivelaw.Simcoon"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.constitutivelaw.Simcoon</span></code></a> law, <code class="docutils literal notranslate"><span class="pre">tangent_mode=2</span></code>). With a
+continuum tangent the macroscopic Newton-Raphson iterations still
+converge, at a linear rate.</p>
+<p>If a microscopic problem does not converge, its increment is cut (by 4,
+down to 1e-6 of the macroscopic increment), then a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> is
+raised. The cut is a fallback: the tangent then linearizes the last
+sub-increment only, and the macroscopic stress is not a smooth function
+of the strain where the cut switches on.</p>
+<p>The outputs added to a microscopic problem are written once per converged
+macroscopic increment.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.FE2.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assemb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.FE2.__init__" title="Link to this definition"></a></dt>
