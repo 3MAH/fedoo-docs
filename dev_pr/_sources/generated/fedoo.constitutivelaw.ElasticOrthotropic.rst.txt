@@ -42,6 +42,7 @@
          ElasticOrthotropic.set_density
          ElasticOrthotropic.set_local_frame
          ElasticOrthotropic.set_start
+         ElasticOrthotropic.set_thermal_properties
          ElasticOrthotropic.to_start
          ElasticOrthotropic.update
       
@@ -56,11 +57,18 @@
          :toctree:
          
       
+         ElasticOrthotropic.alpha
          ElasticOrthotropic.corate
          ElasticOrthotropic.is_isotropic
+         ElasticOrthotropic.is_thermomechanical
          ElasticOrthotropic.manages_material_frame
          ElasticOrthotropic.name
+         ElasticOrthotropic.reference_temperature
+         ElasticOrthotropic.specific_heat
          ElasticOrthotropic.supports_total_formulation
+         ElasticOrthotropic.thermal
+         ElasticOrthotropic.thermal_conductivity
+         ElasticOrthotropic.thermal_storage
          ElasticOrthotropic.is_initialized
   
   

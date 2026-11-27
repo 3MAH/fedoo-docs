@@ -89,6 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../poromechanics.html">Poromechanics</a></li>
@@ -128,7 +129,7 @@
 <h1>fedoo.constitutivelaw.CompositeUD<a class="headerlink" href="#fedoo-constitutivelaw-compositeud" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.CompositeUD">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CompositeUD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Vf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.33</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degrees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.CompositeUD" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CompositeUD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Vf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.33</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degrees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.CompositeUD" title="Link to this definition"></a></dt>
 <dd><p>Linear Orthotropic constitutive law defined from composites phase
 parameters, assuming uniform unidirectional fibers.
 The fiber are assumed in the X direction. Use a local frame
@@ -148,6 +149,8 @@ the Z axis. The unit is set by <code class="docutils literal notranslate"><span 
 is defined, the angle is measured in that frame.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the constitutive law</p></li>
 <li><p><strong>degrees</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True (default), <code class="docutils literal notranslate"><span class="pre">angle</span></code> is in degrees. If False, it is in radians.</p></li>
+<li><p><strong>thermal</strong> (<a class="reference internal" href="fedoo.constitutivelaw.ThermalProperties.html#fedoo.constitutivelaw.ThermalProperties" title="fedoo.constitutivelaw.ThermalProperties"><em>ThermalProperties</em></a><em>, </em><em>optional</em>) – Effective thermal properties of the composite, supplied explicitly.
+Expansion coefficients and conductivity are expressed in global axes.</p></li>
 </ul>
 </dd>
 </dl>
@@ -159,7 +162,7 @@ hoop direction. See <code class="xref py py-class docutils literal notranslate">
 the slot-ordering convention.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.CompositeUD.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Vf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.33</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degrees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.CompositeUD.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Vf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_f</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.33</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nu_m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">degrees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.CompositeUD.__init__" title="Link to this definition"></a></dt>
 <dd><p><strong>Methods</strong></p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
@@ -228,7 +231,7 @@ the slot-ordering convention.</p>
 <td><p>Reset the constitutive law.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.set_density.html#fedoo.constitutivelaw.CompositeUD.set_density" title="fedoo.constitutivelaw.CompositeUD.set_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.set_density</span></code></a>(density)</p></td>
-<td><p>Set the mass density associated with this mechanical material.</p></td>
+<td><p>Set the mass density, shared by the inertia and the heat capacity.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.set_local_frame.html#fedoo.constitutivelaw.CompositeUD.set_local_frame" title="fedoo.constitutivelaw.CompositeUD.set_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.set_local_frame</span></code></a>(local_frame[, ...])</p></td>
 <td><p>Define the material coordinate frame.</p></td>
@@ -236,20 +239,29 @@ the slot-ordering convention.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.set_start.html#fedoo.constitutivelaw.CompositeUD.set_start" title="fedoo.constitutivelaw.CompositeUD.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.set_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Begin a new time iteration.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.to_start.html#fedoo.constitutivelaw.CompositeUD.to_start" title="fedoo.constitutivelaw.CompositeUD.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.to_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.set_thermal_properties.html#fedoo.constitutivelaw.CompositeUD.set_thermal_properties" title="fedoo.constitutivelaw.CompositeUD.set_thermal_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.set_thermal_properties</span></code></a>([thermal])</p></td>
+<td><p>Attach ThermalProperties, or construct them from keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.to_start.html#fedoo.constitutivelaw.CompositeUD.to_start" title="fedoo.constitutivelaw.CompositeUD.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.to_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Restart the current time iteration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.update.html#fedoo.constitutivelaw.CompositeUD.update" title="fedoo.constitutivelaw.CompositeUD.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.update</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.update.html#fedoo.constitutivelaw.CompositeUD.update" title="fedoo.constitutivelaw.CompositeUD.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.update</span></code></a>(assembly, pb)</p></td>
 <td><p>Update the constitutive law for the current problem state.</p></td>
 </tr>
 </tbody>
 </table>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.corate.html#fedoo.constitutivelaw.CompositeUD.corate" title="fedoo.constitutivelaw.CompositeUD.corate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.corate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.alpha.html#fedoo.constitutivelaw.CompositeUD.alpha" title="fedoo.constitutivelaw.CompositeUD.alpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.alpha</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.corate.html#fedoo.constitutivelaw.CompositeUD.corate" title="fedoo.constitutivelaw.CompositeUD.corate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.corate</span></code></a></p></td>
 <td><p>the objective rate is <code class="docutils literal notranslate"><span class="pre">weakform.corate</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.is_isotropic.html#fedoo.constitutivelaw.CompositeUD.is_isotropic" title="fedoo.constitutivelaw.CompositeUD.is_isotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.is_isotropic</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.is_isotropic.html#fedoo.constitutivelaw.CompositeUD.is_isotropic" title="fedoo.constitutivelaw.CompositeUD.is_isotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.is_isotropic</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.is_thermomechanical.html#fedoo.constitutivelaw.CompositeUD.is_thermomechanical" title="fedoo.constitutivelaw.CompositeUD.is_thermomechanical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.is_thermomechanical</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.manages_material_frame.html#fedoo.constitutivelaw.CompositeUD.manages_material_frame" title="fedoo.constitutivelaw.CompositeUD.manages_material_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.manages_material_frame</span></code></a></p></td>
@@ -258,10 +270,25 @@ the slot-ordering convention.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.name.html#fedoo.constitutivelaw.CompositeUD.name" title="fedoo.constitutivelaw.CompositeUD.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.name</span></code></a></p></td>
 <td><p>Name of the constitutive law.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.supports_total_formulation.html#fedoo.constitutivelaw.CompositeUD.supports_total_formulation" title="fedoo.constitutivelaw.CompositeUD.supports_total_formulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.supports_total_formulation</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.reference_temperature.html#fedoo.constitutivelaw.CompositeUD.reference_temperature" title="fedoo.constitutivelaw.CompositeUD.reference_temperature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.reference_temperature</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.is_initialized.html#fedoo.constitutivelaw.CompositeUD.is_initialized" title="fedoo.constitutivelaw.CompositeUD.is_initialized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.is_initialized</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.specific_heat.html#fedoo.constitutivelaw.CompositeUD.specific_heat" title="fedoo.constitutivelaw.CompositeUD.specific_heat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.specific_heat</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.supports_total_formulation.html#fedoo.constitutivelaw.CompositeUD.supports_total_formulation" title="fedoo.constitutivelaw.CompositeUD.supports_total_formulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.supports_total_formulation</span></code></a></p></td>
+<td><p>bool(x) -&gt; bool</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.thermal.html#fedoo.constitutivelaw.CompositeUD.thermal" title="fedoo.constitutivelaw.CompositeUD.thermal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.thermal</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.thermal_conductivity.html#fedoo.constitutivelaw.CompositeUD.thermal_conductivity" title="fedoo.constitutivelaw.CompositeUD.thermal_conductivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.thermal_conductivity</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.thermal_storage.html#fedoo.constitutivelaw.CompositeUD.thermal_storage" title="fedoo.constitutivelaw.CompositeUD.thermal_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.thermal_storage</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.CompositeUD.is_initialized.html#fedoo.constitutivelaw.CompositeUD.is_initialized" title="fedoo.constitutivelaw.CompositeUD.is_initialized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD.is_initialized</span></code></a></p></td>
 <td><p>Tag set to True once the law is intialized.</p></td>
 </tr>
 </tbody>

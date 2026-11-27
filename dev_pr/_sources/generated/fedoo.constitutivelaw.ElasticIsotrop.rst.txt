@@ -42,6 +42,7 @@
          ElasticIsotrop.set_density
          ElasticIsotrop.set_local_frame
          ElasticIsotrop.set_start
+         ElasticIsotrop.set_thermal_properties
          ElasticIsotrop.to_start
          ElasticIsotrop.update
       
@@ -57,11 +58,18 @@
          
       
          ElasticIsotrop.G
+         ElasticIsotrop.alpha
          ElasticIsotrop.corate
          ElasticIsotrop.is_isotropic
+         ElasticIsotrop.is_thermomechanical
          ElasticIsotrop.manages_material_frame
          ElasticIsotrop.name
+         ElasticIsotrop.reference_temperature
+         ElasticIsotrop.specific_heat
          ElasticIsotrop.supports_total_formulation
+         ElasticIsotrop.thermal
+         ElasticIsotrop.thermal_conductivity
+         ElasticIsotrop.thermal_storage
          ElasticIsotrop.E
          ElasticIsotrop.nu
          ElasticIsotrop.is_initialized

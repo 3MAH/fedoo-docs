@@ -101,6 +101,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#thermal-constitutive-law">Thermal constitutive law</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.ThermalProperties.html">fedoo.constitutivelaw.ThermalProperties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.html">fedoo.constitutivelaw.SimcoonThermoMechanical</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#poromechanics-fluid-properties">Poromechanics fluid properties</a><ul>
@@ -118,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="poromechanics.html">Poromechanics</a></li>
@@ -168,13 +170,13 @@ selected formulation. The convention is detailed on
 <code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.mechanical3d.Mechanical3D</span></code>.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticIsotrop.html#fedoo.constitutivelaw.ElasticIsotrop" title="fedoo.constitutivelaw.ElasticIsotrop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticIsotrop</span></code></a>(E, nu[, name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticIsotrop.html#fedoo.constitutivelaw.ElasticIsotrop" title="fedoo.constitutivelaw.ElasticIsotrop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticIsotrop</span></code></a>(E, nu[, name, thermal])</p></td>
 <td><p>A simple linear elastic isotropic constitutive law defined from a Yound Modulus and a Poisson Ratio.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticOrthotropic.html#fedoo.constitutivelaw.ElasticOrthotropic" title="fedoo.constitutivelaw.ElasticOrthotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic</span></code></a>(Ex, Ey, Ez, Gyz, Gxz, ...)</p></td>
 <td><p>Linear Orthotropic constitutive law defined from the engineering coefficients in local material coordinates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticAnisotropic.html#fedoo.constitutivelaw.ElasticAnisotropic" title="fedoo.constitutivelaw.ElasticAnisotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticAnisotropic</span></code></a>(H[, name])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ElasticAnisotropic.html#fedoo.constitutivelaw.ElasticAnisotropic" title="fedoo.constitutivelaw.ElasticAnisotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticAnisotropic</span></code></a>(H[, name, thermal])</p></td>
 <td><p>Linear full Anistropic constitutive law defined from the rigidity matrix H.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.CompositeUD.html#fedoo.constitutivelaw.CompositeUD" title="fedoo.constitutivelaw.CompositeUD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeUD</span></code></a>([Vf, E_f, E_m, nu_f, nu_m, ...])</p></td>
@@ -269,7 +271,10 @@ selected formulation. The convention is detailed on
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.ThermalProperties.html#fedoo.constitutivelaw.ThermalProperties" title="fedoo.constitutivelaw.ThermalProperties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThermalProperties</span></code></a>(thermal_conductivity, ...)</p></td>
-<td><p></p></td>
+<td><p>Heat transport and optional thermoelastic material properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fedoo.constitutivelaw.SimcoonThermoMechanical.html#fedoo.constitutivelaw.SimcoonThermoMechanical" title="fedoo.constitutivelaw.SimcoonThermoMechanical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SimcoonThermoMechanical</span></code></a>(umat_name, props, ...)</p></td>
+<td><p>Small-strain isotropic Simcoon <code class="docutils literal notranslate"><span class="pre">umat_T</span></code> material.</p></td>
 </tr>
 </tbody>
 </table>

@@ -43,6 +43,7 @@
          CompositeUD.set_density
          CompositeUD.set_local_frame
          CompositeUD.set_start
+         CompositeUD.set_thermal_properties
          CompositeUD.to_start
          CompositeUD.update
       
@@ -57,11 +58,18 @@
          :toctree:
          
       
+         CompositeUD.alpha
          CompositeUD.corate
          CompositeUD.is_isotropic
+         CompositeUD.is_thermomechanical
          CompositeUD.manages_material_frame
          CompositeUD.name
+         CompositeUD.reference_temperature
+         CompositeUD.specific_heat
          CompositeUD.supports_total_formulation
+         CompositeUD.thermal
+         CompositeUD.thermal_conductivity
+         CompositeUD.thermal_storage
          CompositeUD.is_initialized
   
   

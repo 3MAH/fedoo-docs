@@ -70,6 +70,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../poromechanics.html">Poromechanics</a></li>
@@ -290,9 +291,14 @@ analysis stopped at t = 1.645 s: Current time step is inferior to the specified 
 <img src="../../_images/sphx_glr_neohookean_snap_through_001.png" srcset="../../_images/sphx_glr_neohookean_snap_through_001.png" alt="neohookean snap through" class = "sphx-glr-single-img"/><img src="../../_images/sphx_glr_neohookean_snap_through_002.png" srcset="../../_images/sphx_glr_neohookean_snap_through_002.png" alt="neohookean snap through" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>static  : lost at Fx = -0.0140 N, ux = +24.54 mm
 dynamic : ux = +34.92 mm under Fx = +0.050 N
           ux = -34.92 mm under Fx = -0.050 N (mirror)
+/home/runner/work/fedoo/fedoo/fedoo/core/dataset.py:1167: PyVistaFutureWarning: The default value of `algorithm` for the filter
+`UnstructuredGrid.extract_surface` will change in the future. It currently defaults to
+`'dataset_surface'`, but will change to `None`. Explicitly set the `algorithm` keyword to
+silence this warning.
+  mesh_to_show.separate_cells()
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (2 minutes 6.054 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (1 minutes 38.754 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-finite-strain-neohookean-snap-through-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/9d6bfa72783701dd208f6535f2171be5/neohookean_snap_through.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">neohookean_snap_through.ipynb</span></code></a></p>

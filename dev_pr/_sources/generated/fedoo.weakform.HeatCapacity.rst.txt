@@ -1,0 +1,58 @@
+﻿fedoo.weakform.HeatCapacity
+===========================
+
+.. currentmodule:: fedoo.weakform
+
+.. autoclass:: HeatCapacity
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   .. automethod:: __init__
+
+    
+  
+
+    **Methods**
+    
+      .. autosummary::
+         :toctree:
+         
+      
+         HeatCapacity.copy
+         HeatCapacity.get_all
+         HeatCapacity.get_dissipation
+         HeatCapacity.get_storage
+         HeatCapacity.get_storage_value
+         HeatCapacity.get_weak_equation
+         HeatCapacity.get_weak_equation_for_value
+         HeatCapacity.initialize
+         HeatCapacity.iter_leaf
+         HeatCapacity.reset
+         HeatCapacity.set_damping
+         HeatCapacity.set_dissipation
+         HeatCapacity.set_inertia
+         HeatCapacity.set_start
+         HeatCapacity.set_storage
+         HeatCapacity.sum
+         HeatCapacity.to_start
+         HeatCapacity.update
+         HeatCapacity.update_2
+      
+      
+  
+  
+
+  
+  
+  
+      .. autosummary::
+         :toctree:
+         
+      
+         HeatCapacity.name
+         HeatCapacity.nlgeom
+         HeatCapacity.nvar
+         HeatCapacity.space
+  
+  
