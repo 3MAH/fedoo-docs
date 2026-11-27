@@ -69,7 +69,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Linear.html">fedoo.problem.Linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.problem.Modal.html">fedoo.problem.Modal</a></li>
@@ -196,26 +195,12 @@
 pb.nr_parameters dict.</p>
 <dl>
 <dt>Parameter:</dt><dd><ul class="simple">
-<li><p>criterion: str in [‘Displacement’, ‘Force’, ‘Work’, ‘Fields’],
+<li><p>criterion: str in [‘Displacement’, ‘Force’, ‘Work’],
 default = “Displacement”.
 Type of convergence test.</p></li>
 </ul>
 </dd>
 <dt>Optional parameters that can be set as kargs:</dt><dd><ul>
-<li><p>‘fields’: dict, required for Fields. Maps field names to
-dictionaries containing nonnegative ‘atol’, ‘rtol’, and optional
-‘reference’. All free DOFs must be covered without overlaps.
-The residual threshold for each field is atol + rtol*reference;
-Fields converges when all normalized errors are below one.
-atol and rtol default to 0 and at least one must be positive.
-reference defaults to the norm of the reactions and applied
-loads of the field, recomputed at each iteration. It vanishes
-for an unloaded field (e.g. adiabatic temperature): such a
-field needs an atol, rtol alone raises ValueError.
-The errors of each field are stored in pb.nr_errors.
-Scalar tol/tol_nr does not change this residual threshold; it
-still bounds the residual of nonlinear constraints such as
-MeanMotion (10*tol).</p></li>
 <li><p>‘err0’: float or None, default = None.
 The reference error.
 If None (default), err0 is automatically computed. For Force,

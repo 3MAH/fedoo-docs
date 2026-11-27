@@ -89,7 +89,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../poromechanics.html">Poromechanics</a></li>
@@ -129,7 +128,7 @@
 <h1>fedoo.constitutivelaw.ElasticOrthotropic<a class="headerlink" href="#fedoo-constitutivelaw-elasticorthotropic" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.ElasticOrthotropic">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ElasticOrthotropic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ez</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gxz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuxz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ElasticOrthotropic" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ElasticOrthotropic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ez</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gxz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuxz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ElasticOrthotropic" title="Link to this definition"></a></dt>
 <dd><p>Linear Orthotropic constitutive law defined from the engineering
 coefficients in local material coordinates.</p>
 <p>The constitutive Law should be associated with
@@ -146,8 +145,6 @@ coefficients in local material coordinates.</p>
 <li><p><strong>nuYZ</strong> (<em>scalars</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values</em>) – Poisson’s ratio</p></li>
 <li><p><strong>nuXZ</strong> (<em>scalars</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values</em>) – Poisson’s ratio</p></li>
 <li><p><strong>nuXY</strong> (<em>scalars</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values</em>) – Poisson’s ratio</p></li>
-<li><p><strong>thermal</strong> (<a class="reference internal" href="fedoo.constitutivelaw.ThermalProperties.html#fedoo.constitutivelaw.ThermalProperties" title="fedoo.constitutivelaw.ThermalProperties"><em>ThermalProperties</em></a><em>, </em><em>optional</em>) – Optional thermal properties; expansion coefficients and conductivity
-are expressed in global axes in the initial coupled implementation.</p></li>
 </ul>
 </dd>
 </dl>
@@ -158,7 +155,7 @@ to the hoop direction</strong>, not Cartesian z. See
 <code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.core.mechanical3d.Mechanical3D</span></code> for details.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.ElasticOrthotropic.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ez</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gxz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuxz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ElasticOrthotropic.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ez</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gxz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuyz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuxz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nuxy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ElasticOrthotropic.__init__" title="Link to this definition"></a></dt>
 <dd><p><strong>Methods</strong></p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
@@ -224,7 +221,7 @@ to the hoop direction</strong>, not Cartesian z. See
 <td><p>Reset the constitutive law.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.set_density.html#fedoo.constitutivelaw.ElasticOrthotropic.set_density" title="fedoo.constitutivelaw.ElasticOrthotropic.set_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.set_density</span></code></a>(density)</p></td>
-<td><p>Set the mass density, shared by the inertia and the heat capacity.</p></td>
+<td><p>Set the mass density associated with this mechanical material.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.set_local_frame.html#fedoo.constitutivelaw.ElasticOrthotropic.set_local_frame" title="fedoo.constitutivelaw.ElasticOrthotropic.set_local_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.set_local_frame</span></code></a>(local_frame)</p></td>
 <td><p>Define the material coordinate frame.</p></td>
@@ -232,29 +229,20 @@ to the hoop direction</strong>, not Cartesian z. See
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.set_start.html#fedoo.constitutivelaw.ElasticOrthotropic.set_start" title="fedoo.constitutivelaw.ElasticOrthotropic.set_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.set_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Begin a new time iteration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.set_thermal_properties.html#fedoo.constitutivelaw.ElasticOrthotropic.set_thermal_properties" title="fedoo.constitutivelaw.ElasticOrthotropic.set_thermal_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.set_thermal_properties</span></code></a>([...])</p></td>
-<td><p>Attach ThermalProperties, or construct them from keyword arguments.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.to_start.html#fedoo.constitutivelaw.ElasticOrthotropic.to_start" title="fedoo.constitutivelaw.ElasticOrthotropic.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.to_start</span></code></a>(assembly, pb)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.to_start.html#fedoo.constitutivelaw.ElasticOrthotropic.to_start" title="fedoo.constitutivelaw.ElasticOrthotropic.to_start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.to_start</span></code></a>(assembly, pb)</p></td>
 <td><p>Restart the current time iteration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.update.html#fedoo.constitutivelaw.ElasticOrthotropic.update" title="fedoo.constitutivelaw.ElasticOrthotropic.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.update</span></code></a>(assembly, pb)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.update.html#fedoo.constitutivelaw.ElasticOrthotropic.update" title="fedoo.constitutivelaw.ElasticOrthotropic.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.update</span></code></a>(assembly, pb)</p></td>
 <td><p>Update the constitutive law for the current problem state.</p></td>
 </tr>
 </tbody>
 </table>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.alpha.html#fedoo.constitutivelaw.ElasticOrthotropic.alpha" title="fedoo.constitutivelaw.ElasticOrthotropic.alpha"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.alpha</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.corate.html#fedoo.constitutivelaw.ElasticOrthotropic.corate" title="fedoo.constitutivelaw.ElasticOrthotropic.corate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.corate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.corate.html#fedoo.constitutivelaw.ElasticOrthotropic.corate" title="fedoo.constitutivelaw.ElasticOrthotropic.corate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.corate</span></code></a></p></td>
 <td><p>the objective rate is <code class="docutils literal notranslate"><span class="pre">weakform.corate</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.is_isotropic.html#fedoo.constitutivelaw.ElasticOrthotropic.is_isotropic" title="fedoo.constitutivelaw.ElasticOrthotropic.is_isotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.is_isotropic</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.is_thermomechanical.html#fedoo.constitutivelaw.ElasticOrthotropic.is_thermomechanical" title="fedoo.constitutivelaw.ElasticOrthotropic.is_thermomechanical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.is_thermomechanical</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.is_isotropic.html#fedoo.constitutivelaw.ElasticOrthotropic.is_isotropic" title="fedoo.constitutivelaw.ElasticOrthotropic.is_isotropic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.is_isotropic</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.manages_material_frame.html#fedoo.constitutivelaw.ElasticOrthotropic.manages_material_frame" title="fedoo.constitutivelaw.ElasticOrthotropic.manages_material_frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.manages_material_frame</span></code></a></p></td>
@@ -263,25 +251,10 @@ to the hoop direction</strong>, not Cartesian z. See
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.name.html#fedoo.constitutivelaw.ElasticOrthotropic.name" title="fedoo.constitutivelaw.ElasticOrthotropic.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.name</span></code></a></p></td>
 <td><p>Name of the constitutive law.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.reference_temperature.html#fedoo.constitutivelaw.ElasticOrthotropic.reference_temperature" title="fedoo.constitutivelaw.ElasticOrthotropic.reference_temperature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.reference_temperature</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.specific_heat.html#fedoo.constitutivelaw.ElasticOrthotropic.specific_heat" title="fedoo.constitutivelaw.ElasticOrthotropic.specific_heat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.specific_heat</span></code></a></p></td>
-<td><p></p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.supports_total_formulation.html#fedoo.constitutivelaw.ElasticOrthotropic.supports_total_formulation" title="fedoo.constitutivelaw.ElasticOrthotropic.supports_total_formulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.supports_total_formulation</span></code></a></p></td>
-<td><p>bool(x) -&gt; bool</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.thermal.html#fedoo.constitutivelaw.ElasticOrthotropic.thermal" title="fedoo.constitutivelaw.ElasticOrthotropic.thermal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.thermal</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.thermal_conductivity.html#fedoo.constitutivelaw.ElasticOrthotropic.thermal_conductivity" title="fedoo.constitutivelaw.ElasticOrthotropic.thermal_conductivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.thermal_conductivity</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.thermal_storage.html#fedoo.constitutivelaw.ElasticOrthotropic.thermal_storage" title="fedoo.constitutivelaw.ElasticOrthotropic.thermal_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.thermal_storage</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.is_initialized.html#fedoo.constitutivelaw.ElasticOrthotropic.is_initialized" title="fedoo.constitutivelaw.ElasticOrthotropic.is_initialized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.is_initialized</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="fedoo.constitutivelaw.ElasticOrthotropic.is_initialized.html#fedoo.constitutivelaw.ElasticOrthotropic.is_initialized" title="fedoo.constitutivelaw.ElasticOrthotropic.is_initialized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElasticOrthotropic.is_initialized</span></code></a></p></td>
 <td><p>Tag set to True once the law is intialized.</p></td>
 </tr>
 </tbody>

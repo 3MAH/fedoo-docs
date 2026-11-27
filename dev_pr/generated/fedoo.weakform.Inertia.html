@@ -72,7 +72,6 @@
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumRI.html">fedoo.weakform.StressEquilibriumRI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.StressEquilibriumMixed.html">fedoo.weakform.StressEquilibriumMixed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.HeatEquation.html">fedoo.weakform.HeatEquation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.HeatCapacity.html">fedoo.weakform.HeatCapacity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.PoroMechanicsSimple.html">fedoo.weakform.PoroMechanicsSimple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.PoroMechanics.html">fedoo.weakform.PoroMechanics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.BeamEquilibrium.html">fedoo.weakform.BeamEquilibrium</a></li>
@@ -115,7 +114,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../poromechanics.html">Poromechanics</a></li>
@@ -163,7 +161,9 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>density</strong> (<em>scalar</em><em> or </em><em>arrays</em><em> of </em><em>gauss point values.</em>) – Material density. For 1D meshes, this is physically a linear density
 (mass per unit of length) and for 2D meshes an area density (mass per
-unit of surface).</p></li>
+unit of surface). It is the density of the reference configuration:
+with the updated Lagrangian formulation the mass is still integrated
+on the reference volume.</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – name of the WeakForm</p></li>
 <li><p><strong>space</strong> (<em>ModelingSpace</em><em>, </em><em>optional</em>) – Modeling space used to build the weak form. Default to active one.</p></li>
 </ul>

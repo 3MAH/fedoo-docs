@@ -88,7 +88,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../weak_form.html">Weak Formulation (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.weakform</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../poromechanics.html">Poromechanics</a></li>
@@ -130,17 +129,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.constitutivelaw.ElasticIsotrop.set_density">
 <span class="sig-prename descclassname"><span class="pre">ElasticIsotrop.</span></span><span class="sig-name descname"><span class="pre">set_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.constitutivelaw.ElasticIsotrop.set_density" title="Link to this definition"></a></dt>
-<dd><p>Set the mass density, shared by the inertia and the heat capacity.</p>
-<p>With thermal properties attached, the density is the one of the
-thermal properties: a different value raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>density</strong> (<em>float</em>) – Mass density.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>self, so that the call can be chained.</p>
-</dd>
-</dl>
+<dd><p>Set the mass density associated with this mechanical material.</p>
 </dd></dl>
 
 </section>

@@ -24,7 +24,6 @@
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/sg-tags.js?v=d80f6fa4"></script>
       <script src="../_static/design-tabs.js?v=f930bc37"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -96,7 +95,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fedoo.weakform.HeatEquation.space.html">fedoo.weakform.HeatEquation.space</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.HeatCapacity.html">fedoo.weakform.HeatCapacity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.PoroMechanicsSimple.html">fedoo.weakform.PoroMechanicsSimple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.PoroMechanics.html">fedoo.weakform.PoroMechanics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fedoo.weakform.BeamEquilibrium.html">fedoo.weakform.BeamEquilibrium</a></li>
@@ -117,7 +115,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../assembly.html">Class Assembly</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../time.html">Time Integration (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.time</span></code>)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../thermomechanical.html">Thermo-mechanical analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../problem.html">Problem (<code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.problem</span></code>)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../boundary_conditions.html">Boundary conditions and constraints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../poromechanics.html">Poromechanics</a></li>
@@ -157,50 +154,23 @@
 <h1>fedoo.weakform.HeatEquation<a class="headerlink" href="#fedoo-weakform-heatequation" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fedoo.weakform.HeatEquation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HeatEquation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thermal_constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.HeatEquation" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HeatEquation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thermal_constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.HeatEquation" title="Link to this definition"></a></dt>
 <dd><p>Weak formulation of the heat equation.</p>
 <p>This weakform defines the spatial conduction operator and declares
-<a class="reference internal" href="fedoo.weakform.HeatCapacity.html#fedoo.weakform.HeatCapacity" title="fedoo.weakform.HeatCapacity"><code class="xref py py-class docutils literal notranslate"><span class="pre">HeatCapacity</span></code></a> as its storage term. The problem-level time
+<code class="xref py py-class docutils literal notranslate"><span class="pre">HeatCapacity</span></code> as its storage term. The problem-level time
 integrator determines whether the analysis is steady or transient.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>thermal_constitutivelaw</strong> (<em>ConstitutiveLaw name</em><em> (</em><em>str</em><em>) or </em><em>ConstitutiveLaw object</em>) – Thermal Constitutive Law (<a class="reference internal" href="../constitutive_law.html#module-fedoo.constitutivelaw" title="fedoo.constitutivelaw"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fedoo.constitutivelaw</span></code></a>)</p></li>
 <li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the weak form. An empty name leaves it unregistered.</p></li>
-<li><p><strong>nlgeom</strong> (<em>None</em><em>, </em><em>bool</em><em> or </em><em>'TL'</em><em>, </em><em>optional</em>) – <p>Geometry used to integrate the heat equation.</p>
-<ul>
-<li><p>None (default): a thermo-mechanical material follows the mechanical
-geometry, i.e. the reference-configuration form below is used as
-soon as the mechanics is in finite strain (or an <code class="docutils literal notranslate"><span class="pre">F</span></code> field is
-supplied in <code class="docutils literal notranslate"><span class="pre">assembly.sv</span></code>). An uncoupled thermal material keeps
-the heat equation of the small-strain case, also next to
-finite-strain mechanics: it is integrated on the configuration of
-the assembly (reference with TL mechanics, current with UL
-mechanics in the same assembly, so the two differ by the volume
-change). It uses the reference-configuration form only in a
-heat-only assembly given an <code class="docutils literal notranslate"><span class="pre">F</span></code> field.</p></li>
-<li><p>True or ‘TL’: reference integration with the pulled-back
-conductivity <span class="math notranslate nohighlight">\(J \mathbf{F}^{-1} \mathbf{k}
-\mathbf{F}^{-T}\)</span>, a consistent capacity and a nonsymmetric
-assembly. Also works with UL mechanics. The conductivity must be a
-constant scalar or <span class="math notranslate nohighlight">\(3 \times 3\)</span> tensor.</p></li>
-<li><p>False: undeformed heat equation.</p></li>
-</ul>
-</p></li>
+<li><p><strong>nlgeom</strong> (<em>bool</em><em> (</em><em>default = False</em><em>)</em>)</p></li>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>To couple heat and mechanics, give the same thermo-mechanical material to
-<a class="reference internal" href="fedoo.weakform.StressEquilibrium.html#fedoo.weakform.StressEquilibrium" title="fedoo.weakform.StressEquilibrium"><code class="xref py py-class docutils literal notranslate"><span class="pre">fedoo.weakform.StressEquilibrium</span></code></a> and to this weak form, and
-sum the two weak forms before creating the assembly:
-<code class="docutils literal notranslate"><span class="pre">fd.Assembly.create(equilibrium</span> <span class="pre">+</span> <span class="pre">heat,</span> <span class="pre">mesh)</span></code>. The same material in
-two assemblies created separately raises <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>, since the
-coupling terms would be lost. With two different materials the problem is
-solved without coupling terms and a <code class="docutils literal notranslate"><span class="pre">UserWarning</span></code> is emitted.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fedoo.weakform.HeatEquation.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thermal_constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.HeatEquation.__init__" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thermal_constitutivelaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlgeom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fedoo.weakform.HeatEquation.__init__" title="Link to this definition"></a></dt>
 <dd><p><strong>Methods</strong></p>
 <blockquote>
 <div><table class="autosummary longtable docutils align-default">
@@ -264,7 +234,7 @@ solved without coupling terms and a <code class="docutils literal notranslate"><
 <td><p>Return the name of the WeakForm.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="fedoo.weakform.HeatEquation.nlgeom.html#fedoo.weakform.HeatEquation.nlgeom" title="fedoo.weakform.HeatEquation.nlgeom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HeatEquation.nlgeom</span></code></a></p></td>
-<td><p>Geometry option given at construction (None, False, True or 'TL').</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="fedoo.weakform.HeatEquation.nvar.html#fedoo.weakform.HeatEquation.nvar" title="fedoo.weakform.HeatEquation.nvar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HeatEquation.nvar</span></code></a></p></td>
 <td><p>Number of variables in the modeling space associated to the WeakForm.</p></td>
