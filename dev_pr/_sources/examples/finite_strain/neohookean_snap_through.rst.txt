@@ -268,11 +268,6 @@ Post-processing
     static  : lost at Fx = -0.0140 N, ux = +24.54 mm
     dynamic : ux = +34.92 mm under Fx = +0.050 N
               ux = -34.92 mm under Fx = -0.050 N (mirror)
-    /home/runner/work/fedoo/fedoo/fedoo/core/dataset.py:1167: PyVistaFutureWarning: The default value of `algorithm` for the filter
-    `UnstructuredGrid.extract_surface` will change in the future. It currently defaults to
-    `'dataset_surface'`, but will change to `None`. Explicitly set the `algorithm` keyword to
-    silence this warning.
-      mesh_to_show.separate_cells()
 
 
 
@@ -280,7 +275,7 @@ Post-processing
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (3 minutes 0.098 seconds)
+   **Total running time of the script:** (2 minutes 6.054 seconds)
 
 
 .. _sphx_glr_download_examples_finite_strain_neohookean_snap_through.py:
